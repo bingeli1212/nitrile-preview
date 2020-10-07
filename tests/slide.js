@@ -9,7 +9,6 @@ var work = async (fname)=>{
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewSlide(parser);
   parser.read_md_lines(lines);
-  translator.translate_blocks();
   var data = translator.to_slide_document();
   return(data);
 };
