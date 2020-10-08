@@ -13,7 +13,7 @@ var work = async ()=>{
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewContext(parser);
   parser.read_md_lines(lines);
-  translator.translate_blocks();
+  translator.to_context_document();
   var main = parser.blocks;
   var latex = main.map(x=>x.latex);
   console.log(latex.join('\n'));

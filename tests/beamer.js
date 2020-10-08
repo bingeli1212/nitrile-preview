@@ -8,7 +8,6 @@ var work = async ()=>{
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewBeamer(parser);
   parser.read_md_lines(lines);
-  translator.translate_blocks();
   var data = translator.to_beamer_document();
   return(data);
 };
