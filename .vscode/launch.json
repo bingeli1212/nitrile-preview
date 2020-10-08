@@ -26,9 +26,8 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/test.js",
+      "program": "${workspaceFolder}/tests/epub.js",
       "args":[
-        "epub",
         "a.md"
       ]
     },
