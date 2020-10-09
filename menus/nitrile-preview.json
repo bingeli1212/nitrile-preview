@@ -34,11 +34,11 @@
         "type": "separator"
       },
       {
-        "label": "Export as Report   As\u2026",
+        "label": "Export as Report As\u2026",
         "command": "nitrile-preview:to-report"
       },
       {
-        "label": "Export as Beamer   As\u2026",
+        "label": "Export as Beamer As\u2026",
         "command": "nitrile-preview:to-beamer"
       },
       {
