@@ -60,48 +60,54 @@
     font-weight:bolder;
   }
 
-  ul.PARA {
-    padding-left: 28px;
-  }
-
-  ol.PARA {
-    padding-left: 28px;
-  }
-  
   ul.PLST {
     padding-left: 28px;
+  }
+  ul.PLST > li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  ul.PLST > li > div {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  ul.PLST > li > div > ul,ol {
+    padding-left: 20px;
   }
 
   ol.PLST {
     padding-left: 28px;
   }
-
-  li.PLST {
+  ol.PLST > li {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
-
-  div.PLST {
+  ol.PLST > li > div {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
+  ol.PLST > li > div > ul,ol {
+    padding-left: 20px;
+  }
 
-  dt.PLST {
+  dl.PLST > dt {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
-
-  dd.PLST {
+  dl.PLST > dd {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     margin-left: 1em;
   }
 
-  div.PRIM {
+  div.TEXT {
     margin: 0.5em 0;
   }
+  div.TEXT > ul,ol {
+    padding-left: 20px;
+  }
 
-  div.TEXT {
+  div.PRIM {
     margin: 0.5em 0;
   }
 
@@ -111,41 +117,15 @@
     padding-left: 28px;
   }
 
-  figure.Figure {
+  figure {
     margin: 0.5em 0;
-    padding-left:28px;
+    margin-left: 28px;
   }
-  figure.Tabulate {
-    margin: 0.5em 0;
-    padding-left:28px;
+  figure > figcaption {
+    margin-left: -28px;
   }
-  figure.Longtable {
-    margin: 0.5em 0;
-    padding-left:28px;
-  }
-  figure.Equation {
-    margin: 0.5em 0;
-    padding-left:28px;
-  }
-  figure.Listing {
-    margin: 0.5em 0;
-    padding-left:28px;
-  }
-
-  figcaption.Figure {
-    margin-left:-28px;
-  }
-  figcaption.Tabulate {
-    margin-left:-28px;
-  }
-  figcaption.Longtable {
-    margin-left:-28px;
-  }
-  figcaption.Equation {
-    margin-left:-28px;
-  }
-  figcaption.Listing {
-    margin-left:-28px;
+  figure.Listing > div {
+    font-size: smaller;
   }
 
 }
