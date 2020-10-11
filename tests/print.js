@@ -9,11 +9,11 @@ var work = async (fname)=>{
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewPrint(parser);
   parser.read_md_lines(lines);
-  var width = translator.pixelWidth('My text ...', { size: 10 });
+  var width = translator.string_pixel_width('My text ...', { size: 10 });
   console.log('This text is ' + width + 'px long in the size of 10px.');
-  var width = translator.pixelWidth('My text ...', { font: 'impact', size: 10 });
+  var width = translator.string_pixel_width('My text ...', { font: 'impact', size: 10 });
   console.log('This text is ' + width + 'px long in the size of 10px.');
-  var width = translator.pixelWidth('My text ...', { font: 'open sans', size: 10, bold: true, italic: true });
+  var width = translator.string_pixel_width('My text ...', { font: 'open sans', size: 10, bold: true, italic: true });
   console.log('This text is ' + width + 'px long in the size of 10px.');
   
   //var data = translator.to_print_document();
