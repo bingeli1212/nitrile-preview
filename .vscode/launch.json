@@ -82,6 +82,19 @@
       "args": [
         "a.md"
       ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch PRINT",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/print.js",
+      "args": [
+        "a.md"
+      ]
     }
   ]
 }
