@@ -3,11 +3,9 @@ const { NitrilePreviewBeamer } = require('../lib/nitrile-preview-beamer');
 const utils = require('../lib/nitrile-preview-utils');
 
 var work = async ()=>{
-  var out = await utils.read_file_async(fname);
-  var lines = out.split('\n');
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewBeamer(parser);
-  parser.read_md_lines(lines);
+  await parser.read_file_async(fname);
   var data = translator.to_beamer_document();
   return(data);
 };

@@ -4,11 +4,9 @@ const utils = require('../lib/nitrile-preview-utils');
 
 
 var work = async (fname)=>{
-  var out = await utils.read_file_async(fname);
-  var lines = out.split('\n');
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewPrint(parser);
-  parser.read_md_lines(lines);
+  await parser.read_file_async(fname);
   var width = translator.string_pixel_width('My text ...', { size: 10 });
   console.log('This text is ' + width + 'px long in the size of 10px.');
   var width = translator.string_pixel_width('My text ...', { font: 'impact', size: 10 });

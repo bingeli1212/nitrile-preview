@@ -3,12 +3,9 @@ const { NitrilePreviewEpub } = require('../lib/nitrile-preview-epub');
 const utils = require('../lib/nitrile-preview-utils');
 
 var work = async ()=>{
-  console.log(fname);
-  var out = await utils.read_file_async(fname);
-  var lines = out.split('\n');
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewEpub(parser);
-  parser.read_md_lines(lines);
+  await parser.read_file_async(fname);
   const data = await translator.to_epub_document_async();
   return(data);
 };
