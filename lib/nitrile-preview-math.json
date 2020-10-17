@@ -829,6 +829,7 @@
     "nmid"                   : { "html": "&#x2224;"       , "tex":  "\\nmid"                                      , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2224 DOES NOT DIVIDE"           },
     "pm"                     : { "html": "&#x00B1;"       , "tex":  "\\pm"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00B1 PLUS-MINUS SIGN"           },
     "mp"                     : { "html": "&#x2213;"       , "tex":  "\\mp"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2213 MINUS-OR-PLUS SIGN"           },
+    "minus"                  : { "html": "&#x2212;"       , "tex":  "\\minus"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2212 MINUS SIGN"           },
     "times"                  : { "html": "&#x00D7;"       , "tex":  "\\times"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00D7 MULTIPLICATION SIGN"           },
     "div"                    : { "html": "&#x00F7;"       , "tex":  "\\div"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00F7 DIVISION SIGN"           },
     "ast"                    : { "html": "&#x2217;"       , "tex":  "\\ast"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2217 ASTERISK OPERATOR"           },
