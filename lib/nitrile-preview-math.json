@@ -1106,6 +1106,17 @@
     "coloneq"                : { "html": "&#x2254;"       ,  "tex": "\\coloneq","cex":"0x2254"            ,"TM":0 , "width": 12,   "op": 1,  "usepackage":"mathtools" ,"comment":"U+2254 COLON EQUAL"},
     "eqcolon"                : { "html": "&#x2255;"       ,  "tex": "\\eqcolon","cex":"0x2255"            ,"TM":0 , "width": 12,   "op": 1,  "usepackage":"mathtools" ,"comment":"U+2255 EQUAL COLON"}, 
 
+    "cdone"                  : { "html": "&#x2780;"       ,  "tex": "\\ding{192}","cex":"0x2780"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2780 Dingbat Circled Sans-Serif Digit One"}, 
+    "cdtwo"                  : { "html": "&#x2781;"       ,  "tex": "\\ding{193}","cex":"0x2781"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2781 Dingbat Circled Sans-Serif Digit Two"}, 
+    "cdthree"                : { "html": "&#x2782;"       ,  "tex": "\\ding{194}","cex":"0x2782"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2782 Dingbat Circled Sans-Serif Digit Three"}, 
+    "cdfour"                 : { "html": "&#x2783;"       ,  "tex": "\\ding{195}","cex":"0x2783"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2783 Dingbat Circled Sans-Serif Digit Four"}, 
+    "cdfive"                 : { "html": "&#x2784;"       ,  "tex": "\\ding{196}","cex":"0x2784"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2784 Dingbat Circled Sans-Serif Digit Five"}, 
+    "cdsix"                  : { "html": "&#x2785;"       ,  "tex": "\\ding{197}","cex":"0x2785"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2785 Dingbat Circled Sans-Serif Digit Six"}, 
+    "cdseven"                : { "html": "&#x2786;"       ,  "tex": "\\ding{198}","cex":"0x2786"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2786 Dingbat Circled Sans-Serif Digit Seven"}, 
+    "cdeight"                : { "html": "&#x2787;"       ,  "tex": "\\ding{199}","cex":"0x2787"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2787 Dingbat Circled Sans-Serif Digit Eight"}, 
+    "cdnine"                 : { "html": "&#x2788;"       ,  "tex": "\\ding{200}","cex":"0x2788"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2788 Dingbat Circled Sans-Serif Digit Nine"}, 
+    "cdten"                  : { "html": "&#x2789;"       ,  "tex": "\\ding{201}","cex":"0x2789"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2789 Dingbat Circled Sans-Serif Digit Ten"}, 
+
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
   }
