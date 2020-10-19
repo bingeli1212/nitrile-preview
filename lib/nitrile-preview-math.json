@@ -1036,9 +1036,9 @@
     "ballotx"                : { "html": "&#x2717;"       ,  "tex": "\\ding{55}"                          ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"pifont"   ,"comment":"U+2717 BALLOT X"},
     "yinyang"                : { "html": "&#x262F;"       ,  "tex": "\\Yinyang"                           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"marvosym" ,"comment":"U+262F YIN YANG"},
     
-    "CheckedBox"             : { "html": "&#x2611;"       ,  "tex": "\\CheckedBox"                                , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
-    "XBox"                   : { "html": "&#x2612;"       ,  "tex": "\\XBox"                                      , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2612 BALLOT BOX WITH X"},
-    
+    "CheckedBox"             : { "html": "&#x2611;"       ,  "tex": "\\CheckedBox"                        ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
+    "XBox"                   : { "html": "&#x2612;"       ,  "tex": "\\XBox"                              ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2612 BALLOT BOX WITH X"},
+    "Square"                 : { "html": "&#x2610;"       ,  "tex": "\\Square"                            ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2610 BALLOT BOX"},
     
     "squ"                    : { "html": "&#x25A1;"       ,  "tex":  "\\medsquare"                                , "width": 0,    "op": 0,  "usepackage":"MnSymbol" ,"comment":"U+25A1 WHITE SQUARE"},
     "squf"                   : { "html": "&#x25AA;"       ,  "tex":  "\\filledmedsquare"                          , "width": 0,    "op": 0,  "usepackage":"MnSymbol" ,"comment":"U+25AA BLACK SMALL SQUARE"},
