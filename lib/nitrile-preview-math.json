@@ -625,7 +625,7 @@
       { "unicode": "k" ,    "width": 6        ,   "dy":"0.75em"      ,  "dx":"0"   , "id": "mathvr-k"  , "fontstyle": "italic"      },
       { "unicode": "l" ,    "width": 4.5      ,   "dy":"0.75em"      ,  "dx":"0"   , "id": "mathvr-l"  , "fontstyle": "italic"      },
       { "unicode": "m" ,    "width": 9        ,   "dy":"0.75em"      ,  "dx":"0"   , "id": "mathvr-m"  , "fontstyle": "italic"      },
-      { "unicode": "n" ,    "width": 6        ,   "dy":"0.75em"      ,  "dx":"0"   , "id": "mathvr-n"  , "fontstyle": "italic"      },
+      { "unicode": "n" ,    "width": 6        ,   "dy":"0.75em"      ,  "dx":"0"   , "id": "mathvr-n"  , "fontstyle": "italic"  , "protrude": "1"    },
       { "unicode": "o" ,    "width": 6        ,   "dy":"0.75em"      ,  "dx":"0"   , "id": "mathvr-o"  , "fontstyle": "italic"      },
       { "unicode": "p" ,    "width": 6        ,   "dy":"0.75em"      ,  "dx":"0"   , "id": "mathvr-p"  , "fontstyle": "italic"      },
       { "unicode": "q" ,    "width": 6        ,   "dy":"0.75em"      ,  "dx":"0"   , "id": "mathvr-q"  , "fontstyle": "italic"      },
