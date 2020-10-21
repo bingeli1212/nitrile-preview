@@ -117,25 +117,20 @@
     { "kbd": "\\csc"           ,    "unicode": "csc"            ,  "id": "myCSC"         ,"dx":"0"                      ,"op": 3    ,"width": 14 },
     { "kbd": "\\sec"           ,    "unicode": "sec"            ,  "id": "mySEC"         ,"dx":"0"                      ,"op": 3    ,"width": 14 },
     { "kbd": "\\cot"           ,    "unicode": "cot"            ,  "id": "myCOT"         ,"dx":"0"                      ,"op": 3    ,"width": 14 },
-
     { "kbd": "\\sinh"          ,    "unicode": "sinh"           ,  "id": "mySINH"        ,"dx":"0"                      ,"op": 3    ,"width": 22 },
     { "kbd": "\\cosh"          ,    "unicode": "cosh"           ,  "id": "myCOSH"        ,"dx":"0"                      ,"op": 3    ,"width": 22 },
     { "kbd": "\\tanh"          ,    "unicode": "tanh"           ,  "id": "myTANH"        ,"dx":"0"                      ,"op": 3    ,"width": 22 },
     { "kbd": "\\csch"          ,    "unicode": "csch"           ,  "id": "myCSCH"        ,"dx":"0"                      ,"op": 3    ,"width": 22 },
     { "kbd": "\\sech"          ,    "unicode": "sech"           ,  "id": "mySECH"        ,"dx":"0"                      ,"op": 3    ,"width": 22 },
     { "kbd": "\\coth"          ,    "unicode": "coth"           ,  "id": "myCOTH"        ,"dx":"0"                      ,"op": 3    ,"width": 22 },
-
     { "kbd": "\\arcsin"        ,    "unicode": "arcsin"         ,  "id": "myARCSIN"      ,"dx":"0"                      ,"op": 3    ,"width": 32 },
     { "kbd": "\\arccos"        ,    "unicode": "arccos"         ,  "id": "myARCCOS"      ,"dx":"0"                      ,"op": 3    ,"width": 32 },
     { "kbd": "\\arctan"        ,    "unicode": "arctan"         ,  "id": "myARCTAN"      ,"dx":"0"                      ,"op": 3    ,"width": 32 },
-
     { "kbd": "\\limsup"        ,    "unicode": "lim&#160;sup"   ,  "id": "myLIMSUP"      ,"dx":"0"                      ,"op": 3    ,"width": 34 },
     { "kbd": "\\liminf"        ,    "unicode": "lim&#160;inf"   ,  "id": "myLIMINF"      ,"dx":"0"                      ,"op": 3    ,"width": 34 },
-
     { "kbd": "\\bmod"          ,    "unicode": "mod"            ,  "id": "myBMOD"        ,"dx":"0"                      ,"op": 3    ,"width": 22 },
     { "kbd": "\\exp"           ,    "unicode": "exp"            ,  "id": "myEXP"         ,"dx":"0"                      ,"op": 3    ,"width": 18 },
     { "kbd": "\\ker"           ,    "unicode": "ker"            ,  "id": "myKER"         ,"dx":"0"                      ,"op": 3    ,"width": 18 },
-    { "kbd": "\\deg"           ,    "unicode": "deg"            ,  "id": "myDEG"         ,"dx":"0"                      ,"op": 3    ,"width": 20 },
     { "kbd": "\\gcd"           ,    "unicode": "gcd"            ,  "id": "myGCD"         ,"dx":"0"                      ,"op": 3    ,"width": 20 },
     { "kbd": "\\sup"           ,    "unicode": "sup"            ,  "id": "mySUP"         ,"dx":"0"                      ,"op": 3    ,"width": 18 },
     { "kbd": "\\det"           ,    "unicode": "det"            ,  "id": "myDET"         ,"dx":"0"                      ,"op": 3    ,"width": 16 },
@@ -145,11 +140,9 @@
     { "kbd": "\\dim"           ,    "unicode": "dim"            ,  "id": "myDIM"         ,"dx":"0"                      ,"op": 3    ,"width": 18 },
     { "kbd": "\\min"           ,    "unicode": "min"            ,  "id": "myMIN"         ,"dx":"0"                      ,"op": 3    ,"width": 18 },
     { "kbd": "\\max"           ,    "unicode": "max"            ,  "id": "myMAX"         ,"dx":"0"                      ,"op": 3    ,"width": 20 },
-
     { "kbd": "\\lg"            ,    "unicode": "lg"             ,  "id": "myLG"          ,"dx":"0"                      ,"op": 3    ,"width": 10 },
     { "kbd": "\\ln"            ,    "unicode": "ln"             ,  "id": "myLN"          ,"dx":"0"                      ,"op": 3    ,"width": 10 },
     { "kbd": "\\Pr"            ,    "unicode": "Pr"             ,  "id": "mypR"          ,"dx":"0"                      ,"op": 3    ,"width": 10 },
-
 
     { "kbd": "\\quad"          ,    "unicode": "&#x2004;"       ,  "id": "myQUADSP"      ,"dx":"0"                      ,"op": 0    ,"width": 12 },
     { "kbd": "\\qquad"         ,    "unicode": "&#x2004;"       ,  "id": "myQQUADSP"     ,"dx":"0"                      ,"op": 0    ,"width": 24 },
