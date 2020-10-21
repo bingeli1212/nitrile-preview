@@ -1062,8 +1062,8 @@
     "dagger"                 : { "html": "&#x2020;"       ,  "tex": "\\dag"                               ,"TM":1 , "width": 6,    "op": 0,  "usepackage":"textcomp" ,"comment":"U+2020 DAGGER " },
     "Dagger"                 : { "html": "&#x2021;"       ,  "tex": "\\ddag"                              ,"TM":1 , "width": 6,    "op": 0,  "usepackage":"textcomp" ,"comment":"U+2021 DOULBE DAGGER " },
     "questiondown"           : { "html": "&#x00BF;"       ,  "tex": "\\text{?`}"                          ,"TM":0 , "width": 6 ,   "op": 0,  "usepackage":""         ,"comment":"U+00BF INVERTED QUESTION MARK"},
-    "laquo"                  : { "html": "&#x00AB;"       ,  "tex": "\\guillemotleft"                     ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+00AB LEFT-POINTING DOUBLE ANGLE QUOTATION MARK"},
-    "raquo"                  : { "html": "&#x00BB;"       ,  "tex": "\\guillemotright"                    ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+00BB RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK"},
+    "laquo"                  : { "html": "&#x00AB;"       ,  "tex": "\\guillemotleft","cex":"0x00AB"      ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+00AB LEFT-POINTING DOUBLE ANGLE QUOTATION MARK"},
+    "raquo"                  : { "html": "&#x00BB;"       ,  "tex": "\\guillemotright","cex":"0x00BB"     ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+00BB RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK"},
 
 
     "baht"                   : { "html": "&#x0E3F;"       ,  "tex": "\\textbaht"                          ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"textcomp" ,"comment":"U+0E3F THAI CURRENCY SYMBOL BAHT"},
