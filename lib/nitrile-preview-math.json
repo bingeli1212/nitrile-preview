@@ -1126,6 +1126,8 @@
 
     "ldquo"                 : { "html": "&#x201C;"        ,  "tex": "\\textquotedblleft"                  ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+201C LEFT DOUBLE QUOTATION MARK"},
     "rdquo"                 : { "html": "&#x201D;"        ,  "tex": "\\textquotedblright"                 ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+201D RIGHT DOUBLE QUOTATION MARK"},
+    "lsquo"                 : { "html": "&#x2018;"        ,  "tex": "\\textquoteleft"                     ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2018 LEFT SINGLE QUOTATION MARK"},
+    "rsquo"                 : { "html": "&#x2019;"        ,  "tex": "\\textquoteright"                    ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2019 RIGHT SINGLE QUOTATION MARK"},
 
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
