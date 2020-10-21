@@ -1116,6 +1116,9 @@
     "cdnine"                 : { "html": "&#x2788;"       ,  "tex": "\\ding{200}","cex":"0x2788"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2788 Dingbat Circled Sans-Serif Digit Nine"}, 
     "cdten"                  : { "html": "&#x2789;"       ,  "tex": "\\ding{201}","cex":"0x2789"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2789 Dingbat Circled Sans-Serif Digit Ten"}, 
 
+    "ldquo"                 : { "html": "&#x201C;"        ,  "tex": "\\textquotedblleft"                  ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+201C LEFT DOUBLE QUOTATION MARK"},
+    "rdquo"                 : { "html": "&#x201D;"        ,  "tex": "\\textquotedblright"                 ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+201D RIGHT DOUBLE QUOTATION MARK"},
+
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
   }
