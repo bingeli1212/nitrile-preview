@@ -31,3 +31,4 @@ a&mdash;b
 
 &hellip;
 
+&laquo;a&raquo;
