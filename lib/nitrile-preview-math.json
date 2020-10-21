@@ -826,6 +826,8 @@
     "sim"                    : { "html": "&#x223C;"       , "tex":  "\\sim"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+223C TILDE OPERATOR"           },
     "propto"                 : { "html": "&#x221D;"       , "tex":  "\\propto"                                    , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+221D PROPORTIONAL TO"           },
     "ne"                     : { "html": "&#x2260;"       , "tex":  "\\neq"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2260 NOT EQUAL TO"           },
+    "lt"                     : { "html": "&#x003C;"       , "tex":  "\\textless","TM":1                           , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+003C LESS THAN"           },
+    "gt"                     : { "html": "&#x003E;"       , "tex":  "\\textgreater","TM":1                        , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+003E GREATER THAN"           },
     "mid"                    : { "html": "&#x2223;"       , "tex":  "\\mid"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2223 DIVIDES"           },
     "nmid"                   : { "html": "&#x2224;"       , "tex":  "\\nmid"                                      , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2224 DOES NOT DIVIDE"           },
     "pm"                     : { "html": "&#x00B1;"       , "tex":  "\\pm"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00B1 PLUS-MINUS SIGN"           },
@@ -1129,9 +1131,8 @@
     "lsquo"                  : { "html": "&#x2018;"       ,  "tex": "\\textquoteleft"                     ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2018 LEFT SINGLE QUOTATION MARK"},
     "rsquo"                  : { "html": "&#x2019;"       ,  "tex": "\\textquoteright"                    ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2019 RIGHT SINGLE QUOTATION MARK"},
     
-    "prime"                  : { "html": "&#x2032;"       ,  "tex": "\\prime"                                     , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2032 PRIME"},
-    "Prime"                  : { "html": "&#x2033;"       ,  "tex": "\\prime\\prime"                      , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2033 DOUBLE PRIME"},
-
+    "prime"                  : { "html": "&#x2032;"       ,  "tex": "'"                                   ,"TM":0 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2032 PRIME"},
+    "Prime"                  : { "html": "&#x2033;"       ,  "tex": "''"                                  ,"TM":0 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2033 DOUBLE PRIME"},
 
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
