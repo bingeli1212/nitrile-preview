@@ -1133,6 +1133,9 @@
     
     "prime"                  : { "html": "&#x2032;"       ,  "tex": "'"                                   ,"TM":0 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2032 PRIME"},
     "Prime"                  : { "html": "&#x2033;"       ,  "tex": "''"                                  ,"TM":0 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2033 DOUBLE PRIME"},
+    
+    "ndash"                  : { "html": "&#x2013;"       ,  "tex": "\\textendash"                        ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2013 EN DASH"},
+    "mdash"                  : { "html": "&#x2014;"       ,  "tex": "\\textemdash"                        ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2014 EM DASH"},
 
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
