@@ -824,7 +824,7 @@
     "simeq"                  : { "html": "&#x2243;"       , "tex":  "\\simeq"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2243 ASYMPTOTICALLY EQUAL TO"           },
     "sim"                    : { "html": "&#x223C;"       , "tex":  "\\sim"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+223C TILDE OPERATOR"           },
     "propto"                 : { "html": "&#x221D;"       , "tex":  "\\propto"                                    , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+221D PROPORTIONAL TO"           },
-    "neq"                    : { "html": "&#x2260;"       , "tex":  "\\neq"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2260 NOT EQUAL TO"           },
+    "ne"                     : { "html": "&#x2260;"       , "tex":  "\\neq"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2260 NOT EQUAL TO"           },
     "mid"                    : { "html": "&#x2223;"       , "tex":  "\\mid"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2223 DIVIDES"           },
     "nmid"                   : { "html": "&#x2224;"       , "tex":  "\\nmid"                                      , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2224 DOES NOT DIVIDE"           },
     "pm"                     : { "html": "&#x00B1;"       , "tex":  "\\pm"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00B1 PLUS-MINUS SIGN"           },
