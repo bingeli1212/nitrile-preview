@@ -853,7 +853,7 @@
                   
     "sdot"                   : { "html": "&#x22C5;"       , "tex":  "\\cdot"                                      , "width": 3  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C5 DOT OPERATOR"          },
     "vellip"                 : { "html": "&#x22EE;"       , "tex":  "\\vdots"                                     , "width": 6.5,  "op": 1,  "usepackage":""         ,"comment":"U+22EE VERTICAL ELLIPSIS"           },
-    "hellip"                 : { "html": "&#x2026;"       , "tex":  "\\ldots"                                     , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+2026 HORIZONTAL ELLIPSIS"           },
+    "hellip"                 : { "html": "&#x2026;"       , "tex":  "\\dots"                                      , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+2026 HORIZONTAL ELLIPSIS"           },
     "ctdot"                  : { "html": "&#x22EF;"       , "tex":  "\\hdots","cex":"0x22EF"                      , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22EF MIDLINE HORIZONTAL ELLIPSIS"    },
     "utdot"                  : { "html": "&#x22F0;"       , "tex":  "\\udots"                                     , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22F0 UP RIGHT DIAGONAL ELLIPSIS"           },
     "dtdot"                  : { "html": "&#x22F1;"       , "tex":  "\\ddots"                                     , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22F1 DOWN RIGHT DIAGONAL ELLIPSIS"           },
@@ -1028,15 +1028,14 @@
     "frac110"                : { "html": "&#x2152;"       ,  "tex": "\\sfrac{1}{10}"                              , "width": 9.5,  "op": 0,  "usepackage":""         ,"comment":"U+2152 VULGAR FRACTION ONE TENTH" },
     "frac03"                 : { "html": "&#x2189;"       ,  "tex": "\\sfrac{0}{3}"                               , "width": 9.5,  "op": 0,  "usepackage":""         ,"comment":"U+2189 VULGAR FRACTION ZERO THIRDS" },
     
-    "checkmark"              : { "html": "&#x2713;"       ,  "tex": "\\ding{51}","cex":"0x2713"           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+2713 CHECK MARK"},
+    "checkmark"              : { "html": "&#x2713;"       ,  "tex": "\\ding{51}","cex":"0x2713"           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"pifont"   ,"comment":"U+2713 CHECK MARK"},
     "ballotx"                : { "html": "&#x2717;"       ,  "tex": "\\ding{55}","cex":"0x2717"           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"pifont"   ,"comment":"U+2717 BALLOT X"},
-    "maltese"                : { "html": "&#x2720;"       ,  "tex": "\\maltese"                                   , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+2720 MALTESE CROSS"},
-    "circledR"               : { "html": "&#x00AE;"       ,  "tex": "\\circledR"                                  , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+24C7 CIRCLED LATIN CAPITAL LETTER R"},
+    "maltese"                : { "html": "&#x2720;"       ,  "tex": "\\maltese"                                   , "width": 0,    "op": 0,  "usepackage":"AMS"      ,"comment":"U+2720 MALTESE CROSS"},
     "yinyang"                : { "html": "&#x262F;"       ,  "tex": "\\Yinyang"                           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"marvosym" ,"comment":"U+262F YIN YANG"},
     
+    "Square"                 : { "html": "&#x2610;"       ,  "tex": "\\Square"                            ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2610 BALLOT BOX"},
     "CheckedBox"             : { "html": "&#x2611;"       ,  "tex": "\\CheckedBox"                        ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
     "XBox"                   : { "html": "&#x2612;"       ,  "tex": "\\XBox"                              ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2612 BALLOT BOX WITH X"},
-    "Square"                 : { "html": "&#x2610;"       ,  "tex": "\\Square"                            ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2610 BALLOT BOX"},
     
     "squ"                    : { "html": "&#x25A1;"       ,  "tex":  "\\medsquare"                                , "width": 0,    "op": 0,  "usepackage":"MnSymbol" ,"comment":"U+25A1 WHITE SQUARE"},
     "squf"                   : { "html": "&#x25AA;"       ,  "tex":  "\\filledmedsquare"                          , "width": 0,    "op": 0,  "usepackage":"MnSymbol" ,"comment":"U+25AA BLACK SMALL SQUARE"},
