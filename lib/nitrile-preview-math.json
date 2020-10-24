@@ -922,7 +922,7 @@
     "lor"                    : { "html": "&#x22C1;"       , "tex":  "\\lor"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C1 N-ARY LOGICAL OR"        },
     "cap"                    : { "html": "&#x22C2;"       , "tex":  "\\cap"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C2 N-ARY INTERSECTION"        },
     "cup"                    : { "html": "&#x22C3;"       , "tex":  "\\cup"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C3 N-ARY UNION"        },
-    "setminus"               : { "html": "&#x2216;"       , "tex":  "\\smallsetminus"                             , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+2216 SET MINUS"        },
+    "setminus"               : { "html": "&#x2216;"       , "tex":  "\\smallsetminus","cex":"0x2216"              , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+2216 SET MINUS"        },
     "top"                    : { "html": "&#x22A4;"       , "tex":  "\\top"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22A4 DOWN TACK"        },
     "bot"                    : { "html": "&#x22A5;"       , "tex":  "\\bot"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22A5 UP TACK"        },
     "parallel"               : { "html": "&#x2225;"       , "tex":  "\\parallel"                                  , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2225 PARALLEL TO"        },
