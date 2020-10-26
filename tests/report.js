@@ -5,6 +5,7 @@ const utils = require('../lib/nitrile-preview-utils');
 var work = async ()=>{
   const parser = new NitrilePreviewParser();
   await parser.read_file_async(fname);
+  await parser.read_import_async(fname);
   const translator = new NitrilePreviewReport(parser);
   var tex = translator.to_report_document();
   console.log(tex);
