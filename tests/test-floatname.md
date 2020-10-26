@@ -12,12 +12,10 @@ See Equation &ref{james}
 # Table
 
 ~~~table{label:table}
-```tabulate
 Name | Desc
 -------------
 James | Yu
 James | Yu
-```
 ~~~
 
 See table &ref{table}
