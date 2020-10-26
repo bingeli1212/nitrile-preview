@@ -2,7 +2,7 @@ const { NitrilePreviewParser } = require('../lib/nitrile-preview-parser');
 const { NitrilePreviewReport } = require('../lib/nitrile-preview-report');
 const utils = require('../lib/nitrile-preview-utils');
 
-var work = async ()=>{
+var work = async (fname)=>{
   const parser = new NitrilePreviewParser();
   await parser.read_file_async(fname);
   await parser.read_import_async(fname);
@@ -11,9 +11,7 @@ var work = async ()=>{
   console.log(tex);
 };
 
-console.log('process.arg=', process.argv);
-const fname = process.argv[2];
-console.log('fname=', fname);
+var fname = process.argv[2];
 
 if(fname){
   work(fname).then(data => console.log(data));
