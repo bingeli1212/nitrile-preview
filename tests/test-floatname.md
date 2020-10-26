@@ -7,7 +7,7 @@
 \sqrt{2} + a
 ~~~
 
-See Equation &ref{james}
+See &ref{james}
 
 # Table
 
@@ -18,14 +18,18 @@ James | Yu
 James | Yu
 ~~~
 
-See table &ref{table}
+See &ref{table}
 
 # Figure
 
-~~~figure{n:2;label:figure}
+~~~figure{n:4;label:figure}
+&img{src:image-clock.png}
+&img{src:image-gimp.jpg}
 &img{src:image-clock.png}
 &img{src:image-gimp.jpg}
 ~~~
+
+See &ref{figure}
 
 # Listing
 
@@ -33,13 +37,13 @@ See table &ref{table}
 printf('\n');
 ~~~
 
-See listing &ref{listing}
+See &ref{listing}
 
 # Vmap
 
 % vocabulary
   日本・にほん
 
-日本人
+James 日本人
 
 
