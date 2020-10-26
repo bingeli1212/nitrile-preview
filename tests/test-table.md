@@ -1,50 +1,59 @@
-test-table.md
-
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-culpa qui officia deserunt mollit anim id est laborum."
-
-@ Table $(#tab:a)
-
-  Category             | Unit       | Symbol                                   
-  ---------------------|------------|---------------
-  Length               | meter      | m
-  Mass                 | kilogram   | kg
-  Time                 | second     | s  
-  Electric current     | ampere     | A  
-  Temperature          | kelvin     | K  
-  Luminous intensity   | candela    | cd
-  Amount of substance  | mole       | mol  
-
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-culpa qui officia deserunt mollit anim id est laborum."
-
-@ Table
-  My table
-
-  Category             | Unit       | Symbol                                   
-  ---------------------|------------|------------                              
-  Length               | meter      | m
-  Mass                 | kilogram   | kg
-  Time                 | second     | s  
-  Electric current     | ampere     | A  
-  Temperature          | kelvin     | K  
-  Luminous intensity   | candela    | cd
-  Amount of substance  | mole       | mol  
-
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-culpa qui officia deserunt mollit anim id est laborum."
 
 
-The table is: $(#tab:a)
+~~~table{border:1;label:my1}
+Name  | Desc
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+~~~
+
+~~~table{border:2;label:my2}
+Name  | Desc
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+~~~
+
+~~~table{border:3;label:my3}
+Name  | Desc
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+~~~
+
+~~~table{border:4;label:my4}
+Name  | Desc
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+~~~
+
+~~~table{label:my5}
+Name  | Desc
+-----------------
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+Hello | World
+~~~
+
+See &ref{my1}, &ref{my2}, &ref{my3}, &ref{my4}, &ref{my5}

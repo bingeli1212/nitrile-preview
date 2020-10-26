@@ -39,6 +39,17 @@ printf('\n');
 
 See &ref{listing}
 
+# Longtable
+
+~~~table{long;label:longtable}
+Name | Desc
+-------------
+James | Yu
+James | Yu
+~~~
+
+See &ref{longtable}
+
 # Vmap
 
 % vocabulary
