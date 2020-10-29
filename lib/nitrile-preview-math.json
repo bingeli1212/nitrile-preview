@@ -952,7 +952,7 @@
     "lobrk"                  : { "html": "&#x27E6;"       , "tex":  "\\llbracket"                                 , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E6 MATHEMATICAL LEFT WHITE SQUARE BRACKET"  },
     "robrk"                  : { "html": "&#x27E7;"       , "tex":  "\\rrbracket"                                 , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E7 MATHEMATICAL RIGHT WHITE SQUARE BRACKET"  },
     
-    "vert"                   : { "html": "&#x007C;"       , "tex":  "\\vert"                                      , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+2758 LIGHT VERTICAL BAR"        },
+    "vert"                   : { "html": "&#x007C;"       , "tex":  "\\vert"                                      , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+007C VERTICAL LINE"        },
     "Vert"                   : { "html": "&#x2016;"       , "tex":  "\\Vert"                                      , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2016 DOUBLE VERTICAL LINE"        },
                 
     "larr"                   : { "html": "&#x2190;"       , "tex":  "\\leftarrow"                                 , "width": 12 ,  "op": 1,  "usepackage":""         ,"comment":"U+2190 LEFTWARDS ARROW"        },
