@@ -185,7 +185,13 @@
     { "name": "\\sfrac",              "count": 2 },
     { "name": "\\binom",              "count": 2 },
 
-    { "name": "\\image",              "count": 1 }
+    { "name": "\\matrix",             "count": 1 },
+    { "name": "\\pmatrix",            "count": 1 },
+    { "name": "\\bmatrix",            "count": 1 },
+    { "name": "\\Bmatrix",            "count": 1 },
+    { "name": "\\vmatrix",            "count": 1 },
+    { "name": "\\Vmatrix",            "count": 1 },
+    { "name": "\\cases",              "count": 1 }
   ],
   "smallLetters": {
     "my_alpha"     : 2.5,    
@@ -946,7 +952,7 @@
     "lobrk"                  : { "html": "&#x27E6;"       , "tex":  "\\llbracket"                                 , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E6 MATHEMATICAL LEFT WHITE SQUARE BRACKET"  },
     "robrk"                  : { "html": "&#x27E7;"       , "tex":  "\\rrbracket"                                 , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E7 MATHEMATICAL RIGHT WHITE SQUARE BRACKET"  },
     
-    "vert"                   : { "html": "&#x2758;"       , "tex":  "\\vert"                                      , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+2758 LIGHT VERTICAL BAR"        },
+    "vert"                   : { "html": "&#x007C;"       , "tex":  "\\vert"                                      , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+2758 LIGHT VERTICAL BAR"        },
     "Vert"                   : { "html": "&#x2016;"       , "tex":  "\\Vert"                                      , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2016 DOUBLE VERTICAL LINE"        },
                 
     "larr"                   : { "html": "&#x2190;"       , "tex":  "\\leftarrow"                                 , "width": 12 ,  "op": 1,  "usepackage":""         ,"comment":"U+2190 LEFTWARDS ARROW"        },
