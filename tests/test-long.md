@@ -6,6 +6,9 @@
 >   &b{Node.JS }
 >   &b{AngularJS }
 --
+>  \(\frac{1}{2}\)
+> james
+--
 >   Node.js is a cross-platform run-time environment for applications
   written in JavaScript language. 
 >   AnglarJS is an open source web application development framework

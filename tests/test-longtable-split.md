@@ -1,6 +1,6 @@
 
 
-~~~table{border:0;long;label:longtable}
+~~~table{border:1;long;label:longtable}
 Name  | Desc
 =================
 Hello | World
