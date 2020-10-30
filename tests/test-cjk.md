@@ -1,22 +1,24 @@
+---
+title: test-cjk.md
+latex.program: lualatex
+---
 
-%xelatex.fonts+=cn,Wawati SC
-%xelatex.fonts+=tw,Weibei SC
-%xelatex.fonts+=jp,YuMincho  
-%xelatex.fonts+=kr,AppleGothic
-%xelatex.linebreaklocale+=zh
-
-%lualatex.fonts+=cn,arplsungtilgb
-%lualatex.fonts+=tw,arplmingti2lbig5
-%lualatex.fonts+=jp,ipaexmincho
-%lualatex.fonts+=kr,baekmukbatang
-
-%lualatexja.fonts+=cn,arplsungtilgb
-%lualatexja.fonts+=tw,arplmingti2lbig5
-%lualatexja.fonts+=jp,ipaexmincho
-%lualatexja.fonts+=kr,baekmukbatang
-
-%xecjk.mainfont=Hiragino Sans GB
-%xecjk.fonts+=kr,AppleGothic
+% fonts
+  %xelatex.fonts+=cn,Wawati SC
+  %xelatex.fonts+=tw,Weibei SC
+  %xelatex.fonts+=jp,YuMincho  
+  %xelatex.fonts+=kr,AppleGothic
+  %xelatex.linebreaklocale+=zh  
+  %lualatex.fonts+=cn,arplsungtilgb
+  %lualatex.fonts+=tw,arplmingti2lbig5
+  %lualatex.fonts+=jp,ipaexmincho
+  %lualatex.fonts+=kr,baekmukbatang
+  %lualatexja.fonts+=cn,arplsungtilgb
+  %lualatexja.fonts+=tw,arplmingti2lbig5
+  %lualatexja.fonts+=jp,ipaexmincho
+  %lualatexja.fonts+=kr,baekmukbatang
+  %xecjk.mainfont=Hiragino Sans GB
+  %xecjk.fonts+=kr,AppleGothic
 
 # Japanese
 
@@ -60,4 +62,24 @@
 
 # 冰岛由于实行高福利政策
 
-James
+# English
+
+For more than two decades, Sotoudeh, 57, 
+fought for some of Iran's most sensitive 
+causes — the rights of women, children on 
+death row, endangered minorities. She has 
+won international acclaim, but her defiance 
+has come at a heavy personal price: She is 
+serving a 38-year prison sentence for "national 
+security" crimes, after defending women who 
+protested Iran's compulsory head-covering law.
+
+"She is the closest thing that Iran has to 
+Nelson Mandela, someone who has remained 
+steadfastly committed to her principles at 
+enormous sacrifice to herself," says Karim 
+Sadjadpour, senior fellow at the Carnegie 
+Endowment for International Peace in Washington, 
+D.C. "One of the reasons that the Islamic Republic 
+ears her so much is the fact that she is truly 
+irrepressible."
