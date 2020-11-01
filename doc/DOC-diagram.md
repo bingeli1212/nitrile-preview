@@ -716,6 +716,13 @@ of each shape.
 
   shape.protractor {sx:0.5;sy:0.66} (0,0)
 
+(iii) For each shape, the 'theta' can be added to express the angle of 
+  rotation around the origin. The angle is a number in degrees, where
+  a position number expresses the rotation in the direction of 
+  counter-clockwise.
+
+  shape.protractor {theta:30} 
+
 
 # the dot command
 
