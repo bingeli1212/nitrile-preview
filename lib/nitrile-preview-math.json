@@ -861,7 +861,7 @@
     "vellip"                 : { "html": "&#x22EE;"       , "tex":  "\\vdots"                                     , "width": 6.5,  "op": 1,  "usepackage":""         ,"comment":"U+22EE VERTICAL ELLIPSIS"           },
     "hellip"                 : { "html": "&#x2026;"       , "tex":  "\\dots"                                      , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+2026 HORIZONTAL ELLIPSIS"           },
     "ctdot"                  : { "html": "&#x22EF;"       , "tex":  "\\hdots","cex":"0x22EF"                      , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22EF MIDLINE HORIZONTAL ELLIPSIS"    },
-    "utdot"                  : { "html": "&#x22F0;"       , "tex":  "\\udots"                                     , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22F0 UP RIGHT DIAGONAL ELLIPSIS"           },
+    "utdot"                  : { "html": "&#x22F0;"       , "tex":  "0x22F0"                                      , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22F0 UP RIGHT DIAGONAL ELLIPSIS"           },
     "dtdot"                  : { "html": "&#x22F1;"       , "tex":  "\\ddots"                                     , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22F1 DOWN RIGHT DIAGONAL ELLIPSIS"           },
                   
     "diamond"                : { "html": "&#x22C4;"       , "tex":  "\\diamond"                                   , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C4 DIAMOND OPERATOR"           },
@@ -869,10 +869,10 @@
     "xutri"                  : { "html": "&#x25B3;"       , "tex":  "\\bigtriangleup"                             , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B3 WHITE UP-POINTING TRIANGLE"           },
     "xdtri"                  : { "html": "&#x25BD;"       , "tex":  "\\bigtriangledown"                           , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+25BD WHITE DOWN-POINTING TRIANGLE"           },
  
-    "utri"                   : { "html": "&#x25B5;"       , "tex":  "\\medtriangleup"                             , "width": 6  ,  "op": 1,  "usepackage":"MnSymbol" ,"comment":"U+25B5 WHITE UP-POINTING SMALL TRIANGLE"        },
-    "rtri"                   : { "html": "&#x25B9;"       , "tex":  "\\medtriangleright"                          , "width": 6  ,  "op": 1,  "usepackage":"MnSymbol" ,"comment":"U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE"        },      
-    "dtri"                   : { "html": "&#x25BF;"       , "tex":  "\\medtriangledown"                           , "width": 6  ,  "op": 1,  "usepackage":"MnSymbol" ,"comment":"U+25BF WHITE DOWN-POINTING SMALL TRIANGLE"        },     
-    "ltri"                   : { "html": "&#x25C3;"       , "tex":  "\\medtriangleleft"                           , "width": 6  ,  "op": 1,  "usepackage":"MnSymbol" ,"comment":"U+25C3 WHITE LEFT-POINTING SMALL TRIANGLE"        },     
+    "utri"                   : { "html": "&#x25B5;"       , "tex":  "\\vartriangle"                               , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B5 WHITE UP-POINTING SMALL TRIANGLE"        },
+    "rtri"                   : { "html": "&#x25B9;"       , "tex":  "\\triangleright"                             , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE"        },      
+    "dtri"                   : { "html": "&#x25BF;"       , "tex":  "\\triangledown"                              , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25BF WHITE DOWN-POINTING SMALL TRIANGLE"        },     
+    "ltri"                   : { "html": "&#x25C3;"       , "tex":  "\\triangleleft"                              , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25C3 WHITE LEFT-POINTING SMALL TRIANGLE"        },     
  
     "circ"                   : { "html": "&#x25CB;"       , "tex":  "\\bigcirc"                                   , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+25CB WHITE CIRCLE"           },
     "bullet"                 : { "html": "&#x2022;"       , "tex":  "\\bullet"                                    , "width": 4.5,  "op": 1,  "usepackage":""         ,"comment":"U+2022 BULLET"           },
@@ -903,15 +903,14 @@
     "sedenions"              : { "html": "&#x1D54A;"      , "tex":  "\\mathbb{S}"                                 , "width": 0  ,  "op": 0,  "usepackage":""         ,"comment":"U+1D54A MATHEMATICAL DOUBLE-STRUCK CAPITAL S"        },
                 
     "ang"                    : { "html": "&#x2220;"       , "tex":  "\\angle"                                     , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+2220 ANGLE"        },
-    "angrt"                  : { "html": "&#x221F;"       , "tex":  "\\rightangle"                                , "width": 7  ,  "op": 0,  "usepackage":""         ,"comment":"U+221F RIGHT ANGLE"        },
+    "angrt"                  : { "html": "&#x221F;"       , "tex":  "0x221F"                                      , "width": 7  ,  "op": 0,  "usepackage":""         ,"comment":"U+221F RIGHT ANGLE"        },
     "angmsd"                 : { "html": "&#x2221;"       , "tex":  "\\measuredangle"                             , "width": 8  ,  "op": 0,  "usepackage":""         ,"comment":"U+2221 MEASURED ANGLE"        },
     "angsph"                 : { "html": "&#x2222;"       , "tex":  "\\sphericalangle"                            , "width": 8  ,  "op": 0,  "usepackage":""         ,"comment":"U+2222 SPHERICAL ANGLE"       },
     "in"                     : { "html": "&#x2208;"       , "tex":  "\\in","cex":"0x2208"                         , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2208 ELEMENT OF"        },
     "nin"                    : { "html": "&#x2209;"       , "tex":  "\\notin"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2209 NOT AN ELEMENT OF"        },
     "notin"                  : { "html": "&#x2209;"       , "tex":  "\\notin"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2209 NOT AN ELEMENT OF"        },
-    "owns"                   : { "html": "&#x220B;"       , "tex":  "\\ni"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+220B CONTAINS AS MEMBER"        },
-    "ni"                     : { "html": "&#x220B;"       , "tex":  "\\ni"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+220B CONTAINS AS MEMBER"        },
-    "nni"                    : { "html": "&#x220C;"       , "tex":  "\\nni"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+220C DOES NOT CONTAIN AS MEMBER"        },
+    "ReverseElement"         : { "html": "&#x220B;"       , "tex":  "\\ni"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+220B CONTAINS AS MEMBER"        },
+    "NotReverseElement"      : { "html": "&#x220C;"       , "tex":  "\\not\\ni"                                   , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+220C DOES NOT CONTAIN AS MEMBER"        },
     "subset"                 : { "html": "&#x2282;"       , "tex":  "\\subset"                                    , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2282 SUBSET OF"        },
     "nsubset"                : { "html": "&#x2284;"       , "tex":  "\\not\\subset"                               , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2284 NOT A SUBSET OF"        },
     "subseteq"               : { "html": "&#x2286;"       , "tex":  "\\subseteq"                                  , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2286 SUBSET OF OR EQUAL TO"        },
@@ -1043,8 +1042,8 @@
     "CheckedBox"             : { "html": "&#x2611;"       ,  "tex": "\\CheckedBox"                        ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
     "XBox"                   : { "html": "&#x2612;"       ,  "tex": "\\XBox"                              ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+2612 BALLOT BOX WITH X"},
     
-    "squ"                    : { "html": "&#x25A1;"       ,  "tex":  "\\medsquare"                                , "width": 0,    "op": 0,  "usepackage":"MnSymbol" ,"comment":"U+25A1 WHITE SQUARE"},
-    "squf"                   : { "html": "&#x25AA;"       ,  "tex":  "\\filledmedsquare"                          , "width": 0,    "op": 0,  "usepackage":"MnSymbol" ,"comment":"U+25AA BLACK SMALL SQUARE"},
+    "squ"                    : { "html": "&#x25A1;"       ,  "tex":  "\\square"                                   , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25A1 WHITE SQUARE"},
+    "squf"                   : { "html": "&#x25AA;"       ,  "tex":  "\\blacksquare"                              , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25AA BLACK SMALL SQUARE"},
     
     "cir"                    : { "html": "&#x25CB;"       ,  "tex": "\\Circle"                                    , "width": 7,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+25CB WHITE CIRCLE"},
     "cirf"                   : { "html": "&#x25CF;"       ,  "tex": "\\CIRCLE"                                    , "width": 7,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+25CF BLACK CIRCLE"},
