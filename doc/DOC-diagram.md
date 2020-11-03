@@ -1009,21 +1009,17 @@ letters a, b, c are path variables.
   path is closed. The syntax is:
   &line(point1,point2,point3,...)
 
-+ arc
++ arc{center,p,sweep_a}
 
   This returns a path that draws an arc.
   The arc is to start at the point 'p' that
   is at a circle centered at 'center'. The arc
   is then to trace out part of the circle
-  by following an angle equal to 'ang' number of degrees.
-  Positive 'ang' is to trace in anti-clockwise direction
-  and negative 'ang' is to trace in clockwise direction.
+  by following an angle equal to 'sweep_a' number of degrees.
+  Positive 'sweep_a' is to trace in anti-clockwise direction
+  and negative 'sweep_a' is to trace in clockwise direction.
 
-  ```
-  &arc(center,p,ang)
-  ```
-
-+ arcto
++ arcto{center,p,q}
 
   Similar to 'arc', this function is the return a 
   path that draws an arc.
@@ -1036,10 +1032,14 @@ letters a, b, c are path variables.
   the tracing stops as soon as it intersects with the
   radius-ray that passes through 'q'.
 
-  ```
-  &arc(center,p,q)
-  ```
++ arcsweep{center,r,start_a,sweep_a}
 
+  Similar to 'arc', this function is to return a path
+  that is to sweep across a given angle starting from 
+  known angle. The center of the arc is 'center',
+  'r' is the radius of the arc, the 'start_a' is the 
+  starting angle, and 'sweep_a' is the angle to sweep
+  across in the counter counter-clockwise direction.
 
 + cylinder 
 
