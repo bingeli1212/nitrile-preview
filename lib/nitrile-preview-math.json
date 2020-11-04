@@ -841,6 +841,7 @@
     "star"                   : { "html": "&#x22C6;"       , "tex":  "\\star"                                      , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C6 STAR OPERATOR"           },
                   
     "boxtimes"               : { "html": "&#x22A0;"       , "tex":  "\\boxtimes"                                  , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+22A0 SQUARED TIMES"           },
+    "Sqrt"                   : { "html": "&#x221A;"       , "tex":  "\\surd"                                      , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+221A SQUARE ROOT"           },
                   
     "asympeq"                : { "html": "&#x224D;"       , "tex":  "\\asymp"                                     , "width": 8  ,  "op": 1,  "usepackage":""         ,"comment":"U+224D EQUIVALENT TO"           },
     "vdash"                  : { "html": "&#x22A2;"       , "tex":  "\\vdash"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22A2 RIGHT TACK"           },
