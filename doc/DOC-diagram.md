@@ -1530,6 +1530,26 @@ The expression can contain other user-defined funtions,
 or built-in scalar function provided by Diagram.
 
 
+
+# Accessing an x/y component of a path variable
+
+For a scalar expression, it is provision to access the x/y component
+of a path variable. In the following 
+example the variable 'mx' will be assigned the sum of adding the "x" 
+components of the first two points in path variable 'pts',
+which will be "1 + 3 = 4". 
+
+    path pts = (1,2) (3,4)
+    var mx = &pts[0].x + &pts[1].x
+
+Following is another example of adding the two "y" components
+of the first two points and assign the result to 'my'.
+
+    path pts = (1,2) (3,4)
+    var my = &pts[0].y + &pts[1].y
+
+
+
 # Setting up an environment symbol
 
 Setting up environment symbol to hold a scalar quantity
