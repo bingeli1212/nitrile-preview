@@ -1009,7 +1009,7 @@ letters a, b, c are path variables.
   path is closed. The syntax is:
   &line(point1,point2,point3,...)
 
-+ arc{center,p,sweep_a}
++ arctravel{center,start_point,sweep_angle}
 
   This returns a path that draws an arc.
   The arc is to start at the point 'p' that
@@ -1019,7 +1019,7 @@ letters a, b, c are path variables.
   Positive 'sweep_a' is to trace in anti-clockwise direction
   and negative 'sweep_a' is to trace in clockwise direction.
 
-+ arcto{center,p,q}
++ arcspan{center,start_point,end_point}
 
   Similar to 'arc', this function is the return a 
   path that draws an arc.
@@ -1032,7 +1032,7 @@ letters a, b, c are path variables.
   the tracing stops as soon as it intersects with the
   radius-ray that passes through 'q'.
 
-+ arcsweep{center,r,start_a,sweep_a}
++ arcsweep{center,r,start_angle,sweep_angle}
 
   Similar to 'arc', this function is to return a path
   that is to sweep across a given angle starting from 
