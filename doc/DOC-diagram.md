@@ -215,13 +215,13 @@ The 'set' command sets the following parameters for the current drawing environm
 
 Following are default values for it.
 
-```tabulate{border:2}
+~~~table{border:2}
     Options    | Default value | Comments
     ------------------------------------------------------
     refx       | 0             | Offset location (grid)
     refy       | 0             | Offset location (grid)
     refs       | 1             | Scale factor (scalar)
-```
+~~~
 
 The 'refx', 'refy', and 'refs' parameters can be set at any point during a drawing. It can be compared to a "transform" of a SVG operation. In this case, all drawings will be scaled and/or translated. The 'refs' defines the scaling factor and 'refx' and 'refy' defines the location to be translated to.
 
@@ -443,7 +443,7 @@ Similar to the 'circle' command, each shape is to be drawn at a location of the 
 
 Each shape has its own native size, and is positioned so that its anchor point aligns with the position specified. For example, all 'rect' shapes will be position so that its lower-left hand corner aligns with the point given, while all shapes of 'protractor' will be positioned so that its lower-center corner is aligned with the location. Following table shows the native size and the anchor position of each shape.
 
-```tabulate{border:2}
+~~~table{border:2}
     Shape            | Native size      | Anchor position
     ------------------------------------------------------------
     rect             | 1x1              | left-left
@@ -457,17 +457,17 @@ Each shape has its own native size, and is positioned so that its anchor point a
     radical          | 4x2              | top-left
     protractor       | 7x3.5            | lower-center
     updnprotractor   | 7x3.5            | upper-center
-```
+~~~
 
-(a) For the radical the height is always 2, but the width might be changed to a differen width if the 'radicallength' attribute is set to a different number. The default width is 4.
+++ (a) For the radical the height is always 2, but the width might be changed to a differen width if the 'radicallength' attribute is set to a different number. The default width is 4.
 
-(b) For each shape, the 'sx' and 'sy' attributes can each be set to a different quantity, for which they each acts as a scalar that is to scale the width and height of the shape. For example, we can scale the protractor horizontally by half and vertically by two-third if we were to do the following.
+++ (b) For each shape, the 'sx' and 'sy' attributes can each be set to a different quantity, for which they each acts as a scalar that is to scale the width and height of the shape. For example, we can scale the protractor horizontally by half and vertically by two-third if we were to do the following.
   
   ````
   shape.protractor {sx:0.5;sy:0.66} (0,0)
   ````
 
-(c) For each shape, the 'theta' can be added to express the angle of rotation around the origin. The angle is a number in degrees, where a position number expresses the rotation in the direction of unter-clockwise.
+++ (c) For each shape, the 'theta' can be added to express the angle of rotation around the origin. The angle is a number in degrees, where a position number expresses the rotation in the direction of unter-clockwise.
   
   ````
   shape.protractor {theta:30} 
