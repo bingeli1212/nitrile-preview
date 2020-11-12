@@ -1,34 +1,34 @@
-nitrile diagram
+---
+title: The Diagram
+---
 
-A diagram block is to generate a diagram with vector based figures, made up
-with vector based components as lines, circles, rectangles, arrows, dots, etc.
-The goal of using a diagram block versus using an raster based image such as
-PNG or JPEG is that a vector based diagram provides much better resolution
-especially when the diagram is printed on a piece of paper.
+A diagram block is to generate a diagram with vector based figures, made up with vector based components as lines, circles, rectangles, arrows, dots, etc. The goal of using a diagram block versus using an raster based image such as PNG or JPEG is that a vector based diagram provides much better resolution especially when the diagram is printed on a piece of paper.
 
 
-# lualatex conversion
+# Using MetaPost with LuaLatex
 
-A diagram block is to be translated into an inline MetaPost block between
-`\begin{mplibcode}` and `\end{mplibcode}`. This environment is supported by the
-`luamplib` LATEX package.
+A diagram block is to be translated into an inline MetaPost block between `\begin{mplibcode}` and `\end{mplibcode}`. This environment is supported by the `luamplib` LATEX package.
 
     \usepackage{luamplib}
 
 
-# context conversion
+# Using MetaFun with ConTeXt 
 
-For CONTEX the MetaPost is called MetaFun, which is a variant that is based on
-MetaPost by has been modified by Hans Hagen. The syntax of MetaFun and MetaPost
-are mostly compatible, but there are differences. One different is that MetaFun
-supports transparent colors, while MetePost does not. In TexLive2020
-distribution the 'label' command for MetaFun requires quotation marks rather
-than btex and etex for its first argument.
+For CONTEX the MetaPost is called MetaFun, which is a variant that is based on MetaPost by has been modified by Hans Hagen. The syntax of MetaFun and MetaPost are mostly compatible, but there are differences. One different is that MetaFun supports transparent colors, while MetePost does not. In TexLive2020 distribution the 'label' command for MetaFun requires quotation marks rather than btex and etex for its first argument.
+
+    \startMPcode
+    ...
+    \stopMPcode
 
 
-# SVG coversion
+# The SVG translation
 
-A diagram will be converted to an embedded SVG of a HTML document.
+A diagram will be converted to an embedded SVG for a HTML translation. It is then converted to a DATA URI for a img-element.
+
+    <img alt="diagram" src="data:img/svg+xml;charset=UTF-8,${encodeURIComponent(text)}" />
+    
+Note that the quotation-mark must be used to wrap the 'src' attribute values because apostrophy (single-quote) is a valid coded character returned by the 'encodeURIComponent()' function.
+
 
 
 # An example diagram
@@ -116,123 +116,98 @@ Following is an example of a diagram block.
 
 # Unit length and grid lines
 
-In Diagram, each figure is always expresses using the grid unit length. A unit
-unit length is considered as a distance between two adjacent grid lines on a
-graphing paper for which a length of 1 corresponds to the width of a single
-grid.
+In Diagram, each figure is always expresses using the grid unit length. A unit unit length is considered as a distance between two adjacent grid lines on a graphing paper for which a length of 1 corresponds to the width of a single grid.
 
-In Diagram a grid is drawn as the background by default. The size of the grid
-is 25 grid units length long in the horizontal direction and 10 grid unit length
-long in the vertical directon. You can change that by using the 'config' command.
+In Diagram a grid is drawn as the background by default. The size of the grid is 25 grid units length long in the horizontal direction and 10 grid unit length long in the vertical directon. You can change that by using the 'config' command.
 
-  config width 30
-  config height 20
+    config width 30
+    config height 20
 
-Each grid is by default 5mm in length, thus,
-a total of 25 grid units in horizontal direction will generate an image
-of 125mm in width, and 10 grid units of horizontal direction will put
-the image in the height of 50mm. To set the unit to a different length,
-call the 'config unit' command below.
+Each grid is by default 5mm in length, thus, a total of 25 grid units in horizontal direction will generate an image of 125mm in width, and 10 grid units of horizontal direction will put the image in the height of 50mm. To set the unit to a different length, call the 'config unit' command below.
 
     config unit 6
 
-The 'config grid' command can be used to change how background grid lines are to be
-shown in the final Diagram image. By default, each grid is to be show with a
-grid line that is colored at 10% black. The color is currently not configurable.
-When set the grid to 'boxed', only the outline of the image is drawn, and when set
-to 'none', there is even no outline.
+The 'config grid' command can be used to change how background grid lines are to be shown in the final Diagram image. By default, each grid is to be show with a grid line that is colored at 10% black. The color is currently not configurable. When set the grid to 'boxed', only the outline of the image is drawn, and when set to 'none', there is even no outline.
 
     config grid boxed
     config grid none
 
-However, for MetaPost and MetaFun generation when the grid is set to 'none' the
-outline is actually drawn using a "white" color pixel.  This is because the
-image that is generated are automatically expanded whenever there is contents
-drawn on that image. Thus, without performing the draw of the outline does not
-guarentee that the size of the image will be the size we want. However, for MetaFun
-and MetaPost generation the image will be "enlarged" if contents were drawn outside
-of the outline.
+However, for MetaPost and MetaFun generation when the grid is set to 'none' the outline is actually drawn using a "white" color pixel. This is because the image that is generated are automatically expanded whenever there is contents drawn on that image. Thus, without performing the draw of the outline does not guarentee that the size of the image will be the size we want. However, for MetaFun and MetaPost generation the image will be "enlarged" if contents were drawn outside of the outline.
 
 
 # The config command
 
-The config command can be used to control the configuration
-parameters for the entire Diagram. This set includes the previous
-discussed viewport width and height, and the unit.
+The config command can be used to control the configuration parameters for the entire Diagram. This set includes the previous discussed viewport width and height, and the unit.
 
-However, there are additional configuration parameters. These
-parameters should be set at the beginning of the Diagram, before
-any drawing commands, in order to maintain consistencies.
-Changing these configuration parameters in the middle of other
-drawing commands are not recommended and may result in distorted
-picture.
+However, there are additional configuration parameters. These parameters should be set at the beginning of the Diagram, before any drawing commands, in order to maintain consistencies. Changing these configuration parameters in the middle of other drawing commands are not recommended and may result in distorted picture.
 
-  ~~~longtable{n:3;fr:1 1 3;border:1}
-  > Options
-  > Default value
-  > Comments
+~~~table{long;n:3;fr:1 1 3;border:1}
 
-  > width
-  > 25
-  > Offset location (integer)
+    > Options
+    > Default value
+    > Comments
 
-  > height
-  > 10
-  > Offset location (integer)
+    > width
+    > 25
+    > Offset location (integer)
 
-  > unit
-  > 5
-  > The width for each grid (mm)
+    > height
+    > 10
+    > Offset location (integer)
 
-  > grid
-  > ''
-  > Set to a string expressing how the background grid lines are
-    to be drawn. The valid values are "boxed", "none", or an empty
-    string.
+    > unit
+    > 5
+    > The width for each grid (mm)
 
-  > barlength
-  > 0.25
-  > The default length of the bar (grid unit)
+    > grid
+    > ''
+    > Set to a string expressing how the background grid lines are
+      to be drawn. The valid values are "boxed", "none", or an empty
+      string.
 
-  > fontsize
-  > 12
-  > The default font size (pt) for all generated text inside this diagram.
+    > barlength
+    > 0.25
+    > The default length of the bar (grid unit)
 
-  > dotsize
-  > 5
-  > The default size of dot (pt)
+    > fontsize
+    > 12
+    > The default font size (pt) for all generated text inside this diagram.
 
-  > linesize
-  > 0
-  > The default size for line drawing (pt), 
-    when 0 is set it uses the default line size
+    > dotsize
+    > 5
+    > The default size of dot (pt)
 
-  > fillcolor
-  > ''
-  > The default fill color, when set to empty string it implies
-    that no filling should be performed. It should be a string
-    of 19 valid color names, such
-    as "black", "pink", "steel", etc. It can also be a
-    3-digit HEX color such as
-    "#888", or a 6-digit HEX color, such as "#F8F8F8".
+    > linesize
+    > 0
+    > The default size for line drawing (pt), 
+      when 0 is set it uses the default line size
 
-  > labeldx
-  > 4
-  > The x-offset of label text to anchor point, SVG only (px)
+    > fillcolor
+    > ''
+    > The default fill color, when set to empty string it implies
+      that no filling should be performed. It should be a string
+      of 19 valid color names, such
+      as "black", "pink", "steel", etc. It can also be a
+      3-digit HEX color such as
+      "#888", or a 6-digit HEX color, such as "#F8F8F8".
 
-  > labeldy
-  > 2
-  > The y-offset of label text to anchor point, SVG only (px)
+    > labeldx
+    > 4
+    > The x-offset of label text to anchor point, SVG only (px)
 
-  > noderadius
-  > 1
-  > The radius of the circle for each node. (grid unit)
-  ~~~
+    > labeldy
+    > 2
+    > The y-offset of label text to anchor point, SVG only (px)
 
-# the set and reset commands
+    > noderadius
+    > 1
+    > The radius of the circle for each node. (grid unit)
+    
+~~~
 
-The `set` command sets the following parameters
-for the current drawing environment.
+# The set-operation
+
+The 'set' command sets the following parameters for the current drawing environment.
 
     set refx <number>
     set refy <number>
@@ -240,110 +215,66 @@ for the current drawing environment.
 
 Following are default values for it.
 
-  ```tabulate{border:2}
-      Options    | Default value | Comments
-      ------------------------------------------------------
-      refx       | 0             | Offset location (grid)
-      refy       | 0             | Offset location (grid)
-      refs       | 1             | Scale factor (scalar)
-  ```
+```tabulate{border:2}
+    Options    | Default value | Comments
+    ------------------------------------------------------
+    refx       | 0             | Offset location (grid)
+    refy       | 0             | Offset location (grid)
+    refs       | 1             | Scale factor (scalar)
+```
 
-The 'refx', 'refy', and 'refs' parameters can be set at any point during a drawing.
-It can be compared to a "transform" of a SVG operation. In this case, all drawings
-will be scaled and/or translated. The 'refs' defines the scaling factor and 'refx'
-and 'refy' defines the location to be translated to.
+The 'refx', 'refy', and 'refs' parameters can be set at any point during a drawing. It can be compared to a "transform" of a SVG operation. In this case, all drawings will be scaled and/or translated. The 'refs' defines the scaling factor and 'refx' and 'refy' defines the location to be translated to.
 
-By default all drawings are expressed as relative to the origin, which is
-(0,0), which is located at the lower-left-hand corner of the viewport.  By
-setting it to a different value, it allows you to treat several drawings as a
-group and then move them all at once at ease.
+By default all drawings are expressed as relative to the origin, which is (0,0), which is located at the lower-left-hand corner of the viewport. By setting it to a different value, it allows you to treat several drawings as a group and then move them all at once at ease.
 
-Note that when callign the 'set' command with a parameter, but without supplying
-any additional values reset that parameter to its default value.
-Thus, the second 'set' command below will reset the 'refx' parameter to its
-default value, which is 0.
+Note that when callign the 'set' command with a parameter, but without supplying any additional values reset that parameter to its default value. Thus, the second 'set' command below will reset the 'refx' parameter to its default value, which is 0.
 
     set refx 10
     set refx
 
 
-# the reset command
+# The reset-operation
 
-The 'reset' command reset all parameters to its default value.
+The reset-operation is done by the 'reset' command itself but
+a single line without additional arguments after it. It is a shorthand
+for setting 'refx' and 'refy' to 0 and 'refsx' and 'refsy' to 1
 
+    reset
 
-# the exit command
+# The path-operation
 
-The 'exit' command stops the processing of the rest of the instructions and of
-the instruction.  It can be used to temporary avoiding some instruction to aid
-debugging.
-
-    exit
-
-
-# the path  command
-
-The 'path' command can be used to create path variables.  A path variable must
-start with a upper case or lower case letters, and followed by one or more
-upper case or lower case letters, or digits. Symbols and operators are
-not allowed.
+The 'path' command can be used to create path variables. A path variable must start with a upper case or lower case letters, and followed by one or more upper case or lower case letters, or digits. Symbols and operators are not allowed.
 
     path a = (1,1) -- (2,2) -- (3,4)
 
-To reference all points in a path variable, use the at-sign followed
-by the variable name. This notation serves to connect the last point
-to the first of the new path variable. If additional points are specified,
-they will be connected to the last point of the previous path.
+To reference all points in a path variable, use the at-sign followed by the variable name. This notation serves to connect the last point to the first of the new path variable. If additional points are specified, they will be connected to the last point of the previous path.
 
     draw &a
     draw &a -- (5,5)
     draw (0,0) -- &a -- (5,5)
 
-Typically, a path expression consists of one or more coordinates (points), and
-join types. A join type can only be '--' or '..'. The '--' join type is to
-express a 'lineto' operation between the last point and the next point.  A '..'
-join type is to express a 'curveto' operation between the last point and the
-next point. A point should always be expressed between a set of parentheses,
-such as `(1,1)`, `(2,2)`, `(3,4)`, etc.
+Typically, a path expression consists of one or more coordinates (points), and join types. A join type can only be '--' or '..'. The '--' join type is to express a 'lineto' operation between the last point and the next point. A '..' join type is to express a 'curveto' operation between the last point and the next point. A point should always be expressed between a set of parentheses, such as `(1,1)`, `(2,2)`, `(3,4)`, etc.
 
-However, Diagram also has something called 'path function'. It's main purpose
-is to create new a new path based on points of existing path variables.
-In the following example a new path variable 'c' is created and is
-assigned the first point of the path 'a'.
+However, Diagram also has something called 'path function'. It's main purpose is to create new a new path based on points of existing path variables. In the following example a new path variable 'c' is created and is assigned the first point of the path 'a'.
 
     path c = &midpoint(&a,0)
 
-The path command also has provision to allow for something akin to JavaScript
-"array destructuring" statement, in which case individual points of a path are
-assigned to different path variables at the same time by the same assignment
-instruction. In the following assignment instruction path variables 'a', 'b'
-and 'c' are each created and assigned three different points of the same path
-that was drawn by the `draw` statement.
+The path command also has provision to allow for something akin to JavaScript "array destructuring" statement, in which case individual points of a path are assigned to different path variables at the same time by the same assignment instruction. In the following assignment instruction path variables 'a', 'b' and 'c' are each created and assigned three different points of the same path that was drawn by the `draw` statement.
 
     path A = (1,1) (2,2) (3,4) (4,5)
     path [a,b,c] = &A
 
-Each sub-variable must be separated from other sub-variables by one or more
-slash character.  You can skip ahead and bypass certain points by not
-including any variables in between slashes. For example, you can choose to
-assign the first point to variable 'a' and the third point to variable 'b'
-as follows.
+Each sub-variable must be separated from other sub-variables by one or more slash character. You can skip ahead and bypass certain points by not including any variables in between slashes. For example, you can choose to assign the first point to variable 'a' and the third point to variable 'b' as follows.
 
     path A = (1,1) (2,2) (3,4) (4,5)
     path [a,,b] = &A
 
-Note that the last variable gets all remaining points.
-This, variable 'b' will get the last two points, which are
-(3,4) and (4,5).  However, you can choose to allow only a single point to
-be assigned to the last variable by including an additional slash after
-this variable.
+Note that the last variable gets all remaining points. This, variable 'b' will get the last two points, which are (3,4) and (4,5). However, you can choose to allow only a single point to be assigned to the last variable by including an additional slash after this variable.
 
     path A = (1,1) (2,2) (3,4) (4,5)
     path [a,,b,] = &A
 
-Similarly you can also add slashes at the beginning to skip first few
-points.  Following example will skip the first two points and assign the
-remaining two points to variable 'a'.
+Similarly you can also add slashes at the beginning to skip first few points. Following example will skip the first two points and assign the remaining two points to variable 'a'.
 
     path A = (1,1) (2,2) (3,4) (4,5)
     path [,,a] = &A
@@ -354,9 +285,7 @@ Following is an example of drawing dots.
     path p = (5,6) (7,8)
     dot &p1 &p2 (9,9)
 
-For a given path variable access to individual points or a selected
-few descrete range of points can also be done by the combination
-of brackets, commas, and hyphen.
+For a given path variable access to individual points or a selected few descrete range of points can also be done by the combination of brackets, commas, and hyphen.
 
     path p = (1,2) (1,3) (3,4) (4,5) (5,6) (6,7)
     dot &p[0]
@@ -366,44 +295,32 @@ of brackets, commas, and hyphen.
     dot &p[0,1,2,4-5]
 
 
-# the draw command
+# The draw/fill/stroke-operations
 
 Following commands treats the input argument as path.
 
 - draw
 - fill
-- drawcontrolpoints
-- drawanglearc
+- stroke
 
-The 'draw' command would draw connecting lines between path points.
-Typically it is straight lines, but Bezier curves are also supported.
-This includes quadratic and cubic curves. The SVG arc is also supported.
+
+The 'draw' command would draw connecting lines between path points. Typically it is straight lines, but Bezier curves are also supported. This includes quadratic and cubic curves. The SVG arc is also supported.
 
     draw (0,0) -- (1,1) (2,2)
 
-The 'fill' command is similar to 'draw', except that it fills
-the path with the default filled color, without drawing the 
-the outline of the path (without stroking it).
+The 'fill' command is similar to 'draw', except that it fills the path with the default filled color, without drawing the the outline of the path (without stroking it).
 
-The double-hyphen operator between points indicates that it should be a
-straight line between two points. However, it is assumed if two points
-are detected without a connecting double-hyphen between, such as the case
-of the second and third point above.  The points are typically expressed
-as absolute points, but relative points can also be expressed. They
-are all in the form of [...] where a set of brackets are present.
+The double-hyphen operator between points indicates that it should be a straight line between two points. However, it is assumed if two points are detected without a connecting double-hyphen between, such as the case of the second and third point above. The points are typically expressed as absolute points, but relative points can also be expressed. They are all in the form of [...] where a set of brackets are present.
 
     draw (0,0) [l:1,1] [l:1,1]
 
-Here the second and third points are each expressed as a distance away from its
-previous point, which is to move right for one grid unit and then up for one
-unit. Note that the coordinates in Diagram are always expressed in terms of
-grid unit. There are other relative position syntaxes, that are shown below.
+Here the second and third points are each expressed as a distance away from its previous point, which is to move right for one grid unit and then up for one unit. Note that the coordinates in Diagram are always expressed in terms of grid unit. There are other relative position syntaxes, that are shown below.
 
-Path expression can also include "offsets". An offset is expressed
-as <x,y>. The presence of them will not cause a real points to be inserted
-into the path. Rather, it serves to provide an "offset" such that all
-future points will be computed as relative to this offset.
-For example, let's suppose we have the following two draw line program.
+Path expression can also include "offsets". An offset is expressed as 
+
+    <x,y>
+    
+The presence of an offset will not cause a real points to be inserted into the path. Rather, it serves to provide an "offset" such that all future points will be computed as relative to this offset. For example, let's suppose we have the following two draw line program.
 
     draw (10,0) (15,0)
     draw (10,0) (10,5)
@@ -413,254 +330,145 @@ However, by using "offsets" we can rewrite them as follows.
     draw <10,0> (0,0) (5,0)
     draw <10,0> (0,0) (0,5)
 
-Here, <10,0> are considered an offset. An offset <10,0> is to set it so that the
-all future points will be considered an offset to the point that is (10,0).
-Thus, the point of (0,0) is considered as (10,0), and (5,0) is considered
-(15,0). The offset always appears between a set of angle brackets. The first
-number is the offset in the horizontal direction, and the second one in vertical
-direction.
+Here, <10,0> are considered an offset. An offset <10,0> is to set it so that the all future points will be considered an offset to the point that is (10,0). Thus, the point of (0,0) is considered as (10,0), and (5,0) is considered (15,0). The offset always appears between a set of angle brackets. The first number is the offset in the horizontal direction, and the second one in vertical direction.
 
-The offset is only going to be valid for the current path, and it only
-takes affect after it is encountered, and will only affect the points
-that follow it. Thus, if you have placed an offset in the middle of two
-points, such as the following, then the first point is to be considered
-as (0,0) while the second one as (15,0).
+The offset is only going to be valid for the current path, and it only takes affect after it is encountered, and will only affect the points that follow it. Thus, if you have placed an offset in the middle of two points, such as the following, then the first point is to be considered as (0,0) while the second one as (15,0).
 
     draw (0,0) <10,0> (5,0)
 
-Offsets are also accumulative. Thus, if there are two offsets one appear after
-another then the second offset is considered to be offset to the first. This
-allows you to construct more points simply by moving offsets. For example, you
-can construct a path with four points (11,0), (12,0), (13,0) and (14,0) as
-follows.
+Offsets are also accumulative. Thus, if there are two offsets one appear after another then the second offset is considered to be offset to the first. This allows you to construct more points simply by moving offsets. For example, you can construct a path with four points (11,0), (12,0), (13,0) and (14,0) as follows.
 
     draw <11,0> (0,0) <1,0> (0,0) <1,0> (0,0) <1,0> (0,0)
 
-The keyword 'cycle' denotes a special point such that the path is to be closed
-and the last point should be connected to the first point using a straight line.
-Note that a 'cycle' is not a physical point. It should be considered a meta data
-and a notational trick that expresses the afformentioned intent. This notation
-is usually a special syntax placed at the end of the long list of points.
-For SVG it is the 'z', and for MetaPost/MetaFun it is the 'cycle'.
+The keyword 'cycle' denotes a special point such that the path is to be closed and the last point should be connected to the first point using a straight line. Note that a 'cycle' is not a physical point. It should be considered a meta data and a notational trick that expresses the afformentioned intent. This notation is usually a special syntax placed at the end of the long list of points. For SVG it is the 'z', and for MetaPost/MetaFun it is the 'cycle'.
 
     draw (0,0) (1,2) (3,4) cycle
 
-Note that for all 'draw' related commands, a path can be expressed such that
-it contains multiple disjoint segments. For example, we can express to draw
-two disjoint line in a single 'draw' command such that the first line segment
-goes from (0,0) to (2,3) and the second line segment goes from (4,5) to (6,7).
-To do that, place a null point between the the (2,3) and (4,5).
+Note that for all 'draw' related commands, a path can be expressed such that it contains multiple disjoint segments. For example, we can express to draw two disjoint line in a single 'draw' command such that the first line segment goes from (0,0) to (2,3) and the second line segment goes from (4,5) to (6,7). To do that, place a null point between the the (2,3) and (4,5).
 
     draw (0,0) (2,3) () (4,5) (6,7)
 
-A null point is a point that is expressed a '()'. In addition, any appearances
-In this case, Diagram recognizes that there is going to be two path segments,
-one consisting of all points before the null point and the other consisting of
-all points after the null point.
+A null point is a point that is expressed a '()'. In addition, any appearances In this case, Diagram recognizes that there is going to be two path segments, one consisting of all points before the null point and the other consisting of all points after the null point.
 
-In additional, if the 'cycle' keyword appears then it also means the
-end of the current path segment and the start of a new one. In this case no
-null point needs to be specified. In the following example two path segment
-is to e created, with one consisting of a triangle, and another one a line.
+In additional, if the 'cycle' keyword appears then it also means the end of the current path segment and the start of a new one. In this case no null point needs to be specified. In the following example two path segment is to e created, with one consisting of a triangle, and another one a line.
 
     draw (0,0) (2,0) (2,2) cycle (4,0) (6,2)
 
-For MetaPost output, each path segment requires a separate "draw" command.
-For SVG, a single PATH elements is sufficient; the SVG is implemented such
-that a "M" operation can follow a "z". However, in our implementation
-each seprate path segment is still to be placed inside a separate PATH
-element. This is specifically designed so that those path segments that are
-not "closed" will not be attempted to do a "fill" operation.
+For MetaPost output, each path segment requires a separate "draw" command. For SVG, a single PATH elements is sufficient; the SVG is implemented such that a "M" operation can follow a "z". However, in our implementation each seprate path segment is still to be placed inside a separate PATH element. This is specifically designed so that those path segments that are not "closed" will not be attempted to do a "fill" operation.
 
-By default, the 'draw' command would stroke the path. However, if the
-'fillcolor' attribute is set, then it would also fill the area enclosed by the
-path. However, it does so only when the path is deemed "closed", in which case
-a 'cycle' keyword must follow the last point.  If the path is not closed, it
-will not be filled, even when 'fillcolor' is specified.
+By default, the 'draw' command would stroke the path. However, if the 'fillcolor' attribute is set, then it would also fill the area enclosed by the path. However, it does so only when the path is deemed "closed", in which case a 'cycle' keyword must follow the last point. If the path is not closed, it will not be filled, even when 'fillcolor' is specified.
 
-For SVG, when a 'fill=' attribute is specified the rendering engine will
-attempt to fill the area, even when the area is not closed.  For
-MetaPost/MetaFun the path will have to be closed before calling the 'fill'
-MetaPost, as otherwise the compilation will complain.
+For SVG, when a 'fill=' attribute is specified the rendering engine will attempt to fill the area, even when the area is not closed. For MetaPost/MetaFun the path will have to be closed before calling the 'fill' MetaPost, as otherwise the compilation will complain.
 
-The 'drawarrow', 'drawdblarrow', and 'drawrevarrow' are similar to 'draw'
-except for the additional arrow head at the end of the line segment.
+# The drawcontrolpoint-operation
 
-The 'drawcontrolpoint' is a special command that draws all the control points
-detected in a given path. The control points are those present in a path
-specification that are necessary to describe a Bezier curve, whether it is
-cubic or quadratic.
+The 'drawcontrolpoint' is a special command that draws all the control points detected in a given path. The control points are those present in a path specification that are necessary to describe a Bezier curve, whether it is cubic or quadratic.
 
-The 'drawanglearc' is designed to draw a small arc describing the span of an
-angle. The path that is given to this command is expected to describe the
-angle, where the first/second/third path would have formed the first angle
-where the second point serves as the vertex of the angle, and each of the first
-and third point denotes a point on either side of the angle. There should be at
-least three points on the path, but if there are additional points, then each
-consecutive three points will be used to describe an angle for the arc to draw.
-Thus, if there had been four points in the path, then the first three points
-describes the first angle, and the last three points describes the second
-angle.
+# The drawanglearc-operation
 
-The 'drawanglearc' can also place text next to the angle arc to show the name
-of an angle.
+The 'drawanglearc' is designed to draw a small arc describing the span of an angle. The path that is given to this command is expected to describe the angle, where the first/second/third path would have formed the first angle where the second point serves as the vertex of the angle, and each of the first and third point denotes a point on either side of the angle. There should be at least three points on the path, but if there are additional points, then each consecutive three points will be used to describe an angle for the arc to draw. Thus, if there had been four points in the path, then the first three points describes the first angle, and the last three points describes the second angle.
+
+The 'drawanglearc' can also place text next to the angle arc to show the name of an angle.
 
     draw (0,6) (2,4) (4,6) (6,4) (8,6)
     drawanglearc "1\\2\\3" *
 
 
-# Relative points
+# Expressing relative points of a path
 
 Each of the following syntax denotes a relative point.
 
--   [l:dx,dy]
--   [h:dx]
--   [v:dy]
--   [a:rx,ry,angle,bigarcflag,sweepflag,dx,dy]
--   [c:dx1,dy1,dx2,dy2,dx,dy]
--   [s:dx2,dy2,dx,dy]
--   [q:dx1,dy1,dx,dy]
--   [t:dx,dy]
--   [angledist:angle,dist]
--   [turn:angle,dist]
--   [flip:dx,dy]
++ [l:dx,dy] 
 
-++ The [l:dx,dy] 
-is to draw a line from the current point to the new location is
-relative to the current point by dx and dy. Note that dx and dy are specified
-in Cartesian coordinates, thus positive dx is towards the right, and positive
-dy is towards the top.
+	This to draw a line from the current point to the new location is
+	relative to the current point by dx and dy. Note that dx and dy are specified
+	in Cartesian coordinates, thus positive dx is towards the right, and positive
+	dy is towards the top.
 
-++ The [h:dx] 
-is to draw a horizontal line. 
++ [h:dx]
 
-++ The [v:dy] 
-is to draw a vertical line.
+	This is to draw a horizontal line.
+  
++ [v:dy] 
 
-++ The [a:rx,ry,angle,bigarcflag,sweepflag,dx,dy] 
-is to draw an arc to the end
-point that is dx/dy away from the current point. The arc is assumed to trace
-alone an elliptical arc with x-axis and y-axis each of which having a radius of
-rx and ry. The angle is in the unit of degrees, specifying the rotation of the
-ellipse if any, with position number denoting a counter-clockwise rotation. The
-bigarcflag is set to 1 if the arc to be drawn are the longer of the two
-between the starting point and end point. Otherwise the shorter arc is to be
-drawn. The sweepflag expresses whether the shorter arc or longer is to travel
-counterclockwise or clockwise from the current point to the new point: 0 =
-counterclockwise, 1 = clockwise. Thus, to draw an arc from the last point to a
-new point that is on its right hand side of the last point, and if the
-sweepflag is set to 0, then the arc will always appear below both points.
+	This is to draw a vertical line.
 
-++ The [c:dx1,dy1,dx2,dy2,dx,dy] 
-is to draw a cubic Bezier curve from the current
-point to the new point that is dx/dy away. The (dx1,dy1), and (dx2,dy2) are
-two control points. Note that all numbers are specified relative to the
-last point.
++ [a:rx,ry,angle,bigarcflag,sweepflag,dx,dy] 
 
-++ The [s:dx2,dy2,dx,dy] 
-is to draw a cubic Bezier curve from the current point to
-the new point that is dx/dy away. Only the second point of the current Bezier
-curve needs to be provided. The first control point is deduced from the second
-control point of the previous cubic Bezier curve operation. If the previous
-operation is not a cubic Bezier curve drawing, but a quadratic Bezier curve
-drawing, then the first control point of the quadratic curve is used to
-deduce the first control point of the current operation. If it is neither a
-cubic nor a quadrilatic, then the last point is assumed.
+	This is to draw an arc to
+	the end point that is dx/dy away from the current point. The arc is
+	assumed to trace alone an elliptical arc with x-axis and y-axis each of
+	which having a radius of 'rx' and 'ry'. The angle is in the unit of
+	degrees, specifying the rotation of the ellipse if any, with a positive
+	number denoting a counter-clockwise rotation. The 'bigarcflag' is set to 1
+	if the arc to be drawn are the longer of the two between the starting
+	point and end point. Otherwise the shorter arc is to be drawn. The
+	'sweepflag' expresses whether the arc is to travel counterclockwise or
+	clockwise from the current point to the new point; the value 0 is for a
+	anti-clockwise rotation and the value 1 is for a clockwise rotation. Thus,
+	to draw an arc from the last point to a new point that is on its right
+	hand side of the last point, and if the sweepflag is set to 0, then the
+	arc will always appear below both points.
 
-++ The [q:dx1,dy1,dx,dy] 
-is to draw a quadrilatic Bezier curve. The dx1/dy1
-is the only control point. The dx/dy is the new point. All positions
-are expressed relative to the last point.
++ The [c:dx1,dy1,dx2,dy2,dx,dy] 
 
-++ The [t:dx,dy] 
-is to draw a quadratic Bezier curve with the first control
-point deduced from a previous Bezier curve operation. If a previous operation
-is not a Bezier curve operation, then the last point is assumed to be control
-point, in which case the drawn curve will be straight line.
+	This is to draw a cubic Bezier curve from the current
+	point to the new point that is dx/dy away. The (dx1,dy1), and (dx2,dy2) are
+	two control points. Note that all numbers are specified relative to the
+	last point.
 
-++ The [angledist:1,30] 
-allows you to construct a new point that is to travel at a
-angle of 30 degrees counterclockwise from due east for 1 unit length, starting
-from the current point.
++ [s:dx2,dy2,dx,dy] 
 
-++ The [turn:30,1] 
-is to create a new point that is equivalent to making a left
-turn of 30 degrees from the direction you have arrived at the current point, and
-then travel for one more unit length. If it is to make a right turn, then set
-the angle to a negative number.
+	This is to draw a cubic Bezier curve from the current point to
+	the new point that is dx/dy away. Only the second point of the current Bezier
+	curve needs to be provided. The first control point is deduced from the second
+	control point of the previous cubic Bezier curve operation. If the previous
+	operation is not a cubic Bezier curve drawing, but a quadratic Bezier curve
+	drawing, then the first control point of the quadratic curve is used to
+	deduce the first control point of the current operation. If it is neither a
+	cubic nor a quadrilatic, then the last point is assumed.
 
-++ The [flip:5,5] 
-is to construct a new point that is the mirror image of the
-current point. The current point in this case is five unit distance to the
-right and towards the top of the last point.  The mirror is the line segment
-that is made up by the current point and the point before that. This operations
-allows you to figure out where an existing point will land as if you were
-folding a paper along an existing line that is traveled between the last two
-points.
++ The [q:dx1,dy1,dx,dy] 
+	
+	This is to draw a quadrilatic Bezier curve. The dx1/dy1
+	is the only control point. The dx/dy is the new point. All positions
+	are expressed relative to the last point.
 
++ The [t:dx,dy] 
 
-# the circle command
+	This is to draw a quadratic Bezier curve with the first control
+	point deduced from a previous Bezier curve operation. If a previous operation
+	is not a Bezier curve operation, then the last point is assumed to be control
+	point, in which case the drawn curve will be straight line.
 
-Following commands work to draw elements related to a circle.
++ [angledist:1,30] 
 
-- circle
-- circle.pie
-- circle.chord
-- circle.arc
-- circle.cseg
+	This allows you to construct a new point that is to travel at a
+	angle of 30 degrees counterclockwise from due east for 1 unit length, starting
+	from the current point.
 
-The 'circle' command is to draw a full circle centered on each one
-of the points in the path given. Thus, the following example
-would have drawn three circles each centered at a different location
-that is (1,1), (3,4), and (5,5).
++ [turn:30,1] 
 
-    circle   (1,1) (3,4) [l:2,1]
+	This is to create a new point that is equivalent to making a left
+	turn of 30 degrees from the direction you have arrived at the current point, and
+	then travel for one more unit length. If it is to make a right turn, then set
+	the angle to a negative number.
 
-Note that for all commands that are in this group, the path merely serves to
-provide the location to which the shape is to appear. For all the above
-commands, including 'circle', it expresses the center of the circle.
++ [flip:5,5] 
 
-The radius of the circle is to be given by the 'r' attribute.
-In the following example three circles each having a radius of 10 is
-to be drawn at three different locations.
-
-  circle {r:10} (1,1) (3,4) [l:2,1]
-
-The rest of the commands have all something to do with a circle.  For example,
-the command 'arc' is to draw part of the circle circumference.  For this to
-work, additional attributes would need to be specified. In particular, the 'a1'
-and 'a2' attributes each specifies an angle. In particular, the 'a1' attribute
-specifies the starting angle and the 'a2' attribute specifies the stop angle.
-The arc will run from the angle that is 'a1' to the one that is 'a2'.  The
-angles are in the unit of degrees. The following example draws an arc that is
-part of the circle circumference that runs from the 30 degree angle to the 60
-degree angle.
-
-    circle.arc {r:10; a1:30; a2:60} (1,1) (3,4) [l:2,1]
-
-The 'pie' command is similar to 'arc' except that it also connects the two
-end points of an arc to the center of the circle, forming an area.
-
-    circle.pie {r:10; a1:30; a2:60} (1,1) (3,4) [l:2,1]
-
-The 'chord' command would draw a straight line that connects the
-two end points of an arc.
-
-    circle.chord {r:10; a1:30; a2:60} (1,1) (3,4) [l:2,1]
-
-The 'cseg' draws a circular segment that expresses an a region of a circle
-which is "cut off" from the rest of the circle by a chord line.
-For this reason, it always expresses an area.
-
-    circle.cseg {r:10; a1:30; a2:60} (1,1) (3,4) [l:2,1]
+	This is to construct a new point that is the mirror image of the
+	current point. The current point in this case is five unit distance to the
+	right and towards the top of the last point.  The mirror is the line segment
+	that is made up by the current point and the point before that. 
+	This operations
+	allows you to figure out where an existing point will land as if you were
+	folding a paper along an existing line that is traveled between the last two
+	points.
 
 
-# drawing shapes
+# The shape-operation
 
-Following commands are to draw a shape.
-The shape to be drawn is specified as the "subcommand".
-Each shape has its "native" size, which is going to be different
-from shape to shape.
+Following commands are to draw a shape. The shape to be drawn is specified as the "subcommand". Each shape has its "native" size, which is going to be different from shape to shape.
 
 -   shape.rect
 -   shape.rhombus
@@ -674,68 +482,49 @@ from shape to shape.
 -   shape.protractor
 -   shape.updnprotractor
 
-Similar to the 'circle' command, each shape is to be drawn
-at a location of the path. Thus, the following command would have
-drawn three 'rect' shape each at a different location.
+Similar to the 'circle' command, each shape is to be drawn at a location of the path. Thus, the following command would have drawn three 'rect' shape each at a different location.
 
     shape.rect   (1,1) (3,4) [l:2,1]
 
-Each shape has its own native size, and is positioned so that
-its anchor point aligns with the position specified.
-For example, all 'rect' shapes will be position so that its lower-left
-hand corner aligns with the point given, while all shapes of 'protractor'
-will be positioned so that its lower-center corner is aligned with the
-location. Following table shows the native size and the anchor position
-of each shape.
+Each shape has its own native size, and is positioned so that its anchor point aligns with the position specified. For example, all 'rect' shapes will be position so that its lower-left hand corner aligns with the point given, while all shapes of 'protractor' will be positioned so that its lower-center corner is aligned with the location. Following table shows the native size and the anchor position of each shape.
 
-  ```tabulate{border:2}
-      Shape            | Native size      | Anchor position
-      ------------------------------------------------------------
-      rect             | 1x1              | left-left
-      rhombus          | 1x1              | left-left
-      trapezoid        | 1x1              | left-left
-      parallelgram     | 1x1              | left-left
-      apple            | 1x1              | left-left
-      rrect            | 1x1              | left-left
-      basket           | 3x2              | left-left
-      crate            | 4x3              | left-left
-      radical          | 4x2              | top-left
-      protractor       | 7x3.5            | lower-center
-      updnprotractor   | 7x3.5            | upper-center
-  ```
+```tabulate{border:2}
+    Shape            | Native size      | Anchor position
+    ------------------------------------------------------------
+    rect             | 1x1              | left-left
+    rhombus          | 1x1              | left-left
+    trapezoid        | 1x1              | left-left
+    parallelgram     | 1x1              | left-left
+    apple            | 1x1              | left-left
+    rrect            | 1x1              | left-left
+    basket           | 3x2              | left-left
+    crate            | 4x3              | left-left
+    radical          | 4x2              | top-left
+    protractor       | 7x3.5            | lower-center
+    updnprotractor   | 7x3.5            | upper-center
+```
 
-(i) For the radical the height is always 2, but the width
-  might be changed to a differen width if the 'radicallength' attribute
-  is set to a different number. The default width is 4.
+(a) For the radical the height is always 2, but the width might be changed to a differen width if the 'radicallength' attribute is set to a different number. The default width is 4.
 
-(ii) For each shape, the 'sx' and 'sy' attributes can each be set to a
-  different quantity, for which they each acts as a scalar that is
-  to scale the width and height of the shape. For example, we can
-  scale the protractor horizontally by half and vertically by two-third
-  if we were to do the following.
-
+(b) For each shape, the 'sx' and 'sy' attributes can each be set to a different quantity, for which they each acts as a scalar that is to scale the width and height of the shape. For example, we can scale the protractor horizontally by half and vertically by two-third if we were to do the following.
+  
+  ````
   shape.protractor {sx:0.5;sy:0.66} (0,0)
+  ````
 
-(iii) For each shape, the 'theta' can be added to express the angle of 
-  rotation around the origin. The angle is a number in degrees, where
-  a position number expresses the rotation in the direction of 
-  counter-clockwise.
-
+(c) For each shape, the 'theta' can be added to express the angle of rotation around the origin. The angle is a number in degrees, where a position number expresses the rotation in the direction of unter-clockwise.
+  
+  ````
   shape.protractor {theta:30} 
+  ````
 
+# The dot-operation
 
-# the dot command
-
-The 'dot' command is to draw a dot to mark the location.
-Similar to the primitive command, a
-single dot is to be repeated for all points on the given path. Thus, following
-command will draw three dots each at three different locations of the input
-path.
+The 'dot' command is to draw a dot to mark the location. Similar to the primitive command, a single dot is to be repeated for all points on the given path. Thus, following command will draw three dots each at three different locations of the input path.
 
     dot (1,1) (3,4) [l:2,1]
 
-The 'dot' command provide several subcommands that allows for a different
-shape to be drawn instead of a circular dot.
+The 'dot' command provide several subcommands that allows for a different shape to be drawn instead of a circular dot.
 
     dot.hbar (1,1) (3,4) [l:2,1]
     dot.vbar (1,1) (3,4) [l:2,1]
@@ -744,8 +533,7 @@ For 'dot' command, the color can be specified using the 'dotcolor'.
 
     dot {dotcolor:orange} (1,1) (3,4) [l:2,1]
 
-For 'hbar' and 'vbar' subcommands the 'linecolor' attribute would
-have expressed the color of the lines.
+For 'hbar' and 'vbar' subcommands the 'linecolor' attribute would have expressed the color of the lines.
 
     dot.hbar {linecolor:orange} (1,1) (3,4) [l:2,1]
     dot.vbar {linecolor:orange} (1,1) (3,4) [l:2,1]
@@ -754,111 +542,72 @@ The diameter of the dot can be set using the 'dotsize' attribute.
 
     dot {dotcolor:orange; dotsize:10} (1,1) (3,4) [l:2,1]
 
-For 'hbar' and 'vbar' subcommands the 'linesize' attribute would hve
-expressed the width of the line.
+For 'hbar' and 'vbar' subcommands the 'linesize' attribute would hve expressed the width of the line.
 
     dot.hbar {barcolor:orange; linesize:2} (1,1) (3,4) [l:2,1]
     dot.vbar {barcolor:orange; linesize:2} (1,1) (3,4) [l:2,1]
 
-The 'dotsize' and 'linesize' are both expressed in terms of 'pt'. For 'hbar'
-and 'vbar' commands, the length of the bar can be specified via the 'barlength'
-attribute.  It is a number that expresses the line length in grid unit.  If not
-specified, the default value is 0.25, which is one-quarter the length of a
-grid, and it can be changed to a different value by the 'set barlength' command.
+The 'dotsize' and 'linesize' are both expressed in terms of 'pt'. For 'hbar' and 'vbar' commands, the length of the bar can be specified via the 'barlength' attribute. It is a number that expresses the line length in grid unit. If not specified, the default value is 0.25, which is one-quarter the length of a grid, and it can be changed to a different value by the 'set barlength' command.
 
     dot.hbar {linecolor:orange; barlength:0.5} (1,1) (3,4) [l:2,1]
     dot.vbar {linecolor:orange; barlength:0.5} (1,1) (3,4) [l:2,1]
 
-Here, the length of each bar is going to be about half the length of the grid.
-Note that for 'vbar', it's lower end point aligns with the location, and for
-'hbar', its left end aligns with the location.
+Here, the length of each bar is going to be about half the length of the grid. Note that for 'vbar', it's lower end point aligns with the location, and for 'hbar', its left end aligns with the location.
 
 
-# drawing text
+# The label-operation
 
-Drawing text labels are done by using the 'label' command.    For example, the
-following 'label' command will each draw a label at the given location.
+Drawing text labels are done by using the 'label' command. For example, the following 'label' command will each draw a label at the given location.
 
     label.rt "A" (1,1)
     label.lft "B" (2,2)
     label.top "C" (3,4)
 
-The 'label' command is designed to draw the same label at multiple
-locations. For example, we can draw the same letter A three times
-each at three different locations such as follows.
+The 'label' command is designed to draw the same label at multiple locations. For example, we can draw the same letter A three times each at three different locations such as follows.
 
     label "A" (1,1) (2,2) (3,4)
 
-Each subcommand specifies how the text is to be aligned relative to the
-locatoin. For example, the 'top' subcommand would have aligned the text
-so that it appears on top of the location, centered horizontally.
-When a label command is without its subcommand it defaults to 'urt', which
-basically asignes the lower left hand corner of the text with the loction.
+Each subcommand specifies how the text is to be aligned relative to the locatoin. For example, the 'top' subcommand would have aligned the text so that it appears on top of the location, centered horizontally. When a label command is without its subcommand it defaults to 'urt', which basically asignes the lower left hand corner of the text with the loction.
 
-    label.top   -  top
-    label.bot   -  bottom
-    label.lft   -  left
-    label.rt    -  right
-    label.ulft  -  upper left
-    label.llft  -  lower left
-    label.urt   -  upper right
-    label.lrt   -  lower right
-    label.ctr   -  centering the text
+	label.top   -  top
+	label.bot   -  bottom
+	label.lft   -  left
+	label.rt    -  right
+	label.ulft  -  upper left
+	label.llft  -  lower left
+	label.urt   -  upper right
+	label.lrt   -  lower right
+	label.ctr   -  centering the text
 
-The text to be drawn must be expressed using a set of quotation marks, and they
-must appear before any option and before any coordinates.  Usually a single
-text is repeated in all locations. However, it is also possible to specify a
-different text for each one of the locations, by separating each text with
-a double-backslash, such as the following, in which case the letter "A",
-"B", and "C" are each to be drawn at three different location.
+The text to be drawn must be expressed using a set of quotation marks, and they must appear before any option and before any coordinates. Usually a single text is repeated in all locations. However, it is also possible to specify a different text for each one of the locations, by separating each text with a double-backslash, such as the following, in which case the letter "A", "B", and "C" are each to be drawn at three different location.
 
     label "A\\B\\C" (1,1) (2,2) (3,4)
 
-It is also possible to express that a math expression instead of
-plain text.
+It is also possible to express that a math expression instead of plain text.
 
     label \(A_1\\B_1\\C_1\) (1,1) (2,2) (3,4)
 
-If all you have is something like A_0 and x^2 then a pair of
-single backquates can be used so that all these patterns will be
-scanned and re-formatted to be subscript and superscript.
+If all you have is something like A_0 and x^2 then a pair of single backquates can be used so that all these patterns will be scanned and re-formatted to be subscript and superscript.
 
     label "A_1\\B_1\\C_1" (1,1) (2,2) (3,4)
 
 
 
-# path functions
+# The path-functions
 
-Note that for a path function all its arguments must be either a path variable
-or a number. Coordinate list is not valid. In the following examples all
-letters a, b, c are path variables.
+Note that for a path function all its arguments must be either a path variable or a number. Coordinate list is not valid. In the following examples all letters a, b, c are path variables.
 
 + midpoint 
 
-  The `&midpoint()` function returns the mid point 
-  of the first two points in a
-  path expression if a single argument is given.  
-  Following returns a path with a
-  single point: (1.5,2), which is the mid point 
-  of (1,1) and (2,3).
+  The `&midpoint()` function returns the mid point of the first two points in a path expression if a single argument is given. Following returns a path with a single point: (1.5,2), which is the mid point of (1,1) and (2,3).
 
   ```
   path b = &midpoint{(1,1),(2,3)}
   ```
   
-  Note that only the first two points of a path is used. The other points
-  are ignored. Thus if path a has three points, then the third point
-  is simply ignored.
+  Note that only the first two points of a path is used. The other points are ignored. Thus if path a has three points, then the third point is simply ignored.
   
-  If two arguments are given, it does a linear interpolation alone the
-  line segment of the first two points, and return a point that corresponds
-  to the percentage of the path traveled from the first point to the second.
-  The second argument is an floating point number between 0-1.
-  For example, if 0.5 is given as the second parameters, it 
-  should return the
-  same path as that with a single argument. Thus, following 
-  example will return
-  the same result as the one before.
+  If two arguments are given, it does a linear interpolation alone the line segment of the first two points, and return a point that corresponds to the percentage of the path traveled from the first point to the second. The second argument is an floating point number between 0-1. For example, if 0.5 is given as the second parameters, it should return the same path as that with a single argument. Thus, following example will return the same result as the one before.
 
   ```
   path b = &midpoint{(1,1),(2,3),0.5}
@@ -866,14 +615,7 @@ letters a, b, c are path variables.
   
 + shiftpoints 
 
-  The `&shiftpoints()` function is always needed to be provided with three
-  arguments. The first argument is always interpreted as a path variable. The
-  second and the third arguments are to be interpreted as expressing length in
-  grid unit. This function is to return a new path with exact the same number of
-  points, except for that all the points will have been shifted by the number of
-  grid units specified in the argument. For example, following would have shifted
-  all the points in the original path one position to the left and two positions
-  up.
+  The `&shiftpoints()` function is always needed to be provided with three arguments. The first argument is always interpreted as a path variable. The second and the third arguments are to be interpreted as expressing length in grid unit. This function is to return a new path with exact the same number of points, except for that all the points will have been shifted by the number of grid units specified in the argument. For example, following would have shifted all the points in the original path one position to the left and two positions up.
 
   ```
   path b = &shiftpoints{&a,-1,2}
@@ -881,12 +623,7 @@ letters a, b, c are path variables.
 
 + scatterpoints 
 
-  The `&scatterpoints()`  function is to create new path with the number of
-  points evenly distributed beteen the two end points. In the previous example
-  there will be 10 points created in a path such that the first point is (1,0),
-  and the last point is (10,0), and the rest of the points will be spaced evenly
-  between the first and the last. The last argument is a scalar telling
-  it how many total gaps there is between scattered points.
+  The `&scatterpoints()` function is to create new path with the number of points evenly distributed beteen the two end points. In the previous example there will be 10 points created in a path such that the first point is (1,0), and the last point is (10,0), and the rest of the points will be spaced evenly between the first and the last. The last argument is a scalar telling it how many total gaps there is between scattered points.
 
   ```
   path a = &scatterpoints{(1,0),(10,0),9}
@@ -894,12 +631,7 @@ letters a, b, c are path variables.
 
 + linelineintersect 
 
-  The `&linelineintersect()` Returns new a path that contains a single point which is
-  the point at which the two lines intersect. The first line is described by the
-  symbol 'a', which must have at least two points. The second line is described
-  by the symbol 'b', which must have at least two points. Only the first two
-  points of 'a' and 'b' are considered. The rest of the points of 'a' and 'b' are
-  ignored.
+  The `&linelineintersect()` Returns new a path that contains a single point which is the point at which the two lines intersect. The first line is described by the symbol 'a', which must have at least two points. The second line is described by the symbol 'b', which must have at least two points. Only the first two points of 'a' and 'b' are considered. The rest of the points of 'a' and 'b' are ignored.
 
   ```
   path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
@@ -908,9 +640,7 @@ letters a, b, c are path variables.
 
 + linecircleintersect 
 
-  The `&linecircleintersect()` function returns new a path that contains two
-  points for the line and circle intersection.  In the following diagram the pts
-  variable 'pts' will hold two points: (6,2) and (4,2).
+  The `&linecircleintersect()` function returns new a path that contains two points for the line and circle intersection. In the following diagram the pts variable 'pts' will hold two points: (6,2) and (4,2).
 
   ```
   path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
@@ -918,8 +648,7 @@ letters a, b, c are path variables.
 
 + circlecircleintersect 
 
-  This method returns one or two points where two circles
-  intersect.
+  This method returns one or two points where two circles intersect.
 
   ```
   path b = &circlecircleintersect{(0,0),10,(5,0),10}
@@ -928,10 +657,7 @@ letters a, b, c are path variables.
 
 + circlecircleintersectclip
 
-  This method returns a closed path that describes the area
-  that is the intersection area of the two circle areas.
-  Note that it is important that the circle on the left-hand
-  side is specified first.
+  This method returns a closed path that describes the area that is the intersection area of the two circle areas. Note that it is important that the circle on the left-hand side is specified first.
 
   ```
   circle {r:3} (5,6)
@@ -944,14 +670,7 @@ letters a, b, c are path variables.
 
 + circlecirclediffclip
 
-  This method returns a closed path that describes the area
-  of one of the circles after it has been clipped away for the
-  area that overlaps with another circle
-  The 5th argument controls which area to remain. If set to 0
-  then the circle on the left-hand side remains, and if set to
-  1 the circle on the left hand side remains. 
-  Note that it is important that the circle on the left-hand
-  side is specified first.
+  This method returns a closed path that describes the area of one of the circles after it has been clipped away for the area that overlaps with another circle The 5th argument controls which area to remain. If set to 0 then the circle on the left-hand side remains, and if set to 1 the circle on the left hand side remains. Note that it is important that the circle on the left-hand side is specified first.
 
   ```
   circle {r:3} (5,6)
@@ -967,12 +686,7 @@ letters a, b, c are path variables.
 
 + circlepoints 
 
-  The general syntax is: &circlepoints(center,r,a1,a2,a3...),
-  where the 'center' denotes a path with a point expressing
-  the circle center, and 'r' for the radius of the circle,
-  and 'a1', 'a2', 'a3', etc., that expresses the angles
-  starting from the first quadrant. The returned value is the 
-  coords of individual points at these angles.
+  The general syntax is: &circlepoints(center,r,a1,a2,a3...), where the 'center' denotes a path with a point expressing the circle center, and 'r' for the radius of the circle, and 'a1', 'a2', 'a3', etc., that expresses the angles starting from the first quadrant. The returned value is the coords of individual points at these angles.
 
   ```
   path b = &circlepoints{(0,0),2,30,60,90}
@@ -980,9 +694,7 @@ letters a, b, c are path variables.
 
 + circle 
 
-  Returns a path expressing the circle.
-  It has a syntax of: &circle(center,radius), where 'center'
-  is a path with at least one point, and 'radius' a scalar.
+  Returns a path expressing the circle. It has a syntax of: &circle(center,radius), where 'center' is a path with at least one point, and 'radius' a scalar.
 
   ```
     path b = &circle(center,radius)
@@ -990,71 +702,39 @@ letters a, b, c are path variables.
 
 + ellipse 
 
-  This return a path expressing an ellipse. The syntax
-  is: &ellipse(center,xradius,yradius).
+  This return a path expressing an ellipse. The syntax is: &ellipse(center,xradius,yradius).
 
 + rectangle 
 
-  This returns a path expressing a rectangle between
-  to points. The syntax is: &rectangle(point1,point2)
+  This returns a path expressing a rectangle between to points. The syntax is: &rectangle(point1,point2)
 
 + triangle 
 
-  This returns a path expressing a triangle of
-  three points. The syntax is: &triangle(point1,point2,point3)
+  This returns a path expressing a triangle of three points. The syntax is: &triangle(point1,point2,point3)
 
-+ line 
++ polyline 
 
-  This returns a path expressing a polyline. Note that the 
-  path is closed. The syntax is:
-  &line(point1,point2,point3,...)
+  This returns a path expressing a polyline. The syntax is: &line(point1,point2,point3,...)
 
 + arctravel{center,start_point,sweep_angle}
 
-  This returns a path that draws an arc.
-  The arc is to start at the point 'p' that
-  is at a circle centered at 'center'. The arc
-  is then to trace out part of the circle
-  by following an angle equal to 'sweep_a' number of degrees.
-  Positive 'sweep_a' is to trace in anti-clockwise direction
-  and negative 'sweep_a' is to trace in clockwise direction.
+  This returns a path that draws an arc. The arc is to start at the point 'p' that is at a circle centered at 'center'. The arc is then to trace out part of the circle by following an angle equal to 'sweep_a' number of degrees. Positive 'sweep_a' is to trace in anti-clockwise direction and negative 'sweep_a' is to trace in clockwise direction.
 
 + arcspan{center,start_point,end_point}
 
-  Similar to 'arc', this function is the return a 
-  path that draws an arc.
-  The arc is to start at the point 'p' that
-  is at a circle centered at 'center'. The arc
-  is then to trace out part of the circle, always
-  in the direction of anti-clockwise direction,
-  until it meats the point 'q'. If 'q' is found to 
-  be closer or further away from 'center', then 
-  the tracing stops as soon as it intersects with the
-  radius-ray that passes through 'q'.
+  Similar to 'arc', this function is the return a path that draws an arc. The arc is to start at the point 'p' that is at a circle centered at 'center'. The arc is then to trace out part of the circle, always in the direction of anti-clockwise direction, until it meats the point 'q'. If 'q' is found to be closer or further away from 'center', then the tracing stops as soon as it intersects with the radius-ray that passes through 'q'.
 
 + arcsweep{center,r,start_angle,sweep_angle}
 
-  Similar to 'arc', this function is to return a path
-  that is to sweep across a given angle starting from 
-  known angle. The center of the arc is 'center',
-  'r' is the radius of the arc, the 'start_a' is the 
-  starting angle, and 'sweep_a' is the angle to sweep
-  across in the counter counter-clockwise direction.
+  Similar to 'arc', this function is to return a path that is to sweep across a given angle starting from known angle. The center of the arc is 'center', 'r' is the radius of the arc, the 'start_a' is the starting angle, and 'sweep_a' is the angle to sweep across in the counter counter-clockwise direction.
 
 + cylinder 
 
-  This expresses a upright cylinder drawn with an ellipse
-  at the bottom, with xradius/yradius, and a given 
-  height.
-  The syntax is: &cylinder(center,xradius,yradius,height)
+  This expresses a upright cylinder drawn with an ellipse at the bottom, with xradius/yradius, and a given height. The syntax is: &cylinder(center,xradius,yradius,height)
 
 + ymirror 
 
-  This returns a new path that is a mirror image of 
-  a given path. The first argument is the old path,
-  and the second argument is a scalar that is a value
-  on X-axis. The following example returns a new path 
-  that is a mirrored image of 'a' off the x-axis.
+  This returns a new path that is a mirror image of a given path. The first argument is the old path, and the second argument is a scalar that is a value on X-axis. The following example returns a new path that is a mirrored image of 'a' off the x-axis.
 
   ```
     path a = ...
@@ -1063,25 +743,19 @@ letters a, b, c are path variables.
 
 + bbox 
 
-  This returns a new path that represents the rectangle
-  of the viewport.
+  This returns a new path that represents the rectangle of the viewport.
 
 
 
-# special notes for MetaPost users
+# Special notes for MetaPost users
 
-The color syntax is either the color name, such as "red", "green",
-or RGB such as "rgb(200,100,25)".
+The color syntax is either the color name, such as "red", "green", or RGB such as "rgb(200,100,25)".
 
-The MetaPost code has the provision to allow for a "xcolor" provided
-by the "xcolor" package, such as using the \mpcolor macro. Thus,
-the MetaPost command can be set up as
+The MetaPost code has the provision to allow for a "xcolor" provided by the "xcolor" package, such as using the ``\mpcolor`` macro. Thus, the MetaPost command can be set up as
 
     draw (1,2)--(2,3) withpen pencircle withcolor \mpcolor(gray)
 
-The xcolor package has also expanded the avialble color names to more than
-what's provided by MetaPost, including "gray", "orange", etc. Following
-additional color names are always provided by the xcolor package:
+The xcolor package has also expanded the avialble color names to more than what's provided by MetaPost, including "gray", "orange", etc. Following additional color names are always provided by the xcolor package:
 
     red, green, blue, cyan, magenta, yellow, black, gray, white,
     darkgray, lightgray, brown, lime, olive, orange, pink,
@@ -1137,7 +811,7 @@ You can also provide a unit directly, such as pt.
 
 The linecap attribute is defines the shape to be used at the end
 of open subpaths when they are stroked. The SVG has an attribute
-that can used for <line> element. The available values are:
+that can used for line-element. The available values are:
 'butt', 'round', and 'square'. The default value is 'butt'.
 
 The "dashed withdots" option for "draw" will not show any visible dotted lines
@@ -1148,7 +822,7 @@ linedashed evenly" instead.
 
 
 
-# the cartesian command
+# The cartesian-operation
 
 - cartesian.setup xorigin yorigin gridrange
 - cartesian.xaxis xmin xmax
@@ -1285,7 +959,7 @@ and 'stopAngle' are the angles expressing starting angle
 and stopping angle of the arc. They are both in degrees.
 
 
-# the barchart command
+# The barchart-operation
 
 The 'barchart' is another compound command that is to be used
 with many subcommands. Following is a list of some
@@ -1371,118 +1045,57 @@ with the line it is attached to, and is always shown as black.
 
 # Remarks and problems
 
-- The arrow head in HTML is done using MARKER-element. And for SVG 1.1 the
-  limitation is that its coloring and filling is not changed to the line
-  element it attaches to. It is a browser problem and currently there is no
-  fix.
+- The arrow head in HTML is done using MARKER-element. And for SVG 1.1 the limitation is that its coloring and filling is not changed to the line element it attaches to. It is a browser problem and currently there is no fix.
 
-- For SVG we *had* to make a choice to either show a plaintext, using
-  TEXT-element or math text  using SVG-element, there is currently a
-  lot of grief
-  as prevously we were freely mixing normal and math text as this was not a
-  problem for MetaPost, as it supports TeX text between btex and etex
-  constructs.  However, mixing plain text and math text is an issue because
-  math text is translated into SVG and plain text into the  TEXT-element, and
-  there is no way to correctly position the SVG text if it is to appear in the
-  middle of a TEXT-element.
+- For SVG we *had* to make a choice to either show a plaintext, using TEXT-element or math text using SVG-element, there is currently a lot of grief as prevously we were freely mixing normal and math text as this was not a problem for MetaPost, as it supports TeX text between btex and etex constructs. However, mixing plain text and math text is an issue because math text is translated into SVG and plain text into the TEXT-element, and there is no way to correctly position the SVG text if it is to appear in the middle of a TEXT-element.
 
 - The generation of fontsize is always done to convert a user unit to pt.
 
-- It has been observed that for MP generation if the symbol were part of a math
-  such as between `\(` and `\)`, then it appears smaller than those that are not.
+- It has been observed that for MP generation if the symbol were part of a math such as between `\(` and `\)`, then it appears smaller than those that are not.
 
-- The text-aligmnents are default to 'urt' and not 'centered', thus we need to
-  ensure previous auto choices of text alignment which asssumes the center are
-  now being shown as 'urt' and thus we need to make some adjustments where
-  necessary.
+- The text-aligmnents are default to 'urt' and not 'centered', thus we need to ensure previous auto choices of text alignment which asssumes the center are now being shown as 'urt' and thus we need to make some adjustments where necessary.
 
-- Note that for MetaPost translation, it is very sensitive to backslashes.
-  Even for texts that exists in comments, if a backslash is encountered that is
-  not followed by another backslash, it is processed as a backslash sequence
-  for which, it will consume a brace which will likely cause an unmatched brace
-  compile error in LATEX engine. For this reason, all texts translated as a
-  comment line are also "escaped".
+- Note that for MetaPost translation, it is very sensitive to backslashes. Even for texts that exists in comments, if a backslash is encountered that is not followed by another backslash, it is processed as a backslash sequence for which, it will consume a brace which will likely cause an unmatched brace compile error in LATEX engine. For this reason, all texts translated as a comment line are also "escaped".
 
 
 
-# The foreach loop
+# The foreach-loop
 
-A foreach-loop is provided by Diagram such that a number
-of commands can be repetitively executed, and each iteration
-these commands would have been run under a different set
-of arguments. The basic syntax is
+A foreach-loop is provided by Diagram such that a number of commands can be repetitively executed, and each iteration these commands would have been run under a different set of arguments. The basic syntax is
 
     foreach (a) [1,2,3,4]:
       draw (\a,\a) (0,0)
 
-In the example, the 'draw' command will be executed exactly
-four times, each of which looks like the following.
+In the example, the 'draw' command will be executed exactly four times, each of which looks like the following.
 
     draw (1,1) (0,0)
     draw (2,2) (0,0)
     draw (3,3) (0,0)
     draw (4,4) (0,0)
 
-The 'foreach' command starts with the keyword 'foreach', followed
-by a set of parentheses, and then followed by a set
-of brackets, and then a colon.
+The 'foreach' command starts with the keyword 'foreach', followed by a set of parentheses, and then followed by a set of brackets, and then a colon.
 
-The set of parentheses denotes a list of loop symbols.  Each loop
-symbol must only consist of uppercase or lowercase letters, such
-as a, aa, abc, zzz, etc.  Symbols such as 1, 2, a2, aa3 are not
-allowed.
+The set of parentheses denotes a list of loop symbols. Each loop symbol must only consist of uppercase or lowercase letters, such as a, aa, abc, zzz, etc. Symbols such as 1, 2, a2, aa3 are not allowed.
 
-The set of brackets denotes a list of sequences.  Each sequence
-could be of any string, except for comma, which serves solely as
-the delimiters for two neighboring sequences.
+The set of brackets denotes a list of sequences. Each sequence could be of any string, except for comma, which serves solely as the delimiters for two neighboring sequences.
 
-The 'foreach' command would iterate over each sequence provided
-in the sequence list.  If there is only one loop symbol, such as
-the one shown in the previous example, the number of
-iterations equals the total number of sequences. For each
-iteration, the loop body, which consists of one or more lines,
-would execute exactly once, during which each command within the
-body executes in the same order as it appears in the body.
+The 'foreach' command would iterate over each sequence provided in the sequence list. If there is only one loop symbol, such as the one shown in the previous example, the number of iterations equals the total number of sequences. For each iteration, the loop body, which consists of one or more lines, would execute exactly once, during which each command within the body executes in the same order as it appears in the body.
 
-Before each iteration, the entire loop body would undergo a global
-search-and-replace to substitute any occurrences of the loop
-symbol with the actual sequence that is to be iterated over.
-For example, if the symbol is provided as 'a',
-then the global search-and-replace would replace any occurrences
-of `\a` by the sequence.
+Before each iteration, the entire loop body would undergo a global search-and-replace to substitute any occurrences of the loop symbol with the actual sequence that is to be iterated over. For example, if the symbol is provided as 'a', then the global search-and-replace would replace any occurrences of `\a` by the sequence.
 
-If there are two loop symbols, then each iteration would
-pick up two sequences in the list, and the total number
-of iterations would be reduced by half.
-In addition, the global search-and-replace would be
-done for both symbols.  For example, if we were to
-have the following 'foreach' loop,
+If there are two loop symbols, then each iteration would pick up two sequences in the list, and the total number of iterations would be reduced by half. In addition, the global search-and-replace would be done for both symbols. For example, if we were to have the following 'foreach' loop, then the 'draw' command would be executed two times. 
 
+    % Using foreach
     foreach (a,b) [1,2,3,4]:
       draw (\a,\a) (\b,\b)
 
-then the 'draw' command would be executed two times,
-and each of them looks like
-
+    % Do not use foreach
     draw (1,1) (2,2)
     draw (3,3) (4,4)
 
-Note that all lines of the loop body must have an indentation
-level that is greater than the indentation of the 'foreach'
-command itself.  If a line is encountered that is of the same or
-less of an indentation level as that of the 'foreach' command,
-then that line is not considered as part of the loop body, and no
-additional lines will be considered for inclusion as the loop
-body.
+Note that all lines of the loop body must have an indentation level that is greater than the indentation of the 'foreach' command itself. If a line is encountered that is of the same or less of an indentation level as that of the 'foreach' command, then that line is not considered as part of the loop body, and no additional lines will be considered for inclusion as the loop body.
 
-This design also permits the inclusion of additional nested
-'foreach' loop, each of which only to have its own loop body
-being indented even further inwards.  The following example show
-the implementation of two 'foreach' loops. The toplevel 'foreach'
-loop offsers two loop symbols: 'a', and 'b', and the nested
-'foreach' loop offers one loop symbol: 'c'.  Note that the last
-'label.bot' command is not part of the nested 'foreach' loop, but
-rather part of the toplevel 'foreach' loop.
+This design also permits the inclusion of additional nested 'foreach' loop, each of which only to have its own loop body being indented even further inwards. The following example show the implementation of two 'foreach' loops. The toplevel 'foreach' loop offsers two loop symbols: 'a', and 'b', and the nested 'foreach' loop offers one loop symbol: 'c'. Note that the last 'label.bot' command is not part of the nested 'foreach' loop, but rather part of the toplevel 'foreach' loop.
 
       viewport 31 24
       foreach (a,b) [9,0.4, 19,0.5, 29,0.6] :
@@ -1515,35 +1128,25 @@ rather part of the toplevel 'foreach' loop.
 
 # The fn command
 
-The 'fn' command allows for a new user-defined function to be
-created.
+The 'fn' command allows for a new user-defined function to be created.
 
     fn P(x) = pow(x,2)
     cartesian.yplot {f:P} 1 2 3
 
-The command starts with the string 'fn', followed by a function
-name, followed by a set of parentheses, within which is a list
-of arguments, separated by comma, followed by an equal sign,
-and then addtional expression.
+The command starts with the string 'fn', followed by a function name, followed by a set of parentheses, within which is a list of arguments, separated by comma, followed by an equal sign, and then addtional expression.
 
-The expression can contain other user-defined funtions,
-or built-in scalar function provided by Diagram.
+The expression can contain other user-defined funtions, or built-in scalar function provided by Diagram.
 
 
 
 # Accessing an x/y component of a path variable
 
-For a scalar expression, it is provision to access the x/y component
-of a path variable. In the following 
-example the variable 'mx' will be assigned the sum of adding the "x" 
-components of the first two points in path variable 'pts',
-which will be "1 + 3 = 4". 
+For a scalar expression, it is provision to access the x/y component of a path variable. In the following example the variable 'mx' will be assigned the sum of adding the "x" components of the first two points in path variable 'pts', which will be "1 + 3 = 4".
 
     path pts = (1,2) (3,4)
     var mx = &pts[0].x + &pts[1].x
 
-Following is another example of adding the two "y" components
-of the first two points and assign the result to 'my'.
+Following is another example of adding the two "y" components of the first two points and assign the result to 'my'.
 
     path pts = (1,2) (3,4)
     var my = &pts[0].y + &pts[1].y
@@ -1552,14 +1155,7 @@ of the first two points and assign the result to 'my'.
 
 # Setting up an environment symbol
 
-Setting up environment symbol to hold a scalar quantity
-is done by the ``${...}`` followed by an equal sign
-and then an arithmetic expression. In the
-following example the symbol 'pi' is assigned a quantity 
-that 3.1415, which is
-then used inside the function body of 'f' as well as 
-part of the the 'draw' 
-command.
+Setting up environment symbol to hold a scalar quantity is done by the ``${...}`` followed by an equal sign and then an arithmetic expression. In the following example the symbol 'pi' is assigned a quantity that 3.1415, which is then used inside the function body of 'f' as well as part of the the 'draw' command.
 
     ${pi} = 3.1415
     fn f(x) = \pi/x
@@ -1570,76 +1166,70 @@ command.
     cartesian.yplot {f:f} [1:10]
     draw {arrow} (0,0) (\pi,\pi)
 
-Note that the symbol that follows the 'var' command must conform to the conventionn of
-starting with a letter, and followed by additional letters and/or digits if
-any. A single letter symbol is permitted. In addition, instead of being
-assigned a number, the right hand side of the equal sign can also be a valid
-expression, in which case the value of that expression is evaluated
-immediately, and the quantity of which is assigned to the symbol.
+Note that the symbol that follows the 'var' command must conform to the conventionn of starting with a letter, and followed by additional letters and/or digits if any. A single letter symbol is permitted. In addition, instead of being assigned a number, the right hand side of the equal sign can also be a valid expression, in which case the value of that expression is evaluated immediately, and the quantity of which is assigned to the symbol.
 
     ${pi} = cos(0)/2
 
-In the previous example the 'cos()' is a built-in scalar function
-that is discussed next. Otherwise it could also be a user-defined
-function such as 'f()' in the previous example.
+In the previous example the 'cos()' is a built-in scalar function that is discussed next. Otherwise it could also be a user-defined function such as 'f()' in the previous example.
 
-When appear inside a normal command, it must appear after a backslash,
-such as '\pi'.
+When appear inside a normal command, it must appear after a backslash, such as '\pi'.
 
 
-# built-in scalar functions
+# The built-in scalar functions
 
 Following are built-in functions provided by Diagram
 
-+ 'log(x)':       
-  returns the natural log of a number
++ 'log(x)':
+       
+  It returns the natural log of a number
 
 + 'log10(x)':     
-  returns the base-10 log
+
+  It returns the base-10 log
 
 + 'log1p(x)':     
-  returns the natural log of a number that is
-  1 plus the argument; it is the same as log(1+x)
+  
+  It returns the natural log of a number that is 1 plus the argument; it is the same as log(1+x)
 
 + 'log2(x)':      
-  returns the base-2 log
+  
+  It returns the base-2 log
 
 + 'exp(x)':       
-  return the output of an exponential function for which
-  the base is set to be the Euler's number `e`:
-  exp(1) = e; exp(2) = `e^2`
+
+  It returns the output of an exponential function for which the base is set to be the Euler's number `e`: exp(1) = e; exp(2) = `e^2`
 
 + 'pow(x,y)':     
-  returns the result of raising `x` to the `y`-th power:
-  pow(3,2) = 9; pow(4,2) = 16
+  
+  It returns the result of raising `x` to the `y`-th power: pow(3,2) = 9; pow(4,2) = 16
 
 + 'rad(x)':       
-  converts a quantity in degrees to a quantity
-  in radian: rad(180) = 3.1415
+  
+  It converts a quantity in degrees to a quantity in radian: rad(180) = 3.1415
 
 + 'deg(x)':       
-  converts a quantity in radians to a quantity
-  in degrees: deg(3.1415) = 180
+  
+  It converts a quantity in radians to a quantity in degrees: deg(3.1415) = 180
 
 + 'cos(x)':       
-  returns the output of a cosine function,
-  input must be given in radians
+  
+  It returns the output of a cosine function, input must be given in radians
 
 + 'sin(x)':       
-  return the output of a sine function,
-   input must be given in radians
+  
+  It returns the output of a sine function, input must be given in radians
 
 + 'sqrt(x)':      
-  returns the square root of a number: sqrt(9) = 3
+  
+  It returns the square root of a number: sqrt(9) = 3
 
 + 'atan2(y,x)':   
-  returns the angle measurement in radians for an
-   angle formed between the vector line from the origin to
-   (x,y) and the x-axis
+  
+  It returns the angle measurement in radians for an angle formed between the vector line from the origin to (x,y) and the x-axis
 
 
 
-# the range-expression syntax
+# The range-expression syntax
 
 The range-expression serves to present one or more scalar quantities with a command that expects scalar quantities as part of its command line structure.  When it appears as part of a group of scalar arguments of a command, it serves to express one or more scalar quantities for that command. For example, in the following command a total of 11 scalars will be supplied to the `cartesian.yplot` command.
 
@@ -1654,7 +1244,7 @@ If a Range-expression is given as a set of three quantities, such as the case of
 
 
 
-# drawing nodes and edges
+# The 'node' and 'edge' operations
 
 Nodes and edges are common constructions found in almost any literatures covering the topics in the fields of graph theory.
 
@@ -1679,9 +1269,22 @@ Thus, the following example would have drawn a curved edge that is to come out o
     node.B  (5,5)
     edge.A.B {dir:45}
 
-If the edge is going to include arrow heads, then one of the following three
-options should've been used
+If the edge is going to include arrow heads, then one of the following three options should've been used
 
     edge.A.B {arrow;dir:45}
     edge.A.B {revarrow;dir:45}
     edge.A.B {dblarrow;dir:45}
+
+
+# The 'box' operation
+
++ box (x,y) (x1,y1) ...
+
+    This command is to draw a box at the location expressed by the path points. The size of the box is controlled by the 'w' and 'h' members of the configuration parameters, each of which can be set    by the 'config' operation to be a default. 
+    
+    ```
+    box {w:3;h:2} (x,y) (x1,y1) ...
+    ```
+    
+    
+    
