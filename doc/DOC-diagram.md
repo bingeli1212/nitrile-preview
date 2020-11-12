@@ -297,9 +297,9 @@ For a given path variable access to individual points or a selected few descrete
 
 Following commands treats the input argument as path.
 
-- draw
-- fill
-- stroke
+-- draw
+-- fill
+-- stroke
 
 
 The 'draw' command would draw connecting lines between path points. Typically it is straight lines, but Bezier curves are also supported. This includes quadratic and cubic curves. The SVG arc is also supported.
@@ -425,17 +425,17 @@ Each of the following syntax denotes a relative point.
 
 Following commands are to draw a shape. The shape to be drawn is specified as the "subcommand". Each shape has its "native" size, which is going to be different from shape to shape.
 
--   shape.rect
--   shape.rhombus
--   shape.trapezoid
--   shape.parallelgram
--   shape.apple
--   shape.rrect
--   shape.basket
--   shape.crate
--   shape.radical
--   shape.protractor
--   shape.updnprotractor
+--   shape.rect
+--   shape.rhombus
+--   shape.trapezoid
+--   shape.parallelgram
+--   shape.apple
+--   shape.rrect
+--   shape.basket
+--   shape.crate
+--   shape.radical
+--   shape.protractor
+--   shape.updnprotractor
 
 Similar to the 'circle' command, each shape is to be drawn at a location of the path. Thus, the following command would have drawn three 'rect' shape each at a different location.
 
@@ -524,15 +524,15 @@ The 'label' command is designed to draw the same label at multiple locations. Fo
 
 Each subcommand specifies how the text is to be aligned relative to the locatoin. For example, the 'top' subcommand would have aligned the text so that it appears on top of the location, centered horizontally. When a label command is without its subcommand it defaults to 'urt', which basically asignes the lower left hand corner of the text with the loction.
 
-*	label.top   -  top
-*	label.bot   -  bottom
-*	label.lft   -  left
-*	label.rt    -  right
-*	label.ulft  -  upper left
-*	label.llft  -  lower left
-*	label.urt   -  upper right
-*	label.lrt   -  lower right
-*	label.ctr   -  centering the text
+--	label.top   -  top
+--	label.bot   -  bottom
+--	label.lft   -  left
+--	label.rt    -  right
+--	label.ulft  -  upper left
+--	label.llft  -  lower left
+--	label.urt   -  upper right
+--	label.lrt   -  lower right
+--	label.ctr   -  centering the text
 
 The text to be drawn must be expressed using a set of quotation marks, and they must appear before any option and before any coordinates. Usually a single text is repeated in all locations. However, it is also possible to specify a different text for each one of the locations, by separating each text with a double-backslash, such as the following, in which case the letter "A", "B", and "C" are each to be drawn at three different location.
 
@@ -753,19 +753,19 @@ The "dashed withdots" option for "draw" will not show any visible dotted lines i
 
 # The cartesian-operation
 
-- cartesian.setup xorigin yorigin gridrange
-- cartesian.xaxis xmin xmax
-- cartesian.yaxis ymin ymax
-- cartesian.ytick y1 y2 y3 ...
-- cartesian.xtick x1 x2 x3 ...
-- cartesian.yplot {f:P} x1 x2 x3 ...
-- cartesian.xplot {f:P} y1 y2 y3 ...
-- cartesian.dot x1 y1 x2 y2 x3 y3 ...
-- cartesian.line x1 y1 x2 y2 x3 y3 ...
-- cartesian.arrow x1 y1 x2 y2 x3 y3 ...
-- cartesian.text.rt x1 y1 x2 y2 x3 y3 ...
-- cartesian.ellipse x y Rx Ry Phi
-- cartesian.arc x y R startAngle stopAngle
+-- cartesian.setup xorigin yorigin gridrange
+-- cartesian.xaxis xmin xmax
+-- cartesian.yaxis ymin ymax
+-- cartesian.ytick y1 y2 y3 ...
+-- cartesian.xtick x1 x2 x3 ...
+-- cartesian.yplot {f:P} x1 x2 x3 ...
+-- cartesian.xplot {f:P} y1 y2 y3 ...
+-- cartesian.dot x1 y1 x2 y2 x3 y3 ...
+-- cartesian.line x1 y1 x2 y2 x3 y3 ...
+-- cartesian.arrow x1 y1 x2 y2 x3 y3 ...
+-- cartesian.text.rt x1 y1 x2 y2 x3 y3 ...
+-- cartesian.ellipse x y Rx Ry Phi
+-- cartesian.arc x y R startAngle stopAngle
 
 The `cartesian` command is used to draw plots, curves, axis, ticks that are related to a single Cartesian coordinate. It is a composite command that includes many sub-commands. All subcommands must follow the word 'cartesian' after a dot symbol. The subcommand itself can also have its own option, such as 'cartesian.text.rt'.
 
@@ -837,11 +837,11 @@ The 'barchart' is another compound command that is to be used
 with many subcommands. Following is a list of some
 of its subcommands.
 
-- barchart.setup xorigin yorigin xwidth ywidth xrange yrange
-- barchart.bbox
-- barchart.vbar
-- barchart.ytick
-- barchart.xtext
+-- barchart.setup xorigin yorigin xwidth ywidth xrange yrange
+-- barchart.bbox
+-- barchart.vbar
+-- barchart.ytick
+-- barchart.xtext
 
 The 'barchart.setup' command would setup the barchart and config it. The 'xorigin' and 'yorigin' are to state the grid coordinates where lower left hand corner is to appear in the Diagram. Note that this number is subject to current settings of 'refx', 'refy', 'refsx' and 'refsy' settings.
 
