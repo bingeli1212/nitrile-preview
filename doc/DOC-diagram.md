@@ -235,9 +235,7 @@ Note that when callign the 'set' command with a parameter, but without supplying
 
 # The reset-operation
 
-The reset-operation is done by the 'reset' command itself but
-a single line without additional arguments after it. It is a shorthand
-for setting 'refx' and 'refy' to 0 and 'refsx' and 'refsy' to 1
+The reset-operation is done by the 'reset' command itself but a single line without additional arguments after it. It is a shorthand for setting 'refx' and 'refy' to 0 and 'refsx' and 'refsy' to 1
 
     reset
 
@@ -380,10 +378,7 @@ Each of the following syntax denotes a relative point.
 
 + [l:dx,dy] 
 
-	This to draw a line from the current point to the new location is
-	relative to the current point by dx and dy. Note that dx and dy are specified
-	in Cartesian coordinates, thus positive dx is towards the right, and positive
-	dy is towards the top.
+	This to draw a line from the current point to the new location is relative to the current point by dx and dy. Note that dx and dy are specified in Cartesian coordinates, thus positive dx is towards the right, and positive dy is towards the top.
 
 + [h:dx]
 
@@ -395,75 +390,35 @@ Each of the following syntax denotes a relative point.
 
 + [a:rx,ry,angle,bigarcflag,sweepflag,dx,dy] 
 
-	This is to draw an arc to
-	the end point that is dx/dy away from the current point. The arc is
-	assumed to trace alone an elliptical arc with x-axis and y-axis each of
-	which having a radius of 'rx' and 'ry'. The angle is in the unit of
-	degrees, specifying the rotation of the ellipse if any, with a positive
-	number denoting a counter-clockwise rotation. The 'bigarcflag' is set to 1
-	if the arc to be drawn are the longer of the two between the starting
-	point and end point. Otherwise the shorter arc is to be drawn. The
-	'sweepflag' expresses whether the arc is to travel counterclockwise or
-	clockwise from the current point to the new point; the value 0 is for a
-	anti-clockwise rotation and the value 1 is for a clockwise rotation. Thus,
-	to draw an arc from the last point to a new point that is on its right
-	hand side of the last point, and if the sweepflag is set to 0, then the
-	arc will always appear below both points.
+	This is to draw an arc to the end point that is dx/dy away from the current point. The arc is assumed to trace alone an elliptical arc with x-axis and y-axis each of which having a radius of 'rx' and 'ry'. The angle is in the unit of degrees, specifying the rotation of the ellipse if any, with a positive number denoting a counter-clockwise rotation. The 'bigarcflag' is set to 1 if the arc to be drawn are the longer of the two between the starting point and end point. Otherwise the shorter arc is to be drawn. The 'sweepflag' expresses whether the arc is to travel counterclockwise or clockwise from the current point to the new point; the value 0 is for a anti-clockwise rotation and the value 1 is for a clockwise rotation. Thus, to draw an arc from the last point to a new point that is on its right hand side of the last point, and if the sweepflag is set to 0, then the arc will always appear below both points.
 
 + The [c:dx1,dy1,dx2,dy2,dx,dy] 
 
-	This is to draw a cubic Bezier curve from the current
-	point to the new point that is dx/dy away. The (dx1,dy1), and (dx2,dy2) are
-	two control points. Note that all numbers are specified relative to the
-	last point.
+	This is to draw a cubic Bezier curve from the current point to the new point that is dx/dy away. The (dx1,dy1), and (dx2,dy2) are two control points. Note that all numbers are specified relative to the last point.
 
 + [s:dx2,dy2,dx,dy] 
 
-	This is to draw a cubic Bezier curve from the current point to
-	the new point that is dx/dy away. Only the second point of the current Bezier
-	curve needs to be provided. The first control point is deduced from the second
-	control point of the previous cubic Bezier curve operation. If the previous
-	operation is not a cubic Bezier curve drawing, but a quadratic Bezier curve
-	drawing, then the first control point of the quadratic curve is used to
-	deduce the first control point of the current operation. If it is neither a
-	cubic nor a quadrilatic, then the last point is assumed.
+	This is to draw a cubic Bezier curve from the current point to the new point that is dx/dy away. Only the second point of the current Bezier curve needs to be provided. The first control point is deduced from the second control point of the previous cubic Bezier curve operation. If the previous operation is not a cubic Bezier curve drawing, but a quadratic Bezier curve drawing, then the first control point of the quadratic curve is used to deduce the first control point of the current operation. If it is neither a cubic nor a quadrilatic, then the last point is assumed.
 
 + The [q:dx1,dy1,dx,dy] 
 	
-	This is to draw a quadrilatic Bezier curve. The dx1/dy1
-	is the only control point. The dx/dy is the new point. All positions
-	are expressed relative to the last point.
+	This is to draw a quadrilatic Bezier curve. The dx1/dy1 is the only control point. The dx/dy is the new point. All positions are expressed relative to the last point.
 
 + The [t:dx,dy] 
 
-	This is to draw a quadratic Bezier curve with the first control
-	point deduced from a previous Bezier curve operation. If a previous operation
-	is not a Bezier curve operation, then the last point is assumed to be control
-	point, in which case the drawn curve will be straight line.
+	This is to draw a quadratic Bezier curve with the first control point deduced from a previous Bezier curve operation. If a previous operation is not a Bezier curve operation, then the last point is assumed to be control point, in which case the drawn curve will be straight line.
 
 + [angledist:1,30] 
 
-	This allows you to construct a new point that is to travel at a
-	angle of 30 degrees counterclockwise from due east for 1 unit length, starting
-	from the current point.
+	This allows you to construct a new point that is to travel at a angle of 30 degrees counterclockwise from due east for 1 unit length, starting from the current point.
 
 + [turn:30,1] 
 
-	This is to create a new point that is equivalent to making a left
-	turn of 30 degrees from the direction you have arrived at the current point, and
-	then travel for one more unit length. If it is to make a right turn, then set
-	the angle to a negative number.
+	This is to create a new point that is equivalent to making a left turn of 30 degrees from the direction you have arrived at the current point, and then travel for one more unit length. If it is to make a right turn, then set the angle to a negative number.
 
 + [flip:5,5] 
 
-	This is to construct a new point that is the mirror image of the
-	current point. The current point in this case is five unit distance to the
-	right and towards the top of the last point.  The mirror is the line segment
-	that is made up by the current point and the point before that. 
-	This operations
-	allows you to figure out where an existing point will land as if you were
-	folding a paper along an existing line that is traveled between the last two
-	points.
+	This is to construct a new point that is the mirror image of the current point. The current point in this case is five unit distance to the right and towards the top of the last point. The mirror is the line segment that is made up by the current point and the point before that. This operations allows you to figure out where an existing point will land as if you were folding a paper along an existing line that is traveled between the last two points.
 
 
 # The shape-operation
@@ -569,15 +524,15 @@ The 'label' command is designed to draw the same label at multiple locations. Fo
 
 Each subcommand specifies how the text is to be aligned relative to the locatoin. For example, the 'top' subcommand would have aligned the text so that it appears on top of the location, centered horizontally. When a label command is without its subcommand it defaults to 'urt', which basically asignes the lower left hand corner of the text with the loction.
 
-	label.top   -  top
-	label.bot   -  bottom
-	label.lft   -  left
-	label.rt    -  right
-	label.ulft  -  upper left
-	label.llft  -  lower left
-	label.urt   -  upper right
-	label.lrt   -  lower right
-	label.ctr   -  centering the text
+*	label.top   -  top
+*	label.bot   -  bottom
+*	label.lft   -  left
+*	label.rt    -  right
+*	label.ulft  -  upper left
+*	label.llft  -  lower left
+*	label.urt   -  upper right
+*	label.lrt   -  lower right
+*	label.ctr   -  centering the text
 
 The text to be drawn must be expressed using a set of quotation marks, and they must appear before any option and before any coordinates. Usually a single text is repeated in all locations. However, it is also possible to specify a different text for each one of the locations, by separating each text with a double-backslash, such as the following, in which case the letter "A", "B", and "C" are each to be drawn at three different location.
 
@@ -599,151 +554,151 @@ Note that for a path function all its arguments must be either a path variable o
 
 + midpoint 
 
-  The `&midpoint()` function returns the mid point of the first two points in a path expression if a single argument is given. Following returns a path with a single point: (1.5,2), which is the mid point of (1,1) and (2,3).
+    The `&midpoint()` function returns the mid point of the first two points in a path expression if a single argument is given. Following returns a path with a single point: (1.5,2), which is the mid point of (1,1) and (2,3).
 
-  ```
-  path b = &midpoint{(1,1),(2,3)}
-  ```
-  
-  Note that only the first two points of a path is used. The other points are ignored. Thus if path a has three points, then the third point is simply ignored.
-  
-  If two arguments are given, it does a linear interpolation alone the line segment of the first two points, and return a point that corresponds to the percentage of the path traveled from the first point to the second. The second argument is an floating point number between 0-1. For example, if 0.5 is given as the second parameters, it should return the same path as that with a single argument. Thus, following example will return the same result as the one before.
+    ```
+    path b = &midpoint{(1,1),(2,3)}
+    ```
 
-  ```
-  path b = &midpoint{(1,1),(2,3),0.5}
-  ```
+    Note that only the first two points of a path is used. The other points are ignored. Thus if path a has three points, then the third point is simply ignored.
+
+    If two arguments are given, it does a linear interpolation alone the line segment of the first two points, and return a point that corresponds to the percentage of the path traveled from the first point to the second. The second argument is an floating point number between 0-1. For example, if 0.5 is given as the second parameters, it should return the same path as that with a single argument. Thus, following example will return the same result as the one before.
+
+    ```
+    path b = &midpoint{(1,1),(2,3),0.5}
+    ```
   
 + shiftpoints 
 
-  The `&shiftpoints()` function is always needed to be provided with three arguments. The first argument is always interpreted as a path variable. The second and the third arguments are to be interpreted as expressing length in grid unit. This function is to return a new path with exact the same number of points, except for that all the points will have been shifted by the number of grid units specified in the argument. For example, following would have shifted all the points in the original path one position to the left and two positions up.
+    The `&shiftpoints()` function is always needed to be provided with three arguments. The first argument is always interpreted as a path variable. The second and the third arguments are to be interpreted as expressing length in grid unit. This function is to return a new path with exact the same number of points, except for that all the points will have been shifted by the number of grid units specified in the argument. For example, following would have shifted all the points in the original path one position to the left and two positions up.
 
-  ```
-  path b = &shiftpoints{&a,-1,2}
-  ```
+    ```
+    path b = &shiftpoints{&a,-1,2}
+    ```
 
 + scatterpoints 
 
-  The `&scatterpoints()` function is to create new path with the number of points evenly distributed beteen the two end points. In the previous example there will be 10 points created in a path such that the first point is (1,0), and the last point is (10,0), and the rest of the points will be spaced evenly between the first and the last. The last argument is a scalar telling it how many total gaps there is between scattered points.
+    The `&scatterpoints()` function is to create new path with the number of points evenly distributed beteen the two end points. In the previous example there will be 10 points created in a path such that the first point is (1,0), and the last point is (10,0), and the rest of the points will be spaced evenly between the first and the last. The last argument is a scalar telling it how many total gaps there is between scattered points.
 
-  ```
-  path a = &scatterpoints{(1,0),(10,0),9}
-  ```
+    ```
+    path a = &scatterpoints{(1,0),(10,0),9}
+    ```
 
 + linelineintersect 
 
-  The `&linelineintersect()` Returns new a path that contains a single point which is the point at which the two lines intersect. The first line is described by the symbol 'a', which must have at least two points. The second line is described by the symbol 'b', which must have at least two points. Only the first two points of 'a' and 'b' are considered. The rest of the points of 'a' and 'b' are ignored.
+    The `&linelineintersect()` Returns new a path that contains a single point which is the point at which the two lines intersect. The first line is described by the symbol 'a', which must have at least two points. The second line is described by the symbol 'b', which must have at least two points. Only the first two points of 'a' and 'b' are considered. The rest of the points of 'a' and 'b' are ignored.
 
-  ```
-  path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
-  ```
+    ```
+    path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
+    ```
 
 
 + linecircleintersect 
 
-  The `&linecircleintersect()` function returns new a path that contains two points for the line and circle intersection. In the following diagram the pts variable 'pts' will hold two points: (6,2) and (4,2).
+    The `&linecircleintersect()` function returns new a path that contains two points for the line and circle intersection. In the following diagram the pts variable 'pts' will hold two points: (6,2) and (4,2).
 
-  ```
-  path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
-  ```
+    ```
+    path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
+    ```
 
 + circlecircleintersect 
 
-  This method returns one or two points where two circles intersect.
+    This method returns one or two points where two circles intersect.
 
-  ```
-  path b = &circlecircleintersect{(0,0),10,(5,0),10}
-  ```
+    ```
+    path b = &circlecircleintersect{(0,0),10,(5,0),10}
+    ```
 
 
 + circlecircleintersectclip
 
-  This method returns a closed path that describes the area that is the intersection area of the two circle areas. Note that it is important that the circle on the left-hand side is specified first.
+    This method returns a closed path that describes the area that is the intersection area of the two circle areas. Note that it is important that the circle on the left-hand side is specified first.
 
-  ```
-  circle {r:3} (5,6)
-  circle {r:3} (9,6)
-  draw (5,5) (8,1)
-  path c = &circlecircleintersectclip{(5,6),3,(9,6),3,0}
-  % fill the intersection of A and B
-  fill &c
-  ```
+    ```
+    circle {r:3} (5,6)
+    circle {r:3} (9,6)
+    draw (5,5) (8,1)
+    path c = &circlecircleintersectclip{(5,6),3,(9,6),3,0}
+    % fill the intersection of A and B
+    fill &c
+    ```
 
 + circlecirclediffclip
 
-  This method returns a closed path that describes the area of one of the circles after it has been clipped away for the area that overlaps with another circle The 5th argument controls which area to remain. If set to 0 then the circle on the left-hand side remains, and if set to 1 the circle on the left hand side remains. Note that it is important that the circle on the left-hand side is specified first.
+    This method returns a closed path that describes the area of one of the circles after it has been clipped away for the area that overlaps with another circle The 5th argument controls which area to remain. If set to 0 then the circle on the left-hand side remains, and if set to 1 the circle on the left hand side remains. Note that it is important that the circle on the left-hand side is specified first.
 
-  ```
-  circle {r:3} (5,6)
-  circle {r:3} (9,6)
-  draw (5,5) (8,1)
-  path c = &circlecirclediffclip{(5,6),3,(9,6),3,0}
-  path d = &circlecirclediffclip{(5,6),3,(9,6),3,1}
-  % fill remains of A
-  fill &c
-  % fill remains of B
-  fill &d
-  ```
+    ```
+    circle {r:3} (5,6)
+    circle {r:3} (9,6)
+    draw (5,5) (8,1)
+    path c = &circlecirclediffclip{(5,6),3,(9,6),3,0}
+    path d = &circlecirclediffclip{(5,6),3,(9,6),3,1}
+    % fill remains of A
+    fill &c
+    % fill remains of B
+    fill &d
+    ```
 
 + circlepoints 
 
-  The general syntax is: &circlepoints(center,r,a1,a2,a3...), where the 'center' denotes a path with a point expressing the circle center, and 'r' for the radius of the circle, and 'a1', 'a2', 'a3', etc., that expresses the angles starting from the first quadrant. The returned value is the coords of individual points at these angles.
+    The general syntax is: &circlepoints(center,r,a1,a2,a3...), where the 'center' denotes a path with a point expressing the circle center, and 'r' for the radius of the circle, and 'a1', 'a2', 'a3', etc., that expresses the angles starting from the first quadrant. The returned value is the coords of individual points at these angles.
 
-  ```
-  path b = &circlepoints{(0,0),2,30,60,90}
-  ```
+    ```
+    path b = &circlepoints{(0,0),2,30,60,90}
+    ```
 
 + circle 
 
-  Returns a path expressing the circle. It has a syntax of: &circle(center,radius), where 'center' is a path with at least one point, and 'radius' a scalar.
+    Returns a path expressing the circle. It has a syntax of: &circle(center,radius), where 'center' is a path with at least one point, and 'radius' a scalar.
 
-  ```
+    ```
     path b = &circle(center,radius)
-  ```
+    ```
 
 + ellipse 
 
-  This return a path expressing an ellipse. The syntax is: &ellipse(center,xradius,yradius).
+    This return a path expressing an ellipse. The syntax is: &ellipse(center,xradius,yradius).
 
 + rectangle 
 
-  This returns a path expressing a rectangle between to points. The syntax is: &rectangle(point1,point2)
+    This returns a path expressing a rectangle between to points. The syntax is: &rectangle(point1,point2)
 
 + triangle 
 
-  This returns a path expressing a triangle of three points. The syntax is: &triangle(point1,point2,point3)
+    This returns a path expressing a triangle of three points. The syntax is: &triangle(point1,point2,point3)
 
 + polyline 
 
-  This returns a path expressing a polyline. The syntax is: &line(point1,point2,point3,...)
+    This returns a path expressing a polyline. The syntax is: &line(point1,point2,point3,...)
 
 + arctravel{center,start_point,sweep_angle}
 
-  This returns a path that draws an arc. The arc is to start at the point 'p' that is at a circle centered at 'center'. The arc is then to trace out part of the circle by following an angle equal to 'sweep_a' number of degrees. Positive 'sweep_a' is to trace in anti-clockwise direction and negative 'sweep_a' is to trace in clockwise direction.
+    This returns a path that draws an arc. The arc is to start at the point 'p' that is at a circle centered at 'center'. The arc is then to trace out part of the circle by following an angle equal to 'sweep_a' number of degrees. Positive 'sweep_a' is to trace in anti-clockwise direction and negative 'sweep_a' is to trace in clockwise direction.
 
 + arcspan{center,start_point,end_point}
 
-  Similar to 'arc', this function is the return a path that draws an arc. The arc is to start at the point 'p' that is at a circle centered at 'center'. The arc is then to trace out part of the circle, always in the direction of anti-clockwise direction, until it meats the point 'q'. If 'q' is found to be closer or further away from 'center', then the tracing stops as soon as it intersects with the radius-ray that passes through 'q'.
+    Similar to 'arc', this function is the return a path that draws an arc. The arc is to start at the point 'p' that is at a circle centered at 'center'. The arc is then to trace out part of the circle, always in the direction of anti-clockwise direction, until it meats the point 'q'. If 'q' is found to be closer or further away from 'center', then the tracing stops as soon as it intersects with the radius-ray that passes through 'q'.
 
 + arcsweep{center,r,start_angle,sweep_angle}
 
-  Similar to 'arc', this function is to return a path that is to sweep across a given angle starting from known angle. The center of the arc is 'center', 'r' is the radius of the arc, the 'start_a' is the starting angle, and 'sweep_a' is the angle to sweep across in the counter counter-clockwise direction.
+    Similar to 'arc', this function is to return a path that is to sweep across a given angle starting from known angle. The center of the arc is 'center', 'r' is the radius of the arc, the 'start_a' is the starting angle, and 'sweep_a' is the angle to sweep across in the counter counter-clockwise direction.
 
 + cylinder 
 
-  This expresses a upright cylinder drawn with an ellipse at the bottom, with xradius/yradius, and a given height. The syntax is: &cylinder(center,xradius,yradius,height)
+    This expresses a upright cylinder drawn with an ellipse at the bottom, with xradius/yradius, and a given height. The syntax is: &cylinder(center,xradius,yradius,height)
 
 + ymirror 
 
-  This returns a new path that is a mirror image of a given path. The first argument is the old path, and the second argument is a scalar that is a value on X-axis. The following example returns a new path that is a mirrored image of 'a' off the x-axis.
+    This returns a new path that is a mirror image of a given path. The first argument is the old path, and the second argument is a scalar that is a value on X-axis. The following example returns a new path that is a mirrored image of 'a' off the x-axis.
 
-  ```
+    ```
     path a = ...
     path b = &ymirror{a,0}
-  ```
+    ```
 
 + bbox 
 
-  This returns a new path that represents the rectangle of the viewport.
+    This returns a new path that represents the rectangle of the viewport.
 
 
 
@@ -765,43 +720,24 @@ SVG also allows for a color to be specified directly using RGB, such as
 
     <line x1='0' y1='1' x2='2' y2='3' stroke='rgb(200,100,25)'/>
 
-However, MetaPost does not allow for expressing a color using three integers
-as RGB values of a color. It insists that a name is to be used for \mpcolor
-macro. However, it does not have provision such that you can *create* a new
-color name with a customized RGB values in it, such as
+However, MetaPost does not allow for expressing a color using three integers as RGB values of a color. It insists that a name is to be used for \mpcolor macro. However, it does not have provision such that you can *create* a new color name with a customized RGB values in it, such as
 
     \definecolor{ultramarine}{RGB}{0,32,96}
     \definecolor{wrongultramarine}{rgb}{0.07, 0.04, 0.56}
 
-The \definecolor is a macro provided by xcolor package. This means if a
-color is specified as "rgb(200,100,25)" then a \definecolor command must
-first be called to create a "unique" color name, such as "mycolor003"
-which is to be placed outside of the "mplibcode" environment, in order
-for this particular color to be referenced inside "mplibcode" environment.
-Therefore, currently MetaPost translation does not support specifying
-color using RGB directly.
+The \definecolor is a macro provided by xcolor package. This means if a color is specified as "rgb(200,100,25)" then a \definecolor command must first be called to create a "unique" color name, such as "mycolor003" which is to be placed outside of the "mplibcode" environment, in order for this particular color to be referenced inside "mplibcode" environment. Therefore, currently MetaPost translation does not support specifying color using RGB directly.
 
-Note that MetaPost does allow for a color mixing using existing color names
-such as
+Note that MetaPost does allow for a color mixing using existing color names such as
 
     draw (1,2)--(2,3) withpen pencircle withcolor \mpcolor(red!80!white!20!)
 
-Note that for units such as line width, dot size, etc, is
-maintained internally by Diagram as the SVG user unit. One user
-unit is exactly 1/96 of an inch.  Following is the conversion of
-SVG units.
+Note that for units such as line width, dot size, etc, is maintained internally by Diagram as the SVG user unit. One user unit is exactly 1/96 of an inch. Following is the conversion of SVG units.
 
     1in = 96px
     1in = 72pt
     1in = 2.54cm
 
-It seems that MetaPost allows for a line length or dot size to be
-expressed without a specific unit attached to it. For example, you
-can ask to draw a dot by MetaPost with the following command.
-The "withpen pencircle scaled 5" is part of a configuration to
-the "dot" command that is to tell it to use a pen size of 5.
-Note that the size of 5 is interpreted as the size of the pen,
-therefore, the diameter of the dot as the pen is a circle pen.
+It seems that MetaPost allows for a line length or dot size to be expressed without a specific unit attached to it. For example, you can ask to draw a dot by MetaPost with the following command. The "withpen pencircle scaled 5" is part of a configuration to the "dot" command that is to tell it to use a pen size of 5. Note that the size of 5 is interpreted as the size of the pen, therefore, the diameter of the dot as the pen is a circle pen.
 
     dot (22*u,3*u) withpen pencircle scaled 5 ;
 
@@ -809,16 +745,9 @@ You can also provide a unit directly, such as pt.
 
     dot (22*u,3*u) withpen pencircle scaled 5pt ;
 
-The linecap attribute is defines the shape to be used at the end
-of open subpaths when they are stroked. The SVG has an attribute
-that can used for line-element. The available values are:
-'butt', 'round', and 'square'. The default value is 'butt'.
+The linecap attribute is defines the shape to be used at the end of open subpaths when they are stroked. The SVG has an attribute that can used for line-element. The available values are: 'butt', 'round', and 'square'. The default value is 'butt'.
 
-The "dashed withdots" option for "draw" will not show any visible dotted lines
-in the PDF file when linecap:=butt. The linecap:=rounded will has to be set in
-order to produce dotted-lines. Thus, currently the "set linedashed withdots"
-option is considered broken for MP generation.  Do not use it for now. Use "set
-linedashed evenly" instead.
+The "dashed withdots" option for "draw" will not show any visible dotted lines in the PDF file when linecap:=butt. The linecap:=rounded will has to be set in order to produce dotted-lines. Thus, currently the "set linedashed withdots" option is considered broken for MP generation. Do not use it for now. Use "set linedashed evenly" instead.
 
 
 
@@ -838,125 +767,68 @@ linedashed evenly" instead.
 - cartesian.ellipse x y Rx Ry Phi
 - cartesian.arc x y R startAngle stopAngle
 
-The `cartesian` command is used to draw plots, curves, axis, ticks that are
-related to a single Cartesian coordinate.  It is a composite command that
-includes many sub-commands. All subcommands must follow the word 'cartesian'
-after a dot symbol. The subcommand itself can also have its own option, such as
-'cartesian.text.rt'.
+The `cartesian` command is used to draw plots, curves, axis, ticks that are related to a single Cartesian coordinate. It is a composite command that includes many sub-commands. All subcommands must follow the word 'cartesian' after a dot symbol. The subcommand itself can also have its own option, such as 'cartesian.text.rt'.
 
-The `setup` command would set up a Cartesian coordate to be used.  The first
-two arguments defines the low left hand corner where the origin of the
-cartesian coordinates will appear inside the Diagram. It is specified in grid
-coordintes.  For example, if they are passed as 2 and 3, then the origin of the
-Cartesian coordinates will appear at the location of (2,3) of the Diagram.
+The `setup` command would set up a Cartesian coordate to be used. The first two arguments defines the low left hand corner where the origin of the cartesian coordinates will appear inside the Diagram. It is specified in grid coordintes. For example, if they are passed as 2 and 3, then the origin of the Cartesian coordinates will appear at the location of (2,3) of the Diagram.
 
     cartesian.setup 2 3 0.5
 
-The third argument can be omitted. If provided, it states the how to interpret
-the input range of the Cartesian coordinates. For example, when 0.5 is passed,
-it states that each grid unit of the Diagram is to be interpreted as expressing
-an input range of 0.5 for the Cartesian coordinates, or that 2 grid units will
-be used for each length of 1 of the input range of the Cartesian coordinates.
-This means that if we were to plot a point of (1,1) of the Cartesian
-coordinates the dot will appear at the location  (2,3) + (2,2) = (4,5) inside
-the Diagram, where (2,3) is the location of the origin, and (2,2) is where
-the point is relative to the origin.
+The third argument can be omitted. If provided, it states the how to interpret the input range of the Cartesian coordinates. For example, when 0.5 is passed, it states that each grid unit of the Diagram is to be interpreted as expressing an input range of 0.5 for the Cartesian coordinates, or that 2 grid units will be used for each length of 1 of the input range of the Cartesian coordinates. This means that if we were to plot a point of (1,1) of the Cartesian coordinates the dot will appear at the location (2,3) + (2,2) = (4,5) inside the Diagram, where (2,3) is the location of the origin, and (2,2) is where the point is relative to the origin.
 
-The `cartesian.xaxis` command is to draw the x-axis. The only two parameters
-passed to it is the lower and upper range that this axis entails.  Similarly,
-the `cartesian.yaxis` command draws the y-axis with similar parameter
-requirements.
+The `cartesian.xaxis` command is to draw the x-axis. The only two parameters passed to it is the lower and upper range that this axis entails. Similarly, the `cartesian.yaxis` command draws the y-axis with similar parameter requirements.
 
     cartesian.xaxis -0.75 5.6
     cartesian.yaxis -0.75 4.5
 
-The `cartesian.xtick` is used to draw ticks as well as labels on
-the x-axis of the coordinate. The list of arguments passed to
-this command is a list of location of these ticks on the axis.
-For example, if passed as "1 2 3" then the ticks will appear
-where (1,0), (2,0), and (3,0) points are. For each tick, a label
-string will also appear unerneath that tick.  Similarly, the
-`cartesian.ytick` command does the same thing except for that it
-is for the y-axis.
+The `cartesian.xtick` is used to draw ticks as well as labels on the x-axis of the coordinate. The list of arguments passed to this command is a list of location of these ticks on the axis. For example, if passed as "1 2 3" then the ticks will appear where (1,0), (2,0), and (3,0) points are. For each tick, a label string will also appear unerneath that tick. Similarly, the `cartesian.ytick` command does the same thing except for that it is for the y-axis.
 
     cartesian.xtick 1 2 3 4 5
     cartesian.ytick 1 2 3 4
 
-The `cartesian dot` command shows one or more points as dots
-inside the coordinate. Every two numbers are interpreted as
-a pair of (x,y) coordinates.
+The `cartesian dot` command shows one or more points as dots inside the coordinate. Every two numbers are interpreted as a pair of (x,y) coordinates.
 
     cartesian.dot  -4 0 4 0 \
                   -5 0 5 0
 
-The 'cartesian.line' and 'cartesian.arrow' commands
-are similar, except for that the first one will draw connecting
-lines between all points, and the second one also adds an arrowhead
-at the very end of the line.
+The 'cartesian.line' and 'cartesian.arrow' commands are similar, except for that the first one will draw connecting lines between all points, and the second one also adds an arrowhead at the very end of the line.
 
     cartesian.line  -4 0 4 0 \
                     -5 0 5 0
     cartesian.arrow -4 0 4 0 \
                     -5 0 5 0
 
-The 'cartesian.yplot; is similar to 'cartesian.dot', in
-that it generates a series of dots. Only the x-coordinates
-of plotted points are provided, and the y-coordinates of
-each point is calculated by the supplied function, which
-must be provided by the "f" member of the option.
+The 'cartesian.yplot; is similar to 'cartesian.dot', in that it generates a series of dots. Only the x-coordinates of plotted points are provided, and the y-coordinates of each point is calculated by the supplied function, which must be provided by the "f" member of the option.
 
     fn P(x) = pow(x,2)
     cartesian.yplot {f:P} 1 2 3 4 5
 
-In the previous example, following points will be shown:
-(1,1), (2,4), (3,9), (4,16), and (5,25) as dots.
-The Range expression in this case can be useful, such
-as the following:
+In the previous example, following points will be shown: (1,1), (2,4), (3,9), (4,16), and (5,25) as dots. The Range expression in this case can be useful, such as the following:
 
     fn P(v) = pow(v,2)
     cartesian.yplot {f:P} [1:5]
 
-The name of the function could be arbitrary.  However, it must be specified by
-the "f" member of the option.  The function must have been previously defined
-by a 'fn' command, and must only accept one argument and return a single
-scalar.
+The name of the function could be arbitrary. However, it must be specified by the "f" member of the option. The function must have been previously defined by a 'fn' command, and must only accept one argument and return a single scalar.
 
-The 'cartesian.xplot' is similar except for that the input arguments expresses
-a range of values as the y-coordinates of the points, and the funtion generates
-the corresponding x-coordinates.
+The 'cartesian.xplot' is similar except for that the input arguments expresses a range of values as the y-coordinates of the points, and the funtion generates the corresponding x-coordinates.
 
     fn P(v) = sqrt(v)
     cartesian.xplot {f:P} 1 4 9 25 16 25
 
-The `cartesian.label` command draws a text at the location of the cartesian
-coord. The text itself is expressed via the quotation marks that must proceed
-the any option and all scalar values.  Following example draw texts at location
-(-5,0), (-5,1) and (-5,2) of the Cartesian coordinates, and at each point the
-text will be "P(0)", "P(1)", and "P(2)". The text is to appear at the bottom of
-each point.
+The `cartesian.label` command draws a text at the location of the cartesian coord. The text itself is expressed via the quotation marks that must proceed the any option and all scalar values. Following example draw texts at location (-5,0), (-5,1) and (-5,2) of the Cartesian coordinates, and at each point the text will be "P(0)", "P(1)", and "P(2)". The text is to appear at the bottom of each point.
 
     cartesian.label.bot "P(0)\\P(1)\\P(2)" -5 0 -5 1 -5 2
 
-The 'cartesian.ellipse' will draw an ellipse centered at the
-location. There can only be one ellipse to be drawn, and the
-signature of the arguments are:
+The 'cartesian.ellipse' will draw an ellipse centered at the location. There can only be one ellipse to be drawn, and the signature of the arguments are:
 
     cartesian.ellipse x y Rx Ry Phi
 
-The 'x' and 'y' are coodinates for the center point of the ellipse. Each of the
-'Rx' and 'Ry' is the semi-major or semi-minor axis in horizontal or vertical
-direction. 'Phi' is the measurement of the angle rotation of the entire ellipse
-around the center.  If it is a counter-clockwise rotation. It is in degrees.
+The 'x' and 'y' are coodinates for the center point of the ellipse. Each of the 'Rx' and 'Ry' is the semi-major or semi-minor axis in horizontal or vertical direction. 'Phi' is the measurement of the angle rotation of the entire ellipse around the center. If it is a counter-clockwise rotation. It is in degrees.
 
-The "cartesian.arc" command will draw an arc with the given center, radius,
-start and stop angle. The signature of the function looks like the following.
+The "cartesian.arc" command will draw an arc with the given center, radius, start and stop angle. The signature of the function looks like the following.
 
     cartesian.arc x y R startAngle stopAngle
 
-The 'x' and 'y' are coordinates expressing the center
-of the arc. 'R' is the radius of the arc. 'startAngle'
-and 'stopAngle' are the angles expressing starting angle
-and stopping angle of the arc. They are both in degrees.
+The 'x' and 'y' are coordinates expressing the center of the arc. 'R' is the radius of the arc. 'startAngle' and 'stopAngle' are the angles expressing starting angle and stopping angle of the arc. They are both in degrees.
 
 
 # The barchart-operation
@@ -971,71 +843,33 @@ of its subcommands.
 - barchart.ytick
 - barchart.xtext
 
-The 'barchart.setup' command would setup the barchart and
-config it. The 'xorigin' and 'yorigin' are to state
-the grid coordinates where lower left hand corner is to appear in the
-Diagram. Note that this number is subject to current settings
-of 'refx', 'refy', 'refsx' and 'refsy' settings.
+The 'barchart.setup' command would setup the barchart and config it. The 'xorigin' and 'yorigin' are to state the grid coordinates where lower left hand corner is to appear in the Diagram. Note that this number is subject to current settings of 'refx', 'refy', 'refsx' and 'refsy' settings.
 
-The 'xwidth' and 'ywidth' is to state the width and height
-of the bar chart measured in grid length. Thus, setting them
-to '10' and '15' would have a barchart of 10 grids wide and
-15 grids tall.
+The 'xwidth' and 'ywidth' is to state the width and height of the bar chart measured in grid length. Thus, setting them to '10' and '15' would have a barchart of 10 grids wide and 15 grids tall.
 
-The 'xrange' and 'yrange' is to state the input range for the x-direction and
-y-direction axes. Specifically, if the bars are going to be drawn vertically,
-from bottom to top, then the 'yrange' should be stated as the highest number of
-the tallest bar,and 'xrange' should be stated as the total number of bars minus
-one.  For example, if we were to show five bars, that is 0.1, 0.3, 0.2, 0.4, 0.2,
-then the 'yrange' should be set to 0.4, and 'xrange' should be set to "5"
-Following example shows how to set up a barchart that is to be placed at
-(0,0), with a width of 10, and height of 15, and with the 'xrange' set to 5
-and 'yrange' set to 0.4.
+The 'xrange' and 'yrange' is to state the input range for the x-direction and y-direction axes. Specifically, if the bars are going to be drawn vertically, from bottom to top, then the 'yrange' should be stated as the highest number of the tallest bar,and 'xrange' should be stated as the total number of bars minus one. For example, if we were to show five bars, that is 0.1, 0.3, 0.2, 0.4, 0.2, then the 'yrange' should be set to 0.4, and 'xrange' should be set to "5" Following example shows how to set up a barchart that is to be placed at (0,0), with a width of 10, and height of 15, and with the 'xrange' set to 5 and 'yrange' set to 0.4.
 
     barchart.setup 0 0 10 15 5 0.4
 
-The 'barchart.bbox' is to draw a bounding box covering the entire barchart.
-It does not require any arguments.
+The 'barchart.bbox' is to draw a bounding box covering the entire barchart. It does not require any arguments.
 
-The 'barchart.vbar' is to draw vertical bars. The arguments are the y-values
-of the bar themselves. Thus, to draw the previous five bars, it will be
+The 'barchart.vbar' is to draw vertical bars. The arguments are the y-values of the bar themselves. Thus, to draw the previous five bars, it will be
 
     barchart.vbar 0.1 0.3 0.2 0.4 0.2
 
-The 'barchart.ytick' operation is to draw "ticks" along its y-axis on the left
-hand side, and also show the label for each axis to its left hand side. Its
-arguments are the location of ticks, and they should be stated in the same
-input range as those of the 'vbar'. For example, if ticks were to be placed
-at the location of '0.1', '0.2' and '0.3', then following command should be
-issued.
+The 'barchart.ytick' operation is to draw "ticks" along its y-axis on the left hand side, and also show the label for each axis to its left hand side. Its arguments are the location of ticks, and they should be stated in the same input range as those of the 'vbar'. For example, if ticks were to be placed at the location of '0.1', '0.2' and '0.3', then following command should be issued.
 
     barchart.ytick 0.1 0.2 0.3
 
-The 'barchart.xtext' is to add information at the bottom of each bar as to
-express what these bars are intended for.  The text must be provided by a
-set of quotation marks that must proceed all options and scalars. The scalars
-express the location of vertical bars on x-axis. Thus, if the input range
-has been set to 5, the first bar is to appear between 0-1, and second bar 1-2,
-and so on, thus, the center location for the first vertical bar is 0.5, and center
-location for the second bar is 1.5, etc.
+The 'barchart.xtext' is to add information at the bottom of each bar as to express what these bars are intended for. The text must be provided by a set of quotation marks that must proceed all options and scalars. The scalars express the location of vertical bars on x-axis. Thus, if the input range has been set to 5, the first bar is to appear between 0-1, and second bar 1-2, and so on, thus, the center location for the first vertical bar is 0.5, and center location for the second bar is 1.5, etc.
 
     barchart.xtext "P(0)\\P(1)\\P(2)" 0.5 1.5 2.5
 
-The text will always be centered at location, and placed directly below the
-bar.
+The text will always be centered at location, and placed directly below the bar.
 
 # Drawing arrow heads
 
-These three operations only draw lines, similar to the 'line' operation. The
-'arrow' would place an arrowhead at the ending line cap location. The
-'revarrow' would place an arrowhead at the starting line cap location. The
-'dblarrow' would place two arrowheads one at the beginning and the other at the
-ending line cap location. The lines are always drawn, regardless of the
-'linesize' setting. If 'linesize' is set to zero, the default line width for
-the target platform is assumed.  The 'linecolor' setting determines the line
-color as well as the color of the arrowhead.  However, due to outstanding
-issues on SVG, the arrowhead MARKER-element does not change the color
-with the line it is attached to, and is always shown as black.
+These three operations only draw lines, similar to the 'line' operation. The 'arrow' would place an arrowhead at the ending line cap location. The 'revarrow' would place an arrowhead at the starting line cap location. Thesehe 'dblarrow' would place two arrowheads one at the beginning and the other at the ending line cap location. The lines are always drawn, regardless of the 'linesize' setting. If 'linesize' is set to zero, the default line width for the target platform is assumed. The 'linecolor' setting determines the line color as well as the color of the arrowhead. However, due to outstanding issues on SVG, the arrowhead MARKER-element does not change the color with the line it is attached to, and is always shown as black.
 
     draw {arrow:1} (0,0) (3,4)
     draw {arrow:1;revarrow:1} (0,0) (3,4)
