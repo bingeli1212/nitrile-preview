@@ -1121,4 +1121,15 @@ If the edge is going to include arrow heads, then one of the following three opt
     ```
     
     
+
+# The 'rec' operation
+
+The 'rec' operation is a group of compound commands that serve the purpose of recording some operations for the purpose of playing them back later. In the following example two 'draw' operations are recorded to the tape 'a' and later played back.
+
+    path one = (0,0.3) [a:1,0.3,0,0,0,2,0] [v:2] [h:-2] [v:-2] cycle
+    path two = (0,2.3) [a:1,0.3,0,0,0,2,0] [a:1,0.3,0,0,0,-2,0] cycle
+    rec.a.draw {shade:linear;angle:80;shadecolor:gray lightgray gray} &one
+    rec.a.draw {fillcolor:gray} &two
+    rec.a.playback (2,0)
+
     
