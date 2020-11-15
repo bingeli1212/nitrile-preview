@@ -509,6 +509,26 @@ In ConTeXt MkIV the command requires an additional [], thus you need to write
         \NC r \NC right aligned \NC \AR
     \stoptabulate
 
+# Shaded colors
 
+  \startMPcode
+  numeric u; u := 5mm;
+  numeric pu; pu := u;
+  numeric fr; fr := 1;
+  numeric textwidth; textwidth := \the\textwidth;
+  numeric textheight; textheight := \the\textwidth;
+  numeric ratio_w; ratio_w := 1;
+  numeric ratio_h; ratio_h := 1;
+  for i=0 upto 10: draw (0,i*u) --- (16*u,i*u) withcolor .9white; endfor;
+  for i=0 upto 16: draw (i*u,0) --- (i*u,10*u) withcolor .9white; endfor;
+  % <-- viewport 16 10 -->
+  % <-- width: 16 height: 10 -->
+  % <-- % cube -->
+  % <-- path cube = (0,0) [h:2] [v:2] [h:-2] cycle -->
+  % <-- saved cube=(0.00,0.00) (2.00,0.00) (2.00,2.00) (0.00,2.00) cycle -->
+  % <-- draw.cube {fillcolor:#666;angle:80} (12,2) -->
+  fill ((12.00,2.00)--(14.00,2.00)--(14.00,4.00)--(12.00,4.00)--cycle) scaled(u) withshademethod "linear" withshadevector (1,0) withshadecolors ((0.40,0.40,0.40),(1,1,1),(0.80,0.80,0.80));
+  linecap:=butt;linejoin:=mitered; draw ((12.00,2.00)--(14.00,2.00)--(14.00,4.00)--(12.00,4.00)--cycle) scaled(u) ;
+  \stopMPcode{}
 
 
