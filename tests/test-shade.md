@@ -8,9 +8,6 @@ path cylinder = (0,0) [a:1,0.3,0,0,0,2,0] [v:2] [h:-2] [v:-2] cycle
 draw.cylinder {shade:linear;angle:80;shadecolor:gray lightgray gray} (8,2)
 path top = (0,2) [a:1,0.3,0,0,0,2,0] [a:1,0.3,0,0,0,-2,0] cycle
 draw.top {fillcolor:gray} (8,2)
-% sphere
-path ball = &circle{(0,0),1} cycle
-draw.ball {shade:ball;shadecolor:lightgray gray} (4,2)
 % cone
 path cone = (0,0) [a:1,0.3,0,0,0,2,0] [l:-1,2] [l:-1,-2] cycle
 draw.cone {shade:linear;shadecolor:gray lightgray gray;angle:80} (10,6)
@@ -21,5 +18,14 @@ path topcube = <0,2> (0,0) [l:0.5,0.5] [h:2] [l:-0.5,-0.5] cycle
 draw.topcube {fillcolor:gray} (12,2)
 path ritcube = <2,0> (0,0) [l:0.5,0.5] [v:2] [l:-0.5,-0.5] cycle
 draw.ritcube {fillcolor:gray} (12,2)
+% circle
+path circle = &circle{(0,0),1.2} cycle         
+draw.circle {shade:radial;shadecolor:gray;angle:80} (3,6)
+% circle2
+path circle = &circle{(0,0),1.2} cycle         
+draw.circle {shade:radial;shadecolor:yellow blue red;angle:80} (6,6)
+% sphere
+path ball = &circle{(0,0),1} cycle
+draw.ball {shade:ball;shadecolor:lightgray gray} (4,2)
 ```
 
