@@ -1270,21 +1270,29 @@ attributes:
       <stop offset="100%" stop-color="lightgray"/> 
     </radialGradient>
 
-For Diagram, the 'shade:linear', 'shade:radial', and 'shade:ball' allows
-for three different kind of gradient fills similar to linear, radial,
-and ball offerd by TikZ. The 'shadecolor' option is used to specify 
-the color(s) that flows from one to another. In particular, if no color
-is specified, or 'shadecolor' option is missing, the gradient will be assumed
-a flow from white to black. If there is only color present, then it is assume
-to flow from that color to black. If there are two colors present, then
-the color flows from the first to the second. If there are three colors
-present, the first and third is the to and from color, and the second is the 
-middle color. Note that three color only is supported when the 'shade:linear'
-is the case. For 'shade:radial', only atmost the first two colors will be
-picked. For 'shade:ball', only the first color will be picked. If no color
-is specified, for 'shade:ball' the ball is assumed to be of color "gray".
+For Diagram, the 'shade:linear', 'shade:radial', and 'shade:ball' allows for
+three different kind of gradient fills similar to linear, radial, and ball
+offerd by TikZ. The 'shadecolor' option is used to specify the color(s) that
+flows from one to another. In particular, if no color is specified, or
+'shadecolor' option is missing, the gradient will be assumed a flow from white
+to black. If there is only color present, then it is assume to flow from that
+color to black. If there are two colors present, then the color flows from the
+first to the second. If there are three colors present, the first and third is
+the to and from color, and the second is the middle color. Note that three
+color only is supported when the 'shade:linear' is the case. For
+'shade:radial', only atmost the first two colors will be picked. For
+'shade:ball', only the first color will be picked. If no color is specified,
+for 'shade:ball' the ball is assumed to be of color "gray".
 
-
+There is also another issue. For SVG and TikZ when gradient fill is selected,
+the color will flow from inner to outer color uniformly in both horizontal
+and vertical directions. If the filled shape is a rectangle with a longer    
+width than height, then the color flow at the horizontal direction will be elongated
+than the color flow at the vertical direction because the width is longer than
+height. However, for MetaFun this is
+not the case, the color flow always seems to be uniform in all directions.
+The outer color seems to be at a location away from the inner
+color that is the average of the half width and half height of the rectangle.
 
 
 
