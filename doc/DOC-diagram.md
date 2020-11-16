@@ -1133,3 +1133,159 @@ The 'rec' operation is a group of compound commands that serve the purpose of re
     rec.a.playback (2,0)
 
     
+
+# Gradient Fill
+
+The Gradient Fill is provided by SVG, TikZ and MetaFun. 
+
+In general, there are two gradient fills, "linear" and "radial". 
+The first is to fill a gradient from one side of the figure
+to another, and the second one is to fill the gradient
+from a point inside the figure, usually the center, and move
+concentrically away from that point.
+
+For SVG, to do that is to define a 'linearGradient' or 'radialGradient' 
+element, assign it a id, and then place this element inside a 
+'defs' block. When a shape such as a rectangle need to be filled with
+this pattern, it will set the 'fill=' attribute of this rectangle
+with a url, such as 'fill=url(#myid)', assuming that 'myid' is the 
+id of the 'linearGradient' or 'radialGradient' element.
+
+For TikZ, it is to use the '\shade' command, rather than the
+'\fill' command. Within this command, there are several option
+we need to set. First of all, the 'shading=' option. This option
+is to be set with a string that is either 'axis', or 'radial'. 
+It can also be set to 'ball', which acts like a 'radial' but will
+move the center point of the inner color away from the center
+of the shape towards some hardcoded point that is the north-west
+location within the shape.
+
+When 'shading=' is set to 'axis', there are three options we
+can set, namely "top color=", "bottom color=", and "midddle color=". 
+The first two defines "from color" and "to color", and the last one
+defines a "middle color that sits between the first two colors. 
+The last one can be omitted, in which case the color will simply 
+flow from the "top color" to the "bottom color". 
+
+By default TikZ flows color from top to bottom. However, you can
+change it to flow a different direction by setting the "angle=" option. 
+This takes a number that is from 0-90, denoting an angle rotating
+anti-clockwise. Thus, when "angle=90" the color flow will be from
+left to right. 
+
+When "shading=" is set to "radial", then the two color choices
+will be "inner color=" and "outer color=". There is no other options
+to set.
+
+When "shading=" is set to "ball", there is only color to
+set and this one is "ball color=".
+This color defines the color of the ball. With this gradient it is better
+to apply it to a circular shape, although other shapes 
+are also allows. Tikz will apply a gradient to the shape to simulate
+the effect of having a light at the top-left hand corner of the ball.
+
+For MetaFun it offers linear gradient and radial gradient as well.
+For linear gradient the 'withshademethod "linear"' must be specified.
+The 'withshadedirection' option specifies the direction of flow of the color.
+
+    withshadedirection (0.5, 2.5) // bottom-to-top
+    withshadedirection (2.5, 0.5) // top-to-bottom
+    withshadedirection (1.5, 3.5) // right-to-left
+    withshadedirection (3.5, 1.5) // left-to-right
+
+Basically for MetaFun each quardrant is assigned a number 1, thus, rotating 
+an be achieved by adding 1/90 (approx. 0.011) to the two coordinates of the 'withshadedirection='
+for every one degree turned anti-clockwise. For example, when top-to-bottom color
+flow is (2.5, 0.5), the flow that is one-degree rotated anti-clockwise will result
+in a coordinates pair of (2.511, 0.511).
+
+For linear gradient, there can be one color, two colors, and three colors, which
+is supported by TikZ. For SVG the actual number of colors choices can be more. 
+For MetaFun it is also possible to specify three or more colors. However, in order
+to maintain backward compatibility with TikZ, only three colors will be supported
+for linear gradient. For MetaFun, when three colors are used for linear gradient,
+the MetaFun code will look like the following:
+
+    withshadestep( 
+      withshadefraction .5 
+      withshadecolors(\MPcolor{yellow},\MPcolor{blue})
+    )
+    withshadestep( 
+      withshadefraction 1 
+      withshadecolors(\MPcolor{blue},\MPcolor{red})
+    )
+
+Assuming the top color is yellow, middle one being blue,
+and the bottom one being red. If there are only two colors, 
+then it will look like
+
+    withshadestep( 
+      withshadefraction 1 
+      withshadecolors(\MPcolor{blue},\MPcolor{red})
+    )
+
+In this case, the top color is blue and bottom color is red,
+assuming the color flows from top to bottom, where in reality the
+flow direction is controlled by the 'withshadedirection'
+directive. For radial gradient, the syntax for MetaFun
+is a little different:
+
+    withshademethod "circular"
+    withshadefactor 1
+    withshadedomain(0,2)
+    withshadecolors(\MPcolor{blue},\MPcolor{red})
+
+Will allow the radial gradient to look similar to those of SVG
+and/or TikZ. Note the presence of 'withshadefactor' and 'withshadedomain'.
+Not certain how they actually do the job behind the scene but 
+choice of these numbers seems to work the magic of generating
+the effect similar to those of SVG and/or TikZ.
+
+For 'shade:ball', the following commands are hardcoded:
+
+    withshademethod "circular"
+    withshadecenter(-0.45,0.35)
+    withshadedomain(0,1.5)
+    withshadestep( 
+      withshadefraction .25 
+      withshadecolors(\MPcolor{white},\MPcolor{blue})
+    )
+    withshadestep( 
+      withshadefraction  1 
+      withshadecolors(\MPcolor{blue},\MPcolor{black}) 
+    )
+
+To simulate the effect of "shade:ball" on SVG, the 
+'radialGradient' element is filled with the following
+attributes:
+
+    <radialGradient 
+      id="..."     
+      cx="0.5"     
+      cy="0.5"     
+      fx="0.3"     
+      fy="0.4"     
+      r="0.5"     
+      <stop offset="0%" stop-color="white"/> 
+      <stop offset="100%" stop-color="lightgray"/> 
+    </radialGradient>
+
+For Diagram, the 'shade:linear', 'shade:radial', and 'shade:ball' allows
+for three different kind of gradient fills similar to linear, radial,
+and ball offerd by TikZ. The 'shadecolor' option is used to specify 
+the color(s) that flows from one to another. In particular, if no color
+is specified, or 'shadecolor' option is missing, the gradient will be assumed
+a flow from white to black. If there is only color present, then it is assume
+to flow from that color to black. If there are two colors present, then
+the color flows from the first to the second. If there are three colors
+present, the first and third is the to and from color, and the second is the 
+middle color. Note that three color only is supported when the 'shade:linear'
+is the case. For 'shade:radial', only atmost the first two colors will be
+picked. For 'shade:ball', only the first color will be picked. If no color
+is specified, for 'shade:ball' the ball is assumed to be of color "gray".
+
+
+
+
+
+

@@ -2,7 +2,7 @@
 # Slice
 
 ```diagram
-viewport 16 10
+viewport 26 10
 % cylinder
 path cylinder = (0,0) [a:1,0.3,0,0,0,2,0] [v:2] [h:-2] [v:-2] cycle 
 draw.cylinder {shade:linear;angle:80;shadecolor:gray lightgray gray} (8,2)
@@ -27,5 +27,17 @@ draw.circle {shade:radial;shadecolor:yellow blue red;angle:80} (6,6)
 % sphere
 path ball = &circle{(0,0),1} cycle
 draw.ball {shade:ball;shadecolor:lightgray gray} (4,2)
+% rectangle linear lightgray->black
+path rect = &rectangle{(0,0),(4,2)} cycle
+draw.rect {shade:linear;shadecolor:lightgray} (16,2)
+% rectangle linear white->black
+path rect = &rectangle{(0,0),(4,2)} cycle
+draw.rect {shade:linear;shadecolor:} (16,5)
+% rectangle radial lightgray->black
+path rect = &rectangle{(0,0),(4,2)} cycle
+draw.rect {shade:radial;shadecolor:lightgray} (22,2)
+% rectangle radial white->black
+path rect = &rectangle{(0,0),(4,2)} cycle
+draw.rect {shade:radial;shadecolor:} (22,5)
 ```
 
