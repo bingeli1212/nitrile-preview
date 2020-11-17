@@ -867,8 +867,8 @@
                   
     "diamond"                : { "html": "&#x22C4;"       , "tex":  "\\diamond"                                   , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C4 DIAMOND OPERATOR"           },
                   
-    "xutri"                  : { "html": "&#x25B3;"       , "tex":  "\\bigtriangleup"                             , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B3 WHITE UP-POINTING TRIANGLE"           },
-    "xdtri"                  : { "html": "&#x25BD;"       , "tex":  "\\bigtriangledown"                           , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+25BD WHITE DOWN-POINTING TRIANGLE"           },
+    "xutri"                  : { "html": "&#x25B3;"       , "tex":  "\\vartriangle"                               , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B3 WHITE UP-POINTING TRIANGLE"           },
+    "xdtri"                  : { "html": "&#x25BD;"       , "tex":  "\\triangledown"                              , "width": 0  ,  "op": 1,  "usepackage":""         ,"comment":"U+25BD WHITE DOWN-POINTING TRIANGLE"           },
  
     "utri"                   : { "html": "&#x25B5;"       , "tex":  "\\vartriangle"                               , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B5 WHITE UP-POINTING SMALL TRIANGLE"        },
     "dtri"                   : { "html": "&#x25BF;"       , "tex":  "\\triangledown"                              , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25BF WHITE DOWN-POINTING SMALL TRIANGLE"        },     
