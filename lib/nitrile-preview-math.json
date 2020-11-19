@@ -838,6 +838,9 @@
     "div"                    : { "html": "&#x00F7;"       , "tex":  "\\div"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00F7 DIVISION SIGN"           },
     "divide"                 : { "html": "&#x00F7;"       , "tex":  "\\div"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00F7 DIVISION SIGN"           },
     "ast"                    : { "html": "&#x2217;"       , "tex":  "\\ast"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2217 ASTERISK OPERATOR"           },
+    "sstarf"                 : { "html": "&#x22C6;"       , "tex":  "\\star"                                      , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C6 STAR OPERATOR"           },
+
+
     "star"                   : { "html": "&#x2606;"       , "tex":  "\\ding{73}","TM":1                           , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2606 WHITE STAR"           },
     "starf"                  : { "html": "&#x2605;"       , "tex":  "\\ding{72}","TM":1                           , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2605 BLACK STAR"           },
 
