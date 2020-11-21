@@ -913,7 +913,6 @@
     "angmsd"                 : { "html": "&#x2221;"       , "tex":  "\\measuredangle"                             , "width": 8  ,  "op": 0,  "usepackage":""         ,"comment":"U+2221 MEASURED ANGLE"        },
     "angsph"                 : { "html": "&#x2222;"       , "tex":  "\\sphericalangle"                            , "width": 8  ,  "op": 0,  "usepackage":""         ,"comment":"U+2222 SPHERICAL ANGLE"       },
     "in"                     : { "html": "&#x2208;"       , "tex":  "\\in","cex":"0x2208"                         , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2208 ELEMENT OF"        },
-    "nin"                    : { "html": "&#x2209;"       , "tex":  "\\notin"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2209 NOT AN ELEMENT OF"        },
     "notin"                  : { "html": "&#x2209;"       , "tex":  "\\notin"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2209 NOT AN ELEMENT OF"        },
     "ReverseElement"         : { "html": "&#x220B;"       , "tex":  "\\ni"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+220B CONTAINS AS MEMBER"        },
     "NotReverseElement"      : { "html": "&#x220C;"       , "tex":  "\\notni"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+220C DOES NOT CONTAIN AS MEMBER"        },
