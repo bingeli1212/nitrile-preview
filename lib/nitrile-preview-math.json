@@ -951,8 +951,8 @@
     "lrcorner"               : { "html": "&#x2E25;"       , "tex":  "\\lrcorner"                                  , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2E25 BOTTOM RIGHT HALF BRACKET"        },
     "lfloor"                 : { "html": "&#x230A;"       , "tex":  "\\lfloor"                                    , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+230A LEFT FLOOR"        },
     "rfloor"                 : { "html": "&#x230B;"       , "tex":  "\\rfloor"                                    , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+230B RIGHT FLOOR"        },
-    "langle"                 : { "html": "&#x27E8;"       , "tex":  "\\langle"                                    , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E8 MATHEMATICAL LEFT ANGLE BRACKET"        },
-    "rangle"                 : { "html": "&#x27E9;"       , "tex":  "\\rangle"                                    , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E9 MATHEMATICAL RIGHT ANGLE BRACKET"        },
+    "lang"                   : { "html": "&#x27E8;"       , "tex":  "\\langle"                                    , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E8 MATHEMATICAL LEFT ANGLE BRACKET"        },
+    "rang"                   : { "html": "&#x27E9;"       , "tex":  "\\rangle"                                    , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E9 MATHEMATICAL RIGHT ANGLE BRACKET"        },
     "lobrk"                  : { "html": "&#x27E6;"       , "tex":  "\\llbracket"                                 , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E6 MATHEMATICAL LEFT WHITE SQUARE BRACKET"  },
     "robrk"                  : { "html": "&#x27E7;"       , "tex":  "\\rrbracket"                                 , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+27E7 MATHEMATICAL RIGHT WHITE SQUARE BRACKET"  },
     
