@@ -877,8 +877,8 @@
  
     "utri"                   : { "html": "&#x25B5;"       , "tex":  "\\vartriangle"                               , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B5 WHITE UP-POINTING SMALL TRIANGLE"        },
     "dtri"                   : { "html": "&#x25BF;"       , "tex":  "\\triangledown"                              , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25BF WHITE DOWN-POINTING SMALL TRIANGLE"        },     
-    "rtri"                   : { "html": "&#x25B9;"       , "tex":  "\\vartriangleright"                          , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE"        },      
-    "ltri"                   : { "html": "&#x25C3;"       , "tex":  "\\vartriangleleft","cex":"\\triangleleft"            , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25C3 WHITE LEFT-POINTING SMALL TRIANGLE"        },     
+    "rtri"                   : { "html": "&#x25B9;"       , "tex":  "\\vartriangleright","cex":"\\triangleright"  , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE"        },      
+    "ltri"                   : { "html": "&#x25C3;"       , "tex":  "\\vartriangleleft","cex":"\\triangleleft"    , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25C3 WHITE LEFT-POINTING SMALL TRIANGLE"        },     
  
     "circ"                   : { "html": "&#x25CB;"       , "tex":  "\\bigcirc"                                   , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+25CB WHITE CIRCLE"           },
     "bullet"                 : { "html": "&#x2022;"       , "tex":  "\\bullet"                                    , "width": 4.5,  "op": 1,  "usepackage":""         ,"comment":"U+2022 BULLET"           },
