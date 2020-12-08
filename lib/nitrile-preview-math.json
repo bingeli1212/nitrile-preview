@@ -878,7 +878,7 @@
     "utri"                   : { "html": "&#x25B5;"       , "tex":  "\\vartriangle"                               , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B5 WHITE UP-POINTING SMALL TRIANGLE"        },
     "dtri"                   : { "html": "&#x25BF;"       , "tex":  "\\triangledown"                              , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25BF WHITE DOWN-POINTING SMALL TRIANGLE"        },     
     "rtri"                   : { "html": "&#x25B9;"       , "tex":  "\\vartriangleright"                          , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE"        },      
-    "ltri"                   : { "html": "&#x25C3;"       , "tex":  "\\vartriangleleft"                           , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25C3 WHITE LEFT-POINTING SMALL TRIANGLE"        },     
+    "ltri"                   : { "html": "&#x25C3;"       , "tex":  "\\vartriangleleft","cex":"\\triangleleft"            , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25C3 WHITE LEFT-POINTING SMALL TRIANGLE"        },     
  
     "circ"                   : { "html": "&#x25CB;"       , "tex":  "\\bigcirc"                                   , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+25CB WHITE CIRCLE"           },
     "bullet"                 : { "html": "&#x2022;"       , "tex":  "\\bullet"                                    , "width": 4.5,  "op": 1,  "usepackage":""         ,"comment":"U+2022 BULLET"           },
@@ -1128,8 +1128,8 @@
     "cdnine"                 : { "html": "&#x2788;"       ,  "tex": "\\ding{200}","cex":"0x2788"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2788 Dingbat Circled Sans-Serif Digit Nine"}, 
     "cdten"                  : { "html": "&#x2789;"       ,  "tex": "\\ding{201}","cex":"0x2789"          ,"TM":1 , "width": 0,    "op": 1,  "usepackage":"mathtools" ,"comment":"U+2789 Dingbat Circled Sans-Serif Digit Ten"}, 
 
-    "ldquo"                  : { "html": "&#x201C;"       ,  "tex": "\\textquotedblleft"                  ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+201C LEFT DOUBLE QUOTATION MARK"},
-    "rdquo"                  : { "html": "&#x201D;"       ,  "tex": "\\textquotedblright"                 ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+201D RIGHT DOUBLE QUOTATION MARK"},
+    "ldquo"                  : { "html": "&#x201C;"       ,  "tex": "\\textquotedblleft","cex":"0x201C"   ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+201C LEFT DOUBLE QUOTATION MARK"},
+    "rdquo"                  : { "html": "&#x201D;"       ,  "tex": "\\textquotedblright","cex":"0x201D"  ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+201D RIGHT DOUBLE QUOTATION MARK"},
     "lsquo"                  : { "html": "&#x2018;"       ,  "tex": "\\textquoteleft"                     ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2018 LEFT SINGLE QUOTATION MARK"},
     "rsquo"                  : { "html": "&#x2019;"       ,  "tex": "\\textquoteright"                    ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2019 RIGHT SINGLE QUOTATION MARK"},
     
