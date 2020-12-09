@@ -880,7 +880,6 @@
     "rtri"                   : { "html": "&#x25B9;"       , "tex":  "\\vartriangleright","cex":"\\triangleright"  , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE"        },      
     "ltri"                   : { "html": "&#x25C3;"       , "tex":  "\\vartriangleleft","cex":"\\triangleleft"    , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25C3 WHITE LEFT-POINTING SMALL TRIANGLE"        },     
  
-    "circ"                   : { "html": "&#x25CB;"       , "tex":  "\\bigcirc"                                   , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+25CB WHITE CIRCLE"           },
     "bullet"                 : { "html": "&#x2022;"       , "tex":  "\\bullet"                                    , "width": 4.5,  "op": 1,  "usepackage":""         ,"comment":"U+2022 BULLET"           },
     "wreath"                 : { "html": "&#x2240;"       , "tex":  "\\wr"                                        , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+2240 WREATH PRODUCT"           },
                  
@@ -1050,8 +1049,7 @@
     "squ"                    : { "html": "&#x25A1;"       ,  "tex":  "\\square"                                   , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25A1 WHITE SQUARE"},
     "squf"                   : { "html": "&#x25AA;"       ,  "tex":  "\\blacksquare"                              , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25AA BLACK SMALL SQUARE"},
     
-    "cir"                    : { "html": "&#x25CB;"       ,  "tex": "\\Circle"                                    , "width": 7,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+25CB WHITE CIRCLE"},
-    "cirf"                   : { "html": "&#x25CF;"       ,  "tex": "\\CIRCLE"                                    , "width": 7,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+25CF BLACK CIRCLE"},
+    "cir"                    : { "html": "&#x25CB;"       ,  "tex": "\\circ"                                      , "width": 7,    "op": 0,  "usepackage":"wasysym"  ,"comment":"U+25CB WHITE CIRCLE"},
     
     "pentagon"               : { "html": "&#x2B20;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B20 WHITE PENTAGON"},
     "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},

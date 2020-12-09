@@ -3,6 +3,8 @@
 
 A Nitrile document uses the extension of .md, same as that of a markdown document because they share some formatting syntax.
 
+&cirf;
+
 To comprise a document, paragraphs are detected. A paragraph is defined as a group lines with no empty lines between them.
 
 ~~~
