@@ -1008,7 +1008,6 @@
     "Re"                     : { "html": "&#x211C;"       ,  "tex": "\\Re"                                        , "width": 0  ,  "op": 0,  "usepackage":""         ,"comment":"U+211C BLACK-LETTER CAPITAL R"},
     "Im"                     : { "html": "&#x2111;"       ,  "tex": "\\Im"                                        , "width": 0  ,  "op": 0,  "usepackage":""         ,"comment":"U+2111 BLACK-LETTER CAPITAL I"},
     "wp"                     : { "html": "&#x2118;"       ,  "tex": "\\wp"                                        , "width": 0  ,  "op": 0,  "usepackage":""         ,"comment":"U+2118 SCRIPT CAPITAL P = Weierstrass elliptic function"},
-    "Box"                    : { "html": "&#x2610;"       ,  "tex": "\\Box"                                       , "width": 0  ,  "op": 0,  "usepackage":""         ,"comment":"U+2610 BALLOT BOX"},
     "SM"                     : { "html": "&#x2120;"       ,  "tex": "\\textservicemark"                   ,"TM":1 , "width": 0  ,  "op": 0,  "usepackage":"textcomp" ,"comment":"U+2120 SERVICE MARK" },
     "trade"                  : { "html": "&#x2122;"       ,  "tex": "\\texttrademark"                     ,"TM":1 , "width": 0  ,  "op": 0,  "usepackage":"textcomp" ,"comment":"U+2122 TRADE MARK SIGN" },
     "aleph"                  : { "html": "&#x2135;"       ,  "tex": "\\aleph"                                     , "width": 8  ,  "op": 0,  "usepackage":""         ,"comment":"U+2135 ALEF SYMBOL"},
