@@ -844,9 +844,10 @@
     "star"                   : { "html": "&#x2606;"       , "tex":  "\\ding{73}","TM":1                           , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2606 WHITE STAR"           },
     "starf"                  : { "html": "&#x2605;"       , "tex":  "\\ding{72}","TM":1                           , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2605 BLACK STAR"           },
 
-    
     "boxtimes"               : { "html": "&#x22A0;"       , "tex":  "\\boxtimes"                                  , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+22A0 SQUARED TIMES"           },
     "Sqrt"                   : { "html": "&#x221A;"       , "tex":  "\\surd"                                      , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+221A SQUARE ROOT"           },
+    "Longdiv"                : { "html": "&#x27CC;"       , "tex":  "\\surd"                                      , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+221A SQUARE ROOT"           },
+    "oline"                  : { "html": "&#x203E;"       , "tex":  "\\textasciimacron","TM":1                    , "width": 9  ,  "op": 1,  "usepackage":""         ,"comment":"U+221A SQUARE ROOT"           },
                   
     "asympeq"                : { "html": "&#x224D;"       , "tex":  "\\asymp"                                     , "width": 8  ,  "op": 1,  "usepackage":""         ,"comment":"U+224D EQUIVALENT TO"           },
     "vdash"                  : { "html": "&#x22A2;"       , "tex":  "\\vdash"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22A2 RIGHT TACK"           },
@@ -1130,7 +1131,7 @@
     "pentagon"               : { "html": "&#x2B20;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B20 WHITE PENTAGON"},
     "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
     "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
-    
+
     "WhiteLargeSquare"       : { "html": "&#x2B1C;"       ,  "tex": "\\BigSquare","cex":"0x2B1C"          ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":"ifsym"    ,"comment":"U+2B1C WHITE LARGE SQUARE"},
 
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
