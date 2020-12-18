@@ -1119,17 +1119,19 @@
     "mdash"                  : { "html": "&#x2014;"       ,  "tex": "\\textemdash","cex":"0x2014"         ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+2014 EM DASH"},
 
     "checkmark"              : { "html": "&#x2713;"       ,  "tex": "\\ding{51}","cex":"0x2713"           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"pifont"   ,"comment":"U+2713 CHECK MARK"},
-    "ballotx"                : { "html": "&#x2717;"       ,  "tex": "\\ding{55}","cex":"0x2717"           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"pifont"   ,"comment":"U+2717 BALLOT X"},
     "maltese"                : { "html": "&#x2720;"       ,  "tex": "\\maltese"                                   , "width": 0,    "op": 0,  "usepackage":"AMS"      ,"comment":"U+2720 MALTESE CROSS"},
-    "Square"                 : { "html": "&#x2610;"       ,  "tex": "\\Square"                            ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"ifsym"  ,"comment":"U+2610 BALLOT BOX"},
-    "CheckedBox"             : { "html": "&#x2611;"       ,  "tex": "\\faCheckSquare"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
-    "XBox"                   : { "html": "&#x2612;"       ,  "tex": "\\faCheckSquare"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2612 BALLOT BOX WITH X"},
+    "BallotX"                : { "html": "&#x2717;"       ,  "tex": "\\ding{55}","cex":"0x2717"           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"pifont"   ,"comment":"U+2717 BALLOT X"},
+    "BallotBox"              : { "html": "&#x2610;"       ,  "tex": "\\Square"                            ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"ifsym"  ,"comment":"U+2610 BALLOT BOX"},
+    "BallotBoxWithCheck"     : { "html": "&#x2611;"       ,  "tex": "\\faCheckSquare"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
+    "BallotBoxWithX"         : { "html": "&#x2612;"       ,  "tex": "\\faCheckSquare"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2612 BALLOT BOX WITH X"},
     "squ"                    : { "html": "&#x25A1;"       ,  "tex": "\\square"                                    , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25A1 WHITE SQUARE"},
     "squf"                   : { "html": "&#x25AA;"       ,  "tex": "\\blacksquare"                               , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25AA BLACK SMALL SQUARE"},
+    "cir"                    : { "html": "&#x25CB;"       ,  "tex": "\\textbigcircle","cex":"0x25CB"      ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":"latex2e"  ,"comment":"U+25CB WHITE CIRCLE"},
     "pentagon"               : { "html": "&#x2B20;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B20 WHITE PENTAGON"},
     "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
     "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
-    "BigSquare"              : { "html": "&#x2B1C;"       ,  "tex": "\\BigSquare","cex":"0x2B1C"          ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":"ifsym"    ,"comment":"U+2B1C WHITE LARGE SQUARE"},
+    
+    "WhiteLargeSquare"       : { "html": "&#x2B1C;"       ,  "tex": "\\BigSquare","cex":"0x2B1C"          ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":"ifsym"    ,"comment":"U+2B1C WHITE LARGE SQUARE"},
 
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
