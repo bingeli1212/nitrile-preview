@@ -1141,7 +1141,6 @@
     "blacksquare"            : { "html": "&#x25AA;"       ,  "tex": "\\blacksquare"                               , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25AA BLACK SMALL SQUARE"},
 
     "cir"                    : { "html": "&#x25CB;"       ,  "tex": "\\textbigcircle"                     ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":"latex2e"  ,"comment":"U+25CB WHITE CIRCLE"},
-    "bigcirc"                : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
 
     "pentagon"               : { "html": "&#x2B20;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B20 WHITE PENTAGON"},
     "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
@@ -1151,6 +1150,7 @@
 
   },
   "alt_symbol": {
+    "bigcirc"                : "BigCircle",
     "xutri"                  : "BigTriangleUp",
     "xdtri"                  : "BigTriangleDown"
   }
