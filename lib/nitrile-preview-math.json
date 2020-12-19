@@ -1132,8 +1132,11 @@
     "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
     "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
 
-    "WhiteLargeSquare"       : { "html": "&#x25A2;"       ,  "tex": "\\BigSquare","cex":"0x25A2"          ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+2B1C WHITE LARGE SQUARE"},
+    "BigSquare"              : { "html": "&#x25A2;"       ,  "tex": "\\BigSquare","cex":"0x25A2"          ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25A2 WHITE SQUARE WITH ROUNDED CORNERS"},
+    "BigCircle"              : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle","cex":"0x25EF"          ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
 
+    "xcirc"                  : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle","cex":"0x25EF"          ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
+    
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
   }
