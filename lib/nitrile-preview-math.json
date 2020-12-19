@@ -882,7 +882,10 @@
     "rtri"                   : { "html": "&#x25B9;"       , "tex":  "\\vartriangleright","cex":"\\triangleright"  , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE"        },      
     "ltri"                   : { "html": "&#x25C3;"       , "tex":  "\\vartriangleleft","cex":"\\triangleleft"    , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+25C3 WHITE LEFT-POINTING SMALL TRIANGLE"        },     
 
-    "vltri"                  : { "html": "&#x22B2;"       , "tex":  "\\vartriangleleft","cex":"\\triangleleft"    , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+22B2 NORMAL SUBGROUP OF"        },     
+    "vltri"                  : { "html": "&#x22B2;"       , "tex":  "\\lhd","cex":"\\triangleleft"                , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+22B2 NORMAL SUBGROUP OF"        },     
+    "vrtri"                  : { "html": "&#x22B3;"       , "tex":  "\\rhd","cex":"\\triangleright"               , "width": 6 ,   "op": 1,  "usepackage":""         ,"comment":"U+22B3 CONTAINS AS NORMAL SUBGROUP"},
+    "nltri"                  : { "html": "&#x22EA;"       ,  "tex": "\\not\\triangleleft"                         , "width": 6 ,   "op": 1,  "usepackage":""         ,"comment":"U+22EA NOT NORMAL SUBGROUP OF"},
+    "nrtri"                  : { "html": "&#x22EB;"       ,  "tex": "\\not\\triangleright"                        , "width": 6 ,   "op": 1,  "usepackage":""         ,"comment":"U+22EB DOES NOT CONTAIN AS NORMAL SUBGROUP"},
  
     "bullet"                 : { "html": "&#x2022;"       , "tex":  "\\bullet"                                    , "width": 4.5,  "op": 1,  "usepackage":""         ,"comment":"U+2022 BULLET"           },
     "wreath"                 : { "html": "&#x2240;"       , "tex":  "\\wr"                                        , "width": 6  ,  "op": 1,  "usepackage":""         ,"comment":"U+2240 WREATH PRODUCT"           },
@@ -1146,12 +1149,6 @@
     "pentagon"               : { "html": "&#x2B20;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B20 WHITE PENTAGON"},
     "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
     "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
-
-    "LeftTriangle"           : { "html": "&#x22B2;"       ,  "tex": "\\lhd"                               ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22B2 NORMAL SUBGROUP OF"},
-    "RightTriangle"          : { "html": "&#x22B3;"       ,  "tex": "\\rhd"                               ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22B3 CONTAINS AS NORMAL SUBGROUP"},
-    "NotLeftTriangle"        : { "html": "&#x22EA;"       ,  "tex": "\\not\\triangleleft"                 ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22EA NOT NORMAL SUBGROUP OF"},
-    "NotRightTriangle"       : { "html": "&#x22EB;"       ,  "tex": "\\not\\triangleright"                ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22EB DOES NOT CONTAIN AS NORMAL SUBGROUP"},
-    
 
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
