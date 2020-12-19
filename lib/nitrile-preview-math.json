@@ -835,7 +835,7 @@
     "mnplus"                 : { "html": "&#x2213;"       , "tex":  "\\mp"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2213 MINUS-OR-PLUS SIGN"           },
     "minus"                  : { "html": "&#x2212;"       , "tex":  "-"                                           , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2212 MINUS SIGN"           },
     "times"                  : { "html": "&#x00D7;"       , "tex":  "\\times"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00D7 MULTIPLICATION SIGN"           },
-    "Cross"                  : { "html": "&#x2A2F;"       , "tex":  "\\times"                                     , "width": 7  ,  "op": 1,  "usepackage":"ifsym"    ,"comment":"U+2A2F VECTOR OR CROSS PRODUCT"           },
+    "Cross"                  : { "html": "&#x2A2F;"       , "tex":  "\\times"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2A2F VECTOR OR CROSS PRODUCT"           },
     "div"                    : { "html": "&#x00F7;"       , "tex":  "\\div"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00F7 DIVISION SIGN"           },
     "divide"                 : { "html": "&#x00F7;"       , "tex":  "\\div"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00F7 DIVISION SIGN"           },
     "ast"                    : { "html": "&#x2217;"       , "tex":  "\\ast"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2217 ASTERISK OPERATOR"           },
@@ -1130,7 +1130,7 @@
     "BallotBoxWithCheck"     : { "html": "&#x2611;"       ,  "tex": "\\faCheckSquareO"                    ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
     "BallotBoxWithX"         : { "html": "&#x2612;"       ,  "tex": "\\faCheckSquareO"                    ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2612 BALLOT BOX WITH X"},
 
-    "BigSquare"              : { "html": "&#x25A2;"       ,  "tex": "\\BigSquare"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25A2 WHITE SQUARE WITH ROUNDED CORNERS"},
+    "BigSquare"              : { "html": "&#x25A2;"       ,  "tex": "\\faSquareO"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25A2 WHITE SQUARE WITH ROUNDED CORNERS"},
     "BigCircle"              : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
     "BigTriangleDown"        : { "html": "&#x25BD;"       ,  "tex": "\\BigTriangleDown"                   ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25BD WHITE DOWN-POINTING TRIANGLE"},
     "BigTriangleUp"          : { "html": "&#x25B3;"       ,  "tex": "\\BigTriangleUp"                     ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25B3 WHITE UP-POINTING TRIANGLE"},
