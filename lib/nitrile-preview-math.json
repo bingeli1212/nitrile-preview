@@ -1128,12 +1128,6 @@
     "BallotBox"              : { "html": "&#x2610;"       ,  "tex": "\\Square"                            ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"ifsym"  ,"comment":"U+2610 BALLOT BOX"},
     "BallotBoxWithCheck"     : { "html": "&#x2611;"       ,  "tex": "\\faCheckSquare"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
     "BallotBoxWithX"         : { "html": "&#x2612;"       ,  "tex": "\\faCheckSquare"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2612 BALLOT BOX WITH X"},
-    "squ"                    : { "html": "&#x25A1;"       ,  "tex": "\\square"                                    , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25A1 WHITE SQUARE"},
-    "squf"                   : { "html": "&#x25AA;"       ,  "tex": "\\blacksquare"                               , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25AA BLACK SMALL SQUARE"},
-    "cir"                    : { "html": "&#x25CB;"       ,  "tex": "\\textbigcircle","cex":"0x25CB"      ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":"latex2e"  ,"comment":"U+25CB WHITE CIRCLE"},
-    "pentagon"               : { "html": "&#x2B20;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B20 WHITE PENTAGON"},
-    "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
-    "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
 
     "BigSquare"              : { "html": "&#x25A2;"       ,  "tex": "\\BigSquare"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25A2 WHITE SQUARE WITH ROUNDED CORNERS"},
     "BigCircle"              : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
@@ -1142,8 +1136,16 @@
     "BigTriangleLeft"        : { "html": "&#x25C1;"       ,  "tex": "\\BigTriangleLeft"                   ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25C1 WHITE LEFT-POINTING TRIANGLE"},
     "BigTriangleRight"       : { "html": "&#x25B7;"       ,  "tex": "\\BigTriangleRight"                  ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25B7 WHITE RIGHT-POINTING TRIANGLE"},
 
-    "xcirc"                  : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
-    
+    "square"                 : { "html": "&#x25A1;"       ,  "tex": "\\square"                                    , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25A1 WHITE SQUARE"},
+    "blacksquare"            : { "html": "&#x25AA;"       ,  "tex": "\\blacksquare"                               , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25AA BLACK SMALL SQUARE"},
+
+    "cir"                    : { "html": "&#x25CB;"       ,  "tex": "\\textbigcircle"                     ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":"latex2e"  ,"comment":"U+25CB WHITE CIRCLE"},
+    "bigcirc"                : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
+
+    "pentagon"               : { "html": "&#x2B20;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B20 WHITE PENTAGON"},
+    "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
+    "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
+
     "LeftTriangle"           : { "html": "&#x22B2;"       ,  "tex": "\\lhd"                               ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22B2 NORMAL SUBGROUP OF"},
     "RightTriangle"          : { "html": "&#x22B3;"       ,  "tex": "\\rhd"                               ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22B3 CONTAINS AS NORMAL SUBGROUP"},
     "NotLeftTriangle"        : { "html": "&#x22EA;"       ,  "tex": "\\not\\triangleleft"                 ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22EA NOT NORMAL SUBGROUP OF"},
