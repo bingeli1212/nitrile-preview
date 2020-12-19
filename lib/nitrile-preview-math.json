@@ -985,7 +985,8 @@
 
     "xlarr"                  : { "html": "&#x27F5;"       , "tex":  "\\longleftarrow"                             , "width": 18 ,  "op": 1,  "usepackage":""         ,"comment":"U+27F5 LONG LEFTWARDS ARROW "        },
     "xrarr"                  : { "html": "&#x27F6;"       , "tex":  "\\longrightarrow"                            , "width": 18 ,  "op": 1,  "usepackage":""         ,"comment":"U+27F6 LONG RIGHTWARDS ARROW"        },
-  
+    "xharr"                  : { "html": "&#x27F7;"       , "tex":  "\\longleftrightarrow"                        , "width": 18 ,  "op": 1,  "usepackage":""         ,"comment":"U+21F7 LONG LEFT RIGHT ARROW"        },
+
     "xlArr"                  : { "html": "&#x27F8;"       , "tex":  "\\Longleftarrow"                             , "width": 18 ,  "op": 1,  "usepackage":""         ,"comment":"U+27F8 LONG LEFTWARDS DOUBLE ARROW "        },
     "xrArr"                  : { "html": "&#x27F9;"       , "tex":  "\\Longrightarrow"                            , "width": 18 ,  "op": 1,  "usepackage":""         ,"comment":"U+27F9 LONG RIGHTWARDS DOUBLE ARROW"        },
     "xhArr"                  : { "html": "&#x27FA;"       , "tex":  "\\Longleftrightarrow"                        , "width": 18 ,  "op": 1,  "usepackage":""         ,"comment":"U+27FA LONG LEFT RIGHT DOUBLE ARROW"        },
