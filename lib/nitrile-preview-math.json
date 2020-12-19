@@ -1132,11 +1132,21 @@
     "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
     "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
 
-    "BigSquare"              : { "html": "&#x25A2;"       ,  "tex": "\\BigSquare","cex":"0x25A2"          ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25A2 WHITE SQUARE WITH ROUNDED CORNERS"},
-    "BigCircle"              : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle","cex":"0x25EF"          ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
+    "BigSquare"              : { "html": "&#x25A2;"       ,  "tex": "\\BigSquare"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25A2 WHITE SQUARE WITH ROUNDED CORNERS"},
+    "BigCircle"              : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
+    "BigTriangleDown"        : { "html": "&#x25BD;"       ,  "tex": "\\BigTriangleDown"                   ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25BD WHITE DOWN-POINTING TRIANGLE"},
+    "BigTriangleUp"          : { "html": "&#x25B3;"       ,  "tex": "\\BigTriangleUp"                     ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25B3 WHITE UP-POINTING TRIANGLE"},
+    "BigTriangleLeft"        : { "html": "&#x25C1;"       ,  "tex": "\\BigTriangleLeft"                   ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25C1 WHITE LEFT-POINTING TRIANGLE"},
+    "BigTriangleRight"       : { "html": "&#x25B7;"       ,  "tex": "\\BigTriangleRight"                  ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25B7 WHITE RIGHT-POINTING TRIANGLE"},
 
-    "xcirc"                  : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle","cex":"0x25EF"          ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
+    "xcirc"                  : { "html": "&#x25EF;"       ,  "tex": "\\BigCircle"                         ,"TM":1 , "width": 12 ,  "op": 0,  "usepackage":"ifsym"    ,"comment":"U+25EF LARGE CIRCLE"},
     
+    "LeftTriangle"           : { "html": "&#x22B2;"       ,  "tex": "\\lhd"                               ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22B2 NORMAL SUBGROUP OF"},
+    "RightTriangle"          : { "html": "&#x22B3;"       ,  "tex": "\\rhd"                               ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22B3 CONTAINS AS NORMAL SUBGROUP"},
+    "NotLeftTriangle"        : { "html": "&#x22EA;"       ,  "tex": "\\not\\triangleleft"                 ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22EA NOT NORMAL SUBGROUP OF"},
+    "NotRightTriangle"       : { "html": "&#x22EB;"       ,  "tex": "\\not\\triangleright"                ,"TM":0 , "width": 0 ,   "op": 1,  "usepackage":""         ,"comment":"U+22EB DOES NOT CONTAIN AS NORMAL SUBGROUP"},
+    
+
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 1,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
   }
