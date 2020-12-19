@@ -835,6 +835,7 @@
     "mnplus"                 : { "html": "&#x2213;"       , "tex":  "\\mp"                                        , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2213 MINUS-OR-PLUS SIGN"           },
     "minus"                  : { "html": "&#x2212;"       , "tex":  "-"                                           , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2212 MINUS SIGN"           },
     "times"                  : { "html": "&#x00D7;"       , "tex":  "\\times"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00D7 MULTIPLICATION SIGN"           },
+    "Cross"                  : { "html": "&#x2A2F;"       , "tex":  "\\times"                                     , "width": 7  ,  "op": 1,  "usepackage":"ifsym"    ,"comment":"U+2A2F VECTOR OR CROSS PRODUCT"           },
     "div"                    : { "html": "&#x00F7;"       , "tex":  "\\div"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00F7 DIVISION SIGN"           },
     "divide"                 : { "html": "&#x00F7;"       , "tex":  "\\div"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+00F7 DIVISION SIGN"           },
     "ast"                    : { "html": "&#x2217;"       , "tex":  "\\ast"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2217 ASTERISK OPERATOR"           },
@@ -939,7 +940,6 @@
     "bot"                    : { "html": "&#x22A5;"       , "tex":  "\\bot"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+22A5 UP TACK"        },
     "parallel"               : { "html": "&#x2225;"       , "tex":  "\\parallel"                                  , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2225 PARALLEL TO"        },
     "nparallel"              : { "html": "&#x2226;"       , "tex":  "\\nparallel"                                 , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2226 NOT PARALLEL TO"        },
-    "iff"                    : { "html": "&#x27FA;"       , "tex":  "\\iff"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+27FA LONG LEFT RIGHT DOUBLE ARROW"        },
     "perp"                   : { "html": "&#x27C2;"       , "tex":  "\\perp"                                      , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+27C2 PERPENDICULAR"        },
     
     "forall"                 : { "html": "&#x2200;"       , "tex":  "\\forall"                                    , "width": 7  ,  "op": 0,  "usepackage":""         ,"comment":"U+2200 FOR ALL"        },
@@ -988,7 +988,9 @@
   
     "xlArr"                  : { "html": "&#x27F8;"       , "tex":  "\\Longleftarrow"                             , "width": 18 ,  "op": 1,  "usepackage":""         ,"comment":"U+27F8 LONG LEFTWARDS DOUBLE ARROW "        },
     "xrArr"                  : { "html": "&#x27F9;"       , "tex":  "\\Longrightarrow"                            , "width": 18 ,  "op": 1,  "usepackage":""         ,"comment":"U+27F9 LONG RIGHTWARDS DOUBLE ARROW"        },
+    "xhArr"                  : { "html": "&#x27FA;"       , "tex":  "\\Longleftrightarrow"                        , "width": 18 ,  "op": 1,  "usepackage":""         ,"comment":"U+27FA LONG LEFT RIGHT DOUBLE ARROW"        },
   
+
     "mapsto"                 : { "html": "&#x21A6;"       , "tex":  "\\mapsto"                                    , "width":  9 ,  "op": 1,  "usepackage":""         ,"comment":"U+21A6 RIGHTWARDS ARROW FROM BAR"        },
     "mapstoleft"             : { "html": "&#x21A4;"       , "tex":  "\\mapsfrom"                                  , "width":  9 ,  "op": 1,  "usepackage":""         ,"comment":"U+21A4 LEFTWARDS ARROW FROM BAR"        },
   
