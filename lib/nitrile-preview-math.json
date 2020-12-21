@@ -99,6 +99,9 @@
     { "kbd": "\\inttop"        ,    "unicode": "&#x2320;"       ,  "id": "myINTTOP",      "dx":"0"                      ,"op": 3    ,"width": 5    },
     { "kbd": "\\intbot"        ,    "unicode": "&#x2321;"       ,  "id": "myINTBOT",      "dx":"0"                      ,"op": 3    ,"width": 5    },
 
+    { "kbd": "\\simtop"        ,    "unicode": "&#x23B2;"       ,  "id": "mySUMTOP",      "dx":"0"                      ,"op": 3    ,"width": 12    },
+    { "kbd": "\\sumbot"        ,    "unicode": "&#x23B3;"       ,  "id": "mySUMBOT",      "dx":"0"                      ,"op": 3    ,"width": 12    },
+
     { "kbd": "\\{"             ,    "unicode": "&#x007B;"       ,  "id": "myLB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "\\}"             ,    "unicode": "&#x007D;"       ,  "id": "myRB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "["               ,    "unicode": "&#x005B;"       ,  "id": "myLBR",         "dx":"0"                      ,"op": 0    ,"width": 5    },
