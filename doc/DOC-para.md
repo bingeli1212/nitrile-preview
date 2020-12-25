@@ -102,6 +102,23 @@ table-paragraph.
   For instance: "strut:20" would have instructed that each
   row has a height of 20pt.
 
++ title
+
+  This option expects a string that would appear
+  as the "title" of the table, where the "title" is
+  simply a text string that occupies the entire row
+  of the first row of the table, merging all table data
+  of that row into one large table data. 
+
++ caption
+
+  This caption, when set, is to instruct the table parsing
+  routine to look for caption lines at the beginning of the 
+  subsequent lines. The caption is assumed to have started
+  at the first line and continue until a double-backslash
+  is encountered as the sole content of a line, after which
+  the normal table content is to start.
+
 The content of the table is determined in two different ways. In
 particular, the first line of the table-paragraph is scanned, and if
 the first two characters is found to be a ampersand character (U+0026)
@@ -157,4 +174,18 @@ Note that for a LATEX translation the presence of the "fr" option
 automatically assume that the table data for each column is to treated
 as a paragraph.
 
+Following is an example where "caption" option is to be utilized. The
+caption in this case is the text "First quarter sales of the year."
 
+    ~~~table{caption}
+    First quarter sales
+    of the year.
+    \\
+    Month    | Sales
+    ================
+    January  | 100
+    February | 200
+    Match    | 300
+    ~~~
+
+ 
