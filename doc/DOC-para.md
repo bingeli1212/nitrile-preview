@@ -94,6 +94,14 @@ table-paragraph.
   This option contains a list of positive integers each
   of which describing the relative width of the column.
 
++ strut 
+
+  This options contains an integer that describes the number
+  of pt(s) for the height of each row. Setting this to an
+  integer to allow for each row to have a fixed row height.
+  For instance: "strut:20" would have instructed that each
+  row has a height of 20pt.
+
 The content of the table is determined in two different ways. In
 particular, the first line of the table-paragraph is scanned, and if
 the first two characters is found to be a ampersand character (U+0026)
