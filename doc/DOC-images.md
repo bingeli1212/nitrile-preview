@@ -1,122 +1,72 @@
-# Supporting images
+---
+title: External Images
+---
 
+External images can be part of a paragraph. Both LATEX and HTML supports 
+mixing images and text. 
 
-Nitrile only support typesetting images inside a special fenced block
-that is 'imgs'.
+Nitrile provides a phrase that allows for an external image file to be
+included within the paragraph. For instance, ``&img{tree.png}`` would
+have specified that the image file ``tree.png`` that is in the same
+directory of the MD file is to be inserted at this location
+of the paragraph.
 
-The IMGS block is used to typeset images.
+There are several things about the image -
 
-    ``` imgs
-    image (tree.png) A tree.
-    image (flog.png) A flog.
-    ```
+1. For LATEX and HTML, the image will be placed inside a rectangle area
+   that is the maximum width of the current paragraph, with a height
+   that reflect an aspect ratio of 4:3. This will always ensure that
+   that this rectangle area's height is three-quarter of the width. 
+   However, the aspect ratio of the original image is to be maintained
+   and shown maximized within this rectangle area. For example, if the
+   image has a height that is twice the length as its width, then 
+   the image will shown with its height reaching the top and bottom
+   of the rectangle area, and some visible gap will be shown to the
+   left and right-hand side of this image.
 
-All images are by default set to be the width of the entire page.  When two
-images are specified, they will appear on top of each other.  If you want two
-images laid out side-by-side, you need to use the '.column' fence option.
+2. For LATEX, this effect is achieved using a ``\parbox`` with a fixed
+   width and height, and then the image file is placed inside this
+   box by the presence of the ``\includegraphics{}`` command, where
+   this command will have a ``keepaspectratio`` option set. 
 
-    .column 2
-    ``` imgs
-    image (tree.png) A tree.
-    image (flog.png) A flog.
-    ```
+3. For HTML, this effect is achieved through the availability of the
+   image-element of SVG. This element allows an external image to be
+   shown inside an SVG. The aspect ratio of this image is automatically
+   preserved. The SVG itself is then designed to maintain a 4:3 
+   aspect ratio. This workaround is due to the limitation of the
+   current CSS standard that lacks the native support for allowing for
+   a specific aspect ratio to be specified for an image.
 
-The ".column" fence option specifies that for each row two images are going to
-appear.  By default, each image is to take up half the width of the page. The
-image's height is automatically determined by the aspect ratio of the image
-file. LATEX, and HTML both exhibit this behavior.
+4. For EPUB, the technique of using the image-element within a SVG
+   seems to not to be well supported currently by iBook and Calibra. 
+   Thus, the EPUB translation has been reverted to using the img-element
+   tag instead. 
 
-You can override the width of the image. For example, you can specify that one
-image takes up 40-percent of the width of the page and the other 60-percent.
-You can do that by using the '.adjust' fence option.
+The advantage of always have a container rectangle that respects
+aspect ratio is such that when placing images side-by-side, especially
+inside a figure environment, the vertical distance will line up
+nicely, whilest otherwise images placed side-by-side will tend to 
+have different height. 
 
-    .column 2
-    .adjust 4 6
-    ``` imgs
-    image (tree.png) A tree.
-    image (flog.png) A flog.
-    ```
+To express a different aspect ratio other than the default setting
+of 4:3, submit an "aspectratio" style-option. For instance, 
+``&img{tree.png,aspectratio:9/4}`` would have provided a container
+rectangle that is 9:4 in aspect ratio. 
 
-The '.adjust' option expects a list of numbers. Each number applies to each
-subsequent column starting from the first column. These numbers will always be
-treated as relative to each other. For example, you can expect the that the
-first image be   occupying 40 percent of the page width and the second image
-occupying 60 percent of the page width with the prevous setting.  Setting the 
-'.adjust' option to the following achieves the same effect.
+For a img-phrase that is part of a paragraph, the width is automatically
+set to be the maximum of the paragraph. However, this could be changed
+by submitting the "width" style-option. For instance, 
+``&img{tree.png,width:50%,aspectratio:9/4}`` would have
+expressed that the container rectangle be set at the 50-percent of
+the current paragraph width, and where its height is to be four-nineth
+of the width, whatever that is.
 
-    .adjust 2 3
-
-For a single image, if you do not want the images to be taking up the entire page width,
-then you can arrange to specify a non-zero margin, using the '.margin' option.
-
-    .margin .1
-
-The number following this option must a number from 0-1 specifying the fraction
-of the page that will be reserved as margin. Thus, specifying a '0.1' will set
-up 10 percent of the page width as the left margin as well as the same amount
-for the right margin. This leaves the rest 80 percent for the image, and the image
-will be displayed at the center of the page at 80 percent the width of the page.
-
-If there are two images, then the same margin would still apply. However, since
-the rest of the spaces for images are reduced, say to 80 percent, then the two
-images such as following will compete for the 80 percent space, with the first
-image getting '.8 x .4 = .32' or 32 percent of the width, and the second image
-getting '.8 x .6 = .48' or 48 percent of the page width.
-
-    .margin .1
-    .column 2
-    .adjust 4 6
-    ``` imgs
-    image (tree.png) A tree.
-    image (flog.png) A flog.
-    ```
-
-You can also arrange to add additional "gaps" between images so that they don't 
-push against each other. The '.gap' option can be used for that.
-
-    .gap .1
-
-The number following the '.gap' is a number between 0-1 expressing the fraction
-of the page width that will be used as the gaps between each two images (if
-there are more than two).  Thus, the previous setting would have only left
-70-percent of the page width for the images themselves (10 percent left margin,
-10 percent right margin, and 10 percent gap between the two images). 
-
-    .gap .1
-    .margin .1
-    .column 2
-    .adjust 4 6
-    ``` imgs
-    image (tree.png) A tree.
-    image (flog.png) A flog.
-    ```
-
-Sinces the first image is 40-percent of the total, it would end up occupying
-the page width of '.4 x .7 = .28'  which is 28 percent of the page width.
-Similarly, the second image would have taken up only '.6 x .7 = .42', or 42
-percent of the page width.
-
-Within the block, each image is to start with the word "image", followed by the
-image file which must be placed in a set of open-close parentheses. Additional text
-after that line is considered as the subtitle for the image, which will appear 
-underneath the image, whether in LATEX or PREVIEW.
-
-You can use a single-backslash at the end of the line to signal that this line
-is to be continued at the next line.
-
-    .gap .1
-    .margin .1
-    .column 2
-    .adjust 4 6
-    ``` imgs
-    image (tree.png) A beautiful tree of\
-       century old.
-    image (flog.png) A flog.
-    ```
-
-The notation of `![Tree](tree.png)` to express an image is not supported by
-Nitrile. As a result, images will never appear anywhere else except for 
-when it is within a IMGS block.
+When external images are used within a "figure" paragraph, 
+the width of each image is always fixed at the width that is 
+determined by the total paragraph width and the total number
+of images to appear side by side. In this case, the width info
+supplied by the "width" style-option is to be
+ignored.
 
 
 
