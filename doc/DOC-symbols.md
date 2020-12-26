@@ -1,6 +1,5 @@
 ---
 title: NITRILE symbols
-latex.program: lualatex
 ---
 
 Symbols are those special characters that are inconvenient to express
@@ -119,7 +118,7 @@ Following are the key points about the symbols:
 
 - The "mathabx" package is not safe to use. It defines the following
   symbols: ``\fourth`` ``\third`` ``\second``. But it complains some other
-  symbols being multiply defined, including ``\Sun``.
+  symbols being multiply defined.
 
 - The "mathdots" package is safe to use. However, the symbols it defines
   ``\ddots`` ``\iddots`` ``vdots`` does not seems to work correctly.
@@ -156,10 +155,7 @@ Following are the key points about the symbols:
   ``\Eqqcolon``
   ``\Coloneq``
 
-- The "mathabx" package is safe to include. It defines many
-  binary relation operators such as ``\therefore``. However,
-  AMS has already provided with a ``\therefore`` command
-  for the same symbol.
+- The "ifsym" package is safe to include. 
 
 - The ``\mid`` and ``|`` are different. The former is a binary
   operation while the latter is a math ordinal. Contrast
@@ -169,7 +165,7 @@ Following are the key points about the symbols:
 
 - The "MnSymbol" package is not safe to include. It defines
   the ``filledlargestar`` symbol and others. But including
-  it causes ``\varkappa`` to disappear and become a undefined 
+  it causes ``\varkappa`` to disappear and become undefined 
   command.
 
 - The "stix" package is not to be included. When included after
@@ -217,7 +213,9 @@ Following are the key points about the symbols:
     $  \$    †  \dag         ¶  \P
   ```
 
-- Following are common LATEX symbols and its corresponding symbol name:
+- Following are common LATEX symbols and its corresponding standard
+  entity name: clock, weather, misc, alpine, geometry, and electronic.
+  The PDF manual for this package is written in German.
 
   ```
     \cdot            \sdot
@@ -233,15 +231,23 @@ Following are the key points about the symbols:
     \longrightarrow  \xrarr
     \iddots          \dtdot
     \ddots           \dtdot
-    \udots           \utdot (require MnSymbol package)
+    \udots           \utdot
   ```
 
-- &NotReverseElement; 
+- Note that the \udots symbol are only provided by "MnSymbol" and "fdsymbol" package,
+  neither of which are safe to include given the other included packages; therefore
+  current `&utdot;` entity is not available in LATEX--it will be generated as a Unicode
+  entry which will cause problem when generating PDFLATEX.
+
+- To use the "ifsym" package it must be specified with an option; the available
+  options are: clock, weather, misc, alpine, geometry, and electronic.
+
+  \usepackage[geometry]{ifsym} 
 
 
 # GREEK CAPITAL AND SMALL LETTERS
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
    Symbol                                  | Command
    ------------------------------------------------------------------------------
    &Alpha; and &alpha;                     |  `&Alpha;` and `&alpha;`
@@ -274,7 +280,7 @@ Following are the key points about the symbols:
 
 # RELATIONAL OPERATORS
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
   Symbol              |  Command             | Comment
   ------------------------------------------------------------------------------
   &nless;             |  `&nless;`           | [!nless!]
@@ -308,19 +314,19 @@ Following are the key points about the symbols:
   &propto;            |  `&propto;`          | [!propto!]
   &ne;                |  `&ne;`              | [!ne!]
   &parallel;          |  `&parallel;`        | [!parallel!]
+  &nparallel;         |  `&nparallel;`       | [!nparallel!]
   &asymp;             |  `&asymp;`           | [!asymp!]
   &vdash;             |  `&vdash;`           | [!vdash!]
   &smile;             |  `&smile;`           | [!smile!]
   &models;            |  `&models;`          | [!models!]
   &perp;              |  `&perp;`            | [!perp!]
-  &nparallel;         |  `&nparallel;`       | [!nparallel!]
   &bowtie;            |  `&bowtie;`          | [!bowtie!]
   &dashv;             |  `&dashv;`           | [!dashv!]
   &frown;             |  `&frown;`           | [!frown!]
   &in;                |  `&in;`              | [!in!]
-  &nin;               |  `&nin;`             | [!nin!]
-  &ReverseElement;    |  `&ReverseElement;`  | [!ReverseMember!]
-  &NotReverseElement; |  `&NotReverseElement;`| [!NotReverseMember!]
+  &notin;             |  `&notin;`           | [!notin!]
+  &ReverseElement;    |  `&ReverseElement;`  | [!ReverseElement!]
+  &NotReverseElement; | `&NotReverseElement;`| [!NotReverseElement!]
   &mid;               |  `&mid;`             | [!mid!]
   &nmid;              |  `&nmid;`            | [!nmid!]
 ```
@@ -328,15 +334,15 @@ Following are the key points about the symbols:
 # BINARY OPERATORS
 
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
   Symbol              |  Command             | Comment
   ---------------------------------------------------------------
   &pm;                | `&pm;`               | [!pm!]
   &mp;                | `&mp;`               | [!mp!]
   &times;             | `&times;`            | [!times!]
+  &Cross;             | `&Cross;`            | [!Cross!]
   &div;               | `&div;`              | [!div!]
   &ast;               | `&ast;`              | [!ast!]
-  &star;              | `&star;`             | [!star!]
   &uplus;             | `&uplus;`            | [!uplus!]
   &sqcap;             | `&sqcap;`            | [!sqcap!]
   &sqcup;             | `&sqcup;`            | [!sqcup!]
@@ -344,9 +350,8 @@ Following are the key points about the symbols:
   &wedge;             | `&wedge;`            | [!wedge!]
   &CircleDot;         | `&CircleDot;`        | [!CircleDot!]
   &diamond;           | `&diamond;`          | [!diamond!]
-  &circ;              | `&circ;`             | [!circ!]
   &bullet;            | `&bullet;`           | [!bullet!]
-  &wr;                | `&wr;`               | [!wr!]
+  &wreath;            | `&wreath;`           | [!wreath!]
   &oplus;             | `&oplus;`            | [!oplus!]
   &ominus;            | `&ominus;`           | [!ominus!]
   &otimes;            | `&otimes;`           | [!otimes!]
@@ -362,7 +367,7 @@ Following are the key points about the symbols:
 
 # SET SYMBOLS
 
-```tabulate{border:2;n:2;fr:1 2 4}
+```table{border:2;n:2;fr:1 2 4}
   Symbol              |  Command             | Comment
   ----------------------------------------------------------------
   &emptyset;          | `&emptyset;`         | [!emptyset!]
@@ -378,23 +383,17 @@ Following are the key points about the symbols:
 ```
 
 
-# LOGIC SYMBOLS
+# LOGICAL SYMBOLS
 
-```tabulate{border:2;n:2;fr:1 2 4}
+```table{border:2;n:2;fr:1 2 4}
   Symbol              |  Commands            | Comment
   ----------------------------------------------------------------
-  &exists;            | `&exists;`           | [!exists!]
-  &nexists;           | `&nexists;`          | [!nexists!]
+  &exist;             | `&exist;`            | [!exist!]
+  &nexist;            | `&nexist;`           | [!nexist!]
   &forall;            | `&forall;`           | [!forall!]
   &neg;               | `&neg;`              | [!neg!]
-  &lor;               | `&lor;`              | [!lor!]
-  &land;              | `&land;`             | [!land!]
-  &xrArr;             | `&xrArr;`            | [!xrArr!]
-  &rArr;              | `&rArr;`             | [!rArr!]
-  &xlArr;             | `&xlArr;`            | [!xlArr!]
-  &lArr;              | `&lArr;`             | [!lArr!]
-  &iff;               | `&iff;`              | [!iff!]
-  &hArr;              | `&hArr;`             | [!hArr!]
+  &xvee;              | `&xvee;`             | [!xvee!]
+  &xwedge;            | `&xwedge;`           | [!xwedge!]
   &top;               | `&top;`              | [!top!]
   &bot;               | `&bot;`              | [!bot!]
   &subset;            | `&subset;`           | [!subset!]
@@ -414,9 +413,31 @@ Following are the key points about the symbols:
   &setminus;          | `&setminus;`         | [!setminus!]
 ```
 
+-- \(a > b \hArr b < a\)
+
+# GROUP THEORY SYMBOLS
+
+```table{border:2;n:2;fr:1 2 4}
+  Symbol              |  Commands            | Comment
+  ----------------------------------------------------------------
+  &vltri;             | `&vltri;            `| [!vltri!]
+  &vrtri;             | `&vrtri;            `| [!vrtri!]
+  &vltrie;            | `&vltrie;           `| [!vltrie!]
+  &vrtrie;            | `&vrtrie;           `| [!vrtrie!]
+  &nltri;             | `&nltri;            `| [!nltri!]
+  &nrtri;             | `&nrtri;            `| [!nrtri!]
+```
+
+-- \(F \vltri G\)
+-- \(F \nltri G\)
+-- \(G \vrtri F\)
+-- \(G \nrtri F\)
+
+
+
 # DOTS
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
   Symbol              |  Commands            | Comment
   ----------------------------------------------------------------
   &sdot;              | `&sdot;  `           | [!sdot!]
@@ -424,13 +445,13 @@ Following are the key points about the symbols:
   &hellip;            | `&hellip;`           | [!hellip!]
   &ctdot;             | `&ctdot; `           | [!ctdot!]
   &dtdot;             | `&dtdot; `           | [!dtdot!]
-  &utdot;             | `&utdot;`            | [!utdot!]
+  &utdot;             | `&utdot; `           | [!utdot!]
 ```
 
 
 # DELIMETERS
 
-```tabulate{border:2;n:2;fr:1 2 4}
+```table{border:2;n:2;fr:1 2 4}
   Symbol              |  Commands            | Comment
   ----------------------------------------------------------------
   &lceil;             | `&lceil;`            | [!lceil!]
@@ -441,49 +462,56 @@ Following are the key points about the symbols:
   &rfloor;            | `&rfloor;`           | [!rfloor!]
   &llcorner;          | `&llcorner;`         | [!llcorner!]
   &lrcorner;          | `&lrcorner;`         | [!lrcorner!]
-  &langle;            | `&langle;`           | [!langle!]
-  &rangle;            | `&rangle;`           | [!rangle!]
+  &lang;              | `&lang;`             | [!lang!]
+  &rang;              | `&rang;`             | [!rang!]
   &vert;              | `&vert;`             | [!vert!]
   &Vert;              | `&Vert;`             | [!Vert!]
 ```
 
-# POINTNG ARROWS
+# LEFT AND RIGHT POINTNG ARROWS
 
-```tabulate{border:2;n:2;fr:1 2 4}
+~~~table{border:2;n:2;}
   Symbol              |  Commands            | Comment
   ----------------------------------------------------------------
-  &larr;              | `&larr;`             | [!larr!]
-  &rarr;              | `&rarr;`             | [!rarr!]
-  &lArr;              | `&lArr;`             | [!lArr!]
-  &rArr;              | `&rArr;`             | [!rArr!]
   &mapsto;            | `&mapsto;`           | [!mapsto!]
   &mapstoleft;        | `&mapstoleft;`       | [!mapstoleft!]
   &xmapsto;           | `&xmapsto;`          | [!xmapsto!]
   &xmapstoleft;       | `&xmapstoleft;`      | [!xmapstoleft!]
-  &xlarr;             | `&xlarr;`            | [!xlarr!]
+  ----------------------------------------------------------------
+  &rarr;              | `&rarr;`             | [!rarr!]
+  &rArr;              | `&rArr;`             | [!rArr!]
   &xrarr;             | `&xrarr;`            | [!xrarr!]
-  &xlArr;             | `&xlArr;`            | [!xlArr!]
   &xrArr;             | `&xrArr;`            | [!xrArr!]
-```
+  ----------------------------------------------------------------
+  &larr;              | `&larr;`             | [!larr!]
+  &lArr;              | `&lArr;`             | [!lArr!]       
+  &xlarr;             | `&xlarr;`            | [!xlarr!]
+  &xlArr;             | `&xlArr;`            | [!xlArr!]
+  ----------------------------------------------------------------
+  &harr;              | `&harr;`             | [!harr!]
+  &xharr;             | `&xharr;`            | [!xharr!]
+  &hArr;              | `&hArr;`             | [!hArr!]
+  &xhArr;             | `&xhArr;`            | [!xhArr!]
+~~~
 
 
 # UP AND DOWN POINTING ARROWS
 
-```tabulate{border:2;n:2;fr:1 2 4}
+```table{border:2;n:2;fr:1 2 4}
   Symbol              |  Commands            | Comment
   ----------------------------------------------------------------
-  &uarr;              | `&uarr;`           | [!uarr!]
-  &uArr;              | `&uArr;`           | [!uArr!]
-  &darr;              | `&darr;`           | [!darr!]
-  &dArr;              | `&dArr;`           | [!dArr!]
-  &varr;              | `&varr;`           | [!varr!]
-  &vArr;              | `&vArr;`           | [!vArr!]
+  &uarr;              | `&uarr;`             | [!uarr!]
+  &uArr;              | `&uArr;`             | [!uArr!]
+  &darr;              | `&darr;`             | [!darr!]
+  &dArr;              | `&dArr;`             | [!dArr!]
+  &varr;              | `&varr;`             | [!varr!]
+  &vArr;              | `&vArr;`             | [!vArr!]
 ```
 
 
 # HEBREW LETTER LIKE SYMBOLS
 
-```tabulate{border:2;n:2;fr:1 2 4}
+```table{border:2;n:2;fr:1 2 4}
   Symbol              |  Commands            | Comment
   ----------------------------------------------------------------
   &aleph;             | `&aleph;`            | [!aleph!]
@@ -494,7 +522,7 @@ Following are the key points about the symbols:
 
 # Fraction symbols
 
-```tabulate{border:2;n:2;fr:1 2 4}
+```table{border:2;n:2;fr:1 2 4}
   Symbol              |  Commands            | Comment
   ----------------------------------------------------------------
   &frac12;            | `&frac12;`           | [!frac12!]
@@ -520,7 +548,7 @@ Following are the key points about the symbols:
 
 # COMBINING DIACRITICS
 
-```tabulate{border:2;n:2;fr:1 2 4}
+```table{border:2;n:2;fr:1 2 4}
   Symbol               |  Commands             | Comment
   ----------------------------------------------------------------
   a~dot                | `a~dot`               |
@@ -558,10 +586,9 @@ The math variant symbol name "mathbf"
 must not be followed by another letter or digit such as
 ``a~mathbfx`` or ``a~mathbf1``.
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
     mathbb         |  mathbfds      | mathit         | mathcal
   ----------------------------------------------------------------
-    1fr            |  1fr           | 1fr            | 1fr
     a~mathbb       | a~mathbf       | a~mathit       | a~mathcal
     b~mathbb       | b~mathbf       | b~mathit       | b~mathcal
     c~mathbb       | c~mathbf       | c~mathit       | c~mathcal
@@ -635,7 +662,7 @@ only the letter n, and i, and digits 0-9 are available as superscript.
 The base can only be a single digit letter that is in the
 range of a-z, and/or A-Z.
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
     Symbol               |  Commands             | Comment
   ----------------------------------------------------------------
     a^0                  | `a^0`                 |
@@ -670,7 +697,7 @@ as the subscript. The base can only be a letter in the range of
 a-z and A-Z.
 
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
     Symbol               |  Commands             | Comment
   ----------------------------------------------------------------
     a_1                  | `a_1`                 |
@@ -700,7 +727,7 @@ a-z and A-Z.
 
 # COLONEQUAL RELATED SHAPES
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
   Symbol             | Command                | Comment
   ----------------------------------------------------------------
   &coloneq;          | `&coloneq;`            | [!coloneq!]
@@ -710,21 +737,15 @@ a-z and A-Z.
 
 # OTHER SYMBOLS
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
   Symbol              | Command                | Comment
   ----------------------------------------------------------------
   &deg;               | `&deg;`                | [!deg!], "&deg;C", "&deg;F"
-  &checkmark;         | `&checkmark;`          | [!checkmark!]
-  &ballotx;           | `&ballotx;`            | [!ballotx!]
-  &maltese;           | `&maltese;`            | [!maltese!]
-  &CheckedBox;        | `&CheckedBox;`         | [!CheckedBox!]
-  &XBox;              | `&XBox;`               | [!XBox!]
-  &Box;               | `&Box;`                | [!Box!]
 ```
 
 # LETTER-LIKE SYMBOLS
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
   Symbol              | Command                | Comment
   ----------------------------------------------------------------
   &complement;        | `&complement;`         | [!complement!]
@@ -746,7 +767,7 @@ a-z and A-Z.
 
 # CURRENCY SYMBOLS
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
   Symbol         | Command          | Comment
   ----------------------------------------------------------------
   &baht;         | `&baht;`         | [!baht!]
@@ -768,7 +789,7 @@ a-z and A-Z.
 
 # LATIN LETTERS
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
   Symbol      | Command         | Comment
   ----------------------------------------------------------------
   &aring;     | `&aring;`       | [!aring!]
@@ -795,13 +816,31 @@ a-z and A-Z.
   &hstrok;    | `&hstrok;`      | [!hstrok!]
 ```
 
-# GEOMETRIC SHAPES
+# GEOMETRIC SHAPES & DINGBAT
 
-```tabulate{border:2;n:2}
+```table{border:2;n:2}
   Symbol              |  Command                | Comment
   ----------------------------------------------------------------
+  &BigSquare;         |  `&BigSquare;       `   | [!BigSquare!]
+  &BigCircle;         |  `&BigCircle;       `   | [!BigCircle!]
+  &BigTriangleDown;   |  `&BigTriangleDown; `   | [!BigTriangleDown!]
+  &BigTriangleUp;     |  `&BigTriangleUp;   `   | [!BigTriangleUp!]
+  &star;              |  `&star;`               | [!star!]
+  &copy;              |  `&copy;`               | [!copy!]
+  &reg;               |  `&reg;`                | [!reg!]
+  &SM;                |  `&SM;`                 | [!SM!]
+  &trade;             |  `&trade;`              | [!trade!]
+  &dagger;            |  `&dagger;`             | [!dagger!]
+  &Dagger;            |  `&Dagger;`             | [!Dagger!]
+  &para;              |  `&para;`               | [!para!]
+  &sect;              |  `&sect;`               | [!sect!]
+  &checkmark;         |  `&checkmark;`          | [!checkmark!]
+  &maltese;           |  `&maltese;`            | [!maltese!]
+  &cross;             |  `&cross;`              | [!cross!]
+  &BallotBox;         |  `&BallotBox;`          | [!BallotBox!]
+  &BallotBoxWithCheck;|  `&BallotBoxWithCheck;` | [!BallotBoxWithCheck!]
+  &BallotBoxWithX;    |  `&BallotBoxWithX;`     | [!BallotBoxWithX!]
   &ang;               |  `&ang;`                | [!ang!]
-  &angrt;             |  `&angrt;`              | [!angrt!]
   &angmsd;            |  `&angmsd;`             | [!angmsd!]
   &angsph;            |  `&angsph;`             | [!angsph!]
   &xutri;             |  `&xutri;`              | [!xutri!]
@@ -810,37 +849,8 @@ a-z and A-Z.
   &rtri;              |  `&rtri;`               | [!rtri!]
   &dtri;              |  `&dtri;`               | [!dtri!]
   &ltri;              |  `&ltri;`               | [!ltri!]
-  &parallel;          |  `&parallel;`           | [!parallel!]
-  &nparallel;         |  `&nparallel;`          | [!nparallel!]
-  &perp;              |  `&perp;`               | [!perp!]
-  &squ;               |  `&squ;`                | [!squ!]
-  &squf;              |  `&squf;`               | [!squf!]
+  &square;            |  `&square;             `| [!square!]
+  &blacksquare;       |  `&blacksquare;        `| [!blacksquare!]
   &cir;               |  `&cir;`                | [!cir!]
-  &cirf;              |  `&cirf;`               | [!cirf!]
-  &pentagon;          |  `&pentagon;`           | [!pentagon!]
-  &PENTAGON;          |  `&PENTAGON;`           | [!PENTAGON!]
-  &hexagon;           |  `&hexagon;`            | [!hexagon!]
-  &HEXAGON;           |  `&HEXAGON;`            | [!HEXAGON!]
-  &LEFTcircle;        |  `&LEFTcircle;`         | [!LEFTcircle!]
-  &RIGHTcircle;       |  `&RIGHTcircle;`        | [!RIGHTcircle!]
-```
-
-
-# DINGBAT
-
-```tabulate{border:2;n:2}
-  Symbol         |  Command         | Comment
-  ----------------------------------------------------------------
-  &copy;         |  `&copy;`        | [!copy!]
-  &reg;          |  `&reg;`         | [!reg!]
-  &SM;           |  `&SM;`          | [!SM!]
-  &trade;        |  `&trade;`       | [!trade!]
-  &dagger;       |  `&dagger;`      | [!dagger!]
-  &Dagger;       |  `&Dagger;`      | [!Dagger!]
-  &para;         |  `&para;`        | [!para!]
-  &sect;         |  `&sect;`        | [!sect!]
-  &checkmark;    |  `&checkmark;`   | [!checkmark!]
-  &maltese;      |  `&maltese;`     | [!maltese!]
-  &ballotx;      |  `&ballotx;`     | [!ballotx!]
-  &yinyang;      |  `&yinyang;`     | [!yinyang!]
+  &bigcirc;           |  `&bigcirc;            `| [!bigcirc!]
 ```
