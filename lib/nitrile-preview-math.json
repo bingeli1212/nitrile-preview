@@ -114,6 +114,9 @@
     { "kbd": "\\lbracklower"   ,    "unicode": "&#x23A3;"       ,  "id": "myLBRACKLOWER", "dx":"0"                      ,"op": 3    ,"width": 10    },
     { "kbd": "\\rbrackupper"   ,    "unicode": "&#x23A4;"       ,  "id": "myRBRACKUPPER", "dx":"0"                      ,"op": 3    ,"width": 10    },
     { "kbd": "\\rbracklower"   ,    "unicode": "&#x23A6;"       ,  "id": "myRBRACKLOWER", "dx":"0"                      ,"op": 3    ,"width": 10    },
+   
+    { "kbd": "\\lbrackexten"   ,    "unicode": "&#x23A2;"       ,  "id": "myLBRACKEXTEN", "dx":"0"                      ,"op": 3    ,"width": 10    },
+    { "kbd": "\\rbrackexten"   ,    "unicode": "&#x23A5;"       ,  "id": "myRBRACKEXTEN", "dx":"0"                      ,"op": 3    ,"width": 10    },
 
     { "kbd": "\\{"             ,    "unicode": "&#x007B;"       ,  "id": "myLB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "\\}"             ,    "unicode": "&#x007D;"       ,  "id": "myRB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
