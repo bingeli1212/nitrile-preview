@@ -7,7 +7,8 @@ title: EPUB Generation
 An example "package.opf" file:
 
     <?xml version='1.0' encoding='UTF-8'?>
-    <package xmlns='http://www.idpf.org/2007/opf' version='3.0' xml:lang='en' unique-identifier='pub-id'>
+    <package xmlns='http://www.idpf.org/2007/opf' 
+      version='3.0' xml:lang='en' unique-identifier='pub-id'>
     <metadata xmlns:dc='http://purl.org/dc/elements/1.1/'>
     <dc:identifier id='pub-id'>zwqrwtcablkj6v3a45</dc:identifier>
     <dc:language>en</dc:language>
@@ -16,9 +17,11 @@ An example "package.opf" file:
     <dc:creator>James Yu</dc:creator>
     </metadata>
     <manifest>
-    <item id='toc' properties='nav' href='toc.xhtml' media-type='application/xhtml+xml'/>
+    <item id='toc' properties='nav' href='toc.xhtml' 
+      media-type='application/xhtml+xml'/>
     <item id='stylesheet' href='style.css' media-type='text/css'/>
-    <item id='titlepage' href='titlepage.xhtml' media-type='application/xhtml+xml' />
+    <item id='titlepage' href='titlepage.xhtml' 
+      media-type='application/xhtml+xml' />
     <item id='0' href='0.xhtml' media-type='application/xhtml+xml' />
     <item id='image0' href='image-clock.png' media-type='image/png' />
     </manifest>
@@ -53,26 +56,36 @@ a image file content and return a string that is the mime-type.
 The returned mime-type is determined by reading the signature
 of the input file.
 
-[ paper.js ]
+[ The Paper JS-class ]
 
-The "paper.js" file contains a JS class "Paper" that is implemented
-to return an object that describes the structure of the blocks.
+The "paper.js" file contains a JS-class "Paper" that is implemented
+to return an object that describes the structure of the blocks,
+grouped by parts, chapters, sections, etc.
 It provides a function named "to_top()" that should be called as 
 such,
 
     let paper = new NitrilePreviewPaper(translator);
     let top = paper.to_top(blocks);
 
-The return value 'top' is a JS array. Its elements will be interpreted
-slightly differently depending the presence of parts and chapters.
+The return value 'top' is a JS array. Its contents will be interpreted
+slightly differently depending whether external parts/chapters are imported.
+The number of parts and chapters can be obtained by two public data 
+members,
+
+    paper.num_parts
+    paper.num_chapters
+
 In particular,
 
-- if there are no parts and no chapters, then it 
-  contains single "child" element, which is itself
-  a JS array, and which contains
-  a list of blocks from the main document.
+- if there were no parts and no chapters, then the 'top' array
+  would have contained single "child" element, which is itself
+  a JS array, holding
+  all blocks from the main document.
   If there are sections within this main document, each
-  section is to appear as an array.
+  section is to appear as an array by itself, and subsection, subsubsections
+  will also be parsed to form an array. Within each
+  array, the first element should've been the HDGS block for that
+  section.
 
   ```
   top (array) 
@@ -80,22 +93,24 @@ In particular,
     + block
     + block
     + section (array) 
+      + block (HDGS)
       + block
       + block
     + section (array)
+      + block (HDGS)
       + block
       + block
   ```
 
-- if there are chapters being imported but no parts,
-  then the returned value would only contain arrays.
-  Each array is to capture each imported chapters,
-  except for the first array, which is to 
-  capture all blocks
+- if there were chapters being imported but no parts,
+  then the 'top' object would've only had arrays as its elements.
+  Each array is to capture an imported chapter,
+  except for the first array, which is named "anonymous chapter",
+  is to capture only the blocks
   in the main document. 
-  If there are no content in the main document, 
-  then the first "anonymous chapter" 
-  array will not contain any blocks.
+  If there were no content in the main document, 
+  then the first "anonymous chapter" will still exist
+  but it will be empty.
 
   ```
   top (array) 
@@ -104,9 +119,11 @@ In particular,
       + block
       + block
       + section (array) 
+        + block (HDGS)
         + block
         + block
       + section (array)
+        + block (HDGS)
         + block
         + block
     + chapter (array)
@@ -119,12 +136,13 @@ In particular,
       + block
   ```
 
-- if there are chapters as well as parts, 
-  then the 'top' object is to contain only arrays.
+- if there were chapters as well as parts, 
+  then the 'top' object were to contain only arrays
+  as its elements.
   Each array is to capture the imported part, except
-  for the first one, which is an anonymous part that
-  always contains a single anonymous chapter, which
-  contain all the blocks in the main document.
+  for the first one, which is called "anonymous part" that
+  always contains a single element called "anonymous chapter", which
+  should've been holding all the blocks in the main document.
   If there are no content in the main document, 
   then the "anonymous chapter" will still be there
   but it will have zero elements.
@@ -154,13 +172,47 @@ In particular,
     + part 2 (array)
   ```
 
+  In general a Part should've been specified before the
+  very first imported chapter---but if for some reason a Part
+  wasn't specified before the first imported chapter, then 
+  this chapter will appear under the folder of "anonymous part",
+  and listed as a sibling of "anonymous chapter".
+
+  ```
+  top (array) 
+    + anonymous part (array)
+      + anonymous chapter (array) 
+        + block
+        + block
+        + block
+        + section (array) 
+          + block
+          + block
+        + section (array)
+          + block
+          + block
+      + chapter (array)
+        + block (HDGS/0)
+        + block 
+        + block
+    + part 1 (array)
+      + chapter (array)
+        + block (HDGS/0)
+        + block
+        + block
+    + part 2 (array)
+  ```
+
 When the main document is a master document that imports parts
 and/or chapters, the content of the main document will always
 be an individual XHTML file that is part of the spine---this
-means that the read will likely encounter an empty page after
+means that the reader will likely encounter an empty page after
 the title. This intentional, and serve the purpose of allowing
 front matter contents to be served in the future, which
 should be captured by the main document blocks.
+
+
+
 
 
 
@@ -181,8 +233,8 @@ should be captured by the main document blocks.
   problems. First it does not support Unicode characters beyond
   0xFFFF. Thus, an italic variable such as v that is expressed
   by U+1D463 is not going to be shown correctly. Secondly, it
-  has trouble position the image inside a <caption> element
-  correctly---the image being a <img> element containing an
+  has trouble position the image inside a caption-element
+  correctly---the image being a img-element containing an
   embedded SVG. 
 
 - When a SVG is converted to an IMG, with an embedded data URI,
