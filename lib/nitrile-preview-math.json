@@ -105,18 +105,21 @@
     { "kbd": "\\lmoustache"    ,    "unicode": "&#x23B0;"       ,  "id": "myLMOUSTACHE",  "dx":"0"                      ,"op": 3    ,"width": 10    },
     { "kbd": "\\rmoustache"    ,    "unicode": "&#x23B1;"       ,  "id": "myRMOUSTACHE",  "dx":"0"                      ,"op": 3    ,"width": 10    },
 
-    { "kbd": "\\lparenupper"   ,    "unicode": "&#x239B;"       ,  "id": "myLPARENUPPER", "dx":"0"                      ,"op": 3    ,"width": 10    },
-    { "kbd": "\\lparenlower"   ,    "unicode": "&#x239D;"       ,  "id": "myLPARENLOWER", "dx":"0"                      ,"op": 3    ,"width": 10    },
-    { "kbd": "\\rparenupper"   ,    "unicode": "&#x239E;"       ,  "id": "myRPARENUPPER", "dx":"0"                      ,"op": 3    ,"width": 10    },
-    { "kbd": "\\rparenlower"   ,    "unicode": "&#x23A0;"       ,  "id": "myRPARENLOWER", "dx":"0"                      ,"op": 3    ,"width": 10    },
+    { "kbd": "\\lparenupper"   ,    "unicode": "&#x239B;"       ,  "id": "myLPARENUPPER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\lparenlower"   ,    "unicode": "&#x239D;"       ,  "id": "myLPARENLOWER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\rparenupper"   ,    "unicode": "&#x239E;"       ,  "id": "myRPARENUPPER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\rparenlower"   ,    "unicode": "&#x23A0;"       ,  "id": "myRPARENLOWER", "dx":"0"                      ,"op": 3    ,"width": 5    },
 
-    { "kbd": "\\lbrackupper"   ,    "unicode": "&#x23A1;"       ,  "id": "myLBRACKUPPER", "dx":"0"                      ,"op": 3    ,"width": 10    },
-    { "kbd": "\\lbracklower"   ,    "unicode": "&#x23A3;"       ,  "id": "myLBRACKLOWER", "dx":"0"                      ,"op": 3    ,"width": 10    },
-    { "kbd": "\\rbrackupper"   ,    "unicode": "&#x23A4;"       ,  "id": "myRBRACKUPPER", "dx":"0"                      ,"op": 3    ,"width": 10    },
-    { "kbd": "\\rbracklower"   ,    "unicode": "&#x23A6;"       ,  "id": "myRBRACKLOWER", "dx":"0"                      ,"op": 3    ,"width": 10    },
+    { "kbd": "\\lbrackupper"   ,    "unicode": "&#x23A1;"       ,  "id": "myLBRACKUPPER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\lbracklower"   ,    "unicode": "&#x23A3;"       ,  "id": "myLBRACKLOWER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\rbrackupper"   ,    "unicode": "&#x23A4;"       ,  "id": "myRBRACKUPPER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\rbracklower"   ,    "unicode": "&#x23A6;"       ,  "id": "myRBRACKLOWER", "dx":"0"                      ,"op": 3    ,"width": 5    },
    
-    { "kbd": "\\lbrackexten"   ,    "unicode": "&#x23A2;"       ,  "id": "myLBRACKEXTEN", "dx":"0"                      ,"op": 3    ,"width": 10    },
-    { "kbd": "\\rbrackexten"   ,    "unicode": "&#x23A5;"       ,  "id": "myRBRACKEXTEN", "dx":"0"                      ,"op": 3    ,"width": 10    },
+    { "kbd": "\\lbrackexten"   ,    "unicode": "&#x23A2;"       ,  "id": "myLBRACKEXTEN", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\rbrackexten"   ,    "unicode": "&#x23A5;"       ,  "id": "myRBRACKEXTEN", "dx":"0"                      ,"op": 3    ,"width": 5    },
+
+    { "kbd": "\\lbrackextenh"  ,    "unicode": "&#x23A2;"       ,  "id": "myLBRACKEXTENH","dx":"0"                      ,"op": 3    ,"width": 2.5    },
+    { "kbd": "\\rbrackextenh"  ,    "unicode": "&#x23A5;"       ,  "id": "myRBRACKEXTENH","dx":"0"                      ,"op": 3    ,"width": 2.5    },
 
     { "kbd": "\\{"             ,    "unicode": "&#x007B;"       ,  "id": "myLB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "\\}"             ,    "unicode": "&#x007D;"       ,  "id": "myRB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
