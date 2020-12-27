@@ -6,6 +6,7 @@ var work = async (fname)=>{
   console.log('fname=', fname);
   const parser = new NitrilePreviewParser();
   await parser.read_file_async(fname);
+  await parser.read_import_async();
   const translator = new NitrilePreviewPage(parser);
   var data = translator.to_page_document();
   console.log(data);
