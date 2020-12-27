@@ -105,6 +105,11 @@
     { "kbd": "\\lmoustache"    ,    "unicode": "&#x23B0;"       ,  "id": "myLMOUSTACHE",  "dx":"0"                      ,"op": 3    ,"width": 10    },
     { "kbd": "\\rmoustache"    ,    "unicode": "&#x23B1;"       ,  "id": "myRMOUSTACHE",  "dx":"0"                      ,"op": 3    ,"width": 10    },
 
+    { "kbd": "\\lparenupper"   ,    "unicode": "&#x239B;"       ,  "id": "myLPARENUPPER", "dx":"0"                      ,"op": 3    ,"width": 10    },
+    { "kbd": "\\lparenlower"   ,    "unicode": "&#x239D;"       ,  "id": "myLPARENLOWER", "dx":"0"                      ,"op": 3    ,"width": 10    },
+    { "kbd": "\\rparenupper"   ,    "unicode": "&#x239E;"       ,  "id": "myRPARENUPPER", "dx":"0"                      ,"op": 3    ,"width": 10    },
+    { "kbd": "\\rparenlower"   ,    "unicode": "&#x23A0;"       ,  "id": "myRPARENLOWER", "dx":"0"                      ,"op": 3    ,"width": 10    },
+
     { "kbd": "\\{"             ,    "unicode": "&#x007B;"       ,  "id": "myLB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "\\}"             ,    "unicode": "&#x007D;"       ,  "id": "myRB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "["               ,    "unicode": "&#x005B;"       ,  "id": "myLBR",         "dx":"0"                      ,"op": 0    ,"width": 5    },
