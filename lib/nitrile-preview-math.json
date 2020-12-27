@@ -101,6 +101,9 @@
 
     { "kbd": "\\simtop"        ,    "unicode": "&#x23B2;"       ,  "id": "mySUMTOP",      "dx":"0"                      ,"op": 3    ,"width": 12    },
     { "kbd": "\\sumbot"        ,    "unicode": "&#x23B3;"       ,  "id": "mySUMBOT",      "dx":"0"                      ,"op": 3    ,"width": 12    },
+    
+    { "kbd": "\\lmoustache"    ,    "unicode": "&#x23B0;"       ,  "id": "myLMOUSTACHE",  "dx":"0"                      ,"op": 3    ,"width": 10    },
+    { "kbd": "\\rmoustache"    ,    "unicode": "&#x23B1;"       ,  "id": "myRMOUSTACHE",  "dx":"0"                      ,"op": 3    ,"width": 10    },
 
     { "kbd": "\\{"             ,    "unicode": "&#x007B;"       ,  "id": "myLB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "\\}"             ,    "unicode": "&#x007D;"       ,  "id": "myRB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
