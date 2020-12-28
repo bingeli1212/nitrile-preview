@@ -6,31 +6,32 @@ title: EPUB Generation
 
 An example "package.opf" file:
 
-    <?xml version='1.0' encoding='UTF-8'?>
-    <package xmlns='http://www.idpf.org/2007/opf' 
-      version='3.0' xml:lang='en' unique-identifier='pub-id'>
-    <metadata xmlns:dc='http://purl.org/dc/elements/1.1/'>
-    <dc:identifier id='pub-id'>zwqrwtcablkj6v3a45</dc:identifier>
-    <dc:language>en</dc:language>
-    <dc:title id='title'>740 - Sequence and Series</dc:title>
-    <dc:subject> </dc:subject>
-    <dc:creator>James Yu</dc:creator>
-    </metadata>
-    <manifest>
-    <item id='toc' properties='nav' href='toc.xhtml' 
-      media-type='application/xhtml+xml'/>
-    <item id='stylesheet' href='style.css' media-type='text/css'/>
-    <item id='titlepage' href='titlepage.xhtml' 
-      media-type='application/xhtml+xml' />
-    <item id='0' href='0.xhtml' media-type='application/xhtml+xml' />
-    <item id='image0' href='image-clock.png' media-type='image/png' />
-    </manifest>
-    <spine>
-    <itemref idref='titlepage' />
-    <itemref idref='0' />
-    </spine>
-    </package>
-
+```framed
+<?xml version='1.0' encoding='UTF-8'?>
+<package xmlns='http://www.idpf.org/2007/opf' 
+  version='3.0' xml:lang='en' unique-identifier='pub-id'>
+<metadata xmlns:dc='http://purl.org/dc/elements/1.1/'>
+<dc:identifier id='pub-id'>zwqrwtcablkj6v3a45</dc:identifier>
+<dc:language>en</dc:language>
+<dc:title id='title'>740 - Sequence and Series</dc:title>
+<dc:subject> </dc:subject>
+<dc:creator>John Smith</dc:creator>
+</metadata>
+<manifest>
+<item id='toc' properties='nav' href='toc.xhtml' 
+  media-type='application/xhtml+xml'/>
+<item id='stylesheet' href='style.css' media-type='text/css'/>
+<item id='titlepage' href='titlepage.xhtml' 
+  media-type='application/xhtml+xml' />
+<item id='0' href='0.xhtml' media-type='application/xhtml+xml' />
+<item id='image0' href='image-clock.png' media-type='image/png' />
+</manifest>
+<spine>
+<itemref idref='titlepage' />
+<itemref idref='0' />
+</spine>
+</package>
+```
 
 [ Navigation file ]
 
