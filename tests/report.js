@@ -5,13 +5,15 @@ const utils = require('../lib/nitrile-preview-utils');
 var work = async (fname)=>{
   const parser = new NitrilePreviewParser();
   await parser.read_file_async(fname);
-  await parser.read_import_async(fname);
+  await parser.read_import_async();
   const translator = new NitrilePreviewReport(parser);
   var tex = translator.to_report_document();
   console.log(tex);
 };
 
-var fname = "a6.md"
+console.log('process.arg=', process.argv);
+const fname = process.argv[2];
+console.log('fname=', fname);
 
 if(fname){
   work(fname).then(data => console.log(data));
