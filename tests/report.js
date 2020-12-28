@@ -11,7 +11,7 @@ var work = async (fname)=>{
   console.log(tex);
 };
 
-var fname = process.argv[2];
+var fname = "a6.md"
 
 if(fname){
   work(fname).then(data => console.log(data));
