@@ -12,7 +12,7 @@ var work = async ()=>{
 };
 
 console.log(process.argv);
-const fname = "a4.md";
+const fname = process.argv[2];
 console.log(fname);
 
 if (fname) {
