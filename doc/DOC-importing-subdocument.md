@@ -31,63 +31,105 @@ In the previous example, it has been stated that
 two external MD files named "sub1.md" and "sub2.md" 
 will need to be "imported" into the current document.
 
+The importing process will simply "copy" each blocks
+of the source documents and insert them at the end
+of the master document, such that all blocks of the
+sub document will be in the same order and will appear
+after all existing blocks of the main document.
+
 Note that in order for the name of the file to be 
 recognized it must start with a dot or double-dot, such
 as "./sub1.md", or "../sub1.md". The first syntax
 specifies that the file should live in the same location
-as the master document, and the second syntax specifies
+as that of the master document, and the second syntax specifies
 that the source file lives in the parent direction
 of the master document.
 
 Additional styling options can be passed to each
 sub document by adding the ``{...}`` after the file.
-For example, 
+So far, the only recognized option is "hdgn", which 
+will be set to either an integer, or string "part".
 
     ---
     title: My document title.
-    import: ./sub1.md {name:chapter}
-            ./sub2.md {name:chapter}
+    import: Introduction {hdgn:0}
+            ./sub1.md 
+            The Next Phase {hdgn:0}
+            ./sub2.md 
     ---
 
-Would each have attached the styling option "name:chapter"
-to this file. This styling option is to be applied
-to each every blocks of that are read in this subdocument.
-This allows for the translator engine to selectively detect
-which block would have had come from certain places.
+In this case, two chapter headings will be inserted into the 
+final translated document, each with the title of "Introductin"
+and "The Next Phase". The toplevel heading block in a child
+document is HDGS/1, which will be treated as "sections".
 
-Note that it is important not to specify a well know styling
-option name such as label---as doing so will override all
-subdocument's block such that its style option will
-be assigned this value regardless of what's been specified
-in the source document.
+For a report.js translation, the number of chapters, when
+present, will result in a "report" document class being
+set, rather than the default "article".
 
-Note that the main parser, during the importing, would have
-also to create a new synthetic HDGS/0 block that is to be inserted
-to the end of the main blocks before all other blocks in the 
-subdocument are inserted. This HDGS/0 block will have a signature 'HDGS'
-and a heading number set to 0. The title of this HDGS block
-is to come from the "title" part of its own FRNT block,
-and the label from the "label" part of its own FRNT block.
-If the subdocument
-does not contain a FRNT block, the title will be set to string
-"NO TITLE", and the label will be set to an empty string.
-
-If the string does not start with a dot or double-dot,
-then it is assumed to be normal string and the main parser will
-not attemp to treat this name as a filename of a subdocument
-and will not attemp to read the file from the disc.
+The "hdgn" option can also be used to create "parts". 
+In this case, the "hdgn" should be set to "part". 
 
     ---
     title: My document title.
-    import: Introduction {part}
-            ./sub1.md
-            ./sub2.md
-            Advanced {part}
+    import: My first part {hdgn:part}
+            Introduction {hdgn:0}
+            ./sub1.md 
+            ./sub2.md 
+            The Next Phase {hdgn:0}
             ./sub3.md
             ./sub4.md
+            My second part {hdgn:part}
+            The Third Phase {hdgn:0}
+            ./sub5.md 
+            ./sub6.md 
+            The Third Phase {hdgn:0}
+            ./sub7.md
+            ./sub8.md
     ---
 
 The previous examples shows how to establish
 two parts in LATEX where each part is to include
 two chapters.
+
+If "hdgn" is specified for a subdocument,
+such that its value is a positive integer,
+then each HDGS block of that child document
+is to be "shifted". For example,
+specifying an "hdgn:1" will shift all heading blocks
+of a child document by 1, such that a HDGS/1 block
+will become HDGS/2, and HDGS/2 becomes HDGS/3, etc.
+Note that so far there is no way for a HDGS/0 block to be
+specified directly inside a document. As a convension,
+HDGS/0 is understood to be a chapter heading,
+HDGS/1 is for a section heading,
+HDGS/2 is for a subsection heading,
+and HDGS/3 is for a subsubsection heading.
+
+If a "hdgn" is not specified, it is assumed to be "0".
+This allows chapters to be created by default.
+For instance, in the following example two chapter
+headings are created to hold contents of each child document.
+
+    ---
+    title: My document title.
+    import: Introduction 
+            ./sub1.md 
+            The Next Phase 
+            ./sub2.md 
+    ---
+
+Note that the FRNT blocks of child documents are not imported. 
+Additional styles specified will be passed to all blocks of 
+child blocks and new synthetic HDGS heading blocks. This 
+allows for a new heading block to have a label, for instance.
+
+    ---
+    title: My document title.
+    import: Introduction {label:intro}
+            ./sub1.md 
+            The Next Phase {label:thenextphase}
+            ./sub2.md 
+    ---
+
 
