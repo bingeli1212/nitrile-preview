@@ -47,19 +47,6 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch REPORT",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/report.js",
-      "args": [
-        "a.md"
-      ]
-    },
-    {
-      "type": "node",
-      "request": "launch",
       "name": "Launch BEAMER",
       "skipFiles": [
         "<node_internals>/**"
@@ -86,14 +73,14 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch PRINT",
+      "name": "Launch LATEX",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/print.js",
+      "program": "${workspaceFolder}/tests/latex.js",
       "args": [
-        "a.md"
+        "/Users/james/github/tcl-notes/d3/d3-geo.md"
       ]
     }
   ]
