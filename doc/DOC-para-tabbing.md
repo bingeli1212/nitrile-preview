@@ -14,17 +14,94 @@ keyword as the first line after the fence.
     Six
     ~~~
 
-This would have produced a tabbing where the first three
-items in the list stays at the left side of the column
-and the next three items placed as the rightmost column.
+When the n-style option is present, it assumes that
+each line by itself representing a tabbed paragraph,
+and that the tabbed paragraph should be split into multiple
+columns. In this case, it decides the how many lines
+will go into each column by dividing the total
+number of lines by "n". If the result produces no remainder
+then the quotient determines the total number of lines
+for each column. If the result produces a remainder
+then then the each column gets one extra count above
+the quotient.
 
-The "n:2" option specifies that there should be a total
-of 2 columns. The items will be evenly divided among
-the columns, and the first few columns will be assigned
-extra items if there are remainders when trying to divide
-the total number items by the number of columns.
+However, the first line starts with an ampersand, and then
+a space, then the data will be parsed in such a way
+that each line with a leading "& " will signal the start
+of a new tabbed paragraph, and the next such entry will be
+the next tabbed paragraph of the same row, up until the total
+number of data cells in a row which must be set by the
+n-style option. If the n-style option is not set, then
+the table is assumed to be a single column table.
 
-Note that the tabbing will always be evenly distributed
-across the paragraph width.
+    ~~~multi{n:2}
+    & Names
+    & Address
 
+    & John Smith
+    & 101 Sunny Dr.
 
+    & Jane Atom
+    & 102 Sunny Dr.
+    ~~~
+
+However, in the case where the starting ampersand "& " 
+is not detected within the first line, 
+the arrangement of the tabbed paragraphs in each row
+is to be determined by the presence of the vertical-bar.
+
+    ~~~tabbing
+    One     | Four
+    Two     | Five
+    Three   | Six
+    ~~~
+
+If a vertical-bar wasn't detected, then the tabbed paragraphs
+is to be determined by the presence of two or more consecutive
+white spaces.
+
+    ~~~tabbing
+    One       Four
+    Two       Five
+    Three     Six
+    ~~~
+
+The "tabbing" paragraph recognises some style options.
+
+The relative width of the paragraph in each
+row can be adjusted by the "fr" option, 
+such as "fr:1 2", which expresses that 
+the relative width of the first and second paragraph be 
+set to one to two.
+The third paragraph and beyond are all assumed
+to be set to "1".
+
+The "skip" option expresses that there should be
+visible vertical distances inserted between two rows.
+The accepted values are "small", "med", and "big".
+On LATEX, these values translate directly to ``\smallskip``, 
+``\medskip``, and ``\bigskip``.
+
+The "gap" option specifies the fractional of the total
+width that would be reserved for inserting between
+two internal columns. The value expected here is a 
+number between 0 and 1. The default value is 0.02, which
+expresses that a gap is to be set at 2 percent width
+of the entire table width.
+
+The "head" option specifies that the first row 
+should be treated as the table header. On LATEX
+translation the text will be shown with a font weight
+of bold. On HTML translation the TH-element might've
+been used instead of the TD-element.
+
+    ~~~tabbing{n:2;head;skip:big;gap:0.1}
+    & Names
+    & Address
+
+    & John Smith
+    & 101 Sunny Dr.
+
+    & Jane Atom
+    & 102 Sunny Dr.
+    ~~~
