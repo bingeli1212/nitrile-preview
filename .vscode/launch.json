@@ -80,7 +80,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/latex.js",
       "args": [
-        "/Users/james/github/tcl-notes/d3/d3-geo.md"
+        "/Users/james/github/tcl-notes/jp/jp-auxiliary-verbs.md"
       ]
     }
   ]
