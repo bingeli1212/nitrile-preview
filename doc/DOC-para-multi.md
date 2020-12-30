@@ -21,22 +21,28 @@ pictures side by side.
     & Always has first term
     ~~~
 
-This paragraph is similar to "table"; however, it does not
-attempt to create a "float" under LATEX translation. Instead,
-it will create a "xtabular" under LATEX translation with the
-intent to allow for long table contents to be broken into
-multiple pages. 
+This paragraph is similar to "table"; however, instead of being
+a table where it will "float" and have a caption, the "multi"
+paragraph can simply be viewed as a convenient way to
+create multiply column layout, where each row is a list
+of paragraphs placed side-by-side. The LATEX translation 
+uses "longtabu" environment for this. This environment has
+the capability to break the content into multiple pages. 
 
-In addition, it always treat each table data as paragraph. 
-The total number of columns is set by the "n" option. The
-relative width of the columns are set by the "fr" option, 
-such as "fr:1 2 1", that would express that there are three
-columns and the first and second column is only half the
-size of the middle one. 
+The number of side-by-side paragraph in each row
+is controlled by the "n" option. By default only a single
+paragraph appears in each row.
+
+The relative width of the paragraph in each
+row can be adjusted by the "fr" option, 
+such as "fr:1 2", which expresses that 
+the relative width of the first and second paragraph be 
+set to one to two.
+The third paragraph and beyond are all assumed
+to be set to "1".
 
 The "skip" option expresses that there should be
-visible vertical distances inserted between two internal 
-text rows.
+visible vertical distances inserted between two rows.
 The accepted values are "small", "med", and "big".
 On LATEX, these values translate directly to ``\smallskip``, 
 ``\medskip``, and ``\bigskip``.
