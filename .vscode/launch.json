@@ -80,7 +80,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/latex.js",
       "args": [
-        "/Users/james/github/tcl-notes/jp/jp-auxiliary-verbs.md"
+        "a.md"
       ]
     }
   ]
