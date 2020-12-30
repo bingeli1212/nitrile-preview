@@ -30,8 +30,9 @@ a space, then the data will be parsed in such a way
 that each line with a leading "& " will signal the start
 of a new tabbed paragraph, and the next such entry will be
 the next tabbed paragraph of the same row, up until the total
-number of data cells in a row which must be set by the
-n-style option. If the n-style option is not set, then
+number of entries has been reached in a row which must be set by the
+n-style option, in which case it will start a new row.
+If the n-style option is not set, then
 the table is assumed to be a single column table.
 
     ~~~multi{n:2}
@@ -45,7 +46,15 @@ the table is assumed to be a single column table.
     & 102 Sunny Dr.
     ~~~
 
-However, in the case where the starting ampersand "& " 
+The presence of an empty line will force the next "& " entry
+to start a new row. If a line is found to have started with
+the leading "& " pattern, then two thing will happen. If the
+line is indented, then this line is considered the continuation
+of a previous item entry. If the line is not indented, then it
+is to start a complete new row and every row data will be filled
+this text.
+
+However, in the case where the starting ampersand "& " pattern
 is not detected within the first line, 
 the arrangement of the tabbed paragraphs in each row
 is to be determined by the presence of the vertical-bar.
