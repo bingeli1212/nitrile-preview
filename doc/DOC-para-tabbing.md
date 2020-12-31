@@ -85,11 +85,20 @@ set to one to two.
 The third paragraph and beyond are all assumed
 to be set to "1".
 
-The "skip" option expresses that there should be
-visible vertical distances inserted between two rows.
-The accepted values are "small", "med", and "big".
-On LATEX, these values translate directly to ``\smallskip``, 
-``\medskip``, and ``\bigskip``.
+The strut-style option is designed so that each
+tabbed line become a tabbed paragraph such that
+long lines will be wrapped around. This option
+expects an integer that will be interpreted
+as the number of "pt", which will become the 
+height of each paragraph. This option is useful
+if the tabbed line is too long to fit inside
+the allocated space.
+
+    ~~~tabbing{strut:30}
+    One       Four
+    Two       Five
+    Three     Six
+    ~~~
 
 The "gap" option specifies the fractional of the total
 width that would be reserved for inserting between
@@ -104,7 +113,7 @@ translation the text will be shown with a font weight
 of bold. On HTML translation the TH-element might've
 been used instead of the TD-element.
 
-    ~~~tabbing{n:2;head;skip:big;gap:0.1}
+    ~~~tabbing{n:2;head;gap:0.1}
     & Names
     & Address
 
