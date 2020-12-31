@@ -53,7 +53,7 @@ included.
 
 The ltablex package, is a extension of longtable to tabularx. Hence the caption
 shouldn't be separated from the table body, and the table doesn't float.
-Moreover, komascript has a footref  command that works withhyperef`. So it
+Moreover, komascript has a footref command that works withhyperef. So it
 suffices to add a label when the footnote appears first.
 
     \documentclass[a4paper]{scrartcl}
