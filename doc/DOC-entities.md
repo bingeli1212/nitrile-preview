@@ -98,3 +98,9 @@ All supported entities are listed with the
 `[[&yuml;]]`      [[&yuml;]]    
 
 ```
+
+# Requested entities
+
+~~~tabbing{n:1}
+blank, U+2423 OPEN BOX
+~~~

@@ -54,3 +54,28 @@ then both the checkboxes corresponding to choice "A" and "B"
 will be shown as "checked box", while the choice of "C" will
 be shown as "unchecked box".
 
+# Displaying code
+
+You can use the traditional \verbatim, or probably better, the
+listings package.
+
+If you use \verbatim or lstlisting within a frame, be sure to declare
+the frame fragile:
+
+    \begin{frame}[fragile]
+
+You may also need the relsize package:
+
+    \usepackage{relsize}
+
+To use listings, place
+
+    \usepackage{listings}
+
+near the top of your source file. The simplest usage is
+
+    \begin{lstlisting}
+    place your code here
+    \end{lstlisting}
+
+See the listings manual for all the other tricks that can be done.
