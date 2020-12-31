@@ -381,10 +381,8 @@ you can make it enter math mode to put a formula in the box.
 # Subscripts
 
 To get an expression, exp, to appear as a subscript, you just type
-``_{exp}``.
-
-Can be used only in math mode. Thus, for a simple expression that is
-part of the running text:
+``_{exp}``. Can be used only in math mode. Thus, for a simple
+expression that is part of the running text:
 
     H$_2$O is the formula for water
 
@@ -409,17 +407,14 @@ and, for example, use a standard Roman font, one would use;
 # Superscripts
 
 To get an expression, exp, to appear as a superscript, you just type
-^{exp}.
-
-Can be used only in math mode. Thus, for a simple expression that is
-part of the running text:
+^{exp}. Can be used only in math mode. Thus, for a simple expression
+that is part of the running text:
 
     x$^3$ is the third power of x
 
 should have shown the "3" as the superscript of x. Note that the
 braces around the argument may be omitted if the superscript is a
 single character.
-
 If a symbol has both subscripts and superscripts, the order doesn't
 matter. The following are equivalent:
 
