@@ -19,10 +19,10 @@ which corresponds to the first choice.
       2. I drive a car.
       3. Therefore, my car has wheels.
 
-    ~~~
-    [A]: Categorical (If A is in C then B is in C)
-    [B]: Disjunctive (If A is not true then B is true)
-    [C]: Hypothetical (If A is true then B is true)
+    ~~~{checkbox}
+    A. Categorical (If A is in C then B is in C)
+    B. Disjunctive (If A is not true then B is true)
+    C. Hypothetical (If A is true then B is true)
     ~~~
 
     [ Answer ] : A
