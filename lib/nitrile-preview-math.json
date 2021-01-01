@@ -1172,7 +1172,7 @@
     "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
     "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
 
-    "blank"                  : { "html": "&#x2423;"       ,  "tex": "\\textvisiblespace"                  ,"TM":1 , "width": 6,    "op": 0,  "usepackage":""         ,"comment":"U+2423 OPEN BOX"}, 
+    "blank"                  : { "html": "&#x23B5;"       ,  "tex": "\\textvisiblespace"                  ,"TM":1 , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+23B5 BOTTOM SQUARE BRACKET"}, 
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
 
   },
