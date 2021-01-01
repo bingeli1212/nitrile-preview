@@ -137,6 +137,17 @@ The margins of the quote environment are indented on the left and the
 right. The text is justified at both margins. For longer quotations
 (more than one paragraph) use the quotation environment.
 
+To change the left indentation, set the ``\leftmargini`` 
+length, and ensure that it is placed inside a begingroup-endgroup
+environment to localize the effect.
+
+    \begingroup
+    \setlength{\leftmargini}{0.5cm}
+    \begin{quote}
+    \(\langle a \mid a^{n} = 1 \rangle\)
+    \end{quote}
+    \endgroup
+
 # The "quotation" environment
 
     \begin{quotation}

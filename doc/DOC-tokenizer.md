@@ -1,4 +1,6 @@
-# Math
+---
+title: Tokenizer
+---
 
 Math expressions are part of LATEX and CONTEX, both of which
 provides a typesetting language that make use of letters and
@@ -51,29 +53,54 @@ document discusses the syntax of this language.
 
 # Supported LATEX left/right fences
 
-    \left\lbrace
-    \left\lbrack
-    \left\llbracket
-    \left\langle
-    \left(
-    \left[
-    \left\lVert
-    \left\lvert
-    \left\lceil
-    \left\lfloor
-    \left.
+Braces:
 
-    \right\rbrace
-    \right\rbrack
-    \right\rlbracket
-    \right\rangle
-    \right)
-    \right]
-    \right\rVert
-    \right\rvert
-    \right\rceil
-    \right\rfloor
-    \right.
+    \{
+    \}
+    \lbrace
+    \rbrace
+
+Single brackets:
+
+    [
+    ]
+    \lbrack
+    \rbrack
+
+Parentheses:
+
+    \\lparen
+    \\rparen
+
+Double brackets:
+
+    \lobrk
+    \robrk
+
+Double vertical bar:
+
+    \lVert
+    \rVert
+
+Single vertical bar:
+
+    \lvert
+    \rvert
+
+Angle bracket:
+
+    \lang
+    \rang
+
+Floor 
+
+    \lfloor
+    \rfloor
+
+Ceil
+   
+    \lceil
+    \rceil
 
 # Supported LATEX commands
 
@@ -140,13 +167,18 @@ NOTE: for mathbb-variant, which is for double-strike variant,
 the following letters in Unicode are having a "different" appearance
 than the other ones:
 
-    C  - field of complex numbers
-    H  - field of quaternion numbers, which is a number system that extends the complex numbers.
-    N  - field of all natural numbers, which must be a positive integers: 1, 2, 100, ...
-    P  - field of all prime number
-    Q  - field of rational numbers, excluding irrational number such as PI
-    R  - field of all real numbers, including integers and floating point numbers
-    Z  - field of all integers, including negative integers and zeros.
+    C - field of complex numbers
+    H - field of quaternion numbers, which is a number 
+        system that extends the complex numbers.
+    N - field of all natural numbers, which must be a 
+        positive integers: 1, 2, 100, ...
+    P - field of all prime number
+    Q - field of rational numbers, excluding irrational 
+        number such as PI
+    R - field of all real numbers, including integers and 
+        floating point numbers
+    Z - field of all integers, including negative integers 
+        and zeros.
 
 Note that \mathscr is not supported. Use \mathcal instead.
 
@@ -183,7 +215,7 @@ including equations.
 
 # Display math mode for \sum, \int, \lim and \prod
 
-Note that when `\sum`, `\lim` and `\int` are paired with
+Note that when \sum, \lim and \int are paired with
 subscript and/or superscript then there will be distinction
 made whether it is a 'inlinemath' mode or a 'displaymath'
 mode. The displaying of summation symbol, the lettering of
@@ -200,7 +232,7 @@ same behavior as that of LATEX.
 
 # The \displaystyle command
 
-The `\displaystyle` command is there to force an inline math
+The \displaystyle command is there to force an inline math
 to be typeset as display math. It is supported, such that it
 will be translated to LATEX/CONTEX verbatim. For SVG
 translation it would result in the generation of
@@ -231,8 +263,8 @@ of the presentation math expression in certain situations.
 # The matrix element
 
 Note that each element within a matrix appears as
-'inlinemath' style, even though the matrix itself might be
-shown as 'displaymath' style.
+inlinemath style, even though the matrix itself might be
+shown as displaymath style.
 
 # Greek letters
 
@@ -375,19 +407,19 @@ Following commands are supported that are provided by the 'commath' package.
 
     \usepackage{commath}
 
-- The `\od` command: 
+- The \od command: 
 
-    ``\od{x^2}{x}``
-    ``\od[2]{x^2}{x}``
+    \od{x^2}{x}
+    \od[2]{x^2}{x}
 
-- The `\pd` command:
+- The \pd command:
 
-    ``\pd{x^2}{x}``
-    ``\pd[2]{x^2}{x}``
+    \pd{x^2}{x}
+    \pd[2]{x^2}{x}
 
-- The `\dif` command:
+- The \dif command:
 
-    ``\dif{x}``
+    \dif{x}
 
 # Equation numbering
 
@@ -434,12 +466,12 @@ is how to do it in CONTEX.
 This is to assume that following appears within
 a source MD file.
 
-  $ $(#eq:a) A &= a + b + c\\ 
-               &= 2a + 2b
+    $ $(#eq:a) A &= a + b + c\\ 
+                  &= 2a + 2b
 
-  $          B &= a + b
+    $          B &= a + b
 
-  $          C &= b + c      
+    $          C &= b + c      
 
 Note that in the previous case, when the first equation
 (main-equation) is present with a label, then numbering for all
@@ -448,12 +480,12 @@ sub-equation is presented with a labeled or not.  Regardless,
 having a label with a sub-equation is going to make it easier to
 "refer" to this sub-equation within a text block.
 
-  $ $(#eq:a) A &= a + b + c\\ 
-               &= 2a + 2b
+    $ $(#eq:a) A &= a + b + c\\ 
+                  &= 2a + 2b
 
-  $ $(#eq:b) B &= a + b
+    $ $(#eq:b) B &= a + b
 
-  $ $(#eq:c) C &= b + c      
+    $ $(#eq:c) C &= b + c      
 
 For a given equation (whether it is a main-equation or a
 sub-equation), if a double-backslashes are detected in the main
@@ -462,71 +494,71 @@ begin-end cases are not counted), then these backslashes are
 interpreted as "line breaks" for a long formular.  This behavior
 is similar to LATEX "split" environment.
 
-  $ $(#eq:a) A &= a + b + c\\ 
-               &= 2a + 2b
+    $ $(#eq:a) A &= a + b + c\\ 
+                  &= 2a + 2b
 
 For LATEX translation it will become a "split".
 
-  \begin{gather}
-  \begin{split}
-  A &= a + b + c\\ 
-  &= 2a + 2b
-  \end{split}\label{eq:a}
-  \end{gather}
+    \begin{gather}
+    \begin{split}
+    A &= a + b + c\\ 
+    &= 2a + 2b
+    \end{split}\label{eq:a}
+    \end{gather}
 
 For CONTEX, it will be translated into a \startformula,
 with \startmathalignment inside.
 
-  \placeformula
-  \startformula
-  \startmathalignment[n=2]
-  \NC A \NC a + b + c \NC\NR
-  \NC   \NC 2a + 2b \NC\NR[eq:a]
-  \stopmathalignment
-  \stopformula
+    \placeformula
+    \startformula
+    \startmathalignment[n=2]
+    \NC A \NC a + b + c \NC\NR
+    \NC   \NC 2a + 2b \NC\NR[eq:a]
+    \stopmathalignment
+    \stopformula
 
 If this one is to be followed by additional sub-equations,
 such as the following.
 
-  $ $(#eq:a) A &= a + b + c\\ 
-               &= 2a + 2b
+    $ $(#eq:a) A &= a + b + c\\ 
+                &= 2a + 2b
 
-  $ $(#eq:b) B &= a + b
+    $ $(#eq:b) B &= a + b
 
-  $ $(#eq:c) C &= b + c      
+    $ $(#eq:c) C &= b + c      
 
 Then for LATEX it becomes.
 
-  \begin{gather}
-  \begin{split}
-  A &= a + b + c\\ 
-  &= 2a + 2b
-  \end{split}\\
-  B &= a + b\\
-  C &= b + c      
-  \end{gather}
+    \begin{gather}
+    \begin{split}
+    A &= a + b + c\\ 
+    &= 2a + 2b
+    \end{split}\\
+    B &= a + b\\
+    C &= b + c      
+    \end{gather}
 
 For CONTEX is becomes:
 
-  \placeformula
-  \startformula
-  \startmathalignment[n=2]
-  \NC A \NC = a + b + c \NR
-  \NC  \NC = 2 a + 2 b \NR[eq:a]
-  \stopmathalignment
-  \stopformula
-  \placeformula
-  \startformula
-  \startmathalignment[n=2]
-  \NC B \NC = a + b \NR[eq:b]
-  \stopmathalignment
-  \stopformula
-  \placeformula
-  \startformula
-  \startmathalignment[n=2]
-  \NC C \NC = b + c \NR[eq:c]
-  \stopmathalignment
-  \stopformula
+    \placeformula
+    \startformula
+    \startmathalignment[n=2]
+    \NC A \NC = a + b + c \NR
+    \NC  \NC = 2 a + 2 b \NR[eq:a]
+    \stopmathalignment
+    \stopformula
+    \placeformula
+    \startformula
+    \startmathalignment[n=2]
+    \NC B \NC = a + b \NR[eq:b]
+    \stopmathalignment
+    \stopformula
+    \placeformula
+    \startformula
+    \startmathalignment[n=2]
+    \NC C \NC = b + c \NR[eq:c]
+    \stopmathalignment
+    \stopformula
 
 Thus, the net effect is that both LATEX and CONTEX will *always* treat 
 the alignments among two or more main- or sub-equations as "gather".
@@ -554,14 +586,14 @@ possible, and on HTML it can be simulated.
   operators do.  But this bahavior is not implemented for CONTEX/LATEX
   translation.  For HTML this behavior is correctly similated.
 
-- In LATEX, The double-backslash (`\\`) in a inline math will actually cause a
+- In LATEX, The double-backslash (\\) in a inline math will actually cause a
   line break in PDF file. In CONTEX, the same double-backslash does not do 
   anything. This is to assume that it is not part of a begin-end matrix 
   or cases. However, in NITRILE, a \\ that is part of the top-level
   expression is repurposed to mean to break down a long expression 
   into two or more lines.
 
-- In LATEX, the ampersand (`&`) in a inline math that is not part of a
+- In LATEX, the ampersand (&) in a inline math that is not part of a
   \begin{matrix} will not show up in the PDF file. NITRILE has repurposed this
   character as expressing the "alignment point" (this is only when this 
   character is not part of a matrix or cases expression.
@@ -582,13 +614,13 @@ possible, and on HTML it can be simulated.
 
 - The \operatorname{} is not available on CONTEX. NITRILE
   supports it. It is being
-  translated as `{\\:\\mathrm{a}\\:}` if `\operatorname{a}` is 
+  translated as ``{\\:\\mathrm{a}\\:}`` if ``\operatorname{a}`` is 
   detected.
 
 - The ddddot{a} is not supported on CONTEX. Therefore it is
   not provided by NITRILE.
 
-- The \not\equiv symbol is not being rendered correct on CONTEX; 
+- The \not\equiv symbol is not being rendered correctly on CONTEX; 
   it is rendered as a \not followed by \equiv. Thus, the \not\equiv
   is not supported by NITRILE. The solution to have this symbol
   ("not congruent") is to enter this symbol as a Unicode character,
@@ -598,14 +630,7 @@ possible, and on HTML it can be simulated.
   on LATEX yet because there is no suitable font found to show
   this glyph.
 
-- It has been observed if a \lfloor and/or \rfloor symbol is 
-  to appear in a LATEX document by itself, then nothing is seen
-  in the PDF.  To make it "appear", it must be part of 
-  a \left-\right expression: such as \left\lfloor ... \right\rfloor. 
-  CONTEX does not this problem. 
-  Thus, the solution is to always use \left\lfloor and \right\rfloor.
-
-- Note that the backtick and the dollar-sign arn't part of the TEX 
+- Note that the backtick and the dollar-sign aren't part of the TEX 
   math expression.  CONTEX even goes so far as to raise an error
   if a dollar-sign or backtick is detected. For this reason and
   others, the math expression detection excludes any appearances
