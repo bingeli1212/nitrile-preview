@@ -512,41 +512,84 @@ Here, the length of each bar is going to be about half the length of the grid. N
 
 # The label-operation
 
-Drawing text labels are done by using the 'label' command. For example, the following 'label' command will each draw a label at the given location.
+Drawing text labels are done by using the 'label' command. For
+example, the following 'label' command will each draw a label at the
+given location.
 
     label.rt "A" (1,1)
     label.lft "B" (2,2)
     label.top "C" (3,4)
 
-The 'label' command is designed to draw the same label at multiple locations. For example, we can draw the same letter A three times each at three different locations such as follows.
+The 'label' command is designed to draw the same label at multiple
+locations. For example, we can draw the same letter A three times each
+at three different locations such as follows.
 
     label "A" (1,1) (2,2) (3,4)
 
-Each subcommand specifies how the text is to be aligned relative to the locatoin. For example, the 'top' subcommand would have aligned the text so that it appears on top of the location, centered horizontally. When a label command is without its subcommand it defaults to 'urt', which basically asignes the lower left hand corner of the text with the loction.
+Each subcommand specifies how the text is to be aligned relative to
+the locatoin. For example, the 'top' subcommand would have aligned the
+text so that it appears on top of the location, centered horizontally.
+When a label command is without its subcommand it defaults to 'urt',
+which basically asignes the lower left hand corner of the text with
+the loction.
 
---	label.top   -  top
---	label.bot   -  bottom
---	label.lft   -  left
---	label.rt    -  right
---	label.ulft  -  upper left
---	label.llft  -  lower left
---	label.urt   -  upper right
---	label.lrt   -  lower right
---	label.ctr   -  centering the text
+    label.top   -  top
+    label.bot   -  bottom
+    label.lft   -  left
+    label.rt    -  right
+    label.ulft  -  upper left
+    label.llft  -  lower left
+    label.urt   -  upper right
+    label.lrt   -  lower right
+    label.ctr   -  centering the text
 
-The text to be drawn must be expressed using a set of quotation marks, and they must appear before any option and before any coordinates. Usually a single text is repeated in all locations. However, it is also possible to specify a different text for each one of the locations, by separating each text with a double-backslash, such as the following, in which case the letter "A", "B", and "C" are each to be drawn at three different location.
+The text to be drawn must be expressed using a set of quotation marks,
+and they must appear before any option and before any coordinates.
+Usually a single text is repeated in all locations. 
 
-    label "A\\B\\C" (1,1) (2,2) (3,4)
+    label "A" (1,1) (2,2) (3,4)
 
-It is also possible to express that a math expression instead of plain text.
+However, it is possible to specify a different text for 
+each location.
 
-    label \(A_1\\B_1\\C_1\) (1,1) (2,2) (3,4)
+    label "A" (1,1) "B" (2,2) "C" (3,4)
 
-If all you have is something like A_0 and x^2 then a pair of single backquates can be used so that all these patterns will be scanned and re-formatted to be subscript and superscript.
+It is also possible to express that a math expression instead of plain
+text. In this case use the backslash-left-parenthesis and
+backslash-right-parenthesis quotation for the text.
 
-    label "A_1\\B_1\\C_1" (1,1) (2,2) (3,4)
+    label \(A_1\) (1,1) \(B_2\) 0(2,2) \(C_2\) (3,4)
 
 
+
+
+# The text operation
+
+The text operation is very similar to the label operation except that it will look for double
+backslashes in the text and use that to draw multi-line text box.
+
+    text.ulft {fontsize:7,dx:-0.5} "degree\\ 3" (-3,2)
+    text.urt  {fontsize:7,dx:+0.5} "degree\\ 2" (3,2)
+    text.llft {fontsize:7,dx:-0.5} "degree\\ 2" (-3,-2)
+    text.lrt  {fontsize:7,dx:+0.5} "degree\\ 3" (3,-2)
+
+Unlike the label, it always treats the text as normal text, and
+not the math expression. This means that the backslash-left-parenthesis and
+backslash-right-parenthesis quoted text will be treated as if they are 
+normal text.
+
+The text operation can also have alignment specifier for it.
+
+
+    text.top   -  top
+    text.bot   -  bottom
+    text.lft   -  left
+    text.rt    -  right
+    text.ulft  -  upper left
+    text.llft  -  lower left
+    text.urt   -  upper right
+    text.lrt   -  lower right
+    text.ctr   -  centering the text
 
 # The path-functions
 
