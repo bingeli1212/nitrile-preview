@@ -676,7 +676,7 @@
     "xx-large": 1.728,
     "xxx-large": 2.074
   },
-  "cssFontsizes": {
+  "fontsize_percents": {
     "tiny": "50%",
     "scriptsize": "70%",
     "footnotesize": "80%",
@@ -700,7 +700,7 @@
     "huge": "\\huge",
     "Huge": "\\Huge"
   },
-  "rateFontsizes": {
+  "fontsize_rates": {
     "tiny":         0.5,
     "scriptsize":   0.7,
     "footnotesize": 0.8,

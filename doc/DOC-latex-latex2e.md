@@ -992,7 +992,29 @@ at 15:53
 TexnicCenter has a Build->Clean Project option which will delete all
 the temp files for you. – John Kormylo Aug 29 '18 at 16:54
 
+# Font sizes
 
+Following is a list of font sizes offered by LATEX.
+
+     LATEX           factor      
+     -------------------------
+     tiny            0.5         
+     scriptsize      0.7         
+     footnotesize    0.8         
+     small           0.9         
+     normalsize      1.0         
+     large           1.2         
+     Large           1.4         
+     LARGE           1.7         
+     huge            2.0         
+     Huge            2.3         
+
+For example, change the font size for a part of the text
+place the text between the set of brackets:
+
+    In this example the {\huge huge font size} is 
+    set and the {\footnotesize Foot note size also}. 
+    There's a fairly large set of font sizes.
 
 
 
