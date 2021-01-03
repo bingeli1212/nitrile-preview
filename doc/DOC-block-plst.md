@@ -222,3 +222,19 @@ blank lines, a paragraph-fence should have been used.
   ```
   ~~~
 ~~~~
+
+Remarks,
+
+- The hanginglist feature is provided by the "hang" package 2017/02/18.
+  which provides the near list command begin-end-hanginglist, and which
+  by default sets up a "1em" handing indent for the second line
+  and beyond.
+
+- For ordered and unordered list, the standard LATEX environment 
+  begin-end-itemized and begin-end-enumerate are used.
+
+- A PLST block would by default always allocate vertical spacing
+  between any two items as well as paragraphs attached to the list
+  item.
+
+
