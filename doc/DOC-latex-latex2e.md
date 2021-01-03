@@ -730,6 +730,12 @@ still be able to access an em dash by typing \textemdash.
   These commands provide the "registered trademark" (R) and
   "trademark" (TM) symbols.
 
++ \i
++ \j
+
+  These two commands each provides the "dotless i" and "dotless j"
+  in text mode. For math mode, use "\imath" and "\jmath" instead.
+
 # Text commands: the T1 encoding
 
 The OT1 font encoding is fine for typesetting in English, but has
