@@ -1152,6 +1152,13 @@ If the edge is going to include arrow heads, then one of the following three opt
     edge.A.B {revarrow;dir:45}
     edge.A.B {dblarrow;dir:45}
 
+Latest changes has added a new option called "dot" to the node operation. 
+If this option is set, then each node is going to be drawn as a dot, and
+label text is not to be drawn. This allows one to render each node as a 
+colored dot. The size of the dot is to be controlled the same way how
+a "dot" operation is controlled, such as to set the "dotsize" for the 
+size of the dot in diameter, and "dotcolor" for the color of the dot.
+
 
 # The 'box' operation
 
