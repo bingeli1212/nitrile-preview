@@ -10,12 +10,13 @@ to any one of the items.
 
 In order to be recognized as the start of a PLST block,
 the first line of a markdown paragraph must start
-with a hyphen, an asterisk, or a plus-sign, followed
+with a hyphen, an asterisk, a plus-sign, or a pair of left-than/greater-than
+symbols, followed
 by one or more spaces. Alternatively, it can also start
 with two or more digits, followed by a period, and then
-one or more spaces. Instead of two or more digits, it can
-also with an ASCII letter lower case 'a' through 'z', 
-or capital letter 'A' through 'Z'. 
+one or more spaces, or a lower case 
+letter 'a' through 'z' or capital letter 'A' through 'Z',
+followed by a period. 
 
 This block is to start from a source paragraph where
 the first line is not indented and it starts with 
@@ -106,6 +107,29 @@ as custom bullets.
   is the identity element;
 
 3. If the group is also Abelian, then the multiplication
+  table is symmetric about the diagonal; however, if the
+  group is non-Abelian, then the elements will be be symmetric
+  across the diagonal; note that it is assume that each element
+  of the table is always the result of multiplying the element in the
+  header row with the element in the header column;
+~~~~
+
+Following is how you would style a "hang list", where the first
+line is flushed with the left margin, and second and subsequent
+lines are indented by 1em from the left hand side.
+
+~~~~framed
+<> Typically the first element in the header row and the header
+  column is the identity element; if this is the case, the first
+  row and first column is exactly the same as the header row
+  and header column;
+
+<> In each row and each column there should be one and only one
+  identity element---this is because each element in the group
+  should have only one inverse element and operation of which
+  is the identity element;
+
+<> If the group is also Abelian, then the multiplication
   table is symmetric about the diagonal; however, if the
   group is non-Abelian, then the elements will be be symmetric
   across the diagonal; note that it is assume that each element
