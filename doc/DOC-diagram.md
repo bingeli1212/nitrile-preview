@@ -207,30 +207,91 @@ However, there are additional configuration parameters. These parameters should 
 
 # The set-operation
 
-The 'set' command sets the following parameters for the current drawing environment.
+The 'set' command sets the following parameters for the current
+drawing environment.
 
-    set refx <number>
-    set refy <number>
-    set refs <number>
++ set refx <number>
 
-Following are default values for it.
+  Sets the x-coordinate origin for all future path points. For example, 
+  if 'refx' is set to 10, then a path point of (0,0) will
+  be mapped to (10,0).
 
-~~~table{border:2}
-    Options    | Default value | Comments
-    ------------------------------------------------------
-    refx       | 0             | Offset location (grid)
-    refy       | 0             | Offset location (grid)
-    refs       | 1             | Scale factor (scalar)
-~~~
++ set refy <number>
 
-The 'refx', 'refy', and 'refs' parameters can be set at any point during a drawing. It can be compared to a "transform" of a SVG operation. In this case, all drawings will be scaled and/or translated. The 'refs' defines the scaling factor and 'refx' and 'refy' defines the location to be translated to.
+  Set the y-coordinate original for all future path points. For
+  example, if 'refy' is set to 10, then a path point of (0,0)
+  will be mapped to (0,10).
 
-By default all drawings are expressed as relative to the origin, which is (0,0), which is located at the lower-left-hand corner of the viewport. By setting it to a different value, it allows you to treat several drawings as a group and then move them all at once at ease.
++ set refsx <number>
 
-Note that when callign the 'set' command with a parameter, but without supplying any additional values reset that parameter to its default value. Thus, the second 'set' command below will reset the 'refx' parameter to its default value, which is 0.
+  Sets the scaling factor for scaling each path point
+  in the future in the x-coordinate direction. For instance,
+  if 'refsx' is set to 2 then a path point of (1,1) will be
+  mapped to (2,1). 
+
++ set refsy <number>
+
+  Sets the scaling factor for scaling each path point
+  in the future in the y-coordinate direction. For instance,
+  if 'refsy' is set to 2 then a path point of (1,1) will be
+  mapped to (2,1).
+
++ set refs <number>
+
+  A shortcut for setting 'refsx' and 'refsy' at the same
+  time to the same value.
+
++ set refxy <string> ...
+
+  When the key is "refxy", expects a list of string arguments. 
+  The argument must be in one of the following formats: 
+  "origin", "center", 
+  "west", "east", "north", "south",
+  "northwest", "northeast", "southwest", "southeast",
+  "left:<x>", "right:<x>", "up:<y>", 
+  "down:<y>", "x:<x>", or "y:<y>", where <x> and <y> each
+  express a floating point number.
+
+The 'refx', 'refy', and 'refs' parameters can be set at any point
+during a drawing. It can be compared to a "transform" of a SVG
+operation. In this case, all drawings will be scaled and/or
+translated. 
+
+The 'refs' defines the scaling factor and 'refx' and
+'refy' defines the location to be translated to.
+
+By default all drawings are expressed as relative to the origin, which
+is (0,0), which is located at the lower-left-hand corner of the
+viewport. By setting it to a different value, it allows you to treat
+several drawings as a group and then move them all at once at ease.
+
+Note that when callign the 'set' command with a parameter, but without
+supplying any additional values reset that parameter to its default
+value. Thus, the second 'set' command below will reset the 'refx'
+parameter to its default value, which is 0.
 
     set refx 10
     set refx
+
+The scaling always happens first before the translation. 
+
+For 'refxy', it is possible to apply two or more options 
+at the same time. For instance, following operation would
+first move the reference point to the center, and then
+one unit up. 
+
+    set refxy center up:1
+
+The "up/down" operation moves the current reference point
+up and down, and "left/right" operation moves the current
+reference point to the left or right. It is also possible
+to move to a specific x-coordinate or y-coordinate using
+the "x" and "y" operation.  In the following example
+the reference point is moved to (12,10).
+
+    set refxy x:12 y:10
+
+
 
 
 # The reset-operation
