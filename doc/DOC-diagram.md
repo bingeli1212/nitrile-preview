@@ -1406,5 +1406,51 @@ The outer color seems to be at a location away from the inner
 color that is the average of the half width and half height of the rectangle.
 
 
+# The "multiws" operation
 
+The "multiws" operation allows for a multiplication worksheet
+to be shown on the canvas. In the following example the workflow
+of a multiplication worksheet of 24 multiplied by 3 is to be
+shown at location (2,1).
+
+    multiws "24 3" {answer} (2,1) 
+
+By default "answer" is not set, in which case only
+the multiplier and the multiplicant are shown. However, when
+the "answer" option is set, the entire worksheet workflow that
+leads to the solution is to be shown inside the canvas. 
+The "answercolor" can be set which will be used to draw all lines, 
+dots, and texts with that color.
+
+    multiws "24 3" {answer,answercolor:orange} (2,1) 
+
+It is also possible to include a decimal number with one of the numbers
+or both numbers. If this the case, the correct decimal place
+will be shown both at multiplier and multiplicant
+and as well as at the product.
+
+    multiws {answer,answercolor:orange} "2.1 4" (0,0)
+    
+    multiws {answer,answercolor:orange} "2.1 1.4" (0,0)
+
+# The "longdivws" operation
+
+The "longdivws" operation allows one to show the complete workflow  
+of a long division between two integers, with quotient and remainders.
+In the following example a long division workflow is to be shown 
+starting at the coordinate (2,1).
+
+    longdivws "11 4" {answer} (2,1)
+
+By default the "answer" is not set, in which case only the
+the dividend and divisor is to be shown. The "answercolor" can
+also be set which will be used to drawn everything that is 
+related to the answer, including lines and text.
+
+    longdivws "11 4" {answer,answercolor:orange} (2,1)
+
+Unlike the "multiws" operation, the "longdivws" operation does
+not scan the input for any appearances of decimal points---thus if
+a decimal point was included in one of the numbers it 
+will likely cause unpredictable result.
 
