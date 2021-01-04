@@ -1083,7 +1083,9 @@
     "questiondown"           : { "html": "&#x00BF;"       ,  "tex": "\\text{?`}"                          ,"TM":0 , "width": 6 ,   "op": 0,  "usepackage":""         ,"comment":"U+00BF INVERTED QUESTION MARK"},
     "laquo"                  : { "html": "&#x00AB;"       ,  "tex": "\\guillemotleft","cex":"0x00AB"      ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+00AB LEFT-POINTING DOUBLE ANGLE QUOTATION MARK"},
     "raquo"                  : { "html": "&#x00BB;"       ,  "tex": "\\guillemotright","cex":"0x00BB"     ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":""         ,"comment":"U+00BB RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK"},
-
+    
+    "quot"                   : { "html": "&#x0022;"       ,  "tex": "\\char34{}","cex":"\""               ,"TM":1 , "width": 5 ,   "op": 0,  "usepackage":""         ,"comment":"U+0022 QUOTATION MARK"},
+    "apos"                   : { "html": "&#x0027;"       ,  "tex": "\\char39{}","cex":"'"                ,"TM":1 , "width": 5 ,   "op": 0,  "usepackage":""         ,"comment":"U+0027 APOSTROPHE"},
 
     "baht"                   : { "html": "&#x0E3F;"       ,  "tex": "\\textbaht"                          ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"textcomp" ,"comment":"U+0E3F THAI CURRENCY SYMBOL BAHT"},
     "cent"                   : { "html": "&#x00A2;"       ,  "tex": "\\textcent"                          ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"textcomp" ,"comment":"U+00A2 CENT SIGN"},
