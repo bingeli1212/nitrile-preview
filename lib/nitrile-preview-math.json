@@ -688,7 +688,7 @@
     "huge": "200%",
     "Huge": "230%"
   },
-  "latexFontsizes": {
+  "latex_fontsizes": {
     "tiny": "\\tiny",
     "scriptsize": "\\scriptsize",
     "footnotesize": "\\footnotesize",
