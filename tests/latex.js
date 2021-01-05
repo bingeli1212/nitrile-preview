@@ -8,7 +8,7 @@ var work = async (fname)=>{
   await parser.read_import_async();
   const translator = new NitrilePreviewLatex(parser);
   var tex = translator.to_latex_document();
-  console.log(tex);
+  return tex;
 };
 
 console.log('process.arg=', process.argv);
