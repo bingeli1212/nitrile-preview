@@ -1,8 +1,8 @@
 ---
-title: The "bull" paragraph
+title: The "list" paragraph
 ---
 
-The "bull" paragraph is recognized
+The "list" paragraph is automatically recognized
 by the presence of a symbol before 
 the text of the first line.
 
@@ -91,3 +91,26 @@ The selection-style option can be set to selectively
 check some of the checkboxes while the other checkboxes
 are by default not checked.
 
+A list-paragraph can also be configured to use customized
+bullets. To do this, set the bullet-style such as 
+``bullet:&cross;``, to specify that a Ballot X character
+to be used for each bullet, and ensure that the list
+is a UL type.
+
+    ~~~list{bullet:&cross;}
+    - Item 1
+    - Item 2
+    - Item 3
+    ~~~
+
+It is also possible to set the type directly by settting the type-style
+to one of the following values: ``type:UL``, or ``type::OL``, or ``type:A``, or ``type:a``,
+or ``type:0``. In this case each line will be treated as an item by itself
+and the bullet will be set accordingly. Following is anther way to show
+unordered list with three items where each item starts with a text bullet.
+
+    ~~~list{type:UL}
+    Item 1
+    Item 2
+    Item 3
+    ~~~
