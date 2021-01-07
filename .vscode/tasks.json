@@ -26,6 +26,25 @@
       }
     },
     {
+      "label": "nipage",
+      "type": "shell",
+      "command": "nipage",
+      "args": [
+        "${file}"
+      ],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
       "label": "nicontext",
       "type": "shell",
       "command": "nicontext",

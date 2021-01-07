@@ -9,11 +9,18 @@ the text of the first line.
 This could be a hyphen, a plus-sign, a asterisk,
 or a greater-than-sign. 
 
+Following is treated as a block of unordered list,
+where each list item is shown with a text bullet.
+
     ~~~
     - Categorical (If A is in C then B is in C)
     - Disjunctive (If A is not true then B is true)
     - Hypothetical (If A is true then B is true)
     ~~~
+
+Following is treated as a paragraph of ordered list,
+where each item is shown with a number starting from
+1 followed by a period.
 
     ~~~
     * Categorical (If A is in C then B is in C)
@@ -21,22 +28,24 @@ or a greater-than-sign.
     * Hypothetical (If A is true then B is true)
     ~~~
 
+Following is treated as a paragraph of description list,
+where the first line or the text before the first appearance
+of a double-space is treated as the description term
+and other text as description data.
+
     ~~~
-    + Categorical (If A is in C then B is in C)
-    + Disjunctive (If A is not true then B is true)
-    + Hypothetical (If A is true then B is true)
+    + Categorical    If A is in C then B is in C
+    + Disjunctive    If A is not true then B is true
+    + Hypothetical   If A is true then B is true
     ~~~
 
-All subsequent items must match the first item. 
+For a list-paragraph, 
+all items after the first must match the first item
+in terms of the type. 
 This means if the first item is the one started 
 with a hyphen, then the second item must also 
 start with a hyphen in order to be recognized
 as such. 
-
-The items started with a hyphen is a UL item.
-The items started with a asterisk is a OL item. 
-THe items started with a plus-sign are data 
-description items. 
 
 Besides those that start with a symbol, there
 are also three additional types---the one 
@@ -85,11 +94,19 @@ The period or right-parenthesis is going to be kept
 and placed after the number or letter
 for Latex.JS and Html.JS translation. 
 
-One of the latest additions is the checkbox-style 
-option, which adds a checkbox to each list item.
-The selection-style option can be set to selectively
-check some of the checkboxes while the other checkboxes
-are by default not checked.
+One of the latest additions is the checkbox style item,
+where the first line starts with a open bracket, followed
+by a single word character or space, and followed by a close bracket,
+and a white space. When this pattern is detected, then each
+item is considered to represent a checkbox placed in front of
+each letter and the letter inside the bracket serves
+as the indication that this checkbox is checked.
+
+    ~~~
+    [ ] Item 1
+    [ ] Item 2
+    [x] Item 3
+    ~~~
 
 A list-paragraph can also be configured to use customized
 bullets. To do this, set the bullet-style such as 
@@ -103,13 +120,22 @@ is a UL type.
     - Item 3
     ~~~
 
-It is also possible to set the type directly by settting the type-style
-to one of the following values: ``type:UL``, or ``type::OL``, or ``type:A``, or ``type:a``,
-or ``type:0``. In this case each line will be treated as an item by itself
+It is also possible to set the type directly by settting the
+type-style to one of the following values: ``type:UL``, or
+``type::OL``, or ``type:A``, or ``type:a``, or ``type:0``, or
+``type:CB`.
+
+In this case each line will be treated as an item by itself
 and the bullet will be set accordingly. Following is anther way to show
 unordered list with three items where each item starts with a text bullet.
 
-    ~~~list{type:UL}
+    ~~~list{type:OL}
+    Item 1
+    Item 2
+    Item 3
+    ~~~
+
+    ~~~list{type:CB}
     Item 1
     Item 2
     Item 3
