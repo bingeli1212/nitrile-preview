@@ -12,7 +12,7 @@ or a greater-than-sign.
 Following is treated as a block of unordered list,
 where each list item is shown with a text bullet.
 
-    ~~~
+    ~~~list
     - Categorical (If A is in C then B is in C)
     - Disjunctive (If A is not true then B is true)
     - Hypothetical (If A is true then B is true)
@@ -22,7 +22,7 @@ Following is treated as a paragraph of ordered list,
 where each item is shown with a number starting from
 1 followed by a period.
 
-    ~~~
+    ~~~list
     * Categorical (If A is in C then B is in C)
     * Disjunctive (If A is not true then B is true)
     * Hypothetical (If A is true then B is true)
@@ -33,7 +33,7 @@ where the first line or the text before the first appearance
 of a double-space is treated as the description term
 and other text as description data.
 
-    ~~~
+    ~~~list
     + Categorical    If A is in C then B is in C
     + Disjunctive    If A is not true then B is true
     + Hypothetical   If A is true then B is true
@@ -54,37 +54,37 @@ A-Z. Either of these choice must also end
 with a period or a right-parenthesis. For 
 instance,
 
-    ~~~
+    ~~~list
     1. Categorical (If A is in C then B is in C)
     2. Disjunctive (If A is not true then B is true)
     3. Hypothetical (If A is true then B is true)
     ~~~
 
-    ~~~
+    ~~~list
     a. Categorical (If A is in C then B is in C)
     b. Disjunctive (If A is not true then B is true)
     c. Hypothetical (If A is true then B is true)
     ~~~
 
-    ~~~
+    ~~~list
     A. Categorical (If A is in C then B is in C)
     B. Disjunctive (If A is not true then B is true)
     C. Hypothetical (If A is true then B is true)
     ~~~
 
-    ~~~
+    ~~~list
     1) Categorical (If A is in C then B is in C)
     2) Disjunctive (If A is not true then B is true)
     3) Hypothetical (If A is true then B is true)
     ~~~
 
-    ~~~
+    ~~~list
     a) Categorical (If A is in C then B is in C)
     b) Disjunctive (If A is not true then B is true)
     c) Hypothetical (If A is true then B is true)
     ~~~
 
-    ~~~
+    ~~~list
     A) Categorical (If A is in C then B is in C)
     B) Disjunctive (If A is not true then B is true)
     C) Hypothetical (If A is true then B is true)
@@ -102,7 +102,7 @@ item is considered to represent a checkbox placed in front of
 each letter and the letter inside the bracket serves
 as the indication that this checkbox is checked.
 
-    ~~~
+    ~~~list
     [ ] Item 1
     [ ] Item 2
     [x] Item 3
