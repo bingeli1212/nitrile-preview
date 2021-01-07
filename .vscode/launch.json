@@ -54,7 +54,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/beamer.js",
       "args": [
-        "../doc/DOC-para-bull.md"
+        "a.md"
       ]
     },
     {
