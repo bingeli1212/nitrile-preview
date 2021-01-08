@@ -73,6 +73,12 @@ of triple equal-sign.
     & 21
     ~~~
 
+A table-paragraph is similar to a table-phrase except that a table-phrase
+is an inline-block that would be mixed with other text in the paragraph,
+and can be used to construct two or more side-by-side tabulars. On the
+other hand a table-paragraph is designed to be by itself, form a separate 
+paragraph. For LATEX translation it is also to be translated into a float,
+such as a begin-end-table environment with optional caption and label.
 
 Table border lines can be specified by the vline-style
 and hline-style options.
