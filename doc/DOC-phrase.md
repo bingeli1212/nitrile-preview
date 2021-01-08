@@ -14,10 +14,11 @@ object that can be expressed by a phrase -
 - The frac phrase
 - The sup phrase
 - The sub phrase
-- The em phrase
+- The em-phrase
+- The math-phrase
 ~~~
 
-[ The img phrase ]
+# The img-phrase 
 
 The "img" phrase is designed to allow for showing an external
 image with surrounding texts. It can also be used to create a 
@@ -59,4 +60,41 @@ of the width.
 The "frame:1" can be specified to express that the image should
 come with a framed border. For instance,
 ``&img{"./tree.png",width:90%,frame:1}``.
+
+# The math-phrase
+
+The math-phrase is to be recognized by the leading backslash-left-parenthesis
+and ending backslash-right-parenthesis. For example, The following text
+would have been recognized as a math-phrase.
+
+    \( \sqrt{2} \)
+
+The spaces inside this phrase is typically ignored, although it is
+sometimes necessary in order to play a role of distinguish between a 
+backslash-lead-symbol and a variable that follows, such as the following
+
+    \( \log x )
+
+If there had been no space between the word "\log" and "x" it would have been
+recognized as a symbol that is "\logx" instead of "\log".
+
+# The displaymath-phrase
+
+A displaymath-phrase is to be recognized by the leading backslash-left-bracket
+and ending-right-bracket. For instance, following text would have been
+recognized as a displaymath-phrase.
+
+    \[ \sqrt{2} \]
+
+For LATEX translation this phrase is to be translated into the normal LATEX
+display math form. For HTML translation the same effect on LATEX will need to be
+simulated by styling all ".DISPLAYMATH" elements
+with the ``display:block`` CSS property, and optionally setting
+the ``margin:0.5em auto`` such that it will be centered horizontally and with
+some vertical margin.
+
+
+
+
+
 
