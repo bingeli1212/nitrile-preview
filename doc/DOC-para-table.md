@@ -18,6 +18,65 @@ It is possible to include additional options to the
 table-paragraph, which must appear within a set of 
 braces immediately after the word "table".
 
+The table can also be constructed with each describing
+a single table row, and with a double-backslash 
+by itself starting a new row. In this form, each table data
+must start with an ampersand, followed by at least one space,
+and then the text. The double-backslash by itself in a line
+signals the end of the current row.
+
+    ~~~table
+    & Names 
+    & Addr.        
+    & Age
+    \\
+    & James 
+    & 102 Sun Str. 
+    & 29
+    \\
+    & Jane  
+    & 202 Rain Rd. 
+    & 21
+    ~~~
+
+It is also possible to specify horizontal rule 
+using a triple-hyphen such as the following
+
+    ~~~table
+    & Names 
+    & Addr.        
+    & Age
+    ---
+    & James 
+    & 102 Sun Str. 
+    & 29
+    \\
+    & Jane  
+    & 202 Rain Rd. 
+    & 21
+    ~~~
+
+A double line can be expressed by the appearance
+of triple equal-sign.
+
+    ~~~table
+    & Names 
+    & Addr.        
+    & Age
+    ===
+    & James 
+    & 102 Sun Str. 
+    & 29
+    \\
+    & Jane  
+    & 202 Rain Rd. 
+    & 21
+    ~~~
+
+
+Table border lines can be specified by the vline-style
+and hline-style options.
+
     ~~~table{vline:|*|*|*|;hline:t b}
     Names | Addr.        | Age
     ============================
@@ -116,13 +175,15 @@ boundaries of the table data.
 
 Following is an example of the same table but described differently.
 
-    ~~~table{vline:|*|*|*|;hline:t b;n:3}
+    ~~~table{vline:|*|*|*|;hline:t b}
     & Names 
     & Addr.        
     & Age
+    \\
     & James 
     & 102 Sun Str. 
     & 29
+    \\
     & Jane  
     & 202 Rain Rd. 
     & 21
