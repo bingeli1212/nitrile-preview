@@ -1022,5 +1022,17 @@ place the text between the set of brackets:
     set and the {\footnotesize Foot note size also}. 
     There's a fairly large set of font sizes.
 
+# Supporting \mathbb{...} 
 
+In order to support the ``\mathbb{...}`` command in math mode,
+the "bbold" package must be included.
 
++ \usepackage{bbold}
+
+  This document describes the bbold math alphabet. This is an open (or
+  ‘blackboard bold’) geometric sans serif, intended mainly for use in
+  mathematics, but which may prove useful for decorative work.
+
+  To use the fonts in LATEX2ε, you select the bbold package, and then
+  use the \mathbb command to get blackboard bold mathematics, \textbb
+  for text, or \bbfamily for longer text. The full font is:
