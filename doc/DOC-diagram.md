@@ -1117,54 +1117,65 @@ When appear inside a normal command, it must appear after a backslash, such as '
 
 Following are built-in functions provided by Diagram
 
-+ 'log(x)':
++ log(x)
        
   It returns the natural log of a number
 
-+ 'log10(x)':     
++ log10(x)  
 
   It returns the base-10 log
 
-+ 'log1p(x)':     
++ log1p(x)     
   
   It returns the natural log of a number that is 1 plus the argument; it is the same as log(1+x)
 
-+ 'log2(x)':      
++ log2(x)  
   
   It returns the base-2 log
 
-+ 'exp(x)':       
++ exp(x)      
 
   It returns the output of an exponential function for which the base is set to be the Euler's number `e`: exp(1) = e; exp(2) = `e^2`
 
-+ 'pow(x,y)':     
++ pow(x,y)     
   
   It returns the result of raising `x` to the `y`-th power: pow(3,2) = 9; pow(4,2) = 16
 
-+ 'rad(x)':       
++ rad(x)       
   
   It converts a quantity in degrees to a quantity in radian: rad(180) = 3.1415
 
-+ 'deg(x)':       
++ deg(x)       
   
   It converts a quantity in radians to a quantity in degrees: deg(3.1415) = 180
 
-+ 'cos(x)':       
++ cos(x)       
   
   It returns the output of a cosine function, input must be given in radians
 
-+ 'sin(x)':       
++ sin(x)       
   
   It returns the output of a sine function, input must be given in radians
 
-+ 'sqrt(x)':      
++ tan(x)
+
+  It returns the tangent of a number.
+
++ sqrt(x)   
   
   It returns the square root of a number: sqrt(9) = 3
 
-+ 'atan2(y,x)':   
++ atan2(y,x)
   
   It returns the angle measurement in radians for an angle formed between the vector line from the origin to (x,y) and the x-axis
 
++ deg2rad(x)
+
+  It returns a value in radian given a value in degrees.
+
++ rad2deg(x)
+
+  It returns a value in degrees given a value in radians.
 
 
 # The range-expression syntax
