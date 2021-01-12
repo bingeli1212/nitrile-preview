@@ -5,25 +5,25 @@ I_1
 
 I^1
 
-\dot{x}
+\( \dot{x} \)
 
-\ddot{x}
+\( \ddot{x} \)
 
-\hat{x}
+\( \hat{x} \)
 
-\check{x}
+\( \check{x} \)
 
-\bar{x}
+\( \bar{x} \)
 
-\grave{x}
+\( \grave{x} \)
 
-\acute{x}
+\( \acute{x} \)
 
-\breve{x}
+\( \breve{x} \)
 
-\tilde{x}
+\( \tilde{x} \)
 
-\mathring{x}
+\( \mathring{x} \)
 
 The \em{hello \vec{x}} world
 
