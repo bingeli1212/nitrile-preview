@@ -5,7 +5,7 @@ title: The "tabbing" paragraph
 The "tabbing" paragraph is produced by the "tabbing"
 keyword as the first line after the fence.
 
-    ~~~tabbing{n:2}
+    ~~~tabbing
     One 
     Two 
     Three
@@ -14,50 +14,60 @@ keyword as the first line after the fence.
     Six
     ~~~
 
-When the n-style option is present, it assumes that
-each line by itself representing a tabbed paragraph,
-and that the tabbed paragraph should be split into multiple
-columns. In this case, it decides the how many lines
-will go into each column by dividing the total
-number of lines by "n". If the result produces no remainder
-then the quotient determines the total number of lines
-for each column. If the result produces a remainder
-then then the each column gets one extra count above
-the quotient.
+This will create a tabbing paragraph with a single column.
+To create additional columns, add a blank line.
 
-However, the first line starts with an ampersand, and then
-a space, then the data will be parsed in such a way
-that each line with a leading "& " will signal the start
-of a new tabbed paragraph, and the next such entry will be
-the next tabbed paragraph of the same row, up until the total
-number of entries has been reached in a row which must be set by the
-n-style option, in which case it will start a new row.
-If the n-style option is not set, then
-the table is assumed to be a single column table.
+    ~~~tabbing
+    One 
+    Two 
+    Three
+    Four
 
-    ~~~multi{n:2}
+    Five
+    Six
+    ~~~
+
+Or a double-backslash by itself in a line.
+
+    ~~~tabbing
+    One 
+    Two 
+    Three
+    Four
+    \\
+    Five
+    Six
+    ~~~
+
+This would have created a tabbing paragraph with two columns,
+where the first column being four lines and the second column
+being two lines. The previous two method allows each column
+to be built first. However, following method allows each
+row to be built first.
+
+    ~~~tabbing
     & Names
     & Address
-
+    \\
     & John Smith
     & 101 Sunny Dr.
-
+    \\
     & Jane Atom
     & 102 Sunny Dr.
     ~~~
 
-The presence of an empty line will force the next "& " entry
-to start a new row. If a line is found to have started with
-the leading "& " pattern, then two thing will happen. If the
-line is indented, then this line is considered the continuation
-of a previous item entry. If the line is not indented, then it
-is to start a complete new row and every row data will be filled
-this text.
+The ampersand must appear at the first line occupying the first
+character, and immediately be followed by a space. If this
+is detected, then the entire paragraph is to be assumed that
+each line that starts with the ampersand followed by a space
+is to designate the start of a new tabbing cell, where the next
+tabbing cell the cell of the same row. The next row is determined
+by the presence of a double-backslash by itself in a line.
 
 However, in the case where the starting ampersand "& " pattern
-is not detected within the first line, 
-the arrangement of the tabbed paragraphs in each row
-is to be determined by the presence of the vertical-bar.
+is not detected within the first line, and the first line is 
+detected to have a vertical bar, then the entire paragraph is
+deemed to be having a vertical bar separating each tabbing cell.
 
     ~~~tabbing
     One     | Four
@@ -65,9 +75,10 @@ is to be determined by the presence of the vertical-bar.
     Three   | Six
     ~~~
 
-If a vertical-bar wasn't detected, then the tabbed paragraphs
-is to be determined by the presence of two or more consecutive
-white spaces.
+And the first line is found to have a double-space between some words,
+such as the following, then the entire paragraph is deemed to 
+be formatted this way such that each line is to have one or additional
+tabbing cells each separated by a double-or-more-spaces.
 
     ~~~tabbing
     One       Four
@@ -116,10 +127,10 @@ been used instead of the TD-element.
     ~~~tabbing{n:2;head;gap:0.1}
     & Names
     & Address
-
+    \\
     & John Smith
     & 101 Sunny Dr.
-
+    \\
     & Jane Atom
     & 102 Sunny Dr.
     ~~~
