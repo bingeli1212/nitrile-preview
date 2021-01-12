@@ -2,7 +2,7 @@
 title: EPUB Generation
 ---
 
-[ Example package.opf ]
+# Example package.opf 
 
 An example "package.opf" file:
 
@@ -33,7 +33,7 @@ An example "package.opf" file:
 </package>
 ```
 
-[ Navigation file ]
+# Navigation file 
 
 The EPUB3 Navigation file is set by listing this file as one of the 
 "items" in the "manifest" section. This item should have its
@@ -57,7 +57,7 @@ a image file content and return a string that is the mime-type.
 The returned mime-type is determined by reading the signature
 of the input file.
 
-[ The Paper JS-class ]
+# The Paper JS-class 
 
 The "paper.js" file contains a JS-class "Paper" that is implemented
 to return an object that describes the structure of the blocks,
@@ -213,11 +213,7 @@ front matter contents to be served in the future, which
 should be captured by the main document blocks.
 
 
-
-
-
-
-[ Issues and remarks ]
+# Issues and remarks 
 
 - For MATH blocks with two more equations, EPUB tends to shrink
   the SVG for an formula if that formula has been too wide
@@ -238,8 +234,19 @@ should be captured by the main document blocks.
   correctly---the image being a img-element containing an
   embedded SVG. 
 
-- When a SVG is converted to an IMG, with an embedded data URI,
-  then the 'currentColor' for both 'stroke' and 'fill' attribute
-  of the SVG does not pick up the current color setting of the
-  document, and is always the color of black instead.
+- When a SVG is placed inside an img-element, as an embedded data URI,
+  the 'currentColor' would always be "black", rather than the current
+  foreground color of the document.
+
+# The figure
+
+EPUB is hardcoded to style all the figure-element such 
+that its 'font-size:smaller' and 'line-height:1.00' attribute
+is set. This is to address the problem that on iBook the normal
+font size seems to be too big and the line spacing to big 
+for use as figure caption font. 
    
+
+
+
+
