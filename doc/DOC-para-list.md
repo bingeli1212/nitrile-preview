@@ -108,6 +108,16 @@ as the indication that this checkbox is checked.
     [x] Item 3
     ~~~
 
+Also the radiobutton style is added. The radio button gives
+the user the impression that only one of the choice is available;
+choosing one will automatically discheck others.
+
+    ~~~list
+    ( ) Item 1
+    ( ) Item 2
+    (x) Item 3
+    ~~~
+
 A list-paragraph can also be configured to use customized
 bullets. To do this, set the bullet-style such as 
 ``bullet:&cross;``, to specify that a Ballot X character
