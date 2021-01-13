@@ -1183,8 +1183,9 @@
     "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
 
     "blank"                  : { "html": "&#x23B5;"       ,  "tex": "\\textvisiblespace"                  ,"TM":1 , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+23B5 BOTTOM SQUARE BRACKET"}, 
+    "ThinSpace"              : { "html": "&#x2009;"       ,  "tex": "\\,"                                 ,"TM":0 , "width": 3,    "op": 0,  "usepackage":""         ,"comment":"U+2009 THIN SPACET"}, 
     "nbsp"                   : { "html": "&#x00A0;"       ,  "tex": "\\quad"                              ,"TM":0 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+00A0 NO-BREAK SPACE"} 
-
+    
   },
   "alt_symbol": {
     "bigcirc"                : "BigCircle",
