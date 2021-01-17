@@ -1190,6 +1190,8 @@
   "alt_symbol": {
     "bigcirc"                : "BigCircle",
     "xutri"                  : "BigTriangleUp",
-    "xdtri"                  : "BigTriangleDown"
+    "xdtri"                  : "BigTriangleDown",
+    "land"                   : "wedge",
+    "lor"                    : "vee"
   }
 }
