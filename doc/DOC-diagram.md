@@ -9,8 +9,8 @@ A diagram block is to generate a diagram with vector based figures, made up with
 # Using MetaPost with LuaLatex
 
 A diagram block is to be translated into an inline MetaPost block
-between `\begin{mplibcode}` and `\end{mplibcode}`. This environment is
-supported by the `luamplib` LATEX package.
+between ``\begin{mplibcode}`` and ``\end{mplibcode}``. This environment is
+supported by the ``luamplib`` LATEX package.
 
     \usepackage{luamplib}
 
@@ -355,13 +355,13 @@ To reference all points in a path variable, use the at-sign followed by the vari
     draw &a -- (5,5)
     draw (0,0) -- &a -- (5,5)
 
-Typically, a path expression consists of one or more coordinates (points), and join types. A join type can only be '--' or '..'. The '--' join type is to express a 'lineto' operation between the last point and the next point. A '..' join type is to express a 'curveto' operation between the last point and the next point. A point should always be expressed between a set of parentheses, such as `(1,1)`, `(2,2)`, `(3,4)`, etc.
+Typically, a path expression consists of one or more coordinates (points), and join types. A join type can only be '--' or '..'. The '--' join type is to express a 'lineto' operation between the last point and the next point. A '..' join type is to express a 'curveto' operation between the last point and the next point. A point should always be expressed between a set of parentheses, such as ``(1,1)``, ``(2,2)``, ``(3,4)``, etc.
 
 However, Diagram also has something called 'path function'. It's main purpose is to create new a new path based on points of existing path variables. In the following example a new path variable 'c' is created and is assigned the first point of the path 'a'.
 
     path c = &midpoint(&a,0)
 
-The path command also has provision to allow for something akin to JavaScript "array destructuring" statement, in which case individual points of a path are assigned to different path variables at the same time by the same assignment instruction. In the following assignment instruction path variables 'a', 'b' and 'c' are each created and assigned three different points of the same path that was drawn by the `draw` statement.
+The path command also has provision to allow for something akin to JavaScript "array destructuring" statement, in which case individual points of a path are assigned to different path variables at the same time by the same assignment instruction. In the following assignment instruction path variables 'a', 'b' and 'c' are each created and assigned three different points of the same path that was drawn by the ``draw`` statement.
 
     path A = (1,1) (2,2) (3,4) (4,5)
     path [a,b,c] = &A
@@ -701,7 +701,7 @@ Note that for a path function all its arguments must be either a path variable o
 
 + midpoint 
 
-    The `&midpoint()` function returns the mid point of the first two points in a path expression if a single argument is given. Following returns a path with a single point: (1.5,2), which is the mid point of (1,1) and (2,3).
+    The ``&midpoint()`` function returns the mid point of the first two points in a path expression if a single argument is given. Following returns a path with a single point: (1.5,2), which is the mid point of (1,1) and (2,3).
 
     ```
     path b = &midpoint{(1,1),(2,3)}
@@ -717,7 +717,7 @@ Note that for a path function all its arguments must be either a path variable o
   
 + shiftpoints 
 
-    The `&shiftpoints()` function is always needed to be provided with three arguments. The first argument is always interpreted as a path variable. The second and the third arguments are to be interpreted as expressing length in grid unit. This function is to return a new path with exact the same number of points, except for that all the points will have been shifted by the number of grid units specified in the argument. For example, following would have shifted all the points in the original path one position to the left and two positions up.
+    The ``&shiftpoints()`` function is always needed to be provided with three arguments. The first argument is always interpreted as a path variable. The second and the third arguments are to be interpreted as expressing length in grid unit. This function is to return a new path with exact the same number of points, except for that all the points will have been shifted by the number of grid units specified in the argument. For example, following would have shifted all the points in the original path one position to the left and two positions up.
 
     ```
     path b = &shiftpoints{&a,-1,2}
@@ -725,7 +725,7 @@ Note that for a path function all its arguments must be either a path variable o
 
 + scatterpoints 
 
-    The `&scatterpoints()` function is to create new path with the number of points evenly distributed beteen the two end points. In the previous example there will be 10 points created in a path such that the first point is (1,0), and the last point is (10,0), and the rest of the points will be spaced evenly between the first and the last. The last argument is a scalar telling it how many total gaps there is between scattered points.
+    The ``&scatterpoints()`` function is to create new path with the number of points evenly distributed beteen the two end points. In the previous example there will be 10 points created in a path such that the first point is (1,0), and the last point is (10,0), and the rest of the points will be spaced evenly between the first and the last. The last argument is a scalar telling it how many total gaps there is between scattered points.
 
     ```
     path a = &scatterpoints{(1,0),(10,0),9}
@@ -733,7 +733,7 @@ Note that for a path function all its arguments must be either a path variable o
 
 + linelineintersect 
 
-    The `&linelineintersect()` Returns new a path that contains a single point which is the point at which the two lines intersect. The first line is described by the symbol 'a', which must have at least two points. The second line is described by the symbol 'b', which must have at least two points. Only the first two points of 'a' and 'b' are considered. The rest of the points of 'a' and 'b' are ignored.
+    The ``&linelineintersect()`` Returns new a path that contains a single point which is the point at which the two lines intersect. The first line is described by the symbol 'a', which must have at least two points. The second line is described by the symbol 'b', which must have at least two points. Only the first two points of 'a' and 'b' are considered. The rest of the points of 'a' and 'b' are ignored.
 
     ```
     path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
@@ -742,7 +742,7 @@ Note that for a path function all its arguments must be either a path variable o
 
 + linecircleintersect 
 
-    The `&linecircleintersect()` function returns new a path that contains two points for the line and circle intersection. In the following diagram the pts variable 'pts' will hold two points: (6,2) and (4,2).
+    The ``&linecircleintersect()`` function returns new a path that contains two points for the line and circle intersection. In the following diagram the pts variable 'pts' will hold two points: (6,2) and (4,2).
 
     ```
     path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
@@ -916,13 +916,13 @@ The "dashed withdots" option for "draw" will not show any visible dotted lines i
 - cartesian.arc x y R startAngle stopAngle
 ~~~
 
-The `cartesian` command is used to draw plots, curves, axis, ticks
+The ``cartesian`` command is used to draw plots, curves, axis, ticks
 that are related to a single Cartesian coordinate. It is a composite
 command that includes many sub-commands. All subcommands must follow
 the word 'cartesian' after a dot symbol. The subcommand itself can
 also have its own option, such as 'cartesian.text.rt'.
 
-The `setup` command would set up a Cartesian coordate to be used. The
+The ``setup`` command would set up a Cartesian coordate to be used. The
 first two arguments defines the low left hand corner where the origin
 of the cartesian coordinates will appear inside the Diagram. It is
 specified in grid coordintes. For example, if they are passed as 2 and
@@ -942,20 +942,20 @@ will appear at the location (2,3) + (2,2) = (4,5) inside the Diagram,
 where (2,3) is the location of the origin, and (2,2) is where the
 point is relative to the origin.
 
-The `cartesian.xaxis` command is to draw the x-axis. The only two
+The ``cartesian.xaxis`` command is to draw the x-axis. The only two
 parameters passed to it is the lower and upper range that this axis
-entails. Similarly, the `cartesian.yaxis` command draws the y-axis
+entails. Similarly, the ``cartesian.yaxis`` command draws the y-axis
 with similar parameter requirements.
 
     cartesian.xaxis -0.75 5.6
     cartesian.yaxis -0.75 4.5
 
-The `cartesian.xtick` is used to draw ticks as well as labels on the
+The ``cartesian.xtick`` is used to draw ticks as well as labels on the
 x-axis of the coordinate. The list of arguments passed to this command
 is a list of location of these ticks on the axis. For example, if
 passed as "1 2 3" then the ticks will appear where (1,0), (2,0), and
 (3,0) points are. For each tick, a label string will also appear
-unerneath that tick. Similarly, the `cartesian.ytick` command does the
+unerneath that tick. Similarly, the ``cartesian.ytick`` command does the
 same thing except for that it is for the y-axis.
 
     cartesian.xtick 1 2 3 4 5
@@ -1006,7 +1006,7 @@ the funtion generates the corresponding x-coordinates.
     fn P(v) = sqrt(v)
     cartesian.xplot {f:P} 1 4 9 25 16 25
 
-The `cartesian.label` command draws a text at the location of the
+The ``cartesian.label`` command draws a text at the location of the
 cartesian coord. The text itself is expressed via the quotation marks
 that must proceed the any option and all scalar values. Following
 example draw texts at location (-5,0), (-5,1) and (-5,2) of the
@@ -1147,7 +1147,7 @@ it is attached to, and is always shown as black.
   pt.
 
 - It has been observed that for MP generation if the symbol were part
-  of a math such as between `\(` and `\)`, then it appears smaller
+  of a math such as between ``\(`` and ``\)``, then it appears smaller
   than those that are not.
 
 - The text-aligmnents are default to 'urt' and not 'centered', thus we
@@ -1206,7 +1206,7 @@ Before each iteration, the entire loop body would undergo a global
 search-and-replace to substitute any occurrences of the loop symbol
 with the actual sequence that is to be iterated over. For example, if
 the symbol is provided as 'a', then the global search-and-replace
-would replace any occurrences of `\a` by the sequence.
+would replace any occurrences of ``\a`` by the sequence.
 
 If there are two loop symbols, then each iteration would pick up two
 sequences in the list, and the total number of iterations would be
@@ -1360,11 +1360,11 @@ Following are built-in functions provided by Diagram
 + exp(x)      
 
   It returns the output of an exponential function for which the base
-  is set to be the Euler's number `e`: exp(1) = e; exp(2) = `e^2`
+  is set to be the Euler's number ``e``: exp(1) = e; exp(2) = ``e^2``
 
 + pow(x,y)     
   
-  It returns the result of raising `x` to the `y`-th power: pow(3,2) = 9; pow(4,2) = 16
+  It returns the result of raising ``x`` to the ``y``-th power: pow(3,2) = 9; pow(4,2) = 16
 
 + rad(x)       
   
@@ -1411,7 +1411,7 @@ with a command that expects scalar quantities as part of its command
 line structure. When it appears as part of a group of scalar arguments
 of a command, it serves to express one or more scalar quantities for
 that command. For example, in the following command a total of 11
-scalars will be supplied to the `cartesian.yplot` command.
+scalars will be supplied to the ``cartesian.yplot`` command.
 
     fn P(x) = pow(x,2)
     cartesian.yplot {f:P} [1:10]
@@ -1420,18 +1420,18 @@ A range-expression must appears between a set of brackets, and it
 consists of two or three quantities each separated by a single colon.
 
 When a range-expression consists of two quantities, such as "1:10",
-the first one denotes the `base`, and the second one denotes the
+the first one denotes the ``base``, and the second one denotes the
 `limit`. The range of scalars this range-expression covers include all
-the numbers between the `base` and `limit`, starting from the `base`,
+the numbers between the ``base`` and ``limit``, starting from the ``base``,
 with each additional number one greater than its predecessor, and with
-a final number not exceeding `limit`. Thus, for the case of a
+a final number not exceeding ``limit``. Thus, for the case of a
 range-expression "1:10", the scalars it entails are 1, 2, 3, 4, 5, 6,
 7, 8, 9 and 10.
 
 If a Range-expression is given as a set of three quantities, such as
-the case of "1:3:10", then the last quantity denotes the `limit`, and
+the case of "1:3:10", then the last quantity denotes the ``limit``, and
 the middle quantity denotes the increment for each additional scalar
-after the `base`. Thus, in the case of "1:3:10", the scalars it
+after the ``base``. Thus, in the case of "1:3:10", the scalars it
 entails are: 1, 4, 7, 10.
 
 
@@ -1442,7 +1442,7 @@ Nodes and edges are common constructions found in almost any
 literatures covering the topics in the fields of graph theory.
 
 The 'node' and 'edge' commands are for supporting drawings of such
-nature. In particular, each `node` command is to draw one or more
+nature. In particular, each ``node`` command is to draw one or more
 nodes, with each node shaped as a circle, with optional text in the
 middle.
 
@@ -1458,7 +1458,7 @@ be configured to another such as "2" by doing the following
 
 The option after the command such as ".A" and ".B" is used to assign a
 name to this node, so that it can be referred to later by a command
-such as `edge`. In the following example the `edge` command is to draw
+such as ``edge``. In the following example the ``edge`` command is to draw
 an edge between nodes "A" and "B".
 
     edge.A.B
