@@ -339,44 +339,77 @@ the reference point is moved to (12,10).
 
 # The reset-operation
 
-The reset-operation is done by the 'reset' command itself but a single line without additional arguments after it. It is a shorthand for setting 'refx' and 'refy' to 0 and 'refsx' and 'refsy' to 1
+The reset-operation is done by the 'reset' command itself but a single
+line without additional arguments after it. It is a shorthand for
+setting 'refx' and 'refy' to 0 and 'refsx' and 'refsy' to 1
 
     reset
 
 # The path-operation
 
-The 'path' command can be used to create path variables. A path variable must start with a upper case or lower case letters, and followed by one or more upper case or lower case letters, or digits. Symbols and operators are not allowed.
+The 'path' command can be used to create path variables. A path
+variable must start with a upper case or lower case letters, and
+followed by one or more upper case or lower case letters, or digits.
+Symbols and operators are not allowed.
 
     path a = (1,1) -- (2,2) -- (3,4)
 
-To reference all points in a path variable, use the at-sign followed by the variable name. This notation serves to connect the last point to the first of the new path variable. If additional points are specified, they will be connected to the last point of the previous path.
+To reference all points in a path variable, use the at-sign followed
+by the variable name. This notation serves to connect the last point
+to the first of the new path variable. If additional points are
+specified, they will be connected to the last point of the previous
+path.
 
     draw &a
     draw &a -- (5,5)
     draw (0,0) -- &a -- (5,5)
 
-Typically, a path expression consists of one or more coordinates (points), and join types. A join type can only be '--' or '..'. The '--' join type is to express a 'lineto' operation between the last point and the next point. A '..' join type is to express a 'curveto' operation between the last point and the next point. A point should always be expressed between a set of parentheses, such as ``(1,1)``, ``(2,2)``, ``(3,4)``, etc.
+Typically, a path expression consists of one or more coordinates
+(points), and join types. A join type can only be '--' or '..'. The
+'--' join type is to express a 'lineto' operation between the last
+point and the next point. A '..' join type is to express a 'curveto'
+operation between the last point and the next point. A point should
+always be expressed between a set of parentheses, such as ``(1,1)``,
+``(2,2)``, ``(3,4)``, etc.
 
-However, Diagram also has something called 'path function'. It's main purpose is to create new a new path based on points of existing path variables. In the following example a new path variable 'c' is created and is assigned the first point of the path 'a'.
+However, Diagram also has something called 'path function'. It's main
+purpose is to create new a new path based on points of existing path
+variables. In the following example a new path variable 'c' is created
+and is assigned the first point of the path 'a'.
 
-    path c = &midpoint(&a,0)
+    path c = &midpoint{&a,0}
 
-The path command also has provision to allow for something akin to JavaScript "array destructuring" statement, in which case individual points of a path are assigned to different path variables at the same time by the same assignment instruction. In the following assignment instruction path variables 'a', 'b' and 'c' are each created and assigned three different points of the same path that was drawn by the ``draw`` statement.
+The path command also has provision to allow for something akin to
+JavaScript "array destructuring" statement, in which case individual
+points of a path are assigned to different path variables at the same
+time by the same assignment instruction. In the following assignment
+instruction path variables 'a', 'b' and 'c' are each created and
+assigned three different points of the same path that was drawn by the
+``draw`` statement.
 
     path A = (1,1) (2,2) (3,4) (4,5)
     path [a,b,c] = &A
 
-Each sub-variable must be separated from other sub-variables by one or more slash character. You can skip ahead and bypass certain points by not including any variables in between slashes. For example, you can choose to assign the first point to variable 'a' and the third point to variable 'b' as follows.
+Each sub-variable must be separated from other sub-variables by one or
+more slash character. You can skip ahead and bypass certain points by
+not including any variables in between slashes. For example, you can
+choose to assign the first point to variable 'a' and the third point
+to variable 'b' as follows.
 
     path A = (1,1) (2,2) (3,4) (4,5)
     path [a,,b] = &A
 
-Note that the last variable gets all remaining points. This, variable 'b' will get the last two points, which are (3,4) and (4,5). However, you can choose to allow only a single point to be assigned to the last variable by including an additional slash after this variable.
+Note that the last variable gets all remaining points. This, variable
+'b' will get the last two points, which are (3,4) and (4,5). However,
+you can choose to allow only a single point to be assigned to the last
+variable by including an additional slash after this variable.
 
     path A = (1,1) (2,2) (3,4) (4,5)
     path [a,,b,] = &A
 
-Similarly you can also add slashes at the beginning to skip first few points. Following example will skip the first two points and assign the remaining two points to variable 'a'.
+Similarly you can also add slashes at the beginning to skip first few
+points. Following example will skip the first two points and assign
+the remaining two points to variable 'a'.
 
     path A = (1,1) (2,2) (3,4) (4,5)
     path [,,a] = &A
@@ -387,7 +420,9 @@ Following is an example of drawing dots.
     path p = (5,6) (7,8)
     dot &p1 &p2 (9,9)
 
-For a given path variable access to individual points or a selected few descrete range of points can also be done by the combination of brackets, commas, and hyphen.
+For a given path variable access to individual points or a selected
+few descrete range of points can also be done by the combination of
+brackets, commas, and hyphen.
 
     path p = (1,2) (1,3) (3,4) (4,5) (5,6) (6,7)
     dot &p[0]
@@ -401,28 +436,50 @@ For a given path variable access to individual points or a selected few descrete
 
 Following commands treats the input argument as path.
 
--- draw
--- fill
--- stroke
+~~~list
+- draw
+- fill
+- stroke
+- arrow
+- revarrow
+- dblarrow
+~~~
 
-
-The 'draw' command would draw connecting lines between path points. Typically it is straight lines, but Bezier curves are also supported. This includes quadratic and cubic curves. The SVG arc is also supported.
+The 'draw' command would draw connecting lines between path points.
+Typically it is straight lines, but Bezier curves are also supported.
+This includes quadratic and cubic curves. The SVG arc is also
+supported.
 
     draw (0,0) -- (1,1) (2,2)
 
-The 'fill' command is similar to 'draw', except that it fills the path with the default filled color, without drawing the the outline of the path (without stroking it).
+The 'fill' command is similar to 'draw', except that it fills the path
+with the default filled color, without drawing the the outline of the
+path (without stroking it).
 
-The double-hyphen operator between points indicates that it should be a straight line between two points. However, it is assumed if two points are detected without a connecting double-hyphen between, such as the case of the second and third point above. The points are typically expressed as absolute points, but relative points can also be expressed. They are all in the form of [...] where a set of brackets are present.
+The double-hyphen operator between points indicates that it should be
+a straight line between two points. However, it is assumed if two
+points are detected without a connecting double-hyphen between, such
+as the case of the second and third point above. The points are
+typically expressed as absolute points, but relative points can also
+be expressed. They are all in the form of [...] where a set of
+brackets are present.
 
     draw (0,0) [l:1,1] [l:1,1]
 
-Here the second and third points are each expressed as a distance away from its previous point, which is to move right for one grid unit and then up for one unit. Note that the coordinates in Diagram are always expressed in terms of grid unit. There are other relative position syntaxes, that are shown below.
+Here the second and third points are each expressed as a distance away
+from its previous point, which is to move right for one grid unit and
+then up for one unit. Note that the coordinates in Diagram are always
+expressed in terms of grid unit. There are other relative position
+syntaxes, that are shown below.
 
-Path expression can also include "offsets". An offset is expressed as 
+Path expression can also include "offsets". An offset is expressed as
 
     <x,y>
     
-The presence of an offset will not cause a real points to be inserted into the path. Rather, it serves to provide an "offset" such that all future points will be computed as relative to this offset. For example, let's suppose we have the following two draw line program.
+The presence of an offset will not cause a real points to be inserted
+into the path. Rather, it serves to provide an "offset" such that all
+future points will be computed as relative to this offset. For
+example, let's suppose we have the following two draw line program.
 
     draw (10,0) (15,0)
     draw (10,0) (10,5)
@@ -432,45 +489,104 @@ However, by using "offsets" we can rewrite them as follows.
     draw <10,0> (0,0) (5,0)
     draw <10,0> (0,0) (0,5)
 
-Here, <10,0> are considered an offset. An offset <10,0> is to set it so that the all future points will be considered an offset to the point that is (10,0). Thus, the point of (0,0) is considered as (10,0), and (5,0) is considered (15,0). The offset always appears between a set of angle brackets. The first number is the offset in the horizontal direction, and the second one in vertical direction.
+Here, <10,0> are considered an offset. An offset <10,0> is to set it
+so that the all future points will be considered an offset to the
+point that is (10,0). Thus, the point of (0,0) is considered as
+(10,0), and (5,0) is considered (15,0). The offset always appears
+between a set of angle brackets. The first number is the offset in the
+horizontal direction, and the second one in vertical direction.
 
-The offset is only going to be valid for the current path, and it only takes affect after it is encountered, and will only affect the points that follow it. Thus, if you have placed an offset in the middle of two points, such as the following, then the first point is to be considered as (0,0) while the second one as (15,0).
+The offset is only going to be valid for the current path, and it only
+takes affect after it is encountered, and will only affect the points
+that follow it. Thus, if you have placed an offset in the middle of
+two points, such as the following, then the first point is to be
+considered as (0,0) while the second one as (15,0).
 
     draw (0,0) <10,0> (5,0)
 
-Offsets are also accumulative. Thus, if there are two offsets one appear after another then the second offset is considered to be offset to the first. This allows you to construct more points simply by moving offsets. For example, you can construct a path with four points (11,0), (12,0), (13,0) and (14,0) as follows.
+Offsets are also accumulative. Thus, if there are two offsets one
+appear after another then the second offset is considered to be offset
+to the first. This allows you to construct more points simply by
+moving offsets. For example, you can construct a path with four points
+(11,0), (12,0), (13,0) and (14,0) as follows.
 
     draw <11,0> (0,0) <1,0> (0,0) <1,0> (0,0) <1,0> (0,0)
 
-The keyword 'cycle' denotes a special point such that the path is to be closed and the last point should be connected to the first point using a straight line. Note that a 'cycle' is not a physical point. It should be considered a meta data and a notational trick that expresses the afformentioned intent. This notation is usually a special syntax placed at the end of the long list of points. For SVG it is the 'z', and for MetaPost/MetaFun it is the 'cycle'.
+The keyword 'cycle' denotes a special point such that the path is to
+be closed and the last point should be connected to the first point
+using a straight line. Note that a 'cycle' is not a physical point. It
+should be considered a meta data and a notational trick that expresses
+the afformentioned intent. This notation is usually a special syntax
+placed at the end of the long list of points. For SVG it is the 'z',
+and for MetaPost/MetaFun it is the 'cycle'.
 
     draw (0,0) (1,2) (3,4) cycle
 
-Note that for all 'draw' related commands, a path can be expressed such that it contains multiple disjoint segments. For example, we can express to draw two disjoint line in a single 'draw' command such that the first line segment goes from (0,0) to (2,3) and the second line segment goes from (4,5) to (6,7). To do that, place a null point between the the (2,3) and (4,5).
+Note that for all 'draw' related commands, a path can be expressed
+such that it contains multiple disjoint segments. For example, we can
+express to draw two disjoint line in a single 'draw' command such that
+the first line segment goes from (0,0) to (2,3) and the second line
+segment goes from (4,5) to (6,7). To do that, place a null point
+between the the (2,3) and (4,5).
 
     draw (0,0) (2,3) () (4,5) (6,7)
 
-A null point is a point that is expressed a '()'. In addition, any appearances In this case, Diagram recognizes that there is going to be two path segments, one consisting of all points before the null point and the other consisting of all points after the null point.
+A null point is a point that is expressed a '()'. In addition, any
+appearances In this case, Diagram recognizes that there is going to be
+two path segments, one consisting of all points before the null point
+and the other consisting of all points after the null point.
 
-In additional, if the 'cycle' keyword appears then it also means the end of the current path segment and the start of a new one. In this case no null point needs to be specified. In the following example two path segment is to e created, with one consisting of a triangle, and another one a line.
+In additional, if the 'cycle' keyword appears then it also means the
+end of the current path segment and the start of a new one. In this
+case no null point needs to be specified. In the following example two
+path segment is to e created, with one consisting of a triangle, and
+another one a line.
 
     draw (0,0) (2,0) (2,2) cycle (4,0) (6,2)
 
-For MetaPost output, each path segment requires a separate "draw" command. For SVG, a single PATH elements is sufficient; the SVG is implemented such that a "M" operation can follow a "z". However, in our implementation each seprate path segment is still to be placed inside a separate PATH element. This is specifically designed so that those path segments that are not "closed" will not be attempted to do a "fill" operation.
+For MetaPost output, each path segment requires a separate "draw"
+command. For SVG, a single PATH elements is sufficient; the SVG is
+implemented such that a "M" operation can follow a "z". However, in
+our implementation each seprate path segment is still to be placed
+inside a separate PATH element. This is specifically designed so that
+those path segments that are not "closed" will not be attempted to do
+a "fill" operation.
 
-By default, the 'draw' command would stroke the path. However, if the 'fillcolor' attribute is set, then it would also fill the area enclosed by the path. However, it does so only when the path is deemed "closed", in which case a 'cycle' keyword must follow the last point. If the path is not closed, it will not be filled, even when 'fillcolor' is specified.
+By default, the 'draw' command would stroke the path. However, if the
+'fillcolor' attribute is set, then it would also fill the area
+enclosed by the path. However, it does so only when the path is deemed
+"closed", in which case a 'cycle' keyword must follow the last point.
+If the path is not closed, it will not be filled, even when
+'fillcolor' is specified.
 
-For SVG, when a 'fill=' attribute is specified the rendering engine will attempt to fill the area, even when the area is not closed. For MetaPost/MetaFun the path will have to be closed before calling the 'fill' MetaPost, as otherwise the compilation will complain.
+For SVG, when a 'fill=' attribute is specified the rendering engine
+will attempt to fill the area, even when the area is not closed. For
+MetaPost/MetaFun the path will have to be closed before calling the
+'fill' MetaPost, as otherwise the compilation will complain.
 
 # The drawcontrolpoint-operation
 
-The 'drawcontrolpoint' is a special command that draws all the control points detected in a given path. The control points are those present in a path specification that are necessary to describe a Bezier curve, whether it is cubic or quadratic.
+The 'drawcontrolpoint' is a special command that draws all the control
+points detected in a given path. The control points are those present
+in a path specification that are necessary to describe a Bezier curve,
+whether it is cubic or quadratic.
 
 # The drawanglearc-operation
 
-The 'drawanglearc' is designed to draw a small arc describing the span of an angle. The path that is given to this command is expected to describe the angle, where the first/second/third path would have formed the first angle where the second point serves as the vertex of the angle, and each of the first and third point denotes a point on either side of the angle. There should be at least three points on the path, but if there are additional points, then each consecutive three points will be used to describe an angle for the arc to draw. Thus, if there had been four points in the path, then the first three points describes the first angle, and the last three points describes the second angle.
+The 'drawanglearc' is designed to draw a small arc describing the span
+of an angle. The path that is given to this command is expected to
+describe the angle, where the first/second/third path would have
+formed the first angle where the second point serves as the vertex of
+the angle, and each of the first and third point denotes a point on
+either side of the angle. There should be at least three points on the
+path, but if there are additional points, then each consecutive three
+points will be used to describe an angle for the arc to draw. Thus, if
+there had been four points in the path, then the first three points
+describes the first angle, and the last three points describes the
+second angle.
 
-The 'drawanglearc' can also place text next to the angle arc to show the name of an angle.
+The 'drawanglearc' can also place text next to the angle arc to show
+the name of an angle.
 
     draw (0,6) (2,4) (4,6) (6,4) (8,6)
     drawanglearc "1\\2\\3" *
@@ -482,7 +598,10 @@ Each of the following syntax denotes a relative point.
 
 + [l:dx,dy] 
 
-	This to draw a line from the current point to the new location is relative to the current point by dx and dy. Note that dx and dy are specified in Cartesian coordinates, thus positive dx is towards the right, and positive dy is towards the top.
+ This to draw a line from the current point to the new location is
+ relative to the current point by dx and dy. Note that dx and dy are
+ specified in Cartesian coordinates, thus positive dx is towards the
+ right, and positive dy is towards the top.
 
 + [h:dx]
 
@@ -494,96 +613,153 @@ Each of the following syntax denotes a relative point.
 
 + [a:rx,ry,angle,bigarcflag,sweepflag,dx,dy] 
 
-	This is to draw an arc to the end point that is dx/dy away from the current point. The arc is assumed to trace alone an elliptical arc with x-axis and y-axis each of which having a radius of 'rx' and 'ry'. The angle is in the unit of degrees, specifying the rotation of the ellipse if any, with a positive number denoting a counter-clockwise rotation. The 'bigarcflag' is set to 1 if the arc to be drawn are the longer of the two between the starting point and end point. Otherwise the shorter arc is to be drawn. The 'sweepflag' expresses whether the arc is to travel counterclockwise or clockwise from the current point to the new point; the value 0 is for a anti-clockwise rotation and the value 1 is for a clockwise rotation. Thus, to draw an arc from the last point to a new point that is on its right hand side of the last point, and if the sweepflag is set to 0, then the arc will always appear below both points.
+  This is to draw an arc to the end point that is dx/dy away from the
+  current point. The arc is assumed to trace alone an elliptical arc
+  with x-axis and y-axis each of which having a radius of 'rx' and
+  'ry'. The angle is in the unit of degrees, specifying the rotation
+  of the ellipse if any, with a positive number denoting a
+  counter-clockwise rotation. The 'bigarcflag' is set to 1 if the arc
+  to be drawn are the longer of the two between the starting point and
+  end point. Otherwise the shorter arc is to be drawn. The 'sweepflag'
+  expresses whether the arc is to travel counterclockwise or clockwise
+  from the current point to the new point; the value 0 is for a
+  anti-clockwise rotation and the value 1 is for a clockwise rotation.
+  Thus, to draw an arc from the last point to a new point that is on
+  its right hand side of the last point, and if the sweepflag is set
+  to 0, then the arc will always appear below both points.
 
 + The [c:dx1,dy1,dx2,dy2,dx,dy] 
 
-	This is to draw a cubic Bezier curve from the current point to the new point that is dx/dy away. The (dx1,dy1), and (dx2,dy2) are two control points. Note that all numbers are specified relative to the last point.
+  This is to draw a cubic Bezier curve from the current point to the
+  new point that is dx/dy away. The (dx1,dy1), and (dx2,dy2) are two
+  control points. Note that all numbers are specified relative to the
+  last point.
 
 + [s:dx2,dy2,dx,dy] 
 
-	This is to draw a cubic Bezier curve from the current point to the new point that is dx/dy away. Only the second point of the current Bezier curve needs to be provided. The first control point is deduced from the second control point of the previous cubic Bezier curve operation. If the previous operation is not a cubic Bezier curve drawing, but a quadratic Bezier curve drawing, then the first control point of the quadratic curve is used to deduce the first control point of the current operation. If it is neither a cubic nor a quadrilatic, then the last point is assumed.
+  This is to draw a cubic Bezier curve from the current point to the
+  new point that is dx/dy away. Only the second point of the current
+  Bezier curve needs to be provided. The first control point is
+  deduced from the second control point of the previous cubic Bezier
+  curve operation. If the previous operation is not a cubic Bezier
+  curve drawing, but a quadratic Bezier curve drawing, then the first
+  control point of the quadratic curve is used to deduce the first
+  control point of the current operation. If it is neither a cubic nor
+  a quadrilatic, then the last point is assumed.
 
 + The [q:dx1,dy1,dx,dy] 
 	
-	This is to draw a quadrilatic Bezier curve. The dx1/dy1 is the only control point. The dx/dy is the new point. All positions are expressed relative to the last point.
+  This is to draw a quadrilatic Bezier curve. The dx1/dy1 is the only
+  control point. The dx/dy is the new point. All positions are
+  expressed relative to the last point.
 
 + The [t:dx,dy] 
 
-	This is to draw a quadratic Bezier curve with the first control point deduced from a previous Bezier curve operation. If a previous operation is not a Bezier curve operation, then the last point is assumed to be control point, in which case the drawn curve will be straight line.
+  This is to draw a quadratic Bezier curve with the first control
+  point deduced from a previous Bezier curve operation. If a previous
+  operation is not a Bezier curve operation, then the last point is
+  assumed to be control point, in which case the drawn curve will be
+  straight line.
 
 + [angledist:1,30] 
 
-	This allows you to construct a new point that is to travel at a angle of 30 degrees counterclockwise from due east for 1 unit length, starting from the current point.
+  This allows you to construct a new point that is to travel at a
+  angle of 30 degrees counterclockwise from due east for 1 unit
+  length, starting from the current point.
 
 + [turn:30,1] 
 
-	This is to create a new point that is equivalent to making a left turn of 30 degrees from the direction you have arrived at the current point, and then travel for one more unit length. If it is to make a right turn, then set the angle to a negative number.
+  This is to create a new point that is equivalent to making a left
+  turn of 30 degrees from the direction you have arrived at the
+  current point, and then travel for one more unit length. If it is to
+  make a right turn, then set the angle to a negative number.
 
 + [flip:5,5] 
 
-	This is to construct a new point that is the mirror image of the current point. The current point in this case is five unit distance to the right and towards the top of the last point. The mirror is the line segment that is made up by the current point and the point before that. This operations allows you to figure out where an existing point will land as if you were folding a paper along an existing line that is traveled between the last two points.
+  This is to construct a new point that is the mirror image of the
+  current point. The current point in this case is five unit distance
+  to the right and towards the top of the last point. The mirror is
+  the line segment that is made up by the current point and the point
+  before that. This operations allows you to figure out where an
+  existing point will land as if you were folding a paper along an
+  existing line that is traveled between the last two points.
 
 
 # The shape-operation
 
 Following commands are to draw a shape. The shape to be drawn is specified as the "subcommand". Each shape has its "native" size, which is going to be different from shape to shape.
 
---   shape.rect
---   shape.rhombus
---   shape.trapezoid
---   shape.parallelgram
---   shape.apple
---   shape.rrect
---   shape.basket
---   shape.crate
---   shape.radical
---   shape.protractor
---   shape.updnprotractor
+~~~list
+-   shape.rect
+-   shape.rhombus
+-   shape.trapezoid
+-   shape.parallelgram
+-   shape.apple
+-   shape.rrect
+-   shape.basket
+-   shape.crate
+-   shape.radical
+-   shape.protractor
+-   shape.updnprotractor
+~~~
 
-Similar to the 'circle' command, each shape is to be drawn at a location of the path. Thus, the following command would have drawn three 'rect' shape each at a different location.
+Similar to the 'circle' command, each shape is to be drawn at a
+location of the path. Thus, the following command would have drawn
+three 'rect' shape each at a different location.
 
     shape.rect   (1,1) (3,4) [l:2,1]
 
-Each shape has its own native size, and is positioned so that its anchor point aligns with the position specified. For example, all 'rect' shapes will be position so that its lower-left hand corner aligns with the point given, while all shapes of 'protractor' will be positioned so that its lower-center corner is aligned with the location. Following table shows the native size and the anchor position of each shape.
+Each shape has its own native size, and is positioned so that its
+anchor point aligns with the position specified. For example, all
+'rect' shapes will be position so that its lower-left hand corner
+aligns with the point given, while all shapes of 'protractor' will be
+positioned so that its lower-center corner is aligned with the
+location. Following table shows the native size and the anchor
+position of each shape.
 
-~~~table{border:2}
-    Shape            | Native size      | Anchor position
-    ------------------------------------------------------------
-    rect             | 1x1              | left-left
-    rhombus          | 1x1              | left-left
-    trapezoid        | 1x1              | left-left
-    parallelgram     | 1x1              | left-left
-    apple            | 1x1              | left-left
-    rrect            | 1x1              | left-left
-    basket           | 3x2              | left-left
-    crate            | 4x3              | left-left
-    radical          | 4x2              | top-left
-    protractor       | 7x3.5            | lower-center
-    updnprotractor   | 7x3.5            | upper-center
-~~~
+```tabular
+Shape            | Native size      | Anchor position
+------------------------------------------------------------
+rect             | 1x1              | left-left
+rhombus          | 1x1              | left-left
+trapezoid        | 1x1              | left-left
+parallelgram     | 1x1              | left-left
+apple            | 1x1              | left-left
+rrect            | 1x1              | left-left
+basket           | 3x2              | left-left
+crate            | 4x3              | left-left
+radical          | 4x2              | top-left
+protractor       | 7x3.5            | lower-center
+updnprotractor   | 7x3.5            | upper-center
+```
 
-++ (a) For the radical the height is always 2, but the width might be changed to a differen width if the 'radicallength' attribute is set to a different number. The default width is 4.
+- (a) For the radical the height is always 2, but the width might be changed to a differen width if the 'radicallength' attribute is set to a different number. The default width is 4.
 
-++ (b) For each shape, the 'sx' and 'sy' attributes can each be set to a different quantity, for which they each acts as a scalar that is to scale the width and height of the shape. For example, we can scale the protractor horizontally by half and vertically by two-third if we were to do the following.
+- (b) For each shape, the 'sx' and 'sy' attributes can each be set to a different quantity, for which they each acts as a scalar that is to scale the width and height of the shape. For example, we can scale the protractor horizontally by half and vertically by two-third if we were to do the following.
   
   ````
   shape.protractor {sx:0.5;sy:0.66} (0,0)
   ````
 
-++ (c) For each shape, the 'theta' can be added to express the angle of rotation around the origin. The angle is a number in degrees, where a position number expresses the rotation in the direction of unter-clockwise.
+- (c) For each shape, the 'theta' can be added to express the angle of rotation around the origin. The angle is a number in degrees, where a position number expresses the rotation in the direction of unter-clockwise.
   
   ````
   shape.protractor {theta:30} 
   ````
 
+
+
 # The dot-operation
 
-The 'dot' command is to draw a dot to mark the location. Similar to the primitive command, a single dot is to be repeated for all points on the given path. Thus, following command will draw three dots each at three different locations of the input path.
+The 'dot' command is to draw a dot to mark the location. Similar to
+the primitive command, a single dot is to be repeated for all points
+on the given path. Thus, following command will draw three dots each
+at three different locations of the input path.
 
     dot (1,1) (3,4) [l:2,1]
 
-The 'dot' command provide several subcommands that allows for a different shape to be drawn instead of a circular dot.
+The 'dot' command provide several subcommands that allows for a
+different shape to be drawn instead of a circular dot.
 
     dot.hbar (1,1) (3,4) [l:2,1]
     dot.vbar (1,1) (3,4) [l:2,1]
@@ -592,7 +768,8 @@ For 'dot' command, the color can be specified using the 'dotcolor'.
 
     dot {dotcolor:orange} (1,1) (3,4) [l:2,1]
 
-For 'hbar' and 'vbar' subcommands the 'linecolor' attribute would have expressed the color of the lines.
+For 'hbar' and 'vbar' subcommands the 'linecolor' attribute would have
+expressed the color of the lines.
 
     dot.hbar {linecolor:orange} (1,1) (3,4) [l:2,1]
     dot.vbar {linecolor:orange} (1,1) (3,4) [l:2,1]
@@ -601,17 +778,25 @@ The diameter of the dot can be set using the 'dotsize' attribute.
 
     dot {dotcolor:orange; dotsize:10} (1,1) (3,4) [l:2,1]
 
-For 'hbar' and 'vbar' subcommands the 'linesize' attribute would hve expressed the width of the line.
+For 'hbar' and 'vbar' subcommands the 'linesize' attribute would hve
+expressed the width of the line.
 
     dot.hbar {barcolor:orange; linesize:2} (1,1) (3,4) [l:2,1]
     dot.vbar {barcolor:orange; linesize:2} (1,1) (3,4) [l:2,1]
 
-The 'dotsize' and 'linesize' are both expressed in terms of 'pt'. For 'hbar' and 'vbar' commands, the length of the bar can be specified via the 'barlength' attribute. It is a number that expresses the line length in grid unit. If not specified, the default value is 0.25, which is one-quarter the length of a grid, and it can be changed to a different value by the 'set barlength' command.
+The 'dotsize' and 'linesize' are both expressed in terms of 'pt'. For
+'hbar' and 'vbar' commands, the length of the bar can be specified via
+the 'barlength' attribute. It is a number that expresses the line
+length in grid unit. If not specified, the default value is 0.25,
+which is one-quarter the length of a grid, and it can be changed to a
+different value by the 'set barlength' command.
 
     dot.hbar {linecolor:orange; barlength:0.5} (1,1) (3,4) [l:2,1]
     dot.vbar {linecolor:orange; barlength:0.5} (1,1) (3,4) [l:2,1]
 
-Here, the length of each bar is going to be about half the length of the grid. Note that for 'vbar', it's lower end point aligns with the location, and for 'hbar', its left end aligns with the location.
+Here, the length of each bar is going to be about half the length of
+the grid. Note that for 'vbar', it's lower end point aligns with the
+location, and for 'hbar', its left end aligns with the location.
 
 
 # The label-operation
@@ -669,18 +854,19 @@ backslash-right-parenthesis quotation for the text.
 
 # The text operation
 
-The text operation is very similar to the label operation except that it will look for double
-backslashes in the text and use that to draw multi-line text box.
+The text operation is very similar to the label operation except that
+it will look for double backslashes in the text and use that to draw
+multi-line text box.
 
     text.ulft {fontsize:7,dx:-0.5} "degree\\ 3" (-3,2)
     text.urt  {fontsize:7,dx:+0.5} "degree\\ 2" (3,2)
     text.llft {fontsize:7,dx:-0.5} "degree\\ 2" (-3,-2)
     text.lrt  {fontsize:7,dx:+0.5} "degree\\ 3" (3,-2)
 
-Unlike the label, it always treats the text as normal text, and
-not the math expression. This means that the backslash-left-parenthesis and
-backslash-right-parenthesis quoted text will be treated as if they are 
-normal text.
+Unlike the label, it always treats the text as normal text, and not
+the math expression. This means that the backslash-left-parenthesis
+and backslash-right-parenthesis quoted text will be treated as if they
+are normal text.
 
 The text operation can also have alignment specifier for it.
 
@@ -697,194 +883,296 @@ The text operation can also have alignment specifier for it.
 
 # The path-functions
 
-Note that for a path function all its arguments must be either a path variable or a number. Coordinate list is not valid. In the following examples all letters a, b, c are path variables.
+Note that for a path function all its arguments must be either a path
+variable or a number. Coordinate list is not valid. In the following
+examples all letters a, b, c are path variables.
 
 + midpoint 
 
-    The ``&midpoint()`` function returns the mid point of the first two points in a path expression if a single argument is given. Following returns a path with a single point: (1.5,2), which is the mid point of (1,1) and (2,3).
+  The ``&midpoint()`` function returns the mid point of the first two
+  points in a path expression if a single argument is given. Following
+  returns a path with a single point: (1.5,2), which is the mid point
+  of (1,1) and (2,3).
 
-    ```
-    path b = &midpoint{(1,1),(2,3)}
-    ```
+  ```
+  path b = &midpoint{(1,1),(2,3)}
+  ```
 
-    Note that only the first two points of a path is used. The other points are ignored. Thus if path a has three points, then the third point is simply ignored.
+  Note that only the first two points of a path is used. The other
+  points are ignored. Thus if path a has three points, then the third
+  point is simply ignored.
 
-    If two arguments are given, it does a linear interpolation alone the line segment of the first two points, and return a point that corresponds to the percentage of the path traveled from the first point to the second. The second argument is an floating point number between 0-1. For example, if 0.5 is given as the second parameters, it should return the same path as that with a single argument. Thus, following example will return the same result as the one before.
+  If two arguments are given, it does a linear interpolation alone the
+  line segment of the first two points, and return a point that
+  corresponds to the percentage of the path traveled from the first
+  point to the second. The second argument is an floating point number
+  between 0-1. For example, if 0.5 is given as the second parameters,
+  it should return the same path as that with a single argument. Thus,
+  following example will return the same result as the one before.
 
-    ```
-    path b = &midpoint{(1,1),(2,3),0.5}
-    ```
-  
+  ```
+  path b = &midpoint{(1,1),(2,3),0.5}
+  ```
+
 + shiftpoints 
 
-    The ``&shiftpoints()`` function is always needed to be provided with three arguments. The first argument is always interpreted as a path variable. The second and the third arguments are to be interpreted as expressing length in grid unit. This function is to return a new path with exact the same number of points, except for that all the points will have been shifted by the number of grid units specified in the argument. For example, following would have shifted all the points in the original path one position to the left and two positions up.
+  The ``&shiftpoints()`` function is always needed to be provided with
+  three arguments. The first argument is always interpreted as a path
+  variable. The second and the third arguments are to be interpreted
+  as expressing length in grid unit. This function is to return a new
+  path with exact the same number of points, except for that all the
+  points will have been shifted by the number of grid units specified
+  in the argument. For example, following would have shifted all the
+  points in the original path one position to the left and two
+  positions up.
 
-    ```
-    path b = &shiftpoints{&a,-1,2}
-    ```
+  ```
+  path b = &shiftpoints{&a,-1,2}
+  ```
 
 + scatterpoints 
 
-    The ``&scatterpoints()`` function is to create new path with the number of points evenly distributed beteen the two end points. In the previous example there will be 10 points created in a path such that the first point is (1,0), and the last point is (10,0), and the rest of the points will be spaced evenly between the first and the last. The last argument is a scalar telling it how many total gaps there is between scattered points.
+  The ``&scatterpoints()`` function is to create new path with the
+  number of points evenly distributed beteen the two end points. In
+  the previous example there will be 10 points created in a path such
+  that the first point is (1,0), and the last point is (10,0), and the
+  rest of the points will be spaced evenly between the first and the
+  last. The last argument is a scalar telling it how many total gaps
+  there is between scattered points.
 
-    ```
-    path a = &scatterpoints{(1,0),(10,0),9}
-    ```
+  ```
+  path a = &scatterpoints{(1,0),(10,0),9}
+  ```
 
 + linelineintersect 
 
-    The ``&linelineintersect()`` Returns new a path that contains a single point which is the point at which the two lines intersect. The first line is described by the symbol 'a', which must have at least two points. The second line is described by the symbol 'b', which must have at least two points. Only the first two points of 'a' and 'b' are considered. The rest of the points of 'a' and 'b' are ignored.
+  The ``&linelineintersect()`` Returns new a path that contains a
+  single point which is the point at which the two lines intersect.
+  The first line is described by the symbol 'a', which must have at
+  least two points. The second line is described by the symbol 'b',
+  which must have at least two points. Only the first two points of
+  'a' and 'b' are considered. The rest of the points of 'a' and 'b'
+  are ignored.
 
-    ```
-    path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
-    ```
+  ```
+  path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
+  ```
 
 
 + linecircleintersect 
 
-    The ``&linecircleintersect()`` function returns new a path that contains two points for the line and circle intersection. In the following diagram the pts variable 'pts' will hold two points: (6,2) and (4,2).
+  The ``&linecircleintersect()`` function returns new a path that
+  contains two points for the line and circle intersection. In the
+  following diagram the pts variable 'pts' will hold two points: (6,2)
+  and (4,2).
 
-    ```
-    path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
-    ```
+  ```
+  path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
+  ```
 
 + circlecircleintersect 
 
-    This method returns one or two points where two circles intersect.
+  This method returns one or two points where two circles intersect.
 
-    ```
-    path b = &circlecircleintersect{(0,0),10,(5,0),10}
-    ```
+  ```
+  path b = &circlecircleintersect{(0,0),10,(5,0),10}
+  ```
 
 
 + circlecircleintersectclip
 
-    This method returns a closed path that describes the area that is the intersection area of the two circle areas. Note that it is important that the circle on the left-hand side is specified first.
+  This method returns a closed path that describes the area that is
+  the intersection area of the two circle areas. Note that it is
+  important that the circle on the left-hand side is specified first.
 
-    ```
-    circle {r:3} (5,6)
-    circle {r:3} (9,6)
-    draw (5,5) (8,1)
-    path c = &circlecircleintersectclip{(5,6),3,(9,6),3,0}
-    % fill the intersection of A and B
-    fill &c
-    ```
+  ```
+  circle {r:3} (5,6)
+  circle {r:3} (9,6)
+  draw (5,5) (8,1)
+  path c = &circlecircleintersectclip{(5,6),3,(9,6),3,0}
+  % fill the intersection of A and B
+  fill &c
+  ```
 
 + circlecirclediffclip
 
-    This method returns a closed path that describes the area of one of the circles after it has been clipped away for the area that overlaps with another circle The 5th argument controls which area to remain. If set to 0 then the circle on the left-hand side remains, and if set to 1 the circle on the left hand side remains. Note that it is important that the circle on the left-hand side is specified first.
+  This method returns a closed path that describes the area of one of
+  the circles after it has been clipped away for the area that
+  overlaps with another circle The 5th argument controls which area to
+  remain. If set to 0 then the circle on the left-hand side remains,
+  and if set to 1 the circle on the left hand side remains. Note that
+  it is important that the circle on the left-hand side is specified
+  first.
 
-    ```
-    circle {r:3} (5,6)
-    circle {r:3} (9,6)
-    draw (5,5) (8,1)
-    path c = &circlecirclediffclip{(5,6),3,(9,6),3,0}
-    path d = &circlecirclediffclip{(5,6),3,(9,6),3,1}
-    % fill remains of A
-    fill &c
-    % fill remains of B
-    fill &d
-    ```
+  ```
+  circle {r:3} (5,6)
+  circle {r:3} (9,6)
+  draw (5,5) (8,1)
+  path c = &circlecirclediffclip{(5,6),3,(9,6),3,0}
+  path d = &circlecirclediffclip{(5,6),3,(9,6),3,1}
+  % fill remains of A
+  fill &c
+  % fill remains of B
+  fill &d
+  ```
 
 + circlepoints 
 
-    The general syntax is: &circlepoints(center,r,a1,a2,a3...), where the 'center' denotes a path with a point expressing the circle center, and 'r' for the radius of the circle, and 'a1', 'a2', 'a3', etc., that expresses the angles starting from the first quadrant. The returned value is the coords of individual points at these angles.
+  The general syntax is: &circlepoints(center,r,a1,a2,a3...), where
+  the 'center' denotes a path with a point expressing the circle
+  center, and 'r' for the radius of the circle, and 'a1', 'a2', 'a3',
+  etc., that expresses the angles starting from the first quadrant.
+  The returned value is the coords of individual points at these
+  angles.
 
-    ```
-    path b = &circlepoints{(0,0),2,30,60,90}
-    ```
+  ```
+  path b = &circlepoints{(0,0),2,30,60,90}
+  ```
 
 + circle 
 
-    Returns a path expressing the circle. It has a syntax of: &circle(center,radius), where 'center' is a path with at least one point, and 'radius' a scalar.
+  Returns a path expressing the circle. It has a syntax of:
+  &circle(center,radius), where 'center' is a path with at least one
+  point, and 'radius' a scalar.
 
-    ```
-    path b = &circle(center,radius)
-    ```
+  ```
+  path b = &circle(center,radius)
+  ```
 
 + ellipse 
 
-    This return a path expressing an ellipse. The syntax is: &ellipse(center,xradius,yradius).
+  This return a path expressing an ellipse. The syntax is:
+  &ellipse(center,xradius,yradius).
 
 + rectangle 
 
-    This returns a path expressing a rectangle between to points. The syntax is: &rectangle(point1,point2)
+  This returns a path expressing a rectangle between to points. The
+  syntax is: &rectangle(point1,point2)
 
 + triangle 
 
-    This returns a path expressing a triangle of three points. The syntax is: &triangle(point1,point2,point3)
+  This returns a path expressing a triangle of three points. The
+  syntax is: &triangle(point1,point2,point3)
 
 + polyline 
 
-    This returns a path expressing a polyline. The syntax is: &line(point1,point2,point3,...)
+  This returns a path expressing a polyline. The syntax is:
+  &line(point1,point2,point3,...)
 
 + arctravel{center,start_point,sweep_angle}
 
-    This returns a path that draws an arc. The arc is to start at the point 'p' that is at a circle centered at 'center'. The arc is then to trace out part of the circle by following an angle equal to 'sweep_a' number of degrees. Positive 'sweep_a' is to trace in anti-clockwise direction and negative 'sweep_a' is to trace in clockwise direction.
+  This returns a path that draws an arc. The arc is to start at the
+  point 'p' that is at a circle centered at 'center'. The arc is then
+  to trace out part of the circle by following an angle equal to
+  'sweep_a' number of degrees. Positive 'sweep_a' is to trace in
+  anti-clockwise direction and negative 'sweep_a' is to trace in
+  clockwise direction.
 
 + arcspan{center,start_point,end_point}
 
-    Similar to 'arc', this function is the return a path that draws an arc. The arc is to start at the point 'p' that is at a circle centered at 'center'. The arc is then to trace out part of the circle, always in the direction of anti-clockwise direction, until it meats the point 'q'. If 'q' is found to be closer or further away from 'center', then the tracing stops as soon as it intersects with the radius-ray that passes through 'q'.
+  Similar to 'arc', this function is the return a path that draws an
+  arc. The arc is to start at the point 'p' that is at a circle
+  centered at 'center'. The arc is then to trace out part of the
+  circle, always in the direction of anti-clockwise direction, until
+  it meats the point 'q'. If 'q' is found to be closer or further away
+  from 'center', then the tracing stops as soon as it intersects with
+  the radius-ray that passes through 'q'.
 
 + arcsweep{center,r,start_angle,sweep_angle}
 
-    Similar to 'arc', this function is to return a path that is to sweep across a given angle starting from known angle. The center of the arc is 'center', 'r' is the radius of the arc, the 'start_a' is the starting angle, and 'sweep_a' is the angle to sweep across in the counter counter-clockwise direction.
+  Similar to 'arc', this function is to return a path that is to sweep
+  across a given angle starting from known angle. The center of the
+  arc is 'center', 'r' is the radius of the arc, the 'start_a' is the
+  starting angle, and 'sweep_a' is the angle to sweep across in the
+  counter counter-clockwise direction.
 
 + cylinder 
 
-    This expresses a upright cylinder drawn with an ellipse at the bottom, with xradius/yradius, and a given height. The syntax is: &cylinder(center,xradius,yradius,height)
+  This expresses a upright cylinder drawn with an ellipse at the
+  bottom, with xradius/yradius, and a given height. The syntax is:
+  &cylinder(center,xradius,yradius,height)
 
 + ymirror 
 
-    This returns a new path that is a mirror image of a given path. The first argument is the old path, and the second argument is a scalar that is a value on X-axis. The following example returns a new path that is a mirrored image of 'a' off the x-axis.
+  This returns a new path that is a mirror image of a given path. The
+  first argument is the old path, and the second argument is a scalar
+  that is a value on X-axis. The following example returns a new path
+  that is a mirrored image of 'a' off the x-axis.
 
-    ```
-    path a = ...
-    path b = &ymirror{a,0}
-    ```
+  ```
+  path a = ...
+  path b = &ymirror{a,0}
+  ```
 
 + bbox 
 
-    This returns a new path that represents the rectangle of the viewport.
+  This returns a new path that represents the rectangle of the
+  viewport.
 
 
 
 # Special notes for MetaPost users
 
-The color syntax is either the color name, such as "red", "green", or RGB such as "rgb(200,100,25)".
+The color syntax is either the color name, such as "red", "green", or
+RGB such as "rgb(200,100,25)".
 
-The MetaPost code has the provision to allow for a "xcolor" provided by the "xcolor" package, such as using the ``\mpcolor`` macro. Thus, the MetaPost command can be set up as
+The MetaPost code has the provision to allow for a "xcolor" provided
+by the "xcolor" package, such as using the ``\mpcolor`` macro. Thus,
+the MetaPost command can be set up as
 
     draw (1,2)--(2,3) withpen pencircle withcolor \mpcolor(gray)
 
-The xcolor package has also expanded the avialble color names to more than what's provided by MetaPost, including "gray", "orange", etc. Following additional color names are always provided by the xcolor package:
+The xcolor package has also expanded the avialble color names to more
+than what's provided by MetaPost, including "gray", "orange", etc.
+Following additional color names are always provided by the xcolor
+package:
 
     red, green, blue, cyan, magenta, yellow, black, gray, white,
     darkgray, lightgray, brown, lime, olive, orange, pink,
     purple, teal, violet
 
-SVG also allows for a color to be specified directly using RGB, such as
+SVG also allows for a color to be specified directly using RGB, such
+as
 
     <line x1='0' y1='1' x2='2' y2='3' stroke='rgb(200,100,25)'/>
 
-However, MetaPost does not allow for expressing a color using three integers as RGB values of a color. It insists that a name is to be used for \mpcolor macro. However, it does not have provision such that you can *create* a new color name with a customized RGB values in it, such as
+However, MetaPost does not allow for expressing a color using three
+integers as RGB values of a color. It insists that a name is to be
+used for \mpcolor macro. However, it does not have provision such that
+you can *create* a new color name with a customized RGB values in it,
+such as
 
     \definecolor{ultramarine}{RGB}{0,32,96}
     \definecolor{wrongultramarine}{rgb}{0.07, 0.04, 0.56}
 
-The \definecolor is a macro provided by xcolor package. This means if a color is specified as "rgb(200,100,25)" then a \definecolor command must first be called to create a "unique" color name, such as "mycolor003" which is to be placed outside of the "mplibcode" environment, in order for this particular color to be referenced inside "mplibcode" environment. Therefore, currently MetaPost translation does not support specifying color using RGB directly.
+The \definecolor is a macro provided by xcolor package. This means if
+a color is specified as "rgb(200,100,25)" then a \definecolor command
+must first be called to create a "unique" color name, such as
+"mycolor003" which is to be placed outside of the "mplibcode"
+environment, in order for this particular color to be referenced
+inside "mplibcode" environment. Therefore, currently MetaPost
+translation does not support specifying color using RGB directly.
 
-Note that MetaPost does allow for a color mixing using existing color names such as
+Note that MetaPost does allow for a color mixing using existing color
+names such as
 
     draw (1,2)--(2,3) withpen pencircle withcolor \mpcolor(red!80!white!20!)
 
-Note that for units such as line width, dot size, etc, is maintained internally by Diagram as the SVG user unit. One user unit is exactly 1/96 of an inch. Following is the conversion of SVG units.
+Note that for units such as line width, dot size, etc, is maintained
+internally by Diagram as the SVG user unit. One user unit is exactly
+1/96 of an inch. Following is the conversion of SVG units.
 
     1in = 96px
     1in = 72pt
     1in = 2.54cm
 
-It seems that MetaPost allows for a line length or dot size to be expressed without a specific unit attached to it. For example, you can ask to draw a dot by MetaPost with the following command. The "withpen pencircle scaled 5" is part of a configuration to the "dot" command that is to tell it to use a pen size of 5. Note that the size of 5 is interpreted as the size of the pen, therefore, the diameter of the dot as the pen is a circle pen.
+It seems that MetaPost allows for a line length or dot size to be
+expressed without a specific unit attached to it. For example, you can
+ask to draw a dot by MetaPost with the following command. The "withpen
+pencircle scaled 5" is part of a configuration to the "dot" command
+that is to tell it to use a pen size of 5. Note that the size of 5 is
+interpreted as the size of the pen, therefore, the diameter of the dot
+as the pen is a circle pen.
 
     dot (22*u,3*u) withpen pencircle scaled 5 ;
 
@@ -892,9 +1180,17 @@ You can also provide a unit directly, such as pt.
 
     dot (22*u,3*u) withpen pencircle scaled 5pt ;
 
-The linecap attribute is defines the shape to be used at the end of open subpaths when they are stroked. The SVG has an attribute that can used for line-element. The available values are: 'butt', 'round', and 'square'. The default value is 'butt'.
+The linecap attribute is defines the shape to be used at the end of
+open subpaths when they are stroked. The SVG has an attribute that can
+used for line-element. The available values are: 'butt', 'round', and
+'square'. The default value is 'butt'.
 
-The "dashed withdots" option for "draw" will not show any visible dotted lines in the PDF file when linecap:=butt. The linecap:=rounded will has to be set in order to produce dotted-lines. Thus, currently the "set linedashed withdots" option is considered broken for MP generation. Do not use it for now. Use "set linedashed evenly" instead.
+The "dashed withdots" option for "draw" will not show any visible
+dotted lines in the PDF file when linecap:=butt. The linecap:=rounded
+will has to be set in order to produce dotted-lines. Thus, currently
+the "set linedashed withdots" option is considered broken for MP
+generation. Do not use it for now. Use "set linedashed evenly"
+instead.
 
 
 
@@ -1045,11 +1341,13 @@ The 'barchart' is another compound command that is to be used
 with many subcommands. Following is a list of some
 of its subcommands.
 
--- barchart.setup xorigin yorigin xwidth ywidth xrange yrange
--- barchart.bbox
--- barchart.vbar
--- barchart.ytick
--- barchart.xtext
+~~~list
+- barchart.setup xorigin yorigin xwidth ywidth xrange yrange
+- barchart.bbox
+- barchart.vbar
+- barchart.ytick
+- barchart.xtext
+~~~
 
 The 'barchart.setup' command would setup the barchart and config it.
 The 'xorigin' and 'yorigin' are to state the grid coordinates where
@@ -1247,22 +1545,22 @@ further inwards. The following example show the implementation of two
         path P0 = (0,0)
         path P1 = (-6,0)
         path P2 = (-6,6)
-        dot *P0 *P1 *P2
+        dot &P0 &P1 &P2
         label.lrt "P_0" *P0
-        label.llft "P_1" *P1
-        label.ulft "P_2" *P2
-        path line1 = *P0 *P1
-        path line2 = *P1 *P2
-        path m0 = $midpoint(line1,\b )
-        path m1 = $midpoint(line2,\b )
-        dot *m0 *m1
-        draw *m0 *m1
-        path line3 = *m0 *m1
-        path B = $midpoint(line3,\b )
-        dot *B
-        label.bot "m_0" *m0
-        label.lft "m_1" {dx:-.1} *m1
-        label.urt "B" *B
+        label.llft "P_1" &P1
+        label.ulft "P_2" &P2
+        path line1 = &P0 &P1
+        path line2 = &P1 &P2
+        path m0 = &midpoint{line1,\b }
+        path m1 = &midpoint{line2,\b }
+        dot &m0 &m1
+        draw &m0 &m1
+        path line3 = &m0 &m1
+        path B = &midpoint{line3,\b }
+        dot &B
+        label.bot "m_0" &m0
+        label.lft "m_1" {dx:-.1} &m1
+        label.urt "B" &B
       label.bot "t=\b" (-3,-2)
 
 
