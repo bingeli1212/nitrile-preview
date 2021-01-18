@@ -1741,8 +1741,47 @@ after the ``base``. Thus, in the case of "1:3:10", the scalars it
 entails are: 1, 4, 7, 10.
 
 
+# List of floats
 
-# The 'node' and 'edge' operations
+For cartesian-operation and barchart-operation, it expectes a list
+of scalars after the style and label text. 
+ 
+    cartesian.line {linecolor:red} 0 0 1 1 2 3
+
+This would have drawn a line from (0,0) to (1,1) to (2,3). This new
+type of floats allows for flexibility of listing one dimensional
+numbers and two dimensional numbers seemlessly. For example, the 'cartesian.line'
+would have considered the list as expressing a list of coordinates 
+in a two-dimensional grid. However, the operation 'cartesian.xtick' 
+would have considered the same list as expressing a list of coordinates
+along x-axis, and the numbers in the list only expressed the x-coordinate,
+where y-coordinates are assumed to be 0.
+
+    cartesian.xtick 1 2 3 4 5
+
+This new syntax also allows for functions and ranges to be mixed
+with numbers. For example, in the following example would have
+created a list of three floats: 1, 3 and 5.
+
+    cartesian.xtick [1:2:5]
+
+It can also include an arithmetic expression. For example, following
+would have created a list of three numbers, 1, 2.718, and 7.389.
+
+    cartesian.xtick (exp(0)) (exp(1)) (exp(2))
+
+An arithmetic expression must be placed inside a pair of parentheses.
+A constant, on the other hand, can appear without any parenthesis.
+In the following example, the list of floats is 1, 2, 3 and 4.
+
+    var a = 2
+    cartesian.xtick 1 a 3 4
+
+
+
+
+
+# The node- and edge-operations
 
 Nodes and edges are common constructions found in almost any
 literatures covering the topics in the fields of graph theory.
@@ -1807,7 +1846,7 @@ the same way how a "dot" operation is controlled, such as to set the
 color of the dot.
 
 
-# The 'box' operation
+# The box-operation
 
 + box (x,y) (x1,y1) ...
 
@@ -1822,7 +1861,7 @@ color of the dot.
     
     
 
-# The 'rec' operation
+# The rec-operation
 
 The 'rec' operation is a group of compound commands that serve the
 purpose of recording some operations for the purpose of playing them
