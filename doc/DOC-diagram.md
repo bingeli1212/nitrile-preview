@@ -1564,20 +1564,26 @@ further inwards. The following example show the implementation of two
       label.bot "t=\b" (-3,-2)
 
 
-# The fn command
+# The fn-operation
 
-The 'fn' command allows for a new user-defined function to be created.
+The fn-operation allows for a new user-defined function to be created.
 
     fn P(x) = pow(x,2)
     cartesian.yplot {f:P} 1 2 3
 
-The command starts with the string 'fn', followed by a function name,
-followed by a set of parentheses, within which is a list of arguments,
-separated by comma, followed by an equal sign, and then addtional
-expression.
+This operation must start with a function name, which must follow
+the pattern of starting with an alpha letter followed by additional
+alpha or numerical letters. Thus, the valid function names are "a", "aa",
+"a0", etc, while "0", "0a", "0ab" are not valid function names.
 
-The expression can contain other user-defined funtions, or built-in
-scalar function provided by Diagram.
+The function is to be followed immediately 
+by a set of parentheses, within which is a list of arguments,
+separated by comma, followed by an equal sign, and then an arithmetic 
+expression. So far the only command would make use of a function
+is the 'cartesian.xplot' and 'cartesian.yplot'.
+
+Note that the arithmetic expression can contain other funtions, including
+built-in scalar function such as 'sin()', 'exp()', etc.
 
 
 
@@ -1589,13 +1595,15 @@ assigned the sum of adding the "x" components of the first two points
 in path variable 'pts', which will be "1 + 3 = 4".
 
     path pts = (1,2) (3,4)
-    var mx = &pts[0].x + &pts[1].x
+    ${mx} = &pts[0].x + &pts[1].x
+    label.ctr (\mx,0)
 
 Following is another example of adding the two "y" components of the
 first two points and assign the result to 'my'.
 
     path pts = (1,2) (3,4)
-    var my = &pts[0].y + &pts[1].y
+    ${my} = &pts[0].y + &pts[1].y
+    label.ctr (0,\my)
 
 
 
