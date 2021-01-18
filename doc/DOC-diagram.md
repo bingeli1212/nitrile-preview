@@ -1752,7 +1752,7 @@ and one named "B" at two locations where each aligns with the center
 of one of the nodes. The default radius of the node is 1, but it can
 be configured to another such as "2" by doing the following
 
-    config noderadius 2
+    config r 2
 
 The option after the command such as ".A" and ".B" is used to assign a
 name to this node, so that it can be referred to later by a command
