@@ -889,7 +889,7 @@ examples all letters a, b, c are path variables.
 
 + midpoint 
 
-  The ``&midpoint()`` function returns the mid point of the first two
+  The ``midpoint`` function returns the mid point of the first two
   points in a path expression if a single argument is given. Following
   returns a path with a single point: (1.5,2), which is the mid point
   of (1,1) and (2,3).
@@ -916,7 +916,7 @@ examples all letters a, b, c are path variables.
 
 + shiftpoints 
 
-  The ``&shiftpoints()`` function is always needed to be provided with
+  The ``shiftpoints`` function is always needed to be provided with
   three arguments. The first argument is always interpreted as a path
   variable. The second and the third arguments are to be interpreted
   as expressing length in grid unit. This function is to return a new
@@ -932,7 +932,7 @@ examples all letters a, b, c are path variables.
 
 + scatterpoints 
 
-  The ``&scatterpoints()`` function is to create new path with the
+  The ``scatterpoints`` function is to create new path with the
   number of points evenly distributed beteen the two end points. In
   the previous example there will be 10 points created in a path such
   that the first point is (1,0), and the last point is (10,0), and the
@@ -946,7 +946,7 @@ examples all letters a, b, c are path variables.
 
 + linelineintersect 
 
-  The ``&linelineintersect()`` Returns new a path that contains a
+  The ``linelineintersect`` Returns new a path that contains a
   single point which is the point at which the two lines intersect.
   The first line is described by the symbol 'a', which must have at
   least two points. The second line is described by the symbol 'b',
@@ -961,7 +961,7 @@ examples all letters a, b, c are path variables.
 
 + linecircleintersect 
 
-  The ``&linecircleintersect()`` function returns new a path that
+  The ``linecircleintersect`` function returns new a path that
   contains two points for the line and circle intersection. In the
   following diagram the pts variable 'pts' will hold two points: (6,2)
   and (4,2).
@@ -1546,7 +1546,7 @@ further inwards. The following example show the implementation of two
         path P1 = (-6,0)
         path P2 = (-6,6)
         dot &P0 &P1 &P2
-        label.lrt "P_0" *P0
+        label.lrt "P_0" &P0
         label.llft "P_1" &P1
         label.ulft "P_2" &P2
         path line1 = &P0 &P1
