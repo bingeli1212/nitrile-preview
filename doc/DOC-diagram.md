@@ -1,5 +1,6 @@
 ---
 title: The Diagram
+latex.features: parskip
 ---
 
 A diagram block is to generate a diagram with vector based figures, made up with vector based components as lines, circles, rectangles, arrows, dots, etc. The goal of using a diagram block versus using an raster based image such as PNG or JPEG is that a vector based diagram provides much better resolution especially when the diagram is printed on a piece of paper.
@@ -7,14 +8,22 @@ A diagram block is to generate a diagram with vector based figures, made up with
 
 # Using MetaPost with LuaLatex
 
-A diagram block is to be translated into an inline MetaPost block between `\begin{mplibcode}` and `\end{mplibcode}`. This environment is supported by the `luamplib` LATEX package.
+A diagram block is to be translated into an inline MetaPost block
+between `\begin{mplibcode}` and `\end{mplibcode}`. This environment is
+supported by the `luamplib` LATEX package.
 
     \usepackage{luamplib}
 
 
 # Using MetaFun with ConTeXt 
 
-For CONTEX the MetaPost is called MetaFun, which is a variant that is based on MetaPost by has been modified by Hans Hagen. The syntax of MetaFun and MetaPost are mostly compatible, but there are differences. One different is that MetaFun supports transparent colors, while MetePost does not. In TexLive2020 distribution the 'label' command for MetaFun requires quotation marks rather than btex and etex for its first argument.
+For CONTEX the MetaPost is called MetaFun, which is a variant that is
+based on MetaPost by has been modified by Hans Hagen. The syntax of
+MetaFun and MetaPost are mostly compatible, but there are differences.
+One different is that MetaFun supports transparent colors, while
+MetePost does not. In TexLive2020 distribution the 'label' command for
+MetaFun requires quotation marks rather than btex and etex for its
+first argument.
 
     \startMPcode
     ...
@@ -23,11 +32,14 @@ For CONTEX the MetaPost is called MetaFun, which is a variant that is based on M
 
 # The SVG translation
 
-A diagram will be converted to an embedded SVG for a HTML translation. It is then converted to a DATA URI for a img-element.
+A diagram will be converted to an embedded SVG for a HTML translation.
+It is then converted to a DATA URI for a img-element.
 
     <img alt="diagram" src="data:img/svg+xml;charset=UTF-8,${encodeURIComponent(text)}" />
     
-Note that the quotation-mark must be used to wrap the 'src' attribute values because apostrophy (single-quote) is a valid coded character returned by the 'encodeURIComponent()' function.
+Note that the quotation-mark must be used to wrap the 'src' attribute
+values because apostrophy (single-quote) is a valid coded character
+returned by the 'encodeURIComponent()' function.
 
 
 
@@ -35,175 +47,206 @@ Note that the quotation-mark must be used to wrap the 'src' attribute values bec
 
 Following is an example of a diagram block.
 
-      viewport 32 20
+    viewport 32 20
 
-      % variables
-      path a = (1,1) -- (5,5) -- (5,1) -- (1,1) ()
-      path b = (1,1) .. (5,5) .. (5,1) .. (1,1) ()
+    % variables
+    path a = (1,1) -- (5,5) -- (5,1) -- (1,1) ()
+    path b = (1,1) .. (5,5) .. (5,1) .. (1,1) ()
 
-      % draw
-      draw  *a
-      draw  *b
+    % draw
+    draw  *a
+    draw  *b
 
-      % circles
+    % circles
 
-      set fillcolor pink
-      circle        {r:1} (16,1)
-      circle.pie    {r:1; a1:0; a2:135} (20,1)
-      circle.chord  {r:1; a1:0; a2:135} (20,3)
-      circle.arc    {r:1; a1:0; a2:135} (20,5)
-      circle.cseg   {r:1; a1:0; a2:135} (20,7)
+    set fillcolor pink
+    circle        {r:1} (16,1)
+    circle.pie    {r:1; a1:0; a2:135} (20,1)
+    circle.chord  {r:1; a1:0; a2:135} (20,3)
+    circle.arc    {r:1; a1:0; a2:135} (20,5)
+    circle.cseg   {r:1; a1:0; a2:135} (20,7)
 
-      % dot
-      path sq = (22,3) (23,3) (23,2) (22,2)
-      dot (22,1)
-      dot *sq (22,4) (23,4)
-      dot.hbar  (23,1) (24,1)
-      dot.vbar  (25,1) (26,1)
-      dot   (1,1) \
-            (2,2) (3,3) \
-            (4,4) (5,5)
+    % dot
+    path sq = (22,3) (23,3) (23,2) (22,2)
+    dot (22,1)
+    dot *sq (22,4) (23,4)
+    dot.hbar  (23,1) (24,1)
+    dot.vbar  (25,1) (26,1)
+    dot   (1,1) \
+          (2,2) (3,3) \
+          (4,4) (5,5)
 
-      % 90-degree angle
-      draw     (28,4)--(31,4)
-      path [a,b] = *
-      draw     (28,4)--(28,7)
-      path [,c] = *
-      drawanglearc.sq *b *a *c
+    % 90-degree angle
+    draw     (28,4)--(31,4)
+    path [a,b] = *
+    draw     (28,4)--(28,7)
+    path [,c] = *
+    drawanglearc.sq *b *a *c
 
-      % 45-degree angle
-      draw     <0,-4> (28,4)--(31,4)
-      path [a,b] = *
-      draw     <0,-4> (28,4)--(31,7)
-      path [,c] = *
-      drawanglearc *b *a *c
+    % 45-degree angle
+    draw     <0,-4> (28,4)--(31,4)
+    path [a,b] = *
+    draw     <0,-4> (28,4)--(31,7)
+    path [,c] = *
+    drawanglearc *b *a *c
 
-      % draw     will fill
-      path ff = (28,8)--(31,8)--(31,9)--(28,9)--cycle
-      draw {linesize:2;fillcolor:orange}  *ff
-      reset
+    % draw     will fill
+    path ff = (28,8)--(31,8)--(31,9)--(28,9)--cycle
+    draw {linesize:2;fillcolor:orange}  *ff
+    reset
 
-      % label
-      label.rt  `C_0` (5,5)
-      label.rt  `B_0` (5,1)
-      label.top `A_0` (1,1)
+    % label
+    label.rt  "C_0" (5,5)
+    label.rt  "B_0" (5,1)
+    label.top "A_0" (1,1)
 
-      % arrow & dblarrow
-      drawarrow (7,3) (9,5)
-      drawdblarrow (9,3) (11,5)
-      drawrevarrow (11,3) (13,5)
+    % arrow & dblarrow
+    drawarrow (7,3) (9,5)
+    drawdblarrow (9,3) (11,5)
+    drawrevarrow (11,3) (13,5)
 
-      % text of a different fontsize
-      label.ctr " 簡単 Triangle " (10,1)
+    % text of a different fontsize
+    label.ctr " 簡単 Triangle " (10,1)
 
-      % math
-      label.ctr " ``\sqrt{2}`` " (18,18)
+    % math
+    label.ctr \(\sqrt{2}\) (18,18)
 
-      %% shapes
-      shape.trapezoid (2,11)
-      shape.rhombus (5,11)
-      shape.rect (8,11)
-      shape.parallelgram (11,11)
-      shape.apple (15,11)
-      shape.basket (17,11)
-      shape.crate (21,11)
-      shape.rrect (26,11)
-      shape.protractor (10,15)
-      shape.updnprotractor (10,15)
-      shape.radical (1,17)
+    %% shapes
+    shape.trapezoid (2,11)
+    shape.rhombus (5,11)
+    shape.rect (8,11)
+    shape.parallelgram (11,11)
+    shape.apple (15,11)
+    shape.basket (17,11)
+    shape.crate (21,11)
+    shape.rrect (26,11)
+    shape.protractor (10,15)
+    shape.updnprotractor (10,15)
+    shape.radical (1,17)
 
 
 
 # Unit length and grid lines
 
-In Diagram, each figure is always expresses using the grid unit length. A unit unit length is considered as a distance between two adjacent grid lines on a graphing paper for which a length of 1 corresponds to the width of a single grid.
+In Diagram, each figure is always expresses using the grid unit
+length. A unit unit length is considered as a distance between two
+adjacent grid lines on a graphing paper for which a length of 1
+corresponds to the width of a single grid.
 
-In Diagram a grid is drawn as the background by default. The size of the grid is 25 grid units length long in the horizontal direction and 10 grid unit length long in the vertical directon. You can change that by using the 'config' command.
+In Diagram a grid is drawn as the background by default. The size of
+the grid is 25 grid units length long in the horizontal direction and
+10 grid unit length long in the vertical directon. You can change that
+by using the 'config' command.
 
     config width 30
     config height 20
 
-Each grid is by default 5mm in length, thus, a total of 25 grid units in horizontal direction will generate an image of 125mm in width, and 10 grid units of horizontal direction will put the image in the height of 50mm. To set the unit to a different length, call the 'config unit' command below.
+Each grid is by default 5mm in length, thus, a total of 25 grid units
+in horizontal direction will generate an image of 125mm in width, and
+10 grid units of horizontal direction will put the image in the height
+of 50mm. To set the unit to a different length, call the 'config unit'
+command below.
 
     config unit 6
 
-The 'config grid' command can be used to change how background grid lines are to be shown in the final Diagram image. By default, each grid is to be show with a grid line that is colored at 10% black. The color is currently not configurable. When set the grid to 'boxed', only the outline of the image is drawn, and when set to 'none', there is even no outline.
+The 'config grid' command can be used to change how background grid
+lines are to be shown in the final Diagram image. By default, each
+grid is to be show with a grid line that is colored at 10% black. The
+color is currently not configurable. When set the grid to 'boxed',
+only the outline of the image is drawn, and when set to 'none', there
+is even no outline.
 
     config grid boxed
     config grid none
 
-However, for MetaPost and MetaFun generation when the grid is set to 'none' the outline is actually drawn using a "white" color pixel. This is because the image that is generated are automatically expanded whenever there is contents drawn on that image. Thus, without performing the draw of the outline does not guarentee that the size of the image will be the size we want. However, for MetaFun and MetaPost generation the image will be "enlarged" if contents were drawn outside of the outline.
+However, for MetaPost and MetaFun generation when the grid is set to
+'none' the outline is actually drawn using a "white" color pixel. This
+is because the image that is generated are automatically expanded
+whenever there is contents drawn on that image. Thus, without
+performing the draw of the outline does not guarentee that the size of
+the image will be the size we want. However, for MetaFun and MetaPost
+generation the image will be "enlarged" if contents were drawn outside
+of the outline.
 
 
 # The config command
 
-The config command can be used to control the configuration parameters for the entire Diagram. This set includes the previous discussed viewport width and height, and the unit.
+The config command can be used to control the configuration parameters
+for the entire Diagram. This set includes the previous discussed
+viewport width and height, and the unit.
 
-However, there are additional configuration parameters. These parameters should be set at the beginning of the Diagram, before any drawing commands, in order to maintain consistencies. Changing these configuration parameters in the middle of other drawing commands are not recommended and may result in distorted picture.
+However, there are additional configuration parameters. These
+parameters should be set at the beginning of the Diagram, before any
+drawing commands, in order to maintain consistencies. Changing these
+configuration parameters in the middle of other drawing commands are
+not recommended and may result in distorted picture.
 
-~~~table{long;n:3;fr:1 1 3;border:1}
++ config grid <string> 
 
-    > Options
-    > Default value
-    > Comments
+  Set to a string expressing how the background grid lines are
+  to be drawn. The valid values are "boxed", "grid", or "none". 
+  The default value is an empty string, in which case it is
+  the same as "grid".
 
-    > width
-    > 25
-    > Offset location (integer)
++ config barlength <number>
+  The default length of the bar (grid unit). The default value
+  is 0.25. 
 
-    > height
-    > 10
-    > Offset location (integer)
++ config fontsize <number>
 
-    > unit
-    > 5
-    > The width for each grid (mm)
+  The default font size (pt) for all generated text inside this diagram.
+  The default value is 12.
 
-    > grid
-    > ''
-    > Set to a string expressing how the background grid lines are
-      to be drawn. The valid values are "boxed", "none", or an empty
-      string.
++ config dotsize <number>
+  The default size of dot (pt) for a dot-operation. The default value
+  is 5.
 
-    > barlength
-    > 0.25
-    > The default length of the bar (grid unit)
++ config linesize <number>
 
-    > fontsize
-    > 12
-    > The default font size (pt) for all generated text inside this diagram.
+  The default size for line drawing (pt), 
+  when 0 is set it uses the default line size. The default
+  value is 0.
 
-    > dotsize
-    > 5
-    > The default size of dot (pt)
++ config fillcolor <color>
 
-    > linesize
-    > 0
-    > The default size for line drawing (pt), 
-      when 0 is set it uses the default line size
+  The default color for filling an enclosed area.
+  The default value is an empty string, which would have
+  implied an default color. This is often to mean "black", but
+  it could be different for SVG.
+  It should be a string
+  of 19 valid color names, such
+  as "black", "pink", "steel", etc., or a
+  3-digit HEX such as "#888", or a 6-digit HEX such as "#F8F8F8".
 
-    > fillcolor
-    > ''
-    > The default fill color, when set to empty string it implies
-      that no filling should be performed. It should be a string
-      of 19 valid color names, such
-      as "black", "pink", "steel", etc. It can also be a
-      3-digit HEX color such as
-      "#888", or a 6-digit HEX color, such as "#F8F8F8".
++ config linecolor <color>
 
-    > labeldx
-    > 4
-    > The x-offset of label text to anchor point, SVG only (px)
+  This is the default color for stroking path or drawing a line,
+  a bezier curve, or an arrow.
 
-    > labeldy
-    > 2
-    > The y-offset of label text to anchor point, SVG only (px)
++ config r <number>
 
-    > noderadius
-    > 1
-    > The radius of the circle for each node. (grid unit)
-    
-~~~
+  This is the radius for a circle- and/or node-operation. The default
+  value is 1.
+
++ config w <number>
+
+  This is the width for a rectangle- or box-operation.
+  The default value is 1.
+
++ config h <number>
+
+  This is the height for a rectangle- or box-operation. 
+  The default value is 1.
+
++ config answercolor <color>
+
+  This is the color used for showing all texts, lines that are
+  part of a "answer". This would be effective only for operations
+  that has an "answer" option, such as multiws-operation and
+  longdivws-operation. 
+
+
+
 
 # The set-operation
 
@@ -857,82 +900,143 @@ The "dashed withdots" option for "draw" will not show any visible dotted lines i
 
 # The cartesian-operation
 
--- cartesian.setup xorigin yorigin gridrange
--- cartesian.xaxis xmin xmax
--- cartesian.yaxis ymin ymax
--- cartesian.ytick y1 y2 y3 ...
--- cartesian.xtick x1 x2 x3 ...
--- cartesian.yplot {f:P} x1 x2 x3 ...
--- cartesian.xplot {f:P} y1 y2 y3 ...
--- cartesian.dot x1 y1 x2 y2 x3 y3 ...
--- cartesian.line x1 y1 x2 y2 x3 y3 ...
--- cartesian.arrow x1 y1 x2 y2 x3 y3 ...
--- cartesian.text.rt x1 y1 x2 y2 x3 y3 ...
--- cartesian.ellipse x y Rx Ry Phi
--- cartesian.arc x y R startAngle stopAngle
+~~~list
+- cartesian.setup xorigin yorigin gridrange
+- cartesian.xaxis xmin xmax
+- cartesian.yaxis ymin ymax
+- cartesian.ytick y1 y2 y3 ...
+- cartesian.xtick x1 x2 x3 ...
+- cartesian.yplot {f:P} x1 x2 x3 ...
+- cartesian.xplot {f:P} y1 y2 y3 ...
+- cartesian.dot x1 y1 x2 y2 x3 y3 ...
+- cartesian.line x1 y1 x2 y2 x3 y3 ...
+- cartesian.arrow x1 y1 x2 y2 x3 y3 ...
+- cartesian.text.rt x1 y1 x2 y2 x3 y3 ...
+- cartesian.ellipse x y Rx Ry Phi
+- cartesian.arc x y R startAngle stopAngle
+~~~
 
-The `cartesian` command is used to draw plots, curves, axis, ticks that are related to a single Cartesian coordinate. It is a composite command that includes many sub-commands. All subcommands must follow the word 'cartesian' after a dot symbol. The subcommand itself can also have its own option, such as 'cartesian.text.rt'.
+The `cartesian` command is used to draw plots, curves, axis, ticks
+that are related to a single Cartesian coordinate. It is a composite
+command that includes many sub-commands. All subcommands must follow
+the word 'cartesian' after a dot symbol. The subcommand itself can
+also have its own option, such as 'cartesian.text.rt'.
 
-The `setup` command would set up a Cartesian coordate to be used. The first two arguments defines the low left hand corner where the origin of the cartesian coordinates will appear inside the Diagram. It is specified in grid coordintes. For example, if they are passed as 2 and 3, then the origin of the Cartesian coordinates will appear at the location of (2,3) of the Diagram.
+The `setup` command would set up a Cartesian coordate to be used. The
+first two arguments defines the low left hand corner where the origin
+of the cartesian coordinates will appear inside the Diagram. It is
+specified in grid coordintes. For example, if they are passed as 2 and
+3, then the origin of the Cartesian coordinates will appear at the
+location of (2,3) of the Diagram.
 
     cartesian.setup 2 3 0.5
 
-The third argument can be omitted. If provided, it states the how to interpret the input range of the Cartesian coordinates. For example, when 0.5 is passed, it states that each grid unit of the Diagram is to be interpreted as expressing an input range of 0.5 for the Cartesian coordinates, or that 2 grid units will be used for each length of 1 of the input range of the Cartesian coordinates. This means that if we were to plot a point of (1,1) of the Cartesian coordinates the dot will appear at the location (2,3) + (2,2) = (4,5) inside the Diagram, where (2,3) is the location of the origin, and (2,2) is where the point is relative to the origin.
+The third argument can be omitted. If provided, it states the how to
+interpret the input range of the Cartesian coordinates. For example,
+when 0.5 is passed, it states that each grid unit of the Diagram is to
+be interpreted as expressing an input range of 0.5 for the Cartesian
+coordinates, or that 2 grid units will be used for each length of 1 of
+the input range of the Cartesian coordinates. This means that if we
+were to plot a point of (1,1) of the Cartesian coordinates the dot
+will appear at the location (2,3) + (2,2) = (4,5) inside the Diagram,
+where (2,3) is the location of the origin, and (2,2) is where the
+point is relative to the origin.
 
-The `cartesian.xaxis` command is to draw the x-axis. The only two parameters passed to it is the lower and upper range that this axis entails. Similarly, the `cartesian.yaxis` command draws the y-axis with similar parameter requirements.
+The `cartesian.xaxis` command is to draw the x-axis. The only two
+parameters passed to it is the lower and upper range that this axis
+entails. Similarly, the `cartesian.yaxis` command draws the y-axis
+with similar parameter requirements.
 
     cartesian.xaxis -0.75 5.6
     cartesian.yaxis -0.75 4.5
 
-The `cartesian.xtick` is used to draw ticks as well as labels on the x-axis of the coordinate. The list of arguments passed to this command is a list of location of these ticks on the axis. For example, if passed as "1 2 3" then the ticks will appear where (1,0), (2,0), and (3,0) points are. For each tick, a label string will also appear unerneath that tick. Similarly, the `cartesian.ytick` command does the same thing except for that it is for the y-axis.
+The `cartesian.xtick` is used to draw ticks as well as labels on the
+x-axis of the coordinate. The list of arguments passed to this command
+is a list of location of these ticks on the axis. For example, if
+passed as "1 2 3" then the ticks will appear where (1,0), (2,0), and
+(3,0) points are. For each tick, a label string will also appear
+unerneath that tick. Similarly, the `cartesian.ytick` command does the
+same thing except for that it is for the y-axis.
 
     cartesian.xtick 1 2 3 4 5
     cartesian.ytick 1 2 3 4
 
-The `cartesian dot` command shows one or more points as dots inside the coordinate. Every two numbers are interpreted as a pair of (x,y) coordinates.
+The `cartesian dot` command shows one or more points as dots inside
+the coordinate. Every two numbers are interpreted as a pair of (x,y)
+coordinates.
 
     cartesian.dot  -4 0 4 0 \
                   -5 0 5 0
 
-The 'cartesian.line' and 'cartesian.arrow' commands are similar, except for that the first one will draw connecting lines between all points, and the second one also adds an arrowhead at the very end of the line.
+The 'cartesian.line' and 'cartesian.arrow' commands are similar,
+except for that the first one will draw connecting lines between all
+points, and the second one also adds an arrowhead at the very end of
+the line.
 
     cartesian.line  -4 0 4 0 \
                     -5 0 5 0
     cartesian.arrow -4 0 4 0 \
                     -5 0 5 0
 
-The 'cartesian.yplot; is similar to 'cartesian.dot', in that it generates a series of dots. Only the x-coordinates of plotted points are provided, and the y-coordinates of each point is calculated by the supplied function, which must be provided by the "f" member of the option.
+The 'cartesian.yplot; is similar to 'cartesian.dot', in that it
+generates a series of dots. Only the x-coordinates of plotted points
+are provided, and the y-coordinates of each point is calculated by the
+supplied function, which must be provided by the "f" member of the
+option.
 
     fn P(x) = pow(x,2)
     cartesian.yplot {f:P} 1 2 3 4 5
 
-In the previous example, following points will be shown: (1,1), (2,4), (3,9), (4,16), and (5,25) as dots. The Range expression in this case can be useful, such as the following:
+In the previous example, following points will be shown: (1,1), (2,4),
+(3,9), (4,16), and (5,25) as dots. The Range expression in this case
+can be useful, such as the following:
 
     fn P(v) = pow(v,2)
     cartesian.yplot {f:P} [1:5]
 
-The name of the function could be arbitrary. However, it must be specified by the "f" member of the option. The function must have been previously defined by a 'fn' command, and must only accept one argument and return a single scalar.
+The name of the function could be arbitrary. However, it must be
+specified by the "f" member of the option. The function must have been
+previously defined by a 'fn' command, and must only accept one
+argument and return a single scalar.
 
-The 'cartesian.xplot' is similar except for that the input arguments expresses a range of values as the y-coordinates of the points, and the funtion generates the corresponding x-coordinates.
+The 'cartesian.xplot' is similar except for that the input arguments
+expresses a range of values as the y-coordinates of the points, and
+the funtion generates the corresponding x-coordinates.
 
     fn P(v) = sqrt(v)
     cartesian.xplot {f:P} 1 4 9 25 16 25
 
-The `cartesian.label` command draws a text at the location of the cartesian coord. The text itself is expressed via the quotation marks that must proceed the any option and all scalar values. Following example draw texts at location (-5,0), (-5,1) and (-5,2) of the Cartesian coordinates, and at each point the text will be "P(0)", "P(1)", and "P(2)". The text is to appear at the bottom of each point.
+The `cartesian.label` command draws a text at the location of the
+cartesian coord. The text itself is expressed via the quotation marks
+that must proceed the any option and all scalar values. Following
+example draw texts at location (-5,0), (-5,1) and (-5,2) of the
+Cartesian coordinates, and at each point the text will be "P(0)",
+"P(1)", and "P(2)". The text is to appear at the bottom of each point.
 
     cartesian.label.bot "P(0)\\P(1)\\P(2)" -5 0 -5 1 -5 2
 
-The 'cartesian.ellipse' will draw an ellipse centered at the location. There can only be one ellipse to be drawn, and the signature of the arguments are:
+The 'cartesian.ellipse' will draw an ellipse centered at the location.
+There can only be one ellipse to be drawn, and the signature of the
+arguments are:
 
     cartesian.ellipse x y Rx Ry Phi
 
-The 'x' and 'y' are coodinates for the center point of the ellipse. Each of the 'Rx' and 'Ry' is the semi-major or semi-minor axis in horizontal or vertical direction. 'Phi' is the measurement of the angle rotation of the entire ellipse around the center. If it is a counter-clockwise rotation. It is in degrees.
+The 'x' and 'y' are coodinates for the center point of the ellipse.
+Each of the 'Rx' and 'Ry' is the semi-major or semi-minor axis in
+horizontal or vertical direction. 'Phi' is the measurement of the
+angle rotation of the entire ellipse around the center. If it is a
+counter-clockwise rotation. It is in degrees.
 
-The "cartesian.arc" command will draw an arc with the given center, radius, start and stop angle. The signature of the function looks like the following.
+The "cartesian.arc" command will draw an arc with the given center,
+radius, start and stop angle. The signature of the function looks like
+the following.
 
     cartesian.arc x y R startAngle stopAngle
 
-The 'x' and 'y' are coordinates expressing the center of the arc. 'R' is the radius of the arc. 'startAngle' and 'stopAngle' are the angles expressing starting angle and stopping angle of the arc. They are both in degrees.
+The 'x' and 'y' are coordinates expressing the center of the arc. 'R'
+is the radius of the arc. 'startAngle' and 'stopAngle' are the angles
+expressing starting angle and stopping angle of the arc. They are both
+in degrees.
 
 
 # The barchart-operation
@@ -947,33 +1051,74 @@ of its subcommands.
 -- barchart.ytick
 -- barchart.xtext
 
-The 'barchart.setup' command would setup the barchart and config it. The 'xorigin' and 'yorigin' are to state the grid coordinates where lower left hand corner is to appear in the Diagram. Note that this number is subject to current settings of 'refx', 'refy', 'refsx' and 'refsy' settings.
+The 'barchart.setup' command would setup the barchart and config it.
+The 'xorigin' and 'yorigin' are to state the grid coordinates where
+lower left hand corner is to appear in the Diagram. Note that this
+number is subject to current settings of 'refx', 'refy', 'refsx' and
+'refsy' settings.
 
-The 'xwidth' and 'ywidth' is to state the width and height of the bar chart measured in grid length. Thus, setting them to '10' and '15' would have a barchart of 10 grids wide and 15 grids tall.
+The 'xwidth' and 'ywidth' is to state the width and height of the bar
+chart measured in grid length. Thus, setting them to '10' and '15'
+would have a barchart of 10 grids wide and 15 grids tall.
 
-The 'xrange' and 'yrange' is to state the input range for the x-direction and y-direction axes. Specifically, if the bars are going to be drawn vertically, from bottom to top, then the 'yrange' should be stated as the highest number of the tallest bar,and 'xrange' should be stated as the total number of bars minus one. For example, if we were to show five bars, that is 0.1, 0.3, 0.2, 0.4, 0.2, then the 'yrange' should be set to 0.4, and 'xrange' should be set to "5" Following example shows how to set up a barchart that is to be placed at (0,0), with a width of 10, and height of 15, and with the 'xrange' set to 5 and 'yrange' set to 0.4.
+The 'xrange' and 'yrange' is to state the input range for the
+x-direction and y-direction axes. Specifically, if the bars are going
+to be drawn vertically, from bottom to top, then the 'yrange' should
+be stated as the highest number of the tallest bar,and 'xrange' should
+be stated as the total number of bars minus one. For example, if we
+were to show five bars, that is 0.1, 0.3, 0.2, 0.4, 0.2, then the
+'yrange' should be set to 0.4, and 'xrange' should be set to "5"
+Following example shows how to set up a barchart that is to be placed
+at (0,0), with a width of 10, and height of 15, and with the 'xrange'
+set to 5 and 'yrange' set to 0.4.
 
     barchart.setup 0 0 10 15 5 0.4
 
-The 'barchart.bbox' is to draw a bounding box covering the entire barchart. It does not require any arguments.
+The 'barchart.bbox' is to draw a bounding box covering the entire
+barchart. It does not require any arguments.
 
-The 'barchart.vbar' is to draw vertical bars. The arguments are the y-values of the bar themselves. Thus, to draw the previous five bars, it will be
+The 'barchart.vbar' is to draw vertical bars. The arguments are the
+y-values of the bar themselves. Thus, to draw the previous five bars,
+it will be
 
     barchart.vbar 0.1 0.3 0.2 0.4 0.2
 
-The 'barchart.ytick' operation is to draw "ticks" along its y-axis on the left hand side, and also show the label for each axis to its left hand side. Its arguments are the location of ticks, and they should be stated in the same input range as those of the 'vbar'. For example, if ticks were to be placed at the location of '0.1', '0.2' and '0.3', then following command should be issued.
+The 'barchart.ytick' operation is to draw "ticks" along its y-axis on
+the left hand side, and also show the label for each axis to its left
+hand side. Its arguments are the location of ticks, and they should be
+stated in the same input range as those of the 'vbar'. For example, if
+ticks were to be placed at the location of '0.1', '0.2' and '0.3',
+then following command should be issued.
 
     barchart.ytick 0.1 0.2 0.3
 
-The 'barchart.xtext' is to add information at the bottom of each bar as to express what these bars are intended for. The text must be provided by a set of quotation marks that must proceed all options and scalars. The scalars express the location of vertical bars on x-axis. Thus, if the input range has been set to 5, the first bar is to appear between 0-1, and second bar 1-2, and so on, thus, the center location for the first vertical bar is 0.5, and center location for the second bar is 1.5, etc.
+The 'barchart.xtext' is to add information at the bottom of each bar
+as to express what these bars are intended for. The text must be
+provided by a set of quotation marks that must proceed all options and
+scalars. The scalars express the location of vertical bars on x-axis.
+Thus, if the input range has been set to 5, the first bar is to appear
+between 0-1, and second bar 1-2, and so on, thus, the center location
+for the first vertical bar is 0.5, and center location for the second
+bar is 1.5, etc.
 
     barchart.xtext "P(0)\\P(1)\\P(2)" 0.5 1.5 2.5
 
-The text will always be centered at location, and placed directly below the bar.
+The text will always be centered at location, and placed directly
+below the bar.
 
 # Drawing arrow heads
 
-These three operations only draw lines, similar to the 'line' operation. The 'arrow' would place an arrowhead at the ending line cap location. The 'revarrow' would place an arrowhead at the starting line cap location. Thesehe 'dblarrow' would place two arrowheads one at the beginning and the other at the ending line cap location. The lines are always drawn, regardless of the 'linesize' setting. If 'linesize' is set to zero, the default line width for the target platform is assumed. The 'linecolor' setting determines the line color as well as the color of the arrowhead. However, due to outstanding issues on SVG, the arrowhead MARKER-element does not change the color with the line it is attached to, and is always shown as black.
+These three operations only draw lines, similar to the 'line'
+operation. The 'arrow' would place an arrowhead at the ending line cap
+location. The 'revarrow' would place an arrowhead at the starting line
+cap location. Thesehe 'dblarrow' would place two arrowheads one at the
+beginning and the other at the ending line cap location. The lines are
+always drawn, regardless of the 'linesize' setting. If 'linesize' is
+set to zero, the default line width for the target platform is
+assumed. The 'linecolor' setting determines the line color as well as
+the color of the arrowhead. However, due to outstanding issues on SVG,
+the arrowhead MARKER-element does not change the color with the line
+it is attached to, and is always shown as black.
 
     draw {arrow:1} (0,0) (3,4)
     draw {arrow:1;revarrow:1} (0,0) (3,4)
@@ -983,45 +1128,91 @@ These three operations only draw lines, similar to the 'line' operation. The 'ar
 
 # Remarks and problems
 
-- The arrow head in HTML is done using MARKER-element. And for SVG 1.1 the limitation is that its coloring and filling is not changed to the line element it attaches to. It is a browser problem and currently there is no fix.
+- The arrow head in HTML is done using MARKER-element. And for SVG 1.1
+  the limitation is that its coloring and filling is not changed to
+  the line element it attaches to. It is a browser problem and
+  currently there is no fix.
 
-- For SVG we *had* to make a choice to either show a plaintext, using TEXT-element or math text using SVG-element, there is currently a lot of grief as prevously we were freely mixing normal and math text as this was not a problem for MetaPost, as it supports TeX text between btex and etex constructs. However, mixing plain text and math text is an issue because math text is translated into SVG and plain text into the TEXT-element, and there is no way to correctly position the SVG text if it is to appear in the middle of a TEXT-element.
+- For SVG we *had* to make a choice to either show a plaintext, using
+  TEXT-element or math text using SVG-element, there is currently a
+  lot of grief as prevously we were freely mixing normal and math text
+  as this was not a problem for MetaPost, as it supports TeX text
+  between btex and etex constructs. However, mixing plain text and
+  math text is an issue because math text is translated into SVG and
+  plain text into the TEXT-element, and there is no way to correctly
+  position the SVG text if it is to appear in the middle of a
+  TEXT-element.
 
-- The generation of fontsize is always done to convert a user unit to pt.
+- The generation of fontsize is always done to convert a user unit to
+  pt.
 
-- It has been observed that for MP generation if the symbol were part of a math such as between `\(` and `\)`, then it appears smaller than those that are not.
+- It has been observed that for MP generation if the symbol were part
+  of a math such as between `\(` and `\)`, then it appears smaller
+  than those that are not.
 
-- The text-aligmnents are default to 'urt' and not 'centered', thus we need to ensure previous auto choices of text alignment which asssumes the center are now being shown as 'urt' and thus we need to make some adjustments where necessary.
+- The text-aligmnents are default to 'urt' and not 'centered', thus we
+  need to ensure previous auto choices of text alignment which
+  asssumes the center are now being shown as 'urt' and thus we need to
+  make some adjustments where necessary.
 
-- Note that for MetaPost translation, it is very sensitive to backslashes. Even for texts that exists in comments, if a backslash is encountered that is not followed by another backslash, it is processed as a backslash sequence for which, it will consume a brace which will likely cause an unmatched brace compile error in LATEX engine. For this reason, all texts translated as a comment line are also "escaped".
+- Note that for MetaPost translation, it is very sensitive to
+  backslashes. Even for texts that exists in comments, if a backslash
+  is encountered that is not followed by another backslash, it is
+  processed as a backslash sequence for which, it will consume a brace
+  which will likely cause an unmatched brace compile error in LATEX
+  engine. For this reason, all texts translated as a comment line are
+  also "escaped".
 
 
 
 # The foreach-loop
 
-A foreach-loop is provided by Diagram such that a number of commands can be repetitively executed, and each iteration these commands would have been run under a different set of arguments. The basic syntax is
+A foreach-loop is provided by Diagram such that a number of commands
+can be repetitively executed, and each iteration these commands would
+have been run under a different set of arguments. The basic syntax is
 
     foreach (a) [1,2,3,4]:
       draw (\a,\a) (0,0)
 
-In the example, the 'draw' command will be executed exactly four times, each of which looks like the following.
+In the example, the 'draw' command will be executed exactly four
+times, each of which looks like the following.
 
     draw (1,1) (0,0)
     draw (2,2) (0,0)
     draw (3,3) (0,0)
     draw (4,4) (0,0)
 
-The 'foreach' command starts with the keyword 'foreach', followed by a set of parentheses, and then followed by a set of brackets, and then a colon.
+The 'foreach' command starts with the keyword 'foreach', followed by a
+set of parentheses, and then followed by a set of brackets, and then a
+colon.
 
-The set of parentheses denotes a list of loop symbols. Each loop symbol must only consist of uppercase or lowercase letters, such as a, aa, abc, zzz, etc. Symbols such as 1, 2, a2, aa3 are not allowed.
+The set of parentheses denotes a list of loop symbols. Each loop
+symbol must only consist of uppercase or lowercase letters, such as a,
+aa, abc, zzz, etc. Symbols such as 1, 2, a2, aa3 are not allowed.
 
-The set of brackets denotes a list of sequences. Each sequence could be of any string, except for comma, which serves solely as the delimiters for two neighboring sequences.
+The set of brackets denotes a list of sequences. Each sequence could
+be of any string, except for comma, which serves solely as the
+delimiters for two neighboring sequences.
 
-The 'foreach' command would iterate over each sequence provided in the sequence list. If there is only one loop symbol, such as the one shown in the previous example, the number of iterations equals the total number of sequences. For each iteration, the loop body, which consists of one or more lines, would execute exactly once, during which each command within the body executes in the same order as it appears in the body.
+The 'foreach' command would iterate over each sequence provided in the
+sequence list. If there is only one loop symbol, such as the one shown
+in the previous example, the number of iterations equals the total
+number of sequences. For each iteration, the loop body, which consists
+of one or more lines, would execute exactly once, during which each
+command within the body executes in the same order as it appears in
+the body.
 
-Before each iteration, the entire loop body would undergo a global search-and-replace to substitute any occurrences of the loop symbol with the actual sequence that is to be iterated over. For example, if the symbol is provided as 'a', then the global search-and-replace would replace any occurrences of `\a` by the sequence.
+Before each iteration, the entire loop body would undergo a global
+search-and-replace to substitute any occurrences of the loop symbol
+with the actual sequence that is to be iterated over. For example, if
+the symbol is provided as 'a', then the global search-and-replace
+would replace any occurrences of `\a` by the sequence.
 
-If there are two loop symbols, then each iteration would pick up two sequences in the list, and the total number of iterations would be reduced by half. In addition, the global search-and-replace would be done for both symbols. For example, if we were to have the following 'foreach' loop, then the 'draw' command would be executed two times. 
+If there are two loop symbols, then each iteration would pick up two
+sequences in the list, and the total number of iterations would be
+reduced by half. In addition, the global search-and-replace would be
+done for both symbols. For example, if we were to have the following
+'foreach' loop, then the 'draw' command would be executed two times.
 
     % Using foreach
     foreach (a,b) [1,2,3,4]:
@@ -1031,37 +1222,48 @@ If there are two loop symbols, then each iteration would pick up two sequences i
     draw (1,1) (2,2)
     draw (3,3) (4,4)
 
-Note that all lines of the loop body must have an indentation level that is greater than the indentation of the 'foreach' command itself. If a line is encountered that is of the same or less of an indentation level as that of the 'foreach' command, then that line is not considered as part of the loop body, and no additional lines will be considered for inclusion as the loop body.
+Note that all lines of the loop body must have an indentation level
+that is greater than the indentation of the 'foreach' command itself.
+If a line is encountered that is of the same or less of an indentation
+level as that of the 'foreach' command, then that line is not
+considered as part of the loop body, and no additional lines will be
+considered for inclusion as the loop body.
 
-This design also permits the inclusion of additional nested 'foreach' loop, each of which only to have its own loop body being indented even further inwards. The following example show the implementation of two 'foreach' loops. The toplevel 'foreach' loop offsers two loop symbols: 'a', and 'b', and the nested 'foreach' loop offers one loop symbol: 'c'. Note that the last 'label.bot' command is not part of the nested 'foreach' loop, but rather part of the toplevel 'foreach' loop.
+This design also permits the inclusion of additional nested 'foreach'
+loop, each of which only to have its own loop body being indented even
+further inwards. The following example show the implementation of two
+'foreach' loops. The toplevel 'foreach' loop offsers two loop symbols:
+'a', and 'b', and the nested 'foreach' loop offers one loop symbol:
+'c'. Note that the last 'label.bot' command is not part of the nested
+'foreach' loop, but rather part of the toplevel 'foreach' loop.
 
-      viewport 31 24
-      foreach (a,b) [9,0.4, 19,0.5, 29,0.6] :
-        set refx \a
-        foreach (c) [16,4]:
-          set refy \c
-          draw (0,0) [h:-6] [v:6]
-          draw (0,0) [q:-6,0,-6,6]
-          path P0 = (0,0)
-          path P1 = (-6,0)
-          path P2 = (-6,6)
-          dot *P0 *P1 *P2
-          label.lrt "P_0" *P0
-          label.llft "P_1" *P1
-          label.ulft "P_2" *P2
-          path line1 = *P0 *P1
-          path line2 = *P1 *P2
-          path m0 = $midpoint(line1,\b )
-          path m1 = $midpoint(line2,\b )
-          dot *m0 *m1
-          draw *m0 *m1
-          path line3 = *m0 *m1
-          path B = $midpoint(line3,\b )
-          dot *B
-          label.bot "m_0" *m0
-          label.lft "m_1" {dx:-.1} *m1
-          label.urt "B" *B
-        label.bot "t=\b" (-3,-2)
+    viewport 31 24
+    foreach (a,b) [9,0.4, 19,0.5, 29,0.6] :
+      set refx \a
+      foreach (c) [16,4]:
+        set refy \c
+        draw (0,0) [h:-6] [v:6]
+        draw (0,0) [q:-6,0,-6,6]
+        path P0 = (0,0)
+        path P1 = (-6,0)
+        path P2 = (-6,6)
+        dot *P0 *P1 *P2
+        label.lrt "P_0" *P0
+        label.llft "P_1" *P1
+        label.ulft "P_2" *P2
+        path line1 = *P0 *P1
+        path line2 = *P1 *P2
+        path m0 = $midpoint(line1,\b )
+        path m1 = $midpoint(line2,\b )
+        dot *m0 *m1
+        draw *m0 *m1
+        path line3 = *m0 *m1
+        path B = $midpoint(line3,\b )
+        dot *B
+        label.bot "m_0" *m0
+        label.lft "m_1" {dx:-.1} *m1
+        label.urt "B" *B
+      label.bot "t=\b" (-3,-2)
 
 
 # The fn command
@@ -1071,20 +1273,28 @@ The 'fn' command allows for a new user-defined function to be created.
     fn P(x) = pow(x,2)
     cartesian.yplot {f:P} 1 2 3
 
-The command starts with the string 'fn', followed by a function name, followed by a set of parentheses, within which is a list of arguments, separated by comma, followed by an equal sign, and then addtional expression.
+The command starts with the string 'fn', followed by a function name,
+followed by a set of parentheses, within which is a list of arguments,
+separated by comma, followed by an equal sign, and then addtional
+expression.
 
-The expression can contain other user-defined funtions, or built-in scalar function provided by Diagram.
+The expression can contain other user-defined funtions, or built-in
+scalar function provided by Diagram.
 
 
 
 # Accessing an x/y component of a path variable
 
-For a scalar expression, it is provision to access the x/y component of a path variable. In the following example the variable 'mx' will be assigned the sum of adding the "x" components of the first two points in path variable 'pts', which will be "1 + 3 = 4".
+For a scalar expression, it is provision to access the x/y component
+of a path variable. In the following example the variable 'mx' will be
+assigned the sum of adding the "x" components of the first two points
+in path variable 'pts', which will be "1 + 3 = 4".
 
     path pts = (1,2) (3,4)
     var mx = &pts[0].x + &pts[1].x
 
-Following is another example of adding the two "y" components of the first two points and assign the result to 'my'.
+Following is another example of adding the two "y" components of the
+first two points and assign the result to 'my'.
 
     path pts = (1,2) (3,4)
     var my = &pts[0].y + &pts[1].y
@@ -1093,7 +1303,11 @@ Following is another example of adding the two "y" components of the first two p
 
 # Setting up an environment symbol
 
-Setting up environment symbol to hold a scalar quantity is done by the ``${...}`` followed by an equal sign and then an arithmetic expression. In the following example the symbol 'pi' is assigned a quantity that 3.1415, which is then used inside the function body of 'f' as well as part of the the 'draw' command.
+Setting up environment symbol to hold a scalar quantity is done by the
+``${...}`` followed by an equal sign and then an arithmetic
+expression. In the following example the symbol 'pi' is assigned a
+quantity that 3.1415, which is then used inside the function body of
+'f' as well as part of the the 'draw' command.
 
     ${pi} = 3.1415
     fn f(x) = \pi/x
@@ -1104,13 +1318,22 @@ Setting up environment symbol to hold a scalar quantity is done by the ``${...}`
     cartesian.yplot {f:f} [1:10]
     draw {arrow} (0,0) (\pi,\pi)
 
-Note that the symbol that follows the 'var' command must conform to the conventionn of starting with a letter, and followed by additional letters and/or digits if any. A single letter symbol is permitted. In addition, instead of being assigned a number, the right hand side of the equal sign can also be a valid expression, in which case the value of that expression is evaluated immediately, and the quantity of which is assigned to the symbol.
+Note that the symbol that follows the 'var' command must conform to
+the conventionn of starting with a letter, and followed by additional
+letters and/or digits if any. A single letter symbol is permitted. In
+addition, instead of being assigned a number, the right hand side of
+the equal sign can also be a valid expression, in which case the value
+of that expression is evaluated immediately, and the quantity of which
+is assigned to the symbol.
 
     ${pi} = cos(0)/2
 
-In the previous example the 'cos()' is a built-in scalar function that is discussed next. Otherwise it could also be a user-defined function such as 'f()' in the previous example.
+In the previous example the 'cos()' is a built-in scalar function that
+is discussed next. Otherwise it could also be a user-defined function
+such as 'f()' in the previous example.
 
-When appear inside a normal command, it must appear after a backslash, such as '\pi'.
+When appear inside a normal command, it must appear after a backslash,
+such as '\pi'.
 
 
 # The built-in scalar functions
@@ -1127,7 +1350,8 @@ Following are built-in functions provided by Diagram
 
 + log1p(x)     
   
-  It returns the natural log of a number that is 1 plus the argument; it is the same as log(1+x)
+  It returns the natural log of a number that is 1 plus the argument;
+  it is the same as log(1+x)
 
 + log2(x)  
   
@@ -1135,7 +1359,8 @@ Following are built-in functions provided by Diagram
 
 + exp(x)      
 
-  It returns the output of an exponential function for which the base is set to be the Euler's number `e`: exp(1) = e; exp(2) = `e^2`
+  It returns the output of an exponential function for which the base
+  is set to be the Euler's number `e`: exp(1) = e; exp(2) = `e^2`
 
 + pow(x,y)     
   
@@ -1167,7 +1392,8 @@ Following are built-in functions provided by Diagram
 
 + atan2(y,x)
   
-  It returns the angle measurement in radians for an angle formed between the vector line from the origin to (x,y) and the x-axis
+  It returns the angle measurement in radians for an angle formed
+  between the vector line from the origin to (x,y) and the x-axis
 
 + deg2rad(x)
 
@@ -1180,73 +1406,122 @@ Following are built-in functions provided by Diagram
 
 # The range-expression syntax
 
-The range-expression serves to present one or more scalar quantities with a command that expects scalar quantities as part of its command line structure.  When it appears as part of a group of scalar arguments of a command, it serves to express one or more scalar quantities for that command. For example, in the following command a total of 11 scalars will be supplied to the `cartesian.yplot` command.
+The range-expression serves to present one or more scalar quantities
+with a command that expects scalar quantities as part of its command
+line structure. When it appears as part of a group of scalar arguments
+of a command, it serves to express one or more scalar quantities for
+that command. For example, in the following command a total of 11
+scalars will be supplied to the `cartesian.yplot` command.
 
     fn P(x) = pow(x,2)
     cartesian.yplot {f:P} [1:10]
 
-A range-expression must appears between a set of brackets, and it consists of two or three quantities each separated by a single colon.
+A range-expression must appears between a set of brackets, and it
+consists of two or three quantities each separated by a single colon.
 
-When a range-expression consists of two quantities, such as "1:10", the first one denotes the `base`, and the second one denotes the `limit`. The range of scalars this range-expression covers include all the numbers between the `base` and `limit`, starting from the `base`, with each additional number one greater than its predecessor, and with a final number not exceeding `limit`. Thus, for the case of a range-expression "1:10", the scalars it entails are 1, 2, 3, 4, 5, 6, 7, 8, 9 and 10.
+When a range-expression consists of two quantities, such as "1:10",
+the first one denotes the `base`, and the second one denotes the
+`limit`. The range of scalars this range-expression covers include all
+the numbers between the `base` and `limit`, starting from the `base`,
+with each additional number one greater than its predecessor, and with
+a final number not exceeding `limit`. Thus, for the case of a
+range-expression "1:10", the scalars it entails are 1, 2, 3, 4, 5, 6,
+7, 8, 9 and 10.
 
-If a Range-expression is given as a set of three quantities, such as the case of "1:3:10", then the last quantity denotes the `limit`, and the middle quantity denotes the increment for each additional scalar after the `base`. Thus, in the case of "1:3:10", the scalars it entails are: 1, 4, 7, 10.
+If a Range-expression is given as a set of three quantities, such as
+the case of "1:3:10", then the last quantity denotes the `limit`, and
+the middle quantity denotes the increment for each additional scalar
+after the `base`. Thus, in the case of "1:3:10", the scalars it
+entails are: 1, 4, 7, 10.
 
 
 
 # The 'node' and 'edge' operations
 
-Nodes and edges are common constructions found in almost any literatures covering the topics in the fields of graph theory.
+Nodes and edges are common constructions found in almost any
+literatures covering the topics in the fields of graph theory.
 
-The 'node' and 'edge' commands are for supporting drawings of such nature. In particular, each `node` command is to draw one or more nodes, with each node shaped as a circle, with optional text in the middle.
+The 'node' and 'edge' commands are for supporting drawings of such
+nature. In particular, each `node` command is to draw one or more
+nodes, with each node shaped as a circle, with optional text in the
+middle.
 
     node.A  (1,1)
     node.B  (5,5)
 
-The previous two commands would have drawn two nodes, one named "A", and one named "B" at two locations where each aligns with the center of one of the nodes. The default radius of the node is 1, but it can be configured to another such as "2" by doing the following
+The previous two commands would have drawn two nodes, one named "A",
+and one named "B" at two locations where each aligns with the center
+of one of the nodes. The default radius of the node is 1, but it can
+be configured to another such as "2" by doing the following
 
     config noderadius 2
 
-The option after the command such as ".A" and ".B" is used to assign a name to this node, so that it can be referred to later by a command such as `edge`. In the following example the `edge` command is to draw an edge between nodes "A" and "B".
+The option after the command such as ".A" and ".B" is used to assign a
+name to this node, so that it can be referred to later by a command
+such as `edge`. In the following example the `edge` command is to draw
+an edge between nodes "A" and "B".
 
     edge.A.B
 
-The edge is by default a straight line.  Each end point of this line starts from the outside of the node, touching the perimeter of the circle. However, if a curved line is desired, then the "dir:" option can be included. This option describes an angle in degree, from the view point of the starting node, how far off it is to veer away from the straight line direction to reach the destination node. A positive "dir" option would mean that it makes a counter-clockwise turn, and a negative "dir" expresses that it should make a clockwise turn.
+The edge is by default a straight line. Each end point of this line
+starts from the outside of the node, touching the perimeter of the
+circle. However, if a curved line is desired, then the "dir:" option
+can be included. This option describes an angle in degree, from the
+view point of the starting node, how far off it is to veer away from
+the straight line direction to reach the destination node. A positive
+"dir" option would mean that it makes a counter-clockwise turn, and a
+negative "dir" expresses that it should make a clockwise turn.
 
-Thus, the following example would have drawn a curved edge that is to come out of the first node at the top of the circle, and then entering the second node on its left-hand side. This is because the straight line direction would be a 45 degree from the first node to the second node, and thus an addition turning of 45 degree angle would have placed the starting direction at a 90 degree angle. Since the turning would be semantical, the destination node would have its angle turned in the opposite direction.
+Thus, the following example would have drawn a curved edge that is to
+come out of the first node at the top of the circle, and then entering
+the second node on its left-hand side. This is because the straight
+line direction would be a 45 degree from the first node to the second
+node, and thus an addition turning of 45 degree angle would have
+placed the starting direction at a 90 degree angle. Since the turning
+would be semantical, the destination node would have its angle turned
+in the opposite direction.
 
     node.A  (1,1)
     node.B  (5,5)
     edge.A.B {dir:45}
 
-If the edge is going to include arrow heads, then one of the following three options should've been used
+If the edge is going to include arrow heads, then one of the following
+three options should've been used
 
     edge.A.B {arrow;dir:45}
     edge.A.B {revarrow;dir:45}
     edge.A.B {dblarrow;dir:45}
 
-Latest changes has added a new option called "dot" to the node operation. 
-If this option is set, then each node is going to be drawn as a dot, and
-label text is not to be drawn. This allows one to render each node as a 
-colored dot. The size of the dot is to be controlled the same way how
-a "dot" operation is controlled, such as to set the "dotsize" for the 
-size of the dot in diameter, and "dotcolor" for the color of the dot.
+Latest changes has added a new option called "dot" to the node
+operation. If this option is set, then each node is going to be drawn
+as a dot, and label text is not to be drawn. This allows one to render
+each node as a colored dot. The size of the dot is to be controlled
+the same way how a "dot" operation is controlled, such as to set the
+"dotsize" for the size of the dot in diameter, and "dotcolor" for the
+color of the dot.
 
 
 # The 'box' operation
 
 + box (x,y) (x1,y1) ...
 
-    This command is to draw a box at the location expressed by the path points. The size of the box is controlled by the 'w' and 'h' members of the configuration parameters, each of which can be set    by the 'config' operation to be a default. 
-    
-    ```
-    box {w:3;h:2} (x,y) (x1,y1) ...
-    ```
+  This command is to draw a box at the location expressed by the path
+  points. The size of the box is controlled by the 'w' and 'h' members
+  of the configuration parameters, each of which can be set by the
+  'config' operation to be a default.
+  
+  ```
+  box {w:3;h:2} (x,y) (x1,y1) ...
+  ```
     
     
 
 # The 'rec' operation
 
-The 'rec' operation is a group of compound commands that serve the purpose of recording some operations for the purpose of playing them back later. In the following example two 'draw' operations are recorded to the tape 'a' and later played back.
+The 'rec' operation is a group of compound commands that serve the
+purpose of recording some operations for the purpose of playing them
+back later. In the following example two 'draw' operations are
+recorded to the tape 'a' and later played back.
 
     path one = (0,0.3) [a:1,0.3,0,0,0,2,0] [v:2] [h:-2] [v:-2] cycle
     path two = (0,2.3) [a:1,0.3,0,0,0,2,0] [a:1,0.3,0,0,0,-2,0] cycle
