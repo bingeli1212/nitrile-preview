@@ -1609,22 +1609,22 @@ first two points and assign the result to 'my'.
 
 # Setting up an environment symbol
 
-Setting up environment symbol to hold a scalar quantity is done by the
-``${...}`` followed by an equal sign and then an arithmetic
-expression. In the following example the symbol 'pi' is assigned a
+Setting up environment symbol to attach a name to a string
+or an arithmetic expression.
+In the following example the symbol 'pi' is assigned a
 quantity that 3.1415, which is then used inside the function body of
 'f' as well as part of the the 'draw' command.
 
-    ${pi} = 3.1415
+    \pi = 3.1415
     fn f(x) = \pi/x
     set refx 5
     set refy 5
     cartesian.xaxis -10 10
     cartesian.yaxis -10 10
     cartesian.yplot {f:f} [1:10]
-    draw {arrow} (0,0) (\pi,\pi)
+    arrow (0,0) (\pi,\pi)
 
-Note that the symbol that follows the 'var' command must conform to
+Note that the symbol following the backslash must conform to
 the conventionn of starting with a letter, and followed by additional
 letters and/or digits if any. A single letter symbol is permitted. In
 addition, instead of being assigned a number, the right hand side of
@@ -1632,14 +1632,16 @@ the equal sign can also be a valid expression, in which case the value
 of that expression is evaluated immediately, and the quantity of which
 is assigned to the symbol.
 
-    ${pi} = cos(0)/2
+    \pi = cos(0)/2
 
-In the previous example the 'cos()' is a built-in scalar function that
-is discussed next. Otherwise it could also be a user-defined function
-such as 'f()' in the previous example.
+If a string is to be assigned, surround the entire
+expression with a quotation mark such as the following example shows.
 
-When appear inside a normal command, it must appear after a backslash,
-such as '\pi'.
+    \greeting = "Hello World"
+    label.ctr "\greeting" (5,5)
+
+
+
 
 
 # The built-in scalar functions
@@ -1765,17 +1767,6 @@ created a list of three floats: 1, 3 and 5.
 
     cartesian.xtick [1:2:5]
 
-It can also include an arithmetic expression. For example, following
-would have created a list of three numbers, 1, 2.718, and 7.389.
-
-    cartesian.xtick (exp(0)) (exp(1)) (exp(2))
-
-An arithmetic expression must be placed inside a pair of parentheses.
-A constant, on the other hand, can appear without any parenthesis.
-In the following example, the list of floats is 1, 2, 3 and 4.
-
-    var a = 2
-    cartesian.xtick 1 a 3 4
 
 
 
