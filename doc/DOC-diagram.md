@@ -190,7 +190,7 @@ not recommended and may result in distorted picture.
 
 + config barlength <number>
   The default length of the bar (grid unit). The default value
-  is 0.25. 
+  is 0.50. 
 
 + config fontsize <number>
 
@@ -223,6 +223,19 @@ not recommended and may result in distorted picture.
   This is the default color for stroking path or drawing a line,
   a bezier curve, or an arrow.
 
++ config dotcolor <color>
+
+  This sets the default color when coloring a dot during 
+  a dot-operation.                   
+
++ config dotsize <number>
+
+  This sets the default size for the dot during a dot-operation.
+
++ config fontcolor <color>
+
+  This sets the default text color for any operation involving generating a text and/or label.
+
 + config r <number>
 
   This is the radius for a circle- and/or node-operation. The default
@@ -238,6 +251,13 @@ not recommended and may result in distorted picture.
   This is the height for a rectangle- or box-operation. 
   The default value is 1.
 
++ config answer 1
+
+  Set it to one to show the answer. This would only have
+  effect for commands that would optionally show
+  answers as part of its operation, such as multiws-operation
+  and longdivws-operation.
+
 + config answercolor <color>
 
   This is the color used for showing all texts, lines that are
@@ -245,6 +265,12 @@ not recommended and may result in distorted picture.
   that has an "answer" option, such as multiws-operation and
   longdivws-operation. 
 
++ config showname 1
+
+  Set it to "1" to allow for names to show through. This would
+  only have effect on the node-operation at the current 
+  to allow for a named node to show its name in the center
+  when text is absent. The default is 0.   
 
 
 
