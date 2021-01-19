@@ -2028,9 +2028,9 @@ The outer color seems to be at a location away from the inner
 color that is the average of the half width and half height of the rectangle.
 
 
-# The "multiws" operation
+# The multiws-operation
 
-The "multiws" operation allows for a multiplication worksheet
+The multiws-operation allows for a multiplication worksheet
 to be shown on the canvas. In the following example the workflow
 of a multiplication worksheet of 24 multiplied by 3 is to be
 shown at location (2,1).
@@ -2055,9 +2055,9 @@ and as well as at the product.
     
     multiws {answer,answercolor:orange} "2.1 1.4" (0,0)
 
-# The "longdivws" operation
+# The longdivws-operation
 
-The "longdivws" operation allows one to show the complete workflow  
+The longdivws-operation allows one to show the complete workflow  
 of a long division between two integers, with quotient and remainders.
 In the following example a long division workflow is to be shown 
 starting at the coordinate (2,1).
