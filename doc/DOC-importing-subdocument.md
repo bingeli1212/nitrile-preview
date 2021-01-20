@@ -22,114 +22,66 @@ to list them in the Frontmatter section, using
 the "import" keyword.
 
     ---
-    title: My document title.
-    import: ./sub1.md
-            ./sub2.md
+    title: Data-Driven Documents
+    import: [part](Basic Concept)
+            [chapter](./d3-intro.md)
+            [chapter](./d3-datajoin.md)
+            [chapter](./d3-csv.md)
+            [chapter](./d3-selection.md)
+            [chapter](./d3-transformation.md)
+            [chapter](./d3-color.md)
+            [chapter](./d3-statistics.md)
+            [part](Layout)
+            [chapter](./d3-stack-layout.md)
+            [chapter](./d3-pack-layout.md)
+            [chapter](./d3-pie-layout.md)
+            [chapter](./d3-histogram.md)
+            [part](Data Generator)
+            [chapter](./d3-arc-generator.md)
+            [chapter](./d3-area-generator.md)
+            [chapter](./d3-symbol-generator.md)
+            [chapter](./d3-force.md)
+            [chapter](./d3-collections.md)
+            [chapter](./d3-geo.md)
+            [chapter](./d3-geodata-paths.md)
+            [chapter](./d3-scales.md)
+            [chapter](./d3-hierarchy.md)
+            [part](References)
+            [chapter](./d3-quickreference.md)
     ---
 
-In the previous example, it has been stated that
-two external MD files named "sub1.md" and "sub2.md" 
-will need to be "imported" into the current document.
+In the previous example, it has been stated that four "part" will be
+inserted into the document, between which there are other documents
+which will be considered as "chapter".
 
-The importing process will simply "copy" each blocks
-of the source documents and insert them at the end
-of the master document, such that all blocks of the
-sub document will be in the same order and will appear
-after all existing blocks of the main document.
+The importing process will simply "copy" each blocks of the source
+documents and insert them at the end of the last block of the current
+document. During the inserting, each block will gain an additional
+member called "name", which is set to the text
 
-Note that in order for the name of the file to be 
-recognized it must start with a dot or double-dot, such
-as "./sub1.md", or "../sub1.md". The first syntax
-specifies that the file should live in the same location
-as that of the master document, and the second syntax specifies
-that the source file lives in the parent direction
-of the master document.
+This is to assume that an input file is detected, Otherwise, a new
+HDGS block to created, where its hdgn-member is set to 0, and its
+name-, title-, id-, and fname-member are inserted as additional
+members of this block. For example, when importing for the first line,
+a new HDGS block is created that its hdgn-member is set 0, its
+name-member set to string "part", its title-member is set to the
+string "Basic Concept", its fname-member set to undefined, and its
+id-member set to undefined.
 
-Additional styling options can be passed to each
-sub document by adding the ``{...}`` after the file.
-So far, the only recognized option is "hdgn", which 
-will be set to either an integer, or string "part".
-
-    ---
-    title: My document title.
-    import: Introduction {hdgn:0}
-            ./sub1.md 
-            The Next Phase {hdgn:0}
-            ./sub2.md 
-    ---
-
-In this case, two chapter headings will be inserted into the 
-final translated document, each with the title of "Introductin"
-and "The Next Phase". The toplevel heading block in a child
-document is HDGS/1, which will be treated as "sections".
-
-For a report.js translation, the number of chapters, when
-present, will result in a "report" document class being
-set, rather than the default "article".
-
-The "hdgn" option can also be used to create "parts". 
-In this case, the "hdgn" should be set to "part". 
+This kind of setup allows for an artificial chapter to be inserted that
+does not involve an actual source file. For instance, the following setup
+would have setup an artificial chapter with two existing source documents
+acting as its two sections.
 
     ---
-    title: My document title.
-    import: My first part {hdgn:part}
-            Introduction {hdgn:0}
-            ./sub1.md 
-            ./sub2.md 
-            The Next Phase {hdgn:0}
-            ./sub3.md
-            ./sub4.md
-            My second part {hdgn:part}
-            The Third Phase {hdgn:0}
-            ./sub5.md 
-            ./sub6.md 
-            The Third Phase {hdgn:0}
-            ./sub7.md
-            ./sub8.md
-    ---
+    title: Data-Driven Documents
+    import: [chapter](Introduction)
+            [section](./d3-intro.md)
+            [section](./d3-datajoin.md)
+            [chapter](Advanced)
+            [section](./d3-selection.md)
+            [section](./d3-transformation.md)
+    ---    
 
-The previous examples shows how to establish
-two parts in LATEX where each part is to include
-two chapters.
-
-If "hdgn" is specified for a subdocument,
-such that its value is a positive integer,
-then each HDGS block of that child document
-is to be "shifted". For example,
-specifying an "hdgn:1" will shift all heading blocks
-of a child document by 1, such that a HDGS/1 block
-will become HDGS/2, and HDGS/2 becomes HDGS/3, etc.
-Note that so far there is no way for a HDGS/0 block to be
-specified directly inside a document. As a convension,
-HDGS/0 is understood to be a chapter heading,
-HDGS/1 is for a section heading,
-HDGS/2 is for a subsection heading,
-and HDGS/3 is for a subsubsection heading.
-
-If a "hdgn" is not specified, it is assumed to be "0".
-This allows chapters to be created by default.
-For instance, in the following example two chapter
-headings are created to hold contents of each child document.
-
-    ---
-    title: My document title.
-    import: Introduction 
-            ./sub1.md 
-            The Next Phase 
-            ./sub2.md 
-    ---
-
-Note that the FRNT blocks of child documents are not imported. 
-Additional styles specified will be passed to all blocks of 
-child blocks and new synthetic HDGS heading blocks. This 
-allows for a new heading block to have a label, for instance.
-
-    ---
-    title: My document title.
-    import: Introduction {label:intro}
-            ./sub1.md 
-            The Next Phase {label:thenextphase}
-            ./sub2.md 
-    ---
 
 
