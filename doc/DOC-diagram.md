@@ -299,6 +299,17 @@ not recommended and may result in distorted picture.
   The color must appear
   one after another separated by one or more empty spaces.
 
++ config linecap <string>
+
+  This sets the type of the linecap. The valid values are:
+  'butt', 'round', and 'square'.
+
++ config linejoin <string>
+
+  This sets the type of the linejoin. The valid values are:
+  'miter', 'round', and 'bevel'.
+
+
 
 
 # The set-operation
