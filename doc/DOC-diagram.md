@@ -226,7 +226,13 @@ not recommended and may result in distorted picture.
 + config dotcolor <color>
 
   This sets the default color when coloring a dot during 
-  a dot-operation.                   
+  a dot-operation.          
+
++ config opacity <number>
+
+  This sets the opacity of the filled color. The number must be
+  between 0 and 1, where 1 is the full opacity and 0 is the full
+  transparency.
 
 + config dotsize <number>
 
@@ -271,6 +277,27 @@ not recommended and may result in distorted picture.
   only have effect on the node-operation at the current 
   to allow for a named node to show its name in the center
   when text is absent. The default is 0.   
+
++ config angle <number>
+
+  Sets the angle which is a number between 0 and 90. This property
+  is only applicable in conjunction with the 'shade' property
+  to turn the filled color in a shade. 
+
++ config shade <string>
+
+  Sets the type of the shade to use instead of a solid filled color.
+  
++ config linedashed 1
+
+  When set to 1 a dashed line will be drawn instead of a solid one.
+
++ config shadecolor <color> ...
+
+  Sets one or more colors for the shade. The colors can be one, two or 
+  three depending on the type of shade.
+  The color must appear
+  one after another separated by one or more empty spaces.
 
 
 
