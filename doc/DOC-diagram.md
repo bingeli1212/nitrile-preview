@@ -61,10 +61,10 @@ Following is an example of a diagram block.
 
     set fillcolor pink
     circle        {r:1} (16,1)
-    circle.pie    {r:1; a1:0; a2:135} (20,1)
-    circle.chord  {r:1; a1:0; a2:135} (20,3)
-    circle.arc    {r:1; a1:0; a2:135} (20,5)
-    circle.cseg   {r:1; a1:0; a2:135} (20,7)
+    circle.pie    {r:1, a1:0, a2:135} (20,1)
+    circle.chord  {r:1, a1:0, a2:135} (20,3)
+    circle.arc    {r:1, a1:0, a2:135} (20,5)
+    circle.cseg   {r:1, a1:0, a2:135} (20,7)
 
     % dot
     path sq = (22,3) (23,3) (23,2) (22,2)
@@ -92,7 +92,7 @@ Following is an example of a diagram block.
 
     % draw     will fill
     path ff = (28,8)--(31,8)--(31,9)--(28,9)--cycle
-    draw {linesize:2;fillcolor:orange}  *ff
+    draw {linesize:2,fillcolor:orange}  *ff
     reset
 
     % label
@@ -216,7 +216,8 @@ not recommended and may result in distorted picture.
   It should be a string
   of 19 valid color names, such
   as "black", "pink", "steel", etc., or a
-  3-digit HEX such as "#888", or a 6-digit HEX such as "#F8F8F8".
+  3-digit HEX such as "#888", or a 6-digit HEX such as "#F8F8F8",
+  or a HWB color such as '!HWB!0!0.2!0!'.
 
 + config linecolor <color>
 
