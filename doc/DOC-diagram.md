@@ -317,6 +317,24 @@ not recommended and may result in distorted picture.
   an integer greater than 0. It will be automatically increased by 1 after that name
   is being assigned to a newly created node.
 
++ config span <number>
+
+  The 'span' configuration parameter expresses the number of degrees that covers
+  an range of degrees. It is currently used by the 'edge' command when it is to 
+  draw a loop edge. 
+
++ config protrude <number> 
+
+  The 'protrude' configuration parameter specifies a length that goes beyond the
+  surface. It is currently being used by 'edge' command to set the length of the 
+  looped edge beyond the node surface. 
+
++ config aber <number>
+ 
+  The 'aber' configuration parameter specifies the aberration from the norm.
+  It is currently being used by the 'edge' command to allow for drawing a 
+  Bezier curve between the two points instead of the straight line.
+  
 
 
 
@@ -810,7 +828,7 @@ updnprotractor   | 7x3.5            | upper-center
 - (b) For each shape, the 'sx' and 'sy' attributes can each be set to a different quantity, for which they each acts as a scalar that is to scale the width and height of the shape. For example, we can scale the protractor horizontally by half and vertically by two-third if we were to do the following.
   
   ````
-  shape.protractor {sx:0.5;sy:0.66} (0,0)
+  shape.protractor {sx:0.5,sy:0.66} (0,0)
   ````
 
 - (c) For each shape, the 'theta' can be added to express the angle of rotation around the origin. The angle is a number in degrees, where a position number expresses the rotation in the direction of unter-clockwise.
@@ -848,13 +866,13 @@ expressed the color of the lines.
 
 The diameter of the dot can be set using the 'dotsize' attribute.
 
-    dot {dotcolor:orange; dotsize:10} (1,1) (3,4) [l:2,1]
+    dot {dotcolor:orange, dotsize:10} (1,1) (3,4) [l:2,1]
 
 For 'hbar' and 'vbar' subcommands the 'linesize' attribute would hve
 expressed the width of the line.
 
-    dot.hbar {barcolor:orange; linesize:2} (1,1) (3,4) [l:2,1]
-    dot.vbar {barcolor:orange; linesize:2} (1,1) (3,4) [l:2,1]
+    dot.hbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
+    dot.vbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
 
 The 'dotsize' and 'linesize' are both expressed in terms of 'pt'. For
 'hbar' and 'vbar' commands, the length of the bar can be specified via
@@ -863,8 +881,8 @@ length in grid unit. If not specified, the default value is 0.25,
 which is one-quarter the length of a grid, and it can be changed to a
 different value by the 'set barlength' command.
 
-    dot.hbar {linecolor:orange; barlength:0.5} (1,1) (3,4) [l:2,1]
-    dot.vbar {linecolor:orange; barlength:0.5} (1,1) (3,4) [l:2,1]
+    dot.hbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
+    dot.vbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
 
 Here, the length of each bar is going to be about half the length of
 the grid. Note that for 'vbar', it's lower end point aligns with the
@@ -1491,7 +1509,7 @@ the arrowhead MARKER-element does not change the color with the line
 it is attached to, and is always shown as black.
 
     draw {arrow:1} (0,0) (3,4)
-    draw {arrow:1;revarrow:1} (0,0) (3,4)
+    draw {arrow:1,revarrow:1} (0,0) (3,4)
     draw {revarrow:1} (0,0) (3,4)
 
 
@@ -1873,12 +1891,30 @@ an edge between nodes "A" and "B".
 
 The edge is by default a straight line. Each end point of this line
 starts from the outside of the node, touching the perimeter of the
-circle. However, if a curved line is desired, then the "dir:" option
-can be included. This option describes an angle in degree, from the
+circle. However, if a curved line is desired, then the "abr" option
+can be specified. This option describes an angle in degree, from the
 view point of the starting node, how far off it is to veer away from
 the straight line direction to reach the destination node. A positive
-"dir" option would mean that it makes a counter-clockwise turn, and a
-negative "dir" expresses that it should make a clockwise turn.
+"abr" option would mean that it makes a counter-clockwise rotation for
+that number of degrees, and a negative "abr" expresses that it should
+make a clockwise rotation. Note that for the starting node if it is to
+make a counterclockwise rotation then the destination node is to have
+a clockwise rotation such that the incoming line is to have the same  
+abbration. The resulting quardratic Bezier curve is to be formed such
+that the control point of the Bezier curve is the intersection point
+where the two lines meet.
+
+When the starting and ending node is the same, then the 'edge' command
+is to draw a loop. This loop is shown in the shape of a cubic Bezier
+curve. There are two configuration parameters that is to control the
+appearance of this cubic Bezier curve: 'protrude' and 'span'. The
+'protrude' parameter determines the distance of the two control points
+of the Bezier curve away from the surface of the node; it is an
+integer expressing the number of unit length and the default value is
+1. The 'span' parameter expresses the number of degrees of a central
+angle formed by the two control points and the origin of the node. The
+default value is 45. The wider this angle is, the fatter the loop will
+appear to be.
 
 Thus, the following example would have drawn a curved edge that is to
 come out of the first node at the top of the circle, and then entering
@@ -1891,14 +1927,14 @@ in the opposite direction.
 
     node.A  (1,1)
     node.B  (5,5)
-    edge.A.B {dir:45}
+    edge.A.B {abr:45}
 
 If the edge is going to include arrow heads, then one of the following
 three options should've been used
 
-    edge.A.B {arrow;dir:45}
-    edge.A.B {revarrow;dir:45}
-    edge.A.B {dblarrow;dir:45}
+    edge.A.B {arrow,abr:45}
+    edge.A.B {revarrow,abr:45}
+    edge.A.B {dblarrow,abr:45}
 
 Latest changes has added a new option called "dot" to the node
 operation. If this option is set, then each node is going to be drawn
@@ -1944,7 +1980,7 @@ to be automatically assigned names.
   'config' operation to be a default.
   
   ```
-  box {w:3;h:2} (x,y) (x1,y1) ...
+  box {w:3,h:2} (x,y) (x1,y1) ...
   ```
     
     
@@ -1958,7 +1994,7 @@ recorded to the tape 'a' and later played back.
 
     path one = (0,0.3) [a:1,0.3,0,0,0,2,0] [v:2] [h:-2] [v:-2] cycle
     path two = (0,2.3) [a:1,0.3,0,0,0,2,0] [a:1,0.3,0,0,0,-2,0] cycle
-    rec.a.draw {shade:linear;angle:80;shadecolor:gray lightgray gray} &one
+    rec.a.draw {shade:linear,angle:80,shadecolor:gray lightgray gray} &one
     rec.a.draw {fillcolor:gray} &two
     rec.a.playback (2,0)
 
