@@ -79,3 +79,22 @@ near the top of your source file. The simplest usage is
     \end{lstlisting}
 
 See the listings manual for all the other tricks that can be done.
+
+
+# Beamer custom paper size
+
+If you use LaTeX to produce slides using Beamer, again the default is 4:3. In current Beamer
+classes, put the following line in the preamble.
+
+    \documentclass[aspectratio=169]{beamer}
+
+If that doesn’t work, use
+
+    \usepackage[orientation=landscape,size=custom,width=16,height=9.75,scale=0.5,
+    debug]{beamerposter}
+
+(9.75 because it spans 16:9 and 16:10.)
+Note: If you already have content in your slides, you should review it to make sure that it is laid out
+correctly. 
+
+
