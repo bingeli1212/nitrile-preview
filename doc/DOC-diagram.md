@@ -310,6 +310,13 @@ not recommended and may result in distorted picture.
   This sets the type of the linejoin. The valid values are:
   'miter', 'round', and 'bevel'.
 
++ config nodeid <int>
+
+  The 'nodeid' configuration parameter should be used for setting the default node id
+  for the next node if no name is given. This parameter should always be set to
+  an integer greater than 0. It will be automatically increased by 1 after that name
+  is being assigned to a newly created node.
+
 
 
 
@@ -1900,6 +1907,31 @@ each node as a colored dot. The size of the dot is to be controlled
 the same way how a "dot" operation is controlled, such as to set the
 "dotsize" for the size of the dot in diameter, and "dotcolor" for the
 color of the dot.
+
+The latest addition has set it up so that if a name for a node is not
+given, it can be automatically assigned. The way it works is that
+the 'config.nodeid' configuration attribute must be set to an integer
+greater than 1. If this is the case, then whenever a new node is 
+created and is not given a name, then the integer of this parameter
+is used as the name instead, and this integer is automatically incremented
+by 1 so that the next node assignment would have had a different integer
+name. This feature allows nodes created inside a 'for' loop
+to be automatically assigned names.
+
+    ```diagram{frame, width:2cm}
+    viewport 6 6
+    config r 0.2
+    config fillcolor black
+    config nodeid 1
+    set refxy center
+    for.theta [0:60:359]:
+      \r = 2
+      \x = cos(deg2rad(\theta)) * \r
+      \y = sin(deg2rad(\theta)) * \r
+      node (\x,\y)
+    edge.1.2.3.4.5.6.1
+    ```
+
 
 
 # The box-operation
