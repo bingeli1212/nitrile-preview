@@ -1751,18 +1751,13 @@ expression with a quotation mark such as the following example shows.
 
 Following are built-in functions provided by Diagram
 
-+ log(x)
++ ln(x)
        
   It returns the natural log of a number
 
-+ log10(x)  
++ log(x)  
 
   It returns the base-10 log
-
-+ log1p(x)     
-  
-  It returns the natural log of a number that is 1 plus the argument;
-  it is the same as log(1+x)
 
 + log2(x)  
   
@@ -1777,13 +1772,9 @@ Following are built-in functions provided by Diagram
   
   It returns the result of raising ``x`` to the ``y``-th power: pow(3,2) = 9; pow(4,2) = 16
 
-+ rad(x)       
++ sqrt(x)   
   
-  It converts a quantity in degrees to a quantity in radian: rad(180) = 3.1415
-
-+ deg(x)       
-  
-  It converts a quantity in radians to a quantity in degrees: deg(3.1415) = 180
+  It returns the square root of a number: sqrt(9) = 3
 
 + cos(x)       
   
@@ -1797,22 +1788,74 @@ Following are built-in functions provided by Diagram
 
   It returns the tangent of a number.
 
-+ sqrt(x)   
-  
-  It returns the square root of a number: sqrt(9) = 3
++ asin(x)
+
+  It returns the inverse sin of a number.
+
++ acos(x)
+
+  It returns the inverse cosine of a number.
+
++ atan(x)
+
+  Inverse tangent of a number.
 
 + atan2(y,x)
+
+  Inverse tangent of y/x
+
++ sinh(x)
+
+  Hyperbolic sign of x.
+
++ cosh(x)
+
+  Hyperbolic cosine of x.
+
++ tanh(x)
+
+  Hyperbolic tangent of x.
+
++ deg2rad(x)       
   
-  It returns the angle measurement in radians for an angle formed
-  between the vector line from the origin to (x,y) and the x-axis
+  It converts a quantity in degrees to a quantity in radian: rad(180) = 3.1415
 
-+ deg2rad(x)
++ rad2deg(x)       
+  
+  It converts a quantity in radians to a quantity in degrees: deg(3.1415) = 180
 
-  It returns a value in radian given a value in degrees.
++ floor(x)
 
-+ rad2deg(x)
+  The largest (closest to positive infinity) value that is not greater
+  than the argument and is equal to a mathematical integer.
 
-  It returns a value in degrees given a value in radians.
++ ceil(x) 
+
+  The smallest (closest to negative infinity) value that is not less
+  than the argument and is equal to a mathematical integer.
+
++ round(x)
+
+  Round to the nearest integer. Examples: round(-2.5) = -2,
+  round(-2.6) = -3,
+  round(-0.1) = -0, round(0.1) = 0, round(2.5) = 3
+
++ abs(x)
+
+  Absolute value of a number. 
+
++ sign(x)
+
+  Sign (+1 or -1 or 0) of a number
+
++ PI()
+
+  The constant π (3.141592654...)
+
++ E()
+
+  The Euler's number (2.71828...), the base for the natural logarithm
+
 
 
 # The range-expression syntax
