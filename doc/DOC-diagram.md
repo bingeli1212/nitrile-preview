@@ -678,8 +678,9 @@ second angle.
 The 'drawanglearc' can also place text next to the angle arc to show
 the name of an angle.
 
-    draw (0,6) (2,4) (4,6) (6,4) (8,6)
-    drawanglearc "1\\2\\3" *
+    path points = (0,6) (2,4) (4,6) (6,4) (8,6)
+    draw &points
+    drawanglearc "1\\2\\3" &points
 
 
 # Expressing relative points of a path

@@ -1178,7 +1178,6 @@
     "BigTriangleLeft"        : { "html": "&#x25C1;"       ,  "tex": "?"                                   ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25C1 WHITE LEFT-POINTING TRIANGLE"},
     "BigTriangleRight"       : { "html": "&#x25B7;"       ,  "tex": "?"                                   ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25B7 WHITE RIGHT-POINTING TRIANGLE"},
     
-    "Edit"                   : { "html": "&#x270D;"       ,  "tex": "\\faEdit"                            ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+270D Writing Hand"},
     "Pencil"                 : { "html": "&#x270E;"       ,  "tex": "\\faPencil"                          ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+270E Lower Right Pencil"},
 
     "square"                 : { "html": "&#x25A1;"       ,  "tex": "\\square"                            , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25A1 WHITE SQUARE"},
