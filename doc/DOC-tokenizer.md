@@ -401,6 +401,16 @@ Following are additional Greek letter symbols that are supported.
     varphi       \varphi          
     varepsilon   \varepsilon           
 
+# Horizontal rules
+
+A horizontal rule can be typeset using the ``\hrule`` command.
+This command takes a single argument that expresses the multiple
+widthes of the current font size. For instance, a ``\hrule{3}`` 
+is to draw a horizontal rule the width of 36pt if the current font size
+is set at 12pt
+
+    \hrule{3}
+
 # The commath package
 
 Following commands are supported that are provided by the 'commath' package.
