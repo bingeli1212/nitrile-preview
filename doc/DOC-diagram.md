@@ -944,18 +944,18 @@ Usually a single text is repeated in all locations.
 However, it is possible to specify a different text for 
 each location.
 
-    label "A" (1,1) "B" (2,2) "C" (3,4)
+    label "A \\ B \\ C" (1,1) (2,2) (3,4)
 
 It is also possible to express that a math expression instead of plain
 text. In this case use the backslash-left-parenthesis and
 backslash-right-parenthesis quotation for the text.
 
-    label \(A_1\) (1,1) \(B_2\) 0(2,2) \(C_2\) (3,4)
+    label \(A_0 \\ A_1 \\ A_2\) (1,1) (2,2) (3,4)
 
 
 
 
-# The text operation
+# The text-operation
 
 The text operation is very similar to the label operation except that
 it will look for double backslashes in the text and use that to draw
