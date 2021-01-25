@@ -329,12 +329,24 @@ not recommended and may result in distorted picture.
   surface. It is currently being used by 'edge' command to set the length of the 
   looped edge beyond the node surface. 
 
-+ config aber <number>
++ config abr <number>
  
-  The 'aber' configuration parameter specifies the aberration from the norm.
-  It is currently being used by the 'edge' command to allow for drawing a 
-  Bezier curve between the two points instead of the straight line.
+  The 'abr' configuration parameter specifies the aberration from the norm.
+  It is a number that is the number of degrees. 
+  It is currently being used by the 'edge' command to turn a straight line 
+  into a Bezier curve, in which case this number represents an angle that
+  is aberration from the straight line.
+
++ config shift <number>
+
+  The 'shift' configuration parameter specifies the distance in grid unit.
+  It is currently used by the 'edge' command to shift the label away
+  from the center of the edge.
+
   
+
+
+
 
 
 
