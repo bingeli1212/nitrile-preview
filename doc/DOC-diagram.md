@@ -343,9 +343,29 @@ not recommended and may result in distorted picture.
   It is currently used by the 'edge' command to shift the label away
   from the center of the edge.
 
++ config dx <number>
+
+  The 'dx' and 'dy' parameters are used to allow for fine turning of
+  positioning certain elements. Currently it is only utilized by the
+  edge-operation to allow for label to be shifted away from its normal
+  position.
+
++ config dy <number>
+
+  See 'dx'.
+
++ config sx <number> 
+
+  The 'sx' and 'sy' parameters are used by the draw-, fill-, stroke-,
+  arrow-, revarrow-, and dblarrow-operations when a path is provided
+  as an option. In this case, these two parameters will "shrink" or
+  "expand" the path in either the x-direction and/or y-direction.
+
++ config sy <number>
+
+  See 'sx'. 
+
   
-
-
 
 
 
