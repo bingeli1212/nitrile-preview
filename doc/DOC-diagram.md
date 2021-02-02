@@ -365,7 +365,15 @@ not recommended and may result in distorted picture.
 
   See 'sx'. 
 
-  
++ config dot 1
+ 
+  The 'dot' parameter is used to set it so that the drawing will be shown
+  as a dot. It is currently being used by the node-operation to draw the current
+  node as a dot rather than a circle, in which case the 'dotsize' parameter
+  is used to determine the dot size.
+
+
+
 
 
 
@@ -2037,6 +2045,22 @@ to be automatically assigned names.
       node (\x,\y)
     edge.1.2.3.4.5.6.1
     ```
+
+If no coordinates are given, then the node will be redrawn using its
+last known position. This is to assume that the name of the node
+is given. In the following example, the first three nodes are redrawn
+with a filled color that is red, blue, and green respectively.
+
+    for.theta [0:60:359]:
+      \r = 2
+      \x = cos(deg2rad(\theta)) * \r
+      \y = sin(deg2rad(\theta)) * \r
+      node (\x,\y)
+    node.1 {fillcolor:red}
+    node.2 {fillcolor:blue}
+    node.3 {fillcolor:green}
+
+
 
 
 
