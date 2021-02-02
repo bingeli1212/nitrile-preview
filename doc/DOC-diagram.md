@@ -1732,13 +1732,13 @@ first two points and assign the result to 'my'.
 
 # Setting up an environment symbol
 
-Setting up environment symbol to attach a name to a string
-or an arithmetic expression.
+Setting up environment symbol to attach a name the result of an
+arithmetic expression.
 In the following example the symbol 'pi' is assigned a
 quantity that 3.1415, which is then used inside the function body of
 'f' as well as part of the the 'draw' command.
 
-    \pi = 3.1415
+    pi := 3.1415
     fn f(x) = \pi/x
     set refx 5
     set refy 5
@@ -1755,13 +1755,7 @@ the equal sign can also be a valid expression, in which case the value
 of that expression is evaluated immediately, and the quantity of which
 is assigned to the symbol.
 
-    \pi = cos(0)/2
-
-If a string is to be assigned, surround the entire
-expression with a quotation mark such as the following example shows.
-
-    \greeting = "Hello World"
-    label.ctr "\greeting" (5,5)
+    pi := cos(0)/2
 
 
 
