@@ -1967,14 +1967,18 @@ where the two lines meet.
 
 When the starting and ending node is the same, then the 'edge' command
 is to draw a loop. This loop is shown in the shape of a cubic Bezier
-curve. There are two configuration parameters that is to control the
-appearance of this cubic Bezier curve: 'protrude' and 'span'. The
-'protrude' parameter determines the distance of the two control points
-of the Bezier curve away from the surface of the node; it is an
+curve. There are three configuration parameters that is to control the
+appearance of this cubic Bezier curve: 'abr', 'protrude' and 'span'.
+The 'protrude' parameter determines the distance of the two control
+points of the Bezier curve away from the surface of the node; it is an
 integer expressing the number of unit length and the default value is
-1. The 'span' parameter expresses the number of degrees of a central
+'1'. The 'span' parameter expresses the number of degrees of a central
 angle formed by the two control points and the origin of the node. The
-default value is 45. The wider this angle is, the fatter the loop will
+'abr' expresses the direction of the middle line bisecting the central
+angle; if 'abr' is set to zero and 'span' is set to '30' then the
+central angle is -15 to 15; if 'abr' is set to '90' and 'span' is set
+to '30' then the central angle is from 90-15 to 90+15. The default
+value for 'span' 45. The wider this angle is, the fatter the loop will
 appear to be.
 
 Thus, the following example would have drawn a curved edge that is to
@@ -1997,23 +2001,24 @@ three options should've been used
     edge.A.B {revarrow,abr:45}
     edge.A.B {dblarrow,abr:45}
 
-Latest changes has added a new option called "dot" to the node
-operation. If this option is set, then each node is going to be drawn
-as a dot, and label text is not to be drawn. This allows one to render
+For the node-operation, the dot-option, if present, would have asked the
+node to be drawn as a dot, and in which case the label text
+is not to be drawn. This allows one to render
 each node as a colored dot. The size of the dot is to be controlled
 the same way how a "dot" operation is controlled, such as to set the
 "dotsize" for the size of the dot in diameter, and "dotcolor" for the
 color of the dot.
 
-The latest addition has set it up so that if a name for a node is not
-given, it can be automatically assigned. The way it works is that
-the 'config.nodeid' configuration attribute must be set to an integer
-greater than 1. If this is the case, then whenever a new node is 
-created and is not given a name, then the integer of this parameter
-is used as the name instead, and this integer is automatically incremented
-by 1 so that the next node assignment would have had a different integer
-name. This feature allows nodes created inside a 'for' loop
-to be automatically assigned names.
+Typically each node is to be assigned a name that follows the period
+after the "node" keyword. However, if a node-operation is to be done inside
+a for-loop then this assigning of a node name to a node is difficult to implement.
+If assigning to a node a name is important, then it can be done
+By setting the nodeid-option to an integer
+greater than 1. If this is the case, whenever a new node is 
+created and is not given a name, the integer of this parameter
+is used as the new node name, and this integer is automatically incremented
+by 1. In the following example each node is assigned a name that is "1", "2",
+"3", "4", "5", and "6".
 
     ```diagram{frame, width:2cm}
     viewport 6 6
@@ -2022,26 +2027,43 @@ to be automatically assigned names.
     config nodeid 1
     set refxy center
     for theta:=[0:60:359]:
-      \r = 2
-      \x = cos(deg2rad(\theta)) * \r
-      \y = sin(deg2rad(\theta)) * \r
+      r := 2
+      x := cos(deg2rad(\theta)) * \r
+      y := sin(deg2rad(\theta)) * \r
       node (\x,\y)
     edge.1.2.3.4.5.6.1
     ```
 
-If no coordinates are given, then the node will be redrawn using its
-last known position. This is to assume that the name of the node
-is given. In the following example, the first three nodes are redrawn
-with a filled color that is red, blue, and green respectively.
+For a node-operation, if no coordinates are given in the command line,
+all nodes will be searched in the internal database to see if this
+particular node has already been drawn; and if it has then it is
+redrawn using the last known position and radius information. However,
+the style and label information would have to come from the new
+command line. This feature allows for an existing node to be redrawn
+with different styles and/or text. In the following example, the first
+three nodes are redrawn with a filled color that is red.
 
     for theta:=[0:60:359]:
-      \r = 2
-      \x = cos(deg2rad(\theta)) * \r
-      \y = sin(deg2rad(\theta)) * \r
+      r := 2
+      x := cos(deg2rad(\theta)) * \r
+      y := sin(deg2rad(\theta)) * \r
       node (\x,\y)
-    node.1 {fillcolor:red}
-    node.2 {fillcolor:blue}
-    node.3 {fillcolor:green}
+    node.1.2.3 {fillcolor:red}
+
+For an edge-operation, if the shift-option is set, then the label
+would be shifted away from its intended position for the given
+distance. The shift-option expresses a unit length. The label would
+have been drawn in a position that is this distance away, in a new
+position that is this number of distance away in a direction that is
+90-degrees counter-clockwise turn from the direction going from the
+first node to the second. 
+
+When the edge is a loop, which is the case when the two vertices are
+the same, then the shift-option expresses an additional centrifugal
+distance from the center of the node.
+
+
+
 
 
 
