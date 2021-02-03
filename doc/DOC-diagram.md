@@ -1594,13 +1594,13 @@ it is attached to, and is always shown as black.
 
 
 
-# The foreach-loop
+# The for-loop
 
-A foreach-loop is provided by Diagram such that a number of commands
+A for-loop is provided by Diagram such that a number of commands
 can be repetitively executed, and each iteration these commands would
 have been run under a different set of arguments. The basic syntax is
 
-    foreach (a) [1,2,3,4]:
+    for a:=[1,2,3,4]:
       draw (\a,\a) (0,0)
 
 In the example, the 'draw' command will be executed exactly four
@@ -1611,65 +1611,43 @@ times, each of which looks like the following.
     draw (3,3) (0,0)
     draw (4,4) (0,0)
 
-The 'foreach' command starts with the keyword 'foreach', followed by a
-set of parentheses, and then followed by a set of brackets, and then a
-colon.
+The for-loop starts with the keyword 'for', followed by a one or more
+assignments of variables to a range of floats. The colon at the end is
+optional. The for-loop would iterate over each loop variable over its
+corresponding sequences. Each loop variable is to become one of the
+environment variables that is going to exist even after the loop has ended. 
+Following is an example of iterating over two
+loop variables: 'a' and 'b'.
 
-The set of parentheses denotes a list of loop symbols. Each loop
-symbol must only consist of uppercase or lowercase letters, such as a,
-aa, abc, zzz, etc. Symbols such as 1, 2, a2, aa3 are not allowed.
-
-The set of brackets denotes a list of sequences. Each sequence could
-be of any string, except for comma, which serves solely as the
-delimiters for two neighboring sequences.
-
-The 'foreach' command would iterate over each sequence provided in the
-sequence list. If there is only one loop symbol, such as the one shown
-in the previous example, the number of iterations equals the total
-number of sequences. For each iteration, the loop body, which consists
-of one or more lines, would execute exactly once, during which each
-command within the body executes in the same order as it appears in
-the body.
-
-Before each iteration, the entire loop body would undergo a global
-search-and-replace to substitute any occurrences of the loop symbol
-with the actual sequence that is to be iterated over. For example, if
-the symbol is provided as 'a', then the global search-and-replace
-would replace any occurrences of ``\a`` by the sequence.
-
-If there are two loop symbols, then each iteration would pick up two
-sequences in the list, and the total number of iterations would be
-reduced by half. In addition, the global search-and-replace would be
-done for both symbols. For example, if we were to have the following
-'foreach' loop, then the 'draw' command would be executed two times.
-
-    % Using foreach
-    foreach (a,b) [1,2,3,4]:
+    % Using for-loop
+    for a:=[1,3] b:=[2,4]:
       draw (\a,\a) (\b,\b)
 
-    % Do not use foreach
+Following is the equivalent commands without using the for-loop.
+
+    % Not using the for-loop
     draw (1,1) (2,2)
     draw (3,3) (4,4)
 
 Note that all lines of the loop body must have an indentation level
-that is greater than the indentation of the 'foreach' command itself.
+that is greater than the indentation of the for-loop itself.
 If a line is encountered that is of the same or less of an indentation
-level as that of the 'foreach' command, then that line is not
+level as that of the for-loop, then that line is not
 considered as part of the loop body, and no additional lines will be
 considered for inclusion as the loop body.
 
-This design also permits the inclusion of additional nested 'foreach'
-loop, each of which only to have its own loop body being indented even
+This design also permits the inclusion of additional nested for-loop,
+each of which only to have its own loop body being indented even
 further inwards. The following example show the implementation of two
-'foreach' loops. The toplevel 'foreach' loop offsers two loop symbols:
-'a', and 'b', and the nested 'foreach' loop offers one loop symbol:
+for-loops. The toplevel for-loop offsers two loop variables:
+'a', and 'b', and the nested for-loop offers one loop symbol:
 'c'. Note that the last 'label.bot' command is not part of the nested
-'foreach' loop, but rather part of the toplevel 'foreach' loop.
+for-loop, but rather part of the toplevel for-loop.
 
     viewport 31 24
-    foreach (a,b) [9,0.4, 19,0.5, 29,0.6] :
+    for a:=[9,19,29] b:=[0.4,0.5,0.6]:
       set refx \a
-      foreach (c) [16,4]:
+      for c:=[16,4]:
         set refy \c
         draw (0,0) [h:-6] [v:6]
         draw (0,0) [q:-6,0,-6,6]
@@ -1693,6 +1671,11 @@ further inwards. The following example show the implementation of two
         label.lft "m_1" {dx:-.1} &m1
         label.urt "B" &B
       label.bot "t=\b" (-3,-2)
+
+Note that if a for-loop contains two or more loop variables, the loop
+will always interates to cover the longest sequence, and for a loop
+variable that has run out of numbers in its sequence, a zero will be
+assumed for that variable.
 
 
 # The fn-operation
@@ -1726,14 +1709,14 @@ assigned the sum of adding the "x" components of the first two points
 in path variable 'pts', which will be "1 + 3 = 4".
 
     path pts = (1,2) (3,4)
-    ${mx} = &pts[0].x + &pts[1].x
+    mx := &pts[0].x + &pts[1].x
     label.ctr (\mx,0)
 
 Following is another example of adding the two "y" components of the
 first two points and assign the result to 'my'.
 
     path pts = (1,2) (3,4)
-    ${my} = &pts[0].y + &pts[1].y
+    my := &pts[0].y + &pts[1].y
     label.ctr (0,\my)
 
 
@@ -2038,7 +2021,7 @@ to be automatically assigned names.
     config fillcolor black
     config nodeid 1
     set refxy center
-    for.theta [0:60:359]:
+    for theta:=[0:60:359]:
       \r = 2
       \x = cos(deg2rad(\theta)) * \r
       \y = sin(deg2rad(\theta)) * \r
@@ -2051,7 +2034,7 @@ last known position. This is to assume that the name of the node
 is given. In the following example, the first three nodes are redrawn
 with a filled color that is red, blue, and green respectively.
 
-    for.theta [0:60:359]:
+    for theta:=[0:60:359]:
       \r = 2
       \x = cos(deg2rad(\theta)) * \r
       \y = sin(deg2rad(\theta)) * \r
