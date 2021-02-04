@@ -12,6 +12,25 @@
       ],
       "isBackground": true,
       "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "nibeamer",
+      "type": "shell",
+      "command": "nibeamer",
+      "args": [
+        "${file}"
+      ],
+      "isBackground": true,
+      "problemMatcher": [],
       "group": {
         "kind": "build",
         "isDefault": true
