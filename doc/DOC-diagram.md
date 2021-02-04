@@ -345,10 +345,10 @@ not recommended and may result in distorted picture.
 
 + config dx <number>
 
-  The 'dx' and 'dy' parameters are used to allow for fine turning of
-  positioning certain elements. Currently it is only utilized by the
-  edge-operation to allow for label to be shifted away from its normal
-  position.
+  The 'dx' and 'dy' parameters are used to allow for fine turning the
+  label and text. This includes all label and text related options
+  such as label-operation, text-operation, cartesian-xtick-option,
+  cartesian-ytick-operation, cartesian-label-operation, etc.
 
 + config dy <number>
 
@@ -356,8 +356,9 @@ not recommended and may result in distorted picture.
 
 + config sx <number> 
 
-  The 'sx' and 'sy' parameters are used by the draw-, fill-, stroke-,
-  arrow-, revarrow-, and dblarrow-operations when a path is provided
+  The 'sx' and 'sy' parameters are used by the draw-operation,
+  fill-operation, stroke-operation, arrow-operation,
+  revarrow-operation, and dblarrow-operation when a path is provided
   as an option. In this case, these two parameters will "shrink" or
   "expand" the path in either the x-direction and/or y-direction.
 
@@ -372,7 +373,15 @@ not recommended and may result in distorted picture.
   node as a dot rather than a circle, in which case the 'dotsize' parameter
   is used to determine the dot size.
 
++ config xstep <number>
 
+  The xstep-operation is used currently by the cartesian-grid-operation to
+  set the separation of each grid line in the x-direction. 
+
++ config ystep <number>
+
+  The ystep-operation is used currently by the cartesian-grid-operation to
+  set the separation of each grid line in the y-direction.
 
 
 
@@ -1329,6 +1338,7 @@ instead.
 
 ~~~list
 - cartesian.setup xorigin yorigin gridrange
+- cartesian.grid xmin ymin xmax ymax
 - cartesian.xaxis xmin xmax
 - cartesian.yaxis ymin ymax
 - cartesian.ytick y1 y2 y3 ...
@@ -1368,6 +1378,14 @@ were to plot a point of (1,1) of the Cartesian coordinates the dot
 will appear at the location (2,3) + (2,2) = (4,5) inside the Diagram,
 where (2,3) is the location of the origin, and (2,2) is where the
 point is relative to the origin.
+
+The ``cartesian.grid`` command asks to draw a grid with the lower-left
+corner at (xmin,ymin) and upper-right corner at (xmax,ymax). The increment
+is default at 1. The increment for x-direction can be set by the xstep-option
+and the increment for y-direction can be set by the ystep-option.
+
+    cartesian.grid -5 -5 5 5
+    cartesian.grid {xstep:0.5, ystep:0.5} -5 -5 5 5
 
 The ``cartesian.xaxis`` command is to draw the x-axis. The only two
 parameters passed to it is the lower and upper range that this axis
