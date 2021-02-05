@@ -1261,6 +1261,18 @@ examples all letters a, b, c are path variables.
   path a = &grid{10,10,1,1}
   ```
 
++ rect
+
+  This returns a new path that expresses a closed rectangled with its
+  lower-left hand corner at (0,0) and with width and height that come
+  from the arguments. It expected two arguments and both of them must be
+  scalar. Following example constructs a path expressing
+  a rectangle with its lower-left hand corner at (0,0) and upper-right
+  hand corner at (4,1).
+
+  ```
+  path a = &rect{4,1}
+  ```
 
 
 # Special notes for MetaPost users
