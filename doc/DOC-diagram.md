@@ -1249,6 +1249,18 @@ examples all letters a, b, c are path variables.
   This returns a new path that represents the rectangle of the
   viewport.
 
++ grid
+
+  This returns a new path that represents a grid. It expects four 
+  arguments, the first two of which is the width and height of the grid,
+  and the last two represents the steps in the x-direction and y-direction.
+  The following example would have drawn a grid of 10-by-10, with grid
+  line separation of 1 in both directions.
+
+  ```
+  path a = &grid{10,10,1,1}
+  ```
+
 
 
 # Special notes for MetaPost users
