@@ -436,7 +436,9 @@ drawing environment.
   "northwest", "northeast", "southwest", "southeast",
   "left:<x>", "right:<x>", "up:<y>", 
   "down:<y>", "x:<x>", or "y:<y>", where <x> and <y> each
-  express a floating point number.
+  express a floating point number. It could also be a 
+  "save:<string>" and "load:<string>" where <string> expresses
+  a string. 
 
 The 'refx', 'refy', and 'refs' parameters can be set at any point
 during a drawing. It can be compared to a "transform" of a SVG
@@ -477,6 +479,15 @@ the reference point is moved to (12,10).
 
     set refxy x:12 y:10
 
+The "save" and "load" allows the current settings of refx, refy,
+refsx, and refsy to be saved to a buffer, and be restored at a later
+time.
+
+    set refxy save:a
+    set refxy load:a
+
+Note that the name of the buffer is independent of the buffer name 
+used to save a diagram.
 
 
 
