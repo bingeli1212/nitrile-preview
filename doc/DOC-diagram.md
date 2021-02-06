@@ -386,8 +386,8 @@ not recommended and may result in distorted picture.
 + config boxtype <string>
 
   The boxtype-option sets the type of box for the box-operation. Currently the 
-  only available values are 'none', and 'hexgon'. If not set it is default
-  to a 'rect'. 
+  only available values are 'none', 'rect', 'hexgon', and 'triangle'. If the type string
+  is unrecognized it is assumed to be 'rect', which is the default type.
 
 
 
