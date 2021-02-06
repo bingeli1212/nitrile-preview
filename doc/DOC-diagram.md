@@ -375,15 +375,19 @@ not recommended and may result in distorted picture.
 
 + config xstep <number>
 
-  The xstep-operation is used currently by the cartesian-grid-operation to
+  The xstep-option is used currently by the cartesian-grid-operation to
   set the separation of each grid line in the x-direction. 
 
 + config ystep <number>
 
-  The ystep-operation is used currently by the cartesian-grid-operation to
+  The ystep-option is used currently by the cartesian-grid-operation to
   set the separation of each grid line in the y-direction.
 
++ config boxtype <string>
 
+  The boxtype-option sets the type of box for the box-operation. Currently the 
+  only available values are 'none', and 'hexgon'. If not set it is default
+  to a 'rect'. 
 
 
 
@@ -2113,17 +2117,20 @@ distance from the center of the node.
 
 # The box-operation
 
-+ box (x,y) (x1,y1) ...
-
-  This command is to draw a box at the location expressed by the path
-  points. The size of the box is controlled by the 'w' and 'h' members
-  of the configuration parameters, each of which can be set by the
-  'config' operation to be a default.
+This command is to draw a box at the location expressed by the path
+points. The size of the box is controlled by the 'w' and 'h' members
+of the configuration parameters, each of which can be set by the
+'config' operation to be a default.
   
   ```
-  box {w:3,h:2} (x,y) (x1,y1) ...
+  box {w:3, h:2} (0,0) (1,2)  
   ```
     
+It is also possible to place a label inside a box. 
+
+  ```
+  box {w:3, h:2} "1\\2" (0,0) (1,2) 
+  ```
     
 
 # The rec-operation
