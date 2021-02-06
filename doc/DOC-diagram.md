@@ -218,7 +218,7 @@ not recommended and may result in distorted picture.
   of 19 valid color names, such
   as "black", "pink", "steel", etc., or a
   3-digit HEX such as "#888", or a 6-digit HEX such as "#F8F8F8",
-  or a HWB color such as '!HWB!0!0.2!0!'.
+  or a HWB color such as '&HWB!0!0.2!0'.
 
 + config linecolor <color>
 
@@ -2410,4 +2410,30 @@ The fence options are explained as follows:
 
   When set to a string the diagram source code will be restored
   that corresponds to this string.
+
+
+# Specifying colors
+
+The colors in the DIAGRAM can be specified in several ways. The
+easiest is to use a named color, such as "red", "green", "blue", etc.
+The second is to use RGB, such as "#CCC", "#ABABAB", etc. 
+The third way is to use color function such as "&hwb!30!10%|20%"
+or "&rgb!255!0!0". 
+
+    red
+    green
+    #CCC
+    #ABABAB
+    &hwb!30!10%!20%
+    &rgb!255!0!0
+    &hsl!0!100%!50%
+
+
+
+
+
+
+
+
+
 
