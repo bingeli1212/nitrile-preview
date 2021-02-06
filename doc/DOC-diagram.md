@@ -1,6 +1,7 @@
 ---
 title: The Diagram
 latex.features: parskip
+latex.cjk: 1
 ---
 
 A diagram block is to generate a diagram with vector based figures, made up with vector based components as lines, circles, rectangles, arrows, dots, etc. The goal of using a diagram block versus using an raster based image such as PNG or JPEG is that a vector based diagram provides much better resolution especially when the diagram is printed on a piece of paper.
@@ -2367,4 +2368,30 @@ Unlike the "multiws" operation, the "longdivws" operation does
 not scan the input for any appearances of decimal points---thus if
 a decimal point was included in one of the numbers it 
 will likely cause unpredictable result.
+
+# The fence option
+
+The fence options are explained as follows:
+
++ width
+
+  Set the width of the diagram. 
+
++ frame
+
+  When set to 1 the diagram will have a frame.
+
++ hidden
+
+  When set to 1 the diagram will not be shown.
+
++ save
+
+  When set to a string the diagram source code will be saved
+  to a buffer with this name.
+
++ load
+
+  When set to a string the diagram source code will be restored
+  that corresponds to this string.
 
