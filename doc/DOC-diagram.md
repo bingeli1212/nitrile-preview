@@ -1198,22 +1198,42 @@ examples all letters a, b, c are path variables.
 + ellipse 
 
   This return a path expressing an ellipse. The syntax is:
-  &ellipse(center,xradius,yradius).
+
+  ```
+  path b = &ellipse(center,xradius,yradius)
+  ```
 
 + rectangle 
 
-  This returns a path expressing a rectangle between to points. The
-  syntax is: &rectangle(point1,point2)
+  This returns a path expressing a rectangle between to points. There
+  are three ways construct the triangle, that is shown below. The
+  first one construct a rectangle between to opposing points. The
+  second one constructs a rectangle with an anchor point and then the
+  width and height of it. The third one construct a rectangle with
+  just the width and height, assuming the anchor point to be at (0,0)
+  
+  ```
+  path b = &rectangle{point1,point2}
+  path b = &rectangle{point,width,height}
+  path b = &rectangle{width,height}
+  ```
 
 + triangle 
 
   This returns a path expressing a triangle of three points. The
-  syntax is: &triangle(point1,point2,point3)
+  syntax is: 
+  
+  ```
+  path b = &triangle(point1,point2,point3)
+  ```
 
 + polyline 
 
   This returns a path expressing a polyline. The syntax is:
-  &line(point1,point2,point3,...)
+
+  ```
+  path b = &polyline{point1,point2,point3,...}
+  ```
 
 + arctravel{center,start_point,sweep_angle}
 
@@ -1224,15 +1244,19 @@ examples all letters a, b, c are path variables.
   anti-clockwise direction and negative 'sweep_a' is to trace in
   clockwise direction.
 
-+ arcspan{center,start_point,end_point}
++ arcspan
 
-  Similar to 'arc', this function is the return a path that draws an
+  Similar to 'arctravel', this function is the return a path that draws an
   arc. The arc is to start at the point 'p' that is at a circle
   centered at 'center'. The arc is then to trace out part of the
   circle, always in the direction of anti-clockwise direction, until
   it meats the point 'q'. If 'q' is found to be closer or further away
   from 'center', then the tracing stops as soon as it intersects with
-  the radius-ray that passes through 'q'.
+  the radius-ray that passes through 'q'. 
+
+  ```
+  path b = arcspan{center,start_point,end_point}
+  ```
 
 + arcsweep{center,r,start_angle,sweep_angle}
 
@@ -1246,7 +1270,10 @@ examples all letters a, b, c are path variables.
 
   This expresses a upright cylinder drawn with an ellipse at the
   bottom, with xradius/yradius, and a given height. The syntax is:
-  &cylinder(center,xradius,yradius,height)
+
+  ```
+  path b = &cylinder{center,xradius,yradius,height}
+  ```
 
 + ymirror 
 
@@ -1277,18 +1304,7 @@ examples all letters a, b, c are path variables.
   path a = &grid{10,10,1,1}
   ```
 
-+ rect
 
-  This returns a new path that expresses a closed rectangled with its
-  lower-left hand corner at (0,0) and with width and height that come
-  from the arguments. It expected two arguments and both of them must be
-  scalar. Following example constructs a path expressing
-  a rectangle with its lower-left hand corner at (0,0) and upper-right
-  hand corner at (4,1).
-
-  ```
-  path a = &rect{4,1}
-  ```
 
 
 # Special notes for MetaPost users
