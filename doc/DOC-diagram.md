@@ -767,7 +767,7 @@ the end points of line segments.
     drawlinesegcong (0,0) (1,1) (2,2) ...
 
 The length of the short bar is determined by the barlength-option,
-which defaults to "0.5" if not set. The bartype-option will also be checked
+The bartype-option will also be checked
 to see if it has been set. It can be set to 'double' to indicate a double bar, 
 or 'triple' to indicate a triple bar. The gap between the bar lines are determined
 by the gap-option, which defaults to 0.1 unit length.
