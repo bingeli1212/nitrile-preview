@@ -127,7 +127,7 @@ Following is an example of a diagram block.
 
 
 
-# Unit length and grid lines
+# Viewport
 
 In Diagram, each figure is always expresses using the grid unit
 length. A unit unit length is considered as a distance between two
@@ -135,39 +135,25 @@ adjacent grid lines on a graphing paper for which a length of 1
 corresponds to the width of a single grid.
 
 In Diagram a grid is drawn as the background by default. The size of
-the grid is 25 grid units length long in the horizontal direction and
+the grid is 20 grid units length long in the horizontal direction and
 10 grid unit length long in the vertical directon. You can change that
-by using the 'config' command.
+by the viewport-operation.
 
-    config width 30
-    config height 20
+    viewport 20 10
 
-Each grid is by default 5mm in length, thus, a total of 25 grid units
-in horizontal direction will generate an image of 125mm in width, and
-10 grid units of horizontal direction will put the image in the height
-of 50mm. To set the unit to a different length, call the 'config unit'
-command below.
+Each grid is by default 5mm in length, thus, a total of 20 grid units
+in horizontal direction will generate an image of 200mm in width, and
+10 grid units of vertical direction will put the image in the height
+of 100mm. To set the unit to a different length, include the third argument
+as the viewport-option. For example, to set the viewport to the previous
+width and height and such that each grid is 6mm-by-6mm, do the following. 
 
-    config unit 6
+    viewport 20 10 6
 
-The 'config grid' command can be used to change how background grid
-lines are to be shown in the final Diagram image. By default, each
-grid is to be show with a grid line that is colored at 10% black. The
-color is currently not configurable. When set the grid to 'boxed',
-only the outline of the image is drawn, and when set to 'none', there
-is even no outline.
+However, the viewport-operation is ignored if there is a viewport-style
+that is present, in which case the values in viewport-style is to be
+used instead.
 
-    config grid boxed
-    config grid none
-
-However, for MetaPost and MetaFun generation when the grid is set to
-'none' the outline is actually drawn using a "white" color pixel. This
-is because the image that is generated are automatically expanded
-whenever there is contents drawn on that image. Thus, without
-performing the draw of the outline does not guarentee that the size of
-the image will be the size we want. However, for MetaFun and MetaPost
-generation the image will be "enlarged" if contents were drawn outside
-of the outline.
 
 
 # The config command
