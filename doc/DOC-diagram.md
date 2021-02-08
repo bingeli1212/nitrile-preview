@@ -405,7 +405,12 @@ not recommended and may result in distorted picture.
   It does not have a default value, and each operation would determine its own default
   if it is not set.
   
++ config rotation <number>
 
+  The rotation-option is used to express a rotation in the units of degrees. It is currently used 
+  by the draw-operation, fill-operation, stroke-operation, arrow-operation, revarrow-operation, 
+  and dblarrow-operation to rotate the shape.
+  
 
 # The set-operation
 
