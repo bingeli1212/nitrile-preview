@@ -390,6 +390,17 @@ not recommended and may result in distorted picture.
   only available values are 'none', 'rect', 'hexgon', and 'triangle'. If the type string
   is unrecognized it is assumed to be 'rect', which is the default type.
 
++ config bartype <string>
+
+  The bartype-option can be sets to indicate what bar it is to draw. It is currently 
+  used by the drawlinesegcong-operation.
+
++ config gap <number>
+
+  The gap-option sets the length in grid unit that indicates the gap. It is currently
+  used by the drawlinesegcong-operation when it needs to determine the gap between the bars
+  when it is instructed to draw double-bar or triple-bar. If not set it defaults to 0.15.
+  
 
 
 # The set-operation
@@ -746,6 +757,23 @@ the name of an angle.
     path points = (0,6) (2,4) (4,6) (6,4) (8,6)
     draw &points
     drawanglearc "1\\2\\3" &points
+
+# The drawlinesegcong-operation
+
+This operation is to draw a short bar to indicate the congrudencies
+of two or more line segments. Each coordinates is to be assumed as
+the end points of line segments.
+
+    drawlinesegcong (0,0) (1,1) (2,2) ...
+
+The length of the short bar is determined by the barlength-option,
+which defaults to "0.5" if not set. The bartype-option will also be checked
+to see if it has been set. It can be set to 'double' to indicate a double bar, 
+or 'triple' to indicate a triple bar. The gap between the bar lines are determined
+by the gap-option, which defaults to 0.1 unit length.
+
+
+
 
 
 # Expressing relative points of a path
