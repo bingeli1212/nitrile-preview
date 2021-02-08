@@ -1336,8 +1336,26 @@ examples all letters a, b, c are path variables.
   path a = &grid{10,10,1,1}
   ```
 
++ perpoint
 
+  This returns a new path of a single point that is perpendicular to 
+  the existing line. It has two different forms. The first form is to 
+  have the first two arguments being the points of two lines, and the third
+  is the length of the line. The returned point is formed by departing
+  from the first point for a distance that is the length of the third 
+  argument. The following example is to return the point that is (1,0)
 
+  ```
+  path a = &perpoint{(0,0),(1,0),1}
+  ```
+
+  The second form would have had three points, and the returned value
+  is a point on the line segment that is the first two points. The following
+  example is to return the point that is (0.5,0)
+
+  ```
+  path a = &perpoint{(0,0),(2,0),(0.5,1)}
+  ```
 
 # Special notes for MetaPost users
 
