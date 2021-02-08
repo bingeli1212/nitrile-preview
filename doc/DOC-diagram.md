@@ -191,7 +191,7 @@ not recommended and may result in distorted picture.
 
 + config barlength <number>
   The default length of the bar (grid unit). The default value
-  is 0.50. 
+  is 0.40. 
 
 + config fontsize <number>
 
