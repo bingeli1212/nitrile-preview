@@ -397,9 +397,13 @@ not recommended and may result in distorted picture.
 
 + config gap <number>
 
-  The gap-option sets the length in grid unit that indicates the gap. It is currently
+  The gap-option is used to express a gap between two points. It is currently
   used by the drawlinesegcong-operation when it needs to determine the gap between the bars
-  when it is instructed to draw double-bar or triple-bar. If not set it defaults to 0.15.
+  when it is instructed to draw double-bar or triple-bar. 
+  It is also used by the drawanglearc-operation to determine the distance between
+  the text and the outer ring of the arc.
+  It does not have a default value, and each operation would determine its own default
+  if it is not set.
   
 
 
