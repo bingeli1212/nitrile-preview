@@ -13,7 +13,7 @@ as images, frames, etc. Following are recognized fences.
 - animation
 - framed
 - tabular
-- minipage
+- vbox
 
 # The math-fence
 
@@ -80,12 +80,12 @@ The tabular-fence is used to typset a tabular.
     ```tabular
     ```
 
-# The minipage-fence
+# The vbox-fence
 
 The minipage-fence is used to typeset a minipage that is to hold a
 paragraph of text.
 
-    ```minipage
+    ```vbox
     ```
 
 
