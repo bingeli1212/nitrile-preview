@@ -277,6 +277,16 @@ Following are the key points about the symbols:
    &Digamma; and &digamma;                 |  `&Digamma;` and `&digamma;`
 ```
 
+# GENERAL    OPERATORS
+
+```tabular{border:2;n:2}
+  Symbol              |  Command               | Comment
+  ------------------------------------------------------------------------------
+  &DiacriticalGrave;  |  DiacriticalGrave      | [!DiacriticalGrave!]
+  &amp;               |  amp                   | [!amp!]
+  &quot;              |  quot                  | [!quot!]
+  &apos;              |  apos                  | [!apos!]
+```
 
 # RELATIONAL OPERATORS
 
