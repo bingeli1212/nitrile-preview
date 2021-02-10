@@ -216,8 +216,7 @@
     { "name": "\\Bmatrix",            "count": 1 },
     { "name": "\\vmatrix",            "count": 1 },
     { "name": "\\Vmatrix",            "count": 1 },
-    { "name": "\\cases",              "count": 1 },
-    { "name": "\\aligned",            "count": 1 }
+    { "name": "\\cases",              "count": 1 }
   ],
   "smallLetters": {
     "my_alpha"     : 2.5,    
