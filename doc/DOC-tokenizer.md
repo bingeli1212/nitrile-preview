@@ -576,6 +576,15 @@ There is currently no provision to change that into an "align" because
 there is no obvious way to implement it on CONTEX. On LATEX it is
 possible, and on HTML it can be simulated.
 
+# HTML ENTITY
+
+HTML entity names such as ``&gt;``, ``&lt;`` can also be used inside
+the math expression.
+
+    \(a &gt; b\)
+
+
+
 # Issues and remarks            
 
 - A matching \begin{somename} and \end{somename} environment for which the
