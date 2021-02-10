@@ -13,7 +13,13 @@ as images, frames, etc. Following are recognized fences.
 - animation
 - framed
 - tabular
-- vbox
+- blockquote
+- verbatim
+
+If the name provided after the triple-backquote is not recognized
+to be one of the names in the previous list, it is assumed to be
+a verbatim-phrase.
+
 
 # The math-phrase
 
@@ -193,12 +199,12 @@ The tabular-phrase is used to typset a tabular.
     ```tabular
     ```
 
-# The vbox-phrase
+# The blockquote-phrase
 
-The minipage-phrase is used to typeset a minipage that is to hold a
+The blockquote-phrase is used to typeset a blockquote that is to hold a
 paragraph of text.
 
-    ```vbox
+    ```blockquote
     ```
 
 # The verbatim-phrase
@@ -207,7 +213,7 @@ The verbatim phrase is done by placing
 triple-backquotes before and after
 the block. 
 
-    ```
+    ```verbatim
     This is the verbatim
     text that preserves line breaks,
     multiple white-spaces, and will by default
