@@ -14,19 +14,52 @@ which corresponds to the first choice.
 
     Q: What is the type of the syllogism for the following 
     sentence?
-
+    \-    
+    ```    
       1. All cars have wheels.
       2. I drive a car.
       3. Therefore, my car has wheels.
+    ```
+    \-
+    ```    
+    [ ] A. Categorical (If A is in C then B is in C)
+    [ ] B. Disjunctive (If A is not true then B is true)
+    [ ] C. Hypothetical (If A is true then B is true)
+    ```
+    \-
+    [ Answer ] A
+    \-
+    ```    
+    [X] A. Categorical (If A is in C then B is in C)
+    [ ] B. Disjunctive (If A is not true then B is true)
+    [ ] C. Hypothetical (If A is true then B is true)
+    ```
 
-    ~~~list
+# Radio Buttons
+
+Radio buttons are for choices that only one is correct.
+Following is an example.
+
+    Q: What is the type of the syllogism for the following 
+    sentence?
+    \-
+      1. All cars have wheels.
+      2. I drive a car.
+      3. Therefore, my car has wheels.
+    \-
+    ```    
     ( ) A. Categorical (If A is in C then B is in C)
     ( ) B. Disjunctive (If A is not true then B is true)
     ( ) C. Hypothetical (If A is true then B is true)
-    ~~~
-
+    ```
+    \-
     [ Answer ] A
-
+    \-
+    ```    
+    [X] A. Categorical (If A is in C then B is in C)
+    [ ] B. Disjunctive (If A is not true then B is true)
+    [ ] C. Hypothetical (If A is true then B is true)
+    ```
 
 
 # Displaying code
@@ -75,14 +108,15 @@ correctly.
 
 It seems that the latest version of 1.07 has disabled the portrait or landscape option.
 
-~~~list
-1.07 – bugfixed custom size handling, portrait or landscape settings are ignored now 1.06 – added the type1cm package for scalable math fonts
+```
+1.07 – bugfixed custom size handling, portrait or landscape settings are ignored now 
+1.06 – added the type1cm package for scalable math fonts
 1.05 – added version check for xkeyval package
 1.04 – added custom size handling
 1.03 – improved predefined size handling 1.02 – minor bugfixes
 1.01 – bugfixed size handling
 1.00 – first beamerposter release
-~~~
+```
 
 Following poster paper sizes are supported: DIN–A0, DIN–A1, DIN–A2,
 DIN–A3, DIN–A4, and custom sizes like double DIN–A0 possible
@@ -184,3 +218,25 @@ The following ⟨options⟩ can be given:
   vertically. 
 
   
+# Fragile
+
+When a keyword "fragile" is added as an option to a frame, then that frame is
+considered "fragile". Fragile frames are necessary when a frame includes
+verbatim text and listings. 
+
+    \begin{frame}[fragile]
+    \-
+    \begin{verbatim}
+      ...
+    \end{verbatim}
+    \-
+    \begin{lstlisting}
+      ...
+    \end{lstlisting}
+    \end{frame}
+
+
+
+
+
+
