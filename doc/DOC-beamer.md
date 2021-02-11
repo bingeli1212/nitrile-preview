@@ -225,11 +225,9 @@ considered "fragile". Fragile frames are necessary when a frame includes
 verbatim text and listings. 
 
     \begin{frame}[fragile]
-    \-
     \begin{verbatim}
       ...
     \end{verbatim}
-    \-
     \begin{lstlisting}
       ...
     \end{lstlisting}
