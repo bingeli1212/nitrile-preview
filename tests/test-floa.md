@@ -38,8 +38,12 @@ beamer.frameopt: fragile
   (a) Density function for \(x\);
   (b) Density function for \(x^2\)
 
-  &img([width:45%]./image-clock.png)  
-  &img([width:45%]./image-gimp.jpg)  
+  ```img[width:45%]
+  image-clock.png   
+  ```
+  ```img[width:45%]
+  image-gimp.jpg
+  ```
 @
 
 # Table 
