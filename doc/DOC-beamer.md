@@ -2,7 +2,7 @@
 title: The "Beamer.JS" translation
 ---
 
-%framed
+%samp:framed
 
 The "Beamer.JS" translation intends to produce one or more slides
 using the LATEX "beamer" class.
