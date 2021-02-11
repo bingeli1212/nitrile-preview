@@ -3,6 +3,7 @@ title: The "Beamer.JS" translation
 ---
 
 %samp:framed
+%frame:1
 
 The "Beamer.JS" translation intends to produce one or more slides
 using the LATEX "beamer" class.
@@ -16,21 +17,21 @@ which corresponds to the first choice.
 
     Q: What is the type of the syllogism for the following 
     sentence?
-    \-    
+      
     ```    
       1. All cars have wheels.
       2. I drive a car.
       3. Therefore, my car has wheels.
     ```
-    \-
+    
     ```    
     [ ] A. Categorical (If A is in C then B is in C)
     [ ] B. Disjunctive (If A is not true then B is true)
     [ ] C. Hypothetical (If A is true then B is true)
     ```
-    \-
+    
     [ Answer ] A
-    \-
+    
     ```    
     [X] A. Categorical (If A is in C then B is in C)
     [ ] B. Disjunctive (If A is not true then B is true)
@@ -44,19 +45,19 @@ Following is an example.
 
     Q: What is the type of the syllogism for the following 
     sentence?
-    \-
+    
       1. All cars have wheels.
       2. I drive a car.
       3. Therefore, my car has wheels.
-    \-
+    
     ```    
     ( ) A. Categorical (If A is in C then B is in C)
     ( ) B. Disjunctive (If A is not true then B is true)
     ( ) C. Hypothetical (If A is true then B is true)
     ```
-    \-
+    
     [ Answer ] A
-    \-
+    
     ```    
     [X] A. Categorical (If A is in C then B is in C)
     [ ] B. Disjunctive (If A is not true then B is true)
