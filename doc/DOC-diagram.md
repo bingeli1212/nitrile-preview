@@ -2439,9 +2439,9 @@ The fence options are explained as follows:
 
   Set the width of the diagram. 
 
-+ frame
++ box
 
-  When set to 1 the diagram will have a frame.
+  When set to 1 the diagram will have a border.
 
 + hidden
 
@@ -2475,7 +2475,18 @@ or "&rgb!255!0!0".
     &hsl!0!100%!50%
 
 
+# The source-operation
 
+The source-operation is to load the previous saved sources and then 
+execute them at that location.
+
+    ```diagram{save:src1,hidden}
+    draw (0,0)--(10,10)
+    ```
+    ```diagram
+    viewport 20 20
+    source src1
+    ```
 
 
 
