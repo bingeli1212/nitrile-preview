@@ -213,6 +213,27 @@ as a fence.
     | Match    | 300
     ```
 
+If each table cell is a word by itself, where there is no spaces within it,
+then one can use the '>' symbol at the first line.
+
+    ```tabular
+    > Month      Sales
+    ====================
+    > January    100
+    > February   200
+    > Match      300
+    ```
+
+Note that the '|' symbol and '>' symbol can mix.
+
+    ```tabular
+    | Month    | Sales Volume
+    ==========================
+    > January    100
+    > February   200
+    > Match      300
+    ```
+
 The tabular fence on LATEX translation is always to generate
 a begin-end-tabular environment. If the caption-style or label-style
 option is present, then the tabular will be labeled; if the
