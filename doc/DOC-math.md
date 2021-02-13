@@ -40,3 +40,16 @@ the ``display:block`` CSS property, and optionally setting the
 with some vertical margin.
 
 
+
+# The math-fence
+
+    ```math
+    15 &= 25 - 10 \newline
+        &= - 100 + 1 + 99 + 25 - 10  \newline
+        &= - 100 + 1 + ( 99 - 10 ) + 25 \newline
+        &= - 100 + 1 + 89 + 25 \newline
+        &= - 100 + 1 + ( 89 + 25 ) \newline
+        &= - 100 + 1 + 114 \newline
+        &= - 100 + 115 \newline
+        &= 15
+    ```
