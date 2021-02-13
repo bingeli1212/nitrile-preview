@@ -218,5 +218,3 @@ a begin-end-tabular environment. If the caption-style or label-style
 option is present, then the tabular will be labeled; if the
 caption-style option is present, the caption will be inserted.
 
-
-
