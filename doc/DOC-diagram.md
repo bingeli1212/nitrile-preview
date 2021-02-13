@@ -858,6 +858,11 @@ Each of the following syntax denotes a relative point.
   current point, and then travel for one more unit length. If it is to
   make a right turn, then set the angle to a negative number.
 
++ [clock:30,1]
+
+  This is to create a new point that is relative to the current point 
+  or last direction in the clockwise direction and for a given distance.
+
 + [flip:5,5] 
 
   This is to construct a new point that is the mirror image of the
