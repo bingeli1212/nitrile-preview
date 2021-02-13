@@ -812,7 +812,7 @@ Each of the following syntax denotes a relative point.
   its right hand side of the last point, and if the sweepflag is set
   to 0, then the arc will always appear below both points.
 
-+ The [c:dx1,dy1,dx2,dy2,dx,dy] 
++ [c:dx1,dy1,dx2,dy2,dx,dy] 
 
   This is to draw a cubic Bezier curve from the current point to the
   new point that is dx/dy away. The (dx1,dy1), and (dx2,dy2) are two
@@ -831,13 +831,13 @@ Each of the following syntax denotes a relative point.
   control point of the current operation. If it is neither a cubic nor
   a quadrilatic, then the last point is assumed.
 
-+ The [q:dx1,dy1,dx,dy] 
++ [q:dx1,dy1,dx,dy] 
 	
   This is to draw a quadrilatic Bezier curve. The dx1/dy1 is the only
   control point. The dx/dy is the new point. All positions are
   expressed relative to the last point.
 
-+ The [t:dx,dy] 
++ [t:dx,dy] 
 
   This is to draw a quadratic Bezier curve with the first control
   point deduced from a previous Bezier curve operation. If a previous
@@ -872,6 +872,12 @@ Each of the following syntax denotes a relative point.
   before that. This operations allows you to figure out where an
   existing point will land as if you were folding a paper along an
   existing line that is traveled between the last two points.
+
++ [dot:0.2]
+
+  This is to place a circle centered at the last position with a given
+  radius of 0.2. The last point is not changed.
+
 
 
 # The shape-operation
@@ -1230,10 +1236,13 @@ examples all letters a, b, c are path variables.
 
 + ellipse 
 
-  This return a path expressing an ellipse. The syntax is:
+  This return a path expressing an ellipse. The syntax is following.
+  The fourth argument is the rotation in degrees, in counterclockwise
+  rotation.
 
   ```
-  path b = &ellipse(center,xradius,yradius)
+  path b = &ellipse(&center,xradius,yradius)
+  path b = &ellipse(&center,xradius,yradius,rotation)
   ```
 
 + rectangle 
@@ -1246,8 +1255,8 @@ examples all letters a, b, c are path variables.
   just the width and height, assuming the anchor point to be at (0,0)
   
   ```
-  path b = &rectangle{point1,point2}
-  path b = &rectangle{point,width,height}
+  path b = &rectangle{&point1,&point2}
+  path b = &rectangle{&point,width,height}
   path b = &rectangle{width,height}
   ```
 
@@ -1257,7 +1266,7 @@ examples all letters a, b, c are path variables.
   syntax is: 
   
   ```
-  path b = &triangle(point1,point2,point3)
+  path b = &triangle(&point1,&point2,&point3)
   ```
 
 + polyline 
@@ -1265,10 +1274,10 @@ examples all letters a, b, c are path variables.
   This returns a path expressing a polyline. The syntax is:
 
   ```
-  path b = &polyline{point1,point2,point3,...}
+  path b = &polyline{&point1,&point2,&point3,...}
   ```
 
-+ arctravel{center,start_point,sweep_angle}
++ arctravel{&center,start_point,sweep_angle}
 
   This returns a path that draws an arc. The arc is to start at the
   point 'p' that is at a circle centered at 'center'. The arc is then
@@ -1288,10 +1297,10 @@ examples all letters a, b, c are path variables.
   the radius-ray that passes through 'q'. 
 
   ```
-  path b = arcspan{center,start_point,end_point}
+  path b = arcspan{&center,start_point,end_point}
   ```
 
-+ arcsweep{center,r,start_angle,sweep_angle}
++ arcsweep{&center,r,start_angle,sweep_angle}
 
   Similar to 'arc', this function is to return a path that is to sweep
   across a given angle starting from known angle. The center of the
@@ -1305,7 +1314,7 @@ examples all letters a, b, c are path variables.
   bottom, with xradius/yradius, and a given height. The syntax is:
 
   ```
-  path b = &cylinder{center,xradius,yradius,height}
+  path b = &cylinder{&center,xradius,yradius,height}
   ```
 
 + ymirror 
@@ -1317,7 +1326,7 @@ examples all letters a, b, c are path variables.
 
   ```
   path a = ...
-  path b = &ymirror{a,0}
+  path b = &ymirror{&a,0}
   ```
 
 + bbox 
