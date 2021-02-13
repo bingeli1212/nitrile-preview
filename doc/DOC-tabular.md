@@ -7,10 +7,10 @@ To express a tabular, attach the word "tabular" immediate
 after the opening fence.
 
     ```tabular
-    Names | Addr.        | Age
+    | Names | Addr.        | Age
     ============================
-    James | 102 Sun Str. | 29
-    Jane  | 202 Rain Rd. | 21
+    | James | 102 Sun Str. | 29
+    | Jane  | 202 Rain Rd. | 21
     ```
 
 It is possible to include additional options to the 
@@ -83,10 +83,10 @@ tabular border lines can be specified by the vline-style
 and hline-style options.
 
     ```tabular{vline:|*|*|*|,hline:t b}
-    Names | Addr.        | Age
+    | Names | Addr.        | Age
     ============================
-    James | 102 Sun Str. | 29
-    Jane  | 202 Rain Rd. | 21
+    | James | 102 Sun Str. | 29
+    | Jane  | 202 Rain Rd. | 21
     ```
 
 In the previous example, the options "vline" and "hline"
@@ -206,11 +206,11 @@ automatically assume that the tabular data for each column is to treated
 as a fence.
 
     ```tabular
-    Month    | Sales
-    ===============
-    January  | 100
-    February | 200
-    Match    | 300
+    | Month    | Sales
+    ====================
+    | January  | 100
+    | February | 200
+    | Match    | 300
     ```
 
 The tabular fence on LATEX translation is always to generate
