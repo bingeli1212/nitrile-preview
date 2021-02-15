@@ -57,7 +57,7 @@ Following is an example of a diagram block.
 
     % variables
     path a = (1,1) ~ (5,5) ~ (5,1) ~ (1,1) 
-    path b = (1,1) ~~ (5,5) ~~ (5,1) ~~ (1,1) 
+    path b = (1,1) .. (5,5) .. (5,1) .. (1,1) 
 
     % draw
     draw  &a
@@ -523,9 +523,9 @@ path.
     draw (0,0) ~ &a ~ (5,5)
 
 Typically, a path expression consists of one or more coordinates
-(points), and join types. A join type can only be '~' or '~~'. The
+(points), and join types. A join type can only be '~' or '..'. The
 '~' join type is to express a 'lineto' operation between the last
-point and the next point. A '~~' join type is to express a 'curveto'
+point and the next point. A '..' join type is to express a 'curveto'
 operation between the last point and the next point. A point should
 always be expressed between a set of parentheses, such as ``(1,1)``,
 ``(2,2)``, ``(3,4)``, etc.
