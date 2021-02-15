@@ -2504,7 +2504,7 @@ objects on top of each other in a three-dimensional space.
     config fillcolor white
     config linesize 1.5
     config linejoin round
-    lego.setup 0 0
+    lego.origin 0 0
     lego.size 4 4 4
     lego.add.z 0 1 2 3
     lego.delete.xyz 0 0 2 
@@ -2515,23 +2515,53 @@ objects on top of each other in a three-dimensional space.
     lego.show
     ```
 
-The lego-setup-operation expects four arguments, the first two of
-which are the x/y origin of the x/y/z-plane of the Lego coordinates.
-The last two is the 'wx' and 'wy' length which is the extra space
-extended from beyond the edge the cube in the x/y directions.
-The default values for 'wx' is 0.36 and the default value for 'wy'
-is 0.30. 
+The lego-setup-operation expects four arguments, the first
+two of which are the x/y origin of the x/y/z-plane of the
+Lego coordinates.  The last two is the 'wx' and 'wy' length
+which is the extra space extended from beyond the edge the
+cube in the x/y directions.  The default values for 'wx' is
+0.36 and the default value for 'wy' is 0.30. 
 
-The lego-size-operation would set the size of the stacking. 
-It expectes three integers, each representing the number of maximum
-Lego pieces in these directions. The x-direction is the horizontal,
-the y-direction is the depth, and the z-direction is the height.
+The lego-size-operation would set the size of the stacking.
+It expectes three integers, each representing the number of
+maximum Lego pieces in these directions. The x-direction is
+the horizontal, the y-direction is the depth, and the
+z-direction is the height.
 
-The Lego pieces are first added and deleted, and then the 
-lego-show operation is called to draw all the pieces in the Diagram.
+The Lego pieces are first added and deleted, and then the
+lego-show operation is called to draw all the pieces in the
+Diagram.
 
-The lego.add.z operation would add a layer of pieces in the z coordinate
-specified.  The lego.delete.xyz operation would delete a specific piece with
-the given x/y/z coordinate.
+The lego.add.z operation would add a layer of pieces in the
+z coordinate specified.  The lego.delete.xyz operation would
+delete a specific piece with the given x/y/z coordinate.
+
+The lego.show and lego.show2 operations are the two
+operations that will trigger all commands to be written to
+the output. The lego.show is to show the lego pieces in a
+perspective view where x-axis is going to the left and down,
+y-axis is going to the right horizontally, and z-axis up
+straight. 
+
+The lego.show2 is to show the lego pieces where x-axis is
+going down and left, y-axis is going right and right, and
+z-axis is going straight up. 
+
+Each lego.show and lego.show2 carries its own set of
+arguments. Following shows the default set of arguments
+for each operation.
+
+    lego.show 0.36 0.30 1.00 0.90
+    lego.show2 0.80 0.45 0.70
+
+For lego.show operation, the first two arguments are the
+skewed values in x-direction and y-direction. The third and
+fouth arguments are the width and height of front facing 
+rectangle.
+
+For lego.show2 operation, the first and second arguments are 
+the half width and half height of the diamond of the top
+face. The third argument is the height.
+
 
 
