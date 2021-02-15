@@ -2502,9 +2502,44 @@ execute them at that location.
     source src1
     ```
 
+# The lego-operation
 
+The lego-operation allows for drawing of placing Lego-like
+objects on top of each other in a three-dimensional space.
 
+    ```diagram{viewport:8 8}
+    source a
+    config fillcolor white
+    config linesize 1.5
+    config linejoin round
+    lego.setup 0 0
+    lego.size 4 4 4
+    lego.add.z 0 1 2 3
+    lego.delete.xyz 0 0 2 
+    lego.delete.yz 0 3 
+    lego.delete.xyz 1 1 3 
+    lego.delete.xyz 2 1 3 
+    lego.delete.xyz 2 2 3 
+    lego.show
+    ```
 
+The lego-setup-operation expects four arguments, the first two of
+which are the x/y origin of the x/y/z-plane of the Lego coordinates.
+The last two is the 'wx' and 'wy' length which is the extra space
+extended from beyond the edge the cube in the x/y directions.
+The default values for 'wx' is 0.36 and the default value for 'wy'
+is 0.30. 
 
+The lego-size-operation would set the size of the stacking. 
+It expectes three integers, each representing the number of maximum
+Lego pieces in these directions. The x-direction is the horizontal,
+the y-direction is the depth, and the z-direction is the height.
+
+The Lego pieces are first added and deleted, and then the 
+lego-show operation is called to draw all the pieces in the Diagram.
+
+The lego.add.z operation would add a layer of pieces in the z coordinate
+specified.  The lego.delete.xyz operation would delete a specific piece with
+the given x/y/z coordinate.
 
 
