@@ -11,7 +11,6 @@ var work = async ()=>{
 
 console.log(process.argv);
 var fname = process.argv[2];
-var fname = '/Users/james/github/tcl-notes/math-class-2020/math-class-142.md'
 console.log(fname);
 
 if(fname){
