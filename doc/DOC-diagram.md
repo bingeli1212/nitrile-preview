@@ -56,12 +56,12 @@ Following is an example of a diagram block.
     viewport 32 20
 
     % variables
-    path a = (1,1) -- (5,5) -- (5,1) -- (1,1) ()
-    path b = (1,1) .. (5,5) .. (5,1) .. (1,1) ()
+    path a = (1,1) ~ (5,5) ~ (5,1) ~ (1,1) 
+    path b = (1,1) ~~ (5,5) ~~ (5,1) ~~ (1,1) 
 
     % draw
-    draw  *a
-    draw  *b
+    draw  &a
+    draw  &b
 
     % circles
 
@@ -75,7 +75,7 @@ Following is an example of a diagram block.
     % dot
     path sq = (22,3) (23,3) (23,2) (22,2)
     dot (22,1)
-    dot *sq (22,4) (23,4)
+    dot &sq (22,4) (23,4)
     dot.hbar  (23,1) (24,1)
     dot.vbar  (25,1) (26,1)
     dot   (1,1) \
@@ -83,22 +83,14 @@ Following is an example of a diagram block.
           (4,4) (5,5)
 
     % 90-degree angle
-    draw     (28,4)--(31,4)
-    path [a,b] = *
-    draw     (28,4)--(28,7)
-    path [,c] = *
-    drawanglearc.sq *b *a *c
-
-    % 45-degree angle
-    draw     <0,-4> (28,4)--(31,4)
-    path [a,b] = *
-    draw     <0,-4> (28,4)--(31,7)
-    path [,c] = *
-    drawanglearc *b *a *c
+    path [a,b] = (28,4)~(31,4)
+    path [,c] = (28,4)~(28,7)
+    draw &b ~ &a ~ &c
+    drawanglearc.sq &b &a &c
 
     % draw     will fill
-    path ff = (28,8)--(31,8)--(31,9)--(28,9)--cycle
-    draw {linesize:2,fillcolor:orange}  *ff
+    path ff = (28,8)~(31,8)~(31,9)~(28,9)~cycle
+    draw {linesize:2,fillcolor:orange}  &ff
     reset
 
     % label
@@ -518,7 +510,7 @@ variable must start with a upper case or lower case letters, and
 followed by one or more upper case or lower case letters, or digits.
 Symbols and operators are not allowed.
 
-    path a = (1,1) -- (2,2) -- (3,4)
+    path a = (1,1) ~ (2,2) ~ (3,4)
 
 To reference all points in a path variable, use the at-sign followed
 by the variable name. This notation serves to connect the last point
@@ -527,13 +519,13 @@ specified, they will be connected to the last point of the previous
 path.
 
     draw &a
-    draw &a -- (5,5)
-    draw (0,0) -- &a -- (5,5)
+    draw &a ~ (5,5)
+    draw (0,0) ~ &a ~ (5,5)
 
 Typically, a path expression consists of one or more coordinates
-(points), and join types. A join type can only be '--' or '..'. The
-'--' join type is to express a 'lineto' operation between the last
-point and the next point. A '..' join type is to express a 'curveto'
+(points), and join types. A join type can only be '~' or '~~'. The
+'~' join type is to express a 'lineto' operation between the last
+point and the next point. A '~~' join type is to express a 'curveto'
 operation between the last point and the next point. A point should
 always be expressed between a set of parentheses, such as ``(1,1)``,
 ``(2,2)``, ``(3,4)``, etc.
@@ -616,7 +608,7 @@ Typically it is straight lines, but Bezier curves are also supported.
 This includes quadratic and cubic curves. The SVG arc is also
 supported.
 
-    draw (0,0) -- (1,1) (2,2)
+    draw (0,0) ~ (1,1) (2,2)
 
 The 'fill' command is similar to 'draw', except that it fills the path
 with the default filled color, without drawing the the outline of the
@@ -2495,7 +2487,7 @@ The source-operation is to load the previous saved sources and then
 execute them at that location.
 
     ```diagram{save:src1,hidden}
-    draw (0,0)--(10,10)
+    draw (0,0)~(10,10)
     ```
     ```diagram
     viewport 20 20
