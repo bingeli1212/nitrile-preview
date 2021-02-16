@@ -835,10 +835,9 @@ a-z and A-Z.
 ```tabular{border:2;n:2}
 | Symbol              |  Command                | Comment
 ------------------------------------------------------------------
-| &BigSquare;         |  BigSquare              | [!BigSquare!]
-| &BigCircle;         |  BigCircle              | [!BigCircle!]
-| &BigTriangleDown;   |  BigTriangleDown        | [!BigTriangleDown!]
-| &BigTriangleUp;     |  BigTriangleUp          | [!BigTriangleUp!]
+| &xcirc;             |  xcirc                  | [!xcirc!]
+| &bigtriangleup;     |  bigtriangleup          | [!bigtriangleup!]
+| &bigtriangledown;   |  bigtriangledown        | [!bigtriangledown!]
 | &star;              |  star                   | [!star!]
 | &copy;              |  copy                   | [!copy!]
 | &reg;               |  reg                    | [!reg!]
