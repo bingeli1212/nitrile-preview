@@ -670,6 +670,12 @@ moving offsets. For example, you can construct a path with four points
 
     draw <11,0> (0,0) <1,0> (0,0) <1,0> (0,0) <1,0> (0,0)
 
+The keyword <last> can be used to refer to the last know position
+that is set by a path or draw operation. It is also possible to 
+set the offset to a specific path variable such <&B> where B is a
+valid path, in which case the first point of this path is 
+retrieved and set as the new offset position.
+
 The keyword 'cycle' denotes a special point such that the path is to
 be closed and the last point should be connected to the first point
 using a straight line. Note that a 'cycle' is not a physical point. It
