@@ -1803,6 +1803,11 @@ will always interates to cover the longest sequence, and for a loop
 variable that has run out of numbers in its sequence, a zero will be
 assumed for that variable.
 
+Each for-loop would have defined a new '@' environment variable that
+will be assigned to an integer that equates to the current iteration. The first
+iteration will be an integer 0, and the second one 1, and so on. 
+
+
 
 # The fn-operation
 
