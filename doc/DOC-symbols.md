@@ -86,7 +86,9 @@ Following are the key points about the symbols:
 
 - The "wasysym" is safe to include. However, the "pentagon"
   and the "hexagon", and "varhexagon" symbols it claims
-  to provide cannot be made to work.
+  to provide cannot be made to work and it is currently not
+  included for some other unknown reasons (maybe it has some
+  conflict with CJK package)
 
 - The "arev" package cannot be included. It has shown to
   cause many other symbols to disappear.
@@ -191,7 +193,9 @@ Following are the key points about the symbols:
 - The "fourier" package is not safe to use. When included many other
   symbols will disappear.
 
-- The "stmaryrd" package is save to include.
+- The "stmaryrd" package is save to include. However, it is not included
+  because it redefines "\bigtriangleup" and "\bigtriangledown" such that 
+  it looks too big.
 
 - So far the symbols "pentagon", "PENTAGON", and "hexagon" does not
   work on LATEX side. The ``\pentagon`` and ``\hexagon`` commands
@@ -835,7 +839,7 @@ a-z and A-Z.
 ```tabular{border:2;n:2}
 | Symbol              |  Command                | Comment
 ------------------------------------------------------------------
-| &xcirc;             |  xcirc                  | [!xcirc!]
+| &bigcirc;           |  bigcirc                | [!bigcirc!]
 | &bigtriangleup;     |  bigtriangleup          | [!bigtriangleup!]
 | &bigtriangledown;   |  bigtriangledown        | [!bigtriangledown!]
 | &star;              |  star                   | [!star!]
