@@ -488,9 +488,7 @@ Following are the key points about the symbols:
   | Symbol              |  Commands            | Comment
   ----------------------------------------------------------------
   | &mapsto;            |  mapsto              | [!mapsto!]
-  | &mapstoleft;        |  mapstoleft          | [!mapstoleft!]
   | &xmapsto;           |  xmapsto             | [!xmapsto!]
-  | &xmapstoleft;       |  xmapstoleft         | [!xmapstoleft!]
   ----------------------------------------------------------------
   | &rarr;              |  rarr                | [!rarr!]
   | &rArr;              |  rArr                | [!rArr!]
@@ -854,13 +852,6 @@ a-z and A-Z.
 | &checkmark;         |  checkmark              | [!checkmark!]
 | &maltese;           |  maltese                | [!maltese!]
 | &cross;             |  cross                  | [!cross!]
-| &SquareBoxO;        |  SquareBoxO             | [!SquareBoxO!]
-| &SquareBox;         |  SquareBox              | [!SquareBox!]
-| &CircleBoxO;        |  CircleBoxO             | [!CircleBoxO!]
-| &CircleBox;         |  CircleBox              | [!CircleBox!]
-| &BallotBox;         |  BallotBox              | [!BallotBox!]
-| &BallotBoxWithCheck;|  BallotBoxWithCheck     | [!BallotBoxWithCheck!]
-| &BallotBoxWithX;    |  BallotBoxWithX         | [!BallotBoxWithX!]
 | &ang;               |  ang                    | [!ang!]
 | &angmsd;            |  angmsd                 | [!angmsd!]
 | &angsph;            |  angsph                 | [!angsph!]
@@ -873,9 +864,33 @@ a-z and A-Z.
 | &square;            |  square                 | [!square!]
 | &blacksquare;       |  blacksquare            | [!blacksquare!]
 | &cir;               |  cir                    | [!cir!]
-| &bigcirc;           |  bigcirc                | [!bigcirc!]
-| &ChevronDown;       |  ChevronDown            | [!ChevronDown!]
-| &ChevronLeft;       |  ChevronLeft            | [!ChevronLeft!]
-| &ChevronRight;      |  ChevronRight           | [!ChevronRight!]
-| &ChevronUp;         |  ChevronUp              | [!ChevronUp!]
 ```
+
+# Non-standard Symbols
+
+```tabular
+| Symbol               | Command                | Comment
+------------------------------------------------------------------
+| &BallotBox;          | BallotBox              | [!BallotBox!]        
+| &BallotBoxWithCheck; | BallotBoxWithCheck     | [!BallotBoxWithCheck!]
+| &BallotBoxWithX;     | BallotBoxWithX         | [!BallotBoxWithX!]
+| &CircleBoxO;         | CircleBoxO             | [!CircleBoxO!]      
+| &CircleBox;          | CircleBox              | [!CircleBox!]      
+| &SquareBoxO;         | SquareBoxO             | [!SquareBoxO!]      
+| &SquareBox;          | SquareBox              | [!SquareBox!]       
+| &ChevronLeft;        | ChevronLeft            | [!ChevronLeft!]     
+| &ChevronRight;       | ChevronRight           | [!ChevronRight!]    
+| &ChevronUp;          | ChevronUp              | [!ChevronUp!]       
+| &ChevronDown;        | ChevronDown            | [!ChevronDown!]     
+| &BigSquare;          | BigSquare              | [!BigSquare!]       
+| &CaretRight;         | CaretRight             | [!CaretRight!]      
+| &CaretDown;          | CaretDown              | [!CaretDown!]       
+| &Pencil;             | Pencil                 | [!Pencil!]          
+```  
+
+
+
+
+
+
+

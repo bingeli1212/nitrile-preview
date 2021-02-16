@@ -1266,14 +1266,9 @@
     "bigtriangleup"          : { "html": "&#x25B3;"       ,  "tex": "\\bigtriangleup"                     ,"TM":0 , "width": 10 ,  "op": 0,  "usepackage":""             ,"comment":"U+25B3 WHITE UP-POINTING TRIANGLE"},
     "bigtriangledown"        : { "html": "&#x25BD;"       ,  "tex": "\\bigtriangledown"                   ,"TM":0 , "width": 10 ,  "op": 0,  "usepackage":""             ,"comment":"U+25BD WHITE DOWN-POINTING TRIANGLE"},
    
-    "square"                 : { "html": "&#x25A1;"       ,  "tex": "\\square"                            , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25A1 WHITE SQUARE"},
-    "blacksquare"            : { "html": "&#x25AA;"       ,  "tex": "\\blacksquare"                       , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25AA BLACK SMALL SQUARE"},
-
-    "cir"                    : { "html": "&#x25CB;"       ,  "tex": "\\textbigcircle"                     ,"TM":1 , "width": 0 ,   "op": 0,  "usepackage":"latex2e"  ,"comment":"U+25CB WHITE CIRCLE"},
-
-    "pentagon"               : { "html": "&#x2B20;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B20 WHITE PENTAGON"},
-    "PENTAGON"               : { "html": "&#x2B1F;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B1F BLACK PENTAGON"},
-    "hexagon"                : { "html": "&#x2B21;"       ,  "tex": "?"                                   ,"TM":1 , "width": 12,   "op": 0,  "usepackage":""         ,"comment":"U+2B21 WHITE HEXAGON"},
+    "square"                 : { "html": "&#x25A1;"       ,  "tex": "\\square"                                    , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25A1 WHITE SQUARE"},
+    "blacksquare"            : { "html": "&#x25AA;"       ,  "tex": "\\blacksquare"                               , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+25AA BLACK SMALL SQUARE"},
+    "cir"                    : { "html": "&#x25CB;"       ,  "tex": "\\circ"                                      , "width": 0 ,   "op": 0,  "usepackage":"latex2e"  ,"comment":"U+25CB WHITE CIRCLE"},
 
     "blank"                  : { "html": "&#x23B5;"       ,  "tex": "\\textvisiblespace"                  ,"TM":1 , "width": 0,    "op": 0,  "usepackage":""         ,"comment":"U+23B5 BOTTOM SQUARE BRACKET"}, 
     "ThinSpace"              : { "html": "&#x2009;"       ,  "tex": "\\,"                                 ,"TM":0 , "width": 3,    "op": 0,  "usepackage":""         ,"comment":"U+2009 THIN SPACET"}, 
@@ -1286,10 +1281,10 @@
     "CircleBox"              : { "html": "&#x25CF;"       ,  "tex": "\\faCircle"                          ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25CF BLACK CIRCLE"},
     "SquareBoxO"             : { "html": "&#x25FB;"       ,  "tex": "\\faSquareO"                         ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25EF LARGE CIRCLE"},
     "SquareBox"              : { "html": "&#x25FC;"       ,  "tex": "\\faSquare"                          ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2B24 LARGE BLACK CIRCLE"},
-    "ChevronDown"            : { "html": "&#x25BE;"       ,  "tex": "\\faChevronDown"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25BE DOWN-POINTING SMALL TRIANGLE"},
-    "ChevronLeft"            : { "html": "&#x25C2;"       ,  "tex": "\\faChevronLeft"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25C2 LEFT-POINTING SMALL TRIANGLE"},
-    "ChevronRight"           : { "html": "&#x25B8;"       ,  "tex": "\\faChevronRight"                    ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25B8 RIGHT-POINTING SMALL TRIANGLE"},
-    "ChevronUp"              : { "html": "&#x25B4;"       ,  "tex": "\\faChevronUp"                       ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25B4 UP-POINTING SMALL TRIANGLE"},
+    "ChevronLeft"            : { "html": "&#x02C2;"       ,  "tex": "\\faChevronLeft"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25C2 LEFT-POINTING SMALL TRIANGLE"},
+    "ChevronRight"           : { "html": "&#x02C3;"       ,  "tex": "\\faChevronRight"                    ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25B8 RIGHT-POINTING SMALL TRIANGLE"},
+    "ChevronUp"              : { "html": "&#x02C4;"       ,  "tex": "\\faChevronUp"                       ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25B4 UP-POINTING SMALL TRIANGLE"},
+    "ChevronDown"            : { "html": "&#x02C5;"       ,  "tex": "\\faChevronDown"                     ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25BE DOWN-POINTING SMALL TRIANGLE"},
     "BigSquare"              : { "html": "&#x25A2;"       ,  "tex": "\\faSquareO"                         ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25A2 WHITE SQUARE WITH ROUNDED CORNERS"},
     "CaretRight"             : { "html": "&#x25B8;"       ,  "tex": "\\faCaretRight"                      ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25B7 WHITE RIGHT-POINTING TRIANGLE"},    
     "CaretDown"              : { "html": "&#x25BE;"       ,  "tex": "\\faCaretDown"                       ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25C1 WHITE LEFT-POINTING TRIANGLE"},
