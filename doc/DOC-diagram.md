@@ -1157,6 +1157,9 @@ examples all letters a, b, c are path variables.
   path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
   ```
 
+  Note that the returned point is always arranged such that the first
+  point is on the left hand side of the second point.
+
 + circlecircleintersect 
 
   This method returns one or two points where two circles intersect.
