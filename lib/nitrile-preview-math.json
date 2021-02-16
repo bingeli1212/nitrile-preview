@@ -1264,6 +1264,10 @@
     "checkmark"              : { "html": "&#x2713;"       ,  "tex": "\\ding{51}","cex":"0x2713"           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"pifont"   ,"comment":"U+2713 CHECK MARK"},
     "maltese"                : { "html": "&#x2720;"       ,  "tex": "\\maltese"                                   , "width": 0,    "op": 0,  "usepackage":"AMS"      ,"comment":"U+2720 MALTESE CROSS"},
     "cross"                  : { "html": "&#x2717;"       ,  "tex": "\\ding{55}","cex":"0x2717"           ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"pifont"   ,"comment":"U+2717 BALLOT X"},
+
+    "xcirc"                  : { "html": "&#x25EF;"       ,  "tex": "\\bigcirc"                           ,"TM":0 , "width": 10 ,  "op": 0,  "usepackage":""             ,"comment":"U+25EF LARGE CIRCLE"},
+    "bigtriangleup"          : { "html": "&#x25B3;"       ,  "tex": "\\bigtriangleup"                     ,"TM":0 , "width": 10 ,  "op": 0,  "usepackage":"stmaryrd"     ,"comment":"U+25B3 WHITE UP-POINTING TRIANGLE"},
+    "bigtriangledown"        : { "html": "&#x25BD;"       ,  "tex": "\\bigtriangledown"                   ,"TM":0 , "width": 10 ,  "op": 0,  "usepackage":"stmaryrd"     ,"comment":"U+25BD WHITE DOWN-POINTING TRIANGLE"},
    
     "BallotBox"              : { "html": "&#x2610;"       ,  "tex": "\\faSquareO"                         ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2610 BALLOT BOX"},
     "BallotBoxWithCheck"     : { "html": "&#x2611;"       ,  "tex": "\\faCheckSquareO"                    ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
@@ -1281,9 +1285,6 @@
     "ChevronUp"              : { "html": "&#x25B4;"       ,  "tex": "\\faChevronUp"                       ,"TM":1 , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25B4 UP-POINTING SMALL TRIANGLE"},
 
     "BigSquare"              : { "html": "&#x25A2;"       ,  "tex": "\\faSquareO"                         ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25A2 WHITE SQUARE WITH ROUNDED CORNERS"},
-    "BigCircle"              : { "html": "&#x25EF;"       ,  "tex": "\\faCircleO"                         ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25EF LARGE CIRCLE"},
-    "BigTriangleUp"          : { "html": "&#x25B3;"       ,  "tex": "?"                                   ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25B3 WHITE UP-POINTING TRIANGLE"},
-    "BigTriangleDown"        : { "html": "&#x25BD;"       ,  "tex": "?"                                   ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25BD WHITE DOWN-POINTING TRIANGLE"},
     "BigTriangleLeft"        : { "html": "&#x25C1;"       ,  "tex": "?"                                   ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25C1 WHITE LEFT-POINTING TRIANGLE"},
     "BigTriangleRight"       : { "html": "&#x25B7;"       ,  "tex": "?"                                   ,"TM":1 , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25B7 WHITE RIGHT-POINTING TRIANGLE"},
     
