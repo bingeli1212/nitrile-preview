@@ -2524,9 +2524,9 @@ cube in the x/y directions.  The default values for 'wx' is
 
 The lego-size-operation would set the size of the stacking.
 It expectes three integers, each representing the number of
-maximum Lego pieces in these directions. The x-direction is
-the horizontal, the y-direction is the depth, and the
-z-direction is the height.
+maximum Lego pieces in these directions: x, y and z.  The
+x-direction is the horizontal, the y-direction is the depth,
+and the z-direction is the height.
 
 The Lego pieces are first added and deleted, and then the
 lego-show operation is called to draw all the pieces in the
@@ -2562,6 +2562,16 @@ rectangle.
 For lego.show2 operation, the first and second arguments are 
 the half width and half height of the diamond of the top
 face. The third argument is the height.
+
+Either lego.show and lego.show2 operation would have
+generated Lego pieces that are shaded differently for two 
+of its faces for each piece. For lego.show the front facing
+face is shaded lighter, and the face facing to the right 
+is shaded darker. For lego.show2 operation the face facing
+upward is shaded lighter and the face facing right is shaded
+darker. 
+
+
 
 
 
