@@ -1289,6 +1289,11 @@ examples all letters a, b, c are path variables.
   path b = &triangle(&point1,&point2,&point3)
   ```
 
++ equilateraltriangle{(0,0),3}
+
+  This returns a equilateral-triangle centered at (0,0)
+  and with a side measurement equal to 3 grid length.
+
 + polyline 
 
   This returns a path expressing a polyline. The syntax is:
