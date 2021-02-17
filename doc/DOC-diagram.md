@@ -396,6 +396,12 @@ not recommended and may result in distorted picture.
   Set it to 1 to enable debug, which is to allow for each comment
   line to be sent to the console log.
 
++ config math 1
+
+  Set it to 1 to enable the math text to be recognized. By default 
+  text passed to label is of normal text nature, but it would be 
+  recognized as inline math if the style option is set.
+
 
 # The set-operation
 
