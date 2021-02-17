@@ -1387,6 +1387,19 @@ examples all letters a, b, c are path variables.
   path a = &perpoint{(0,0),(2,0),(0.5,1)}
   ```
 
++ rotate(&A,90)
+
+  This rotates a given path by a certain angle in an anti-clockwise rotation.
+
++ translate(&A,10,20)
+
+  This translates a given path by a given distance in X and Y direction.
+
+
+  
+
+
+
 # Special notes for MetaPost users
 
 The color syntax is either the color name, such as "red", "green", or
