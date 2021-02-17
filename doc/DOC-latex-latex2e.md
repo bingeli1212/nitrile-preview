@@ -1036,3 +1036,15 @@ the "bbold" package must be included.
   To use the fonts in LATEX2ε, you select the bbold package, and then
   use the \mathbb command to get blackboard bold mathematics, \textbb
   for text, or \bbfamily for longer text. The full font is:
+
+# The colon character
+
+To generate a colon character one needs to use 
+
+    \text{: }
+
+
+
+
+
+
