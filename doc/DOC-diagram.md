@@ -165,12 +165,9 @@ drawing commands, in order to maintain consistencies. Changing these
 configuration parameters in the middle of other drawing commands are
 not recommended and may result in distorted picture.
 
-+ config grid <string> 
++ config nogrid 1
 
-  Set to a string expressing how the background grid lines are
-  to be drawn. The valid values are "boxed", "grid", or "none". 
-  The default value is an empty string, in which case it is
-  the same as "grid".
+  Set to a 1 to disable the grid.
 
 + config barlength <number>
   The default length of the bar (grid unit). The default value
@@ -443,6 +440,11 @@ drawing environment.
   express a floating point number. It could also be a 
   "save:<string>" and "load:<string>" where <string> expresses
   a string. 
+
++ set debug 1
+
+  Set it to 1 to enable debug, which is to allow for each comment
+  line to be sent to the console log.
 
 The 'refx', 'refy', and 'refs' parameters can be set at any point
 during a drawing. It can be compared to a "transform" of a SVG
