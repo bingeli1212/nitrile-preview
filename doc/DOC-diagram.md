@@ -373,7 +373,7 @@ not recommended and may result in distorted picture.
 + config bartype <string>
 
   The bartype-option can be sets to indicate what bar it is to draw. It is currently 
-  used by the drawlinesegcong-operation.
+  used by the drawlinesegcong-operation. It is set to 'single', 'double', or 'tripple'.
 
 + config gap <number>
 
