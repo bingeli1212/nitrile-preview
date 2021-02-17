@@ -402,6 +402,17 @@ not recommended and may result in distorted picture.
   text passed to label is of normal text nature, but it would be 
   recognized as inline math if the style option is set.
 
++ config replace a/1 b/3 c/4
+
+  Set this option to allow for labels text to be swapped for new
+  contents. This option is useful if part of the diagram is reused
+  but the only wishes is to replace part of label text with new
+  contents. This option specifies multiple occurances of the same
+  label text to be swapped for new contents, such as to replace
+  all label string "a" with "1", all "b" with "3", and all "c" 
+  with "4". Note that the entire label text has to match the
+  given search string.
+
 
 # The set-operation
 
