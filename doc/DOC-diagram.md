@@ -1354,6 +1354,19 @@ examples all letters a, b, c are path variables.
   path b = &ymirror{&a,0}
   ```
 
++ mirror 
+
+  This returns a new path that holds a single point that is the mirror
+  image of the given point along a given line. In the following example
+  the returned point 'a1' would have been set to (-5,0)
+
+  ```
+  path a = (5,0)
+  path b = (0,0)
+  path c = (0,10)
+  path a1 = &mirror{&a,&b,&c}
+  ```
+
 + bbox 
 
   This returns a new path that represents the rectangle of the
