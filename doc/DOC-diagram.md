@@ -391,6 +391,11 @@ not recommended and may result in distorted picture.
   by the draw-operation, fill-operation, stroke-operation, arrow-operation, revarrow-operation, 
   and dblarrow-operation to rotate the shape.
   
++ config debug 1
+
+  Set it to 1 to enable debug, which is to allow for each comment
+  line to be sent to the console log.
+
 
 # The set-operation
 
@@ -440,11 +445,6 @@ drawing environment.
   express a floating point number. It could also be a 
   "save:<string>" and "load:<string>" where <string> expresses
   a string. 
-
-+ set debug 1
-
-  Set it to 1 to enable debug, which is to allow for each comment
-  line to be sent to the console log.
 
 The 'refx', 'refy', and 'refs' parameters can be set at any point
 during a drawing. It can be compared to a "transform" of a SVG
