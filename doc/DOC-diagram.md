@@ -709,6 +709,12 @@ set the offset to a specific path variable such <&B> where B is a
 valid path, in which case the first point of this path is 
 retrieved and set as the new offset position.
 
+Another useful feature of offset is to specify a 'attrflag'. This flag
+can be used to fine tune certain appearances of a path, such as to ask
+to draw certain segment of a path as dashed line. Note that these flags
+merely are used a hint, and might not be honored under certain conditions.
+The flags are the bit-OR'ed flags of attrflag-values.
+
 The keyword 'cycle' denotes a special point such that the path is to
 be closed and the last point should be connected to the first point
 using a straight line. Note that a 'cycle' is not a physical point. It
@@ -760,6 +766,14 @@ For SVG, when a 'fill=' attribute is specified the rendering engine
 will attempt to fill the area, even when the area is not closed. For
 MetaPost/MetaFun the path will have to be closed before calling the
 'fill' MetaPost, as otherwise the compilation will complain.
+
+# The attrflag-values
+
+Following are attrflag-values:
+
+```
++ 0x01  linedashed
+```
 
 # The drawcontrolpoint-operation
 
