@@ -413,6 +413,13 @@ not recommended and may result in distorted picture.
   with "4". Note that the entire label text has to match the
   given search string.
 
++ config arrowhead <number>
+
+  Set this to either 1, 2, or 3 to express the fact that an arrow
+  head should be attached to the line that is front facing, back
+  facing, or double facing.
+   
+
 
 # The set-operation
 
