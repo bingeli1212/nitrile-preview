@@ -1426,16 +1426,19 @@ examples all letters a, b, c are path variables.
   path a = &perpoint{(0,0),(2,0),(0.5,1)}
   ```
 
-+ rotate(&A,90)
++ rotate{&A,90}
 
   This rotates a given path by a certain angle in an anti-clockwise rotation.
 
-+ translate(&A,10,20)
++ translate{&A,10,20}
 
   This translates a given path by a given distance in X and Y direction.
 
-
-  
++ bisect{&A,&B,&C,r}
+ 
+  This will compute a new point that lines on the line that is the result 
+  of bisecting the angle ABC, and with a distance of 'r' away
+  from vertex 'B'.
 
 
 
@@ -1524,7 +1527,7 @@ instead.
 
 # The cartesian-operation
 
-~~~list
+```     
 - cartesian.setup xorigin yorigin gridrange
 - cartesian.grid xmin ymin xmax ymax
 - cartesian.xaxis xmin xmax
@@ -1539,7 +1542,7 @@ instead.
 - cartesian.text.rt x1 y1 x2 y2 x3 y3 ...
 - cartesian.ellipse x y Rx Ry Phi
 - cartesian.arc x y R startAngle stopAngle
-~~~
+``` 
 
 The ``cartesian`` command is used to draw plots, curves, axis, ticks
 that are related to a single Cartesian coordinate. It is a composite
@@ -1678,13 +1681,13 @@ The 'barchart' is another compound command that is to be used
 with many subcommands. Following is a list of some
 of its subcommands.
 
-~~~list
+```    
 - barchart.setup xorigin yorigin xwidth ywidth xrange yrange
 - barchart.bbox
 - barchart.vbar
 - barchart.ytick
 - barchart.xtext
-~~~
+``` 
 
 The 'barchart.setup' command would setup the barchart and config it.
 The 'xorigin' and 'yorigin' are to state the grid coordinates where
