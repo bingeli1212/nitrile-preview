@@ -2210,25 +2210,31 @@ Typically each node is to be assigned a name that follows the period
 after the "node" keyword. However, if a node-operation is to be done inside
 a for-loop then this assigning of a node name to a node is difficult to implement.
 If assigning to a node a name is important, then it can be done
-By setting the nodeid-option to an integer
-greater than 1. If this is the case, whenever a new node is 
-created and is not given a name, the integer of this parameter
-is used as the new node name, and this integer is automatically incremented
-by 1. In the following example each node is assigned a name that is "1", "2",
-"3", "4", "5", and "6".
+By setting the autonodeid-option to 1.
+If this is the case, whenever a new node is 
+created and is not given a name, an integer is used for this node name.
+By default, the integer starts from 0. But his can be changed by setting
+the 'nodeid' to a different value.
+
+    set nodeid 10
+
+Following is an example that will set it up so that the first node
+will get a name that is '10', and the next node get a name that is '11',
+and the next node gets a name that is '12'.
 
     ```diagram{frame, width:2cm}
     viewport 6 6
     config r 0.2
     config fillcolor black
-    config nodeid 1
+    config autonodeid 1
+    set nodeid 10
     set refxy center
-    for theta:=[0:60:359]:
+    for theta:=[0:60:120]:
       r := 2
       x := cos(deg2rad(\theta)) * \r
       y := sin(deg2rad(\theta)) * \r
       node (\x,\y)
-    edge.1.2.3.4.5.6.1
+    edge.10.11.12
     ```
 
 For a node-operation, if no coordinates are given in the command line,
