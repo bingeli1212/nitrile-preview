@@ -270,16 +270,16 @@ not recommended and may result in distorted picture.
 
   Sets the type of the shade to use instead of a solid filled color.
   
-+ config linedashed 1
-
-  When set to 1 a dashed line will be drawn instead of a solid one.
-
 + config shadecolor <color> ...
 
   Sets one or more colors for the shade. The colors can be one, two or 
   three depending on the type of shade.
   The color must appear
   one after another separated by one or more empty spaces.
+
++ config linedashed 1
+
+  When set to 1 a dashed line will be drawn instead of a solid one.
 
 + config linecap <string>
 
@@ -413,7 +413,7 @@ not recommended and may result in distorted picture.
   with "4". Note that the entire label text has to match the
   given search string.
 
-+ config arrowhead <number>
++ config arrowhead <1|2|3>
 
   Set this to either 1, 2, or 3 to express the fact that an arrow
   head should be attached to the line that is front facing, back
