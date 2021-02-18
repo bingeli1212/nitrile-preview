@@ -470,6 +470,13 @@ drawing environment.
   "save:<string>" and "load:<string>" where <string> expresses
   a string. 
 
++ set nodeid <integer>
+
+  Set the "nodeid" to an integer greater or equal to 0. This integer
+  will be used as the name of a new node if autonodeid-style option
+  is set to 1, and the this integer is automatically incremented by 1
+  after it has been assigned to a node as its node name.
+
 The 'refx', 'refy', and 'refs' parameters can be set at any point
 during a drawing. It can be compared to a "transform" of a SVG
 operation. In this case, all drawings will be scaled and/or
