@@ -1075,6 +1075,13 @@ backslash-right-parenthesis quotation for the text.
 
     label \(A_0 \\ A_1 \\ A_2\) (1,1) (2,2) (3,4)
 
+The text will also be treated as math expression if the math-style
+option is set to 1. Thus, following is the equivalent of the
+previous example.
+
+    label {math:1} "A_0 \\ A_1 \\ A_2" (1,1) (2,2) (3,4)
+
+
 
 
 
