@@ -30,3 +30,23 @@ Following are styles recognized by NITRILE:
   The load-option instructs that the content of a fenced bundle is to be
   loaded from a named buffer.
 
++ fontsize:12
++ fontsize:11.5
++ fontsize:10
++ fontsize:footnotesize
++ fontsize:large
+
+  The fontsize-option instructs that the current fenced bundle be shown
+  with a different font size. The font size is either a number, such
+  as 12, 11.5, 10, etc., or a string such as "footnotesize", "large",
+  which must be a valid font size name.
+
++ leftmargin:12
++ leftmargin:20
+
+  The leftmargin-option specifies a non-zero left margin for the fenced
+  bundle. Note that this option might only be recognized for certain
+  fenced-bundle and might not have an effect on some. The option name
+  is a number expressing a distance in the number of "mm".
+
+ 
