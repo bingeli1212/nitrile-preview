@@ -85,3 +85,18 @@ Following are styles recognized by NITRILE:
     - Go to the bank
     ```
 
++ hline:+
+
+  The hline-option only has one choice so far, which is the plus-sign. When it is
+  set, it instructs that every body row of a tabular is to have a single hline inserted
+  between them. 
+
++ vline:|-|-|-|-|-
++ vline:|-|--|--|
++ vline:|-||-|-|-|-|
+
+  The vline-option is to allow for expressing that where vertical rules should be
+  inserted between columns. It also allows for expressing double-vertical rules.
+
+
+  
