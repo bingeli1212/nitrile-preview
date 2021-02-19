@@ -49,4 +49,26 @@ Following are styles recognized by NITRILE:
   fenced-bundle and might not have an effect on some. The option name
   is a number expressing a distance in the number of "mm".
 
- 
++ head:3
+
+  The head-option specifies the number of rows at the beginning of
+  input rows to be treated as the header. The input rows refer to the
+  rows that user has specified in the source MD file, where some of
+  the rows are data rows and others expressing a hline or dhline.
+  When being treated as header certain things might happen, which 
+  includes but are not limited to setting the font style to bold.
+  
+  For longtable-fence this option is also used to separate these rows and
+  place them into a special section called "\endhead", especially when
+  LATEX translation is in place and that the "longtabu" environment is
+  being used.
+
++ foot:1
+
+  The foot-option specifies the number of rows at the end of input
+  rows to be treated as the footer. Normally this will not have
+  any effect but for longtable-fence these rows will be extracted
+  and placed into a special section called "\endfoot" which is 
+  a feature of the "longtabu" environment of a LATEX package.
+
+  
