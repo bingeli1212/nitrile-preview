@@ -78,3 +78,10 @@ Following are styles recognized by NITRILE:
 
   The bullet-option specifies a new symbol that will be used to replace
   the normal bullet character for a unordered list. 
+
+    ```list[bullet:checkmark]
+    - Mail Letter
+    - Buy Milk
+    - Go to the bank
+    ```
+
