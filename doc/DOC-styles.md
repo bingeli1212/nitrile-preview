@@ -9,3 +9,9 @@ Following are styles recognized by NITRILE:
 
   This style is designed to express alignment options for table columns.
 
++ fr:1 1 1
++ fr:1 2 1
++ fr:1 2 1 3 3
+
+  This style is designed to express relative column widthes.
+
