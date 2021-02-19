@@ -71,4 +71,10 @@ Following are styles recognized by NITRILE:
   and placed into a special section called "\endfoot" which is 
   a feature of the "longtabu" environment of a LATEX package.
 
-  
++ bullet:sect
++ bullet:maltese
++ bullet:cross
++ bullet:checkmark
+
+  The bullet-option specifies a new symbol that will be used to replace
+  the normal bullet character for a unordered list. 

@@ -1,10 +1,9 @@
 ---
-title: tabular-fence
+title: tabular-bundle 
 ---
 
-
-To express a tabular, attach the word "tabular" immediate
-after the opening fence.
+A tabular-bundle allows for data to be arranged in a tabular
+form.
 
     ```tabular
     | Names | Addr.        | Age
@@ -13,16 +12,12 @@ after the opening fence.
     | Jane  | 202 Rain Rd. | 21
     ```
 
-It is possible to include additional options to the 
-tabular-fence, which must appear within a set of 
-braces immediately after the word "tabular".
-
 The tabular can also be constructed with each describing
 a single tabular row, and with a double-backslash 
 by itself starting a new row. In this form, each tabular data
-must start with an ampersand,
-and then the text. The double-backslash by itself in a line
-signals the end of the current row.
+must start with an ampersand, followed by one or more spaces,
+and then the text. A double-backslash by itself in a line
+signals the end of the current row. 
 
     ```tabular
     & Names 
@@ -38,8 +33,8 @@ signals the end of the current row.
     & 21
     ```
 
-It is also possible to specify horizontal rule 
-using a triple-hyphen such as the following
+In addition, a triple-hyphen and triple-equal-sign
+will also end the current row and adds a 'hline' or 'dhline' row.
 
     ```tabular
     & Names 
@@ -55,8 +50,7 @@ using a triple-hyphen such as the following
     & 21
     ```
 
-A double line can be expressed by the appearance
-of triple equal-sign.
+Or,
 
     ```tabular
     & Names 
@@ -82,7 +76,7 @@ such as a begin-end-tabular environment with optional caption and label.
 tabular border lines can be specified by the vline-style
 and hline-style options.
 
-    ```tabular{vline:|*|*|*|,hline:t b}
+    ```tabular{vline:|*|*|*|,hline:+}
     | Names | Addr.        | Age
     ============================
     | James | 102 Sun Str. | 29
@@ -239,3 +233,4 @@ a begin-end-tabular environment. If the caption-style or label-style
 option is present, then the tabular will be labeled; if the
 caption-style option is present, the caption will be inserted.
 
+If a tabular bundle 
