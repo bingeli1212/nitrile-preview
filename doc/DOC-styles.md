@@ -85,26 +85,50 @@ Following are styles recognized by NITRILE:
     - Go to the bank
     ```
 
-+ hrule:+
++ hrule:-
 
-  The hrule-option only has one choice so far, which is the plus-sign. When it is
+  The hrule-option only has one choice so far, which is the hyphen-minus. When it is
   set, it instructs that every body row of a tabular is to have a single hline inserted
   between them. Following example would have inserted two hrule one between the first two
   rows and another one between the second/third rows.
 
-    ```tabular[hrule:+]
+    ```tabular[hrule:-]
     | Names | Addr.
     | James | 123 Sun Dr.
     | John  | 124 Sun Dr.
     ```
 
-+ vrule:|-|-|-|-|-
-+ vrule:|-|--|--|
-+ vrule:|-||-|-|-|-|
++ vrule:|+|+|+|+|+
++ vrule:|+|++|++|
++ vrule:|+||+|+|+|+|
 
-  The vrule-option is to allow for expressing that where vertical rules should appear
-  between columns. The value is a string where each hyphen expressing a column and a vertical
-  bar expressing the location of a vertical rule. It also allows for expressing a double-vertical 
-  by the appearance of a double-vertical-bar.
+  The vrule-option is to allow for expressing that where vertical
+  rules should appear between columns. The value is a string where
+  each plus-sign denotes a physical column and a vertical-bar denoting
+  the appearance of a vertical rule at that location. It also allows
+  for expressing a double-vertical by the appearance of a
+  double-vertical-bar.
 
++ cellcolor:a cyan b lime c pink e orange
 
+  The cellcolor-option specifies an associated list such that each color
+  is to be applied to a cell with a given text. In the following example all 
+  cells of text "a" will be colored using color 'cyan'. All cells of text
+  "b" will be color using color 'lime', and so on.
+
+    ```tabular{title:Cayley-1,vrule:|+||+|+|+|+|, hrule:-, cellcolor:a cyan b lime c pink e orange}
+    -------------------------
+    | &ast; | e | a | b | c
+    =========================
+    | e     | e | a | b | c
+    | a     | a | b | c | e
+    | b     | b | c | e | a
+    | c     | c | e | a | b
+    -------------------------
+    ```
+
++ title:Cayley-1
+
+  The title-option is used to specify the title of a bundle. It is currently recognized only 
+  by the tabular-bundle such that it will create "merged" row to contain this text. 
+  
