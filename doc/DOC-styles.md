@@ -101,6 +101,7 @@ Following are styles recognized by NITRILE:
 + vrule:|+|+|+|+|+
 + vrule:|+|++|++|
 + vrule:|+||+|+|+|+|
++ vrule:|||
 
   The vrule-option is to allow for expressing that where vertical
   rules should appear between columns. The value is a string where
@@ -108,6 +109,11 @@ Following are styles recognized by NITRILE:
   the appearance of a vertical rule at that location. It also allows
   for expressing a double-vertical by the appearance of a
   double-vertical-bar.
+
+  As a special rule, if the vrule-option is set to be "|||", or a
+  triple-vbar by itself without any plus-signs, then it instructs that
+  it should have a single vertical rule to appear between all columns
+  as well as before the first column and after the last column.
 
 + cellcolor:a cyan b lime c pink e orange
 
