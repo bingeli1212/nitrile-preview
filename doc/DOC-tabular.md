@@ -66,6 +66,21 @@ Or,
     & 21
     ```
 
+The 'hline' (horizontal line) and 'dhline' (double horizontal line)
+are to be inserted into the table in two different ways. The first
+is the manual method. This requires that a triple-hyphen or triple-equal-sign 
+or longer to appear in the source, which is to be done slightly different
+depending on whether it is column based or row based input.
+
+The other ways is to specify the "hline:+" option, which instruct that
+all data rows will have a 'hline' inserted automatically between them. 
+Note that a 'hline' will not be inserted before the first data row
+or after the last data row. This will still need to be accomplished by
+manually inserting the triple-hyphen or triple-equal-sign. This implementation 
+allows flexibility to create "\endhead" and "\endfoot" sections where 
+it will include 'hline' or 'dhline' in them, while only automatically inserting
+inter-row horizontal rules when inside data rows.
+
 A tabular-fence is similar to a tabular-phrase except that a tabular-phrase
 is an inline-block that would be mixed with other text in the fence,
 and can be used to construct two or more side-by-side tabulars. On the
