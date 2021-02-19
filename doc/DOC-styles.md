@@ -85,18 +85,26 @@ Following are styles recognized by NITRILE:
     - Go to the bank
     ```
 
-+ hline:+
++ hrule:+
 
-  The hline-option only has one choice so far, which is the plus-sign. When it is
+  The hrule-option only has one choice so far, which is the plus-sign. When it is
   set, it instructs that every body row of a tabular is to have a single hline inserted
-  between them. 
+  between them. Following example would have inserted two hrule one between the first two
+  rows and another one between the second/third rows.
 
-+ vline:|-|-|-|-|-
-+ vline:|-|--|--|
-+ vline:|-||-|-|-|-|
+    ```tabular[hrule:+]
+    | Names | Addr.
+    | James | 123 Sun Dr.
+    | John  | 124 Sun Dr.
+    ```
 
-  The vline-option is to allow for expressing that where vertical rules should be
-  inserted between columns. It also allows for expressing double-vertical rules.
++ vrule:|-|-|-|-|-
++ vrule:|-|--|--|
++ vrule:|-||-|-|-|-|
+
+  The vrule-option is to allow for expressing that where vertical rules should appear
+  between columns. The value is a string where each hyphen expressing a column and a vertical
+  bar expressing the location of a vertical rule. It also allows for expressing a double-vertical 
+  by the appearance of a double-vertical-bar.
 
 
-  
