@@ -138,3 +138,26 @@ Following are styles recognized by NITRILE:
   The title-option is used to specify the title of a bundle. It is currently recognized only 
   by the tabular-bundle such that it will create "merged" row to contain this text. 
   
+
++ arrowhead:1
++ arrowhead:2
++ arrowhead:3
+
+  The arrowhead-option is used inside a diagram to specify that a line should be drawn
+  with an arrow head attached to the end point of a line, or in the case of 
+  multiple line segments, the very end of the line segment. 
+
+  The value is an integer that is bit-OR'ed values of the following:
+
+  ```
+  - Arrow head at the end: 0x1
+  - Arrow head at the start: 0x2
+  - Arrow head at both start and end: 0x1 + 0x2 = 0x3
+  ```
+
+
+
+
+
+
+
