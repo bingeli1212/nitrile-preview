@@ -442,7 +442,24 @@ Following are styles recognized by NITRILE:
   label {replace:a/1 b/3 c/4} "a/b/c" (0,0) (1,1) (2,2)
   ```
 
++ fontfamily:<string>
 
+  This option holds the font family that is for the bundle. 
+  It is currently utilized by the diagram-bundle such that all
+  label texts will have been set to this font family.
+  So far the only valid value is "monospace".
+
++ fontstyle:<string>
+
+  This option holds the font family that is for the bundle. 
+  It is currently utilized by the diagram-bundle such that all
+  label texts will have been set to this font style. 
+  So far the only valid options are: "normal", "italic" and "oblique".
+
+
+
+
+  
 
 
 
