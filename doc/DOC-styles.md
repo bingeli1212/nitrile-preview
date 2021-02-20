@@ -276,11 +276,10 @@ Following are styles recognized by NITRILE:
   answer is shown it will be shown in this case, including all the texts and
   line drawings.
 
-+ showname:1
++ showid:1
 
-  Set it to 1 to allow for names to show through. This 
-  currently is utilized by the 'node' operation of a diagram-bundle 
-  such that when this option value is set the name of the node is shown
+  Set it to 1 to allow for IDs to be shown. Currently this is utilized by the
+  'node' operation of a diagram-bundle such that the ID of the node is shown
   inside the node.
 
 + angle:<angle>
@@ -324,13 +323,6 @@ Following are styles recognized by NITRILE:
 
   This sets the type of the linejoin. The valid values are:
   "miter", "round", and "bevel".
-
-+ autoid:1
-
-  The autoid-option when set to 1 is to turn on automatic assigning of certain IDs. 
-  This is currently utilized by the 'node' operation such that each new node created
-  will be assigned a new integer ID if this option is set, rather than being left
-  unassigned otherwise.
 
 + span:<degrees>
 

@@ -165,260 +165,8 @@ drawing commands, in order to maintain consistencies. Changing these
 configuration parameters in the middle of other drawing commands are
 not recommended and may result in distorted picture.
 
-+ config nogrid 1
-
-  Set to a 1 to disable the grid.
-
-+ config barlength <number>
-  The default length of the bar (grid unit). The default value
-  is 0.40. 
-
-+ config fontsize <number>
-
-  The default font size (pt) for all generated text inside this diagram.
-  The default value is 12.
-
-+ config dotsize <number>
-  The default size of dot (pt) for a dot-operation. The default value
-  is 5.
-
-+ config linesize <number>
-
-  The default size for line drawing (pt), 
-  when 0 is set it uses the default line size. The default
-  value is 0.
-
-+ config fillcolor <color>
-
-  The default color for filling an enclosed area.
-  The default value is an empty string, which would have
-  implied an default color. This is often to mean "black", but
-  it could be different for SVG.
-  It should be a string
-  of 19 valid color names, such
-  as "black", "pink", "steel", etc., or a
-  3-digit HEX such as "#888", or a 6-digit HEX such as "#F8F8F8",
-  or a HWB color such as '&HWB!0!0.2!0'.
-
-+ config linecolor <color>
-
-  This is the default color for stroking path or drawing a line,
-  a bezier curve, or an arrow.
-
-+ config dotcolor <color>
-
-  This sets the default color when coloring a dot during 
-  a dot-operation.          
-
-+ config opacity <number>
-
-  This sets the opacity of the filled color. The number must be
-  between 0 and 1, where 1 is the full opacity and 0 is the full
-  transparency.
-
-+ config dotsize <number>
-
-  This sets the default size for the dot during a dot-operation.
-
-+ config fontcolor <color>
-
-  This sets the default text color for any operation involving generating a text and/or label.
-
-+ config r <number>
-
-  This is the radius for a circle- and/or node-operation. The default
-  value is 1.
-
-+ config w <number>
-
-  This is the width for a rectangle- or box-operation.
-  The default value is 1.
-
-+ config h <number>
-
-  This is the height for a rectangle- or box-operation. 
-  The default value is 1.
-
-+ config answer 1
-
-  Set it to one to show the answer. This would only have
-  effect for commands that would optionally show
-  answers as part of its operation, such as multiws-operation
-  and longdivws-operation.
-
-+ config answercolor <color>
-
-  This is the color used for showing all texts, lines that are
-  part of a "answer". This would be effective only for operations
-  that has an "answer" option, such as multiws-operation and
-  longdivws-operation. 
-
-+ config showname 1
-
-  Set it to "1" to allow for names to show through. This would
-  only have effect on the node-operation at the current 
-  to allow for a named node to show its name in the center
-  when text is absent. The default is 0.   
-
-+ config angle <number>
-
-  Sets the angle which is a number between 0 and 90. This property
-  is only applicable in conjunction with the 'shade' property
-  to turn the filled color in a shade. 
-
-+ config shade <string>
-
-  Sets the type of the shade to use instead of a solid filled color.
-  
-+ config shadecolor <color> ...
-
-  Sets one or more colors for the shade. The colors can be one, two or 
-  three depending on the type of shade.
-  The color must appear
-  one after another separated by one or more empty spaces.
-
-+ config linedashed 1
-
-  When set to 1 a dashed line will be drawn instead of a solid one.
-
-+ config linecap <string>
-
-  This sets the type of the linecap. The valid values are:
-  'butt', 'round', and 'square'.
-
-+ config linejoin <string>
-
-  This sets the type of the linejoin. The valid values are:
-  'miter', 'round', and 'bevel'.
-
-+ config nodeid <int>
-
-  The 'nodeid' configuration parameter should be used for setting the default node id
-  for the next node if no name is given. This parameter should always be set to
-  an integer greater than 0. It will be automatically increased by 1 after that name
-  is being assigned to a newly created node.
-
-+ config span <number>
-
-  The 'span' configuration parameter expresses the number of degrees that covers
-  an range of degrees. It is currently used by the 'edge' command when it is to 
-  draw a loop edge. 
-
-+ config protrude <number> 
-
-  The 'protrude' configuration parameter specifies a length that goes beyond the
-  surface. It is currently being used by 'edge' command to set the length of the 
-  looped edge beyond the node surface. 
-
-+ config abr <number>
- 
-  The 'abr' configuration parameter specifies the aberration from the norm.
-  It is a number that is the number of degrees. 
-  It is currently being used by the 'edge' command to turn a straight line 
-  into a Bezier curve, in which case this number represents an angle that
-  is aberration from the straight line.
-
-+ config shift <number>
-
-  The 'shift' configuration parameter specifies the distance in grid unit.
-  It is currently used by the 'edge' command to shift the label away
-  from the center of the edge.
-
-+ config dx <number>
-
-  The 'dx' and 'dy' parameters are used to allow for fine turning the
-  label and text. This includes all label and text related options
-  such as label-operation, text-operation, cartesian-xtick-option,
-  cartesian-ytick-operation, cartesian-label-operation, etc.
-
-+ config dy <number>
-
-  See 'dx'.
-
-+ config sx <number> 
-
-  The 'sx' and 'sy' parameters are used by the draw-operation,
-  fill-operation, stroke-operation, arrow-operation,
-  revarrow-operation, and dblarrow-operation when a path is provided
-  as an option. In this case, these two parameters will "shrink" or
-  "expand" the path in either the x-direction and/or y-direction.
-
-+ config sy <number>
-
-  See 'sx'. 
-
-+ config dot 1
- 
-  The 'dot' parameter is used to set it so that the drawing will be shown
-  as a dot. It is currently being used by the node-operation to draw the current
-  node as a dot rather than a circle, in which case the 'dotsize' parameter
-  is used to determine the dot size.
-
-+ config xstep <number>
-
-  The xstep-option is used currently by the cartesian-grid-operation to
-  set the separation of each grid line in the x-direction. 
-
-+ config ystep <number>
-
-  The ystep-option is used currently by the cartesian-grid-operation to
-  set the separation of each grid line in the y-direction.
-
-+ config boxtype <string>
-
-  The boxtype-option sets the type of box for the box-operation. Currently the 
-  only available values are 'none', 'rect', 'hexgon', and 'triangle'. If the type string
-  is unrecognized it is assumed to be 'rect', which is the default type.
-
-+ config bartype <string>
-
-  The bartype-option can be sets to indicate what bar it is to draw. It is currently 
-  used by the drawlinesegcong-operation. It is set to 'single', 'double', or 'tripple'.
-
-+ config gap <number>
-
-  The gap-option is used to express a gap between two points. It is currently
-  used by the drawlinesegcong-operation when it needs to determine the gap between the bars
-  when it is instructed to draw double-bar or triple-bar. 
-  It is also used by the drawanglearc-operation to determine the distance between
-  the text and the outer ring of the arc.
-  It does not have a default value, and each operation would determine its own default
-  if it is not set.
-  
-+ config rotation <number>
-
-  The rotation-option is used to express a rotation in the units of degrees. It is currently used 
-  by the draw-operation, fill-operation, stroke-operation, arrow-operation, revarrow-operation, 
-  and dblarrow-operation to rotate the shape.
-  
-+ config debug 1
-
-  Set it to 1 to enable debug, which is to allow for each comment
-  line to be sent to the console log.
-
-+ config math 1
-
-  Set it to 1 to enable the math text to be recognized. By default 
-  text passed to label is of normal text nature, but it would be 
-  recognized as inline math if the style option is set.
-
-+ config replace a/1 b/3 c/4
-
-  Set this option to allow for labels text to be swapped for new
-  contents. This option is useful if part of the diagram is reused
-  but the only wishes is to replace part of label text with new
-  contents. This option specifies multiple occurances of the same
-  label text to be swapped for new contents, such as to replace
-  all label string "a" with "1", all "b" with "3", and all "c" 
-  with "4". Note that the entire label text has to match the
-  given search string.
-
-+ config arrowhead <1|2|3>
-
-  Set this to either 1, 2, or 3 to express the fact that an arrow
-  head should be attached to the line that is front facing, back
-  facing, or double facing.
-   
+    config linesize 1
+    config linecolor red
 
 
 # The set-operation
@@ -470,12 +218,12 @@ drawing environment.
   "save:<string>" and "load:<string>" where <string> expresses
   a string. 
 
-+ set nodeid <integer>
++ set id <integer>
 
-  Set the "nodeid" to an integer greater or equal to 0. This integer
-  will be used as the name of a new node if autonodeid-style option
-  is set to 1, and the this integer is automatically incremented by 1
-  after it has been assigned to a node as its node name.
+  Set the "id" to an integer greater or equal to 0. This integer
+  is currently used by the 'node' operation when its ID is
+  an underscore, in which case it will be replaced by the an integer
+  that is one greater than the last assigned ID.
 
 The 'refx', 'refy', and 'refs' parameters can be set at any point
 during a drawing. It can be compared to a "transform" of a SVG
@@ -2296,6 +2044,15 @@ When the edge is a loop, which is the case when the two vertices are
 the same, then the shift-option expresses an additional centrifugal
 distance from the center of the node.
 
+As a special case, if the name of a node is underscore, such as shown
+by the following example, an integer ID will be assigned to the node
+which is one plus the last assigned ID. If the last assigned ID isn't
+set, it is assumed as 0. In the following example the first node
+will be assigned ID 11, and the second one 12.
+
+    set id 10
+    node._ (0,0)
+    node._ (1,1)
 
 
 
