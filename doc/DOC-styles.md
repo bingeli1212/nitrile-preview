@@ -138,12 +138,11 @@ Following are styles recognized by NITRILE:
     -------------------------
     ```
 
-+ title:Cayley-1
++ title:<string> 
 
   The title-option is used to specify the title of a bundle. It is currently recognized only 
   by the tabular-bundle such that it will create "merged" row to contain this text. 
   
-
 + arrowhead:1
 + arrowhead:2
 + arrowhead:3
@@ -443,12 +442,6 @@ Following are styles recognized by NITRILE:
   label {replace:a/1 b/3 c/4} "a/b/c" (0,0) (1,1) (2,2)
   ```
 
-+ arrowhead:<integer>
-
-  Set this to either 1, 2, or 3 to express the fact that an arrow
-  head should be attached to the line that is front facing, back
-  facing, or double facing. 
-   
 
 
 
