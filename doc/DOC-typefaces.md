@@ -68,6 +68,10 @@ part of a text.
   designated as "l", "c", or "r". It will work inside a column 
   designated as "p(1cm)".
 
+  ```verbatim
+  Hello &br{} world.
+  ```
+
 + frac
 
   This is to insert a fraction.
@@ -77,8 +81,17 @@ part of a text.
   This is to insert a superscript.
 
   ```verbatim
-  Hello &br{} world.
+  a&sup{2} + b&sup{2} = c&sup{2}
   ```
+
++ sub
+
+  This is to insert a subscript.
+
+  ```verbatim
+  a&sub{1}
+  ```
+
 
     
 
