@@ -18,6 +18,11 @@ Following are styles recognized by NITRILE:
   The fr-option is designed to express relative column widthes, which is
   a list of integers separated by spaces.
 
++ outline:1
+
+  Set this option to 1 to allow an outline to be show for the bundle. This
+  would work for some bundles but might not work for all.
+
 + save:a
 + save:b
 
@@ -155,8 +160,303 @@ Following are styles recognized by NITRILE:
   - Arrow head at both start and end: 0x1 + 0x2 = 0x3
   ```
 
++ nogrid:1
 
+  Set to a 1 to disable the showing of grid. This option is checked by the 
+  diagram-bundle, which by default shows a grid as its background. Setting
+  this option to 1 will disable it.
 
++ barlength:<length>
+
+  This option is used by diagram-bundle when it needs to show a bar to indicate
+  the location of certain points, such as those on a number line or Cartesian
+  coordinate X/Y-Axis. Setting this value would allow the length of the bar
+  to be shown in various length. The number is a float denoting the length
+  in diagram grid unit.  If this value is not set a default value 0.40 is used.
+
++ dotsize:<pt>    
+
+  This option is used by a diagram-bundle to determine the size of the dot to
+  place at a given location. It is a number expressing the diameter   of the
+  dot in pt.  If not set it would have a default value of 5.
+
++ linesize:<pt>
+
+  This option is used by a diagram-bundle to determine the line size for drawing
+  various lines and curves. It is a number expressing the width of the line in pt.
+  If not set then it uses whatever the default value the underlying system such 
+  as TikZ or SVG provides.
+
++ fillcolor:<color>
+
+  This option sets the color to fill an area. It is currently used by a
+  diagram-bundle when it needs to fill an area in an operation such as 'fill'
+  or 'draw'.  The default value is an empty string, which would have implied a
+  default color. This is often to mean "black", but it could be different for
+  SVG.  It should be a string of 19 valid color names, such as "black", "pink",
+  "steel", etc., or a 3-digit HEX such as "#888", or a 6-digit HEX such as
+  "#F8F8F8", or a HWB color such as '&hwb!0!0.2!0'.
+
+  ```
+  fillcolor:red
+  fillcolor:green
+  fillcolor:blue
+  fillcolor:#ccc
+  fillcolor:#c0c0c0
+  fillcolor:&rgb!0.4|0.5|0.6
+  fillcolor:&hwb!20|0.5|0.6
+  fillcolor:&hsv!20|0.5|0.6
+  ```
+
++ linecolor:<color>
+
+  This option denotes a color that would be used to draw a line or stroke a
+  path. It is currently used by a diagram-bundle. The value is a <color> that
+  is the same value expected of a fillcolor-option.  When this value is not
+  set, it typically assume a black color.  It could also be set to a different
+  color for SVG as it uses the 'currentColor'.
+
++ dotcolor:<color>
+
+  This option denotes a color of a dot when a dot is to be placed in a
+  location.  It is currently used by a diagram-bundle when it needs to perform
+  such an operation. When not set it defaults to black.
+
++ fontcolor:<color>
+
+  This option sets the color of the text. It is currently used by a
+  diagram-bundle when it needs to generate text, and the color if specified
+  would be used for the font. If this option is not set the color of the text
+  is not specified, in which case the text will be shown in its default color.
+
++ opacity:<number>
+
+  This sets the opacity of the filled color. The number must be
+  between 0 and 1, where 1 is the full opacity and 0 is the full
+  transparency. When not set it assumes that the opacity is at 1.
+
+  ```
+  opacity:0.1
+  opacity:0.3
+  opacity:0.5
+  ```
+
++ r:<length>
+
+  This option denotes a length that is related to a radius. It is used by a
+  diagram-bundle when it needs to perform some operations such as placing a
+  node at a location, in which case the value of this option determines the
+  radius of the node. This value is also used to set the radius of an angle arc
+  that is drawn by the diagram.  The value of this option is a length value
+  expressed in the grid unit.  There is no default value.  When this option is
+  not set, each operation would each have a different default value.
+
++ w:<length>
+
+  This option denotes a length expressing the length of the horizontal
+  dimension of a 2D shape.  It is currently used by a diagram-bundle to set the
+  width of a box when it needs to place a box at a given location.
+
++ h:<length>
+
+  This option denotes a length expressing the length of the vertical dimension
+  of a 2D shape.  It is currently used by a diagram-bundle to set the width of
+  a box when it needs to place a box at a given location.
+
++ showanswer:1
+
+  Set it to 1 to allow the answer to be shown. This option is currently used by
+  certain operations of a diagram-bundle such as 'multiws' and 'longdiv' to
+  also generate the answer as part of the operation if it has detected that
+  this option is set.
+
++ showanswercolor:<color>
+
+  This option holds the color such that when the contents associated with an
+  answer is shown it will be shown in this case, including all the texts and
+  line drawings.
+
++ showname:1
+
+  Set it to 1 to allow for names to show through. This 
+  currently is utilized by the 'node' operation of a diagram-bundle 
+  such that when this option value is set the name of the node is shown
+  inside the node.
+
++ angle:<angle>
+
+  This option holds a number expressing an angle, which is a number between 0
+  and 90.  This option is currently utilized by 'fill' and 'draw' operations to
+  determine the angle of the shading if a linear shading is to be used.
+
++ shade:<string>
+
+  This option sets the type of the shading to be used. It is currently used by
+  the 'draw' or 'fill' operation inside a diagram-bundle to determine what shading
+  method to use for filling a shape. Currently the only valid values are
+  "linear", "radial" and "ball"
+
+  ```
+  shade:linear
+  shade:radial
+  shade:ball   
+  ```
+  
++ shadecolor:<color> <color> <color>
+
+  Sets one or more colors for the shade. The colors can be one, two or three
+  depending on the type of shade.  The color must appear one after another
+  separated by one or more empty spaces. See other section that talks about
+  shading on how to set this option value.
+
++ linedashed:1
+
+  When this option is set to 1 all line drawn will be a dashed line instead
+  of solid lines. This is current used by the 'draw', 'stroke', 'drawanglearc', and
+  other methods where drawing a line is needed.
+
++ linecap:<string>
+
+  This sets the type of the linecap. The valid values are:
+  "butt", "round", and "square".
+
++ linejoin:<string>
+
+  This sets the type of the linejoin. The valid values are:
+  "miter", "round", and "bevel".
+
++ autoid:1
+
+  The autoid-option when set to 1 is to turn on automatic assigning of certain IDs. 
+  This is currently utilized by the 'node' operation such that each new node created
+  will be assigned a new integer ID if this option is set, rather than being left
+  unassigned otherwise.
+
++ span:<degrees>
+
+  This span-option is to express a number that expresses the number of degrees of an
+  angle.  It is currently utilized by the 'edge' operation when it needs to
+  draw a looped edge to go from the node to itself and this values determines
+  how wide the looped edge should be separated.
+
++ protrude:<length> 
+
+  The protrude-option specifies a length that goes beyond the surface. It is
+  currently being used by 'edge' operation when it needs to draw a looped edge
+  of a single node that connects to itself, in which case the protrude-option
+  is used to determine how far apart the loop will go beyond the surface of the
+  node.
+
++ abr:<degrees>
+ 
+  The abr-option specifies the aberration from the norm.  It is a number that
+  expresses an angle in the unit of degrees.  It is currently being utilized by
+  the 'edge' operation such that when this option is set it expresses that a
+  Bezier curve should be drawn instead of a straight line that connects two
+  different nodes. The wider this value, the more curved edge should end up.
+
++ shift:<length>
+
+  The shift-option hold a length that expresses the location of text shifted
+  away from its attached location. It is currently utilized by the 'edge'
+  operation to place the text away from the edge. It is also utilized by the
+  'drawanglearc' operation to shift the text away from the arc. Note that this
+  value can be a negative number such that when it is negative the shift would
+  have been performed in an opposite direction.
+
++ dx:<length>
+
+  The dx-option and dy-option would have worked together to allow for a text
+  based operation such as 'label' and 'text' to fine turn the location of the
+  positioning of the text.  This would have affected all operations that places
+  texts including but are not limited to the following operations: 'label',
+  'text', 'cartesian.xtick', 'cartesian.ytick', 'cartesian.label', etc.  etc.
+
++ dy:<length>
+
+  See dx-option.
+
++ scalex:<number> 
+
+  The scalex-option, scaley-option and rotate-option would work together to
+  scale an existing shape by these amount. It is current utilized by the
+  'fill', 'stroke', 'arrow', 'revarrow', and 'dblarrow' operation to place a
+  shape at a desired location.  In this case, these two parameters will
+  "shrink" or "expand" the shape in either the x-direction and/or y-direction
+  and also rotate the shape as well.
+
++ scaley:<number>
+
+  See scalex-option. 
+
++ rotate:<degrees>
+
+  See scalex-option.
+  
++ xstep:<length>
+
+  The xstep-option and ystep-option is used currently by the 'cartesian.grid'
+  to set the separation of each grid line in the x-direction.  The option value
+  is to be a number in grid unit.
+
++ ystep:<length>
+
+  See xstep-opion. 
+
++ boxtype:<string>
+
+  The boxtype-option sets the type of box for the box-operation. Currently the
+  only available values are 'none', 'rect', 'hexgon', and 'triangle'. If the
+  type string is unrecognized it is assumed to be 'rect', which is the default
+  type.
+
++ bartype:<string>
+
+  The bartype-option can be sets to indicate what bar it is to draw. It is
+  currently used by the 'drawlinesegcong'. It is set to 'single', 'double', or
+  'tripple'.
+
++ gap:<length>
+
+  The gap-option is used to express a gap between two points. It is currently
+  used by the 'drawlinesegcong' when it needs to determine the gap between the
+  bars when it is instructed to draw double or triple bar.  It does not have a
+  default value, and each operation would determine its own default if it is
+  not set.
+  
++ debug:1
+
+  Set it to 1 to enable debug. For a diagram-bundle it will send the input
+  and output to the console.
+
++ math:1
+
+  Set it to 1 to enable the math text to be recognized. By default 
+  text passed to label is of normal text nature, but it would be 
+  recognized as inline math if the style option is set.
+
++ replace:a/1 b/3 c/4
+
+  Set this option to allow for labels text to be swapped for new
+  contents. This option is useful if part of the diagram is reused
+  but the only wishes is to replace part of label text with new
+  contents. This option specifies multiple occurances of the same
+  label text to be swapped for new contents, such as to replace
+  all label string "a" with "1", all "b" with "3", and all "c" 
+  with "4". Note that the entire label text has to match the
+  given search string.
+  
+  ```verbatim
+  viewport 10 10
+  label {replace:a/1 b/3 c/4} "a/b/c" (0,0) (1,1) (2,2)
+  ```
+
++ arrowhead:<integer>
+
+  Set this to either 1, 2, or 3 to express the fact that an arrow
+  head should be attached to the line that is front facing, back
+  facing, or double facing. 
+   
 
 
 
