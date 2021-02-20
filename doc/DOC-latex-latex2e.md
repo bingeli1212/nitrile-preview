@@ -163,30 +163,62 @@ Class and package options are covered in more detail in The LaTeX
 Companion and in LaTeX2e for Class and Package Writers.
 
 # Standard classes
+
 The following classes are distributed with LaTeX:
 
-~~~
 + article
+
   The article class described in LaTeX: A Document Preparation System.
+
 + book
+
   The book class described in LaTeX: A Document Preparation System.
+
 + report
+
   The report class described in LaTeX: A Document Preparation System.
+
 + letter
+
   The letter class described in LaTeX: A Document Preparation System.
+
 + slides
-  The slides class described in LaTeX: A Document Preparation System, formerly SLiTeX.
+
+  The slides class described in LaTeX: A Document Preparation System, formerly
+  SLiTeX.
+
 + proc
-  A document class for proceedings, based on article. Formerly the proc package.
+
+  A document class for proceedings, based on article. Formerly the proc
+  package.
+
 + ltxdoc
+
   The document class for documenting the LaTeX program, based on article.
+
 + ltxguide
-  The document class for LaTeX2e for Authors and LaTeX2e for Class and Package Writers, based on article. The document you are reading now uses the ltxguide class. The layout for this class is likely to change in future releases of LaTeX.
+
+  The document class for LaTeX2e for Authors and LaTeX2e for Class and Package
+  Writers, based on article. The document you are reading now uses the ltxguide
+  class. The layout for this class is likely to change in future releases of
+  LaTeX.
+
 + ltnews
-  The document class for the LaTeX News information sheet, based on article. The layout for this class is likely to change in future releases of LaTeX.
+
+  The document class for the LaTeX News information sheet, based on article.
+  The layout for this class is likely to change in future releases of LaTeX.
+
 + minimal
-  This class is the bare minimum (3 lines) that is needed in a LaTeX class file. It just sets the text width and height, and defines \normalsize. It is principally intended for debugging and testing LaTeX code in situations where you do not need to load a "full" class such as article. If, however, you are designing a completely new class that is aimed for documents with structure radically different from the structure supplied by the article class, then it may make sense to use this as a base and add to it code implementing the required structure, rather than starting from article and modifying the code there.
-~~~
+
+  This class is the bare minimum (3 lines) that is needed in a LaTeX class
+  file. It just sets the text width and height, and defines \normalsize. It is
+  principally intended for debugging and testing LaTeX code in situations where
+  you do not need to load a "full" class such as article. If, however, you are
+  designing a completely new class that is aimed for documents with structure
+  radically different from the structure supplied by the article class, then it
+  may make sense to use this as a base and add to it code implementing the
+  required structure, rather than starting from article and modifying the code
+  there.
 
 
 
@@ -328,10 +360,10 @@ One small but far-reaching change for LaTeX2e is that, within the
 dimensions of the box that would be produced by using simply
 \mbox{<text>}:
 
-    \heightits height above the baseline;
-    \depthits depth below the baseline;
-    \totalheightthe sum of \height and \depth;
-    \widthits width.
+    \height      : its height above the baseline;
+    \depth       : its depth below the baseline;
+    \totalheight : the sum of \height and \depth;
+    \width       : its width.
 
 Thus, to put "hello" in the centre of a box of twice its natural width, you would use:
 
@@ -343,10 +375,11 @@ Or you could put f into a square box, like this: tex2html_wrap984
 
 Note that it is the total width of the framed box, including the
 frame, which is set to \totalheight. The other change is a new
-possibility for <pos>: s has been added to l and r. If <pos> is s then
-the text is stretched the full length of the box, making use of any
-"rubber lengths" (including any inter-word spaces) in the contents of the box. If no such "rubber
-length" is present, an "underfull box" will probably be produced.
+possibility for <pos>: s has been added to l and r. If <pos> is s
+then the text is stretched the full length of the box, making use
+of any "rubber lengths" (including any inter-word spaces) in the
+contents of the box. If no such "rubber length" is present, an
+"underfull box" will probably be produced.
 
     \parbox [<pos>] [<height>] [<inner-pos>] {<width>} {<text>}
     \begin{minipage} [<pos>] [<height>] [<inner-pos>] {<width>}
@@ -441,8 +474,8 @@ As another more useful example, the definition:
     \newcommand{\seq}[2][n]{\lbrace #2_{0},\ldots,\,#2_{#1} \rbrace}
 
 means that the input ``$\seq{a}$`` produces the formula where the last
-element is \(a_n\), whereas the input ``$\seq[k]{x}$`` produces the
-formula where the last element is \(x_k\). In summary, the command:
+element is &sub{a/n}, whereas the input ``$\seq[k]{x}$`` produces the
+formula where the last element is &sub{x/k}. In summary, the command:
 
     \newcommand {<cmd>} [<num>] [<default>] {<definition>}
 
@@ -465,12 +498,13 @@ defined then the existing definition is kept; but if it is currently
 undefined then the effect of \providecommand is to define <cmd> just
 as if \newcommand had been used.
 
-All the above five "defining commands" now have *-forms that are
-usually the better form to use when defining commands with arguments,
-unless any of these arguments is intended to contain whole paragraphs
-of text. Moreover, if you ever do find yourself needing to use the
-non-star form then you should ask whether that argument would not
-better be treated as the contents of a suitably defined environment.
+All the above five "defining commands" now have "-forms" ending
+that are usually the better form to use when defining commands
+with arguments, unless any of these arguments is intended to
+contain whole paragraphs of text. Moreover, if you ever do find
+yourself needing to use the non-star form then you should ask
+whether that argument would not better be treated as the contents
+of a suitably defined environment.
 
 The commands produced by the above five "defining commands" are now
 robust.
@@ -837,7 +871,6 @@ name.
 
 The following packages are distributed with LaTeX:
 
-~~~
 + alltt
   This package provides the alltt environment, which is like the verbatim environment except that \, {, and } have their usual meanings. It is described in alltt.dtx and LaTeX: A Document Preparation System.
 
@@ -879,13 +912,11 @@ The following packages are distributed with LaTeX:
 
 + tracefnt
   This allows you to control how much information about LaTeX's font loading is displayed. It is described in The LaTeX Companion.
-~~~
 
 # Related software
 
 The following software should be available from the same distributor as your copy of LaTeX2e. You should obtain at least the graphics and tools collections in order to have all the files described in LaTeX: A Document Preparation System. The amsmath package (part of amslatex and formerly known as amstex) and babel are also mentioned in the list of `standard packages' in section C.5.2 of that book.
 
-~~~
 + amslatex
   Advanced mathematical typesetting from the American Mathematical Society. This includes the amsmath package; it provides many commands for typesetting mathematical formulas of higher complexity. It is produced and supported by the American Mathematical Society and it is described in The LaTeX Companion.
 
@@ -904,14 +935,12 @@ The following software should be available from the same distributor as your cop
 + tools
   Miscellaneous packages written by the LaTeX3 project team.
   These packages come with documentation and each of them is also described in at least one of the books The LaTeX Companion and LaTeX: A Document Preparation System.
-~~~
 
 # Tools
 
 This collection of packages includes, at least, the following (some
 files may have slightly different names on certain systems):
 
-~~~
 + array
   Extended versions of the environments array, tabular and tabular*, with many extra features.
  
@@ -977,7 +1006,6 @@ files may have slightly different names on certain systems):
  
 + xspace
   "Smart space" command that helps you to avoid the common mistake of missing spaces after command names.
-~~~
 
 # The "aux" files
 
@@ -1042,6 +1070,403 @@ the "bbold" package must be included.
 To generate a colon character one needs to use 
 
     \text{: }
+
+# Minipage
+
+The minipage is often used to put things next to each other, which can
+otherwise be hard put together. For example, two pictures side by side, two
+tables next to a text or a picture or vice versa. The idea behind the minipage
+command is that within an existing page "built in" an additional page. By this
+one has the opportunity to use this new page, for example, set two pictures
+side by side, then just set two minipages side by side. Here than in Figure 1
+is set in the first and Figure 2 in the second minipage.
+
+    \begin{minipage}[t][5cm][b]{0.5\textwidth}
+
+This minipage now has a defined height of 5cm, and the content will now be
+aligned to the bottom of the minipage.
+
+Put three pictures side by side, where you should set the width of the image
+using width = \textwidth, if they are too wide.
+
+    \begin{minipage}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{pic1}
+    \end{minipage}
+    \begin{minipage}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{pic2}
+    \end{minipage}
+    \begin{minipage}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{pic3}
+    \end{minipage}
+
+# The "columns" environment in Beamer
+
+The columns environment is only available in the beamer document-class and
+might therefore be lesser known.
+
+Basic command structure:
+
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            %Content
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            %Content
+        \end{column}
+    \end{columns}
+
+# The "description" 
+
+The description environment is a listing variant in LATEX that can be used for
+a glossary, among other things. Example 1
+
+    \begin{description}
+    \item[A key point]
+    There must be something here to see the effect.
+    \item[Another key point] and text behind it
+    \end{description}
+
+If immediate line break is needed after the item text, place a \hfill after
+the item text and then a double-backslash.
+
+    \begin{description}
+    \item[A key point]\hfill \\
+    A line break is not enough to bring the text
+    \item[Another key point]\hfill \\  down.
+    \end{description}
+
+# Using arrows
+
+Latex provides a huge number of different arrow symbols. Arrows would be used
+within math enviroment. If you want to use them in text just put the arrow
+command between two dollar-signs like this example: 
+
+    $\uparrow$ 
+
+Following are arrows supported by latex2e natively.
+
+    \twoheadleftarrow    \twoheadrightarrow
+    \Lsh                 \Rsh
+    \leftleftarrows      \rightrightarrows
+    \upuparrows          \downdownarrows
+    \rightleftarrows     \leftrightarrows
+    \Lleftarrow          \Rrightarrow
+    \leftarrowtail       \rightarrowtail
+    \rightsquigarrow     \leftrightsquigarrow
+    \looparrowleft       \looparrowright
+    \circlearrowleft     \circlearrowright
+    \curvearrowleft      \curvearrowright
+    \upharpoonleft       \upharpoonright
+    \downharpoonleft     \downharpoonright
+    \nleftarrow          \nrightarrow
+    \nLeftarrow          \nRightarrow
+    \nleftrightarrow     \nLeftrightarrow
+
+# Using arrow with text
+
+First the default ones, then amssymb version and last the symbols of usepackage extarrows:
+
+Following is to show a text with a left pointing arrow on top of it.
+
+    \overleftarrow{Text}
+
+Following is to show a text with a right pointing arrow on top of it.
+
+    \overrightarrow{Text}
+
+By using package amssymb, we can have following additional commands.
+Following is to show a text with left pointing arrow underneath it.
+
+    \underleftarrow{Text}
+    
+Following is to show a text with right pointing arrow underneath it.
+
+    \underrightarrow{Text}
+
+Following is to show a text with left-right pointing arrow on top of it.
+
+    \overleftrightarrow{Text}
+
+Following is to show a text with left-right pointing arrow underneath it.
+
+    \underleftrightarrow{Text}
+
+Note that all prevous commands are to show a text as the main object and arrows
+are decorations of it. Following commands are designed to show an arrow as the
+main object and texts are the decorations of the arrow; sometimes being on top
+of the arrow and other times being below it. Following is a list of
+horizontally oriented arrows where it can have text attached at the top (upper
+text) and/or underneath it (lower text). Almost all of them have the capability
+to automatically adjust the length of the arrow itself depending on the longest
+of the text (extra long text).
+
+    \xLongleftarrow[\text{lower Text}]{\text{upper Text}}  
+    \xLongleftarrow{\text{extra long text}}  
+    \xLongrightarrow[\text{lower Text}]{\text{upper Text}}  
+    \xLongrightarrow{\text{extra long text}}  
+    \xLongleftrightarrow[\text{lower Text}]{\text{upper Text}}  
+    \xLongleftrightarrow{\text{extra long text}}  
+    \xLeftrightarrow[\text{lower Text}]{\text{upper Text}}  
+    \xLeftrightarrow{\text{extra long text}}  
+    \xlongleftrightarrow[\text{lower Text}]{\text{upper Text}}  
+    \xlongleftrightarrow{\text{extra long text}}  
+    \xlongrightarrow[\text{lower Text}]{\text{upper Text}}  
+    \xlongrightarrow{\text{extra long text}}  
+    \xlongrightarrow{}  
+    \xleftrightarrow[\text{lower Text}]{\text{upper Text}}  
+    \xleftrightarrow{\text{extra long text}}  
+    \xlongleftarrow[\text{lower Text}]{\text{upper Text}}  
+    \xlongleftarrow{\text{extra long text}}  
+    \xlongleftarrow{}  
+    \xleftarrow[\text{lower Text}]{\text{upper Text}}  
+    \xleftarrow{\text{extra long text}}  
+    \xrightarrow[\text{lower Text}]{\text{upper Text}}  
+    \xrightarrow{\text{extra long text}}  
+    \xlongequal[\text{lower Text}]{\text{upper Text}}  
+    \xlongequal{\text{extra long text}}  
+
+# The "tabbing" environment
+
+With the tabbing environment it is possible to set tables as it was usual on a
+typewriter in the past.
+
+    \begin{tabbing}
+    Text \= more text \= even more text \= last text \\
+    Second row \>  \> more content \\
+    ...
+    \end{tabbing}
+
+Especially beginners should not use tabbing, because there is a large selection
+of table packages and the handling of the commands within the tabbing
+environment is not very intuitive. For the sake of completeness, the commands
+are listed here, although I would advise against their use.
+
+- With \= a Tab Stop is set.
+- The command \> causes LaTeX to advance to the next tab stop.
+- With \< it is possible to set something to the left of the local border
+  without changing the border.
+- \+ This moves the left edge of the next and all following commands one tab to
+  the right.
+- \- Moves the left border of the next and all following commands one tab to
+  the left.
+- With \‘ the text to the left of it is set before the next tab stop and the
+  text to the right of it is set at the tab stop.
+- With the command \~ everything in the column is moved to the previous column.
+- With \kill at the end of the line, the set tab stop for the following lines
+  is considered, but the text or the content in the line ending with \kill is
+  not printed.
+
+# The "array" environment
+
+The array environment can be used to set mathematical tables respectively table
+with math content within the math mode.
+
+    \begin{array}{column_1column_2...column_n}
+    column 1 entry & column 2 entry & ... & column n entry \\
+    ...
+    \end{array}
+
+The number of columns and their orientation are defined by the letters l
+(left-aligned), c (centered) and r (right-aligned) as in the tabular
+environment. Again, the individual columns are separated by the & sign and the
+line ends with a line break \\.
+
+# Typesetting a "landscape" table
+
+Some tables could become very wide, sometimes even wider as the paper width.
+One solution could be taken the whole tabular in a small environment. But there
+is a better way.  Solution An esay way is to change the orientation of the
+table, by using usepackage lscape, which allows to change the orientation of
+the page and therefor also the table.
+
+    \documentclass{article}
+    \usepackage{lscape}
+    \begin{document}
+    % An extra wide table
+    \begin{landscape}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Year & 2000 & 2001 \\
+    \hline
+    GPD in billions & 235  &  225 \\
+    \hline
+    \end{tabular}
+    \end{landscape}
+    \end{document}
+
+# standard color names without "dvipsnames" option
+
+Following are color names available when "xcolor" 
+packages are included.
+
+    black         darkgray          gray        
+    lightgray     white             yellow        
+    orange        red               purple        
+    pink          magenta           violet        
+    blue          cyan              teal
+    green         lime              olive        
+    brown
+
+# Additional color names with "dvipsnames" option
+
+Following are additional color names available 
+when the "dvipsnames" option is included with the
+"xcolor" package.
+
+    Apricot        Cyan             Mahogany
+    ProcessBlue    SpringGreen      Aquamarine
+    Dandelion      Maroon           Purple
+    Tan            BitterSweet      DarkOrchid
+    Melon          RawSienna        TealBlue
+    Black          Emerald          MidnightBlue
+    Red            Thistle          Blue
+    ForestGreen    Mulberry         RedOrange
+    Turquoise      BlueGreen        Fuchsia
+    NavyBlue       RedViolet        Violet
+    BlueViolet     Goldenrod        OliveGreen
+    Rhodamine      VioletRed        Brickred
+    Gray           Orange           RoyalBlue
+    White          Brown            Green
+    OrangeRed      RoyalPurple      WildStrawberry
+    BurntOrange    GreenYellow      Orchid
+    RubineRed      Yellow           CadetBlue
+    JungleGreen    Peach            Salmon
+    YellowGreen    CarnationPink    Lavender
+    Periwinkle     SeaGreen         YellowOrange
+    Cerulean       LimeGreen        PineGreen
+    Sepia          CornflowerBlue   Magenta
+    Plum           SkyBlue
+
+# Setting color of a tabular
+
+Within tables, individual cells, columns, and rows can be colored. To be able
+to use the commands, the option table must be set.
+
+- The cellcolor{Color} command colors the cell in which it was set.
+
+- The rowcolor{Color} command is set at the beginning of a row and colors it.
+
+- The rowcolors[Option]{Beginning line}{Odd Lines Color}{Even Lines Color}
+  command colors the lines accordingly. The command is placed before the table
+  and affects all subsequent tables.
+
+- The columncolor{Color} command colors a column in the appropriate color. This
+  is used in the column definition of the table. The parentheses and the
+  character are important here.
+
+    \begin{tabular}{r>{\columncolor{red}}cl}
+    A & B & C \\
+    1 & 2 & 3 \\
+    A & B & C \\
+    \end{tabular}
+
+# Change the font color of a text
+
+The font color or text color can be changed with the \textcolor command. 
+For example, to change part of the text so that its font color is blue,
+we would insert the following command:
+
+    \textcolor{blue}{Hello World}
+
+# Change the background color 
+
+To change the background we need to use something called a "colored background box". 
+A colored background box is to be created using the command \colorbox. For example
+to create a colored background box with text "Hello World" in it we can insert
+the following command, which will create a box just wide enough to contain the
+text and its background is set to red.
+
+    \colorbox{red}{Hello World} 
+    
+It is also possible to combine both the colored background box with the font color
+command to show a blue text on a red background.
+
+    \colorbox{red}{\textcolor{blue}{Hello World}}
+
+# Change the color for the entire page
+
+The \pagecolor command is designed to change the color of the current page. For
+example, the following command sets it so that the current page becomes red
+instead of white.
+
+    \pagecolor{red} 
+
+# The "\color" command
+
+The \color command changes the default color from black to the selected color.
+For example, if the following command is inserted then  everything turns green,
+not only the font, but also other elements like tables etc.
+
+    \color{green} 
+
+# Defining new colors
+
+With xcolor you can define a new color With the command \definecolor.
+For example, the following command would define a new color name "MyBlue" 
+to a RGB value of RGB(0.9,0.9,0.1).
+
+    \definecolor{MyBlue}{rgb}{0.9,0.9,1}
+
+Note that this command can happen inside the document as well as within the
+preamble.
+
+# The "\fcolorbox" command
+
+The \fcolorbox command is designed to create a framed box such that the border
+and background color can be set individually.
+For example, to create a framed box with border red and background white one
+can insert the following command.
+
+    \fcolorbox{red}{white}{$a^{2} + b^{2} = c^{2}$}
+
+The \fcolorbox command can also work with \parbox.
+
+    \fcolorbox{red}{white}{
+    \parbox{0.3\textwidth}{
+    \begin{itemize}
+    \item listing
+    \item key point 1
+    \item key point 2
+    \end{itemize}}
+    }
+    \fcolorbox{blue}{white}{
+    \parbox{0.3\textwidth}{
+    \begin{enumerate}
+    \item enumeration
+    \item key point
+    \item key point
+    \end{enumerate}}
+    }
+
+# Simulating "\textsubscript"
+
+LATEX does not provide a "\textsubscript" command for typesetting a subscript.
+But one can simulate this effect by utilizing the \raisebox command which has
+been designed to raise or lower a text vertically. 
+
+The \raisebox command expects two arguments. The first one is expected to be a
+length that describes the relative position to raise or lower the subscript
+text.  The second argument is the subscript text itself.  For the first
+argument, if the length is positive then the text will be raised and otherwise
+it will be lowered.  Following is a way to simulate the effect of
+"\textsubscript{1}" by lowering the subscript text by "0.4ex" and also reducing
+the font of the subscript text to "\scriptsize".
+
+    \raisebox{-0.4ex}{\scriptsize{}1}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

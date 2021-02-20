@@ -37,5 +37,14 @@ it stops working.
 
   \startpart[title={A \math{≔} B},reference={},bookmark={A \math{\sqrt{2} ≔} B}]
 
+# Subscript
+
+In ConTeXt, you can write the following to generate a subscript text.
+
+    like\low{this}
+
+
+
+
 
 
