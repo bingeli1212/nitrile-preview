@@ -1985,35 +1985,39 @@ the same way how a "dot" operation is controlled, such as to set the
 "dotsize" for the size of the dot in diameter, and "dotcolor" for the
 color of the dot.
 
-Typically each node is to be assigned a name that follows the period
+Typically each node is to be assigned an ID that follows the period
 after the "node" keyword. However, if a node-operation is to be done inside
-a for-loop then this assigning of a node name to a node is difficult to implement.
+a for-loop then this assigning of an ID to a node is difficult to implement.
 If assigning to a node a name is important, then it can be done
-By setting the autonodeid-option to 1.
-If this is the case, whenever a new node is 
-created and is not given a name, an integer is used for this node name.
-By default, the integer starts from 0. But his can be changed by setting
-the 'nodeid' to a different value.
+by allowing an automatic ID to be generated and assigned to the new node.
+This involves of using the underscore as the ID of the node, and by
+setting the "id" value to an integer.
 
-    set nodeid 10
+By default, the "id" value is set to 0, but it can be changed to
+another value.
+
+    set id 10
+
+When an underscore is encountered as the name of a node, the node will 
+be interpreted as to be asking for an ID that is one greater than
+the last assigned ID.
 
 Following is an example that will set it up so that the first node
-will get a name that is '10', and the next node get a name that is '11',
-and the next node gets a name that is '12'.
+will get an ID that is '11', and the next node get a name that is '12',
+and the next node gets a name that is '13'.
 
-    ```diagram{frame, width:2cm}
+    ```diagram
     viewport 6 6
     config r 0.2
     config fillcolor black
-    config autonodeid 1
-    set nodeid 10
+    set id 10
     set refxy center
     for theta:=[0:60:120]:
       r := 2
       x := cos(deg2rad(\theta)) * \r
       y := sin(deg2rad(\theta)) * \r
-      node (\x,\y)
-    edge.10.11.12
+      node._ (\x,\y)
+    edge.11.12.13
     ```
 
 For a node-operation, if no coordinates are given in the command line,
@@ -2044,15 +2048,6 @@ When the edge is a loop, which is the case when the two vertices are
 the same, then the shift-option expresses an additional centrifugal
 distance from the center of the node.
 
-As a special case, if the name of a node is underscore, such as shown
-by the following example, an integer ID will be assigned to the node
-which is one plus the last assigned ID. If the last assigned ID isn't
-set, it is assumed as 0. In the following example the first node
-will be assigned ID 11, and the second one 12.
-
-    set id 10
-    node._ (0,0)
-    node._ (1,1)
 
 
 
