@@ -1085,6 +1085,14 @@ examples all letters a, b, c are path variables.
   path b = &polyline{&point1,&point2,&point3,...}
   ```
 
++ polygon  
+
+  This returns a path expressing a polygon. The syntax is:
+
+  ```
+  path b = &polygon{&point1,&point2,&point3,...}
+  ```
+
 + arctravel{&center,start_point,sweep_angle}
 
   This returns a path that draws an arc. The arc is to start at the

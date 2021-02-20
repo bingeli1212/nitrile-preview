@@ -68,6 +68,13 @@ part of a text.
   designated as "l", "c", or "r". It will work inside a column 
   designated as "p(1cm)".
 
++ frac
+
+  This is to insert a fraction.
+
++ sup
+
+  This is to insert a superscript.
 
   ```verbatim
   Hello &br{} world.
