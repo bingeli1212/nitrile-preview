@@ -704,7 +704,7 @@
     "huge": "\\huge",
     "Huge": "\\Huge"
   },
-  "fontsize_rates": {
+  "fontsize_ratios": {
     "tiny":         0.5,
     "scriptsize":   0.7,
     "footnotesize": 0.8,
