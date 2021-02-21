@@ -1454,9 +1454,15 @@ the font of the subscript text to "\scriptsize".
 
     \raisebox{-0.4ex}{\scriptsize{}1}
 
+# Command to change font size
 
+First, use a font like lmodern and then you can set the font size:
 
+    {\fontsize{font size}{base line strech}\selectfont the text ...}
 
+For example, to change a font to 40pt one can use the following command:
+
+    {\fontsize{40}{40}\selectfont Hello World...}
 
 
 
