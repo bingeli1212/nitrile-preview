@@ -1464,14 +1464,62 @@ For example, to change a font to 40pt one can use the following command:
 
     {\fontsize{40}{40}\selectfont Hello World...}
 
+# Vertical alignment for each cell within a "tabular"
 
+The vertical alignment for each cell within a  "tabular" can be specified   
+using the optional letter immediately after the beginning of tabular.
 
+    \begin{tabular}[t]{ccc}
+    ...
+    \end{tabular}
 
+The alignment is done on the basis of the top row.  The vertical alignment is
+based on the middle of the table. This is also the default value for tables, so
+it is not necessary to specify c.  Here the alignment takes place at the bottom
+line.
 
+# Column alignment for a "tabular"
 
+The columns are formatted individually. On the one hand, the desired alignment
+can be set to the following.
 
+- for a left-justified column.
+- for a centered column.
+- for a right-justified column.
 
+Note that the width of a column is automatically adjusted to cover the widest
+cell within that column.
 
+- ``@{Text}`` This creates a column in which each line automatically contains
+  the entry Text.
+- ``p{width}`` This creates a column with a fixed or predefined width. If the
+  text within a cell, this column, is too long, it will be wrapped
+  automatically. If a line break is to be set manually, it must be set with the
+  \newline command.  By using the pipe sign, you can insert a visible seperator
+  (a line) between the individual table columns.
+
+The pipe sign | draws a vertical line over the entire height of the table. If
+it is placed between two columns, the separator between them results. However,
+it can also be set at the beginning and end of the column definition to
+indicate the left or right margin of the table.  Within a table, you can also
+mix columns with different alignment and fixed width and fixed contents.
+
+    \begin{tabular}{|l|c|r|p{1.5cm}|@{.}|}
+    \end{tabular}
+
+If the table requires only one type of column or if a type repeats itself, the
+asterisk operator can also be used. Following example would typeset three
+paragraph columns each of which has a width of 2cm.
+
+    \begin{tabular}{*{3}{p{2cm}}}
+    \end{tabular}
+
+Usually there are some visible spaces before the first column and after the
+last.  If no visible spaces are desired then ``@{}`` should be used to place at
+the beginning of the alignment as well as at the end.
+
+    \begin{tabular{@{}ccc@{}}
+    \end{tabular}
 
 
 
