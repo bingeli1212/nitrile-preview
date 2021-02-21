@@ -519,13 +519,38 @@ MetaPost/MetaFun the path will have to be closed before calling the
 
 Following are hint values:
 
-    this.hint_linedashed = 1;
-    this.hint_linesize2  = 2;
-    this.hint_linesize4  = 4;
-    this.hint_nostroke   = 8;
-    this.hint_nofill     = 16
-    this.hint_lighter    = 32;
-    this.hint_darker     = 64;
+    linedashed = 1;
+    linesize2  = 2;
+    linesize4  = 4;
+    nostroke   = 8;
+    nofill     = 16
+    lighter    = 32;
+    darker     = 64;
+
+A hint value is the combination of all the flags that was shown above.
+The hints are extra values hinted by the user to request that certain
+segment of their path should be drawn a little differently than the rest.
+
+For instance, if we were to construct a path to represent an arrow, and we want
+the line of the arrow body to be thicker than the lines of the arrow head,
+we could do that by specifying a hint value of "2", which is the value of "linesize2",
+which serves to add a 2pt thickness to the existing thickness of the line.
+Following is an example of drawing an upper pointing arrow such that the body
+of the arrow is drawn with a line that is 2pt thicker than its arrow head.
+
+    draw <,,2> (0,0) ~ (0,2) <,,0> (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
+
+Note that to insert a hint use the ``<,,hint>`` notation such that 
+the "hint" is an integer that is the result of bit-OR'ed value of all
+the flags above. To remove the hint simply specify 0 as the new hint. 
+Note that each new hint is going to overwrite the pervious hint.
+
+Another thing to note that internally, the current hint is stored
+with each new path point created, and if a new hint is put in place and the next
+path point is still part of the same path segment, then it is likely that
+the new hint will become the hint for the current segment, overwriting
+the prevous one. Thus it is important to only change hint before starting
+a new segment and do not change hind during the middle of a segment building.
 
 # The drawcontrolpoint-operation
 
