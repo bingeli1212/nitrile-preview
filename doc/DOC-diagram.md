@@ -519,14 +519,13 @@ MetaPost/MetaFun the path will have to be closed before calling the
 
 Following are hint values:
 
-```
-+ 1   linedashed
-+ 2   linesize
-+ 4   linesize
-+ 8   nostroke
-+ 16  lighter
-+ 32  darker
-```
+    this.hint_linedashed = 1;
+    this.hint_linesize2  = 2;
+    this.hint_linesize4  = 4;
+    this.hint_nostroke   = 8;
+    this.hint_nofill     = 16
+    this.hint_lighter    = 32;
+    this.hint_darker     = 64;
 
 # The drawcontrolpoint-operation
 
