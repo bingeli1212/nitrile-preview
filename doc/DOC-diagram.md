@@ -515,14 +515,17 @@ will attempt to fill the area, even when the area is not closed. For
 MetaPost/MetaFun the path will have to be closed before calling the
 'fill' MetaPost, as otherwise the compilation will complain.
 
-# The attrflag-values
+# The hint values
 
-Following are attrflag-values:
+Following are hint values:
 
 ```
-+ 1  linedashed:1
-+ 2  linesize:2
-+ 4  linesize:4
++ 1   linedashed
++ 2   linesize
++ 4   linesize
++ 8   nostroke
++ 16  lighter
++ 32  darker
 ```
 
 # The drawcontrolpoint-operation
