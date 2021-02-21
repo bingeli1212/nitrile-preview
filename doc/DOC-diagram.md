@@ -520,7 +520,9 @@ MetaPost/MetaFun the path will have to be closed before calling the
 Following are attrflag-values:
 
 ```
-+ 0x01  linedashed
++ 1  linedashed:1
++ 2  linesize:2
++ 4  linesize:4
 ```
 
 # The drawcontrolpoint-operation
