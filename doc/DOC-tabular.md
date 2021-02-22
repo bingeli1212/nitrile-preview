@@ -12,6 +12,9 @@ form.
     | Jane  | 202 Rain Rd. | 21
     ```
 
+It is also possible to specify the alignment for each column, which is
+expressed by the presence of the halign-style. 
+
 The tabular can also be constructed with each describing
 a single tabular row, and with a double-backslash 
 by itself starting a new row. In this form, each tabular data
@@ -88,74 +91,18 @@ other hand a tabular-fence is designed to be by itself, form a separate
 fence. For LATEX translation it is also to be translated into a float,
 such as a begin-end-tabular environment with optional caption and label.
 
-tabular border lines can be specified by the vline-style
-and hline-style options.
+The tabular border lines can be specified by the vline-style
+and hrule-style options.
 
-    ```tabular{vline:|*|*|*|,hline:+}
+    ```tabular{vrule:|+|+|+|,hline:-}
     | Names | Addr.        | Age
     ============================
     | James | 102 Sun Str. | 29
     | Jane  | 202 Rain Rd. | 21
     ```
 
-In the previous example, the options "vline" and "hline"
-are included that are intended to provide additional
-instructure to typeset a tabular-fence. 
-The "vline" option instructs how to draw vertical rulers
-for the tabular, and the "hline" for drawing horizontal
-rules. Following are additional options for the
-tabular-fence.
-
-+ vline
-
-  This option is to specify how to draw vertical rules
-  for the tabular. The vertical bar character appearing
-  beteeen the asterisks represent the need to draw vertical
-  rules between the columns, each of which is denoted by
-  a asterisk. Thus, "|**|" would have described two 
-  vertical rules before and after the two starting columns.
-
-+ hline
-
-  This option is to specify where and when
-  to draw horizontal rules
-  between rows. This option expects a list of letters that
-  are either 't', 'b', and '+'. The 't' letter describes
-  that a horizontal rule should appear at the top of the 
-  tabular, and the 'b' letter the last line of the tabular. The 
-  '+' letter describes that horizontal rules should be drawn
-  between each two consecutive rows,
-  not including the top and bottom. For instance, "hline:t b"
-  would have instructed that the top and bottom horizontal
-  rules should be drawn but now inter-row rules. "hline:+"
-  instructs that the inter-row rules will be drawn but not
-  the top and bottom rules.
-
-+ halign
-
-  This option contains list of letters each of which
-  describes the alignment of the column - 'l', 'c', 'r'.
-
-+ fr
-
-  This option contains a list of positive integers each
-  of which describing the relative width of the column.
-
-+ strut 
-
-  This options contains an integer that describes the number
-  of pt(s) for the height of each row. Setting this to an
-  integer to allow for each row to have a fixed row height.
-  For instance: "strut:20" would have instructed that each
-  row has a height of 20pt.
-
-+ title
-
-  This option expects a string that would appear
-  as the "title" of the tabular, where the "title" is
-  simply a text string that occupies the entire row
-  of the first row of the tabular, merging all tabular data
-  of that row into one large tabular data. 
+See section &ref("DOC-styles") for information regarding these
+styles.
 
 The content of the tabular is determined in two different ways. In
 particular, the first line of the tabular-fence is scanned, and if
@@ -176,7 +123,7 @@ boundaries of the tabular data.
 
 Following is an example of the same tabular but described differently.
 
-    ```tabular{vline:|*|*|*|;hline:t b}
+    ```tabular
     & Names 
     & Addr.        
     & Age
@@ -189,16 +136,6 @@ Following is an example of the same tabular but described differently.
     & 202 Rain Rd. 
     & 21
     ```
-
-It is also possible to specify the alignment for each column, which is
-one of the following three options - left aligned, center aligned, or
-right aligned. This is described by the "halign" option, which expects
-a string of one of the three letters - 'l', 'c', and 'r', separated
-by spaces. For instance, "halign:l c c" would have described the fact
-that the first three columns would each have an alignment of left,
-center, and center alignment. If the actual column count is longer
-than the number of letters found by this option, additional columns
-are assumed to be described by the letter 'l'.
 
 By default, the tabular is understood such that each tabular data is a
 single line, and the width of each column is determined by the longest
@@ -248,4 +185,3 @@ a begin-end-tabular environment. If the caption-style or label-style
 option is present, then the tabular will be labeled; if the
 caption-style option is present, the caption will be inserted.
 
-If a tabular bundle 

@@ -106,6 +106,8 @@ Following are styles recognized by NITRILE:
 + vrule:|+|+|+|+|+
 + vrule:|+|++|++|
 + vrule:|+||+|+|+|+|
++ vrule:|
++ vrule:||
 + vrule:|||
 
   The vrule-option is to allow for expressing that where vertical
@@ -115,10 +117,14 @@ Following are styles recognized by NITRILE:
   for expressing a double-vertical by the appearance of a
   double-vertical-bar.
 
-  As a special rule, if the vrule-option is set to be "|||", or a
-  triple-vbar by itself without any plus-signs, then it instructs that
-  it should have a single vertical rule to appear between all columns
-  as well as before the first column and after the last column.
+  As a special rule, if the vrule-option is set to be "|||" with any
+  plus-signs, it instructs that it should have a single vertical rule to appear
+  between all columns as well as before the first column and after the last
+  column. On the other hand, if "||" is set, then it expresses that
+  vertical rules should appear at the left hand side of the first column,
+  as well as at the right hand side of the last column. If it is set to
+  "|" without any plus sign, it is to express that a vertical rule should
+  appear only between each columns.
 
 + cellcolor:a cyan b lime c pink e orange
 
@@ -455,6 +461,14 @@ Following are styles recognized by NITRILE:
   It is currently utilized by the diagram-bundle such that all
   label texts will have been set to this font style. 
   So far the only valid options are: "normal", "italic" and "oblique".
+
++ strut 
+
+  This options contains an integer that describes the number
+  of pt(s) for the height of each row. Setting this to an
+  integer to allow for each row to have a fixed row height.
+  For instance: "strut:20" would have instructed that each
+  row has a height of 20pt.
 
 
 
