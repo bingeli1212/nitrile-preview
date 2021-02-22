@@ -105,7 +105,13 @@ Thus, 20mm translates to 75.6px, and 10mm to 37.8px. These numbers are
 utilized by the 'transform=' attribute so that each rect is shown in the
 correct scaled size by the 'width' and 'height' arguments.
 
+# Break Columns
 
+Create a new div-element such that it will have a CSS of "break-before:column".
+
+    h2 {
+      break-before: column;
+    }
 
 
 
