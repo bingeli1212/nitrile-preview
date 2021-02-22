@@ -1112,8 +1112,89 @@ Basic command structure:
         \end{column}
         \begin{column}{0.48\textwidth}
             %Content
+            \includegraphics[width=\linewidth]{image-clock.png}
         \end{column}
     \end{columns}
+
+Within the "columns" environment, each begin/end "column" environment is to
+start a new column and the second argument expresses the width of the column in
+LATEX length, such as the percentage of the current text width.  Inside the
+"column" environment the "\linewidth" is set to the width of the column itself
+and can be used to typeset an image the width of the column.
+
+# The "multicol" environment 
+
+The "multicol" environment provided by the "multicol" package allows you to let
+the text flow between two or more columns.  Paragraph divisions are done
+automatically, or you can insert \columnbreak to manually force text into the
+next column. The "multicol" environment works well with Beamer. Following is an
+example placed inside a "frame" environment.
+
+    \usepackage{multicol}
+    \begin{frame}{Frame Title}
+      \begin{multicols}{2} % two columns
+        "Lorem ipsum dolor sit amet, consectetur adipiscing 
+        elit, sed do eiusmod tempor incididunt ut labore 
+        et dolore magna aliqua.
+        \columnbreak
+        Ut enim ad minim veniam, quis nostrud exercitation 
+        ullamco laboris nisi ut aliquip ex ea commodo 
+        consequat. 
+        \includegraphics[width=4cm]{image-clock.png}
+      \end{multicols}
+    \end{frame}
+
+# The "tabbing" environment in Beamer
+
+The "tabbing" environment in Beamer works. However, it has a little
+anomaly such that if two minipages are placed side-by-side, and 
+each contains a single "tabbing", then the minipage will be 
+placed right next to each side without being set to the 
+given width as was specified. Following is minimum working 
+example, and can be observed that the two tabbing was placed 
+side-by-side by without being stretched evenly across the page
+as was desired.
+
+    \begin{frame}{The minipage environment}
+    \begin{minipage}{0.47\textwidth}
+      \begin{tabbing}
+      \kill
+      A = \(\text{A}\) = A\\
+      A = \(\frac {\text{A}} {\text{B}}\) =\\
+      A = \begin{tabular}{@{}c@{}}{A}\\\hline{B}\end{tabular}\\
+      \end{tabbing}
+    \end{minipage}
+    \begin{minipage}{0.47\textwidth}
+      \begin{tabbing}
+      \kill
+      A = \(\text{A}\) = A\\
+      A = \(\frac {\text{A}} {\text{B}}\) =\\
+      A = \begin{tabular}{@{}c@{}}{A}\\\hline{B}\end{tabular}\\
+      \end{tabbing}
+    \end{minipage}
+    \end{frame}
+
+The solution that seems to work in this case was to insert a
+"~" after the end-tabbing.
+
+    \begin{frame}{The minipage environment}
+    \begin{minipage}{0.47\textwidth}
+      \begin{tabbing}
+      \kill
+      A = \(\text{A}\) = A\\
+      A = \(\frac {\text{A}} {\text{B}}\) =\\
+      A = \begin{tabular}{@{}c@{}}{A}\\\hline{B}\end{tabular}\\
+      \end{tabbing}~
+    \end{minipage}
+    \begin{minipage}{0.47\textwidth}
+      \begin{tabbing}
+      \kill
+      A = \(\text{A}\) = A\\
+      A = \(\frac {\text{A}} {\text{B}}\) =\\
+      A = \begin{tabular}{@{}c@{}}{A}\\\hline{B}\end{tabular}\\
+      \end{tabbing}~
+    \end{minipage}
+    \end{frame}
 
 # The "description" 
 
