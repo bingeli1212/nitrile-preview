@@ -2110,20 +2110,41 @@ It is also possible to place a label inside a box.
   ```
     
 
-# The rec-operation
+# The "record" and "playback" operations
 
-The 'rec' operation is a group of compound commands that serve the
-purpose of recording some operations for the purpose of playing them
-back later. In the following example two 'draw' operations are
-recorded to the tape 'a' and later played back.
+The 'record' operation allows for a group of action commands to be saved    
+and later played back.
 
-    path one = (0,0.3) [a:1,0.3,0,0,0,2,0] [v:2] [h:-2] [v:-2] cycle
-    path two = (0,2.3) [a:1,0.3,0,0,0,2,0] [a:1,0.3,0,0,0,-2,0] cycle
-    rec.a.draw {shade:linear,angle:80,shadecolor:gray lightgray gray} &one
-    rec.a.draw {fillcolor:gray} &two
-    rec.a.playback (2,0)
+    %%% recording spider
+    record spider | draw {fillcolor:white} &ellipse{(0,1.4),0.65,1.0}
+    record spider | draw {fillcolor:white} &ellipse{(0,0.3),0.4,0.3}
+    record spider | fill {fillcolor:black} &circle{(-0.2,0.25),0.1}
+    record spider | fill {fillcolor:black} &circle{(+0.2,0.25),0.1}
+    record spider | draw (+0.3,0.45) [clock:+35,1] [clock:+35,0.4] [dot:0.1]
+    record spider | draw (+0.3,0.45) [clock:+55,1] [clock:+35,0.4] [dot:0.1]
+    record spider | draw (+0.3,0.45) [clock:+75,1] [clock:+35,0.4] [dot:0.1]
+    record spider | draw (+0.3,0.45) [clock:+95,1] [clock:+35,0.4] [dot:0.1]
+    record spider | draw (-0.3,0.45) [clock:-35,1] [clock:-35,0.4] [dot:0.1]
+    record spider | draw (-0.3,0.45) [clock:-55,1] [clock:-35,0.4] [dot:0.1]
+    record spider | draw (-0.3,0.45) [clock:-75,1] [clock:-35,0.4] [dot:0.1]
+    record spider | draw (-0.3,0.45) [clock:-95,1] [clock:-35,0.4] [dot:0.1]
 
+And then play it back at a later time
+
+    playback spider
     
+Note that only actions commands can be recorded.  The "record" and "playback"
+operations are themselves not part of the "action" commands, thus, they can't
+recorded or played back.
+
+When being play back, all the commands previous recorded as executed
+as is, including the original path name and locations.  Thus, 
+it might be a good idea to ensure that the path names are not changed between
+recording and playback.
+
+Note that the playback is going to respect the current settings of "refxy". Thus
+it is possible to playback the same group commands each time under a different
+"refxy" settings, simulating "pasting" multiple objects in different locations.
 
 # Gradient Fill
 
@@ -2468,6 +2489,27 @@ is shaded darker. For lego.show2 operation the face facing
 upward is shaded lighter and the face facing right is shaded
 darker. 
 
+# Action Commands vs. Non-action Commands
+
+Following are Non-action commands:
+
+    var
+    for
+    viewport
+    config
+    reset
+    set
+    source
+    exit
+    debug
+    path
+    record
+    playback
+    fn
+
+Non-action commands cannot be recorded and played back. However,
+they can be saved and later inserted into the program by the
+"source" command.
 
 
 
