@@ -109,9 +109,16 @@ correct scaled size by the 'width' and 'height' arguments.
 
 Create a new div-element such that it will have a CSS of "break-before:column".
 
-    h2 {
-      break-before: column;
-    }
+    <div style='columns:2;'> &quot;Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. 
+    <div style='break-before:column;'></div> 
+    Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est
+    laborum.&quot; </div>
 
 
 
