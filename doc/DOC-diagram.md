@@ -223,7 +223,10 @@ drawing environment.
   Set the "id" to an integer greater or equal to 0. This integer
   is currently used by the 'node' operation when its ID is
   an underscore, in which case it will be replaced by the an integer
-  that is one greater than the last assigned ID.
+  that is one greater than the last assigned ID. However, this not
+  limited by the 'node' operation. As a matter of fact, any command
+  whose suffix is an underscore will be replaced with the value
+  that is one-plus the last assigned ID.
 
 The 'refx', 'refy', and 'refs' parameters can be set at any point
 during a drawing. It can be compared to a "transform" of a SVG
