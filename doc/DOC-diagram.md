@@ -529,6 +529,7 @@ Following are hint values:
     nofill     = 16
     lighter    = 32;
     darker     = 64;
+    hallow     = 128; //no fill if no fillcolor isn't set
 
 A hint value is the combination of all the flags that was shown above.
 The hints are extra values hinted by the user to request that certain
