@@ -127,7 +127,12 @@ Using this is suggested by some people. However the only problem is that
 it increases the distance of the text from the anchor point.
 If this is not of a concern then it is possible to use this technique.
 
+# Set the font size
 
+To draw a text with a different font size, specify the font changing
+command with the "font=" attribute.
+
+    \draw (57.50mm,30.00mm) node[,align=center,font=\fontsize{7pt}{7pt}\selectfont] {Hello \\ World};
 
 
 
