@@ -529,6 +529,16 @@ Following are styles recognized by NITRILE:
   by Diagram. The Diagram assumes a default value of 0.1 if
   it is not set.
   
++ group:<string>
+
+  This option holds a string that is the name of an existing group that have
+  been previously defined.  Setting this attribute allows a group of styles
+  associated with that group to be applied instantly to the element.
+
+  
+
+
+
 
   
 

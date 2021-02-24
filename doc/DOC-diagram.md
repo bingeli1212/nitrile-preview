@@ -2542,6 +2542,7 @@ Following are Non-action commands:
     record
     playback
     fn
+    group
 
 Non-action commands cannot be recorded and played back. However,
 they can be saved and later inserted into the program by the
