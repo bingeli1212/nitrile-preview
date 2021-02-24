@@ -470,10 +470,11 @@ Following are styles recognized by NITRILE:
   default value, and each operation would determine its own default if it is
   not set.
   
-+ debug:1
++ verbose:1
 
-  Set it to 1 to enable debug. For a diagram-bundle it will send the input
-  and output to the console.
+  Set it to 1 to enable verbose reporting. The verbose reporting is to increase
+  the amount of output sent to the console. For Diagram this will result in every
+  comment, input line, and result to be sent to the console.
 
 + math:1
 
