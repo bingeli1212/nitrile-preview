@@ -485,13 +485,19 @@ Following are styles recognized by NITRILE:
 
 + strut 
 
-  This options contains an integer that describes the number
+  This option contains an integer that describes the number
   of pt(s) for the height of each row. Setting this to an
   integer to allow for each row to have a fixed row height.
   For instance: "strut:20" would have instructed that each
   row has a height of 20pt.
 
++ shear:0.1
++ shear:0.2
 
+  This option holds a float that expresses the number X-units
+  to shift based on the height. This value is used when
+  constructing a parallelgram.
+  
 
   
 
