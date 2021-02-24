@@ -2450,14 +2450,14 @@ objects on top of each other in a three-dimensional space.
     lego.show
     ```
 
-The lego-setup-operation expects four arguments, the first
+The lego.setup operation expects four arguments, the first
 two of which are the x/y origin of the x/y/z-plane of the
 Lego coordinates.  The last two is the 'wx' and 'wy' length
 which is the extra space extended from beyond the edge the
 cube in the x/y directions.  The default values for 'wx' is
 0.36 and the default value for 'wy' is 0.30. 
 
-The lego-size-operation would set the size of the stacking.
+The lego.size operation would set the size of the stacking.
 It expectes three integers, each representing the number of
 maximum Lego pieces in these directions: x, y and z.  The
 x-direction is the horizontal, the y-direction is the depth,
