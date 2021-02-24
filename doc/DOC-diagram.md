@@ -2130,21 +2130,87 @@ box that appear in (1,2).
 
     box {w:3, h:2} "hello\\world" (0,0) (1,2) 
 
-However, in the following example the box
-will get the entire text and the text will appear 
-on two separate lines.
+However, in the following example the box will get the
+entire text and the text will appear on two separate lines.
 
     box {w:3, h:2} "hello\\world" (0,0) 
     
 The "boxtype" style holds the type of boxes to be drawn,
-other than the default rectangular shape. Whatever the shape,
-it will always have the same overall width and height
-as the rectangle.
+other than the default rectangular shape.  Note that
+regardless the choice of the boxtype, the geometry of the
+shape will always be confined to the width and height given
+by "w" and "h".
 
+    box {boxtype:rrect} "Hello\\World" (0,0)
 
+A box can come with an ID string, which must consists of all
+word characters. If it is provided, then the ID string is
+saved internally with the geometry of the box, and can later
+be retrieved to redraw the same box with maybe a different
+color, line size, and/or text.  In the following example the
+box is first created with the given type and string, and 
+placed in the location specified. However, it is later
+redrawn with a different text because the location and
+the type of the box has already been saved with the given
+id "1".
 
+    box.1 {boxtype:rrect} "Hello\\World" (0,0)
+    box.1 "Goodbye" 
 
+The previous example would have had two text being drawn on 
+top of each other. This might not be a desirable effect, but
+if a "fillcolor" is provided then previous text would have
+been erased first.
 
+    box.1 {boxtype:rrect} "Hello\\World" (0,0)
+    box.1 {fillcolor:brown} "Goodbye" 
+
+# The flow-operation
+
+The flow-operation is designed to connect boxes with arrows. 
+
+    box.1 "Hello" (0,0)
+    box.2 "World" (4,3)
+    flow.1_n.2_w 
+
+The connection of arrow lines will be made from one part of the box to the
+other. The part of the box where lines emanate is called the anchor. There
+are 8 different anchor points for a box, named "n", "s", "w", "e", "nw",
+"ne", "sw", and "se", where each one stands for north, south, west, east,
+northwest, northeast, southwest, and southeast respectively. If an anchor
+point is not specified, an invalid name was specified then "sw" is assumed.
+
+The name of an anchor point is expected to follow the ID of a box after an
+underscore. 
+
+At least two valid box IDs must be provided to allow a line between two
+boxes to appear. But if additional ID-and-anchor-combination is found then
+additional lines will be drawn as well: each line is assumed to be
+connecting the two immediately adjacent boxes.
+
+    box.1 "Hello" (0,0)
+    box.2 "World" (4,3)
+    box.3 "Again" (5,8)
+    flow.1_n.2_w.3_s 
+
+If a multiple line segment is desired in order to connect two boxes that
+cannot be easily connected by a straight line, one can add intermediate
+points to the command line. Following adds one additional intermediate
+point which is 2 unit distance above the starting anchor point of the
+first box. In this case there will be two line segments, one from the
+starting anchor to the intermediate point, and the second from the
+intermediate point to the anchor point of the second box.
+
+    box.1 "Hello" (0,0)
+    box.2 "World" (4,3)
+    flow.1_n.2_w [v:2]
+
+Usually a relative position is preferred. However, absolute positions can
+also be specified such as the following.
+
+    box.1 "Hello" (0,0)
+    box.2 "World" (4,3)
+    flow.1_n.2_w (0,5)
 
 # The "record" and "playback" operations
 
