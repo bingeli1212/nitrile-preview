@@ -228,7 +228,7 @@ drawing environment.
   of a node, and names with numbers only are perfectly legal.
   Note that this feature is provided by the system as whole and
   can be used for future commands that expects this behavior.
-  Note also that if the "debug:1" is set, then the entire command line
+  Note also that if the "verbose:1" is set, then the entire command line
   after the underscore has been replaced with the integer is to
   be printed to the console, as well as sent as a comment.
 
@@ -2537,7 +2537,7 @@ Following are Non-action commands:
     set
     source
     exit
-    debug
+    console
     path
     record
     playback
@@ -2546,6 +2546,18 @@ Following are Non-action commands:
 Non-action commands cannot be recorded and played back. However,
 they can be saved and later inserted into the program by the
 "source" command.
+
+# The console-operation
+
+The "console" operation sends the text to the console.
+This can be useful when trying debugging the current value
+of one or more environment variables.
+
+    for i:=[10:2:20]
+      console \i \@
+
+
+
 
 
 
