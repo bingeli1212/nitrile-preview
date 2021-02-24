@@ -1,0 +1,5 @@
+Mmain	main.c	/^int main(int argc,char **argv) {$/
+foo	main.c	/^int foo(int a,int b){$/
+bar	main.c	/^int bar(int a,int b){$/
+string_to_id_and_anchor	nitrile-preview-diagram.js	/^  string_to_id_and_anchor(s){$/
+to_flowed_lines	nitrile-preview-diagram.js	/to_flowed_lines(id1,anchor1,id2,anchor2){$/
