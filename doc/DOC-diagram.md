@@ -221,12 +221,16 @@ drawing environment.
 + set id <integer>
 
   Set the "id" to an integer greater or equal to 0. This integer
-  is currently used by the 'node' operation when its ID is
-  an underscore, in which case it will be replaced by the an integer
-  that is one greater than the last assigned ID. However, this not
-  limited by the 'node' operation. As a matter of fact, any command
-  whose suffix is an underscore will be replaced with the value
-  that is one-plus the last assigned ID.
+  will be used to replace the suffix of a command if that command's
+  suffix is set to an underscore only.  This feature allows
+  for automatic assigning of integer IDs for a command that expects
+  one, such as "node", which expects the suffix to be the name
+  of a node, and names with numbers only are perfectly legal.
+  Note that this feature is provided by the system as whole and
+  can be used for future commands that expects this behavior.
+  Note also that if the "debug:1" is set, then the entire command line
+  after the underscore has been replaced with the integer is to
+  be printed to the console, as well as sent as a comment.
 
 The 'refx', 'refy', and 'refs' parameters can be set at any point
 during a drawing. It can be compared to a "transform" of a SVG
@@ -2032,16 +2036,25 @@ a for-loop then this assigning of an ID to a node is difficult to implement.
 If assigning to a node a name is important, then it can be done
 by allowing an automatic ID to be generated and assigned to the new node.
 This involves of using the underscore as the ID of the node, and by
-setting the "id" value to an integer.
+setting the "id" value to an integer. In the following example 
+the name of the first node will be set to "1" if this is the first node
+to be created. Likewise the next two node will each be assigned the
+name of "2" and "3".
 
-By default, the "id" value is set to 0, but it can be changed to
-another value.
+    node._ (0,0)
+    node._ (1,2)
+    node._ (3,4)
+
+By default, the name of the node done this this is way is one plus
+the id-value that has been set last time. This id-value is assumed
+to be "0" if it has never been set, but nevertheless can be set
+to any integer at any time. For example, if it is set to 10 then
+the next node created will be assigned a name of "11" if 
+it asks for it. For example, the following 'node' command will
+create a new with an assigned name of '11'.
 
     set id 10
-
-When an underscore is encountered as the name of a node, the node will 
-be interpreted as to be asking for an ID that is one greater than
-the last assigned ID.
+    node._ (5,6)
 
 Following is an example that will set it up so that the first node
 will get an ID that is '11', and the next node get a name that is '12',
