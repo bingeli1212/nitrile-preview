@@ -430,6 +430,7 @@ Following are styles recognized by NITRILE:
   ```
   none
   rect
+  rrect
   hexgon
   triangle
   parallelgram
