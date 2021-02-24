@@ -424,9 +424,17 @@ Following are styles recognized by NITRILE:
 + boxtype:<string>
 
   The boxtype-option sets the type of box for the box-operation. Currently the
-  only available values are 'none', 'rect', 'hexgon', and 'triangle'. If the
-  type string is unrecognized it is assumed to be 'rect', which is the default
-  type.
+  only available values are listed below. If the type string is unrecognized it
+  is assumed to be 'rect', which is the default type.
+
+  ```
+  none
+  rect
+  hexgon
+  triangle
+  parallelgram
+  diamond
+  ```
 
 + bartype:<string>
 
@@ -496,7 +504,9 @@ Following are styles recognized by NITRILE:
 
   This option holds a float that expresses the number X-units
   to shift based on the height. This value is used when
-  constructing a parallelgram.
+  constructing a parallelgram. It is currently used
+  by Diagram. The Diagram assumes a default value of 0.1 if
+  it is not set.
   
 
   
