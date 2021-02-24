@@ -1602,8 +1602,49 @@ the beginning of the alignment as well as at the end.
     \begin{tabular{@{}ccc@{}}
     \end{tabular}
 
+# Image file selection of "\includegraphics" command
 
+For the "\includegraphics" command, if a graphic file is supplied without
+an extension, then the image file will be selected based on their extension
+in the order that is given. To specify this order, place the following
+command in the preamble.
 
+    \DeclareGraphicsExtensions{.png,.pdf}
+
+\DeclareGraphicsExtensions{comma-separated list of file extensions} Declare the
+filename extensions to try. This allows you to specify the order in which to
+choose graphic formats when you include graphic files by giving the filename
+without the extension, as in \includegraphics{functionplot}.
+
+In this example, LaTeX will find files in the PNG format before PDF files.
+
+    \DeclareGraphicsExtensions{.png,PNG,.pdf,.PDF}
+      ...
+    \includegraphics{lion}   % will find lion.png before lion.pdf 
+
+Because the filename lion does not have a period, LaTeX uses the extension
+list. For each directory in the graphics path (see \graphicspath), LaTeX will
+try the extensions in the order given. If it does not find such a file after
+trying all the directories and extensions then it reports ‘! LaTeX Error: File
+`lion' not found’. Note that you must include the periods at the start of the
+extensions.
+
+Because GNU/Linux and Macintosh filenames are case sensitive, the list of file
+extensions is case sensitive on those platforms. The Windows platform is not
+case sensitive.
+
+You are not required to include \DeclareGraphicsExtensions in your document;
+the printer driver has a sensible default. For example, the most recent
+pdftex.def has this extension list.
+
+    .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2 
+
+To change the order, use the grfext package.
+
+You can use this command anywhere in the document. You can use it more than
+once. Show its value with 
+
+    \makeatletter\typeout{\Gin@extensions}\makeatother
 
 
 
