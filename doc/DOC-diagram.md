@@ -2557,6 +2557,22 @@ of one or more environment variables.
     for i:=[10:2:20]
       console \i \@
 
+# The "group" operation
+
+The "group" operation is to create a new group that holds a collection
+of attribute values such that they will be applied to an element
+all at once. This allows, for instance, creating of many different
+boxes all of the same attributes. Changes made to a group affects all
+elements inheriting attributes from that group.
+
+    group mygroup {linesize:1,w:3,h:2}
+    box {group:mygroup} (0,0) (1,2) 
+    box {group:mygroup,linesize:2} (0,0) (1,2) 
+
+In the previous example the first box will be created with "linesize:1", "w:3",
+and "h:2" attributes. The second box will have the same set of attributes as
+the first one except that it will have "linesize:2" instead of "linesize:1".
+
 
 
 

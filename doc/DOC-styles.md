@@ -531,9 +531,13 @@ Following are styles recognized by NITRILE:
   
 + group:<string>
 
-  This option holds a string that is the name of an existing group that have
-  been previously defined.  Setting this attribute allows a group of styles
-  associated with that group to be applied instantly to the element.
+  This attribute holds a string that is the name of an existing group that have
+  been previously defined.  Setting this attribute allows for this element to
+  inherit all properties associated with that group. If the group ID specified
+  isn't an existing group then this attribute value is ignored.
+  
+  The Diagram bundle define a group by the "group" command.
+
 
   
 
