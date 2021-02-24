@@ -2116,16 +2116,35 @@ points. The size of the box is controlled by the 'w' and 'h' members
 of the configuration parameters, each of which can be set by the
 'config' operation to be a default.
   
-  ```
-  box {w:3, h:2} (0,0) (1,2)  
-  ```
+    box {w:3, h:2} (0,0) (1,2)  
     
-It is also possible to place a label inside a box. 
+It is also possible to place a label inside a box. If there
+are more than one points appearing in the command line, then
+each point will get one part of the text. If there is only
+one point in the command line, then that point get all
+the text, much like how a "text" operation would have
+been done. In the following example the string "hello" will
+be assigned to the first box that appear in (0,0), and
+the string "world" will be assigned to the second
+box that appear in (1,2).
 
-  ```
-  box {w:3, h:2} "1\\2" (0,0) (1,2) 
-  ```
+    box {w:3, h:2} "hello\\world" (0,0) (1,2) 
+
+However, in the following example the box
+will get the entire text and the text will appear 
+on two separate lines.
+
+    box {w:3, h:2} "hello\\world" (0,0) 
     
+The "boxtype" style holds the type of boxes to be drawn,
+other than the default rectangular shape. Whatever the shape,
+it will always have the same overall width and height
+as the rectangle.
+
+
+
+
+
 
 # The "record" and "playback" operations
 
