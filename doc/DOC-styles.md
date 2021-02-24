@@ -428,13 +428,32 @@ Following are styles recognized by NITRILE:
   is assumed to be 'rect', which is the default type.
 
   ```
-  none
   rect
   rrect
   hexgon
   triangle
   parallelgram
   diamond
+  ```
+
++ boxalign:<string>
+
+  This option holds the type of alignment when placing a box. By default
+  the box is placed at a position where its lower-left corner aligns with
+  the position. However, this can be set to another value such as "center"
+  where the center of the box aligns with the location. The default is
+  is "urt".
+
+  ```
+  urt (default)
+  ulft
+  lrt
+  llft
+  center
+  top
+  bot
+  lft
+  rt
   ```
 
 + bartype:<string>
