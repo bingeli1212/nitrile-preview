@@ -558,9 +558,20 @@ Following are styles recognized by NITRILE:
   grid unit. However, it can also appear in a form of a percentage such as
   "10%" which will be interpreted as the percentage of the height of the box.
 
++ parsep:<number>
+
+  This value holds the additional spacing that serves as the separation between
+  two adjacent paragraphs. This value is a multiple of pt. This value is
+  currently only utilized by the list-bundle to place extra spacing between two
+  consecutive list items.
+
++ leftmargin:<number>
+
+  This value holds the left margin in multiple of mm. It is currently only utilized
+  by the list-bundle, blockquote-bundle, and verbatim-bundle to set their 
+  left margin.
 
 
-  
 
 
 
