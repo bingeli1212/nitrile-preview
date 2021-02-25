@@ -644,7 +644,7 @@ unpredictable.
 
 The filecontents environment is used for including LaTeX files. For
 other plain text files (such as Encapsulated PostScript files), you
-should use the filecontents* environment which does not add a comment
+should use the ``filecontents*`` environment which does not add a comment
 line.
 
 These environments are allowed only before \documentclass. This
@@ -872,69 +872,121 @@ name.
 The following packages are distributed with LaTeX:
 
 + alltt
-  This package provides the alltt environment, which is like the verbatim environment except that \, {, and } have their usual meanings. It is described in alltt.dtx and LaTeX: A Document Preparation System.
+
+  This package provides the alltt environment, which is like the verbatim
+  environment except that \, {, and } have their usual meanings. It is
+  described in alltt.dtx and LaTeX: A Document Preparation System.
 
 + doc
-  This is the basic package for typesetting the documentation of LaTeX programs. It is described in doc.dtx and in The LaTeX Companion.
+
+  This is the basic package for typesetting the documentation of LaTeX
+  programs. It is described in doc.dtx and in The LaTeX Companion.
 
 + exscale
-  This provides scaled versions of the math extension font. It is described in exscale.dtx and The LaTeX Companion.
+
+  This provides scaled versions of the math extension font. It is described in
+  exscale.dtx and The LaTeX Companion.
 
 + fontenc
-  This is used to specify which font encoding LaTeX should use. It is described in ltoutenc.dtx.
+
+  This is used to specify which font encoding LaTeX should use. It is described
+  in ltoutenc.dtx.
 
 + graphpap
-  This package defines the \graphpaper command; this can be used in a picture environment.
+
+  This package defines the \graphpaper command; this can be used in a picture
+  environment.
 
 + ifthen
-  Provides commands of the form "if...then do... otherwise do...". It is described in ifthen.dtx and The LaTeX Companion.
+
+  Provides commands of the form "if...then do... otherwise do...". It is
+  described in ifthen.dtx and The LaTeX Companion.
 
 + inputenc
-  This is used to specify which input encoding LaTeX should use. It is described in inputenc.dtx.
+
+  This is used to specify which input encoding LaTeX should use. It is
+  described in inputenc.dtx.
 
 + latexsym
-  LaTeX2e no longer loads the LaTeX symbol font by default. To access it, you should use the latexsym package. It is described in latexsym.dtx and in The LaTeX Companion; see also Section 6.
+
+  LaTeX2e no longer loads the LaTeX symbol font by default. To access it, you
+  should use the latexsym package. It is described in latexsym.dtx and in The
+  LaTeX Companion; see also Section 6.
 
 + makeidx
-  This provides commands for producing indexes. It is described in LaTeX: A Document Preparation System and in The LaTeX Companion.
+
+  This provides commands for producing indexes. It is described in LaTeX: A
+  Document Preparation System and in The LaTeX Companion.
 
 + newlfont
-  This is used to emulate the font commands of LaTeX 2.09 with the New Font Selection Scheme. It is described in The LaTeX Companion.
 
-+  oldlfont
-  This is used to emulate the font commands of LaTeX 2.09. It is described in The LaTeX Companion.
+  This is used to emulate the font commands of LaTeX 2.09 with the New Font
+  Selection Scheme. It is described in The LaTeX Companion.
 
-+  showidx
-  This causes the argument of each \index command to be printed on the page where it occurs. It is described in LaTeX: A Document Preparation System.
++ oldlfont
 
-+  syntonly
-  This is used to process a document without typesetting it. It is described in syntonly.dtx and in The LaTeX Companion.
+  This is used to emulate the font commands of LaTeX 2.09. It is described in
+  The LaTeX Companion.
+
++ showidx
+
+  This causes the argument of each \index command to be printed on the page
+  where it occurs. It is described in LaTeX: A Document Preparation System.
+
++ syntonly
+
+  This is used to process a document without typesetting it. It is described in
+  syntonly.dtx and in The LaTeX Companion.
 
 + tracefnt
-  This allows you to control how much information about LaTeX's font loading is displayed. It is described in The LaTeX Companion.
+
+  This allows you to control how much information about LaTeX's font loading is
+  displayed. It is described in The LaTeX Companion.
 
 # Related software
 
-The following software should be available from the same distributor as your copy of LaTeX2e. You should obtain at least the graphics and tools collections in order to have all the files described in LaTeX: A Document Preparation System. The amsmath package (part of amslatex and formerly known as amstex) and babel are also mentioned in the list of `standard packages' in section C.5.2 of that book.
+The following software should be available from the same distributor as your
+copy of LaTeX2e. You should obtain at least the graphics and tools collections
+in order to have all the files described in LaTeX: A Document Preparation
+System. The amsmath package (part of amslatex and formerly known as amstex) and
+babel are also mentioned in the list of `standard packages' in section C.5.2 of
+that book.
 
 + amslatex
-  Advanced mathematical typesetting from the American Mathematical Society. This includes the amsmath package; it provides many commands for typesetting mathematical formulas of higher complexity. It is produced and supported by the American Mathematical Society and it is described in The LaTeX Companion.
+
+  Advanced mathematical typesetting from the American Mathematical Society.
+  This includes the amsmath package; it provides many commands for typesetting
+  mathematical formulas of higher complexity. It is produced and supported by
+  the American Mathematical Society and it is described in The LaTeX Companion.
 
 + babel
-  This package and related files support typesetting in many languages. It is described in The LaTeX Companion.
+
+  This package and related files support typesetting in many languages. It is
+  described in The LaTeX Companion.
 
 + graphics
-  This includes the graphics package which provides support for the inclusion and transformation of graphics, including files produced by other software. Also included, is the color package which provides support for typesetting in colour. Both these packages are described in LaTeX: A Document Preparation System.
+
+  This includes the graphics package which provides support for the inclusion
+  and transformation of graphics, including files produced by other software.
+  Also included, is the color package which provides support for typesetting in
+  colour. Both these packages are described in LaTeX: A Document Preparation
+  System.
   
-+ mfnfss
-  Everything you need (except the fonts themselves) for typesetting with a large range of bit-map (Metafont) fonts.
++ mfnfss 
+
+  Everything you need (except the fonts themselves) for typesetting with a
+  large range of bit-map (Metafont) fonts.
  
-+ psnfss
-  Everything you need (except the fonts themselves) for typesetting with a large range of Type 1 (PostScript) fonts.
++ psnfss 
+
+  Everything you need (except the fonts themselves) for typesetting with a
+  large range of Type 1 (PostScript) fonts.
  
-+ tools
-  Miscellaneous packages written by the LaTeX3 project team.
-  These packages come with documentation and each of them is also described in at least one of the books The LaTeX Companion and LaTeX: A Document Preparation System.
++ tools 
+
+  Miscellaneous packages written by the LaTeX3 project team.  These packages
+  come with documentation and each of them is also described in at least one of
+  the books The LaTeX Companion and LaTeX: A Document Preparation System.
 
 # Tools
 
@@ -942,70 +994,96 @@ This collection of packages includes, at least, the following (some
 files may have slightly different names on certain systems):
 
 + array
-  Extended versions of the environments array, tabular and tabular*, with many extra features.
+
+  Extended versions of the environments array, tabular and ``tabular*``, with
+  many extra features.
  
-+ dcolumn
-  Alignment on "decimal points" in tabular entries. Requires the array package.
++ dcolumn 
+
+  Alignment on "decimal points" in tabular entries. Requires the array
+  package.
  
-+ delarray
++ delarray 
+
   Adds "large delimiters" around arrays. Requires array.
  
-+ hhline
++ hhline 
+
   Finer control over horizontal rules in tables. Requires array.
  
-+ longtable
-  Multi-page tables. (Does not require array, but it uses the extended features if both are loaded.)
++ longtable 
+
+  Multi-page tables. (Does not require array, but it uses the
+  extended features if both are loaded.)
  
-+ tabularx
-  Defines a tabularx environment that is similar to tabular* but it modifies the column widths, rather than the inter-column space, to achieve the desired table width.
++ tabularx 
+
+  Defines a tabularx environment that is similar to ``tabular*`` but
+  it modifies the column widths, rather than the inter-column space, to achieve
+  the desired table width.
  
-+ afterpage
-  Place text after the current page.
++ afterpage Place text after the current page.
 
 + bm
+
   Access bold math symbols.
  
 + enumerate
+
   Extended version of the enumerate environment.
  
 + fontsmpl
+
   Package and test file for producing "font samples".
  
 + ftnright
+
   Place all footnotes in the right-hand column in two-column mode.
  
 + indentfirst
+
   Indent the first paragraph of sections, etc.
  
 + layout
+
   Show the page layout defined by the current document class.
  
 + multicol
+
   Typeset text in columns, with the length of the columns "balanced".
  
 + rawfonts
+
   Preload fonts using the old internal font names of LaTeX 2.09. See Section 6.2.
  
 + somedefs
+
   Selective handling of package options. (Used by the rawfonts package.)
  
 + showkeys
+
   Prints the "keys" used by \label, \ref, \cite etc.; useful whilst drafting.
  
 + theorem
+
   Flexible declaration of "theorem-like" environments.
  
 + varioref
+
   "Smart" handling of page references.
  
 + verbatim
+
   Flexible extension of the verbatim environment.
  
 + xr
+
   Cross reference other "external" documents.
  
 + xspace
-  "Smart space" command that helps you to avoid the common mistake of missing spaces after command names.
+
+  "Smart space" command that helps you to avoid the common mistake of missing
+  spaces after command names.
 
 # The "aux" files
 
