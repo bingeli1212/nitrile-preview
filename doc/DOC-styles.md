@@ -376,11 +376,13 @@ Following are styles recognized by NITRILE:
 + shift:<length>
 
   The shift-option hold a length that expresses the location of text shifted
-  away from its attached location. It is currently utilized by the 'edge'
-  operation to place the text away from the edge. It is also utilized by the
-  'drawanglearc' operation to shift the text away from the arc. Note that this
-  value can be a negative number such that when it is negative the shift would
-  have been performed in an opposite direction.
+  away from its attached location. It is currently utilized by the 'edge' and
+  'draw' operation to place the text away from the middle of the line it
+  intends to place the label for had the shift-option not be specified. It is
+  also utilized by the 'drawanglearc' operation to shift the text away from the
+  arc. Note that a positive number would have shifted the text to the
+  right-hand side of the direction of the line, and a negative number would
+  have shifted the text to the left relative to the direction of the line.
 
 + dx:<length>
 
