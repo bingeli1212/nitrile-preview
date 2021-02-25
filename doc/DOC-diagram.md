@@ -2170,7 +2170,7 @@ been erased first.
 The flow-operation is designed to connect boxes with arrows. 
 
     box.1 "Hello" (0,0)
-    box.2 "World" (4,3)
+    box.2 "World" (4,4)
     flow.1_n.2_w 
 
 The connection of arrow lines will be made from one part of the box to the
@@ -2183,27 +2183,29 @@ point is not specified, an invalid name was specified then "sw" is assumed.
 The name of an anchor point is expected to follow the ID of a box after an
 underscore. 
 
-At least two valid box IDs must be provided to allow a line between two
-boxes to appear. But if additional ID-and-anchor-combination is found then
-additional lines will be drawn as well: each line is assumed to be
-connecting the two immediately adjacent boxes.
+At least two valid box IDs must be provided to allow a line between two boxes
+to appear. But if additional ID-and-anchor-combination is found after the
+second box then another independent flow is to be assume to happen between the
+first box and this box. This assumption would apply for all boxes after the
+second one.  In the following example there will be a flow between box 1 and
+box 2, and another between box 1 and box 3.
 
     box.1 "Hello" (0,0)
-    box.2 "World" (4,3)
-    box.3 "Again" (5,8)
-    flow.1_n.2_w.3_s 
+    box.2 "World" (4,4)
+    box.3 "World2" (-4,4)
+    flow.1_n.2_w.3_e 
 
-If a multiple line segment is desired in order to connect two boxes that
-cannot be easily connected by a straight line, one can add intermediate
-points to the command line. Following adds one additional intermediate
-point which is 2 unit distance above the starting anchor point of the
-first box. In this case there will be two line segments, one from the
-starting anchor to the intermediate point, and the second from the
-intermediate point to the anchor point of the second box.
+Sometimes a straight line connection between two boxes aren't the best choice.
+It would be a good idea to have a polyline that goes somewhere else first
+before reaching to the destination box. If this is going to be the case,
+we place the "intermediate" points at the command line. In the following example
+the intermediate point is the one that is 3 grid distance above the starting
+anchor.
 
     box.1 "Hello" (0,0)
-    box.2 "World" (4,3)
-    flow.1_n.2_w [v:2]
+    box.2 "World" (4,4)
+    box.3 "World2" (-4,4)
+    flow.1_n.2_w.3_e [v:3]
 
 Usually a relative position is preferred. However, absolute positions can
 also be specified such as the following.
@@ -2211,6 +2213,7 @@ also be specified such as the following.
     box.1 "Hello" (0,0)
     box.2 "World" (4,3)
     flow.1_n.2_w (0,5)
+
 
 # The "record" and "playback" operations
 
