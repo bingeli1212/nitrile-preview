@@ -42,9 +42,22 @@ The img-fence is used to typeset an image.
     ```
 
 The img-fence is designed to allow for showing an external
-image with surrounding texts. It can also be used to create a 
-vector graphic using Diagram-syntax. 
+image with surrounding texts. It is typically a single
+line within the fence, expressing the name of an image
+file sitting in a directory where it can be referenced
+through a URL. 
 
+However, in cases where there might be multiple image files for the
+same name but each with a different extension, then each image
+file will be listed in its own line.
+
+    ```img[width:3cm]
+    tree.png
+    tree.pdf
+    ```
+
+It is thus the responsibility of the translation backend to 
+figure out which image file to choose.
 
 
 # The diagram-fence
