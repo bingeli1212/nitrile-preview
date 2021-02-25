@@ -2207,13 +2207,23 @@ anchor.
     box.3 "World2" (-4,4)
     flow.1_n.2_w.3_e [v:3]
 
-Usually a relative position is preferred. However, absolute positions can
-also be specified such as the following.
+The intermediate points should best be specified using relative coordsinates,
+as it will be relative to the anchor point of the first box. However,
+absolute points can also allowed.
 
     box.1 "Hello" (0,0)
-    box.2 "World" (4,3)
-    flow.1_n.2_w (0,5)
+    box.2 "World" (4,4)
+    box.3 "World2" (-4,4)
+    flow.1_n.2_w.3_e (0,5)
 
+If the flow is not going to happen between two boxes but rather to a free point
+somewhere, then the flow-command should be specified with just a single box ID,
+and additional intermediate points should be supplied.  In the following
+example a flow should emanate from the north anchor of the box, and extend
+itself to a point that is 3 grid units above.
+
+    box.1 "Hello" (0,0)
+    flow.1_n [v:3]
 
 # The "record" and "playback" operations
 
