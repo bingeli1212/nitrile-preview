@@ -538,9 +538,25 @@ Following are styles recognized by NITRILE:
   
   The Diagram bundle define a group by the "group" command.
 
++ rdx:<number>
 
+  This value holds the value of the radius for the round corner that appears when
+  drawing a "rrect" box type for the "box" command. This value is utilized
+  This value expresses the length of the radius in the x-direction. 
+
+  This value is typically a pure floating point number expressing a length in
+  grid unit. However, it can also appear in a form of a percentage such as
+  "10%" which will be interpreted as the percentage of the width of the box.
+
++ rdy:<number>
   
+  This value holds the value of the radius for the round corner that appears when
+  drawing a "rrect" box type for the "box" command. This value is utilized
+  This value expresses the length of the radius in the y-direction.
 
+  This value is typically a pure floating point number expressing a length in
+  grid unit. However, it can also appear in a form of a percentage such as
+  "10%" which will be interpreted as the percentage of the height of the box.
 
 
 
