@@ -724,7 +724,7 @@ still be able to access an em dash by typing \textemdash.
   These commands allow access to characters which were previously only
   available in math mode:
 
-  ```
+  ```verbatim
   Math           Text Command
   \bullet        \textbullet
   \cdot          \textperiodcentered
@@ -738,7 +738,7 @@ still be able to access an em dash by typing \textemdash.
   These commands allow access to ASCII characters which were only
   available in verbatim or math mode:
 
-  ```
+  ```verbatim
   Math           Text Command
   \blackslash    \textbackslash
   \mid           \textbar
@@ -752,7 +752,7 @@ still be able to access an em dash by typing \textemdash.
   These commands allow access to ASCII characters which were
   previously only available in verbatim:
 
-  ```
+  ```verbatim
   Math           Text Command
   ^              \textasciicircum
   ~              \textasciitilde
@@ -1815,8 +1815,39 @@ There are a number of horizontal spacing macros for LaTeX:
   fill from/to; see What is the difference between 
   `\hspace*{\fill}` and `\hfill`.
 
+# Two line labels in the description items
 
+I would like to have two lines for long description names in the description
+environment. The only help I could find is here. Where they have the following
+code.
 
+    \begin{description}
+       % won't work
+       \item[first line\\second line]
+       % won't work
+       \item[first line\newline second line]
+       % will work
+       \item[{\parbox[t]{3cm}{first line\\second line}}]
+    \end{description}
 
+For single-line item data, use \stackunder{}{}. For multi-line item data, use
+\smash{\stackunder{}{}}.
+
+Also shown is the use of \smash{\Longunderstack{...\\...\\...}} in the event
+the label gets to be longer than 2 lines.
+
+    \documentclass{article}
+    \usepackage[usestackEOL]{stackengine}
+    \usepackage{lipsum}
+    \begin{document}
+    \renewcommand\stackalignment{r}% RIGHT ALIGNED STACKS
+    \renewcommand\stacktype{L}% MAKE STACKS OBEY FIXED BASELINESKIP
+    \strutlongstacks{T}% TO GET PROPER SPACING FOR SINGLE-LINE ITEMS
+    \begin{itemize}
+       \item[\stackunder{first line}{second line}] blah blah
+       \item[\smash{\stackunder{first line}{second line}}] \lipsum[4]
+       \item[\smash{\Longunderstack{first\\second\\third}}] \lipsum[3]
+    \end{itemize}
+    \end{document}
 
 
