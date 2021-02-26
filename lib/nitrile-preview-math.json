@@ -175,7 +175,8 @@
     
     { "kbd": "&#x2594;"        ,    "unicode": "&#x2594;"       ,  "id": "myx2594"       ,"dx":"0"                      ,"op": 0    ,"width": 0  },
     { "kbd": "&#x203E;"        ,    "unicode": "&#x203E;"       ,  "id": "myx203E"       ,"dx":"0"                      ,"op": 0    ,"width": 0  },
-    { "kbd": "&#x0305;"        ,    "unicode": "&#x0305;"       ,  "id": "myx0305"       ,"dx":"0"                      ,"op": 0    ,"width": 0  ,"comment":"combining overline" }
+    { "kbd": "&#x0305;"        ,    "unicode": "&#x0305;"       ,  "id": "myx0305"       ,"dx":"0"                      ,"op": 0    ,"width": 0  ,"comment":"combining overline" },
+    { "kbd": "&#x20D7;"        ,    "unicode": "&#x20D7;"       ,  "id": "myx20D7"       ,"dx":"0"                      ,"op": 0    ,"width": 0  ,"comment":"combining right arrowhead above" }
 
   ],
   "mathCommands": [
