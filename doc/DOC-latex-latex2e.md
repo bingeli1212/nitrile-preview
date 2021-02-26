@@ -1728,37 +1728,95 @@ once. Show its value with
 
 There are a number of horizontal spacing macros for LaTeX:
 
-- '\,' inserts a .16667em space in text mode, or \thinmuskip (equivalent to
-  3mu) in math mode; there's an equivalent \thinspace macro;
-- '\!' is the negative equivalent to \,; there's an equivalent \negthinspace
++ `\,` 
+
+  inserts a .16667em space in text mode, or \thinmuskip (equivalent to
+  3mu) in math mode; there's an equivalent `\thinspace` macro;
+
++ `\!` 
+
+  is the negative equivalent to `\,`; there's an equivalent `\negthinspace`
   macro;
-- '\>' inserts a .2222em space in text mode, or \medmuskip (equivalent
+
++ `\>` 
+
+  inserts a .2222em space in text mode, or `\medmuskip` (equivalent
   to 4.0mu plus 2.0mu minus 4.0mu) in math mode; there's an equivalent
   \medspace;
-- '\:' is the same as '\>'
-- '\negmedspace' is the negative equivalent to \medspace;
-- '\;' inserts a .2777em space in text mode, or \thickmuskip (equivalent to
-  5.0mu plus 5.0mu) in math mode; there's an equivalent \thickspace;
-- '\negthickspace' is the negative equivalent to \thickspace;
-- '\enspace' inserts a space of .5em in text or math mode;
-- '\quad' inserts a space of 1em in text or math mode;
-- '\qquad' inserts a space of 2em in text or math mode;
-- '\kern{<len>}' inserts a skip of <len> (may be negative) in text or math mode
-  (a plain TeX skip); there's also a math-specific \mkern <math len>;
-- '\hskip{<len>}' (similar to \kern);
-- '\hspace{<len>}' inserts a space of length <len> (may be negative) in math or
+
++ `\:` 
+
+  is the same as `\>`
+
++ `\negmedspace` 
+
+  is the negative equivalent to `\medspace`;
+
++ `\;` 
+
+  inserts a .2777em space in text mode, or `\thickmuskip` (equivalent to
+  5.0mu plus 5.0mu) in math mode; there's an equivalent `\thickspace`;
+
++ `\negthickspace` 
+
+  is the negative equivalent to `\thickspace`;
+
++ `\enspace` 
+
+  inserts a space of .5em in text or math mode;
+
++ `\quad` 
+
+  inserts a space of 1em in text or math mode;
+
++ `\qquad` 
+
+  inserts a space of 2em in text or math mode;
+
++ `\kern{<len>}` 
+
+  inserts a skip of <len> (may be negative) in text or math mode
+  (a plain TeX skip); there's also a math-specific `\mkern <math len>`;
+
++ `\hskip{<len>}` 
+
+  (similar to `\kern`);
+
++ `\hspace{<len>}` 
+
+  inserts a space of length <len> (may be negative) in math or
   text mode (a LaTeX \hskip);
-- '\hphantom{<stuff>}' inserts space of length equivalent to <stuff> in math or
-  text mode. \phantom{<stuff>} is similar, inserting a horizontal and vertical
+
++ `\hphantom{<stuff>}` 
+
+  inserts space of length equivalent to <stuff> in math or
+  text mode. `\phantom{<stuff>}` is similar, inserting a horizontal and vertical
   space that matches <stuff>. Should be \protected when used in fragile
-  commands (like \caption and sectional headings);
-- '\ ' inserts what is called a "control space" (in text or math mode);
-- ' ' inserts an inter-word space in text mode (and is gobbled in math mode).
-  Similarly for \space and { }.
-- '~' inserts an "unbreakable" space (similar to an HTML &nbsp;) (in text or
+  commands (like `\caption` and sectional headings);
+
++ `\ ` 
+
+  inserts what is called a "control space" (in text or math mode);
+
++ ` ` 
+
+  inserts an inter-word space in text mode (and is gobbled in math mode).
+  Similarly for `\space` and `{ }`.
+
++ `~` 
+
+  inserts an "unbreakable" space (similar to an HTML &nbsp;) (in text or
   math mode);
-- '\hfill' inserts a so-called "rubber length" or stretch between elements (in
+
++ `\hfill` 
+
+  inserts a so-called "rubber length" or stretch between elements (in
   text or math mode). Note that you may need to provide a type of anchor to
-  fill from/to; see What is the difference between \hspace*{\fill} and \hfill?;
+  fill from/to; see What is the difference between 
+  ``\hspace*{\fill}`` and ``\hfill?``;
+
+
+
+
 
 
