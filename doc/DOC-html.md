@@ -190,11 +190,30 @@ overflow the line.
   the line, and each subsequent flex item is placed flush with the preceding
   item.
 
+  ```diagram{outline}
+  viewport 18 2
+  config w 2
+  config h 2
+  config fillcolor orange
+  config opacity 0.3
+  box "1\\2\\3" (0,0) [h:2] [h:2]
+  ```
+
 + `flex-end`
 
   Flex items are packed toward the end of the line. The main-end margin edge of
   the last flex item is placed flush with the main-end edge of the line, and each
   preceding flex item is placed flush with the subsequent item.
+
+  ```diagram{outline}
+  viewport 18 2
+  config w 2
+  config h 2
+  set refxy right:12
+  config fillcolor orange
+  config opacity 0.3
+  box "1\\2\\3" (0,0) [h:2] [h:2]
+  ```
 
 + `center`
 
@@ -204,6 +223,16 @@ overflow the line.
   item on the line and between the main-end edge of the line and the last item on
   the line. (If the leftover free-space is negative, the flex items will overflow
   equally in both directions.)
+
+  ```diagram{outline}
+  viewport 18 2
+  config w 2
+  config h 2
+  set refxy right:6
+  config fillcolor orange
+  config opacity 0.3
+  box "1\\2\\3" (0,0) [h:2] [h:2]
+  ```
 
 + `space-between`
 
@@ -215,6 +244,15 @@ overflow the line.
   main-end edge of the line, and the remaining flex items on the line are
   distributed so that the spacing between any two adjacent items is the same.
 
+  ```diagram{outline}
+  viewport 18 2
+  config w 2
+  config h 2
+  config fillcolor orange
+  config opacity 0.3
+  box "1\\2\\3" (0,0) [h:8] [h:8] 
+  ```
+
 + `space-around`
 
   Flex items are evenly distributed in the line, with half-size spaces on either
@@ -225,6 +263,13 @@ overflow the line.
   items and the flex container edges is half the size of the spacing between flex
   items.
 
-
+  ```diagram{outline}
+  viewport 18 2
+  config w 2
+  config h 2
+  config fillcolor orange
+  config opacity 0.3
+  box "1\\2\\3" (3,0) [h:5] [h:5] 
+  ```
 
 
