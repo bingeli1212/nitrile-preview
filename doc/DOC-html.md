@@ -616,7 +616,7 @@ viewport 11 10
 draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
 box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
 box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
-box {fillcolor:orange,opacity:0.3,w:8} "Hello World" (1.5,7)
+box {fillcolor:orange,opacity:0.3,w:8} "Hello World" /-1.5,/ (3,7)
 ```
 
 
