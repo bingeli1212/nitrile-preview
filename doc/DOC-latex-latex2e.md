@@ -1730,7 +1730,7 @@ There are a number of horizontal spacing macros for LaTeX:
 
 + `\,` 
 
-  inserts a .16667em space in text mode, or \thinmuskip (equivalent to
+  inserts a .16667em space in text mode, or `\thinmuskip` (equivalent to
   3mu) in math mode; there's an equivalent `\thinspace` macro;
 
 + `\!` 
@@ -1785,13 +1785,13 @@ There are a number of horizontal spacing macros for LaTeX:
 + `\hspace{<len>}` 
 
   inserts a space of length <len> (may be negative) in math or
-  text mode (a LaTeX \hskip);
+  text mode (a LaTeX `\hskip`);
 
 + `\hphantom{<stuff>}` 
 
   inserts space of length equivalent to <stuff> in math or
   text mode. `\phantom{<stuff>}` is similar, inserting a horizontal and vertical
-  space that matches <stuff>. Should be \protected when used in fragile
+  space that matches <stuff>. Should be `\protected` when used in fragile
   commands (like `\caption` and sectional headings);
 
 + `\ ` 
@@ -1805,7 +1805,7 @@ There are a number of horizontal spacing macros for LaTeX:
 
 + `~` 
 
-  inserts an "unbreakable" space (similar to an HTML &nbsp;) (in text or
+  inserts an "unbreakable" space (similar to an HTML `&nbsp;`) (in text or
   math mode);
 
 + `\hfill` 
@@ -1813,7 +1813,7 @@ There are a number of horizontal spacing macros for LaTeX:
   inserts a so-called "rubber length" or stretch between elements (in
   text or math mode). Note that you may need to provide a type of anchor to
   fill from/to; see What is the difference between 
-  ``\hspace*{\fill}`` and ``\hfill?``;
+  `\hspace*{\fill}` and `\hfill`.
 
 
 
