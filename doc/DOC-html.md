@@ -175,7 +175,7 @@ determines the direction in which flex items are laid out.
 
   Same as column, except the main-start and main-end directions are swapped.
 
-[ The justify-content property. ] The justify-content property aligns flex
+[ The `justify-content` property. ] The `justify-content` property aligns flex
 items along the main axis of the current line of the flex container. This is
 done after any flexible lengths and any auto margins have been resolved.
 Typically it helps distribute extra free space leftover when either all the
@@ -272,4 +272,196 @@ overflow the line.
   box "1\\2\\3" (3,0) [h:5] [h:5] 
   ```
 
+[ The `align-items` and `align-self` properties. ]
+Flex items can be aligned in the cross axis of the current line of the flex
+container, similar to `justify-content` but in the perpendicular direction.
+The `align-items` sets the default alignment for all of the flex container’s items,
+including anonymous flex items. The `align-self` allows this default alignment
+to be overridden for individual flex items. (For anonymous flex items,
+`align-self` always matches the value of `align-items` on their associated flex
+container.)
 
+If either of the flex item’s `cross-axis` margins is set to `auto`, the
+`align-self` property has no effect.
+
++ `auto`
+
+  Defers cross-axis alignment control to the value of `align-items` on the
+  parent box. (This is the initial value of `align-self`.)
+
++ `flex-start`
+
+  The cross-start margin edge of the flex item is placed flush with the
+  cross-start edge of the line.
+
++ `flex-end`
+
+  The cross-end margin edge of the flex item is placed flush with the cross-end
+  edge of the line.
+
++ `center`
+
+  The flex item’s margin box is centered in the cross axis within the line. (If
+  the cross size of the flex line is less than that of the flex item, it will
+  overflow equally in both directions.)
+
++ `baseline`
+
+  The flex item participates in baseline alignment: all participating flex items
+  on the line are aligned such that their baselines align, and the item with the
+  largest distance between its baseline and its cross-start margin edge is placed
+  flush against the cross-start edge of the line. If the item does not have a
+  baseline in the necessary axis, then one is synthesized from the flex item’s
+  border box.
+
++ `stretch`
+
+  If the cross size property of the flex item computes to auto, and neither of
+  the cross-axis margins are auto, the flex item is stretched. Its used value is
+  the length necessary to make the cross size of the item’s margin box as close
+  to the same size as the line as possible, while still respecting the
+  constraints imposed by `min-height`/`min-width`/`max-height`/`max-width`.
+
+[ The `align-content` property. ]
+The `align-content` property is designed to align
+each line of flex items across the cross-axis. This property will have no effect
+when there is only a single line.
+
+
+[ The `order` property. ]
+Many web pages have a similar shape in the markup, with a header on top, a
+footer on bottom, and then a content area and one or two additional columns in
+the middle. Generally, it’s desirable that the content come first in the page’s
+source code, before the additional columns. However, this makes many common
+designs, such as simply having the additional columns on the left and the
+content area on the right, difficult to achieve. This has been addressed in
+many ways over the years, often going by the name "Holy Grail Layout" when
+there are two additional columns. order makes this trivial. For example, take
+the following sketch of a page’s code and desired layout:
+
+    <!DOCTYPE html>
+    <header>...</header>
+    <main>
+       <article>...</article>
+       <nav>...</nav>
+       <aside>...</aside>
+    </main>
+    <footer>...</footer> 
+
+Here is the CSS:
+
+    main { display: flex; }
+    main > article { order: 2; min-width: 12em; flex:1; }
+    main > nav     { order: 1; width: 200px; }
+    main > aside   { order: 3; width: 200px; }
+
+As an added bonus, the columns will all be equal-height by default, and the
+main content will be as wide as necessary to fill the screen. Additionally,
+this can then be combined with media queries to switch to an all-vertical
+layout on narrow screens:
+
+    @media all and (max-width: 600px) {
+      /* Too narrow to support three columns */
+      main { flex-flow: column; }
+      main > article, main > nav, main > aside {
+        /* Return them to document order */
+        order: 0; width: auto;
+      }
+    }
+
+```diagram
+viewport 18 12
+config fillcolor orange
+config opacity 0.3
+box {w:18,h:4} "footer" (0,0)
+box {w:18,h:4} "header" (0,8)
+box {w:4,h:4} "nav" (0,4)
+box {w:10,h:4} "article" (4,4)
+box {w:4,h:4} "aside" (14,4)
+```
+
+[ Flex Lines. ]
+Flex items in a flex container are laid out and aligned within flex lines,
+hypothetical containers used for grouping and alignment by the layout
+algorithm. A flex container can be either single-line or multi-line, depending
+on the `flex-wrap` property:
+
+- A single-line flex container (i.e. one with `flex-wrap: nowrap`) lays out all
+  of its children in a single line, even if that would cause its contents to
+  overflow.
+
+- A multi-line flex container (i.e. one with `flex-wrap:wrap` or 
+  `flex-wrap:wrap-reverse`) breaks its flex items across multiple lines, similar to how
+  text is broken onto a new line when it gets too wide to fit on the existing
+  line. When additional lines are created, they are stacked in the flex
+  container along the cross axis according to the `flex-wrap` property. Every
+  line contains at least one flex item, unless the flex container itself is
+  completely empty.
+
+[[[ Example 1. ]]]
+This example shows four buttons that do not fit side-by-side horizontally, and
+therefore will wrap into multiple lines.
+
+    #flex {
+      display: flex;
+      flex-flow: row wrap;
+      width: 300px;
+    }
+    .item {
+      width: 80px;
+    }
+    <div id="flex">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+    </div>
+
+Since the container is 300px wide, only three of the items fit onto a single
+line. They take up 240px, with 60px left over of remaining space.  Because the
+flex-flow property specifies a multi-line flex container (due to the wrap
+keyword appearing in its value), the flex container will create an additional
+line to contain the last item.
+ 
+```diagram{outline} 
+viewport 15 4 
+group my = {w:4,h:2,fillcolor:orange,opacity:0.3} 
+box {group:my} "1" (0,2) 
+box {group:my} "2" (4,2) 
+box {group:my} "3" (8,2) 
+box {group:my} "4" (0,0) 
+```
+
+Once content is broken into lines, each line is laid out independently;
+flexible lengths and the justify-content and align-self properties only
+consider the items on a single line at a time.
+
+In a multi-line flex container (even one with only a single line), the cross
+size of each line is the minimum size necessary to contain the flex items on
+the line (after alignment due to align-self), and the lines are aligned within
+the flex container with the align-content property. In a single-line flex
+container, the cross size of the line is the cross size of the flex container,
+and align-content has no effect. The main size of a line is always the same as
+the main size of the flex container’s content box.
+
+[[[ Example 2. ]]]
+Here’s the same example as the previous, except that the flex items have all
+been given `flex:auto`. The first line has 60px of remaining space, and all of
+the items have the same flexibility, so each of the three items on that line
+will receive 20px of extra width, each ending up 100px wide. The remaining item
+is on a line of its own and will stretch to the entire width of the line, i.e.
+300px.  Since the container is 300px wide, only three of the items fit onto a
+single line. They take up 240px, with 60px left over of remaining space.
+Because the `flex-flow` property specifies a multi-line flex container (due to
+the wrap keyword appearing in its value), the flex container will create an
+additional line to contain the last item.
+
+```diagram{outline}
+viewport 15 4
+group my = {w:5,h:2,fillcolor:orange,opacity:0.3} 
+group my2 = {w:15,h:2,fillcolor:orange,opacity:0.3} 
+box {group:my} "1" (0,2) 
+box {group:my} "2" (5,2) 
+box {group:my} "3" (10,2) 
+box {group:my2} "4" (0,0) 
+```
