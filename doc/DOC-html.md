@@ -110,6 +110,8 @@ instead not rendered (just as if its text nodes were display:none).
 
 ```diagram
 viewport 21 4
+config fillcolor orange
+config opacity 0.3
 box {w:4,h:4} "block" (0,0)
 box {w:3,h:4} "float" (4,0)
 box {w:10,h:4} "anonymous item 3" (7,0)
@@ -370,14 +372,14 @@ layout on narrow screens:
     }
 
 ```diagram
-viewport 18 12
+viewport 18 8
 config fillcolor orange
 config opacity 0.3
-box {w:18,h:4} "footer" (0,0)
-box {w:18,h:4} "header" (0,8)
-box {w:4,h:4} "nav" (0,4)
-box {w:10,h:4} "article" (4,4)
-box {w:4,h:4} "aside" (14,4)
+box {w:18,h:2} "footer" (0,0)
+box {w:18,h:2} "header" (0,6)
+box {w:4,h:4} "nav"      (0,2)
+box {w:10,h:4} "article" (4,2)
+box {w:4,h:4} "aside"    (14,2)
 ```
 
 [ Flex Lines. ]
@@ -465,3 +467,157 @@ box {group:my} "2" (5,2)
 box {group:my} "3" (10,2) 
 box {group:my2} "4" (0,0) 
 ```
+
+[ Controlling flexibility of each flex item. ]
+The defining aspect of flex layout is the ability to make the flex items
+“flex”, altering their width/height to fill the available space in the main
+dimension. This is done with the flex property. A flex container distributes
+free space to its items (proportional to their flex grow factor) to fill the
+container, or shrinks them (proportional to their flex shrink factor) to
+prevent overflow.
+
+The `flex` property is to be set with each flex item. Its value affects the
+final length of this flex item.  In particular, when a flex item is being
+managed by a flex container, the `width`/`height` property of the flex item
+becomes less important when its `flex` property is set, in which case the size
+of the flex item is recomputed based upon the actual contents of this value and
+the available spaces within the container. 
+
+The `flex` property is a shorthand that holds property values from three
+specialized properties: `flex-grow`, `flex-shrink`, and `flex-basis`.  A flex
+item is inflexible if both `flex-grow` and `flex-shrink` properties are set to
+zero. Following are descriptions of the three properties individually.
+
++ `flex-grow`
+
+  This "number" component sets flex-grow longhand and specifies the flex grow
+  factor, which determines how much the flex item will grow relative to the
+  rest of the flex items in the flex container when positive free space is
+  distributed. When omitted, it is set to 1.
+
+  Flex values between 0 and 1 have a somewhat special behavior: when the sum of
+  the flex values on the line is less than 1, they will take up less than 100%
+  of the free space.
+
++ `flex-shrink`
+
+  This "number" component sets flex-shrink longhand and specifies the flex
+  shrink factor, which determines how much the flex item will shrink relative
+  to the rest of the flex items in the flex container when negative free space
+  is distributed. When omitted, it is set to 1.
+
+  Note: The flex shrink factor is multiplied by the flex base size when
+  distributing negative space. This distributes negative space in proportion to
+  how much the item is able to shrink, so that e.g. a small item won’t shrink
+  to zero before a larger item has been noticeably reduced.
+
++ `flex-basis`
+
+  This component sets the `flex-basis longhand`, which specifies the flex basis:
+  the initial main size of the flex item, before free space is distributed
+  according to the flex factors.  The `flex-basis` property accepts the same
+  values as the width and height properties (except that auto is treated
+  differently) plus the content keyword:
+
+  + `auto`
+     
+    When specified on a flex item, the auto keyword retrieves the value of the
+    main size property as the used flex-basis. If that value is itself auto,
+    then the used value is content.
+
+  + `content`
+
+    Indicates an automatic size based on the flex item’s content. (It is
+    typically equivalent to the max-content size, but with adjustments to
+    handle aspect ratios, intrinsic sizing constraints, and orthogonal flows;
+    see details in §9 Flex Layout Algorithm.)
+
+    Note: This value was not present in the initial release of Flexible Box
+    Layout, and thus some older implementations will not support it. The
+    equivalent effect can be achieved by using auto together with a main size
+    (width or height) of auto.
+
+  + [width]
+
+    For all other values, `flex-basis` is resolved the same way as for [width]
+    and [height].  When omitted from the flex shorthand, its specified value is
+    0. When omitted from the `flex` shorthand, its specified value is assumed
+    to be 0.
+
+When `flex:none` is encountered, the "none" keyword expands to be "0 0 auto".
+Authors are encouraged to control flexibility using the flex shorthand rather
+than with its longhand properties directly, as the shorthand correctly resets
+any unspecified components to accommodate common uses.
+
+[ Aligning with "auto" margins. ] Auto margins on flex items have an effect
+very similar to auto margins in block flow:
+
+- During calculations of flex bases and flexible lengths, auto margins are
+  treated as 0.
+
+- Prior to alignment via justify-content and align-self, any positive free space
+  is distributed to auto margins in that dimension.
+
+- Overflowing boxes ignore their auto margins and overflow in the end direction.
+
+Note: If free space is distributed to auto margins, the alignment properties
+will have no effect in that dimension because the margins will have stolen all
+the free space left over after flexing.
+
+[[[ Example 3. ]]]
+One use of auto margins in the main axis is to separate flex items into
+distinct "groups". The following example shows how to use this to reproduce a
+common UI pattern - a single bar of actions with some aligned on the left and
+others aligned on the right.
+
+    nav > ul {
+      display: flex;
+    }
+    nav > ul > #login {
+      margin-left: auto;
+    }
+    <nav>
+      <ul>
+        <li>About</li>
+        <li>Projects</li>
+        <li>Interact</li>
+        <li id="login">Login</li>
+      </ul>
+    </nav>
+
+```diagram{outline}
+viewport 20 2
+config fillcolor orange
+config opacity 0.3
+box {w:4,h:2} "About"    (0,0)
+box {w:4,h:2} "Projects" (4,0)
+box {w:4,h:2} "Interact" (8,0)
+box {w:4,h:2} "Login"    (16,0)
+```
+
+[[[ Example 4. ]]]
+The figure below illustrates the difference in cross-axis alignment in overflow
+situations between using auto margins and using the alignment properties.
+The items in the figure on the left are centered with margins, while those in
+the figure on the right are centered with align-self. If this column flex
+container was placed against the left edge of the page, the margin behavior
+would be more desirable, as the long item would be fully readable. In other
+circumstances, the true centering behavior might be better.
+
+```diagram{outline}
+viewport 11 10
+draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
+box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
+box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
+box {fillcolor:orange,opacity:0.3,w:8} "Hello World" (3,7)
+```
+```diagram{outline}
+viewport 11 10
+draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
+box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
+box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
+box {fillcolor:orange,opacity:0.3,w:8} "Hello World" (1.5,7)
+```
+
+
+
