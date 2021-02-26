@@ -573,6 +573,10 @@ Following are styles recognized by NITRILE:
   by the list-bundle, blockquote-bundle, and verbatim-bundle to set their 
   left margin.
 
++ rubify:1
+
+  If this flags has been set then the text will be rubified.
+
 
 
 

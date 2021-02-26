@@ -109,16 +109,11 @@ correct scaled size by the 'width' and 'height' arguments.
 
 Create a new div-element such that it will have a CSS of "break-before:column".
 
-    <div style='columns:2;'> &quot;Lorem ipsum dolor sit amet, consectetur
-    adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. 
+    <div style='columns:2;'> 
+    Text ...
     <div style='break-before:column;'></div> 
-    Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est
-    laborum.&quot; </div>
+    Text ...
+    </div>
 
 Note that contents inside a DIV-element with its "columns:2" setting, the
 "width:100%" style for a child element within it would have occupied only the
@@ -130,6 +125,97 @@ work.
 
     <div style='break-before:column;'></div> 
 
+# The "flex" Layout
 
+Some terminologies:
 
++ main axis
++ main dimension
+
+  The main axis of a flex container is the primary axis along which flex items
+  are laid out. It extends in the main dimension.
+
++ main-start
++ main-end
+
+  The flex items are placed within the container starting on the main-start side
+  and going toward the main-end side.
+
++ main size
++ main size property
+
+  The width or height of a flex container or flex item, whichever is in the main
+  dimension, is that box’s main size. Its main size property is thus either its
+  width or height property, whichever is in the main dimension. Similarly, its
+  min and max main size properties are its min-width/max-width or
+  min-height/max-height properties, whichever is in the main dimension, and
+  determine its min/max main size.
+
++ cross axis
++ cross dimension
+
+  The axis perpendicular to the main axis is called the cross axis. It extends in
+  the cross dimension.
+
++ cross-start
++ cross-end
+
+  Flex lines are filled with items and placed into the container starting on the
+  cross-start side of the flex container and going toward the cross-end side.
+
++ cross size
++ cross size property
+
+  The width or height of a flex container or flex item, whichever is in the cross
+  dimension, is that box’s cross size. Its cross size property is thus either its
+  width or height property, whichever is in the cross dimension. Similarly, its
+  min and max cross size properties are its min-width/max-width or
+  min-height/max-height properties, whichever is in the cross dimension, and
+  determine its min/max cross size.
+
+Flex containers are not block containers, and so some properties that were
+designed with the assumption of block layout don’t apply in the context of flex
+layout. In particular:
+
+- float and clear do not create floating or clearance of flex item, and do not
+  take it out-of-flow.
+
+- vertical-align has no effect on a flex item.
+
+- the ::first-line and ::first-letter pseudo-elements do not apply to flex
+  containers, and flex containers do not contribute a first formatted line or
+  first letter to their ancestors.
+
+Loosely speaking, the flex items of a flex container are boxes representing its
+in-flow contents.
+
+Each in-flow child of a flex container becomes a flex item, and each contiguous
+sequence of child text runs is wrapped in an anonymous block container flex
+item. However, if the entire sequence of child text runs contains only white
+space (i.e. characters that can be affected by the white-space property) it is
+instead not rendered (just as if its text nodes were display:none).
+
+    <div style="display:flex">
+        <!-- flex item: block child -->
+        <div id="item1">block</div>
+        <!-- flex item: floated element; floating is ignored -->
+        <div id="item2" style="float: left;">float</div>
+        <!-- flex item: anonymous block box around inline content -->
+        anonymous item 3
+        <!-- flex item: inline child -->
+        <span>
+            item 4
+            <!-- flex items do not split around blocks -->
+            <q style="display: block" id=not-an-item>item 4</q>
+            item 4
+        </span>
+    </div>
+
+```diagram
+viewport 21 4
+box {w:4,h:4} "block" (0,0)
+box {w:3,h:4} "float" (4,0)
+box {w:10,h:4} "anonymous item 3" (7,0)
+box {w:4,h:4} "item 4\\&quot;item 4&quot;\\item 4" (17,0)
+```
 
