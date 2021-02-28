@@ -546,12 +546,28 @@ which serves to add a 2pt thickness to the existing thickness of the line.
 Following is an example of drawing an upper pointing arrow such that the body
 of the arrow is drawn with a line that is 2pt thicker than its arrow head.
 
-    draw <,,2> (0,0) ~ (0,2) <,,0> (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
+    draw (0,0,2) ~ (0,2)  (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
 
-Note that to insert a hint use the ``<,,hint>`` notation such that 
-the "hint" is an integer that is the result of bit-OR'ed value of all
-the flags above. To remove the hint simply specify 0 as the new hint. 
-Note that each new hint is going to overwrite the pervious hint.
+The path above consists of three path segments: the first of which draws
+the arrow body, where the last two each drawing one part of the arrow head.
+
+To insert a hint there are two ways: the first is to add it as the third
+argument to an absolute point. This is what the previous example has shown.
+Since "hints" is only going to be queried for the first point of a path
+segment, setting it would have affect the path segment of the first segment.
+The second path segment in the previous example isn't effected.  The second
+method is to use the [hints:] relative notation.
+
+    draw (0,0) [hints:2] ~ (0,2)  (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
+
+This notation sets the "hints" flags of the last point, regardless of what that
+point is. Thus in order for it to be effective the [hints:] directive must be
+placed immediately after the first point of a path segment in order for the
+hints to be attached to that point.
+
+Note that "hints" is an integer that is the result of bit-OR'ed value of all
+the flags above. To remove the hint simply specify 0 as the new hint.  Note
+that each new hint is going to overwrite the pervious hint.
 
 Another thing to note that internally, the current hint is stored
 with each new path point created, and if a new hint is put in place and the next
