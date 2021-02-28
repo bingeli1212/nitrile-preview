@@ -737,11 +737,16 @@ Each of the following syntax denotes a relative point.
   radius of 0.2. The last point is not changed.
 
 + [offset:0.2,-0.4]
++ [offset:last]     
   
   This is to increase the current offset value by 0.2 in x-direction
   and -0.4 in y-direction. Each encountering of this directive will
   increase the current settings of offset. An offset is added to an absolute
   point when an absolute point is encountered in the command line.
+
+  If the value is set to 'last', then the last saved x/y offset values
+  are used. This is useful if the next command wants to continue with
+  the same offset done by the previous command.
 
 
 # The shape-operation
