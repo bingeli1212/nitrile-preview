@@ -1769,14 +1769,14 @@ assigned the sum of adding the "x" components of the first two points
 in path variable 'pts', which will be "1 + 3 = 4".
 
     path pts = (1,2) (3,4)
-    mx := &pts[0].x + &pts[1].x
+    var mx = &pts_0.x + &pts_1.x
     label.ctr (\mx,0)
 
 Following is another example of adding the two "y" components of the
 first two points and assign the result to 'my'.
 
     path pts = (1,2) (3,4)
-    my := &pts[0].y + &pts[1].y
+    var my = &pts_0.y + &pts_1.y
     label.ctr (0,\my)
 
 
