@@ -705,9 +705,21 @@ Each of the following syntax denotes a relative point.
   make a right turn, then set the angle to a negative number.
 
 + [clock:30,1]
++ [clock:30,1,4,0]
 
-  This is to create a new point that is relative to the current point 
-  or last direction in the clockwise direction and for a given distance.
+  This is to create a new point that is away from the current point in a
+  direciton described by the angle, where angle 0 is straight north, and 90
+  degree is to the right hand side, -90 to the left hand side, and 180 is due
+  south. The first argument is the angle, and the second one is the distance
+  away from the current point.
+
+  If there are a total of four arguments,
+  then the last two arguments represents the x/y coordinates 
+  of a point from which the base angle is to be computed. The base angle
+  is the angle formed between the due north line and the line between the current
+  point and the new point. The
+  clock angle is then being added on top of the base angle before
+  used to figure out the new location.
 
 + [flip:5,5] 
 
@@ -724,6 +736,12 @@ Each of the following syntax denotes a relative point.
   This is to place a circle centered at the last position with a given
   radius of 0.2. The last point is not changed.
 
++ [offset:0.2,-0.4]
+  
+  This is to increase the current offset value by 0.2 in x-direction
+  and -0.4 in y-direction. Each encountering of this directive will
+  increase the current settings of offset. An offset is added to an absolute
+  point when an absolute point is encountered in the command line.
 
 
 # The shape-operation
