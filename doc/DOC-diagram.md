@@ -382,21 +382,19 @@ brackets, commas, and hyphen.
 
 Following commands treats the input argument as path.
 
-~~~list
 - draw
 - fill
 - stroke
 - arrow
 - revarrow
 - dblarrow
-~~~
 
 The 'draw' command would draw connecting lines between path points.
 Typically it is straight lines, but Bezier curves are also supported.
 This includes quadratic and cubic curves. The SVG arc is also
 supported.
 
-    draw (0,0) ~ (1,1) (2,2)
+    draw (0,0)~(1,1)~(2,2)
 
 The 'fill' command is similar to 'draw', except that it fills the path
 with the default filled color, without drawing the the outline of the
@@ -420,25 +418,24 @@ syntaxes, that are shown below.
 
 Path expression can also include "offsets". An offset is expressed as
 
-    <x,y>
+    [offset:x,y]
     
 The presence of an offset will not cause a real points to be inserted
 into the path. Rather, it serves to provide an "offset" such that all
 future points will be computed as relative to this offset. For
 example, let's suppose we have the following two draw line program.
 
-    draw (10,0) (15,0)
-    draw (10,0) (10,5)
+    draw (10,0)~(15,0)
+    draw (10,0)~(10,5)
 
 However, by using "offsets" we can rewrite them as follows.
 
-    draw <10,0> (0,0) (5,0)
-    draw <10,0> (0,0) (0,5)
+    draw [offset:10,0] (0,0)~(5,0)
+    draw [offset:10,0] (0,0)~(0,5)
 
-Here, <10,0> are considered an offset. An offset <10,0> is to set it
-so that the all future points will be considered an offset to the
-point that is (10,0). Thus, the point of (0,0) is considered as
-(10,0), and (5,0) is considered (15,0). The offset always appears
+Here, the offsetis set it so that the all future absolute points will be
+considered an offset to the point that is (10,0). Thus, the point of (0,0) is
+considered as (10,0), and (5,0) is considered (15,0). The offset always appears
 between a set of angle brackets. The first number is the offset in the
 horizontal direction, and the second one in vertical direction.
 
@@ -448,7 +445,7 @@ that follow it. Thus, if you have placed an offset in the middle of
 two points, such as the following, then the first point is to be
 considered as (0,0) while the second one as (15,0).
 
-    draw (0,0) <10,0> (5,0)
+    draw (0,0) [offset:10,0] (5,0)
 
 Offsets are also accumulative. Thus, if there are two offsets one
 appear after another then the second offset is considered to be offset
@@ -456,11 +453,11 @@ to the first. This allows you to construct more points simply by
 moving offsets. For example, you can construct a path with four points
 (11,0), (12,0), (13,0) and (14,0) as follows.
 
-    draw <11,0> (0,0) <1,0> (0,0) <1,0> (0,0) <1,0> (0,0)
+    draw [ofset:11,0] (0,0) [ofset:1,0] (0,0) [ofset:1,0] (0,0) [ofset:1,0] (0,0)
 
-The keyword <last> can be used to refer to the last know position
+The keyword [offset:last] can be used to refer to the last know position
 that is set by a path or draw operation. It is also possible to 
-set the offset to a specific path variable such <&B> where B is a
+set the offset to a specific path variable such [offset:&B] where B is a
 valid path, in which case the first point of this path is 
 retrieved and set as the new offset position.
 
@@ -478,16 +475,15 @@ the afformentioned intent. This notation is usually a special syntax
 placed at the end of the long list of points. For SVG it is the 'z',
 and for MetaPost/MetaFun it is the 'cycle'.
 
-    draw (0,0) (1,2) (3,4) cycle
+    draw (0,0)~(1,2)~(3,4) cycle
 
 Note that for all 'draw' related commands, a path can be expressed
 such that it contains multiple disjoint segments. For example, we can
 express to draw two disjoint line in a single 'draw' command such that
 the first line segment goes from (0,0) to (2,3) and the second line
-segment goes from (4,5) to (6,7). To do that, place a null point
-between the the (2,3) and (4,5).
+segment goes from (4,5) to (6,7). 
 
-    draw (0,0) (2,3) () (4,5) (6,7)
+    draw (0,0)~(2,3) (4,5)~(6,7)
 
 A null point is a point that is expressed a '()'. In addition, any
 appearances In this case, Diagram recognizes that there is going to be
@@ -500,7 +496,7 @@ case no null point needs to be specified. In the following example two
 path segment is to e created, with one consisting of a triangle, and
 another one a line.
 
-    draw (0,0) (2,0) (2,2) cycle (4,0) (6,2)
+    draw (0,0)~(2,0)~(2,2) cycle (4,0)~(6,2)
 
 For MetaPost output, each path segment requires a separate "draw"
 command. For SVG, a single PATH elements is sufficient; the SVG is
@@ -798,11 +794,11 @@ protractor       | 7x3.5            | lower-center
 updnprotractor   | 7x3.5            | upper-center
 ```
 
-- (a) For the radical the height is always 2, but the width might be changed to
+a. For the radical the height is always 2, but the width might be changed to
   a differen width if the 'radicallength' attribute is set to a different
   number. The default width is 4.
 
-- (b) For each shape, the 'sx' and 'sy' attributes can each be set to a
+b. For each shape, the 'sx' and 'sy' attributes can each be set to a
   different quantity, for which they each acts as a scalar that is to scale the
   width and height of the shape. For example, we can scale the protractor
   horizontally by half and vertically by two-third if we were to do the
@@ -812,7 +808,7 @@ updnprotractor   | 7x3.5            | upper-center
   shape.protractor {sx:0.5,sy:0.66} (0,0) 
   ```
 
-- (c) For each shape, the 'theta' can be added to express the angle of rotation
+c. For each shape, the 'theta' can be added to express the angle of rotation
   around the origin. The angle is a number in degrees, where a position number
   expresses the rotation in the direction of unter-clockwise.
   
