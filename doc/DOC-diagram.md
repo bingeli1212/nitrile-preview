@@ -784,32 +784,41 @@ position of each shape.
 ```tabular
 Shape            | Native size      | Anchor position
 ------------------------------------------------------------
-rect             | 1x1              | left-left
-rhombus          | 1x1              | left-left
-trapezoid        | 1x1              | left-left
-parallelgram     | 1x1              | left-left
-apple            | 1x1              | left-left
-rrect            | 1x1              | left-left
-basket           | 3x2              | left-left
-crate            | 4x3              | left-left
-radical          | 4x2              | top-left
+apple            | 1x1              | lower-left
+basket           | 3x2              | lower-left
+crate            | 4x3              | lower-left
+tree             | 2x2              | lower-center
+balloon          | 1x2              | lower-center
+house            | 4x4              | lower-left
+school           | 7x5              | lower-left
+mouse            | 5x2              | lower-left
+cat              | 4x2              | lower-center
+coin             | 2x1              | middle-center
 protractor       | 7x3.5            | lower-center
 updnprotractor   | 7x3.5            | upper-center
 ```
 
-- (a) For the radical the height is always 2, but the width might be changed to a differen width if the 'radicallength' attribute is set to a different number. The default width is 4.
+- (a) For the radical the height is always 2, but the width might be changed to
+  a differen width if the 'radicallength' attribute is set to a different
+  number. The default width is 4.
 
-- (b) For each shape, the 'sx' and 'sy' attributes can each be set to a different quantity, for which they each acts as a scalar that is to scale the width and height of the shape. For example, we can scale the protractor horizontally by half and vertically by two-third if we were to do the following.
+- (b) For each shape, the 'sx' and 'sy' attributes can each be set to a
+  different quantity, for which they each acts as a scalar that is to scale the
+  width and height of the shape. For example, we can scale the protractor
+  horizontally by half and vertically by two-third if we were to do the
+  following.
   
-  ````
-  shape.protractor {sx:0.5,sy:0.66} (0,0)
-  ````
+  ```verbatim 
+  shape.protractor {sx:0.5,sy:0.66} (0,0) 
+  ```
 
-- (c) For each shape, the 'theta' can be added to express the angle of rotation around the origin. The angle is a number in degrees, where a position number expresses the rotation in the direction of unter-clockwise.
+- (c) For each shape, the 'theta' can be added to express the angle of rotation
+  around the origin. The angle is a number in degrees, where a position number
+  expresses the rotation in the direction of unter-clockwise.
   
-  ````
+  ``` verbatim
   shape.protractor {theta:30} 
-  ````
+  ```
 
 
 
@@ -2655,7 +2664,6 @@ Following are Non-action commands:
     set
     source
     exit
-    console
     path
     record
     playback
