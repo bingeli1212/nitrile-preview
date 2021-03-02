@@ -744,6 +744,32 @@ Each of the following syntax denotes a relative point.
   are used. This is useful if the next command wants to continue with
   the same offset done by the previous command.
 
++ [m:2,-2]
++ [m:last]
++ [m:&a]
++ [m:&b]
+
+  This is to start a new line segment and set the first point to 
+  this value. Note that this value is relative to the 'lastpt', and
+  the 'lastpt' will be updated to this new location after this 
+  operation has ended.
+
++ [save:a]
++ [save:b]
+
+  This is to save the current 'lastpt' to a buffer named 'a' or 'b', and
+  can later be retrieved by 'load'.
+  
++ [load:a]
++ [load:b]
+
+  This is to locate a buffer named 'a' or 'b', and then update the current
+  'lastpt' to be the same value stored with this buffer if found. Note that
+  this operation itself does not export any path points.  To generate a path
+  point a relative operation such as a 'm', 'h', 'v', or 'l' will need to be
+  issued, whose exported path position is now based off the value of the new
+  'lastpt'.
+  
 
 # The shape-operation
 
