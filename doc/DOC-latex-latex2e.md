@@ -1857,7 +1857,7 @@ the label gets to be longer than 2 lines.
     \begin{document}
     \begin{tikzpicture}
     \draw[] (0.00mm,0.00mm)--(20.00mm,20.00mm) ;
-    \draw[] (0.00mm,0.00mm)--(20.00mm,20.00mm) node [midway, above, sloped] () {Hello World};
+    \draw[] (0.00mm,0.00mm)--(20.00mm,20.00mm) node [pos=0.5, above, sloped] () {Hello World};
     \end{tikzpicture}
     \end{document}
 
@@ -1873,9 +1873,22 @@ is a horizontal line.
     \begin{document}
     \begin{tikzpicture}
     \draw[] (0mm,0mm)--(20mm,20mm) ;
-    \draw[] (0mm,0mm)--(20mm,20mm)--(40mm,20mm) node [midway, above, sloped] () {Hello World};
+    \draw[] (0mm,0mm)--(20mm,20mm)--(40mm,20mm) node [pos=0.5, above, sloped] () {Hello World};
     \end{tikzpicture}
     \end{document}
+
+The previous two example will actually draw the path and the text. If path isn't wanted
+to be drawn, then setting opacity=0 inside the 'draw' command and then set it back to 1
+at the side of the 'node' command will do.
+
+    \documentclass{article}
+    \usepackage{tikz}
+    \begin{document}
+    \begin{tikzpicture}
+    \draw[opacity=0] (0mm,0mm)--(20mm,20mm)--(40mm,20mm) node [opacity=1, pos=0.5, above, sloped] () {Hello World};
+    \end{tikzpicture}
+    \end{document}
+
 
 
 
