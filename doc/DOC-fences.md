@@ -16,6 +16,7 @@ as images, frames, etc. Following are recognized fences.
 - blockquote
 - verbatim
 - tabbing
+- colorbutton
 
 
 If the name provided after the triple-backquote is not recognized
