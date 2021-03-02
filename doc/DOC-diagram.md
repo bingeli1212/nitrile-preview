@@ -2695,9 +2695,28 @@ In the previous example the first box will be created with "linesize:1", "w:3",
 and "h:2" attributes. The second box will have the same set of attributes as
 the first one except that it will have "linesize:2" instead of "linesize:1".
 
++ The 'fillspace' operation
 
+The "fillspace" operation would ask for a point within a space and then fill
+the entire space with a the current choice of fillcolor. 
 
+The "space" is defined as the area surrounded by previously drawn lines, which
+consists of a collection of line segments "drawn" by previous operations of "draw"
+or "stroke". 
 
+During a "draw" or "stroke" operation, if there is a "lineto" operation between
+two points, that two points are "saved" internally to represent a line segment.
+Each encounter of a "lineto" operation will create a new line segment which
+gets added to the collection.  The entire collection are queried to determine
+the boundary of a space around a given point.
+In the following example after a rectangle is drawn, "fillspace" operation
+can be used to fill the entire rectangle red by giving an arbitrary point
+inside the rectangle.
 
+    draw &rectangle{(2,2),10,10}
+    fillspace {fillcolor:red} (5,5)
+
+Currently only lines are recognized as legal boundaries for a space. In the future
+a Bezier curve or arc could also become part of a boundary. 
 
 
