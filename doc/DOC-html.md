@@ -619,5 +619,18 @@ box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
 box {fillcolor:orange,opacity:0.3,w:8} "Hello World" /-1.5,/ (3,7)
 ```
 
+# Draw Text Along A Path
 
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- to hide the path, it is usually wrapped in a <defs> element -->
+      <!-- <defs> -->
+      <path id="MyPath" fill="none" stroke="red"
+            d="M10,90 Q90,90 90,45 Q90,10 50,10 Q10,10 10,40 Q10,70 45,70 Q70,70 75,50" />
+      <!-- </defs> -->
+      <text>
+        <textPath href="#MyPath">
+          Quick brown fox jumps over the lazy dog.
+        </textPath>
+      </text>
+    </svg>
 

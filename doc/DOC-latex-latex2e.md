@@ -1850,4 +1850,33 @@ the label gets to be longer than 2 lines.
     \end{itemize}
     \end{document}
 
+# Draw Sloped Text for TikZ
+
+    \documentclass{article}
+    \usepackage{tikz}
+    \begin{document}
+    \begin{tikzpicture}
+    \draw[] (0.00mm,0.00mm)--(20.00mm,20.00mm) ;
+    \draw[] (0.00mm,0.00mm)--(20.00mm,20.00mm) node [midway, above, sloped] () {Hello World};
+    \end{tikzpicture}
+    \end{document}
+
+Note that Tikz does not consider the entire path for placing the text. It only
+seems to consider the last segment of the past. For instance, if a path
+consists of two 'L' operation, then the text will only attemp to follow
+the line segment of the second 'L' operation. In the second example the text
+"Hello World" will only be placed on top of the second line segment which 
+is a horizontal line.
+
+    \documentclass{article}
+    \usepackage{tikz}
+    \begin{document}
+    \begin{tikzpicture}
+    \draw[] (0mm,0mm)--(20mm,20mm) ;
+    \draw[] (0mm,0mm)--(20mm,20mm)--(40mm,20mm) node [midway, above, sloped] () {Hello World};
+    \end{tikzpicture}
+    \end{document}
+
+
+
 
