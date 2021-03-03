@@ -621,6 +621,14 @@ box {fillcolor:orange,opacity:0.3,w:8} "Hello World" /-1.5,/ (3,7)
 
 # Draw Text Along A Path
 
+Note that the dx='' attribute in this case is used to shift the text along 
+the path, such that when dx='' is set to be half the length of the path
+and text-anchor='middle' then the text is placed around the center
+of the path. the dy='' attribute shifts the text up and down the path, 
+such that when dy='' is negative it shifts text up and when dy='' is 
+positive it shifts text down. By default the text's base line aligns
+with the path.
+
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <!-- to hide the path, it is usually wrapped in a <defs> element -->
       <!-- <defs> -->
