@@ -577,7 +577,21 @@ Following are styles recognized by NITRILE:
 
   If this flags has been set then the text will be rubified.
 
++ var:x 1 10 y 2 20 z 3 30
 
+  This value holds a list of variables and their respective start/end values.
+  This value is currently utilized by the 'animation' bundle.
+  
++ steps:12
 
+  This value holds the total number steps for a variable to animate from its
+  start/end values.
+  This value is currently utilized by the 'animation' bundle.
 
++ fillonly:1
+
+  This value expresses whether certain operation is going to be treated
+  as a "fillonly" operation, as a way of deviating its "default" operation.
+  
+   
 

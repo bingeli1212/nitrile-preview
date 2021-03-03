@@ -755,16 +755,14 @@ Each of the following syntax denotes a relative point.
   operation has ended.
 
 + [save:a]
-+ [save:b]
 
-  This is to save the current 'lastpt' to a buffer named 'a' or 'b', and
+  This is to save the current 'lastpt' as a separate path named 'a' or 'b', and
   can later be retrieved by 'load'.
   
 + [load:a]
-+ [load:b]
 
-  This is to locate a buffer named 'a' or 'b', and then update the current
-  'lastpt' to be the same value stored with this buffer if found. Note that
+  This is to locate a path named 'a' and then update the
+  'lastpt' with the first point found in this path. Note that
   this operation itself does not export any path points.  To generate a path
   point a relative operation such as a 'm', 'h', 'v', or 'l' will need to be
   issued, whose exported path position is now based off the value of the new
