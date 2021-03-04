@@ -595,5 +595,10 @@ Following are styles recognized by NITRILE:
   This value expresses whether certain operation is going to be treated
   as a "fillonly" operation, as a way of deviating its "default" operation.
   
-   
++ fn:f
+
+  This value expresses the name of a function.
+
+
+
 
