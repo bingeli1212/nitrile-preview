@@ -1190,6 +1190,12 @@ examples all letters a, b, c are path variables.
   This returns a regular pentagon centered at (0,0)
   and with a side measurement equal to 3 grid length.
 
++ aaaTriangle{&Left,a,B,C}
+
+  This returns a triangle ABC such that the vertex A is at the top,
+  line segment BC is 'a', which is horizontal, with vertex B at
+  position 'Left', and with angle B set to 'B' and angle C set to 'C'.
+
 + polyline 
 
   This returns a path expressing a polyline. The syntax is:
