@@ -257,10 +257,9 @@ to their default values by the 'reset' command.
 
 The 'refx', 'refy', 'refsx' and 'refsy' parameters can be set at any point
 during a drawing. It can be compared to a "transform" of a SVG operation. In
-this case, all drawings will be scaled and/or translated. 
-
-The 'refsx' and 'refsy' describes the scaling factor and 'refx' and 'refy'
-defines the location to be translated to. The default values are:
+this case, all drawings will be scaled and/or translated.  The 'refsx' and
+'refsy' describes the scaling factor and 'refx' and 'refy' defines the location
+to be translated to. The default values are:
 
     refsx   1
     refsy   1
@@ -270,47 +269,54 @@ defines the location to be translated to. The default values are:
 By default all drawings are expressed as relative to the origin, which is
 (0,0), which is located at the lower-left-hand corner of the viewport. By
 setting it to a different value, it allows you to treat several drawings as a
-group and then move them all at once at ease.
+group and then move them all at once at ease.  If 'refsx' and 'refsy' are being
+set to a different value other than 1, then all the path points will be scaled
+accordingly, including the Bezier curve control points and Rx/Ry of arc.  Note
+that the scaling always happens first before the translation. 
 
-Note that when callign the 'set' command with a parameter, but without
-supplying any additional values reset that parameter to its default value.
-Thus, the second 'set' command below will reset the 'refx' parameter to its
-default value, which is 0.
+For 'refx', 'refy', 'refsy' and 'refsy', if no value is provided, then the
+default value will be assigned. For 'refxy', if no values are provided then
+nothing will happen.
 
-    set refx 10
-    set refx
-
-The scaling always happens first before the translation. 
-
-For 'refxy', it is possible to apply two or more options 
-at the same time. For instance, following operation would
-first move the reference point to the center, and then
-one unit up. 
+For 'refxy', it is possible to apply two or more options at the same time. For
+instance, following operation would first move the reference point to the
+center, and then one unit up. 
 
     set refxy center up:1
 
-The "up/down" operation moves the current reference point
-up and down, and "left/right" operation moves the current
-reference point to the left or right. It is also possible
-to move to a specific x-coordinate or y-coordinate using
-the "x" and "y" operation.  In the following example
-the reference point is moved to (12,10).
+The "up" keyword instructs that the reference point 
+moves up, and "down" keyword instructs that the reference point moves down.
+Similarily, there are "left" and "right" keywords as well.
+
+    set refxy up:1
+    set refxy down:1
+    set refxy left:1
+    set refxy right:1
+
+It is also possible to move to a specific x-coordinate or y-coordinate using
+the "x" and "y" keywords.  In the following example the reference point is
+moved to (12,10).
 
     set refxy x:12 y:10
 
-The "save" and "load" allows the current settings of refx, refy,
-refsx, and refsy to be saved to a buffer, and be restored at a later
-time.
+The "save" directive will set up a new path and set the current 'refx' and
+'refy' as the first point of this path, and then save the path with the name
+given.  For instance, the following command would have created a path or
+overwrite an existing path named 'a', which contains a single point that is
+(5,4).
 
-    set refxy save:a
-    set refxy load:a
+    set refxy x:5 y:4 save:a
 
-Note that the name of the buffer is independent of the buffer name 
-used to save a diagram.
+Note that the path created this way is the same as the path that is created by
+the 'path' command.  The "at" keyword updates the current 'refx' and
+'refy' setting by reading from an existing path.  For instance, the following
+command would have restored the current 'refx' and 'refy' to (5,4) if
+path 'a' has (5,4) as its first point.
+
+    set refxy at:a
 
 
-
-# The reset-operation
+# The 'reset' command
 
 The reset-operation is done by the 'reset' command itself but a single
 line without additional arguments after it. It is a shorthand for
@@ -318,7 +324,7 @@ setting 'refx' and 'refy' to 0 and 'refsx' and 'refsy' to 1
 
     reset
 
-# The path-operation
+# The 'path' command
 
 The 'path' command can be used to create path variables. A path
 variable must start with a upper case or lower case letters, and
@@ -360,7 +366,7 @@ instruction path variables 'a', 'b' and 'c' are each created and
 assigned three different points of the same path that was drawn by the
 ``draw`` statement.
 
-    path A = (1,1) (2,2) (3,4) (4,5)
+    path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
     path [a,b,c] = &A
 
 Each sub-variable must be separated from other sub-variables by one or
@@ -369,7 +375,7 @@ not including any variables in between slashes. For example, you can
 choose to assign the first point to variable 'a' and the third point
 to variable 'b' as follows.
 
-    path A = (1,1) (2,2) (3,4) (4,5)
+    path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
     path [a,,b] = &A
 
 Note that the last variable gets all remaining points. This, variable
@@ -377,35 +383,24 @@ Note that the last variable gets all remaining points. This, variable
 you can choose to allow only a single point to be assigned to the last
 variable by including an additional slash after this variable.
 
-    path A = (1,1) (2,2) (3,4) (4,5)
+    path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
     path [a,,b,] = &A
 
 Similarly you can also add slashes at the beginning to skip first few
 points. Following example will skip the first two points and assign
 the remaining two points to variable 'a'.
 
-    path A = (1,1) (2,2) (3,4) (4,5)
+    path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
     path [,,a] = &A
 
 Following is an example of drawing dots.
 
-    path p = (1,2) (2,3) (3,4)
-    path p = (5,6) (7,8)
+    path p = (1,2) ~ (2,3) ~ (3,4)
+    path p = (5,6) ~ (7,8)
     dot &p1 &p2 (9,9)
 
-For a given path variable access to individual points or a selected
-few descrete range of points can also be done by the combination of
-brackets, commas, and hyphen.
 
-    path p = (1,2) (1,3) (3,4) (4,5) (5,6) (6,7)
-    dot &p[0]
-    dot &p[0-1]
-    dot &p[0-2]
-    dot &p[0,1,2]
-    dot &p[0,1,2,4-5]
-
-
-# The draw/fill/stroke-operations
+# The draw/fill/stroke commands    
 
 Following commands treats the input argument as path.
 
@@ -437,113 +432,40 @@ brackets are present.
 
     draw (0,0) [l:1,1] [l:1,1]
 
-Here the second and third points are each expressed as a distance away
-from its previous point, which is to move right for one grid unit and
-then up for one unit. Note that the coordinates in Diagram are always
-expressed in terms of grid unit. There are other relative position
-syntaxes, that are shown below.
+Here the second and third points are each expressed as a distance away from its
+previous point, which is to move right for one grid unit and then up for one
+unit. Note that the coordinates in Diagram are always expressed in terms of
+grid unit. There are other relative position syntaxes, that are shown below.
 
-Path expression can also include "offsets". An offset is expressed as
-
-    [offset:x,y]
-    
-The presence of an offset will not cause a real points to be inserted
-into the path. Rather, it serves to provide an "offset" such that all
-future points will be computed as relative to this offset. For
-example, let's suppose we have the following two draw line program.
-
-    draw (10,0)~(15,0)
-    draw (10,0)~(10,5)
-
-However, by using "offsets" we can rewrite them as follows.
-
-    draw [offset:10,0] (0,0)~(5,0)
-    draw [offset:10,0] (0,0)~(0,5)
-
-Here, the offsetis set it so that the all future absolute points will be
-considered an offset to the point that is (10,0). Thus, the point of (0,0) is
-considered as (10,0), and (5,0) is considered (15,0). The offset always appears
-between a set of angle brackets. The first number is the offset in the
-horizontal direction, and the second one in vertical direction.
-
-The offset is only going to be valid for the current path, and it only
-takes affect after it is encountered, and will only affect the points
-that follow it. Thus, if you have placed an offset in the middle of
-two points, such as the following, then the first point is to be
-considered as (0,0) while the second one as (15,0).
-
-    draw (0,0) [offset:10,0] (5,0)
-
-Offsets are also accumulative. Thus, if there are two offsets one
-appear after another then the second offset is considered to be offset
-to the first. This allows you to construct more points simply by
-moving offsets. For example, you can construct a path with four points
-(11,0), (12,0), (13,0) and (14,0) as follows.
-
-    draw [ofset:11,0] (0,0) [ofset:1,0] (0,0) [ofset:1,0] (0,0) [ofset:1,0] (0,0)
-
-The keyword [offset:last] can be used to refer to the last know position
-that is set by a path or draw operation. It is also possible to 
-set the offset to a specific path variable such [offset:&B] where B is a
-valid path, in which case the first point of this path is 
-retrieved and set as the new offset position.
-
-Another useful feature of offset is to specify a 'attrflag'. This flag
-can be used to fine tune certain appearances of a path, such as to ask
-to draw certain segment of a path as dashed line. Note that these flags
-merely are used a hint, and might not be honored under certain conditions.
-The flags are the bit-OR'ed flags of attrflag-values.
-
-The keyword 'cycle' denotes a special point such that the path is to
-be closed and the last point should be connected to the first point
-using a straight line. Note that a 'cycle' is not a physical point. It
-should be considered a meta data and a notational trick that expresses
-the afformentioned intent. This notation is usually a special syntax
-placed at the end of the long list of points. For SVG it is the 'z',
-and for MetaPost/MetaFun it is the 'cycle'.
-
-    draw (0,0)~(1,2)~(3,4) cycle
-
-Note that for all 'draw' related commands, a path can be expressed
-such that it contains multiple disjoint segments. For example, we can
-express to draw two disjoint line in a single 'draw' command such that
-the first line segment goes from (0,0) to (2,3) and the second line
-segment goes from (4,5) to (6,7). 
+Note that for all 'draw' related commands, a path can be expressed such that it
+contains multiple disjoint segments. For example, we can express to draw two
+disjoint line in a single 'draw' command such that the first line segment goes
+from (0,0) to (2,3) and the second line segment goes from (4,5) to (6,7). 
 
     draw (0,0)~(2,3) (4,5)~(6,7)
 
-A null point is a point that is expressed a '()'. In addition, any
-appearances In this case, Diagram recognizes that there is going to be
-two path segments, one consisting of all points before the null point
-and the other consisting of all points after the null point.
-
-In additional, if the 'cycle' keyword appears then it also means the
-end of the current path segment and the start of a new one. In this
-case no null point needs to be specified. In the following example two
-path segment is to e created, with one consisting of a triangle, and
-another one a line.
+In additional, if the 'cycle' keyword appears then it also means the end of the
+current path segment and the start of a new one. In this case no null point
+needs to be specified. In the following example two path segment is to e
+created, with one consisting of a triangle, and another one a line.
 
     draw (0,0)~(2,0)~(2,2) cycle (4,0)~(6,2)
 
-For MetaPost output, each path segment requires a separate "draw"
-command. For SVG, a single PATH elements is sufficient; the SVG is
-implemented such that a "M" operation can follow a "z". However, in
-our implementation each seprate path segment is still to be placed
-inside a separate PATH element. This is specifically designed so that
-those path segments that are not "closed" will not be attempted to do
-a "fill" operation.
+For MetaPost output, each path segment requires a separate "draw" command. For
+SVG, a single PATH elements is sufficient; the SVG is implemented such that a
+"M" operation can follow a "z". 
 
-By default, the 'draw' command would stroke the path. However, if the
-'fillcolor' attribute is set, then it would also fill the area
-enclosed by the path. However, it does so only when the path is deemed
-"closed", in which case a 'cycle' keyword must follow the last point.
-If the path is not closed, it will not be filled, even when
-'fillcolor' is specified.
+By default, the 'draw' command would stroke the path. However, if a path
+segment is closed (when ended by a "cycle" keyword), then then it would also
+attempt to fill the area. However, the 'fill' command will attempt to fill the
+area regardless if it is closed or not. On the other hand, the 'stroke' command
+will stroke the path, such that if the path is closed, a line will appear
+between the last point and the first one.
 
-For SVG, when a 'fill=' attribute is specified the rendering engine
-will attempt to fill the area, even when the area is not closed. For
-MetaPost/MetaFun the path will have to be closed before calling the
-'fill' MetaPost, as otherwise the compilation will complain.
+For SVG, when a 'fill=' attribute is specified the rendering engine will
+attempt to fill the area, even when the area is not closed. For
+MetaPost/MetaFun the path will have to be closed before calling the 'fill'
+MetaPost, as otherwise the compilation will complain.
 
 # The hint values
 
@@ -599,13 +521,6 @@ the new hint will become the hint for the current segment, overwriting
 the prevous one. Thus it is important to only change hint before starting
 a new segment and do not change hind during the middle of a segment building.
 
-# The drawcontrolpoint-operation
-
-The 'drawcontrolpoint' is a special command that draws all the control
-points detected in a given path. The control points are those present
-in a path specification that are necessary to describe a Bezier curve,
-whether it is cubic or quadratic.
-
 # The 'drawanglearc' command
 
 The 'drawanglearc' is designed to draw a small arc describing the span
@@ -652,9 +567,20 @@ to see if it has been set. It can be set to 'double' to indicate a double bar,
 or 'triple' to indicate a triple bar. The gap between the bar lines are determined
 by the gap-option, which defaults to 0.1 unit length.
 
+# The 'drawpolyanglearc' operation
 
+The 'drawpolyanglearc' operation is to draw all the angles of a polyline
+encountered in the given path. The vertices of the polygon must be arranged
+so that it rotates in a counter-clockwise rotation.
 
+This operation will also be able to drawn angle label. If the path is
+closed then the angle between the last point and the first point is
+also to be drawn. If any of the angle is found to be exact 90 degrees,
+a square is to be drawn instead of the arc.
 
+    path tri = &triangle{(0,0),(4,0),(2,2)}
+    stroke &tri
+    drawpolyanglearc "1\\2\\3" &tri
 
 # Expressing relative points of a path
 
@@ -865,83 +791,7 @@ assumed to be (0,0).
   designation, such as `a_0`, `a_1`, `a_2`, etc.
 
 
-
-
-
-# The shape-operation
-
-Following commands are to draw a shape. The shape to be drawn is specified as the "subcommand". Each shape has its "native" size, which is going to be different from shape to shape.
-
-~~~list
--   shape.rect
--   shape.rhombus
--   shape.trapezoid
--   shape.parallelgram
--   shape.apple
--   shape.rrect
--   shape.basket
--   shape.crate
--   shape.radical
--   shape.protractor
--   shape.updnprotractor
-~~~
-
-Similar to the 'circle' command, each shape is to be drawn at a
-location of the path. Thus, the following command would have drawn
-three 'rect' shape each at a different location.
-
-    shape.rect   (1,1) (3,4) [l:2,1]
-
-Each shape has its own native size, and is positioned so that its
-anchor point aligns with the position specified. For example, all
-'rect' shapes will be position so that its lower-left hand corner
-aligns with the point given, while all shapes of 'protractor' will be
-positioned so that its lower-center corner is aligned with the
-location. Following table shows the native size and the anchor
-position of each shape.
-
-```tabular
-Shape            | Native size      | Anchor position
-------------------------------------------------------------
-apple            | 1x1              | lower-left
-basket           | 3x2              | lower-left
-crate            | 4x3              | lower-left
-tree             | 2x2              | lower-center
-balloon          | 1x2              | lower-center
-house            | 4x4              | lower-left
-school           | 7x5              | lower-left
-mouse            | 5x2              | lower-left
-cat              | 4x2              | lower-center
-coin             | 2x1              | middle-center
-protractor       | 7x3.5            | lower-center
-updnprotractor   | 7x3.5            | upper-center
-```
-
-a. For the radical the height is always 2, but the width might be changed to
-  a differen width if the 'radicallength' attribute is set to a different
-  number. The default width is 4.
-
-b. For each shape, the 'sx' and 'sy' attributes can each be set to a
-  different quantity, for which they each acts as a scalar that is to scale the
-  width and height of the shape. For example, we can scale the protractor
-  horizontally by half and vertically by two-third if we were to do the
-  following.
-  
-  ```verbatim 
-  shape.protractor {sx:0.5,sy:0.66} (0,0) 
-  ```
-
-c. For each shape, the 'theta' can be added to express the angle of rotation
-  around the origin. The angle is a number in degrees, where a position number
-  expresses the rotation in the direction of unter-clockwise.
-  
-  ``` verbatim
-  shape.protractor {theta:30} 
-  ```
-
-
-
-# The dot-operation
+# The 'dot' command
 
 The 'dot' command is to draw a dot to mark the location. Similar to
 the primitive command, a single dot is to be repeated for all points
@@ -991,7 +841,7 @@ the grid. Note that for 'vbar', it's lower end point aligns with the
 location, and for 'hbar', its left end aligns with the location.
 
 
-# The label-operation
+# The 'label' command
 
 Drawing text labels are done by using the 'label' command. For
 example, the following 'label' command will each draw a label at the
@@ -1047,15 +897,10 @@ previous example.
 
     label {math:1} "A_0 \\ A_1 \\ A_2" (1,1) (2,2) (3,4)
 
+# The 'text' command
 
-
-
-
-# The text-operation
-
-The text operation is very similar to the label operation except that
-it will look for double backslashes in the text and use that to draw
-multi-line text box.
+The text command is very similar to the label command except that it will look
+for double backslashes in the text and use that to draw multi-line text box.
 
     text.ulft {fontsize:7,dx:-0.5} "degree\\ 3" (-3,2)
     text.urt  {fontsize:7,dx:+0.5} "degree\\ 2" (3,2)
@@ -1080,11 +925,15 @@ The text operation can also have alignment specifier for it.
     text.lrt   -  lower right
     text.ctr   -  centering the text
 
-# The path-functions
+# Path functions
 
-Note that for a path function all its arguments must be either a path
-variable or a number. Coordinate list is not valid. In the following
-examples all letters a, b, c are path variables.
+During a path construction, a path function is used to return an independent
+path segments constructed according to some parameters. For example, the
+'&rectangle' path function can return a path segment that represents a
+rectangle with a given width/height located at certain point.
+
+Note that for a path function all its arguments must be either a path variable,
+an absolute point, or a scalar.
 
 + midpoint 
 
@@ -1113,34 +962,21 @@ examples all letters a, b, c are path variables.
   path b = &midpoint{(1,1),(2,3),0.5}
   ```
 
-+ shiftpoints 
-
-  The ``shiftpoints`` function is always needed to be provided with
-  three arguments. The first argument is always interpreted as a path
-  variable. The second and the third arguments are to be interpreted
-  as expressing length in grid unit. This function is to return a new
-  path with exact the same number of points, except for that all the
-  points will have been shifted by the number of grid units specified
-  in the argument. For example, following would have shifted all the
-  points in the original path one position to the left and two
-  positions up.
-
-  ```
-  path b = &shiftpoints{&a,-1,2}
-  ```
-
 + scatterpoints 
 
   The ``scatterpoints`` function is to create new path with the
-  number of points evenly distributed beteen the two end points. In
-  the previous example there will be 10 points created in a path such
-  that the first point is (1,0), and the last point is (10,0), and the
-  rest of the points will be spaced evenly between the first and the
-  last. The last argument is a scalar telling it how many total gaps
-  there is between scattered points.
+  points distributed evenly beteen the two end points. The 
+  first and the second argument denotes the first and the last
+  point of the path. The third argument is a scalar 
+  expressing how many middle points it needs to create between
+  the two end points. Thus if it is zero then the path will
+  be just the starting and ending points. If it is 1 then
+  the path will be three points, with one point in the middle.
+  In the following example two middle points will be created
+  such that the path contains four points.
 
   ```
-  path a = &scatterpoints{(1,0),(10,0),9}
+  path a = &scatterpoints{(1,0),(10,0),2}
   ```
 
 + linelineintersect 
@@ -1269,28 +1105,31 @@ examples all letters a, b, c are path variables.
 
 + triangle 
 
-  This returns a path expressing a triangle of three points. The
-  syntax is: 
-  
+  This returns a path expressing a triangle of three points. The syntax is: 
+
   ```
   path b = &triangle(&point1,&point2,&point3)
   ```
 
 + equilateraltriangle{(0,0),3}
 
-  This returns a equilateral-triangle centered at (0,0)
-  and with a side measurement equal to 3 grid length.
+  This returns a equilateral-triangle centered at (0,0) and with a side
+  measurement equal to 3 grid length.
 
 + regularpentagon{(0,0),3}
 
-  This returns a regular pentagon centered at (0,0)
-  and with a side measurement equal to 3 grid length.
+  This returns a regular pentagon centered at (0,0) and with a side measurement
+  equal to 3 grid length.
 
-+ aaaTriangle{&Left,a,B,C}
++ asaTriangle{&Left,B,a,C}
 
-  This returns a triangle ABC such that the vertex A is at the top,
-  line segment BC is 'a', which is horizontal, with vertex B at
-  position 'Left', and with angle B set to 'B' and angle C set to 'C'.
+  This returns a triangle ABC when two angles and the side between the two
+  angles are known.  The triangle is oriented such that the known side is layed
+  horizontally with its left end point being at the point given by the 'Left'
+  argument. The second argument expresses the angle of the triangle located at
+  the left end point of the side, and the forth argument expresses the angle at
+  the endpoint on the right hand side.  The third argument is the length of the
+  side between the two angles.
 
 + polyline 
 
@@ -1310,12 +1149,11 @@ examples all letters a, b, c are path variables.
 
 + arctravel{&center,start_point,sweep_angle}
 
-  This returns a path that draws an arc. The arc is to start at the
-  point 'p' that is at a circle centered at 'center'. The arc is then
-  to trace out part of the circle by following an angle equal to
-  'sweep_a' number of degrees. Positive 'sweep_a' is to trace in
-  anti-clockwise direction and negative 'sweep_a' is to trace in
-  clockwise direction.
+  This returns a path that draws an arc. The arc is to start at the point 'p'
+  that is at a circle centered at 'center'. The arc is then to trace out part
+  of the circle by following an angle equal to 'sweep_a' number of degrees.
+  Positive 'sweep_a' is to trace in anti-clockwise direction and negative
+  'sweep_a' is to trace in clockwise direction.
 
 + arcspan
 
@@ -1452,43 +1290,41 @@ as
 
     <line x1='0' y1='1' x2='2' y2='3' stroke='rgb(200,100,25)'/>
 
-However, MetaPost does not allow for expressing a color using three
-integers as RGB values of a color. It insists that a name is to be
-used for \mpcolor macro. However, it does not have provision such that
-you can *create* a new color name with a customized RGB values in it,
+MetaPost allow for expressing a color using three integers as RGB values of a
+color such as '(0.94,0.2,0.1)' where each RGB value is to be expressed as a
+floating point number between 0-1.  In addition, it does not have provision
+such that you can create a new color name with a customized RGB values in it,
 such as
 
     \definecolor{ultramarine}{RGB}{0,32,96}
     \definecolor{wrongultramarine}{rgb}{0.07, 0.04, 0.56}
 
-The \definecolor is a macro provided by xcolor package. This means if
-a color is specified as "rgb(200,100,25)" then a \definecolor command
-must first be called to create a "unique" color name, such as
-"mycolor003" which is to be placed outside of the "mplibcode"
-environment, in order for this particular color to be referenced
-inside "mplibcode" environment. Therefore, currently MetaPost
-translation does not support specifying color using RGB directly.
+The \definecolor is a macro provided by xcolor package. This means if a color
+is specified as "rgb(200,100,25)" then a \definecolor command must first be
+called to create a "unique" color name, such as "mycolor003" which is to be
+placed outside of the "mplibcode" environment, in order for this particular
+color to be referenced inside "mplibcode" environment. Therefore, currently
+MetaPost translation does not support specifying color using RGB directly.
 
-Note that MetaPost does allow for a color mixing using existing color
-names such as
+Note that MetaPost does allow for a color mixing using existing color names
+such as
 
     draw (1,2)--(2,3) withpen pencircle withcolor \mpcolor(red!80!white!20!)
 
-Note that for units such as line width, dot size, etc, is maintained
-internally by Diagram as the SVG user unit. One user unit is exactly
-1/96 of an inch. Following is the conversion of SVG units.
+Note that for units such as line width, dot size, etc, is maintained internally
+by Diagram as the SVG user unit. One user unit is exactly 1/96 of an inch.
+Following is the conversion of SVG units.
 
     1in = 96px
     1in = 72pt
     1in = 2.54cm
 
-It seems that MetaPost allows for a line length or dot size to be
-expressed without a specific unit attached to it. For example, you can
-ask to draw a dot by MetaPost with the following command. The "withpen
-pencircle scaled 5" is part of a configuration to the "dot" command
-that is to tell it to use a pen size of 5. Note that the size of 5 is
-interpreted as the size of the pen, therefore, the diameter of the dot
-as the pen is a circle pen.
+It seems that MetaPost allows for a line length or dot size to be expressed
+without a specific unit attached to it. For example, you can ask to draw a dot
+by MetaPost with the following command. The "withpen pencircle scaled 5" is
+part of a configuration to the "dot" command that is to tell it to use a pen
+size of 5. Note that the size of 5 is interpreted as the size of the pen,
+therefore, the diameter of the dot as the pen is a circle pen.
 
     dot (22*u,3*u) withpen pencircle scaled 5 ;
 
@@ -1496,23 +1332,24 @@ You can also provide a unit directly, such as pt.
 
     dot (22*u,3*u) withpen pencircle scaled 5pt ;
 
-The linecap attribute is defines the shape to be used at the end of
-open subpaths when they are stroked. The SVG has an attribute that can
-used for line-element. The available values are: 'butt', 'round', and
-'square'. The default value is 'butt'.
+The linecap attribute is defines the shape to be used at the end of open
+subpaths when they are stroked. The SVG has an attribute that can used for
+line-element. The available values are: 'butt', 'round', and 'square'. The
+default value is 'butt'.
 
-The "dashed withdots" option for "draw" will not show any visible
-dotted lines in the PDF file when linecap:=butt. The linecap:=rounded
-will has to be set in order to produce dotted-lines. Thus, currently
-the "set linedashed withdots" option is considered broken for MP
-generation. Do not use it for now. Use "set linedashed evenly"
-instead.
-
+The "dashed withdots" option for "draw" will not show any visible dotted lines
+in the PDF file when linecap:=butt. The linecap:=rounded will has to be set in
+order to produce dotted-lines. Thus, currently the "set linedashed withdots"
+option is considered broken for MP generation. Do not use it for now. Use "set
+linedashed evenly" instead.
 
 
-# The cartesian-operation
 
-```     
+# The 'cartesian' command
+
+The 'cartesian' is a compound command that has different subcommands listed
+below.
+
 - cartesian.setup xorigin yorigin gridrange
 - cartesian.grid xmin ymin xmax ymax
 - cartesian.xaxis xmin xmax
@@ -1527,7 +1364,6 @@ instead.
 - cartesian.text.rt x1 y1 x2 y2 x3 y3 ...
 - cartesian.ellipse x y Rx Ry Phi
 - cartesian.arc x y R startAngle stopAngle
-``` 
 
 The ``cartesian`` command is used to draw plots, curves, axis, ticks
 that are related to a single Cartesian coordinate. It is a composite
@@ -1640,7 +1476,7 @@ The 'cartesian.ellipse' will draw an ellipse centered at the location.
 There can only be one ellipse to be drawn, and the signature of the
 arguments are:
 
-    cartesian.ellipse x y Rx Ry Phi
+    cartesian.ellipse <x> <y> <Rx> <Ry> <Phi>
 
 The 'x' and 'y' are coodinates for the center point of the ellipse.
 Each of the 'Rx' and 'Ry' is the semi-major or semi-minor axis in
@@ -1666,13 +1502,11 @@ The 'barchart' is another compound command that is to be used
 with many subcommands. Following is a list of some
 of its subcommands.
 
-```    
 - barchart.setup xorigin yorigin xwidth ywidth xrange yrange
 - barchart.bbox
 - barchart.vbar
 - barchart.ytick
 - barchart.xtext
-``` 
 
 The 'barchart.setup' command would setup the barchart and config it.
 The 'xorigin' and 'yorigin' are to state the grid coordinates where
@@ -1729,25 +1563,28 @@ bar is 1.5, etc.
 The text will always be centered at location, and placed directly
 below the bar.
 
-# Drawing arrow heads
+# SVG marker         
 
-These three operations only draw lines, similar to the 'line'
-operation. The 'arrow' would place an arrowhead at the ending line cap
-location. The 'revarrow' would place an arrowhead at the starting line
-cap location. Thesehe 'dblarrow' would place two arrowheads one at the
-beginning and the other at the ending line cap location. The lines are
-always drawn, regardless of the 'linesize' setting. If 'linesize' is
-set to zero, the default line width for the target platform is
-assumed. The 'linecolor' setting determines the line color as well as
-the color of the arrowhead. However, due to outstanding issues on SVG,
+There is an outstanding issues on SVG,
 the arrowhead MARKER-element does not change the color with the line
 it is attached to, and is always shown as black.
 
-    draw {arrow:1} (0,0) (3,4)
-    draw {arrow:1,revarrow:1} (0,0) (3,4)
-    draw {revarrow:1} (0,0) (3,4)
+# Drawing arrow head
 
+If a coordinates is to be used directly then there are three commands that will
+draw a arrow, reverse arrow, and double arrow for each path segments.
 
+    arrow     (0,0)~(3,4)  (2,2)[h:4]
+    revarrow  (0,0)~(3,4)  (2,2)[h:4]
+    dblarrow  (0,0)~(3,4)  (2,2)[h:4]
+
+However, for other operations such as 'drawanglearc', then
+the 'arrowhead' should be set for the style, which is an integer
+that is follows:
+
+    1   arrow
+    2   reverse arrow
+    3   double arrow
 
 # Remarks and problems
 
@@ -1787,23 +1624,22 @@ it is attached to, and is always shown as black.
   also "escaped".
 
 
-
 # The for-loop
 
 A for-loop is provided by Diagram such that a number of commands
 can be repetitively executed, and each iteration these commands would
 have been run under a different set of arguments. The basic syntax is
 
-    for a:=[1,2,3,4]:
-      draw (\a,\a) (0,0)
+    for a=[1,2,3,4]
+      draw (\a,\a)~(0,0)
 
 In the example, the 'draw' command will be executed exactly four
 times, each of which looks like the following.
 
-    draw (1,1) (0,0)
-    draw (2,2) (0,0)
-    draw (3,3) (0,0)
-    draw (4,4) (0,0)
+    draw (1,1)~(0,0)
+    draw (2,2)~(0,0)
+    draw (3,3)~(0,0)
+    draw (4,4)~(0,0)
 
 The for-loop starts with the keyword 'for', followed by a one or more
 assignments of variables to a range of floats. The colon at the end is
@@ -1814,14 +1650,14 @@ Following is an example of iterating over two
 loop variables: 'a' and 'b'.
 
     % Using for-loop
-    for a:=[1,3] b:=[2,4]:
-      draw (\a,\a) (\b,\b)
+    for a=[1,3] b=[2,4]
+      draw (\a,\a)~(\b,\b)
 
 Following is the equivalent commands without using the for-loop.
 
     % Not using the for-loop
-    draw (1,1) (2,2)
-    draw (3,3) (4,4)
+    draw (1,1)~(2,2)
+    draw (3,3)~(4,4)
 
 Note that all lines of the loop body must have an indentation level
 that is greater than the indentation of the for-loop itself.
@@ -1839,9 +1675,9 @@ for-loops. The toplevel for-loop offsers two loop variables:
 for-loop, but rather part of the toplevel for-loop.
 
     viewport 31 24
-    for a:=[9,19,29] b:=[0.4,0.5,0.6]:
+    for a=[9,19,29] b=[0.4,0.5,0.6]
       set refx \a
-      for c:=[16,4]:
+      for c=[16,4]
         set refy \c
         draw (0,0) [h:-6] [v:6]
         draw (0,0) [q:-6,0,-6,6]
@@ -1877,23 +1713,24 @@ iteration will be an integer 0, and the second one 1, and so on.
 
 
 
-# The fn-operation
+# The 'fn' command
 
-The fn-operation allows for a new user-defined function to be created.
+The 'fn' command serves to create a user defined function that can be used
+elsewhere. Currently it is only utilized by 'cartesian.yplot' and
+'cartesian.yplot' commands.
 
     fn P(x) = pow(x,2)
-    cartesian.yplot {f:P} 1 2 3
+    cartesian.yplot {fn:P} 1 2 3
 
-This operation must start with a function name, which must follow
-the pattern of starting with an alpha letter followed by additional
-alpha or numerical letters. Thus, the valid function names are "a", "aa",
-"a0", etc, while "0", "0a", "0ab" are not valid function names.
+This operation must start with a function name, which must follow the pattern
+of starting with an alpha letter followed by additional alpha or numerical
+letters. Thus, the valid function names are "a", "aa", "a0", etc, while "0",
+"0a", "0ab" are not valid function names.
 
-The function is to be followed immediately 
-by a set of parentheses, within which is a list of arguments,
-separated by comma, followed by an equal sign, and then an arithmetic 
-expression. So far the only command would make use of a function
-is the 'cartesian.xplot' and 'cartesian.yplot'.
+The function is to be followed immediately by a set of parentheses, within
+which is a list of arguments, separated by comma, followed by an equal sign,
+and then an arithmetic expression. So far the only command would make use of a
+function is the 'cartesian.xplot' and 'cartesian.yplot'.
 
 Note that the arithmetic expression can contain other funtions, including
 built-in scalar function such as 'sin()', 'exp()', etc.
@@ -1922,13 +1759,12 @@ first two points and assign the result to 'my'.
 
 # Setting up an environment symbol
 
-Setting up environment symbol to attach a name the result of an
-arithmetic expression.
-In the following example the symbol 'pi' is assigned a
-quantity that 3.1415, which is then used inside the function body of
-'f' as well as part of the the 'draw' command.
+Setting up environment symbol to attach a name the result of an arithmetic
+expression.  In the following example the symbol 'pi' is assigned a quantity
+that 3.1415, which is then used inside the function body of 'f' as well as part
+of the the 'draw' command.
 
-    pi := 3.1415
+    var pi = 3.1415
     fn f(x) = \pi/x
     set refx 5
     set refy 5
@@ -1937,6 +1773,29 @@ quantity that 3.1415, which is then used inside the function body of
     cartesian.yplot {f:f} [1:10]
     arrow (0,0) (\pi,\pi)
 
+One advantage of using a 'var' command to create an environment
+variable is the ability to allow an math expression to be evaluated.
+For example, it is possible to create a value that is exactly
+square root of 2 by doing the following.
+
+    var a = sqrt(2)   
+    path a = (\a,\a)
+    dot &a
+
+Note that the environment variables created must be accessed
+via the backslash notation. This is very much the same as 
+accessing the variable set up by the 'for' command. As a matter
+of fact the variables created by these two commands are exactly
+the same type of variables. The environment variable and the
+path variables are treated completely different and therefore
+they could have the same name.
+
+Note that the variables will automatically replaced 
+by their actual value and thus the comments in the output
+will see only the replaced value of the variable. If a variable
+is not replace in the comment then it is a sign that the variable
+had not been defined.
+
 Note that the symbol following the backslash must conform to
 the conventionn of starting with a letter, and followed by additional
 letters and/or digits if any. A single letter symbol is permitted. In
@@ -1944,11 +1803,6 @@ addition, instead of being assigned a number, the right hand side of
 the equal sign can also be a valid expression, in which case the value
 of that expression is evaluated immediately, and the quantity of which
 is assigned to the symbol.
-
-    pi := cos(0)/2
-
-
-
 
 
 # The built-in scalar functions
@@ -2072,7 +1926,7 @@ that command. For example, in the following command a total of 11
 scalars will be supplied to the ``cartesian.yplot`` command.
 
     fn P(x) = pow(x,2)
-    cartesian.yplot {f:P} [1:10]
+    cartesian.yplot {fn:P} [1:10]
 
 A range-expression must appears between a set of brackets, and it
 consists of two or three quantities each separated by a single colon.
@@ -2118,11 +1972,7 @@ created a list of three floats: 1, 3 and 5.
     cartesian.xtick [1:2:5]
 
 
-
-
-
-
-# The node- and edge-operations
+# The 'node' and 'edge' commands
 
 Nodes and edges are common constructions found in almost any
 literatures covering the topics in the fields of graph theory.
@@ -2215,41 +2065,39 @@ If assigning to a node a name is important, then it can be done
 by allowing an automatic ID to be generated and assigned to the new node.
 This involves of using the underscore as the ID of the node, and by
 setting the "id" value to an integer. In the following example 
-the name of the first node will be set to "1" if this is the first node
+the name of the first node will be set to "0" if this is the first node
 to be created. Likewise the next two node will each be assigned the
-name of "2" and "3".
+name of "1" and "2".
 
     node._ (0,0)
     node._ (1,2)
     node._ (3,4)
 
-By default, the name of the node done this this is way is one plus
-the id-value that has been set last time. This id-value is assumed
-to be "0" if it has never been set, but nevertheless can be set
-to any integer at any time. For example, if it is set to 10 then
-the next node created will be assigned a name of "11" if 
-it asks for it. For example, the following 'node' command will
-create a new with an assigned name of '11'.
+See the 'set id' command for various ways of setting a starting ID.  The
+following example would have assigned the ID 'my10' to the first node and
+'my11' to the second, such that they are connected by the 'edge' command.
 
-    set id 10
+    set id my10
     node._ (5,6)
+    node._ (5,7)
+    edge.my10.my11
 
 Following is an example that will set it up so that the first node
-will get an ID that is '11', and the next node get a name that is '12',
-and the next node gets a name that is '13'.
+will get an ID that is 'a', and the next node get a name that is 'b',
+and the next node gets a name that is 'c'.
 
     ```diagram
     viewport 6 6
     config r 0.2
     config fillcolor black
-    set id 10
+    set id a
     set refxy center
     for theta:=[0:60:120]:
       r := 2
       x := cos(deg2rad(\theta)) * \r
       y := sin(deg2rad(\theta)) * \r
       node._ (\x,\y)
-    edge.11.12.13
+    edge.a.b.c
     ```
 
 For a node-operation, if no coordinates are given in the command line,
@@ -2261,12 +2109,13 @@ command line. This feature allows for an existing node to be redrawn
 with different styles and/or text. In the following example, the first
 three nodes are redrawn with a filled color that is red.
 
+    set id 0
     for theta:=[0:60:359]:
       r := 2
       x := cos(deg2rad(\theta)) * \r
       y := sin(deg2rad(\theta)) * \r
-      node (\x,\y)
-    node.1.2.3 {fillcolor:red}
+      node._ (\x,\y)
+    node.0.1.2 {fillcolor:red}
 
 For an edge-operation, if the shift-option is set, then the label
 would be shifted away from its intended position for the given
@@ -2279,11 +2128,6 @@ first node to the second.
 When the edge is a loop, which is the case when the two vertices are
 the same, then the shift-option expresses an additional centrifugal
 distance from the center of the node.
-
-
-
-
-
 
 
 
@@ -2343,7 +2187,10 @@ been erased first.
     box.1 {boxtype:rrect} "Hello\\World" (0,0)
     box.1 {fillcolor:brown} "Goodbye" 
 
-# The flow-operation
+If the id of the box is underscore, it will be assigned an Id in the same
+mannor as that of the 'node' command.
+
+# The 'flow' operation
 
 The flow-operation is designed to connect boxes with arrows. 
 
@@ -2648,48 +2495,21 @@ not scan the input for any appearances of decimal points---thus if
 a decimal point was included in one of the numbers it 
 will likely cause unpredictable result.
 
-# The fence option
-
-The fence options are explained as follows:
-
-+ width
-
-  Set the width of the diagram. 
-
-+ box
-
-  When set to 1 the diagram will have a border.
-
-+ hidden
-
-  When set to 1 the diagram will not be shown.
-
-+ save
-
-  When set to a string the diagram source code will be saved
-  to a buffer with this name.
-
-+ load
-
-  When set to a string the diagram source code will be restored
-  that corresponds to this string.
-
 
 # Specifying colors
 
-The colors in the DIAGRAM can be specified in several ways. The
-easiest is to use a named color, such as "red", "green", "blue", etc.
-The second is to use RGB, such as "#CCC", "#ABABAB", etc. 
-The third way is to use color function such as "&hwb!30!10%|20%"
-or "&rgb!255!0!0". 
+The colors in the DIAGRAM can be specified in several ways. The easiest is to
+use a named color, such as "red", "green", "blue", etc.  The second is to use
+RGB, such as "#CCC", "#ABABAB", etc.  The third way is to use color function
+such as "hwb(30|10%|20%)" or "rgb(255|0|0)". 
 
     red
     green
     #CCC
     #ABABAB
-    &hwb!30!10%!20%
-    &rgb!255!0!0
-    &hsl!0!100%!50%
+    hwb(30|10%|20%)
+    rgb(255|0|0)
+    hsl(0|100%|50%)
 
 
 # The source-operation
@@ -2804,16 +2624,7 @@ Non-action commands cannot be recorded and played back. However,
 they can be saved and later inserted into the program by the
 "source" command.
 
-# The console-operation
-
-The "console" operation sends the text to the console.
-This can be useful when trying debugging the current value
-of one or more environment variables.
-
-    for i:=[10:2:20]
-      console \i \@
-
-# The "group" operation
+# The "group" command
 
 The "group" operation is to create a new group that holds a collection
 of attribute values such that they will be applied to an element
@@ -2829,7 +2640,7 @@ In the previous example the first box will be created with "linesize:1", "w:3",
 and "h:2" attributes. The second box will have the same set of attributes as
 the first one except that it will have "linesize:2" instead of "linesize:1".
 
-# The 'fillspace' operation
+# The 'fillspace' command
 
 The "fillspace" operation would ask for a point within a space and then fill
 the entire space with a the current choice of fillcolor. 
@@ -2853,29 +2664,13 @@ inside the rectangle.
 Currently only lines are recognized as legal boundaries for a space. In the future
 a Bezier curve or arc could also become part of a boundary. 
 
-# The 'drawtextline' operation
+# The 'drawtextpath' operation
 
-The 'drawtextline' is to draw a text along a line segment. 
+The 'drawtextpath' is to draw a text along a line segment. 
 The command line coordinates will be scanned for the presence
 of line segments, and will extra a label from the position to draw
 it on top of that line, depending on the orientation of the line segment.
 
-    drawtextline "Hello\\World" (0,0) [h:4] [v:4]
-
-# The 'drawpolyanglearc' operation
-
-The 'drawpolyanglearc' operation is to draw all the angles of a polyline
-encountered in the given path. The vertices of the polygon must be arranged
-so that it rotates in a counter-clockwise rotation.
-
-This operation will also be able to drawn angle label. If the path is
-closed then the angle between the last point and the first point is
-also to be drawn. If any of the angle is found to be exact 90 degrees,
-a square is to be drawn instead of the arc.
-
-    path tri = &triangle{(0,0),(4,0),(2,2)}
-    stroke &tri
-    drawpolyanglearc "1\\2\\3" &tri
-
+    drawtextpath "Hello\\World" (0,0) [h:4] [v:4]
 
 
