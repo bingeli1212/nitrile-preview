@@ -215,40 +215,64 @@ drawing environment.
   "left:<x>", "right:<x>", "up:<y>", 
   "down:<y>", "x:<x>", or "y:<y>", where <x> and <y> each
   express a floating point number. It could also be a 
-  "save:<string>" and "load:<string>" where <string> expresses
+  "save:<string>" and "at:<string>" where <string> expresses
   a string. 
 
 + set id <integer>
 
-  Set the "id" to an integer greater or equal to 0. This integer
-  will be used to replace the suffix of a command if that command's
-  suffix is set to an underscore only.  This feature allows
-  for automatic assigning of integer IDs for a command that expects
-  one, such as "node", which expects the suffix to be the name
-  of a node, and names with numbers only are perfectly legal.
-  Note that this feature is provided by the system as whole and
-  can be used for future commands that expects this behavior.
-  Note also that if the "verbose:1" is set, then the entire command line
-  after the underscore has been replaced with the integer is to
-  be printed to the console, as well as sent as a comment.
+  Set the "id" to a string. This string would be interpreted in constructing
+  ID(s) for path, node, and other commands that would have required an ID.
 
-The 'refx', 'refy', and 'refs' parameters can be set at any point
-during a drawing. It can be compared to a "transform" of a SVG
-operation. In this case, all drawings will be scaled and/or
-translated. 
+  If set to a string then it must be either 'a' or 'A'. If set to 'a' then the
+  next ID assigned will be 'a', after which the 'id' is changed to 'b'. It
+  cycles through 'a' to 'z', and then go back to being 'a' again.  If set to
+  'A', then it cycles through 'A' to 'Z' and then go back to being 'A' again.
 
-The 'refs' defines the scaling factor and 'refx' and
-'refy' defines the location to be translated to.
+  If set to an integer, then that integer will become the next assigned ID, and
+  then the 'id' parameter will be incremented by 1. 
+  
+  Note that for some commands, such as 'path', where an integer is not
+  considered a valid ID for that element, setting it to the integer will not
+  result in a valid ID being assigned to the new element created.
 
-By default all drawings are expressed as relative to the origin, which
-is (0,0), which is located at the lower-left-hand corner of the
-viewport. By setting it to a different value, it allows you to treat
-several drawings as a group and then move them all at once at ease.
+  It can also be set to a string such as 'A0', 'a12', 'node0', 'node12', with a
+  pattern of one of more alpha letters followed by one of more digits. In this
+  case this ID will be used as is for the next auto ID assignment, but then
+  this ID will be changed such that the alpha letters remain the same but
+  number incremented by 1.  For instance, if the current 'id' parameter is
+  'A0', it will become 'A1' after 'A0' has been assigned. Similarly, 'a12' is
+  to become 'a13', 'node0' to 'node1', and 'node12' to 'node13'. 
+
+  If none of the previous pattern is detected, the first assigned ID
+  will be 0, and then next one 1, etc.
+
+Note that all the strings set by the 'set' command can be restored
+to their default values by the 'reset' command.
+
+
+# Setting the Reference X/Y and Scaling Factors
+
+The 'refx', 'refy', 'refsx' and 'refsy' parameters can be set at any point
+during a drawing. It can be compared to a "transform" of a SVG operation. In
+this case, all drawings will be scaled and/or translated. 
+
+The 'refsx' and 'refsy' describes the scaling factor and 'refx' and 'refy'
+defines the location to be translated to. The default values are:
+
+    refsx   1
+    refsy   1
+    refx    0
+    refy    0
+
+By default all drawings are expressed as relative to the origin, which is
+(0,0), which is located at the lower-left-hand corner of the viewport. By
+setting it to a different value, it allows you to treat several drawings as a
+group and then move them all at once at ease.
 
 Note that when callign the 'set' command with a parameter, but without
-supplying any additional values reset that parameter to its default
-value. Thus, the second 'set' command below will reset the 'refx'
-parameter to its default value, which is 0.
+supplying any additional values reset that parameter to its default value.
+Thus, the second 'set' command below will reset the 'refx' parameter to its
+default value, which is 0.
 
     set refx 10
     set refx
