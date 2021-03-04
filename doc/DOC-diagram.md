@@ -579,14 +579,17 @@ points detected in a given path. The control points are those present
 in a path specification that are necessary to describe a Bezier curve,
 whether it is cubic or quadratic.
 
-# The drawanglearc-operation
+# The 'drawanglearc' command
 
 The 'drawanglearc' is designed to draw a small arc describing the span
 of an angle. The path that is given to this command is expected to
 describe the angle, where the first/second/third path would have
 formed the first angle where the second point serves as the vertex of
 the angle, and each of the first and third point denotes a point on
-either side of the angle. There should be at least three points on the
+either side of the angle. The angle formed is expected to be spanning
+from the first point to the third point.
+
+There should be at least three points on the
 path, but if there are additional points, then each consecutive three
 points will be used to describe an angle for the arc to draw. Thus, if
 there had been four points in the path, then the first three points
@@ -599,6 +602,11 @@ the name of an angle.
     path points = (0,6) (2,4) (4,6) (6,4) (8,6)
     draw &points
     drawanglearc "1\\2\\3" &points
+
+If the angle is found to be around 90, then a square is drawn instead
+of an arc. However, a square can be forced if ".sq" option is given.
+
+    drawanglearc.sq (2,0) (0,0) (0,2)
 
 # The 'drawlinesegcong' operation
 
