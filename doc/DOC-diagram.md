@@ -1185,6 +1185,11 @@ examples all letters a, b, c are path variables.
   This returns a equilateral-triangle centered at (0,0)
   and with a side measurement equal to 3 grid length.
 
++ regularpentagon{(0,0),3}
+
+  This returns a regular pentagon centered at (0,0)
+  and with a side measurement equal to 3 grid length.
+
 + polyline 
 
   This returns a path expressing a polyline. The syntax is:
