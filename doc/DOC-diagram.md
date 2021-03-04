@@ -2719,7 +2719,7 @@ In the previous example the first box will be created with "linesize:1", "w:3",
 and "h:2" attributes. The second box will have the same set of attributes as
 the first one except that it will have "linesize:2" instead of "linesize:1".
 
-+ The 'fillspace' operation
+# The 'fillspace' operation
 
 The "fillspace" operation would ask for a point within a space and then fill
 the entire space with a the current choice of fillcolor. 
@@ -2742,5 +2742,29 @@ inside the rectangle.
 
 Currently only lines are recognized as legal boundaries for a space. In the future
 a Bezier curve or arc could also become part of a boundary. 
+
+# The 'drawtextline' operation
+
+The 'drawtextline' is to draw a text along a line segment. 
+The command line coordinates will be scanned for the presence
+of line segments, and will extra a label from the position to draw
+it on top of that line, depending on the orientation of the line segment.
+
+    drawtextline "Hello\\World" (0,0) [h:4] [v:4]
+
+# The 'drawpolyanglearc' operation
+
+The 'drawpolyanglearc' operation is to draw all the angles of a polyline
+encountered in the given path. Note that if the path is closed then 
+the angle between the last point and the first point is also to be drawn.
+
+This operation will also be able to drawn angle label. If any of the angle
+is found to be exact 90 degrees, a square is to be drawn instead of the
+arc.
+
+    path tri = &triangle{(0,0),(4,0),(2,2)}
+    stroke &tri
+    drawpolyanglearc "1\\2\\3" &tri
+
 
 
