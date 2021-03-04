@@ -755,7 +755,15 @@ Each of the following syntax denotes a relative point.
   This is to start a new line segment and set the first point to 
   this value. Note that this value is relative to the 'lastpt', and
   the 'lastpt' will be updated to this new location after this 
-  operation has ended.
+  operation has ended. 
+
+  It is also possible to "move" to a new point that is expressed by
+  an existing path, such as [m:&a], in which case the new point
+  coincides with the first point of path 'a'. 
+
+  In addition, multiple consecutive "m" operations will be "merged"
+  and the result is a single "moved point" whose position is result
+  of moving this point multiple times.
 
 + [save:a]
 
