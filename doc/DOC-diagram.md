@@ -600,13 +600,16 @@ the name of an angle.
     draw &points
     drawanglearc "1\\2\\3" &points
 
-# The drawlinesegcong-operation
+# The 'drawlinesegcong' operation
 
 This operation is to draw a short bar to indicate the congrudencies
-of two or more line segments. Each coordinates is to be assumed as
-the end points of line segments.
+of two or more line segments. It will look for all line segments
+in the coords and will draw a short bar (can be changed via vartype
+style) in the middle of the line. In the following example a short
+bar is to be drawn in the middle of the horizontal line and in the middle
+of the vertical line.
 
-    drawlinesegcong (0,0) (1,1) (2,2) ...
+    drawlinesegcong (0,0) [h:4] [v:4]
 
 The length of the short bar is determined by the barlength-option,
 The bartype-option will also be checked
