@@ -218,7 +218,14 @@ drawing environment.
   "save:<string>" and "at:<string>" where <string> expresses
   a string. 
 
-+ set id <integer>
++ set id 0
++ set id 1
++ set id a
++ set id A
++ set id A0
++ set id a12
++ set id node0
++ set id node12
 
   Set the "id" to a string. This string would be interpreted in constructing
   ID(s) for path, node, and other commands that would have required an ID.
@@ -231,10 +238,6 @@ drawing environment.
   If set to an integer, then that integer will become the next assigned ID, and
   then the 'id' parameter will be incremented by 1. 
   
-  Note that for some commands, such as 'path', where an integer is not
-  considered a valid ID for that element, setting it to the integer will not
-  result in a valid ID being assigned to the new element created.
-
   It can also be set to a string such as 'A0', 'a12', 'node0', 'node12', with a
   pattern of one of more alpha letters followed by one of more digits. In this
   case this ID will be used as is for the next auto ID assignment, but then
