@@ -743,17 +743,6 @@ Each of the following syntax denotes a relative point.
   This is to place a circle centered at the last position with a given
   radius of 0.2. The last point is not changed.
 
-+ [offset:0.2,-0.4]
-+ [offset:last]     
-  
-  This is to increase the current offset value by 0.2 in x-direction
-  and -0.4 in y-direction. Each encountering of this directive will
-  increase the current settings of offset. An offset is added to an absolute
-  point when an absolute point is encountered in the command line.
-
-  If the value is set to 'last', then the last saved x/y offset values
-  are used. This is useful if the next command wants to continue with
-  the same offset done by the previous command.
 
 + [m:2,-2]
 + [m:last]
@@ -787,6 +776,40 @@ Each of the following syntax denotes a relative point.
   issued, whose exported path position is now based off the value of the new
   'lastpt'.
   
++ left:2
++ right:2
++ up:2
++ down:2
++ offset:a
+
+  This is to increase the current offset in direction
+  specified by a grid distance of 2. The offset is a pair
+  of values representing the shift in the x/y directions 
+  for all absolute points as well as points obtained from
+  a path variable or a path function. It does not affect 
+  relative points as their position depends only on the 
+  'lastpt'. 
+  
+  The 'left', 'right', 'up', and 'down' directives
+  would have shifted the current offset in the given direction
+  which is expected to be a number. Note that each of these
+  operations are accumulative such that moving two times to the right
+  where each time is a distance of 1 grid distance equals to 
+  moving 2 grid distance to the right.
+
+  Note that it is legal to specify negative numbers for 
+  this such as 'right:-2', or 'top:-2', or a number with
+  decimal points such as 'right:-2.3', or 'top:-2.3', in which
+  case the offset will be shifted in the opposite direction.
+
+  The 'offset' direction would set the current offset directly to the
+  position that is the first point in the given path. The value after
+  the colon is expected to be a valid path designation, such as 'a',
+  or a path-index designation, such as `a_0`, `a_1`, `a_2`, etc.
+
+
+
+
 
 # The shape-operation
 
