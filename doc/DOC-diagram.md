@@ -762,50 +762,80 @@ Each of the following syntax denotes a relative point.
   and the result is a single "moved point" whose position is result
   of moving this point multiple times.
 
-+ [save:a]
+
+# Changing the 'lastpt' of a path
+
+Note that for each action command operation, there is a value called
+'lastpt' which expresses the current point. It is automatically assigned
+whenever a point is moved, drawn a line, a Bezier curve, etc., after
+which the 'lastpt' is updated to hold the value of the new destination.
+
+In addition, the 'lastpt' is expected to persist between two action commands,
+such that the second action command immediate can expected to have the same 'lastpt'
+as the last 'lastpt' of the previous action command.
+
+However, the 'lastpt' can also be saved to a path, retored from a previous path, etc.
+
++ save:a
 
   This is to save the current 'lastpt' as a separate path named 'a' or 'b', and
   can later be retrieved by 'load'.
   
-+ [load:a]
++ lastpt:a
 
-  This is to locate a path named 'a' and then update the
-  'lastpt' with the first point found in this path. Note that
-  this operation itself does not export any path points.  To generate a path
-  point a relative operation such as a 'm', 'h', 'v', or 'l' will need to be
-  issued, whose exported path position is now based off the value of the new
-  'lastpt'.
-  
+  This is to restore the current 'lastpt' to a point that starts the path 'a'.
+  Note that even when the 'lastpt' is changed, this operation itself does not
+  export any path points.  To generate a path point a relative operation such
+  as a 'm', 'h', 'v', or 'l' will need to be issued, whose exported path
+  position is now based off the value of the new 'lastpt'.
+
+
+# Setting the 'offset' during a path construction
+
+During a path construction, there is an 'offset' such that when set to
+something other than (0,0), will cause all absolute points and points from
+reading a path variable and path function to undergo translation.  This feature
+allows for a quick "translation" effect that would apply to the entire path.
+The alternative without this approach would have to be to first save the
+constructed path to a temporary path variable using the 'path' command, and
+then does it again using the '&translate{...}' path function.
+Following is a example that would construct a path that is
+(1,1) ~ (3,1) ~ (1,3)
+
+    path a = right:1 up:1 (0,0) ~ (2,0) ~ (0,2)
+
+Following is another example that does not use 'offset'.
+
+    path a = (0,0) ~ (2,0) ~ (0,2)
+    path a = &translate{&a,1,1}
+
+Unlike 'lastpt', the 'offset' of each path construction is not carried over to
+the new action command.  Following is a set of directives that allows the
+current 'offset' value to be set or changed. When not set, the 'offset' is
+assumed to be (0,0).
+
 + left:2
 + right:2
 + up:2
 + down:2
+
+  The 'left', 'right', 'up', and 'down' directives would each have shifted the
+  current offset in the given direction specified. The value after the colon is
+  expected to be a number.  Each of these operations are accumulative such that
+  moving two times upwards at a distance of 1 grid distance each equals to
+  moving 2 grid distance one time.
+
+  Note that it is legal to specify negative numbers for this such as
+  'right:-2', or 'top:-2', or a number with decimal points such as
+  'right:-2.3', or 'top:-2.3', in which case the offset will be shifted in the
+  opposite direction.
+
 + offset:a
 
-  This is to increase the current offset in direction
-  specified by a grid distance of 2. The offset is a pair
-  of values representing the shift in the x/y directions 
-  for all absolute points as well as points obtained from
-  a path variable or a path function. It does not affect 
-  relative points as their position depends only on the 
-  'lastpt'. 
-  
-  The 'left', 'right', 'up', and 'down' directives
-  would have shifted the current offset in the given direction
-  which is expected to be a number. Note that each of these
-  operations are accumulative such that moving two times to the right
-  where each time is a distance of 1 grid distance equals to 
-  moving 2 grid distance to the right.
-
-  Note that it is legal to specify negative numbers for 
-  this such as 'right:-2', or 'top:-2', or a number with
-  decimal points such as 'right:-2.3', or 'top:-2.3', in which
-  case the offset will be shifted in the opposite direction.
-
-  The 'offset' direction would set the current offset directly to the
-  position that is the first point in the given path. The value after
-  the colon is expected to be a valid path designation, such as 'a',
-  or a path-index designation, such as `a_0`, `a_1`, `a_2`, etc.
+  The 'offset' directive would set the current offset directly to a position
+  that starts the path. The value after the colon is expected to be a string
+  that holds the name of an existing path, such as 'a', or a path-index
+  designation, such as `a_0`, `a_1`, `a_2`, etc.
 
 
 
