@@ -2758,12 +2758,13 @@ it on top of that line, depending on the orientation of the line segment.
 # The 'drawpolyanglearc' operation
 
 The 'drawpolyanglearc' operation is to draw all the angles of a polyline
-encountered in the given path. Note that if the path is closed then 
-the angle between the last point and the first point is also to be drawn.
+encountered in the given path. The vertices of the polygon must be arranged
+so that it rotates in a counter-clockwise rotation.
 
-This operation will also be able to drawn angle label. If any of the angle
-is found to be exact 90 degrees, a square is to be drawn instead of the
-arc.
+This operation will also be able to drawn angle label. If the path is
+closed then the angle between the last point and the first point is
+also to be drawn. If any of the angle is found to be exact 90 degrees,
+a square is to be drawn instead of the arc.
 
     path tri = &triangle{(0,0),(4,0),(2,2)}
     stroke &tri
