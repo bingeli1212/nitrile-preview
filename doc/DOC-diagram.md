@@ -1757,7 +1757,7 @@ first two points and assign the result to 'my'.
 
 
 
-# Setting up an environment symbol
+# Setting up an environment variable
 
 Setting up environment symbol to attach a name the result of an arithmetic
 expression.  In the following example the symbol 'pi' is assigned a quantity
@@ -1805,6 +1805,71 @@ of that expression is evaluated immediately, and the quantity of which
 is assigned to the symbol.
 
 
+# Scalar Expression
+
+Scalar expressions are recognized as the right-hand side of a 'var' command,
+and 'fn' command. It is also recognized as part of a float if placed inside
+a set of parenthesis.
+
+The scalar expression has a syntax very much like those supported by 
+the 'expr' command of a modern day Tcl interpreter. It recognizes 
+operator plus, minus, multiplication and division. The multiplication
+operator is the asterisk, and the division operator is the slash character.
+
+It provides a list of built-in functions such as 'ln' and 'sqrt'. It also
+recognizes user defined functions which are created by the use of the 'fn'
+command.  It supports operator precedence of multiplication and division over
+addition and subtraction, and recognizes parentheses for grouping. It
+also recognizes a scientific number notation such as '2e5'.
+
+Following are examples of using an expression to assign a number to
+a environment variable 'a'. Note that 'E' and 'PI' are two built-in constants
+where the first one is the Euler's number and the second one being the
+ratio of the circumference of a circle to its diameter.
+
+    var a = (2+2)*(3+3)
+    var a = cos(3+0.1415) + 12
+    var a = 3 + pow(3,2)*3 + 2
+    var a = 3 + E + 2
+    var a = 3 + PI + 2
+    var a = sign(-5)
+    var a = 2*PI
+    var a = 2*2e5
+    var a = deg2rad(180)
+    var a = 1/0
+    var a = ln(0)
+
+Following are likely to be observed in the outputs of a HTML
+translation.
+
+    <!-- var a = (2+2)*(3+3) -->
+    <!-- ***var:a=24 -->
+    <!-- var a = cos(3+0.1415) + 12 -->
+    <!-- ***var:a=11.000000004292344 -->
+    <!-- var a = 3 + pow(3,2)*3 + 2 -->
+    <!-- ***var:a=32 -->
+    <!-- var a = 3 + E + 2 -->
+    <!-- ***var:a=7.718281828459045 -->
+    <!-- var a = 3 + PI + 2 -->
+    <!-- ***var:a=8.141592653589793 -->
+    <!-- var a = sign(-5) -->
+    <!-- ***var:a=-1 -->
+    <!-- var a = 2*PI -->
+    <!-- ***var:a=6.283185307179586 -->
+    <!-- var a = 2*2e5 -->
+    <!-- ***var:a=400000 -->
+    <!-- var a = deg2rad(180) -->
+    <!-- ***var:a=3.141592653589793 -->
+    <!-- var a = 1/0 -->
+    <!-- ***var:a=Infinity -->
+    <!-- var a = ln(0) -->
+    <!-- ***var:a=-Infinity -->
+
+Note that instead of returning a valid number, the expression might generate
+something akins to 'Infinity' or 'Nan', depending on the nature of the
+expression.
+
+
 # The built-in scalar functions
 
 Following are built-in functions provided by Diagram
@@ -1824,11 +1889,11 @@ Following are built-in functions provided by Diagram
 + exp(x)      
 
   It returns the output of an exponential function for which the base
-  is set to be the Euler's number ``e``: exp(1) = e; exp(2) = ``e^2``
+  is set to be the Euler's number: exp(1) = e; exp(2) = e^2
 
 + pow(x,y)     
   
-  It returns the result of raising ``x`` to the ``y``-th power: pow(3,2) = 9; pow(4,2) = 16
+  It returns the result of raising x to the y-th power: pow(3,2) = 9; pow(4,2) = 16
 
 + sqrt(x)   
   

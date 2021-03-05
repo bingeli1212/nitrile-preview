@@ -606,6 +606,10 @@ Following are styles recognized by NITRILE:
   'dot' or 'line'. The default is 'dot'.  This value is currently used
   by the 'cartesian.xplot' and 'cartesian.yplot' commands.
 
++ start:<angle>
 
+  The property value holds the starting angle in degrees. This property
+  and 'span' is used currently by the 'dot.sector' command to determine
+  the orientation of the sector.
 
 
