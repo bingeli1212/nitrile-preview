@@ -1906,11 +1906,21 @@ Following are built-in functions provided by Diagram
 
   Sign (+1 or -1 or 0) of a number
 
-+ PI()
+
+# The built-in Scalar Constants
+
+Following are built-in scalar constants, which can be used as if they
+are arguments. For instance, 
+
+    var arc = 2*PI
+
+This the 'arc' env-variable would have been assigned the value of 6.28.
+
++ PI
 
   The constant π (3.141592654...)
 
-+ E()
++ E
 
   The Euler's number (2.71828...), the base for the natural logarithm
 
