@@ -2664,13 +2664,48 @@ inside the rectangle.
 Currently only lines are recognized as legal boundaries for a space. In the future
 a Bezier curve or arc could also become part of a boundary. 
 
-# The 'drawtextpath' operation
+# The 'slopedtext' command
 
-The 'drawtextpath' is to draw a text along a line segment. 
-The command line coordinates will be scanned for the presence
-of line segments, and will extra a label from the position to draw
-it on top of that line, depending on the orientation of the line segment.
+The 'slopedtext' command is to draw a sloped text centered along a line
+segment.  The command scans for the presence of all line
+segments in the coodinates provided, and for every line segment found,
+place a label that run along the slope of the line.
 
-    drawtextpath "Hello\\World" (0,0) [h:4] [v:4]
+    slopedtext "Hello\\World" (0,0) [h:4] [v:4]
+
+By default, the text will be placed on top of the line. But it can be 
+placed at the bottom of the line if the ".bot" subcommand is supplied.
+
+    slopedtext.bot "Hello\\World" (0,0) [h:4] [v:4]
+
+# Floats Construction
+
+A lot of commands expectes path points. However, some commands would 
+instead expect floats. These commands include all subcommands of 
+"cartesian", "barchart", and "lego".
+
+When these commands are executed, everything after the style and 
+label text will be treated as a list of floats. Following 
+are valid ways of supplying floats.
+
+    cartesian.stick 10 11 20 21 
+    cartesian.xtick [1:10]
+    cartesian.xtick [1:3:10] 
+    cartesian.xtick [1:10] [20:3:30]
+    cartesian.xtick 1 pow(1,2) 2 pow(2,2) 3 pow(3,2)
+    cartesian.xtick \x \y \x1 \y1 \x2 \y2            
+
+Note that it is by default, a list of floats are separated by one or more
+spaces.  However, when a range expression is encountered such as "[1:10]", then
+a list of floats expressed by this range is also added to the list.
+
+It is also possible to specify an expression such as "pow(1,2)", "pow(2,2)",
+which will be evaluated, and the result of which treated as a float that will
+be added to the list as well. 
+
+If there are environment variables such as "\x", "\y", they will also be added
+to the list of floats.
+
+
 
 
