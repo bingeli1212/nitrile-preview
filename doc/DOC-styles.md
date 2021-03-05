@@ -599,6 +599,13 @@ Following are styles recognized by NITRILE:
 
   This value expresses the name of a function.
 
++ plottype:dot  
++ plottype:line
+
+  This property value expresses how to represent plots. It could either be
+  'dot' or 'line'. The default is 'dot'.  This value is currently used
+  by the 'cartesian.xplot' and 'cartesian.yplot' commands.
+
 
 
 
