@@ -651,18 +651,26 @@ Each of the following syntax denotes a relative point.
   assumed to be control point, in which case the drawn curve will be
   straight line.
 
-+ [angledist:1,30] 
++ [angledist:30,1] 
++ [angledist:30,1,2,2] 
 
-  This allows you to construct a new point that is to travel at a
-  angle of 30 degrees counterclockwise from due east for 1 unit
-  length, starting from the current point.
+  The [angledist:30,1] directive is to construct a new line segment from the
+  current point to a new location that is 1 unit distance away and 30 degrees
+  counter-clockwise rotation from due east.
+  
+  The [angledist:30,1,1,1] directive is similar to the one before except for
+  the fact that the 30 degree rotation is now to start from a non-zero degree
+  angle that is formed between the reference point (1,1) and the current point:
+  if the current point is (0,0) then the reference angle is 45 degrees, such
+  that the constructed line segment is to land at a point that is 75 degrees 
+  rotation from due east.
 
 + [turn:30,1] 
 
-  This is to create a new point that is equivalent to making a left
-  turn of 30 degrees from the direction you have arrived at the
-  current point, and then travel for one more unit length. If it is to
-  make a right turn, then set the angle to a negative number.
+  This is to create a new point that is equivalent to making a left hand turn
+  of 30 degrees from the direction you have arrived at the current point, and
+  then travel for one more unit length. If it is to make a right hand turn,
+  then set the angle to a negative number.
 
 + [clock:30,1]
 + [clock:30,1,4,0]
@@ -673,48 +681,54 @@ Each of the following syntax denotes a relative point.
   south. The first argument is the angle, and the second one is the distance
   away from the current point.
 
-  If there are a total of four arguments,
-  then the last two arguments represents the x/y coordinates 
-  of a point from which the base angle is to be computed. The base angle
-  is the angle formed between the due north line and the line between the current
-  point and the new point. The
-  clock angle is then being added on top of the base angle before
-  used to figure out the new location.
+  If there are a total of four arguments, then the last two arguments
+  represents the x/y coordinates of a point from which the base angle is to be
+  computed. The base angle is the angle formed between the due north line and
+  the line between the current point and the new point. The clock angle is then
+  being added on top of the base angle before used to figure out the new
+  location.
 
 + [flip:5,5] 
 
-  This is to construct a new point that is the mirror image of the
-  current point. The current point in this case is five unit distance
-  to the right and towards the top of the last point. The mirror is
-  the line segment that is made up by the current point and the point
-  before that. This operations allows you to figure out where an
-  existing point will land as if you were folding a paper along an
-  existing line that is traveled between the last two points.
+  This is to construct a new point that is the mirror image of the given point
+  (5,5).  The exact location of the new location depends on the last two points
+  traveled, the direction of which is treated as a mirror to which the new point
+  will be reflected upon. The net result could be thought of as folding a paper
+  along the line of the mirror with a point on one side of the line, and see
+  where that point will land on the other side of the line after folding.
 
 + [dot:0.2]
 
   This is to place a circle centered at the last position with a given
-  radius of 0.2. The last point is not changed.
-
+  radius of 0.2. The current path segment will be closed after this
+  operation and the current point is not changed.
 
 + [m:2,-2]
 + [m:last]
 + [m:&a]
-+ [m:&b]
 
-  This is to start a new line segment and set the first point to 
-  this value. Note that this value is relative to the 'lastpt', and
-  the 'lastpt' will be updated to this new location after this 
-  operation has ended. 
+  This operation is to terminate any existing line segment
+  and start a new one. The first point of the new line segment
+  will be assigned this point.
+  
+  For [m:2,-2], the two numbers express a relative position
+  from the current 'lastpt', after which the 'lastpt' is updated
+  to the new location.
 
-  It is also possible to "move" to a new point that is expressed by
-  an existing path, such as [m:&a], in which case the new point
-  coincides with the first point of path 'a'. 
+  For [m:last], the saved 'lastpt' from a previous path construction
+  is used.
 
-  In addition, multiple consecutive "m" operations will be "merged"
-  and the result is a single "moved point" whose position is result
-  of moving this point multiple times.
+  For [m:&a], the first point of an existing path named 'a' will become the
+  current moved point.
 
+  Note that multiple consecutive "m" operations will not result in
+  multiple "moved points", but rather a single moved point that
+  is the last operation.
+
++ [hints:1]
+
+  The [hints:1] directive will set the current 'hints' to a value that is '1'.
+  This hints will be assigned to next point encountered in the path.
 
 # Changing the 'lastpt' of a path
 
