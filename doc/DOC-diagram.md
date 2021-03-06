@@ -467,9 +467,9 @@ attempt to fill the area, even when the area is not closed. For
 MetaPost/MetaFun the path will have to be closed before calling the 'fill'
 MetaPost, as otherwise the compilation will complain.
 
-# The hint values
+# Hint Flags
 
-Following are hint values:
+Following are currently defined hint flags.
 
     linedashed = 1;
     linesize2  = 2;
@@ -480,46 +480,34 @@ Following are hint values:
     darker     = 64;
     hallow     = 128; //no fill if no fillcolor isn't set
 
-A hint value is the combination of all the flags that was shown above.
-The hints are extra values hinted by the user to request that certain
-segment of their path should be drawn a little differently than the rest.
+A hint value is an integer that is the bitwise OR'ed value of all the flags
+that was shown above.  The hints are extra values hinted by the user to request
+that certain segment of their path should be drawn a little differently than
+the rest.
 
 For instance, if we were to construct a path to represent an arrow, and we want
-the line of the arrow body to be thicker than the lines of the arrow head,
-we could do that by specifying a hint value of "2", which is the value of "linesize2",
-which serves to add a 2pt thickness to the existing thickness of the line.
-Following is an example of drawing an upper pointing arrow such that the body
-of the arrow is drawn with a line that is 2pt thicker than its arrow head.
+the line of the arrow body to be thicker than the lines of the arrow head, we
+could do that by specifying a hint value of "2", which is the value of
+"linesize2", which serves to add a 2pt thickness to the existing thickness of
+the line.  Following is an example of drawing an upper pointing arrow such that
+the body of the arrow is drawn with a line that is 2pt thicker than its arrow
+head.
 
-    draw (0,0,2) ~ (0,2)  (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
+    draw hints:2 (0,0) ~ (0,2)  (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
 
 The path above consists of three path segments: the first of which draws
 the arrow body, where the last two each drawing one part of the arrow head.
 
-To insert a hint there are two ways: the first is to add it as the third
-argument to an absolute point. This is what the previous example has shown.
-Since "hints" is only going to be queried for the first point of a path
-segment, setting it would have affect the path segment of the first segment.
-The second path segment in the previous example isn't effected.  The second
-method is to use the [hints:] relative notation.
+To express a hint use the "hints:" directive as follows before the first
+point of a line segment. The hints specified will be attached to the
+next point encountered in the path construction line.
+Once assigned to path point, the hints will be cleared internally and subsequent
+path points will not be affected.
 
-    draw (0,0) [hints:2] ~ (0,2)  (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
+In the previous example there are path segments, and the hints:2 is attached
+to the first point of the first segment. The last two segments
+are not affected by the hints and will remain unhinted.
 
-This notation sets the "hints" flags of the last point, regardless of what that
-point is. Thus in order for it to be effective the [hints:] directive must be
-placed immediately after the first point of a path segment in order for the
-hints to be attached to that point.
-
-Note that "hints" is an integer that is the result of bit-OR'ed value of all
-the flags above. To remove the hint simply specify 0 as the new hint.  Note
-that each new hint is going to overwrite the pervious hint.
-
-Another thing to note that internally, the current hint is stored
-with each new path point created, and if a new hint is put in place and the next
-path point is still part of the same path segment, then it is likely that
-the new hint will become the hint for the current segment, overwriting
-the prevous one. Thus it is important to only change hint before starting
-a new segment and do not change hind during the middle of a segment building.
 
 # The 'drawanglearc' command
 
@@ -725,61 +713,59 @@ Each of the following syntax denotes a relative point.
   multiple "moved points", but rather a single moved point that
   is the last operation.
 
-+ [hints:1]
 
-  The [hints:1] directive will set the current 'hints' to a value that is '1'.
-  This hints will be assigned to next point encountered in the path.
+# Setting the 'lasthints'
 
-# Changing the 'lastpt' of a path
+There is an internal variable named 'lasthints' that holds the last hints
+designated by the user. To set this variable, use the "hints:" directive.
 
-Note that for each action command operation, there is a value called
-'lastpt' which expresses the current point. It is automatically assigned
-whenever a point is moved, drawn a line, a Bezier curve, etc., after
-which the 'lastpt' is updated to hold the value of the new destination.
++ hints:1
+
+  The "hints:1" directive will set the 'lasthints' to 1. The value
+  after the colon is expected to be an integer that is bitwise OR'ed
+  value of hint flags.  See the section "Hint Flags" for more information.
+
+  The value held by the 'lasthints' variable will be assigned to next available
+  path point and will be cleared immediately after the assignment has
+  completed.
+
+
+# Saving 'lastpt'
+
+Note that for each action command operation, there is a variable called
+'lastpt' that holds the value of the last assigned path point. It is
+automatically updated whenever a point is moved, drawn a line, a Bezier curve,
+an arc curve, etc.  The 'lastpt' can be considered akin to the concept of
+"current point".
 
 In addition, the 'lastpt' is expected to persist between two action commands,
-such that the second action command immediate can expected to have the same 'lastpt'
-as the last 'lastpt' of the previous action command.
+such that when a new action command is encountered it automatically load the
+last known 'lastpt' of the previous command line.
 
-However, the 'lastpt' can also be saved to a path, retored from a previous path, etc.
+At any time, the 'lastpt' can be saved to a path by the "save:" directive.
 
 + save:a
 
-  This is to save the current 'lastpt' as a separate path named 'a' or 'b', and
-  can later be retrieved by 'load'.
+  This is to save the current 'lastpt' to a new path named 'a'. 
+  This new path will only have a single path point in it.
   
-+ lastpt:a
 
-  This is to restore the current 'lastpt' to a point that starts the path 'a'.
-  Note that even when the 'lastpt' is changed, this operation itself does not
-  export any path points.  To generate a path point a relative operation such
-  as a 'm', 'h', 'v', or 'l' will need to be issued, whose exported path
-  position is now based off the value of the new 'lastpt'.
+# Setting 'offset' 
 
+During a path construction, there is an variable named 'offset' which holds a
+set of two numbers. It serves to "translate" the constructed path if it is set
+to something other than (0,0).  For example, if this variable is current
+holding two integers that are (1,1), then all points will be moved one grid
+unit to the left and upwards.
 
-# Setting the 'offset' during a path construction
-
-During a path construction, there is an 'offset' such that when set to
-something other than (0,0), will cause all absolute points and points from
-reading a path variable and path function to undergo translation.  This feature
-allows for a quick "translation" effect that would apply to the entire path.
-The alternative without this approach would have to be to first save the
-constructed path to a temporary path variable using the 'path' command, and
-then does it again using the '&translate{...}' path function.
-Following is a example that would construct a path that is
-(1,1) ~ (3,1) ~ (1,3)
+This variable can be changed in several different ways. The first way is to 
+use the "left:", "right:", "up:", and "down:" directives.
 
     path a = right:1 up:1 (0,0) ~ (2,0) ~ (0,2)
 
-Following is another example that does not use 'offset'.
-
-    path a = (0,0) ~ (2,0) ~ (0,2)
-    path a = &translate{&a,1,1}
-
-Unlike 'lastpt', the 'offset' of each path construction is not carried over to
-the new action command.  Following is a set of directives that allows the
-current 'offset' value to be set or changed. When not set, the 'offset' is
-assumed to be (0,0).
+The resulting path of the previous command will produce path similar to (1,1) ~
+(3,1) ~ (1,3). When a command line is first started, the 'offset' is set
+to (0,0).
 
 + left:2
 + right:2
@@ -787,22 +773,22 @@ assumed to be (0,0).
 + down:2
 
   The 'left', 'right', 'up', and 'down' directives would each have shifted the
-  current offset in the given direction specified. The value after the colon is
-  expected to be a number.  Each of these operations are accumulative such that
-  moving two times upwards at a distance of 1 grid distance each equals to
-  moving 2 grid distance one time.
+  current offset in the direction as instructed for a given number of grid
+  distances. The value after the colon is expected to be a number that
+  expresses the number of grid units.  Note also that these operations are
+  accumulative such that incurring "up:1" two times is equivalent to issuing
+  "up:2" one time.
 
-  Note that it is legal to specify negative numbers for this such as
-  'right:-2', or 'top:-2', or a number with decimal points such as
-  'right:-2.3', or 'top:-2.3', in which case the offset will be shifted in the
-  opposite direction.
+  Note that it is legal to use negative numbers such as 'right:-2', or
+  'top:-2', 'right:-2.3', or 'top:-2.3', in which case the offset will be
+  shifted in the opposite direction.
 
 + offset:a
 
-  The 'offset' directive would set the current offset directly to a position
-  that starts the path. The value after the colon is expected to be a string
-  that holds the name of an existing path, such as 'a', or a path-index
-  designation, such as `a_0`, `a_1`, `a_2`, etc.
+  The 'offset:a' directive would set the current offset to a point that is the
+  first path point of a path named "a". The value after the colon is expected
+  to be a string that holds the name of an existing path, such as 'a', or a
+  path-index designation, such as `a_0`, `a_1`, `a_2`, etc.
 
 
 # The 'dot' command
