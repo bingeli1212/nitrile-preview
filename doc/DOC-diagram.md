@@ -1350,26 +1350,26 @@ linedashed evenly" instead.
 The 'cartesian' is a compound command that has different subcommands listed
 below.
 
-- cartesian.setup xorigin yorigin gridrange
-- cartesian.grid xmin ymin xmax ymax
-- cartesian.xaxis xmin xmax
-- cartesian.yaxis ymin ymax
-- cartesian.ytick y1 y2 y3 ...
-- cartesian.xtick x1 x2 x3 ...
-- cartesian.yplot {f:P} x1 x2 x3 ...
-- cartesian.xplot {f:P} y1 y2 y3 ...
-- cartesian.dot x1 y1 x2 y2 x3 y3 ...
-- cartesian.line x1 y1 x2 y2 x3 y3 ...
-- cartesian.arrow x1 y1 x2 y2 x3 y3 ...
-- cartesian.text.rt x1 y1 x2 y2 x3 y3 ...
-- cartesian.ellipse x y Rx Ry Phi
-- cartesian.arc x y R startAngle stopAngle
+- cartesian-setup xorigin yorigin gridrange
+- cartesian-grid xmin ymin xmax ymax
+- cartesian-xaxis xmin xmax
+- cartesian-yaxis ymin ymax
+- cartesian-ytick y1 y2 y3 ...
+- cartesian-xtick x1 x2 x3 ...
+- cartesian-yplot {f:P} x1 x2 x3 ...
+- cartesian-xplot {f:P} y1 y2 y3 ...
+- cartesian-dot x1 y1 x2 y2 x3 y3 ...
+- cartesian-line x1 y1 x2 y2 x3 y3 ...
+- cartesian-arrow x1 y1 x2 y2 x3 y3 ...
+- cartesian-text.rt x1 y1 x2 y2 x3 y3 ...
+- cartesian-ellipse x y Rx Ry Phi
+- cartesian-arc x y R startAngle stopAngle
 
 The ``cartesian`` command is used to draw plots, curves, axis, ticks
 that are related to a single Cartesian coordinate. It is a composite
 command that includes many sub-commands. All subcommands must follow
 the word 'cartesian' after a dot symbol. The subcommand itself can
-also have its own option, such as 'cartesian.text.rt'.
+also have its own option, such as 'cartesian-label.rt'.
 
 The ``setup`` command would set up a Cartesian coordate to be used. The
 first two arguments defines the low left hand corner where the origin
@@ -1378,7 +1378,7 @@ specified in grid coordintes. For example, if they are passed as 2 and
 3, then the origin of the Cartesian coordinates will appear at the
 location of (2,3) of the Diagram.
 
-    cartesian.setup 2 3 0.5
+    cartesian-setup 2 3 0.5
 
 The third argument can be omitted. If provided, it states the how to
 interpret the input range of the Cartesian coordinates. For example,
@@ -1391,92 +1391,92 @@ will appear at the location (2,3) + (2,2) = (4,5) inside the Diagram,
 where (2,3) is the location of the origin, and (2,2) is where the
 point is relative to the origin.
 
-The ``cartesian.grid`` command asks to draw a grid with the lower-left
+The ``cartesian-grid`` command asks to draw a grid with the lower-left
 corner at (xmin,ymin) and upper-right corner at (xmax,ymax). The increment
 is default at 1. The increment for x-direction can be set by the xstep-option
 and the increment for y-direction can be set by the ystep-option.
 
-    cartesian.grid -5 -5 5 5
-    cartesian.grid {xstep:0.5, ystep:0.5} -5 -5 5 5
+    cartesian-grid -5 -5 5 5
+    cartesian-grid {xstep:0.5, ystep:0.5} -5 -5 5 5
 
-The ``cartesian.xaxis`` command is to draw the x-axis. The only two
+The ``cartesian-xaxis`` command is to draw the x-axis. The only two
 parameters passed to it is the lower and upper range that this axis
-entails. Similarly, the ``cartesian.yaxis`` command draws the y-axis
+entails. Similarly, the ``cartesian-yaxis`` command draws the y-axis
 with similar parameter requirements.
 
-    cartesian.xaxis -0.75 5.6
-    cartesian.yaxis -0.75 4.5
+    cartesian-xaxis -0.75 5.6
+    cartesian-yaxis -0.75 4.5
 
-The ``cartesian.xtick`` is used to draw ticks as well as labels on the
+The ``cartesian-xtick`` is used to draw ticks as well as labels on the
 x-axis of the coordinate. The list of arguments passed to this command
 is a list of location of these ticks on the axis. For example, if
 passed as "1 2 3" then the ticks will appear where (1,0), (2,0), and
 (3,0) points are. For each tick, a label string will also appear
-unerneath that tick. Similarly, the ``cartesian.ytick`` command does the
+unerneath that tick. Similarly, the ``cartesian-ytick`` command does the
 same thing except for that it is for the y-axis.
 
-    cartesian.xtick 1 2 3 4 5
-    cartesian.ytick 1 2 3 4
+    cartesian-xtick 1 2 3 4 5
+    cartesian-ytick 1 2 3 4
 
 The `cartesian dot` command shows one or more points as dots inside
 the coordinate. Every two numbers are interpreted as a pair of (x,y)
 coordinates.
 
-    cartesian.dot  -4 0 4 0 \
+    cartesian-dot  -4 0 4 0 \
                   -5 0 5 0
 
-The 'cartesian.line' and 'cartesian.arrow' commands are similar,
+The 'cartesian-line' and 'cartesian-arrow' commands are similar,
 except for that the first one will draw connecting lines between all
 points, and the second one also adds an arrowhead at the very end of
 the line.
 
-    cartesian.line  -4 0 4 0 \
+    cartesian-line  -4 0 4 0 \
                     -5 0 5 0
-    cartesian.arrow -4 0 4 0 \
+    cartesian-arrow -4 0 4 0 \
                     -5 0 5 0
 
-The 'cartesian.yplot; is similar to 'cartesian.dot', in that it
+The 'cartesian-yplot; is similar to 'cartesian-dot', in that it
 generates a series of dots. Only the x-coordinates of plotted points
 are provided, and the y-coordinates of each point is calculated by the
 supplied function, which must be provided by the "f" member of the
 option.
 
     fn P(x) = pow(x,2)
-    cartesian.yplot {f:P} 1 2 3 4 5
+    cartesian-yplot {f:P} 1 2 3 4 5
 
 In the previous example, following points will be shown: (1,1), (2,4),
 (3,9), (4,16), and (5,25) as dots. The Range expression in this case
 can be useful, such as the following:
 
     fn P(v) = pow(v,2)
-    cartesian.yplot {f:P} [1:5]
+    cartesian-yplot {f:P} [1:5]
 
 The name of the function could be arbitrary. However, it must be
 specified by the "f" member of the option. The function must have been
 previously defined by a 'fn' command, and must only accept one
 argument and return a single scalar.
 
-The 'cartesian.xplot' is similar except for that the input arguments
+The 'cartesian-xplot' is similar except for that the input arguments
 expresses a range of values as the y-coordinates of the points, and
 the funtion generates the corresponding x-coordinates.
 
     fn P(v) = sqrt(v)
-    cartesian.xplot {f:P} 1 4 9 25 16 25
+    cartesian-xplot {f:P} 1 4 9 25 16 25
 
-The ``cartesian.label`` command draws a text at the location of the
+The ``cartesian-label`` command draws a text at the location of the
 cartesian coord. The text itself is expressed via the quotation marks
 that must proceed the any option and all scalar values. Following
 example draw texts at location (-5,0), (-5,1) and (-5,2) of the
 Cartesian coordinates, and at each point the text will be "P(0)",
 "P(1)", and "P(2)". The text is to appear at the bottom of each point.
 
-    cartesian.label.bot "P(0)\\P(1)\\P(2)" -5 0 -5 1 -5 2
+    cartesian-label.bot "P(0)\\P(1)\\P(2)" -5 0 -5 1 -5 2
 
-The 'cartesian.ellipse' will draw an ellipse centered at the location.
+The 'cartesian-ellipse' will draw an ellipse centered at the location.
 There can only be one ellipse to be drawn, and the signature of the
 arguments are:
 
-    cartesian.ellipse <x> <y> <Rx> <Ry> <Phi>
+    cartesian-ellipse <x> <y> <Rx> <Ry> <Phi>
 
 The 'x' and 'y' are coodinates for the center point of the ellipse.
 Each of the 'Rx' and 'Ry' is the semi-major or semi-minor axis in
@@ -1484,11 +1484,11 @@ horizontal or vertical direction. 'Phi' is the measurement of the
 angle rotation of the entire ellipse around the center. If it is a
 counter-clockwise rotation. It is in degrees.
 
-The "cartesian.arc" command will draw an arc with the given center,
+The "cartesian-arc" command will draw an arc with the given center,
 radius, start and stop angle. The signature of the function looks like
 the following.
 
-    cartesian.arc x y R startAngle stopAngle
+    cartesian-arc x y R startAngle stopAngle
 
 The 'x' and 'y' are coordinates expressing the center of the arc. 'R'
 is the radius of the arc. 'startAngle' and 'stopAngle' are the angles
@@ -1716,11 +1716,11 @@ iteration will be an integer 0, and the second one 1, and so on.
 # The 'fn' command
 
 The 'fn' command serves to create a user defined function that can be used
-elsewhere. Currently it is only utilized by 'cartesian.yplot' and
-'cartesian.yplot' commands.
+elsewhere. Currently it is only utilized by 'cartesian-yplot' and
+'cartesian-yplot' commands.
 
     fn P(x) = pow(x,2)
-    cartesian.yplot {fn:P} 1 2 3
+    cartesian-yplot {fn:P} 1 2 3
 
 This operation must start with a function name, which must follow the pattern
 of starting with an alpha letter followed by additional alpha or numerical
@@ -1730,7 +1730,7 @@ letters. Thus, the valid function names are "a", "aa", "a0", etc, while "0",
 The function is to be followed immediately by a set of parentheses, within
 which is a list of arguments, separated by comma, followed by an equal sign,
 and then an arithmetic expression. So far the only command would make use of a
-function is the 'cartesian.xplot' and 'cartesian.yplot'.
+function is the 'cartesian-xplot' and 'cartesian-yplot'.
 
 Note that the arithmetic expression can contain other funtions, including
 built-in scalar function such as 'sin()', 'exp()', etc.
@@ -1768,9 +1768,9 @@ of the the 'draw' command.
     fn f(x) = \pi/x
     set refx 5
     set refy 5
-    cartesian.xaxis -10 10
-    cartesian.yaxis -10 10
-    cartesian.yplot {f:f} [1:10]
+    cartesian-xaxis -10 10
+    cartesian-yaxis -10 10
+    cartesian-yplot {f:f} [1:10]
     arrow (0,0) (\pi,\pi)
 
 One advantage of using a 'var' command to create an environment
@@ -1991,60 +1991,70 @@ This the 'arc' env-variable would have been assigned the value of 6.28.
 
 
 
-# The range-expression syntax
+# The Range-expression syntax
 
-The range-expression serves to present one or more scalar quantities
-with a command that expects scalar quantities as part of its command
-line structure. When it appears as part of a group of scalar arguments
-of a command, it serves to express one or more scalar quantities for
-that command. For example, in the following command a total of 11
-scalars will be supplied to the ``cartesian.yplot`` command.
+A Range-expression serves to present one or more scalar quantities with a
+command that expects scalar quantities as part of its command line structure.
+When it appears as part of a group of scalar arguments of a command, it serves
+to express one or more scalar quantities for that command. For example, in the
+following command a total of 11 scalars will be supplied to the
+``cartesian-yplot`` command.
 
     fn P(x) = pow(x,2)
-    cartesian.yplot {fn:P} [1:10]
+    cartesian-yplot {fn:P} [1:10]
 
-A range-expression must appears between a set of brackets, and it
-consists of two or three quantities each separated by a single colon.
+A Range-expression must appears between a set of brackets, and the exact
+collection of scalars it represent depends on the synatx.
 
-When a range-expression consists of two quantities, such as "1:10",
-the first one denotes the ``base``, and the second one denotes the
-`limit`. The range of scalars this range-expression covers include all
-the numbers between the ``base`` and ``limit``, starting from the ``base``,
-with each additional number one greater than its predecessor, and with
-a final number not exceeding ``limit``. Thus, for the case of a
-range-expression "1:10", the scalars it entails are 1, 2, 3, 4, 5, 6,
-7, 8, 9 and 10.
+When a Range-expression consists of two quantities separated by a single colon,
+such as "1:10", the first one denotes the ``base``, and the second one denotes
+the `limit`. The range of scalars this range-expression covers include all the
+numbers between the ``base`` and ``limit``, starting from the ``base``, with
+each additional number one greater than its predecessor, and with a final
+number not exceeding ``limit``. Thus, for the case of a range-expression
+"1:10", the scalars it entails are 1, 2, 3, 4, 5, 6, 7, 8, 9 and 10.
 
-If a Range-expression is given as a set of three quantities, such as
-the case of "1:3:10", then the last quantity denotes the ``limit``, and
-the middle quantity denotes the increment for each additional scalar
-after the ``base``. Thus, in the case of "1:3:10", the scalars it
+If a Range-expression is given as a set of three quantities, separated by two
+colons, such as the case of "1:3:10", then the last quantity denotes the
+``limit``, and the middle quantity denotes the increment for each additional
+scalar after the ``base``.  Thus, in the case of "1:3:10", the scalars it
 entails are: 1, 4, 7, 10.
+
+Otherwise, if the Range-expression expresses a quantity that are separated by
+commas, such as the case of [1,2,3,4,5,10], then it expresses the individual
+scalars each of which separated by commas.
 
 
 # List of floats
 
-For cartesian-operation and barchart-operation, it expectes a list
-of scalars after the style and label text. 
+For 'cartesian' and 'barchart' commands, where each one expectes a list of
+scalars, the scalars are by default shown one after another each of which
+separated by one or more spaces.
  
-    cartesian.line {linecolor:red} 0 0 1 1 2 3
+    cartesian-line {linecolor:red} 0 0 1 1 2 3
 
-This would have drawn a line from (0,0) to (1,1) to (2,3). This new
-type of floats allows for flexibility of listing one dimensional
-numbers and two dimensional numbers seemlessly. For example, the 'cartesian.line'
-would have considered the list as expressing a list of coordinates 
-in a two-dimensional grid. However, the operation 'cartesian.xtick' 
-would have considered the same list as expressing a list of coordinates
-along x-axis, and the numbers in the list only expressed the x-coordinate,
-where y-coordinates are assumed to be 0.
+The exact interpretation of the floats depends on the nature of the command itself.
+For instance, the 'cartesian-line' command would have interpreted each two consecutive
+floats as expressing a path point in the form of (x,y) where 'x' is the first float
+and the 'y' the second. It would each time take two floats from the list and interpreting
+them as 'x', 'y', and then construct a line between two consecutive points.
 
-    cartesian.xtick 1 2 3 4 5
+For 'catesian-dot' command, each two floats will be interpreted as a point
+and shown with a dot.
 
-This new syntax also allows for functions and ranges to be mixed
-with numbers. For example, in the following example would have
-created a list of three floats: 1, 3 and 5.
+    cartesian-dot {linecolor:red} 5 7 10 11
 
-    cartesian.xtick [1:2:5]
+For 'cartesian-xtick' command, each float is interpreted as expressing a value 
+in the x-axis.
+
+    cartesian-xtick 1 2 3 4 5
+
+The Range-expression can appear anywhere in the list which will insert the
+scalars this expression conveys into the list at that particular position.
+For example, the result of the following command is a list of scalars that
+are 0, 1, 2, 3, 4, 5.
+
+    cartesian-xtick 0 [1:5]
 
 
 # The 'node' and 'edge' commands
@@ -2118,87 +2128,73 @@ in the opposite direction.
     node.B  (5,5)
     edge.A.B {abr:45}
 
-If the edge is going to include arrow heads, then one of the following
-three options should've been used
+If the edge is going to include arrow heads, then the 'arrowhead' style option
+should've been provided.
 
-    edge.A.B {arrow,abr:45}
-    edge.A.B {revarrow,abr:45}
-    edge.A.B {dblarrow,abr:45}
+    edge.A.B {arrowhead:1,abr:45}
+    edge.A.B {arrowhead:2,abr:45}
+    edge.A.B {arrowhead:3,abr:45}
 
-For the node-operation, the dot-option, if present, would have asked the
-node to be drawn as a dot, and in which case the label text
-is not to be drawn. This allows one to render
-each node as a colored dot. The size of the dot is to be controlled
-the same way how a "dot" operation is controlled, such as to set the
-"dotsize" for the size of the dot in diameter, and "dotcolor" for the
-color of the dot.
-
-Typically each node is to be assigned an ID that follows the period
-after the "node" keyword. However, if a node-operation is to be done inside
-a for-loop then this assigning of an ID to a node is difficult to implement.
-If assigning to a node a name is important, then it can be done
-by allowing an automatic ID to be generated and assigned to the new node.
-This involves of using the underscore as the ID of the node, and by
-setting the "id" value to an integer. In the following example 
-the name of the first node will be set to "0" if this is the first node
-to be created. Likewise the next two node will each be assigned the
-name of "1" and "2".
+In order to be connected with lines, each node should have an ID assigned to
+it.  However, if a node is to be created inside a for-loop this
+operation could proven to be difficult to manage.
+In this case it can take advantage of the "auto ID" feature which will
+automatically assign an ID to the node depending on the current setting.
+In particular, in order to allow for a automatically chosen ID to be assigned
+to a node, the name of the node should appear as an underscore.
 
     node._ (0,0)
     node._ (1,2)
     node._ (3,4)
 
-See the 'set id' command for various ways of setting a starting ID.  The
-following example would have assigned the ID 'my10' to the first node and
-'my11' to the second, such that they are connected by the 'edge' command.
+By default, the name automatically assigned to the first node is 'a', and the
+second one 'b', the third one 'c', etc. The name will cycle through a-z, and
+then go back to being 'a' again.
 
-    set id my10
+There are four different ways user can influence how an ID will be constructed,
+the first of which is to instruct that the ID should cycle through a-z. The 
+second one is to instruct that the ID should cycle through A-Z. The third
+method is to instruct that the ID should cycle through 0 through infinity.
+The forth way is to instruct that a name be constructed with a fixed prefix
+and a number afterwards.
+
+To achieve this, the 'set' command should be used with a key of 'id' and value
+to a starting ID.  See the 'set id' command for various ways of setting a
+starting ID.  The following example the starting is set to 'node10',
+which is assigned to the first node. The second and thid node each is assigned
+an ID of 'node11' and 'node12'.
+
+    set id node10
     node._ (5,6)
     node._ (5,7)
-    edge.my10.my11
+    node._ (7,8)
+    edge.node10.node11.node12
 
-Following is an example that will set it up so that the first node
-will get an ID that is 'a', and the next node get a name that is 'b',
-and the next node gets a name that is 'c'.
-
-    ```diagram
-    viewport 6 6
-    config r 0.2
-    config fillcolor black
-    set id a
-    set refxy center
-    for theta:=[0:60:120]:
-      r := 2
-      x := cos(deg2rad(\theta)) * \r
-      y := sin(deg2rad(\theta)) * \r
-      node._ (\x,\y)
-    edge.a.b.c
-    ```
-
-For a node-operation, if no coordinates are given in the command line,
-all nodes will be searched in the internal database to see if this
-particular node has already been drawn; and if it has then it is
-redrawn using the last known position and radius information. However,
-the style and label information would have to come from the new
-command line. This feature allows for an existing node to be redrawn
-with different styles and/or text. In the following example, the first
-three nodes are redrawn with a filled color that is red.
+For a 'node' command, if no coordinates are given in the command line, and at
+least one ID has been provided for the node, all nodes will be searched in the
+internal database to see if this particular node has already been created. If
+the answer is yes then the location information is retrieved and the node is
+redrawn at that location with the information provided at the command line.
+This feature allows for example, to repaint an existing node with a highlighted 
+color and/or label.
 
     set id 0
     for theta:=[0:60:359]:
-      r := 2
-      x := cos(deg2rad(\theta)) * \r
-      y := sin(deg2rad(\theta)) * \r
+      var r = 2
+      var x = cos(deg2rad(\theta)) * \r
+      var y = sin(deg2rad(\theta)) * \r
       node._ (\x,\y)
     node.0.1.2 {fillcolor:red}
 
-For an edge-operation, if the shift-option is set, then the label
-would be shifted away from its intended position for the given
-distance. The shift-option expresses a unit length. The label would
-have been drawn in a position that is this distance away, in a new
-position that is this number of distance away in a direction that is
-90-degrees counter-clockwise turn from the direction going from the
-first node to the second. 
+For an 'edge' command, the 'shift' style option can be utilized to allow for
+a label to be shifted slightly away from its centered position so that
+the text label does not obscure the edge line. By default the text label 
+is drawn centered and the location is the middle of the edge.
+
+The 'shift' option expresses a quantity that is interpreted as expressing
+a length in unit distance. A negative value should have shifted the label
+to the left hand side of the edge, and a positive value would have shifted
+it to the right.
 
 When the edge is a loop, which is the case when the two vertices are
 the same, then the shift-option expresses an additional centrifugal
@@ -2206,24 +2202,21 @@ distance from the center of the node.
 
 
 
-# The box-operation
+# The 'box' command
 
-This command is to draw a box at the location expressed by the path
-points. The size of the box is controlled by the 'w' and 'h' members
-of the configuration parameters, each of which can be set by the
-'config' operation to be a default.
+This command is to draw a box at the location expressed by each path points.
+The size of the box is to be controlled by the 'w' and 'h' members of style
+options. If absent, the 'w' is assumed to be 3 and 'h' 2.
   
     box {w:3, h:2} (0,0) (1,2)  
     
-It is also possible to place a label inside a box. If there
-are more than one points appearing in the command line, then
-each point will get one part of the text. If there is only
-one point in the command line, then that point get all
-the text, much like how a "text" operation would have
-been done. In the following example the string "hello" will
-be assigned to the first box that appear in (0,0), and
-the string "world" will be assigned to the second
-box that appear in (1,2).
+It is also possible to place a label inside a box. If there are more than one
+points appearing in the command line, then each point will get one part of the
+text. If there is only one point in the command line, then that point get all
+the text, much like how a "text" operation would have been done. In the
+following example the string "hello" will be assigned to the first box that
+appear in (0,0), and the string "world" will be assigned to the second box that
+appear in (1,2).
 
     box {w:3, h:2} "hello\\world" (0,0) (1,2) 
 
@@ -2265,9 +2258,9 @@ been erased first.
 If the id of the box is underscore, it will be assigned an Id in the same
 mannor as that of the 'node' command.
 
-# The 'flow' operation
+# The 'flow' command
 
-The flow-operation is designed to connect boxes with arrows. 
+The 'flow' command is designed to connect boxes with arrows. 
 
     box.1 "Hello" (0,0)
     box.2 "World" (4,4)
@@ -2499,17 +2492,27 @@ attributes:
 
 For Diagram, the 'shade:linear', 'shade:radial', and 'shade:ball' allows for
 three different kind of gradient fills similar to linear, radial, and ball
-offerd by TikZ. The 'shadecolor' option is used to specify the color(s) that
-flows from one to another. In particular, if no color is specified, or
-'shadecolor' option is missing, the gradient will be assumed a flow from white
-to black. If there is only color present, then it is assume to flow from that
-color to black. If there are two colors present, then the color flows from the
-first to the second. If there are three colors present, the first and third is
-the to and from color, and the second is the middle color. Note that three
-color only is supported when the 'shade:linear' is the case. For
-'shade:radial', only atmost the first two colors will be picked. For
-'shade:ball', only the first color will be picked. If no color is specified,
-for 'shade:ball' the ball is assumed to be of color "gray".
+offerd by TikZ. 
+
+The 'shadecolor:' option holds a list of colors separated by spaces denoting
+how a gradient is to flow from the first color the last.  The appearance
+of the gradient depends on the choice of the 'shade' option. 
+
+For 'shade:linear' up to three colors can be listed, and the gradient is a flow
+of these three colors going through each one of the in order given.  If there
+are two colors, the flow is to be between these two colors.  If only one color
+is present, then flow is assumed to be between that color and black. If no
+color is found, the flow is assumed to be from white to black.
+
+For 'shade:radial', only the first two color of the 'shadecolor' option is
+recognized, and the flow is to happen between these two colors. If only one
+color is found, this becomes the first color and the second one is assumed to
+be black.  In the absence of 'shadecolor', the flow is assumed to be between
+white and black.
+
+For 'shade:ball', only the first color of 'shadecolor' option is recognized,
+which is color of the ball. If no color is found, the color of the ball is
+assumed to be "gray".
 
 There is also another issue. For SVG and TikZ when gradient fill is selected,
 the color will flow from inner to outer color uniformly in both horizontal
@@ -2522,7 +2525,7 @@ The outer color seems to be at a location away from the inner
 color that is the average of the half width and half height of the rectangle.
 
 
-# The multiws-operation
+# The 'multiws' command
 
 The multiws-operation allows for a multiplication worksheet
 to be shown on the canvas. In the following example the workflow
@@ -2546,10 +2549,9 @@ will be shown both at multiplier and multiplicant
 and as well as at the product.
 
     multiws {answer,answercolor:orange} "2.1 4" (0,0)
-    
     multiws {answer,answercolor:orange} "2.1 1.4" (0,0)
 
-# The longdivws-operation
+# The 'longdivws' command
 
 The longdivws-operation allows one to show the complete workflow  
 of a long division between two integers, with quotient and remainders.
@@ -2600,7 +2602,7 @@ execute them at that location.
     source src1
     ```
 
-# The lego-operation
+# The 'lego' command
 
 The lego-operation allows for drawing of placing Lego-like
 objects on top of each other in a three-dimensional space.
@@ -2610,25 +2612,25 @@ objects on top of each other in a three-dimensional space.
     config fillcolor white
     config linesize 1.5
     config linejoin round
-    lego.origin 0 0
-    lego.size 4 4 4
-    lego.add.z 0 1 2 3
-    lego.delete.xyz 0 0 2 
-    lego.delete.yz 0 3 
-    lego.delete.xyz 1 1 3 
-    lego.delete.xyz 2 1 3 
-    lego.delete.xyz 2 2 3 
-    lego.show
+    lego-origin 0 0
+    lego-size 4 4 4
+    lego-add.z 0 1 2 3
+    lego-delete.xyz 0 0 2 
+    lego-delete.yz 0 3 
+    lego-delete.xyz 1 1 3 
+    lego-delete.xyz 2 1 3 
+    lego-delete.xyz 2 2 3 
+    lego-show
     ```
 
-The lego.setup operation expects four arguments, the first
+The lego-setup operation expects four arguments, the first
 two of which are the x/y origin of the x/y/z-plane of the
 Lego coordinates.  The last two is the 'wx' and 'wy' length
 which is the extra space extended from beyond the edge the
 cube in the x/y directions.  The default values for 'wx' is
 0.36 and the default value for 'wy' is 0.30. 
 
-The lego.size operation would set the size of the stacking.
+The lego-size operation would set the size of the stacking.
 It expectes three integers, each representing the number of
 maximum Lego pieces in these directions: x, y and z.  The
 x-direction is the horizontal, the y-direction is the depth,
@@ -2638,42 +2640,42 @@ The Lego pieces are first added and deleted, and then the
 lego-show operation is called to draw all the pieces in the
 Diagram.
 
-The lego.add.z operation would add a layer of pieces in the
-z coordinate specified.  The lego.delete.xyz operation would
+The lego-add.z operation would add a layer of pieces in the
+z coordinate specified.  The lego-delete.xyz operation would
 delete a specific piece with the given x/y/z coordinate.
 
-The lego.show and lego.show2 operations are the two
+The lego-show and lego-show2 operations are the two
 operations that will trigger all commands to be written to
-the output. The lego.show is to show the lego pieces in a
+the output. The lego-show is to show the lego pieces in a
 perspective view where x-axis is going to the left and down,
 y-axis is going to the right horizontally, and z-axis up
 straight. 
 
-The lego.show2 is to show the lego pieces where x-axis is
+The lego-show2 is to show the lego pieces where x-axis is
 going down and left, y-axis is going right and right, and
 z-axis is going straight up. 
 
-Each lego.show and lego.show2 carries its own set of
+Each lego-show and lego-show2 carries its own set of
 arguments. Following shows the default set of arguments
 for each operation.
 
-    lego.show 0.36 0.30 1.00 0.90
-    lego.show2 0.80 0.45 0.70
+    lego-show 0.36 0.30 1.00 0.90
+    lego-show2 0.80 0.45 0.70
 
-For lego.show operation, the first two arguments are the
+For lego-show operation, the first two arguments are the
 skewed values in x-direction and y-direction. The third and
 fouth arguments are the width and height of front facing 
 rectangle.
 
-For lego.show2 operation, the first and second arguments are 
+For lego-show2 operation, the first and second arguments are 
 the half width and half height of the diamond of the top
 face. The third argument is the height.
 
-Either lego.show and lego.show2 operation would have
+Either lego-show and lego-show2 operation would have
 generated Lego pieces that are shaded differently for two 
-of its faces for each piece. For lego.show the front facing
+of its faces for each piece. For lego-show the front facing
 face is shaded lighter, and the face facing to the right 
-is shaded darker. For lego.show2 operation the face facing
+is shaded darker. For lego-show2 operation the face facing
 upward is shaded lighter and the face facing right is shaded
 darker. 
 
@@ -2763,12 +2765,12 @@ When these commands are executed, everything after the style and
 label text will be treated as a list of floats. Following 
 are valid ways of supplying floats.
 
-    cartesian.stick 10 11 20 21 
-    cartesian.xtick [1:10]
-    cartesian.xtick [1:3:10] 
-    cartesian.xtick [1:10] [20:3:30]
-    cartesian.xtick 1 pow(1,2) 2 pow(2,2) 3 pow(3,2)
-    cartesian.xtick \x \y \x1 \y1 \x2 \y2            
+    cartesian-stick 10 11 20 21 
+    cartesian-xtick [1:10]
+    cartesian-xtick [1:3:10] 
+    cartesian-xtick [1:10] [20:3:30]
+    cartesian-xtick 1 pow(1,2) 2 pow(2,2) 3 pow(3,2)
+    cartesian-xtick \x \y \x1 \y1 \x2 \y2            
 
 Note that it is by default, a list of floats are separated by one or more
 spaces.  However, when a range expression is encountered such as "[1:10]", then
