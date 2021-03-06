@@ -1496,19 +1496,19 @@ expressing starting angle and stopping angle of the arc. They are both
 in degrees.
 
 
-# The barchart-operation
+# The 'barchart' command
 
 The 'barchart' is another compound command that is to be used
 with many subcommands. Following is a list of some
 of its subcommands.
 
-- barchart.setup xorigin yorigin xwidth ywidth xrange yrange
-- barchart.bbox
-- barchart.vbar
-- barchart.ytick
-- barchart.xtext
+- barchart-setup xorigin yorigin xwidth ywidth xrange yrange
+- barchart-bbox
+- barchart-vbar
+- barchart-ytick
+- barchart-xtext
 
-The 'barchart.setup' command would setup the barchart and config it.
+The 'barchart-setup' command would setup the barchart and config it.
 The 'xorigin' and 'yorigin' are to state the grid coordinates where
 lower left hand corner is to appear in the Diagram. Note that this
 number is subject to current settings of 'refx', 'refy', 'refsx' and
@@ -1529,27 +1529,27 @@ Following example shows how to set up a barchart that is to be placed
 at (0,0), with a width of 10, and height of 15, and with the 'xrange'
 set to 5 and 'yrange' set to 0.4.
 
-    barchart.setup 0 0 10 15 5 0.4
+    barchart-setup 0 0 10 15 5 0.4
 
-The 'barchart.bbox' is to draw a bounding box covering the entire
-barchart. It does not require any arguments.
+The 'barchart-bbox' is to draw a bounding box covering the entire
+barchart- It does not require any arguments.
 
-The 'barchart.vbar' is to draw vertical bars. The arguments are the
+The 'barchart-vbar' is to draw vertical bars. The arguments are the
 y-values of the bar themselves. Thus, to draw the previous five bars,
 it will be
 
-    barchart.vbar 0.1 0.3 0.2 0.4 0.2
+    barchart-vbar 0.1 0.3 0.2 0.4 0.2
 
-The 'barchart.ytick' operation is to draw "ticks" along its y-axis on
+The 'barchart-ytick' operation is to draw "ticks" along its y-axis on
 the left hand side, and also show the label for each axis to its left
 hand side. Its arguments are the location of ticks, and they should be
 stated in the same input range as those of the 'vbar'. For example, if
 ticks were to be placed at the location of '0.1', '0.2' and '0.3',
 then following command should be issued.
 
-    barchart.ytick 0.1 0.2 0.3
+    barchart-ytick 0.1 0.2 0.3
 
-The 'barchart.xtext' is to add information at the bottom of each bar
+The 'barchart-xtext' is to add information at the bottom of each bar
 as to express what these bars are intended for. The text must be
 provided by a set of quotation marks that must proceed all options and
 scalars. The scalars express the location of vertical bars on x-axis.
@@ -1558,7 +1558,7 @@ between 0-1, and second bar 1-2, and so on, thus, the center location
 for the first vertical bar is 0.5, and center location for the second
 bar is 1.5, etc.
 
-    barchart.xtext "P(0)\\P(1)\\P(2)" 0.5 1.5 2.5
+    barchart-xtext "P(0)\\P(1)\\P(2)" 0.5 1.5 2.5
 
 The text will always be centered at location, and placed directly
 below the bar.
@@ -1582,46 +1582,38 @@ However, for other operations such as 'drawanglearc', then
 the 'arrowhead' should be set for the style, which is an integer
 that is follows:
 
-    1   arrow
-    2   reverse arrow
-    3   double arrow
+    arrowhead:1   arrow
+    arrowhead:2   reverse arrow
+    arrowhead:3   double arrow
 
 # Remarks and problems
 
-- The arrow head in HTML is done using MARKER-element. And for SVG 1.1
-  the limitation is that its coloring and filling is not changed to
-  the line element it attaches to. It is a browser problem and
-  currently there is no fix.
+- The arrow head in HTML is done using MARKER-element. And for SVG 1.1 the
+  limitation is that its coloring and filling is not changed to the line
+  element it attaches to. It is a browser problem and currently there is no
+  fix.
 
-- For SVG we *had* to make a choice to either show a plaintext, using
-  TEXT-element or math text using SVG-element, there is currently a
-  lot of grief as prevously we were freely mixing normal and math text
-  as this was not a problem for MetaPost, as it supports TeX text
-  between btex and etex constructs. However, mixing plain text and
-  math text is an issue because math text is translated into SVG and
-  plain text into the TEXT-element, and there is no way to correctly
-  position the SVG text if it is to appear in the middle of a
-  TEXT-element.
+- For SVG a choice will have to be made. For a plain text a text-element is
+  used and or for math text a nested SVG-element is to be constructed in the
+  same way an inline-math is.  Unfortunately, there is no easily to allow for a
+  text to be drawn so that part of it is plain text and part of it is math,
+  because doing so would have required that we know exactly how many pixels the
+  plain text would have taken, even though do know how many piexls a piece of
+  math text is.  There is no way to correctly position the part of math text
+  relative to the surrounding plain text if the length of the plain text isn't
+  known.
 
-- The generation of fontsize is always done to convert a user unit to
-  pt.
+- The text-aligmnents are default to 'urt' and not 'centered', thus we need to
+  ensure previous auto choices of text alignment which asssumes the center are
+  now being shown as 'urt' and thus we need to make some adjustments where
+  necessary.
 
-- It has been observed that for MP generation if the symbol were part
-  of a math such as between ``\(`` and ``\)``, then it appears smaller
-  than those that are not.
-
-- The text-aligmnents are default to 'urt' and not 'centered', thus we
-  need to ensure previous auto choices of text alignment which
-  asssumes the center are now being shown as 'urt' and thus we need to
-  make some adjustments where necessary.
-
-- Note that for MetaPost translation, it is very sensitive to
-  backslashes. Even for texts that exists in comments, if a backslash
-  is encountered that is not followed by another backslash, it is
-  processed as a backslash sequence for which, it will consume a brace
-  which will likely cause an unmatched brace compile error in LATEX
-  engine. For this reason, all texts translated as a comment line are
-  also "escaped".
+- Note that for a LATEX document with MetaPost commands, a single backslash by
+  itself that is not followed by another backslash can cause the compilation of
+  pdflatex to fail, even when that single backslash exists only in a comment.
+  The same kind of behavior has also been observed in a TEX file as well.  Thus,
+  care must be taken to ensure that this does not happen, basically to ensure
+  that a single backslash is always escaped by another.
 
 
 # The for-loop
@@ -1870,7 +1862,7 @@ something akins to 'Infinity' or 'Nan', depending on the nature of the
 expression.
 
 
-# The built-in scalar functions
+# Built-in Scalar Functions
 
 Following are built-in functions provided by Diagram
 
@@ -1972,7 +1964,7 @@ Following are built-in functions provided by Diagram
   Sign (+1 or -1 or 0) of a number
 
 
-# The built-in Scalar Constants
+# Built-in Scalar Constants
 
 Following are built-in scalar constants, which can be used as if they
 are arguments. For instance, 
@@ -2025,36 +2017,48 @@ commas, such as the case of [1,2,3,4,5,10], then it expresses the individual
 scalars each of which separated by commas.
 
 
-# List of floats
+# Scalar List Construction
 
-For 'cartesian' and 'barchart' commands, where each one expectes a list of
-scalars, the scalars are by default shown one after another each of which
-separated by one or more spaces.
- 
-    cartesian-line {linecolor:red} 0 0 1 1 2 3
+A list of scalars is expected for certain commands instead of path points.
+Following are additional commands showing various ways for a list of scalars to
+be constructed.
 
-The exact interpretation of the floats depends on the nature of the command itself.
-For instance, the 'cartesian-line' command would have interpreted each two consecutive
-floats as expressing a path point in the form of (x,y) where 'x' is the first float
-and the 'y' the second. It would each time take two floats from the list and interpreting
-them as 'x', 'y', and then construct a line between two consecutive points.
+    cartesian-stick 10 11 20 21 
+    cartesian-xtick [1:10]
+    cartesian-xtick [1:3:10] 
+    cartesian-xtick [1:10] [20:3:30]
+    cartesian-xtick 1 (pow(1,2)) 2 (pow(2,2)) 3 (pow(3,2))
+    cartesian-xtick \x \y \x1 \y1 \x2 \y2            
 
-For 'catesian-dot' command, each two floats will be interpreted as a point
-and shown with a dot.
+Note that it is by default, a list of scalars are separated by one or more
+spaces.  However, when a range expression is encountered such as "[1:10]", then
+a list of scalars expressed by this range is also added to the list.
+
+It is also possible to specify an Scalar Expression such as "pow(3,2)" for
+expressing a scalar.  In the previous example the scalar 9 is to be added to
+the list.  Note that for an expression nested functions are allowed, such as
+"sqrt(pow(1,2))". However, in all cases the expression cannot have any empty
+spaces within. In addition a Scalar Expression must be itself appear inside a
+pair of parentheses in order to be recognized as such.
+
+Note any environment variables such as "\x" would have already been
+replace by their scalar counterpart by the time the command is evaluated.
+
+The exact interpretation of the scalars would have depended on the nature of
+the command itself.  For instance, the 'cartesian-line' command would have
+interpreted each two consecutive scalars as expressing a path point in the form
+of (x,y) where 'x' is the first float and the 'y' the second. Thus for each
+two-scalar pair the first scalar becomes 'x' and the second one 'y'.  Same
+would have been for the 'catesian-dot' command.
 
     cartesian-dot {linecolor:red} 5 7 10 11
 
-For 'cartesian-xtick' command, each float is interpreted as expressing a value 
-in the x-axis.
+However, for 'cartesian-xtick' command, each scalar is interpreted as
+expressing a value in the x-axis.
 
     cartesian-xtick 1 2 3 4 5
 
-The Range-expression can appear anywhere in the list which will insert the
-scalars this expression conveys into the list at that particular position.
-For example, the result of the following command is a list of scalars that
-are 0, 1, 2, 3, 4, 5.
 
-    cartesian-xtick 0 [1:5]
 
 
 # The 'node' and 'edge' commands
@@ -2179,7 +2183,7 @@ This feature allows for example, to repaint an existing node with a highlighted
 color and/or label.
 
     set id 0
-    for theta:=[0:60:359]:
+    for theta=[0:60:359]:
       var r = 2
       var x = cos(deg2rad(\theta)) * \r
       var y = sin(deg2rad(\theta)) * \r
@@ -2754,35 +2758,5 @@ By default, the text will be placed on top of the line. But it can be
 placed at the bottom of the line if the ".bot" subcommand is supplied.
 
     slopedtext.bot "Hello\\World" (0,0) [h:4] [v:4]
-
-# Floats Construction
-
-A lot of commands expectes path points. However, some commands would 
-instead expect floats. These commands include all subcommands of 
-"cartesian", "barchart", and "lego".
-
-When these commands are executed, everything after the style and 
-label text will be treated as a list of floats. Following 
-are valid ways of supplying floats.
-
-    cartesian-stick 10 11 20 21 
-    cartesian-xtick [1:10]
-    cartesian-xtick [1:3:10] 
-    cartesian-xtick [1:10] [20:3:30]
-    cartesian-xtick 1 pow(1,2) 2 pow(2,2) 3 pow(3,2)
-    cartesian-xtick \x \y \x1 \y1 \x2 \y2            
-
-Note that it is by default, a list of floats are separated by one or more
-spaces.  However, when a range expression is encountered such as "[1:10]", then
-a list of floats expressed by this range is also added to the list.
-
-It is also possible to specify an expression such as "pow(1,2)", "pow(2,2)",
-which will be evaluated, and the result of which treated as a float that will
-be added to the list as well. 
-
-If there are environment variables such as "\x", "\y", they will also be added
-to the list of floats.
-
-
 
 
