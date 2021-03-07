@@ -2151,22 +2151,25 @@ to a node, the name of the node should appear as an underscore.
     node._ (1,2)
     node._ (3,4)
 
-By default, the name automatically assigned to the first node is 'a', and the
-second one 'b', the third one 'c', etc. The name will cycle through a-z, and
-then go back to being 'a' again.
+By default, the name automatically assigned to the first node is '0', and the
+second one '1', the third one '2', etc. 
 
-There are four different ways user can influence how an ID will be constructed,
-the first of which is to instruct that the ID should cycle through a-z. The 
-second one is to instruct that the ID should cycle through A-Z. The third
-method is to instruct that the ID should cycle through 0 through infinity.
-The forth way is to instruct that a name be constructed with a fixed prefix
-and a number afterwards.
 
-To achieve this, the 'set' command should be used with a key of 'id' and value
-to a starting ID.  See the 'set id' command for various ways of setting a
-starting ID.  The following example the starting is set to 'node10',
-which is assigned to the first node. The second and thid node each is assigned
-an ID of 'node11' and 'node12'.
+However, there are four different ways user can influence how an ID
+will be constructed, the first of which is to instruct that the ID
+should cycle through a-z. The second one is to instruct that the ID
+should cycle through A-Z. The third method is to instruct that the ID
+should cycle through a positive integer through infinity. The forth
+way is to instruct that a name be constructed with a fixed prefix and
+a number afterwards.
+
+To achieve this, the 'set' command should be used with a key of 'id'
+and value to a starting ID. See the 'set id' command for various ways
+of setting a starting ID. In the following example the starting ID is
+set to be 'node10', which is itself assigned to the next node upon
+request. After the first assignment, the starting ID will be changed
+to 'node11' and 'node12', which will become the ID that gets assigned
+for the second and third auto ID assignment.
 
     set id node10
     node._ (5,6)
