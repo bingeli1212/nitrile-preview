@@ -2751,3 +2751,10 @@ placed at the bottom of the line if the ".bot" subcommand is supplied.
     slopedtext.bot "Hello\\World" (0,0) [h:4] [v:4]
 
 
+# The 'drawcontrolpoints' command
+
+This command would look for for presence of 'C' and 'Q' Bezier curves in the 
+path, and then draw the control points as well as the two end points of this
+curve on the chart. The control points will be drawn using round dots, and
+end points of the Bezier curves as square dots.
+
