@@ -86,7 +86,7 @@ Following is an example of a diagram block.
     path [a,b] = (28,4)~(31,4)
     path [,c] = (28,4)~(28,7)
     draw &b ~ &a ~ &c
-    drawanglearc.sq &b &a &c
+    drawlinesegarc.sq &b~&a~&c
 
     % draw     will fill
     path ff = (28,8)~(31,8)~(31,9)~(28,9)~cycle
@@ -509,34 +509,8 @@ to the first point of the first segment. The last two segments
 are not affected by the hints and will remain unhinted.
 
 
-# The 'drawanglearc' command
 
-The 'drawanglearc' is designed to draw a small arc describing the span
-of an angle. The path that is given to this command is expected to
-describe the angle, where the first/second/third path would have
-formed the first angle where the second point serves as the vertex of
-the angle, and each of the first and third point denotes a point on
-either side of the angle. The angle formed is expected to be spanning
-from the first point to the third point.
 
-There should be at least three points on the
-path, but if there are additional points, then each consecutive three
-points will be used to describe an angle for the arc to draw. Thus, if
-there had been four points in the path, then the first three points
-describes the first angle, and the last three points describes the
-second angle.
-
-The 'drawanglearc' can also place text next to the angle arc to show
-the name of an angle.
-
-    path points = (0,6) (2,4) (4,6) (6,4) (8,6)
-    draw &points
-    drawanglearc "1\\2\\3" &points
-
-If the angle is found to be around 90, then a square is drawn instead
-of an arc. However, a square can be forced if ".sq" option is given.
-
-    drawanglearc.sq (2,0) (0,0) (0,2)
 
 # The 'drawlinesegcong' operation
 
@@ -555,20 +529,34 @@ to see if it has been set. It can be set to 'double' to indicate a double bar,
 or 'triple' to indicate a triple bar. The gap between the bar lines are determined
 by the gap-option, which defaults to 0.1 unit length.
 
-# The 'drawpolyanglearc' operation
+# The 'drawlinesegarc' command
 
-The 'drawpolyanglearc' operation is to draw all the angles of a polyline
-encountered in the given path. The vertices of the polygon must be arranged
-so that it rotates in a counter-clockwise rotation.
+The 'drawlinesegarc' command is to draw an arc or half square showing
+the angle formed by two consecutive line segments of a polyline
+encountered in the given path. The angles formed is assumed to start
+from the first point to the third point, where the second point acts
+as the vertex of the angle, and this will continue for the rest of the
+path, picking any two consecutive line segments, and skipping those
+that are not. If the path is closed, the line segment pairs between the last
+line segment and the first is also checked. 
 
-This operation will also be able to drawn angle label. If the path is
+If the 'inversed' style option is set to 1, then the angle formed is
+assumed to run from the third point to the first.
+
+This command will also be able to drawn angle label. If the path is
 closed then the angle between the last point and the first point is
 also to be drawn. If any of the angle is found to be exact 90 degrees,
 a square is to be drawn instead of the arc.
 
     path tri = &triangle{(0,0),(4,0),(2,2)}
     stroke &tri
-    drawpolyanglearc "1\\2\\3" &tri
+    drawlinesegarc "1\\2\\3" &tri
+
+If the angle is found to be around 90, then a square is drawn instead
+of an arc. However, a square can be forced if ".sq" option is given.
+
+    drawlinesegarc.sq (2,0)~(0,0)~(0,2)
+
 
 # Expressing relative points of a path
 
@@ -1578,7 +1566,7 @@ draw a arrow, reverse arrow, and double arrow for each path segments.
     revarrow  (0,0)~(3,4)  (2,2)[h:4]
     dblarrow  (0,0)~(3,4)  (2,2)[h:4]
 
-However, for other operations such as 'drawanglearc', then
+However, for other operations such as 'drawlinesegarc', then
 the 'arrowhead' should be set for the style, which is an integer
 that is follows:
 

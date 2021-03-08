@@ -612,4 +612,12 @@ Following are styles recognized by NITRILE:
   and 'span' is used currently by the 'dot.sector' command to determine
   the orientation of the sector.
 
++ inverse:1
+
+  When set to 1 this property value holds that for certain operation it should
+  be performed in the invsersed fasion. This is currently used by the
+  'drawlinesegarc' command such when this flag is set to 1, the angle is
+  recognized to be formed by a pair of line segments where the starting line
+  segment appears after the ending line segment.
+
 
