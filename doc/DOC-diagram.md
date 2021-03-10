@@ -2349,6 +2349,15 @@ Note that the playback is going to respect the current settings of "refxy". Thus
 it is possible to playback the same group commands each time under a different
 "refxy" settings, simulating "pasting" multiple objects in different locations.
 
+There are a couple of things about recording/playing back.
+
+1. The any environment variable presented in the command line might have
+   already been replaced when it is recorded, if they are present in the
+   environment when it is recorded
+
+2. It will still respect all current 'config' settings and 'refxy' settings.
+
+
 # Gradient Fill
 
 The Gradient Fill is provided by SVG, TikZ and MetaFun. 

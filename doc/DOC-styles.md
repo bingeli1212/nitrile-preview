@@ -619,12 +619,40 @@ Following are styles recognized by NITRILE:
   and 'span' is used currently by the 'dot.sector' command to determine
   the orientation of the sector.
 
-+ inverse:1
++ inversed:1
 
   When set to 1 this property value holds that for certain operation it should
   be performed in the invsersed fasion. This is currently used by the
   'drawlinesegarc' command such when this flag is set to 1, the angle is
   recognized to be formed by a pair of line segments where the starting line
   segment appears after the ending line segment.
+
++ shadowcolor:<color>
+
+  When set to a color this property describes the color used for filling a drop
+  shadow. When not set it defaults to 'black'.
+
++ shadowopacity:<number>
+
+  When set to a number this property describes the opacity used for filling a drop
+  shadow. When not set it defaults to '0.15'.
+
++ shadow:1
+
+  When set to 1 it instructs that a drop shadow should've been added. Currently
+  the only one that react this this option is the 'node' command, such that
+  when this is set a drop shadow is added for this node.  A drop shadow will be
+  drawn with 1mm shifted to the right and 1mm shifted lower. The color of the
+  drop shadow defaults to 'gray', but can be changed via setting the
+  'shadowcolor' option. The drop shadow will be drawn with the same opacity as
+  the 'fillcolor if the 'opacity' option has been set.
+
+
+
+
+
+
+
+
 
 
