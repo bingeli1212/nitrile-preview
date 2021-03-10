@@ -1889,6 +1889,13 @@ at the side of the 'node' command will do.
     \end{tikzpicture}
     \end{document}
 
+# Drop Shadow For TikZ
+
+The "circular drop shadow" key can be set to allow for a drop shadow to be
+shown. However, this should only work for a circle or ellipse.  Following is a
+way to add a drop shadow to a circle or an ellipse.
+
+    \draw[circular drop shadow] (32.5mm,25mm) circle [radius=5.00mm];
 
 
 
