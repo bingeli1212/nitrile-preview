@@ -1897,6 +1897,20 @@ way to add a drop shadow to a circle or an ellipse.
 
     \draw[circular drop shadow] (32.5mm,25mm) circle [radius=5.00mm];
 
+# PGF Shading
+
+    \documentclass[tikz]{standalone}    
+    \pgfdeclarefunctionalshading{Hermite-Gaussian modes}{\pgfpoint{-25bp}{-25bp}}{\pgfpoint{25bp}{25bp}}{}{
+        10 atan sin 1000 mul cos 1 add
+        exch
+        10 atan sin 1000 mul cos 1 add
+        mul 4 div
+        dup dup
+    }
+    \begin{document}
+        \tikz\path[shading=Hermite-Gaussian modes](-10,-10)rectangle(10,10);
+    \end{document}
+
 
 
 
