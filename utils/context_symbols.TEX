@@ -1,0 +1,252 @@
+% !TEX program = ConTeXt (LuaTeX)
+\enabletrackers[fonts.missing]
+
+
+
+\setuppagenumbering[location={header,right},style=]
+\setupindenting[no,medium]
+\setscript[hanzi] % hyphenation
+\setuphead[part][number=yes]
+\setuphead[chapter][style=\bfd,number=yes]
+\setuphead[section][style=\bfa,number=yes]
+\setuphead[subsection][style=\bf,number=yes]
+\setuphead[subsubsection][style=\bf,number=yes]
+\setuphead[subsubsubsection][style=\bf,number=yes]
+\setupinteraction[state=start,color=,contrastcolor=]
+\enableregime[utf] % enable unicode fonts
+\definefontfamily[de][serif][dejavusans]
+\definefontfamily[za][serif][zapfdingbats]
+\definefontfamily[cn][serif][arplsungtilgb]
+\definefontfamily[tw][serif][arplmingti2lbig5]
+\definefontfamily[jp][serif][ipaexmincho]
+\definefontfamily[kr][serif][baekmukbatang]
+\definefontfamily[de][sans][dejavusans]
+\definefontfamily[za][sans][zapfdingbats]
+\definefontfamily[cn][sans][arplsungtilgb]
+\definefontfamily[tw][sans][arplmingti2lbig5]
+\definefontfamily[jp][sans][ipaexmincho]
+\definefontfamily[kr][sans][baekmukbatang]
+\definemathcommand [arccot] [nolop] {\mfunction{arccot}}
+\definemathcommand [arsinh] [nolop] {\mfunction{arsinh}}
+\definemathcommand [arcosh] [nolop] {\mfunction{arcosh}}
+\definemathcommand [artanh] [nolop] {\mfunction{artanh}}
+\definemathcommand [arcoth] [nolop] {\mfunction{arcoth}}
+\definemathcommand [sech]   [nolop] {\mfunction{sech}}
+\definemathcommand [csch]   [nolop] {\mfunction{csch}}
+\definemathcommand [arcsec] [nolop] {\mfunction{arcsec}}
+\definemathcommand [arccsc] [nolop] {\mfunction{arccsc}}
+\definemathcommand [arsech] [nolop] {\mfunction{arsech}}
+\definemathcommand [arcsch] [nolop] {\mfunction{arcsch}}
+\usemodule[ruby]
+\usemodule[char-def]
+\usesymbols[mvs]
+\setupcaptions[minwidth=\textwidth, align=middle, location=top]
+\setupinteraction[state=start]
+\placebookmarks[part,chapter,section]
+\definecolor[cyan][r=0,g=1,b=1] % a RGB color
+\definecolor[magenta][r=1,g=0,b=1] % a RGB color
+\definecolor[darkgray][r=.35,g=.35,b=.35] % a RGB color
+\definecolor[gray][r=.5,g=.5,b=.5] % a RGB color
+\definecolor[lightgray][r=.75,g=.75,b=.75] % a RGB color
+\definecolor[brown][r=.72,g=.52,b=.04] % a RGB color
+\definecolor[lime][r=.67,g=1,b=.18] % a RGB color
+\definecolor[olive][r=.5,g=.5,b=0] % a RGB color
+\definecolor[orange][r=1,g=.5,b=0] % a RGB color
+\definecolor[pink][r=1,g=.75,b=.79] % a RGB color
+\definecolor[teal][r=0,g=.5,b=.5] % a RGB color
+\definecolor[purple][r=.8,g=.13,b=.13] % a RGB color
+\definecolor[violet][r=.5,g=0,b=.5] % a RGB color
+\definedescription[latexdesc][
+  headstyle=normal, style=normal, align=flushleft, 
+  alternative=hanging, width=fit, before=, after=]
+\definedescription[latexdescbroad][
+  headstyle=normal, style=normal, align=flushleft, 
+  alternative=hanging, width=fit]
+\definefontsize[sm]
+\definefontsize[xsm]
+\definefontsize[xxsm]
+\definefontsize[xxxsm]
+\definefontsize[big]
+\definefontsize[xbig]
+\definefontsize[xxbig]
+\definefontsize[huge]
+\definefontsize[xhuge]
+\definebodyfontenvironment
+  [default]
+  [sm=.9,xsm=.8,xxsm=.7,xxxsm=.5,
+   big=1.2,xbig=1.4,xxbig=1.7,huge=2.0,xhuge=2.3]
+\setupcombinations[distance=0.02\textwidth]
+\definefloat[listing][listings]
+\starttext
+
+
+
+%{sig:HDGS} {hdgn:1} {fname:/Users/james/github/nitrile-preview/tests/a.md} {name::} {row:8:10}
+\startsection[title={Quadrilateral and Parallelogram},reference={undefined},bookmark={Quadrilateral and Parallelogram}]
+
+%{sig:PARA} {hdgn:1} {fname:/Users/james/github/nitrile-preview/tests/a.md} {name::} {row:10:15}
+\blank\noindent
+\startitemize[packed]
+\sym {\symbol[martinvogel 2][PointingHand]} PointingHand
+\sym {\symbol[martinvogel 2][CircPipe]} CircPipe
+\sym {\symbol[martinvogel 2][CircSteel]} CircSteel
+\sym {\symbol[martinvogel 2][AngleSign]} AngleSign            
+\sym {\symbol[martinvogel 2][Ankh]} Ankh                
+\sym {\symbol[martinvogel 2][ArrowOver]} ArrowOver            
+\sym {\symbol[martinvogel 2][AtForty]} AtForty             
+\sym {\symbol[martinvogel 2][AtNinetyFive]} AtNinetyFive            
+\sym {\symbol[martinvogel 2][AtSixty]} AtSixty             
+\sym {\symbol[martinvogel 2][BSEFree]} BSEFree             
+\sym {\symbol[martinvogel 2][BarOver]} BarOver             
+\sym {\symbol[martinvogel 2][Bat]} Bat                 
+\sym {\symbol[martinvogel 2][Beam]} Beam                
+\sym {\symbol[martinvogel 2][Bearing]} Bearing             
+\sym {\symbol[martinvogel 2][Bicycle]} Bicycle             
+\sym {\symbol[martinvogel 2][Biohazard]} Biohazard            
+\sym {\symbol[martinvogel 2][Bleech]} Bleech              
+\sym {\symbol[martinvogel 2][Bouquet]} Bouquet             
+\sym {\symbol[martinvogel 2][CeltCross]} CeltCross            
+\sym {\symbol[martinvogel 2][CheckedBox]} CheckedBox            
+\sym {\symbol[martinvogel 2][CircPipe]} CircPipe            
+\sym {\symbol[martinvogel 2][CircSteel]} CircSteel            
+\sym {\symbol[martinvogel 2][CircledA]} CircledA            
+\sym {\symbol[martinvogel 2][CleaningA]} CleaningA            
+\sym {\symbol[martinvogel 2][CleaningF]} CleaningF            
+\sym {\symbol[martinvogel 2][CleaningFF]} CleaningFF            
+\sym {\symbol[martinvogel 2][CleaningP]} CleaningP            
+\sym {\symbol[martinvogel 2][CleaningPP]} CleaningPP            
+\sym {\symbol[martinvogel 2][ClockLogo]} ClockLogo            
+\sym {\symbol[martinvogel 2][Coffeecup]} Coffeecup            
+\sym {\symbol[martinvogel 2][ComputerMouse]} ComputerMouse            
+\sym {\symbol[martinvogel 2][Conclusion]} Conclusion            
+\sym {\symbol[martinvogel 2][Congruent]} Congruent            
+\sym {\symbol[martinvogel 2][Corresponds]} Corresponds            
+\sym {\symbol[martinvogel 2][Cross]} Cross               
+\sym {\symbol[martinvogel 2][CrossedBox]} CrossedBox            
+\sym {\symbol[martinvogel 2][CutLeft]} CutLeft             
+\sym {\symbol[martinvogel 2][CutLine]} CutLine             
+\sym {\symbol[martinvogel 2][CutRight]} CutRight            
+\sym {\symbol[martinvogel 2][CuttingLine]} CuttingLine            
+\sym {\symbol[martinvogel 2][Deleatur]} Deleatur            
+\sym {\symbol[martinvogel 2][Divides]} Divides             
+\sym {\symbol[martinvogel 2][DividesNot]} DividesNot            
+\sym {\symbol[martinvogel 2][EMail]} EMail               
+\sym {\symbol[martinvogel 2][Earth]} Earth               
+\sym {\symbol[martinvogel 2][EmailCT]} EmailCT             
+\sym {\symbol[martinvogel 2][Equivalence]} Equivalence            
+\sym {\symbol[martinvogel 2][Estatically]} Estatically            
+\sym {\symbol[martinvogel 2][EstimatedSign]} EstimatedSign            
+\sym {\symbol[martinvogel 2][Explosionsafe]} Explosionsafe            
+\sym {\symbol[martinvogel 2][EyesDollar]} EyesDollar            
+\sym {\symbol[martinvogel 2][FAX]} FAX                 
+\sym {\symbol[martinvogel 2][FEMALE]} FEMALE              
+\sym {\symbol[martinvogel 2][Fax]} Fax                 
+\sym {\symbol[martinvogel 2][Female]} Female              
+\sym {\symbol[martinvogel 2][FemaleFemale]} FemaleFemale            
+\sym {\symbol[martinvogel 2][FemaleMale]} FemaleMale            
+\sym {\symbol[martinvogel 2][FixedBearing]} FixedBearing            
+\sym {\symbol[martinvogel 2][FlatSteel]} FlatSteel            
+\sym {\symbol[martinvogel 2][Florin]} Florin              
+\sym {\symbol[martinvogel 2][Football]} Football            
+\sym {\symbol[martinvogel 2][Forward]} Forward             
+\sym {\symbol[martinvogel 2][ForwardToEnd]} ForwardToEnd            
+\sym {\symbol[martinvogel 2][ForwardToIndex]} ForwardToIndex            
+\sym {\symbol[martinvogel 2][Frowny]} Frowny              
+\sym {\symbol[martinvogel 2][Gentsroom]} Gentsroom            
+\sym {\symbol[martinvogel 2][HERMAPHRODITE]} HERMAPHRODITE            
+\sym {\symbol[martinvogel 2][HandWash]} HandWash            
+\sym {\symbol[martinvogel 2][Heart]} Heart               
+\sym {\symbol[martinvogel 2][Hermaphrodite]} Hermaphrodite            
+\sym {\symbol[martinvogel 2][HexaSteel]} HexaSteel            
+\sym {\symbol[martinvogel 2][HollowBox]} HollowBox            
+\sym {\symbol[martinvogel 2][IRONING]} IRONING             
+\sym {\symbol[martinvogel 2][Industry]} Industry            
+\sym {\symbol[martinvogel 2][Info]} Info                
+\sym {\symbol[martinvogel 2][Ironing]} Ironing             
+\sym {\symbol[martinvogel 2][Keyboard]} Keyboard            
+\sym {\symbol[martinvogel 2][LSteel]} LSteel              
+\sym {\symbol[martinvogel 2][Ladiesroom]} Ladiesroom            
+\sym {\symbol[martinvogel 2][LargerOrEqual]} LargerOrEqual            
+\sym {\symbol[martinvogel 2][Laserbeam]} Laserbeam            
+\sym {\symbol[martinvogel 2][LeftScissors]} LeftScissors            
+\sym {\symbol[martinvogel 2][LeftTorque]} LeftTorque            
+\sym {\symbol[martinvogel 2][LessOrEqual]} LessOrEqual            
+\sym {\symbol[martinvogel 2][Letter]} Letter              
+\sym {\symbol[martinvogel 2][Lightning]} Lightning            
+\sym {\symbol[martinvogel 2][Lineload]} Lineload            
+\sym {\symbol[martinvogel 2][LooseBearing]} LooseBearing            
+\sym {\symbol[martinvogel 2][MALE]} MALE                
+\sym {\symbol[martinvogel 2][Male]} Male                
+\sym {\symbol[martinvogel 2][MaleMale]} MaleMale            
+\sym {\symbol[martinvogel 2][ManFace]} ManFace             
+\sym {\symbol[martinvogel 2][MineSign]} MineSign            
+\sym {\symbol[martinvogel 2][Mobilefone]} Mobilefone            
+\sym {\symbol[martinvogel 2][MoveDown]} MoveDown            
+\sym {\symbol[martinvogel 2][MoveUp]} MoveUp              
+\sym {\symbol[martinvogel 2][MultiplicationDot]} MultiplicationDot            
+\sym {\symbol[martinvogel 2][Mundus]} Mundus              
+\sym {\symbol[martinvogel 2][Neutral]} Neutral             
+\sym {\symbol[martinvogel 2][NoBleech]} NoBleech            
+\sym {\symbol[martinvogel 2][NoBreakSpace]} NoBreakSpace            
+\sym {\symbol[martinvogel 2][NoChemicalCleaning]} NoChemicalCleaning            
+\sym {\symbol[martinvogel 2][NoIroning]} NoIroning            
+\sym {\symbol[martinvogel 2][NoTumbler]} NoTumbler            
+\sym {\symbol[martinvogel 2][NoWash]} NoWash              
+\sym {\symbol[martinvogel 2][NotCongruent]} NotCongruent            
+\sym {\symbol[martinvogel 2][OktoSteel]} OktoSteel            
+\sym {\symbol[martinvogel 2][PackingWaste]} PackingWaste            
+\sym {\symbol[martinvogel 2][ParallelPort]} ParallelPort            
+\sym {\symbol[martinvogel 2][PeaceDove]} PeaceDove            
+\sym {\symbol[martinvogel 2][Pfund]} Pfund               
+\sym {\symbol[martinvogel 2][Pickup]} Pickup              
+\sym {\symbol[martinvogel 2][PointingHand]} PointingHand            
+\sym {\symbol[martinvogel 2][Printer]} Printer             
+\sym {\symbol[martinvogel 2][Radioactivity]} Radioactivity            
+\sym {\symbol[martinvogel 2][RectPipe]} RectPipe            
+\sym {\symbol[martinvogel 2][RectSteel]} RectSteel            
+\sym {\symbol[martinvogel 2][Recycling]} Recycling            
+\sym {\symbol[martinvogel 2][Rewind]} Rewind              
+\sym {\symbol[martinvogel 2][RewindToIndex]} RewindToIndex            
+\sym {\symbol[martinvogel 2][RewindToStart]} RewindToStart            
+\sym {\symbol[martinvogel 2][RightScissors]} RightScissors            
+\sym {\symbol[martinvogel 2][RightTorque]} RightTorque            
+\sym {\symbol[martinvogel 2][RoundedLSteel]} RoundedLSteel            
+\sym {\symbol[martinvogel 2][RoundedTSteel]} RoundedTSteel            
+\sym {\symbol[martinvogel 2][RoundedTTSteel]} RoundedTTSteel            
+\sym {\symbol[martinvogel 2][SerialInterface]} SerialInterface            
+\sym {\symbol[martinvogel 2][SerialPort]} SerialPort            
+\sym {\symbol[martinvogel 2][Shilling]} Shilling            
+\sym {\symbol[martinvogel 2][ShortFifty]} ShortFifty            
+\sym {\symbol[martinvogel 2][ShortForty]} ShortForty            
+\sym {\symbol[martinvogel 2][ShortNinetyfive]} ShortNinetyfive            
+\sym {\symbol[martinvogel 2][ShortSixty]} ShortSixty            
+\sym {\symbol[martinvogel 2][ShortThirty]} ShortThirty            
+\sym {\symbol[martinvogel 2][Smiley]} Smiley              
+\sym {\symbol[martinvogel 2][SoftHyphen]} SoftHyphen            
+\sym {\symbol[martinvogel 2][SpecialForty]} SpecialForty            
+\sym {\symbol[martinvogel 2][SquarePipe]} SquarePipe            
+\sym {\symbol[martinvogel 2][SquareSteel]} SquareSteel            
+\sym {\symbol[martinvogel 2][Stopsign]} Stopsign            
+\sym {\symbol[martinvogel 2][StrikingThrough]} StrikingThrough            
+\sym {\symbol[martinvogel 2][TSteel]} TSteel              
+\sym {\symbol[martinvogel 2][TTSteel]} TTSteel             
+\sym {\symbol[martinvogel 2][Telephone]} Telephone           
+\sym {\symbol[martinvogel 2][ToBottom]} ToBottom            
+\sym {\symbol[martinvogel 2][ToTop]} ToTop               
+\sym {\symbol[martinvogel 2][Tumbler]} Tumbler             
+\sym {\symbol[martinvogel 2][Valve]} Valve               
+\sym {\symbol[martinvogel 2][WashCotton]} WashCotton            
+\sym {\symbol[martinvogel 2][WashSynthetics]} WashSynthetics            
+\sym {\symbol[martinvogel 2][WashWool]} WashWool            
+\sym {\symbol[martinvogel 2][Wheelchair]} Wheelchair            
+\sym {\symbol[martinvogel 2][WomanFace]} WomanFace            
+\sym {\symbol[martinvogel 2][WritingHand]} WritingHand            
+\sym {\symbol[martinvogel 2][YinYang]} YinYang             
+\sym {\symbol[martinvogel 2][arrowOver]} arrowOver            
+\sym {\symbol[martinvogel 2][barOver]} barOver             
+\sym {\symbol[martinvogel 2][fax]} fax                 
+\sym {\symbol[martinvogel 2][ironing]} ironing                           
+\stopitemize
+
+\stoptext
+    
