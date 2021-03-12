@@ -635,17 +635,18 @@ Following are styles recognized by NITRILE:
 + shadowopacity:<number>
 
   When set to a number this property describes the opacity used for filling a drop
-  shadow. When not set it defaults to '0.15'.
+  shadow. When not set it defaults to '0.50'.
 
 + shadow:1
 
-  When set to 1 it instructs that a drop shadow should've been added. Currently
-  the only one that react this this option is the 'node' command, such that
-  when this is set a drop shadow is added for this node.  A drop shadow will be
-  drawn with 1mm shifted to the right and 1mm shifted lower. The color of the
-  drop shadow defaults to 'gray', but can be changed via setting the
-  'shadowcolor' option. The drop shadow will be drawn with the same opacity as
-  the 'fillcolor if the 'opacity' option has been set.
+  When set to 1 it instructs that a drop shadow effect is to be added.
+  Currently the only one that react this this option is the 'node' and 'box'
+  commands.  
+  
+  A drop shadow will be drawn shifted to the right and down for 1mm in both
+  directions.  The color of the drop shadow and opacity can be controlled by 
+  setting the 'shadowcolor' and 'shadowopacity' property to a different value.
+
 
 
 
