@@ -531,4 +531,62 @@ In ConTeXt MkIV the command requires an additional [], thus you need to write
   linecap:=butt;linejoin:=mitered; draw ((12.00,2.00)--(14.00,2.00)--(14.00,4.00)--(12.00,4.00)--cycle) scaled(u) ;
   \stopMPcode{}
 
+# Symbols
+
+You can override the existing symbols used at different levels in itemized
+lists by redefining the existing symbol numbers, with code like the following:
+
+    \usesymbols[mvs]
+    \definesymbol[1][{\symbol[martinvogel 2][PointingHand]}]
+    \definesymbol[2][{\symbol[martinvogel 2][CheckedBox]}]
+    \startitemize[packed]
+    \item item \item item
+     \startitemize[packed]
+     \item item \item item
+     \stopitemize
+    \item item
+    \stopitemize
+
+Following is the file that contains the PointingHand symbol:
+
+    symb-imp-mvs.mkiv:    \definesymbol [PointingHand]       [\MartinVogelSymbol{PointingHand}]
+
+It is located at:
+
+    /usr/local/texlive/2020/texmf-dist/tex/context/base/mkiv
+
+The symbol can be used directly inside a CONTEX-TEX document such as:
+
+    The symbol is \symbol[martinvogel 2][PointingHand]   
+
+
+# Special Unicode Characters
+
+There are some predefined names for some Uniocode characters. They are defined
+in file 'char-def.lua', listed under the key 'contextname', such as
+'\oneeighth', '\threeeighths', '\textcurrency', etc. They should appear inside
+a CONTEX-TEX file directly with the backslash and should be translated into the
+corresponding Unicode character. However, in reality their appearance also
+depends on the availability of that glyph being provided by the font. 
+
+Following is a snippet from the file 'char-def.lua' that defines the
+'contextname' of 'threeeighths'.
+
+    [0x215C]={
+     adobename="threeeighths",
+     category="no",
+     cjkwd="a",
+     contextname="threeeighths",
+     description="VULGAR FRACTION THREE EIGHTHS",
+     direction="on",
+     linebreak="al",
+     specials={ "fraction", 0x33, 0x2044, 0x38 },
+     unicodeslot=0x215C,
+    },
+
+
+
+
+
+
 
