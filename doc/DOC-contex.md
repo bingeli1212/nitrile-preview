@@ -695,8 +695,223 @@ placed at the most optimal location of the page.
     ...
     See \in{Table}[tab:ships] on \at{page}[tab:ships] 
 
+Following are copied from CONTEX-WIKI:
+
+- You get vertical lines (rules), if you use \VL instead of \NC.
+- Better use \SR, \FR, \MR, \LR instead of \NR.
+- You can also use \AR instead of \SR, \FR, \MR and \LR (AR for automatic row).
+- You can leave out the \NC before the "row" command, but not if you use \AR in
+  a last or single row (see example).
+- You can influence the table with \setuptables.
+
+Following are additional format keys:
+
++ `a{tokens}` 
+
+  Adds tokens after the column content
+
++ `b{tokens}`
+
+  Adds tokens before the column content
+
++ `\{`
+
+  Enclose the column in braces {grouping}
+
++ `*{n}{keys}`
+
+  Equivalent to repeating the formatting
+  keys 'keys' n times.
+
++ `\LeftGlue`
+
+  Specifies the left glue to be used before
+  the column.
+
++ `\RightGlue`
+
+  Specifies the right glue to be used after
+  the column.
+
++ `l`
+
+  left-aligned column
+
++ `r`
+
+  right-aligned column
+
++ `c`
+
+  center-aligned column
+
++ `p(width)`
+
+  Set each cell as a paragraph
+
++ `s(width)`
+
+  Specify inter-column width    
+
++ `w`
+
+  Set minimum column width      
+
++ `k`
+
+  Insert a kern both left and right of the column
+
++ `i`
+
+  Add a kern to the left of the column             
+
++ `j`
+
+  Add a kern to the right of the column             
+
++ `n`
+
+  Numeric item not in math mode                     
+
++ `N`
+
+  Numeric item in math mode                         
+
++ `m`
+
+  Each cell is in (inline) math mode. Equivalent to `b$ a$`
+
++ `M`
+
+  Each cell is in (display) math mode. Equivalent to `\{b$\displaystyle}a$}`
+
++ `\m`
+
+  Equivalent to `l b{{}}m`
+
++ `\M`
+
+  Equivalent to `l b{{}}M`
+
++ `f\command`
+
+  Set font according to the command
+
++ `B`
+
+  Bold font. Equivalent to `f\bf`
+
++ `I`
+
+  Italic font. Equivalent to `f\it`
+
++ `S`
+
+  Slanted font. Equivalent to `f\sl`
+
++ `R`
+
+  Roman font. Equivalent to `f\rm`
+
++ `T`
+
+  Teletype font. Equivalent to `f\tt`
+
++ `C`
+
+  Color. Use it in combination with `\{` (e.g. `\{C{red} )
+
++ `s`
+
+  Set the tabskip to the right of this column and of all
+  following columns up to the next `s` or `o` key.
+
++ `o`
+
+  Set the tabskip to the right of this column only.
+
+Following are some examples of using format keys to specify columns
+
++ `|l|`
+
+  a left-aligned column, as wide as necessary.
+
++ `|lw(2cm)|`
+
+  a left-aligned column of at least 2 cm width
+
++ `|p(2cm)|`
+
+  a center-aligned paragraph of 2cm in width           
+
++ `|lp(0.5\textwidth)|`
+
+  a left-aligned paragraph of the specified width
+
++ `|cp(0.5\textwidth)|`
+
+  a center-aligned paragraph of the specified width
+
++ `|xp(0.5\textwidth)|`
+
+  a justified-aligned paragraph of the specified width
+
+[ Column Spans. ] It's possible to create columnspans. The `\use` command
+can be use for this purpose. The `\ReFormat` command can be used after
+to change how the merged columns cell is to be reformated.
+
+    \starttable[s(0pt)|ls(10pt)|rs(0pt)|]
+    \HL
+    \NC \use{2}\ReFormat[cB]{Spanning head} \SR
+    \HL
+    \NC \Use{2}[cB]{Spanning head} \SR % slightly shorted
+    \HL
+    \NC left text	\VL right column text         \NC \AR
+    \NC new row     \VL new row                   \NC \AR
+    \NC left text	\VL \ReFormat[l]{reformatted} \NC \AR
+    \HL
+    \NC \use{2}Spanning entry \SR 
+    \HL
+    \stoptable
+
+[ Table as Floating Object. ] Following is an example of using 
+`\placetable` command to generate a "float" table.
+
+    \placetable[here][tab:sample]{sample table}{
+    \starttable ...
+    \stoptable
+    }
+
+If you do not want a caption for your table, to get rid of it altogether you
+have to add "none" to settings and then leave the braces empty; if you only
+leave the braces empty, your table will still be numbered ("Table 1" etc.).
+
+    \placetable[here,none][tab:sample]{}{
+    \starttable ...
+    \stoptable
+    }
+
+[ Simulating a blockquote. ]
+To simulate a blockquote, where a specific paragraph has non-zero
+left/right margins, we can use the "narrower" command.
+
+    \startnarrower[3*left,2*right]
+    \dontleavehmode
+    \hbox{\starttable[|l|p(4cm)|]
+    \HL
+    \VL First One In an Hour \VL Second One In an Hour \VL\MR
+    \HL
+    \VL Hello \VL World \VL\MR
+    \HL
+    \stoptable}
+    \stopnarrower
+
+Ensure that '\dontleavehmode' is specified and each "table" is placed inside a
+"\hbox" command, otherwise the table does not respect the margin and will
+always be flushed against the left-hand side of the page.
 
 
 
 
-    
+
+
