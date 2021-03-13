@@ -33,4 +33,7 @@ test.md
 a.md
 *.syncctx
 *.vrb
+*.tmp
+*.tui
+*.mp
 temp

@@ -584,9 +584,119 @@ Following is a snippet from the file 'char-def.lua' that defines the
      unicodeslot=0x215C,
     },
 
+# Tabulars
+
+Following is an example of creating something similar to a 'tabular'
+for a LATEX document.
+
+    \starttable[|l|l|]
+    \HL
+    \VL \tex{NC}  \VL next column     \VL\MR
+    \HL
+    \VL \tex{HL}  \VL horizontal line \VL\MR
+    \HL
+    \VL \tex{VL}  \VL vertical line   \VL\MR
+    \HL
+    \stoptable
+
+In contrast to LATEX, the column specifier 'l', 'r', and 'c' must be separated
+by a vertical-rule, which is mandatory. The vertical-rule itself does not 
+mean that a vertical line is going to appear between that column. Rather
+a vertical-rule is added by placing \VL between each two data cells or before
+the first data cell or after the last data cell.
+
+In addition, the 'p(4cm)' can be used to express that a column is a 
+paragraph column of '4cm' width--this is to replace the 'l', 'r', 
+or 'c'.
+
+    \starttable[|l|p(4cm)|]
+    \HL
+    \VL \tex{NC}  \VL next column     \VL\MR
+    \HL
+    \VL \tex{HL}  \VL horizontal line \VL\MR
+    \HL
+    \VL \tex{VL}  \VL vertical line   \VL\MR
+    \HL
+    \stoptable
+
+Note that if we were to generate two side-by-side tabular then we need to do two things:
+the first is to start the paragraph with '\dontleavehmode' command, and the second
+is to place each 'table' inside a '\hbox' command, such as the following:
+
+    \dontleavehmode
+    \hbox{\starttable[|l|p(4cm)|]
+    \HL
+    \VL \tex{NC}  \VL next column     \VL\MR
+    \HL
+    \VL \tex{HL}  \VL horizontal line \VL\MR
+    \HL
+    \VL \tex{VL}  \VL vertical line   \VL\MR
+    \HL
+    \stoptable} \hbox{\starttable[|l|p(4cm)|]
+    \HL
+    \VL \tex{NC}  \VL next column     \VL\MR
+    \HL
+    \VL \tex{HL}  \VL horizontal line \VL\MR
+    \HL
+    \VL \tex{VL}  \VL vertical line   \VL\MR
+    \HL
+    \stoptable} 
+
+Following is what's been called "format keys":
+
+    Key	      Meaning
+    |	        column separator
+    c	        center
+    l	        flush left
+    r	        flush right
+    s<n>	    set intercolumn space at value n = 0; 1; 2
+    w<>	      set minimum column width at specified value
+
+Following are what's called "command" within the table:
+
+- \AR	next row	make row with automatic vertical space adjustment
+- \NR	next row	make row with no vertical space adjustment
+- \FR	first row	make row, adjust upper spacing
+- \LR	last row	make row, adjust lower spacing
+- \MR	mid row	make row, adjust upper and lower spacing
+- \SR	separate row	make row, adjust upper and lower spacing
+- \VL	vertical line	draw a vertical line, go to next column
+- \NC	next column	go to next column
+- \HL	horizontal line	draw a horizontal
+- \DL	division line?	draw a division line over the next column
+- \DL[n]	division line?	draw a division line over n columns
+- \DC	division column?	draw a space over the next column
+- \DR	division row?	make row, adjust upper and lower spacing
+- \LOW{text}	—	lower text
+- ? \DL, \DC and \DR are used in combination.
+- \TWO, \THREE etc.	—	use the space of the next two, three columns
+
+If a table is to be turned into a "float", then the \placetable
+command can be used.
+
+The first command \placetable has the same function as \placefigure.
+It takes care of spacing before and after the table and numbering.
+Furthermore the floating mechanism is initialized so the table will be
+placed at the most optimal location of the page.
+
+
+    \placetable[here][tab:ships]{Ships that moored at Hasselt.}
+    \starttable[|c|c|]
+    \HL
+    \NC \bf Year \NC \bf Number of ships \NC\SR
+    \HL
+    \NC 1645 \NC 450 \NC\FR
+    \NC 1671 \NC 480 \NC\MR
+    \NC 1676 \NC 500 \NC\MR
+    \NC 1695 \NC 930 \NC\LR
+    \HL
+    \stoptable
+    ...
+    ...
+    See \in{Table}[tab:ships] on \at{page}[tab:ships] 
 
 
 
 
 
-
+    
