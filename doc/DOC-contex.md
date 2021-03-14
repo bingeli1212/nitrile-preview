@@ -910,7 +910,24 @@ Ensure that '\dontleavehmode' is specified and each "table" is placed inside a
 "\hbox" command, otherwise the table does not respect the margin and will
 always be flushed against the left-hand side of the page.
 
+# Spaces
 
+    \starttext %\hsize\zeropoint
+    \startlines
+    a\enskip             b
+    a\quad               b
+    a\qquad              b
+    a\twoperemspace      b
+    a\threeperemspace    b
+    a\fourperemspace     b
+    a\sixperemspace      b
+    a\figurespace        b
+    a\punctuationspace   b
+    a\breakablethinspace b
+    a\hairspace          b
+    a\zerowidthspace     b
+    \stoplines
+    \stoptext
 
 
 
