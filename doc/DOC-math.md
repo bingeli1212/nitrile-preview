@@ -53,3 +53,41 @@ with some vertical margin.
         &= - 100 + 115 \newline
         &= 15
     ```
+
+# The matrix
+
+The matrix can be set:
+
+    \begin{pmatrix} a \nc b \nr c \nc d \end{pmatrix}
+
+Follow are supported matrix types:
+
+    matrix
+    pmatrix
+    vmatrix
+    Vmatrix
+    bmatrix
+    Bmatrix
+
+The 'cases' is also supported:
+
+    \begin{cases} a \nc a > 1 \nr
+                  -1 \nc a <= 0 \end{cases}
+
+
+# Multipline and Aligned
+
+For typesetting a math expression that is split across
+multiple lines, place '\cr' between the content of each line.
+
+    x &= a + b \cr
+      &= c + d \cr
+      &= 10
+
+If '&' is specified, it is likely that all lines are aligned to the right.
+In this example the three lines are flushed to the right.
+
+    x = a + b \cr
+      = c + d \cr
+      = 10
+
