@@ -1911,6 +1911,17 @@ way to add a drop shadow to a circle or an ellipse.
         \tikz\path[shading=Hermite-Gaussian modes](-10,-10)rectangle(10,10);
     \end{document}
 
+# The \displaylines command
+
+The `\displaylines` command is used to display any number of centered formulas. A
+double-backslash can be used in place of the \cr; the final \\ or \cr is
+optional.
+
+    \displaylines{
+    a = a\cr
+    \text{if } a=b \text{ then } b=a\cr
+    \text{if } a=b \text{ and } b=c \text{ then } a=c
+    }
 
 
 
