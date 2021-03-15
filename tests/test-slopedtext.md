@@ -2,25 +2,7 @@
 title: test-slopedtext.md
 ---
 
-# Hello2
-
-```diagram
-box.1 "Hello" (0,0)
-box.2 "World" (4,3)
-flow.1_n.2_w (0,5)
-box.1 {fillcolor:brown} "Bye"
-```
-
-# Slide 2
-
-```diagram
-box.1 "Hello" (0,0)
-box.2 "World" (4,3)
-box.3 "Again" (5,8)
-flow.1_n.2_w.3_s
-```
-
-# Slide 3
+# Slide top
 
 ```diagram
 label.bot "Hello" &north
@@ -28,10 +10,30 @@ draw (0,0) ~ (5,5)
 slopedtext "Hello" (0,0) ~ (5,5)
 ```
 
-# Slide 4
+# Slide bot
 
 ```diagram
 label.bot "Hello" &north
 draw (0,0) ~ (5,5)
 slopedtext.bot "Hello" (0,0) ~ (5,5)
 ```
+
+# Slide top red
+
+```diagram
+config fontcolor red
+label.bot "Hello" &north
+draw (0,0) ~ (5,5)
+slopedtext "Hello" (0,0) ~ (5,5)
+```
+
+# Slide bot green
+
+```diagram
+config fontcolor green
+label.bot "Hello" &north
+draw (0,0) ~ (5,5)
+slopedtext.bot "Hello" (0,0) ~ (5,5)
+```
+
+
