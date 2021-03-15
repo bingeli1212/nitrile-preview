@@ -2,20 +2,21 @@
 title: b.md
 ---
 
-# Hello2
+# Slide top
 
 ```diagram
-box.1 "Hello" (0,0)
-box.2 "World" (4,3)
-flow.1_n.2_w (0,5)
-box.1 {fillcolor:brown} "Bye"
+text.top "Hello\\World" (5,5)
 ```
 
-# Slide 2
+# Slide bot
 
 ```diagram
-box.1 "Hello" (0,0)
-box.2 "World" (4,3)
-box.3 "Again" (5,8)
-flow.1_n.2_w.3_s
+text.bot "Hello\\World" (5,5)
 ```
+
+# Slide ctr
+
+```diagram
+text.ctr "Hello\\World" (5,5)
+```
+
