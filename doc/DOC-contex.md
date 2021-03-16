@@ -980,6 +980,33 @@ In CONTEX, the superscript is typeset by a '\high' command.
 
     like\high{this}
 
-    
+# Multi-line text
+
+The 'textext' command in MetaPost can be used to generate a picture of
+the text, which can then be saved to a picture variable. After that
+we can "draw" the picture to a specific location using the "draw" 
+command followed by a "shifted" modified, in which case the picture
+will be centered at that location. The "bbheight" and "bbwidth"
+are two functions that can be called on a picture to query its
+height and width, which allows us to precisely figure where to
+shift. The MetaPost syntax even allows for a position to be 
+calculated such as to add a 2pt additional movement to the shift.
+
+In the following example a double-line text "Hello\\World" is being sent to
+location (5,5), where "Hello" is positioned so that it is centered
+horizontally, and vertically positioned just above that point. The word "World"
+is positioned above "Hello" with a 2pt separation between the bottom of the
+word "World" and the top of the word "Hello".
+
+    picture pic[];
+    pic[1] := textext("\switchtobodyfont[12pt]Hello");
+    pic[2] := textext("\switchtobodyfont[12pt]World");
+    draw pic[1] shifted (0,0.5*bbheight(pic[1])) shifted (5*u,5*u);
+    draw pic[2] shifted (0,1.5*bbheight(pic[2])+2pt) shifted (5*u,5*u);
+
+
+
+
+
 
 
