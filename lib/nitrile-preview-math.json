@@ -1005,7 +1005,7 @@
                   
     "sdot"                   : { "html": "&#x22C5;"       , "tex":  "\\cdot"                                      , "width": 3  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C5 DOT OPERATOR"          },
     "vellip"                 : { "html": "&#x22EE;"       , "tex":  "\\vdots"                                     , "width": 6.5,  "op": 1,  "usepackage":""         ,"comment":"U+22EE VERTICAL ELLIPSIS"           },
-    "hellip"                 : { "html": "&#x2026;"       , "tex":  "\\hdots"                                     , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+2026 HORIZONTAL ELLIPSIS"           },
+    "hellip"                 : { "html": "&#x2026;"       , "tex":  "\\hdots","cex":"\\dots"                      , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+2026 HORIZONTAL ELLIPSIS"           },
     "ctdot"                  : { "html": "&#x22EF;"       , "tex":  "\\dots","cex":"0x22EF"                       , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22EF MIDLINE HORIZONTAL ELLIPSIS"    },
     "utdot"                  : { "html": "&#x22F0;"       , "tex":  "?","TM":1                                    , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22F0 UP RIGHT DIAGONAL ELLIPSIS"           },
     "dtdot"                  : { "html": "&#x22F1;"       , "tex":  "\\ddots"                                     , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22F1 DOWN RIGHT DIAGONAL ELLIPSIS"           },
