@@ -1,4 +1,6 @@
-Test image
+---
+title: test-figure.md
+---
 
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -7,23 +9,15 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
 fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum."
 
-~~~figure{label:a,caption,subfigure}
-GIMP Logos.
-\\
-```img   
-image-gimp.jpg 
-```
-One 
-```img
-image-gimp.jpg 
-```
-Two 
-\\
-```img
-image-gimp.jpg 
-```
-Three
-~~~
+@ figure{label:a}
+  GIMP Logos.
+
+  ```combination
+  &img(image-gimp.jpg) One 
+  &img(image-gimp.jpg) Two
+  \\
+  &img(image-gimp.jpg) Three
+  ```
 
 The figure is &ref(a).
 
