@@ -1924,4 +1924,148 @@ optional.
     }
 
 
+# The \proof command
+
+The `\proof` command can be used to typeset a process of proving an equation
+that yields the result that was being said earlier.
+
+    \begin{proof} The proof is a follows:
+    \begin{align}
+    (x+y)^3&=(x+y)(x+y)^2\\
+           &=(x+y)(x^2+2xy+y^2)\\
+           &=x^3+3x^2y+3xy^3+x^3.\qedhere
+    \end{align}
+    \end{proof}
+
+# The "xtabular" environment
+
+The "xtabular" environment is enabled by including the "xtab" package.
+It is considered an extension to the "supertabular" package which has
+claimed to have improved the following shortcomings:
+
+1. Sometimes the top caption of a supertabular is printed on one page and the
+body is printed on the following page(s). That is, there is a lonely caption.
+
+2. Sometimes the last page of a supertabular consists of an empty table. That
+is, just the head and foot of the table are printed.
+
+3. If the number of lines in the first header for the table differs from the number
+of lines in subsequent headers, then the continuation pages of the table may
+be too short or, more troubling, too long.
+
+Following is an example:
+
+    \tablecaption{My Table}\label{mylabel}
+    \tablehead{\hline {\bfseries Name} & {\bfseries Desc} \\}
+    \tabletail{\hline \multicolumn{2}{r}{\itshape to be continued...} \\}
+    \begin{xtabular}{|l|l|}
+    \hline
+    Hello & World \\
+    \hline
+    Hello & World \\
+    \hline
+    Hello & World \\
+    \hline
+    Hello & World \\
+    \hline
+    Hello & World \\
+    \hline
+    \end{xtabular}
+
+The `\tabletail` command is only going to place a table tail on every table
+that is to be continued, and will not be inserted into the table that is the
+last part of the long table.  This command must contains contents that
+describes a complete row, including the last double-slash.
+However, if something is to be done for the last part of a long table, then
+the `\tablelasttail{...}` command can be used for this purpose, for example,
+to insert two horizontal rules.
+
+    \tablelasttail{\hline \hline}
+
+The `tablehead` command defines a set of commands to be inserted at the beginning
+of each segmented tabular on each page. 
+Similar to `tabletail`, it must also contains a content that describes
+a complete row.
+
+Note that if a horizontal rule is to be inserted at the top of a tablehead,
+then `\hline` command will need to appear at the description. For the contents
+of an actual tabular, if a `\hline` is to be inserted before the first row, and
+between each two consecutive rows, and also after the last row, it seems that
+if a table is to be broken in the middle to be split between two pages, the
+accompanying `\hline` is always to accompany the part of the tabular that is
+before the first row of the second tabular. This might be due to the fact where
+the break always happens at the place where the double-backslash is, and therefore
+pushes the `\hline` towards the second tabular after the split.
+
+With that being said, it might be prudent to not having to include a `\hline` at the end
+of a `\tablehead` definition, replying on the horizontal rule to appear as part of the 
+tabular contents. However, for a `tabletail` definition things might get a little tricky
+as additional details will have to be noticed, thus it might be prodent to not having
+to include a horizontal rule at the end of a tail.
+
+One thing to worth pointing out is the fact that before the start and after the
+ending of a "xtabular" environment, there is no extra spaces allocated between
+the last row and the start of the next paragraph, leaving absolute no vertical
+space. To manually add a space, the following `\tablelasttail` command can be
+defined to increase the space, or a "begin/end" of "flushleft" environment can
+be used to surround the entire "xtabular".
+
+    \tablelasttail{\multicolumn{2}{r}{} \smallskip}
+
+For captions the "xtabular" envionment allows three different commands to be
+used to describe the caption:
+
+    \topcaption{...}
+    \bottomcaption{...}
+    \tablecaption{...}
+
+The first two would have always placed the caption either at the top or at the
+bottom.  The third one would place the caption at the "default' position, being
+usually at the top but could potentially at other places.
+
+Note that all the caption commands mentioned above DO NOT place captions in the
+follow-on tabular components.  If additional captions are desired before each
+break-down of a tabular, then the caption text will have to be manually
+constructed.  This typically involves using the command `\tablefirsthead` and
+`\tablehead`.  Following is an example snippet from the documentation of the
+"xtab" package where the author was showing off his way of providing additional
+captions for the follow-on components of a long tabular.
+
+    \tablefirsthead{\hline \multicolumn{1}{|c|}{\textbf{Command}} &
+        \multicolumn{1}{c|}{\textbf{Effect}} \\ \hline }
+    \tablehead{\multicolumn{2}{c}%
+        {{\captionsize\bfseries \tablename\ \thetable{} --
+        continued from previous page}} \\
+        \hline \multicolumn{1}{|c|}{\textbf{Command}} &
+        \multicolumn{1}{c|}{\textbf{Effect}} \\ \hline }
+
+
+# The command to merge two or more columns in a tabular
+
+    \multicolumn{2}{c}{Item} \\
+
+# Increase row spacing of a "tabular"
+
+Re-define the \arraystretch command to set the space between rows:
+
+    \renewcommand{\arraystretch}{1.5}
+
+Default value is 1.0.
+
+An alternative way to adjust the rule spacing is to add \noalign{\smallskip}
+before or after the \hline and \cline{i-j} commands:
+
+    \begin{tabular}{ | l | l | r | }
+      \hline\noalign{\smallskip}
+      \multicolumn{2}{c}{Item} \\
+      \cline{1-2}\noalign{\smallskip}
+      Animal & Description & Price (\$) \\
+      \noalign{\smallskip}\hline\noalign{\smallskip}
+      Gnat  & per gram & 13.65 \\
+            & each     &  0.01 \\
+      Gnu   & stuffed  & 92.50 \\
+      Emu   & stuffed  & 33.33 \\
+      Armadillo & frozen & 8.99 \\
+      \noalign{\smallskip}\hline
+    \end{tabular}
 
