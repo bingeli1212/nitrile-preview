@@ -13,7 +13,7 @@ e = \lim_{n\rarr\infty} {\left(1 + \frac{1}{n}\right)}^n
 # Display math split
 
 ```math
-e &= \lim_{n\rarr\infty} {\left(1 + \frac{1}{n}\right)}^n \\
+e &= \lim_{n\rarr\infty} {\left(1 + \frac{1}{n}\right)}^n \cr
   &= a + b
 ```
 
@@ -41,15 +41,15 @@ e &= \lim_{n\rarr\infty} {\left(1 + \frac{1}{n}\right)}^n \\
 # Display math and aligned (no equation numbering)
 
 ```math
-x &= \sqrt{2} + \sqrt{4} + \sqrt{5} 
+x = \sqrt{2} + \sqrt{4} + \sqrt{5} 
 ```
 
 ```math
-x + 7 &= \sqrt{2} + \sqrt{4} + \sqrt{5}
+x + 7 = \sqrt{2} + \sqrt{4} + \sqrt{5}
 ```
 
 ```math
-y + 7 + 8 &= \sqrt{2} 
+y + 7 + 8 = \sqrt{2} 
 ```
 
 
@@ -71,7 +71,7 @@ y + 7 + 8 = \sqrt{2}
 
 # Greek letters 
 
-@   Table    
+@   table    
 
     ```tabulate{border:1}
     Name     | Symbol        |  Name      | Symbol        | Name         | Symbol            
@@ -86,7 +86,7 @@ y + 7 + 8 = \sqrt{2}
     \Theta   | \(\Theta  \)  |   \Pi      | \(\Pi     \)  |     \Omega   | \(\Omega  \)   
     ```
 
-@   Table 
+@   table 
 
     ```tabulate{border:1}
     Name     | Symbol         |  Name      | Symbol        | Name         | Symbol            
@@ -101,7 +101,8 @@ y + 7 + 8 = \sqrt{2}
     \theta   | \(\theta  \)   |   \pi      | \(\pi     \)  |     \omega   | \(\omega  \)  
     ```
 
-@   Table   
+@   table{label:a}
+    This is the caption.
 
     ```tabulate{border:1}
     Letter      | Symbol
@@ -255,26 +256,26 @@ y + 7 + 8 = \sqrt{2}
 - ``\begin{Vmatrix} a \end{Vmatrix}`` &br{}
   \(\begin{Vmatrix} a \end{Vmatrix}\)
 
-- ``\begin{matrix} a & b \\ c & d \end{matrix}`` &br{}
-  \(\begin{matrix} a & b \\ c & d \end{matrix}\)
+- ``\begin{matrix} a \nc b \nr c \nc d \end{matrix}`` &br{}
+  \(\begin{matrix} a \nc b \nr c \nc d \end{matrix}\)
 
-- ``\begin{pmatrix} a & b \\ c & d \end{pmatrix}`` &br{}
-  \(\begin{pmatrix} a & b \\ c & d \end{pmatrix}\)
+- ``\begin{pmatrix} a \nc b \nr c \nc d \end{pmatrix}`` &br{}
+  \(\begin{pmatrix} a \nc b \nr c \nc d \end{pmatrix}\)
 
-- ``\begin{bmatrix} a & b \\ c & d \end{bmatrix}`` &br{}
-  \(\begin{bmatrix} a & b \\ c & d \end{bmatrix}\)
+- ``\begin{bmatrix} a \nc b \nr c \nc d \end{bmatrix}`` &br{}
+  \(\begin{bmatrix} a \nc b \nr c \nc d \end{bmatrix}\)
 
-- ``\begin{Bmatrix} a & b \\ c & d \end{Bmatrix}`` &br{}
-  \(\begin{Bmatrix} a & b \\ c & d \end{Bmatrix}\)
+- ``\begin{Bmatrix} a \nc b \nr c \nc d \end{Bmatrix}`` &br{}
+  \(\begin{Bmatrix} a \nc b \nr c \nc d \end{Bmatrix}\)
 
-- ``\begin{vmatrix} a & b \\ c & d \end{vmatrix}`` &br{}
-  \(\begin{vmatrix} a & b \\ c & d \end{vmatrix}\)
+- ``\begin{vmatrix} a \nc b \nr c \nc d \end{vmatrix}`` &br{}
+  \(\begin{vmatrix} a \nc b \nr c \nc d \end{vmatrix}\)
 
-- ``\begin{Vmatrix} a & b \\ c & d \end{Vmatrix}`` &br{}
-  \(\begin{Vmatrix} a & b \\ c & d \end{Vmatrix}\)
+- ``\begin{Vmatrix} a \nc b \nr c \nc d \end{Vmatrix}`` &br{}
+  \(\begin{Vmatrix} a \nc b \nr c \nc d \end{Vmatrix}\)
 
-- ``\begin{pmatrix} a^2 & b^3 \\ \cos c & \sin d \end{pmatrix}`` &br{}
-  \(\begin{pmatrix} a^2 & b^3 \\ \cos c & \sin d \end{pmatrix}\)
+- ``\begin{pmatrix} a^2 \nc b^3 \nr \cos c \nc \sin d \end{pmatrix}`` &br{}
+  \(\begin{pmatrix} a^2 \nc b^3 \nr \cos c \nc \sin d \end{pmatrix}\)
 
 
 
@@ -359,3 +360,12 @@ y + 7 + 8 = \sqrt{2}
 
 - ``\(\left\lobrk \frac 1 a \right\robrk\)`` &br{}
   \(\left\lobrk \frac 1 a \right\robrk\)
+
+
+# eqcolon
+
+- \(A \coloneq B\)
+
+- \(A \eqcolon B\)
+
+

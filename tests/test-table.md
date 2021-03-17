@@ -1,63 +1,18 @@
+Test image
 
+@   table{label:mytable}
+    Hello World.
 
-~~~table{border:1;label:my1}
-Name  | Desc
-----------------
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-~~~
+    ```tabular{vrule:|||,hrule:---}
+    | Name     | Symbol        |  Name      | Symbol        | Name         | Symbol            
+    -----------|---------------|------------|---------------|--------------|-------------
+    | \Alpha   | \(\Alpha  \)  |   \Iota    | \(\Iota   \)  |     \Rho     | \(\Rho    \)     
+    | \Beta    | \(\Beta   \)  |   \Kappa   | \(\Kappa  \)  |     \Sigma   | \(\Sigma  \)   
+    | \Gamma   | \(\Gamma  \)  |   \Lambda  | \(\Lambda \)  |     \Tau     | \(\Tau    \)   
+    | \Delta   | \(\Delta  \)  |   \Mu      | \(\Mu     \)  |     \Upsilon | \(\Upsilon\)   
+    | \Epsilon | \(\Epsilon\)  |   \Nu      | \(\Nu     \)  |     \Phi     | \(\Phi    \)   
+    | \Zeta    | \(\Zeta   \)  |   \Xi      | \(\Xi     \)  |     \Chi     | \(\Chi    \)   
+    | \Eta     | \(\Eta    \)  |   \Omicron | \(\Omicron\)  |     \Psi     | \(\Psi    \)   
+    | \Theta   | \(\Theta  \)  |   \Pi      | \(\Pi     \)  |     \Omega   | \(\Omega  \)   
+    ```
 
-~~~table{border:2;label:my2}
-Name  | Desc
------------------
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-~~~
-
-~~~table{border:3;label:my3}
-Name  | Desc
-----------------
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-~~~
-
-~~~table{border:4;label:my4}
-Name  | Desc
-----------------
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-~~~
-
-~~~table{label:my5}
-Name  | Desc
------------------
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-Hello | World
-~~~
-
-See &ref{my1}, &ref{my2}, &ref{my3}, &ref{my4}, &ref{my5}
