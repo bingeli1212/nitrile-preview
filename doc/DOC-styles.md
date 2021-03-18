@@ -514,6 +514,29 @@ Following are styles recognized by NITRILE:
   being utilized by the list-bundle so that it will check to see if 
   one of the items in the list is being checked. 
 
+  This option needs to be set to the leaing word that starts an entry. For instance,
+  the leading words for the following four entries are "A", "B", "C", and "D"; thus,
+  to mark that the second entry be "checked" the "check" option must be set to "B". 
+
+  ```list{check:B}
+  ( ) A. Apple
+  ( ) B. Pear
+  ( ) C. Strawberry
+  ( ) D. Banana
+  ```
+
+  Note that is also possible to mark that multiple checkboxes are to e checked
+  by listing additional letters after the "check" option; they must be separated
+  by one or more space.
+
+  ```list{check:B D}
+  [ ] A. Apple
+  [ ] B. Pear
+  [ ] C. Strawberry
+  [ ] D. Banana
+  ```
+
+
 + fontfamily:<string>
 
   This option holds the font family that is for the bundle. 
