@@ -13,10 +13,10 @@ culpa qui officia deserunt mollit anim id est laborum."
   GIMP Logos.
 
   ```combination
-  &img(image-gimp.jpg) One 
-  &img(image-gimp.jpg) Two
+  &img({width:4cm}image-gimp.jpg) One 
+  &img({width:4cm}image-gimp.jpg) Two
   \\
-  &img(image-gimp.jpg) Three
+  &img({width:4cm}image-gimp.jpg) Three
   ```
 
 The figure is &ref(a).
