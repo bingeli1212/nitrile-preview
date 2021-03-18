@@ -321,6 +321,7 @@ The vertical spaces are controlled by the following parameters:
 The two column layout for CONTEXT can be done. It involves using
 the command \startcolumns[balance=no] and \stopcolumns. Without
 additional setup, these two commands assumes a two column layout.
+The "n=3" option can be added to force a three-column layout.
 The "balance=no" option instructs that the left column can be
 as long as needed if there isn't enough text and it is alright
 that these two columns are not balanced---balanced means that
@@ -344,6 +345,10 @@ each child source file is to start and stop a new
 two-column-layout division themselvs.  The starting and stopping
 of a new two-column-layout will likely land in a new page for 
 the start of a new two-column-layout.
+
+The "\column" command can be used to force the rest of the content
+to go to the next column.
+
 
 # The \defineparagraphs command
 
