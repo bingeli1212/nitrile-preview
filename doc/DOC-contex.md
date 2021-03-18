@@ -1009,9 +1009,119 @@ word "World" and the top of the word "Hello".
     draw pic[1] shifted (0,0.5*bbheight(pic[1])) shifted (5*u,5*u);
     draw pic[2] shifted (0,1.5*bbheight(pic[2])+2pt) shifted (5*u,5*u);
 
+# Simulating "hanging list"
 
+The "hangling list" is defined as a list of items where each item is a paragraph of
+texts with one or more lines, where the first line is flushed with the left margin, 
+and subsequent lines of this same paragraph is each indented by a non-zero indentation.
+This style of indentating can be thought of as "reverse" indentation where the indentation
+does not apply to the first line, but rather to the lines starting from the second.
 
+This effect can be simulated on CONTEX by utilizing the "description" feature of the
+CONTEX. We will start by defining a new description named "HL"
 
+    \definedescription[HL][
+      headstyle=normal, style=normal, align=flushleft,
+      alternative=hanging]
+
+This will need to go before `\starttext`. The following is where we want to have the actual
+"hanging list" items. 
+
+    \startHL{}A sequence is a progression of numbers.
+
+      Example 1: 1, 2, 3, 4, 5, ...
+
+      Example 2: 1, 2, 3, 4, 5, ...
+
+    \stopHL
+
+This "hanging list" can be nested as well.
+
+    \startHL{}A sequence is a progression of numbers.
+
+      Example 1: 1, 2, 3, 4, 5, ...
+
+      Example 2: 1, 2, 4, 8, 16, ...
+
+    \stopHL
+
+    \startHL{}A series is a summation of numbers.
+
+      Example 1: 1 + 2 + 3 + 4 + 5 + ...
+
+      Example 2: 1 + 2 + 4 + 8 + 16 + ...
+
+    \stopHL
+
+# Similating "description list"
+
+The "description list" on CONTEX will have to be simulated in the same way.
+
+    \definedescription[DL][
+      headstyle=bold, style=normal, align=flushleft,
+      alternative=hanging]
+
+This will need to go before `\starttext`. Note that the difference between this one
+and the one for a "hanging list" is the fact that the "headstyle=bold", which has
+been set to point to "bold" instead of "normal"; this is to ensure that that the entire
+data term is to be shown as bold. Another important thing to note is that the
+"alternative=" must be set to "hanging"; this is the only way to ensure that the content
+of the description list is indented by a non-empty white space.
+
+The following is where we want to have the actual
+"descrption list" items. 
+
+    \startDL{Sequence} \crlf
+
+      Example 1: 1, 2, 3, 4, 5, ...
+
+      Example 2: 1, 2, 3, 4, 5, ...
+
+    \stopDL
+
+    \startDL{Series} \crlf
+
+      Example 1: 1 + 2 + 3 + 4 + 5 + ...
+
+      Example 2: 1 + 2 + 4 + 8 + 16 + ...
+
+    \stopDL
+
+Note that a '\crlf' command will need to be added after the `\startDL` command to ensure that
+it does not pick up the first paragraph after it to "merge" with the item. Without it 
+the text "Example 1:..." would have been shown to appear after the text "Sequence". 
+
+This "description list" can be nested as well.
+
+    \startDL{Sequence} \crlf
+
+      \startDL{Arithmetic} \crlf
+      
+        An arithmetic sequence is formed by 
+        applying a common difference between two consecutive terms.
+      
+        Example: 1, 2, 3, 4, 5, ...
+
+      \stopDL
+
+      \startDL{Geometry} \crlf
+      
+        A geometry sequence is formed by
+        applying a common factor between two consecutive terms.
+      
+        Example: 1, 2, 4, 8, 16, ...
+
+      \stopDL
+
+    \stopDL
+
+    \startDL{Series} \crlf
+
+      Example 1: 1 + 2 + 3 + 4 + 5 + ...
+
+      Example 2: 1 + 2 + 4 + 8 + 16 + ...
+
+    \stopDL
 
 
 

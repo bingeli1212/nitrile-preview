@@ -507,6 +507,13 @@ Following are styles recognized by NITRILE:
   label {replace:a/1 b/3 c/4} "a/b/c" (0,0) (1,1) (2,2)
   ```
 
++ check:a b c
+
+  Set this option to allow for certain entries to be shown as
+  a checked checkbox or selected ratio button. This option is currently
+  being utilized by the list-bundle so that it will check to see if 
+  one of the items in the list is being checked. 
+
 + fontfamily:<string>
 
   This option holds the font family that is for the bundle. 
