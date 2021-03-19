@@ -1,43 +1,58 @@
-Test list
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-aliquip ex ea commodo consequat. Duis aute irure dolor in
-reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-culpa qui officia deserunt mollit anim id est laborum."
 
-  - Apple
+# HL Example
 
-    Apple is great! Apple is great! Apple is great! Apple is great!
-    Apple is great! Apple is great! Apple is great! Apple is great!
+<> Apple
 
-    ~~~
-    Apple is great! 
-    Apple is great! 
-    Apple is great! 
-    Apple is great!
-    ~~~
+   Example 1
 
-    - Apple is great! 
-    - Apple is great! 
-    - Apple is great! 
-    - Apple is great!
+   <> Red Apple
 
-  - Pear 
+   <> Green Apple
 
-    Pear is great! Pear is great! Pear is great! Pear is great!
-    Pear is great! Pear is great! Pear is great! Pear is great!
+<> Pear
 
-    ~~~
-    Pear is great! 
-    Pear is great! 
-    Pear is great! 
-    Pear is great!
-    ~~~
 
-    - Pear is great! 
-    - Pear is great! 
-    - Pear is great! 
-    - Pear is great!
+# DL Example
+
++ Apple
+
+   Example 1
+
+   + Red Apple
+
+   + Green Apple
+
++ Pear
+
+
+# OL Example
+
+* Apple
+
+   Example 1
+
+   * Red Apple
+
+   * Green Apple
+
+* Pear
+
+
+# UL Example
+
+- Apple
+
+   Example 1
+
+   - Red Apple
+
+   - Green Apple
+
+- Pear
+
+
+
+
+
+
