@@ -2069,3 +2069,26 @@ before or after the \hline and \cline{i-j} commands:
       \noalign{\smallskip}\hline
     \end{tabular}
 
+# Clipping in TikZ
+
+After a \clip command, all subsequent drawings are clipped, only the parts
+inside the clipping region are drawn.  Use the scope environment to restrict
+the effect of clipping:
+
+    \begin{tikzpicture}
+      \draw (-2, 1.5) rectangle (2, -1.5);
+      \begin{scope}
+      \clip (-0.5, 0) circle (1);
+      \clip ( 0.5, 0) circle (1);
+      \fill[color=gray] (-2,1.5)
+                      rectangle (2,-1.5);
+      \end{scope}
+      \draw (-0.5, 0) circle (1);
+      \draw ( 0.5, 0) circle (1);
+    \end{tikzpicture}
+
+
+
+
+
+
