@@ -39,7 +39,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/context.js",
+      "program": "${workspaceFolder}/tests/contex.js",
       "args": [
         "a.md"
       ]

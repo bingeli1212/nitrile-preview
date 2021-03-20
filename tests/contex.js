@@ -1,10 +1,10 @@
 const { NitrilePreviewParser } = require('../lib/nitrile-preview-parser');
-const { NitrilePreviewContext } = require('../lib/nitrile-preview-context');
+const { NitrilePreviewContex } = require('../lib/nitrile-preview-contex');
 const utils = require('../lib/nitrile-preview-utils');
 
 var work = async ()=>{
   const parser = new NitrilePreviewParser();
-  const translator = new NitrilePreviewContext(parser);
+  const translator = new NitrilePreviewContex(parser);
   await parser.read_file_async(fname);
   let data = translator.to_context_document();
   console.log(data);
