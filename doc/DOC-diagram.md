@@ -174,49 +174,37 @@ not recommended and may result in distorted picture.
 The 'set' command sets the following parameters for the current
 drawing environment.
 
-+ set refx <number>
++ set scale <number>
 
-  Sets the x-coordinate origin for all future path points. For example, 
-  if 'refx' is set to 10, then a path point of (0,0) will
-  be mapped to (10,0).
+  Set a scaling value for the entire viewport.
 
-+ set refy <number>
-
-  Set the y-coordinate original for all future path points. For
-  example, if 'refy' is set to 10, then a path point of (0,0)
-  will be mapped to (0,10).
-
-+ set refsx <number>
-
-  Sets the scaling factor for scaling each path point
-  in the future in the x-coordinate direction. For instance,
-  if 'refsx' is set to 2 then a path point of (1,1) will be
-  mapped to (2,1). 
-
-+ set refsy <number>
-
-  Sets the scaling factor for scaling each path point
-  in the future in the y-coordinate direction. For instance,
-  if 'refsy' is set to 2 then a path point of (1,1) will be
-  mapped to (2,1).
-
-+ set refs <number>
-
-  A shortcut for setting 'refsx' and 'refsy' at the same
-  time to the same value.
-
-+ set refxy <string> ...
++ set origin <string> ...
 
   When the key is "refxy", expects a list of string arguments. 
   The argument must be in one of the following formats: 
-  "origin", "center", 
-  "west", "east", "north", "south",
-  "northwest", "northeast", "southwest", "southeast",
   "left:<x>", "right:<x>", "up:<y>", 
-  "down:<y>", "x:<x>", or "y:<y>", where <x> and <y> each
-  express a floating point number. It could also be a 
-  "save:<string>" and "at:<string>" where <string> expresses
-  a string. 
+  "down:<y>", where the distance expresses the number of grid units
+  to move in that direction. 
+  
+  If it is "x:<x>" or "y:<y>", then it expresses the absolute x/y coordinates
+  for the origin, where (0,0) is at the lower bottom and the top right corner
+  is where the maximum number of viewport width and height is to be.
+  
+  If it starts with "X:", then what follows will be interpreted as 
+  expressing a number that is "x" number of unit distances from the right hand side
+  of the viewport.
+  
+  If it starts with "Y:", then what follows is to be interpreted as
+  expressing a number that is "x" number of unit distances away from the top of the
+  viewport.
+  
+  If it starts with "at:", then what follows will be interpreted as expressing something
+  that describes a point that the origin will be set to, such as "at:&a", where
+  'a' is a valid path with at least one point.
+
+  If it starts with "mark:" then it expects a string that would be the name of a 
+  path such that the current origin x/y will be saved as the only point 
+  of this path, overwriting all existing entries if this is an existing path.
 
 + set id 0
 + set id 1
@@ -261,10 +249,7 @@ this case, all drawings will be scaled and/or translated.  The 'refsx' and
 'refsy' describes the scaling factor and 'refx' and 'refy' defines the location
 to be translated to. The default values are:
 
-    refsx   1
-    refsy   1
-    refx    0
-    refy    0
+    set origin x:1 y:1
 
 By default all drawings are expressed as relative to the origin, which is
 (0,0), which is located at the lower-left-hand corner of the viewport. By
@@ -274,46 +259,33 @@ set to a different value other than 1, then all the path points will be scaled
 accordingly, including the Bezier curve control points and Rx/Ry of arc.  Note
 that the scaling always happens first before the translation. 
 
-For 'refx', 'refy', 'refsy' and 'refsy', if no value is provided, then the
-default value will be assigned. For 'refxy', if no values are provided then
-nothing will happen.
-
-For 'refxy', it is possible to apply two or more options at the same time. For
-instance, following operation would first move the reference point to the
-center, and then one unit up. 
-
-    set refxy center up:1
+    set origin at:&center up:1
 
 The "up" keyword instructs that the reference point 
 moves up, and "down" keyword instructs that the reference point moves down.
 Similarily, there are "left" and "right" keywords as well.
 
-    set refxy up:1
-    set refxy down:1
-    set refxy left:1
-    set refxy right:1
+    set origin up:1
+    set origin down:1
+    set origin left:1
+    set origin right:1
 
 It is also possible to move to a specific x-coordinate or y-coordinate using
 the "x" and "y" keywords.  In the following example the reference point is
 moved to (12,10).
 
-    set refxy x:12 y:10
+    set origin x:12 y:10
 
-The "save" directive will set up a new path and set the current 'refx' and
-'refy' as the first point of this path, and then save the path with the name
-given.  For instance, the following command would have created a path or
-overwrite an existing path named 'a', which contains a single point that is
-(5,4).
+If it starts with "X" then it expresses a distance from the right-hand side
+of the viewport. If it starts with "Y" it expresses a distance from the top
+side of the viewport.
 
-    set refxy x:5 y:4 save:a
-
-Note that the path created this way is the same as the path that is created by
-the 'path' command.  The "at" keyword updates the current 'refx' and
-'refy' setting by reading from an existing path.  For instance, the following
+If it starts with "at:" then it expects a path notation 
+such as '&a'.  For instance, the following
 command would have restored the current 'refx' and 'refy' to (5,4) if
 path 'a' has (5,4) as its first point.
 
-    set refxy at:a
+    set origin at:&a
 
 
 # The 'reset' command
@@ -730,9 +702,9 @@ In addition, the 'lastpt' is expected to persist between two action commands,
 such that when a new action command is encountered it automatically load the
 last known 'lastpt' of the previous command line.
 
-At any time, the 'lastpt' can be saved to a path by the "save:" directive.
+At any time, the 'lastpt' can be saved to a path by the "lastpt:" directive.
 
-+ save:a
++ lastpt:a
 
   This is to save the current 'lastpt' to a new path named 'a'. 
   This new path will only have a single path point in it.
@@ -771,7 +743,7 @@ to (0,0).
   'top:-2', 'right:-2.3', or 'top:-2.3', in which case the offset will be
   shifted in the opposite direction.
 
-+ offset:a
++ at:&a
 
   The 'offset:a' directive would set the current offset to a point that is the
   first path point of a path named "a". The value after the colon is expected
