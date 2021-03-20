@@ -1,4 +1,30 @@
-# CONTEXT translation
+---
+title: CONTEXT translation
+---
+
+# Issues
+
+- Current version of CONTEX Y2020 seems to be broken for the "ruby" module.
+  The `\ruby` command simply does not work and generate an compilation error.
+
+- For \startcolumns command, it has been observed such that if the two column 
+  is near the bottom of a page, and the image is in the second column, and then 
+  image is too large to fit in the current page such that it is pushed down to
+  the following page, then it overlaps with the text which is to follow
+  the \endcolumns command.
+
+- The \starttabulate does not have the capability to be placed side-by-side with
+  another \startabulate. The documentation seems to suggest that this command is
+  designed to typeset a tabulate that follows with the normal text, rather than
+  act as a "float". The "indent=" attribution of this command can be set to "yes"
+  such that it will have an indentation the same as the surrounding text, but
+  it has not yet been verified.
+
+- The \starttable is able to be placed side by side, but it will need to be 
+  first placed inside a \hbox command, and then proceeded by a \dontleavehmode
+  command. Note that the \dontleavehmode command will cause an extra blank vertical
+  space if placed in front of some commands, thus its use has to be judicious.
+
 
 # The Font size problem
 
