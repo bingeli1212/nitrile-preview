@@ -582,33 +582,20 @@ designated by the user. To set this variable, use the "hints:" directive.
   The "hints:1" directive will set the 'hints' to 1. The value
   after the colon is expected to be an integer that is bitwise OR'ed
   value of hint flags.  See the section "Hint Flags" for more information.
+  Following example sets up a hint such that for a path the line between
+  (0,0) and (5,5) should've been drawn using a dashed line. 
 
-  The value held by the 'lasthints' variable will be assigned to next available
-  path point and will be cleared immediately after the assignment has
-  completed.
+    path a = hints:1 (0,0) [l:5,5] (2,2) [l:5,5] 
+
+  Note that a hint only extends as far as the length of particular component 
+  of a path following a path, and thus it must be set before the start of a 
+  component. This in the previous example the line segment from (2,2) to (7,7)
+  would not be affected by the setting of the previous hints.
 
 
-# Saving 'lastpt'
 
-Note that for each action command operation, there is a variable called
-'lastpt' that holds the value of the last assigned path point. It is
-automatically updated whenever a point is moved, drawn a line, a Bezier curve,
-an arc curve, etc.  The 'lastpt' can be considered akin to the concept of
-"current point".
 
-In addition, the 'lastpt' is expected to persist between two action commands,
-such that when a new action command is encountered it automatically load the
-last known 'lastpt' of the previous command line.
-
-At any time, the 'lastpt' can be saved to a path by the "lastpt:" directive.
-
-+ lastpt:a
-
-  This is to save the current 'lastpt' to a new path named 'a'. 
-  This new path will only have a single path point in it.
-  
-
-# Setting 'offset' 
+# Moving the 'lastpt' 
 
 During a path construction, there is an variable named 'offset' which holds a
 set of two numbers. It serves to "translate" the constructed path if it is set
@@ -619,11 +606,10 @@ unit to the left and upwards.
 This variable can be changed in several different ways. The first way is to 
 use the "left:", "right:", "up:", and "down:" directives.
 
-    path a = right:1 up:1 (0,0) ~ (2,0) ~ (0,2)
+    path a = right:1 up:1 [m:0,0] [l:2,0] [l:0,2]
 
-The resulting path of the previous command will produce path similar to (1,1) ~
-(3,1) ~ (1,3). When a command line is first started, the 'offset' is set
-to (0,0).
+The resulting path of the previous command will produce a path
+that is (1,1) ~ (3,1) ~ (3,3).
 
 + left:2
 + right:2
@@ -667,7 +653,11 @@ to (0,0).
   direction where 0 is the top side of the viewport and 1 is one unit grid
   immediately below the top side of the viewport.
 
++ mark:a
 
+  This is to save the current 'lastpt' to a new path named 'a'. 
+  This new path will only have a single path point in it.
+  
 
 # The 'dot' command
 
