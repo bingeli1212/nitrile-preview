@@ -169,26 +169,36 @@ not recommended and may result in distorted picture.
     config linecolor red
 
 
-# The set-operation
+# The 'origin' command
 
-The 'set' command sets the following parameters for the current
+The 'origin' command sets the following parameters for the current
 drawing environment.
 
 + set scale <number>
 
   Set a scaling value for the entire viewport.
 
-+ set origin <string> ...
++ origin up:2
++ origin down:2
++ origin left:2
++ origin right:2
++ origin x:2
++ origin y:2
++ origin X:2
++ origin Y:2
++ origin at:&a
++ origin mark:a
++ origin reset
 
-  When the key is "refxy", expects a list of string arguments. 
-  The argument must be in one of the following formats: 
-  "left:<x>", "right:<x>", "up:<y>", 
+  If it starts with "left:<x>", "right:<x>", "up:<y>", 
   "down:<y>", where the distance expresses the number of grid units
   to move in that direction. 
   
-  If it is "x:<x>" or "y:<y>", then it expresses the absolute x/y coordinates
-  for the origin, where (0,0) is at the lower bottom and the top right corner
-  is where the maximum number of viewport width and height is to be.
+  If it starts with "x:", then it expresses the distance from the left hand side
+  of the viewport. 
+
+  If it starts with "y:", then it expresses the distance from the bottom side
+  of the viewport.
   
   If it starts with "X:", then what follows will be interpreted as 
   expressing a number that is "x" number of unit distances from the right hand side
@@ -206,14 +216,20 @@ drawing environment.
   path such that the current origin x/y will be saved as the only point 
   of this path, overwriting all existing entries if this is an existing path.
 
-+ set id 0
-+ set id 1
-+ set id a
-+ set id A
-+ set id A0
-+ set id a12
-+ set id node0
-+ set id node12
+  If it starts with "reset" then all existing values will be set to its default
+  values.
+
+
+# The 'id' command
+
++ id 0
++ id 1
++ id a
++ id A
++ id A0
++ id a12
++ id node0
++ id node12
 
   Set the "id" to a string. This string would be interpreted in constructing
   ID(s) for path, node, and other commands that would have required an ID.
