@@ -2658,3 +2658,24 @@ path, and then draw the control points as well as the two end points of this
 curve on the chart. The control points will be drawn using round dots, and
 end points of the Bezier curves as square dots.
 
+
+# Built-in Paths
+
+Following are built-in path that are readily available.
+
++ north
++ south
++ east
++ west
++ northwest
++ northeast
++ southwest
++ southeast
++ center
+
+  Each of these path is to contain a single point that can be constructed based
+  on the current size of the viewport.
+
++ last
+
+  This is the 
