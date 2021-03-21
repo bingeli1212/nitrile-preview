@@ -595,7 +595,7 @@ designated by the user. To set this variable, use the "hints:" directive.
 
 
 
-# Moving the 'lastpt' 
+# Moving the 'offset' 
 
 During a path construction, there is an variable named 'offset' which holds a
 set of two numbers. It serves to "translate" the constructed path if it is set
@@ -606,10 +606,13 @@ unit to the left and upwards.
 This variable can be changed in several different ways. The first way is to 
 use the "left:", "right:", "up:", and "down:" directives.
 
-    path a = right:1 up:1 [m:0,0] [l:2,0] [l:0,2]
+    path a = right:1 up:1 (0,0) [l:2,0] [l:0,2]
 
 The resulting path of the previous command will produce a path
-that is (1,1) ~ (3,1) ~ (3,3).
+that is (1,1) ~ (3,1) ~ (3,3). 
+
+Note that changing an offset will also change the 'lastpt' such that
+the 'lastpt' is now the same point as that of the 'offset'.
 
 + left:2
 + right:2
@@ -652,6 +655,22 @@ that is (1,1) ~ (3,1) ~ (3,3).
   The "Y:" directive sets the offset to an absolute coordinate in the vertical 
   direction where 0 is the top side of the viewport and 1 is one unit grid
   immediately below the top side of the viewport.
+
+
+
+# Saving the 'lastpt'
+
+The internal variable 'lastpt' holds the x/y position of the last path point
+constructed. This point can accessed anytime via the '&lastpt' path variable,
+in which case the path returned always contains a single point.
+
+However, during a path construction, the current last point can be saved
+to another path such that it can be retrieved later. To do that the "mark:a" 
+directive can be used. For instance, in the following example the dot
+will be drawn at a location that (5,5).
+
+    path a = (0,0) [l:5,5] mark:b [l:1,1]
+    dot &b
 
 + mark:a
 
