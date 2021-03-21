@@ -2688,6 +2688,7 @@ Following are Non-action commands:
     group
     id
     origin
+    show
 
 Non-action commands cannot be recorded and played back. However,
 they can be saved and later inserted into the program by the
