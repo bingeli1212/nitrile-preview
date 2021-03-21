@@ -54,74 +54,12 @@ returned by the 'encodeURIComponent()' function.
 Following is an example of a diagram block.
 
     viewport 32 20
-
     % variables
     path a = (1,1) ~ (5,5) ~ (5,1) ~ (1,1) 
     path b = (1,1) .. (5,5) .. (5,1) .. (1,1) 
-
     % draw
     draw  &a
     draw  &b
-
-    % circles
-
-    set fillcolor pink
-    circle        {r:1} (16,1)
-    circle.pie    {r:1, a1:0, a2:135} (20,1)
-    circle.chord  {r:1, a1:0, a2:135} (20,3)
-    circle.arc    {r:1, a1:0, a2:135} (20,5)
-    circle.cseg   {r:1, a1:0, a2:135} (20,7)
-
-    % dot
-    path sq = (22,3) (23,3) (23,2) (22,2)
-    dot (22,1)
-    dot &sq (22,4) (23,4)
-    dot.hbar  (23,1) (24,1)
-    dot.vbar  (25,1) (26,1)
-    dot   (1,1) \
-          (2,2) (3,3) \
-          (4,4) (5,5)
-
-    % 90-degree angle
-    path [a,b] = (28,4)~(31,4)
-    path [,c] = (28,4)~(28,7)
-    draw &b ~ &a ~ &c
-    drawlinesegarc.sq &b~&a~&c
-
-    % draw     will fill
-    path ff = (28,8)~(31,8)~(31,9)~(28,9)~cycle
-    draw {linesize:2,fillcolor:orange}  &ff
-    reset
-
-    % label
-    label.rt  "C_0" (5,5)
-    label.rt  "B_0" (5,1)
-    label.top "A_0" (1,1)
-
-    % arrow & dblarrow
-    drawarrow (7,3) (9,5)
-    drawdblarrow (9,3) (11,5)
-    drawrevarrow (11,3) (13,5)
-
-    % text of a different fontsize
-    label.ctr " 簡単 Triangle " (10,1)
-
-    % math
-    label.ctr \(\sqrt{2}\) (18,18)
-
-    %% shapes
-    shape.trapezoid (2,11)
-    shape.rhombus (5,11)
-    shape.rect (8,11)
-    shape.parallelgram (11,11)
-    shape.apple (15,11)
-    shape.basket (17,11)
-    shape.crate (21,11)
-    shape.rrect (26,11)
-    shape.protractor (10,15)
-    shape.updnprotractor (10,15)
-    shape.radical (1,17)
-
 
 
 # Viewport
@@ -153,7 +91,7 @@ used instead.
 
 
 
-# The config command
+# The 'config' command
 
 The config command can be used to control the configuration parameters
 for the entire Diagram. This set includes the previous discussed
@@ -253,64 +191,8 @@ drawing environment.
   If none of the previous pattern is detected, the first assigned ID
   will be 0, and then next one 1, etc.
 
-Note that all the strings set by the 'set' command can be restored
-to their default values by the 'reset' command.
 
 
-# Setting the Reference X/Y and Scaling Factors
-
-The 'refx', 'refy', 'refsx' and 'refsy' parameters can be set at any point
-during a drawing. It can be compared to a "transform" of a SVG operation. In
-this case, all drawings will be scaled and/or translated.  The 'refsx' and
-'refsy' describes the scaling factor and 'refx' and 'refy' defines the location
-to be translated to. The default values are:
-
-    set origin x:1 y:1
-
-By default all drawings are expressed as relative to the origin, which is
-(0,0), which is located at the lower-left-hand corner of the viewport. By
-setting it to a different value, it allows you to treat several drawings as a
-group and then move them all at once at ease.  If 'refsx' and 'refsy' are being
-set to a different value other than 1, then all the path points will be scaled
-accordingly, including the Bezier curve control points and Rx/Ry of arc.  Note
-that the scaling always happens first before the translation. 
-
-    set origin at:&center up:1
-
-The "up" keyword instructs that the reference point 
-moves up, and "down" keyword instructs that the reference point moves down.
-Similarily, there are "left" and "right" keywords as well.
-
-    set origin up:1
-    set origin down:1
-    set origin left:1
-    set origin right:1
-
-It is also possible to move to a specific x-coordinate or y-coordinate using
-the "x" and "y" keywords.  In the following example the reference point is
-moved to (12,10).
-
-    set origin x:12 y:10
-
-If it starts with "X" then it expresses a distance from the right-hand side
-of the viewport. If it starts with "Y" it expresses a distance from the top
-side of the viewport.
-
-If it starts with "at:" then it expects a path notation 
-such as '&a'.  For instance, the following
-command would have restored the current 'refx' and 'refy' to (5,4) if
-path 'a' has (5,4) as its first point.
-
-    set origin at:&a
-
-
-# The 'reset' command
-
-The reset-operation is done by the 'reset' command itself but a single
-line without additional arguments after it. It is a shorthand for
-setting 'refx' and 'refy' to 0 and 'refsx' and 'refsy' to 1
-
-    reset
 
 # The 'path' command
 
@@ -690,14 +572,14 @@ Each of the following syntax denotes a relative point.
   is the last operation.
 
 
-# Setting the 'lasthints'
+# Setting the 'hints'
 
-There is an internal variable named 'lasthints' that holds the last hints
+There is an internal variable named 'hints' that holds the last hints
 designated by the user. To set this variable, use the "hints:" directive.
 
 + hints:1
 
-  The "hints:1" directive will set the 'lasthints' to 1. The value
+  The "hints:1" directive will set the 'hints' to 1. The value
   after the colon is expected to be an integer that is bitwise OR'ed
   value of hint flags.  See the section "Hint Flags" for more information.
 
@@ -765,6 +647,26 @@ to (0,0).
   first path point of a path named "a". The value after the colon is expected
   to be a string that holds the name of an existing path, such as 'a', or a
   path-index designation, such as `a_0`, `a_1`, `a_2`, etc.
+
++ x:2
++ y:2
++ X:2
++ Y:2
+
+  The "x:" directive will set the offset to an absolute coordinate in the horizontal
+  direction where 0 is the left hand side of the viewport.
+
+  The "y:" directive will set the offset to an absolute coordinate in the vertical
+  direction where 0 is the bottom of the viewport.
+
+  The "X:" directive sets the offset to an absolute coordiate in the horizontal 
+  direction where 0 is the right hand side of the viewport and 1 is one unit grid
+  immediately to the right hand side of the viewport.
+
+  The "Y:" directive sets the offset to an absolute coordinate in the vertical 
+  direction where 0 is the top side of the viewport and 1 is one unit grid
+  immediately below the top side of the viewport.
+
 
 
 # The 'dot' command
