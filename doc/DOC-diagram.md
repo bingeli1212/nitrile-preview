@@ -1615,14 +1615,14 @@ assigned the sum of adding the "x" components of the first two points
 in path variable 'pts', which will be "1 + 3 = 4".
 
     path pts = (1,2) (3,4)
-    var mx = &pts_0.x + &pts_1.x
+    let mx = &pts_0.x + &pts_1.x
     label.ctr (\mx,0)
 
 Following is another example of adding the two "y" components of the
 first two points and assign the result to 'my'.
 
     path pts = (1,2) (3,4)
-    var my = &pts_0.y + &pts_1.y
+    let my = &pts_0.y + &pts_1.y
     label.ctr (0,\my)
 
 
@@ -1634,21 +1634,21 @@ expression.  In the following example the symbol 'pi' is assigned a quantity
 that 3.1415, which is then used inside the function body of 'f' as well as part
 of the the 'draw' command.
 
-    var pi = 3.1415
+    let pi = 3.1415
     fn f(x) = \pi/x
-    set refx 5
-    set refy 5
+    origin x:5
+    origin y:5
     cartesian-xaxis -10 10
     cartesian-yaxis -10 10
     cartesian-yplot {f:f} [1:10]
     arrow (0,0) (\pi,\pi)
 
-One advantage of using a 'var' command to create an environment
+One advantage of using a 'let' command to create an environment
 variable is the ability to allow an math expression to be evaluated.
 For example, it is possible to create a value that is exactly
 square root of 2 by doing the following.
 
-    var a = sqrt(2)   
+    let a = sqrt(2)   
     path a = (\a,\a)
     dot &a
 
@@ -1677,7 +1677,7 @@ is assigned to the symbol.
 
 # Scalar Expression
 
-Scalar expressions are recognized as the right-hand side of a 'var' command,
+Scalar expressions are recognized as the right-hand side of a 'let' command,
 and 'fn' command. It is also recognized as part of a float if placed inside
 a set of parenthesis.
 
@@ -1697,43 +1697,43 @@ a environment variable 'a'. Note that 'E' and 'PI' are two built-in constants
 where the first one is the Euler's number and the second one being the
 ratio of the circumference of a circle to its diameter.
 
-    var a = (2+2)*(3+3)
-    var a = cos(3+0.1415) + 12
-    var a = 3 + pow(3,2)*3 + 2
-    var a = 3 + E + 2
-    var a = 3 + PI + 2
-    var a = sign(-5)
-    var a = 2*PI
-    var a = 2*2e5
-    var a = deg2rad(180)
-    var a = 1/0
-    var a = ln(0)
+    let a = (2+2)*(3+3)
+    let a = cos(3+0.1415) + 12
+    let a = 3 + pow(3,2)*3 + 2
+    let a = 3 + E + 2
+    let a = 3 + PI + 2
+    let a = sign(-5)
+    let a = 2*PI
+    let a = 2*2e5
+    let a = deg2rad(180)
+    let a = 1/0
+    let a = ln(0)
 
 Following are likely to be observed in the outputs of a HTML
 translation.
 
-    <!-- var a = (2+2)*(3+3) -->
-    <!-- ***var:a=24 -->
-    <!-- var a = cos(3+0.1415) + 12 -->
-    <!-- ***var:a=11.000000004292344 -->
-    <!-- var a = 3 + pow(3,2)*3 + 2 -->
-    <!-- ***var:a=32 -->
-    <!-- var a = 3 + E + 2 -->
-    <!-- ***var:a=7.718281828459045 -->
-    <!-- var a = 3 + PI + 2 -->
-    <!-- ***var:a=8.141592653589793 -->
-    <!-- var a = sign(-5) -->
-    <!-- ***var:a=-1 -->
-    <!-- var a = 2*PI -->
-    <!-- ***var:a=6.283185307179586 -->
-    <!-- var a = 2*2e5 -->
-    <!-- ***var:a=400000 -->
-    <!-- var a = deg2rad(180) -->
-    <!-- ***var:a=3.141592653589793 -->
-    <!-- var a = 1/0 -->
-    <!-- ***var:a=Infinity -->
-    <!-- var a = ln(0) -->
-    <!-- ***var:a=-Infinity -->
+    <!-- let a = (2+2)*(3+3) -->
+    <!-- ***let: a=24 -->
+    <!-- let a = cos(3+0.1415) + 12 -->
+    <!-- ***let: a=11.000000004292344 -->
+    <!-- let a = 3 + pow(3,2)*3 + 2 -->
+    <!-- ***let: a=32 -->
+    <!-- let a = 3 + E + 2 -->
+    <!-- ***let: a=7.718281828459045 -->
+    <!-- let a = 3 + PI + 2 -->
+    <!-- ***let: a=8.141592653589793 -->
+    <!-- let a = sign(-5) -->
+    <!-- ***let: a=-1 -->
+    <!-- let a = 2*PI -->
+    <!-- ***let: a=6.283185307179586 -->
+    <!-- let a = 2*2e5 -->
+    <!-- ***let: a=400000 -->
+    <!-- let a = deg2rad(180) -->
+    <!-- ***let: a=3.141592653589793 -->
+    <!-- let a = 1/0 -->
+    <!-- ***let: a=Infinity -->
+    <!-- let a = ln(0) -->
+    <!-- ***let: a=-Infinity -->
 
 Note that instead of returning a valid number, the expression might generate
 something akins to 'Infinity' or 'Nan', depending on the nature of the
@@ -1847,7 +1847,7 @@ Following are built-in functions provided by Diagram
 Following are built-in scalar constants, which can be used as if they
 are arguments. For instance, 
 
-    var arc = 2*PI
+    let arc = 2*PI
 
 This the 'arc' env-variable would have been assigned the value of 6.28.
 
@@ -2065,9 +2065,9 @@ color and/or label.
 
     set id 0
     for theta=[0:60:359]:
-      var r = 2
-      var x = cos(deg2rad(\theta)) * \r
-      var y = sin(deg2rad(\theta)) * \r
+      let r = 2
+      let x = cos(deg2rad(\theta)) * \r
+      let y = sin(deg2rad(\theta)) * \r
       node._ (\x,\y)
     node.0.1.2 {fillcolor:red}
 
