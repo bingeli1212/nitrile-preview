@@ -2679,8 +2679,6 @@ Following are Non-action commands:
     for
     viewport
     config
-    reset
-    set
     source
     exit
     path
@@ -2688,6 +2686,8 @@ Following are Non-action commands:
     playback
     fn
     group
+    id
+    origin
 
 Non-action commands cannot be recorded and played back. However,
 they can be saved and later inserted into the program by the
