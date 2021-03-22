@@ -1,9 +1,10 @@
-Test image
+test-table.md
 
-@   table{label:mytable}
+# Slide
+
+@   table{head,label:mytable,vrule:|||,hrule:---}
     Hello World.
 
-    ```tabular{vrule:|||,hrule:---}
     | Name     | Symbol        |  Name      | Symbol        | Name         | Symbol            
     -----------|---------------|------------|---------------|--------------|-------------
     | \Alpha   | \(\Alpha  \)  |   \Iota    | \(\Iota   \)  |     \Rho     | \(\Rho    \)     
@@ -14,5 +15,4 @@ Test image
     | \Zeta    | \(\Zeta   \)  |   \Xi      | \(\Xi     \)  |     \Chi     | \(\Chi    \)   
     | \Eta     | \(\Eta    \)  |   \Omicron | \(\Omicron\)  |     \Psi     | \(\Psi    \)   
     | \Theta   | \(\Theta  \)  |   \Pi      | \(\Pi     \)  |     \Omega   | \(\Omega  \)   
-    ```
 
