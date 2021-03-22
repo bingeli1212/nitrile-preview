@@ -1165,10 +1165,12 @@ image using the start/stop combination command.
     [a]
     {GIMP Logos.}
     {%
+    \startalignment[middle]
     \dontleavehmode
     \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
     \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
     \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
     \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
+    \stopalignment
     }
 
