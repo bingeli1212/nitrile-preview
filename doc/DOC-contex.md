@@ -1174,3 +1174,22 @@ image using the start/stop combination command.
     \stopalignment
     }
 
+
+# Left/Right/Center Alignment
+
+The text alignment could be done by using the start/stop of "alignment"
+environment variable. The option specified here is "flushleft", "flushright",
+or "middle".  Following example is to set up a paragraph such that all contents
+are center aligned.
+
+    \startalignment[middle]% 
+    \dontleavehmode
+    \externalfigure[cow][width=2cm]
+    \stopalignment
+
+
+
+
+
+
+
