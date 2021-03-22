@@ -572,6 +572,7 @@ Each of the following syntax denotes a relative point.
   is the last operation.
 
 
+
 # Setting the 'hints'
 
 There is an internal variable named 'hints' that holds the last hints
@@ -594,48 +595,45 @@ designated by the user. To set this variable, use the "hints:" directive.
 
 
 
-
 # Moving the 'offset' 
 
-During a path construction, there is an variable named 'offset' which holds a
-set of two numbers. It serves to "translate" the constructed path if it is set
-to something other than (0,0).  For example, if this variable is current
-holding two integers that are (1,1), then all points will be moved one grid
-unit to the left and upwards.
+During a path construction, each path point can be given an additional
+"offset".  The exact distance of the offset is controled by one or more
+"directives". For example, the directives "x:2" and "y:3" are designed to set
+the offset such that the horizontal distance is 2 and vertical distance 3.
 
-This variable can be changed in several different ways. The first way is to 
-use the "left:", "right:", "up:", and "down:" directives.
+    path a = x:2 y:3 (0,0) [h:2] [v:2]
 
-    path a = right:1 up:1 (0,0) [l:2,0] [l:0,2]
+The resulting path of the previous command would have produced a path that is
+(2,3) ~ (4,3) ~ (4,5).  
 
-The resulting path of the previous command will produce a path
-that is (1,1) ~ (3,1) ~ (3,3). 
+Note that the process of moving a horizontal or vertical translation distance
+will at the same time move the 'lastpt' such that it coincides with the
+offset.
 
-Note that changing an offset will also change the 'lastpt' such that
-the 'lastpt' is now the same point as that of the 'offset'.
+Following are additional directives.  
 
 + left:2
 + right:2
 + up:2
 + down:2
 
-  The 'left', 'right', 'up', and 'down' directives would each have shifted the
-  current offset in the direction as instructed for a given number of grid
-  distances. The value after the colon is expected to be a number that
-  expresses the number of grid units.  Note also that these operations are
-  accumulative such that incurring "up:1" two times is equivalent to issuing
-  "up:2" one time.
+  The 'left', 'right', 'up', and 'down' directives is each to shift the offset
+  in the direction as instructed for a given number of grid distances.  The
+  value after the colon is expected to be a number that expresses the number of
+  grid units.  Note also that these operations are accumulative such that
+  incurring two "up:1" equals a single "up:2".
 
-  Note that it is legal to use negative numbers such as 'right:-2', or
-  'top:-2', 'right:-2.3', or 'top:-2.3', in which case the offset will be
-  shifted in the opposite direction.
+  Note that it is legal to use negative numbers for each of these directives.
+  For instance: 'right:-2', or 'top:-2', 'right:-2.3', or 'top:-2.3', in which
+  case the offset will be shifted in the opposite direction.
 
 + at:&a
 
-  The 'offset:a' directive would set the current offset to a point that is the
-  first path point of a path named "a". The value after the colon is expected
-  to be a string that holds the name of an existing path, such as 'a', or a
-  path-index designation, such as `a_0`, `a_1`, `a_2`, etc.
+  This directive is to set the current offset so that it coincides with the
+  first point of a path named "a". The value after the colon is expected to be
+  a string that holds the name of an existing path, such as '&a', or a
+  path-index designation, such as `&a_0`, `&a_1`, `&a_2`, etc.
 
 + x:2
 + y:2
@@ -660,23 +658,20 @@ the 'lastpt' is now the same point as that of the 'offset'.
 
 # Saving the 'lastpt'
 
-The internal variable 'lastpt' holds the x/y position of the last path point
-constructed. This point can accessed anytime via the '&lastpt' path variable,
-in which case the path returned always contains a single point.
+During a path construction, the x/y coordinates of each new path point is saved
+internally which is then used when constructing a relative point.  This point
+is know as the 'lastpt'.  This point can accessed anytime via the '&lastpt'
+path variable, in which case the path returned always contains a single point.
 
-However, during a path construction, the current last point can be saved
-to another path such that it can be retrieved later. To do that the "mark:a" 
-directive can be used. For instance, in the following example the dot
-will be drawn at a location that (5,5).
+The current last point can also be saved to another path such that it can be
+retrieved later. To do that the "mark:a" directive can be used, in which case
+the the current settings of the 'lastpt' is saved to a new path named 'a'. If
+'a' already exists it will be overwritten. For instance, in the following
+example the dot will be drawn at a location that (5,5).
 
     path a = (0,0) [l:5,5] mark:b [l:1,1]
     dot &b
 
-+ mark:a
-
-  This is to save the current 'lastpt' to a new path named 'a'. 
-  This new path will only have a single path point in it.
-  
 
 # The 'dot' command
 
