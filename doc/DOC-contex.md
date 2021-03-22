@@ -1150,4 +1150,25 @@ This "description list" can be nested as well.
     \stopDL
 
 
+# Figure 
+
+For a floating figure, all subfigures can be setup so that 
+images are placed side-by-side from left to right, and will
+then be wrapped down to the next row if it can't fit in the rest
+of the spaces of the current row.
+
+The subcaptions of a subfigure can be placed underneath the 
+image using the start/stop combination command.
+
+    \placefigure
+    []
+    [a]
+    {GIMP Logos.}
+    {%
+    \dontleavehmode
+    \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
+    \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
+    \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
+    \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
+    }
 

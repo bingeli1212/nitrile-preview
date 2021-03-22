@@ -12,12 +12,10 @@ culpa qui officia deserunt mollit anim id est laborum."
 @ figure{label:a}
   GIMP Logos.
 
-  ```combination
   &img({width:4cm}image-gimp.jpg) One 
   &img({width:4cm}image-gimp.jpg) Two
   \\
   &img({width:4cm}image-gimp.jpg) Three
-  ```
 
 The figure is &ref(a).
 
