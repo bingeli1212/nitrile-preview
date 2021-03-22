@@ -4,7 +4,7 @@ It is treated as a verb because it can appear as
 The main predicate always appears at the end
 of the sentence. The other similar one is
 
-```tabular
+```tabular{title:One}
 | Tense             |Example
 ---------------------------
 | Polite Present    |Hello 
@@ -16,7 +16,7 @@ of the sentence. The other similar one is
 | Past              |Hello 
 | Past negative     |Hello 
 ```   
-```tabular
+```tabular{title:Two}
 | Tense             |Example
 ---------------------------
 | Polite Present    |Hello 
