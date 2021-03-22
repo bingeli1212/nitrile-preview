@@ -1651,12 +1651,12 @@ first two points and assign the result to 'my'.
 
 
 
-# Setting up an environment variable
+# Environment variables
 
-Setting up environment symbol to attach a name the result of an arithmetic
-expression.  In the following example the symbol 'pi' is assigned a quantity
-that 3.1415, which is then used inside the function body of 'f' as well as part
-of the the 'draw' command.
+Environment variables are symbols that holds a number. It can be used in places
+where numbers are expected.  In the following example the symbol 'pi' is
+assigned a quantity that 3.1415, which is then used inside the function body of
+'f' as well as part of the the 'draw' command.
 
     let pi = 3.1415
     fn f(x) = \pi/x
@@ -1667,54 +1667,53 @@ of the the 'draw' command.
     cartesian-yplot {f:f} [1:10]
     arrow (0,0) (\pi,\pi)
 
-One advantage of using a 'let' command to create an environment
-variable is the ability to allow an math expression to be evaluated.
-For example, it is possible to create a value that is exactly
-square root of 2 by doing the following.
+One advantage of using a 'let' command to create an environment variable is the
+ability to allow for a "scalar expression" to be evaluated.  For example, it is
+possible to create a value that is exactly square root of 2 by doing the
+following.
 
     let a = sqrt(2)   
     path a = (\a,\a)
     dot &a
 
-Note that the environment variables created must be accessed
-via the backslash notation. This is very much the same as 
-accessing the variable set up by the 'for' command. As a matter
-of fact the variables created by these two commands are exactly
-the same type of variables. The environment variable and the
-path variables are treated completely different and therefore
-they could have the same name.
+Note that the environment variables must be accessed
+via the backslash notation. Its appearance is detected 
+and replaced in a command line before the command is
+being processed. This allows a environment variable to 
+be used anywhere in a command line. In the following example
+a environment variable 'a' is used to construct a path variable
+name.
+ 
+    let a = 1
+    path path\a = (0,0) ~ (5,5)
+    draw path1
 
-Note that the variables will automatically replaced 
-by their actual value and thus the comments in the output
-will see only the replaced value of the variable. If a variable
-is not replace in the comment then it is a sign that the variable
-had not been defined.
+The 'let' command is the one that create a environment on the
+fly. The other command is 'for', which would execute
+a block of codes several times and with each iteration renew 
+one or more environment variables to a new value according
+to their order in a list.
 
-Note that the symbol following the backslash must conform to
-the conventionn of starting with a letter, and followed by additional
-letters and/or digits if any. A single letter symbol is permitted. In
-addition, instead of being assigned a number, the right hand side of
-the equal sign can also be a valid expression, in which case the value
-of that expression is evaluated immediately, and the quantity of which
-is assigned to the symbol.
 
 
 # Scalar Expression
 
-Scalar expressions are recognized as the right-hand side of a 'let' command,
-and 'fn' command. It is also recognized as part of a float if placed inside
-a set of parenthesis.
+A "scalar expression" is an expression that evaluates to a number.  It can
+appear on the right hand side of the equal sign of a "let" or "fn" command.  It
+is also recognized as part of a float if placed inside a set of parenthesis.
 
-The scalar expression has a syntax very much like those supported by 
-the 'expr' command of a modern day Tcl interpreter. It recognizes 
-operator plus, minus, multiplication and division. The multiplication
-operator is the asterisk, and the division operator is the slash character.
+    cartesian-xtick 0 1 2 (1+2) 
+
+The scalar expression has a syntax very much like those supported by the 'expr'
+command of a modern day Tcl interpreter. It recognizes the plus, minus,
+multiplication and division operators. The multiplication operator is the
+asterisk, and the division operator is the slash character.
 
 It provides a list of built-in functions such as 'ln' and 'sqrt'. It also
-recognizes user defined functions which are created by the use of the 'fn'
-command.  It supports operator precedence of multiplication and division over
-addition and subtraction, and recognizes parentheses for grouping. It
-also recognizes a scientific number notation such as '2e5'.
+recognizes user defined functions which are created by a previous 'fn' command.  It
+supports operator precedence of multiplication and division over addition and
+subtraction, and recognizes parentheses for grouping. It also recognizes a
+number that is in the form of a scientific notation such as '2e5' or '2e-5'.
 
 Following are examples of using an expression to assign a number to
 a environment variable 'a'. Note that 'E' and 'PI' are two built-in constants
@@ -1759,9 +1758,9 @@ translation.
     <!-- let a = ln(0) -->
     <!-- ***let: a=-Infinity -->
 
-Note that instead of returning a valid number, the expression might generate
-something akins to 'Infinity' or 'Nan', depending on the nature of the
-expression.
+Note that if a scalar expression returns something that cannot be interpreted
+as a valid number, a string such as "Infinity" or "NaN" might be returned.
+
 
 
 # Built-in Scalar Functions
@@ -1864,6 +1863,7 @@ Following are built-in functions provided by Diagram
 + sign(x)
 
   Sign (+1 or -1 or 0) of a number
+
 
 
 # Built-in Scalar Constants
@@ -2272,6 +2272,7 @@ There are a couple of things about recording/playing back.
 2. It will still respect all current 'config' settings and 'refxy' settings.
 
 
+
 # Gradient Fill
 
 The Gradient Fill is provided by SVG, TikZ and MetaFun. 
@@ -2469,6 +2470,8 @@ and as well as at the product.
     multiws {answer,answercolor:orange} "2.1 4" (0,0)
     multiws {answer,answercolor:orange} "2.1 1.4" (0,0)
 
+
+
 # The 'longdivws' command
 
 The longdivws-operation allows one to show the complete workflow  
@@ -2491,6 +2494,7 @@ a decimal point was included in one of the numbers it
 will likely cause unpredictable result.
 
 
+
 # Specifying colors
 
 The colors in the DIAGRAM can be specified in several ways. The easiest is to
@@ -2507,6 +2511,7 @@ such as "hwb(30|10%|20%)" or "rgb(255|0|0)".
     hsl(0|100%|50%)
 
 
+
 # The source-operation
 
 The source-operation is to load the previous saved sources and then 
@@ -2519,6 +2524,8 @@ execute them at that location.
     viewport 20 20
     source src1
     ```
+
+
 
 # The 'lego' command
 
@@ -2597,6 +2604,8 @@ is shaded darker. For lego-show2 operation the face facing
 upward is shaded lighter and the face facing right is shaded
 darker. 
 
+
+
 # Action Commands vs. Non-action Commands
 
 Following are Non-action commands:
@@ -2620,6 +2629,8 @@ Non-action commands cannot be recorded and played back. However,
 they can be saved and later inserted into the program by the
 "source" command.
 
+
+
 # The "group" command
 
 The "group" operation is to create a new group that holds a collection
@@ -2635,6 +2646,8 @@ elements inheriting attributes from that group.
 In the previous example the first box will be created with "linesize:1", "w:3",
 and "h:2" attributes. The second box will have the same set of attributes as
 the first one except that it will have "linesize:2" instead of "linesize:1".
+
+
 
 # The 'fillspace' command
 
@@ -2660,6 +2673,8 @@ inside the rectangle.
 Currently only lines are recognized as legal boundaries for a space. In the future
 a Bezier curve or arc could also become part of a boundary. 
 
+
+
 # The 'slopedtext' command
 
 The 'slopedtext' command is to draw a sloped text centered along a line
@@ -2675,6 +2690,7 @@ placed at the bottom of the line if the ".bot" subcommand is supplied.
     slopedtext.bot "Hello\\World" (0,0) [h:4] [v:4]
 
 
+
 # The 'drawcontrolpoints' command
 
 This command would look for for presence of 'C' and 'Q' Bezier curves in the 
@@ -2683,23 +2699,63 @@ curve on the chart. The control points will be drawn using round dots, and
 end points of the Bezier curves as square dots.
 
 
+
 # Built-in Paths
 
 Following are built-in path that are readily available.
 
 + north
+
+  This would have returned a point that coincides with the top side of the
+  viewport and which centers horizontally.
+
 + south
+
+  This would have returned a point that coincides with the bottom side of the
+  viewport and which centers horizontally.
+
 + east
+
+  This would have returned a point that coincides with the right hand side of the
+  viewport and which centers vertically.
+
 + west
+
+  This would have returned a point that coincides with the left hand side of the
+  viewport and which centers vertically.
+
 + northwest
+
+  This would have returned a point that coincides with the top left hand corner
+  of the viewport.
+
 + northeast
+
+  This would have returned a point that coincides with the top right hand corner
+  of the viewport.
+
 + southwest
+
+  This would have returned a point that coincides with the bottom left hand corner
+  of the viewport.
+
 + southeast
+
+  This would have returned a point that coincides with the bottom right hand corner
+  of the viewport.
+
 + center
 
-  Each of these path is to contain a single point that can be constructed based
-  on the current size of the viewport.
+  This would have returned a point that coincides with the center of the
+  viewport.
 
-+ last
++ lastpt
 
-  This is the 
+  This would have returned a point that coincides with the latest path point
+  that was used to construct a path.
+
+
+
+
+
+  
