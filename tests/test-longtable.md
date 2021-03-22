@@ -9,10 +9,9 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
 fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum."
 
-@   longtable{label:longtable}
+@   longtable{label:longtable,fr:1 2,hrule:}
     This is the caption for my long table.
 
-    ```longtabu{vrule:,hrule:-}
     | Name  | Desc
     -----------------
     | Hello | World
@@ -196,7 +195,6 @@ culpa qui officia deserunt mollit anim id est laborum."
     | Hello | World
     | Hello | World
     | Hello | World
-    ```        
 
 See the &ref(longtable).
 
