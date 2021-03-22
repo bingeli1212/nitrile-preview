@@ -112,10 +112,6 @@ not recommended and may result in distorted picture.
 The 'origin' command sets the following parameters for the current
 drawing environment.
 
-+ set scale <number>
-
-  Set a scaling value for the entire viewport.
-
 + origin up:2
 + origin down:2
 + origin left:2
@@ -124,6 +120,9 @@ drawing environment.
 + origin y:2
 + origin X:2
 + origin Y:2
++ origin sx:2.5
++ origin sy:2.5
++ origin s:2.5
 + origin at:&a
 + origin mark:a
 + origin reset
@@ -145,17 +144,38 @@ drawing environment.
   If it starts with "Y:", then what follows is to be interpreted as
   expressing a number that is "x" number of unit distances away from the top of the
   viewport.
+
+  If it is "sx:2.5" then it sets the scaling factor in the horizontal direction 
+  to be 2.5. 
+
+  If it is "sy:2.5" then it sets the scaling factor in the vertical direction 
+  to be 2.5. 
   
-  If it starts with "at:", then what follows will be interpreted as expressing something
-  that describes a point that the origin will be set to, such as "at:&a", where
-  'a' is a valid path with at least one point.
+  If it is "s:2.5" then it sets the scaling factor in the horizontal and
+  vertical direction to be 2.5. 
+  
+  If it is "at:&a" then the offset will be set to a point coincides with the first
+  point of that path.
 
-  If it starts with "mark:" then it expects a string that would be the name of a 
-  path such that the current origin x/y will be saved as the only point 
-  of this path, overwriting all existing entries if this is an existing path.
+  If it is "at:&a_0" then the offset will be set to a point coincides with the first
+  point of that path.
 
-  If it starts with "reset" then all existing values will be set to its default
-  values.
+  If it is "at:&a_1" then the offset will be set to a point coincides with the second
+  point of that path.
+
+  If it is "at:&a_2" then the offset will be set to a point coincides with the third
+  point of that path.
+
+  If it is "at:&a_3" then the offset will be set to a point coincides with the forth
+  point of that path.
+
+  If it is "mark:a" then it creates a new path variable named 'a' such that it
+  contains a single point that coincides with the current settings of the
+  new origin.  If this path variable already exists it will be overwritten.
+
+  If it starts with "reset" then the current origin will be set to (0,0) and the 
+  scaling factors will be reset to 1 in both horizontal and vertical directions.
+
 
 
 # The 'id' command
@@ -2581,7 +2601,7 @@ darker.
 
 Following are Non-action commands:
 
-    var
+    let
     for
     viewport
     config
