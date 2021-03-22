@@ -2088,7 +2088,17 @@ the effect of clipping:
     \end{tikzpicture}
 
 
+# Subfigures
 
+    \begin{figure}[ht]
+    \centering
+    \caption{ GIMP Logos. }
+    \label{a}
+    \subfigure[\small {One}]{\includegraphics[keepaspectratio,width=3.000cm]{image-gimp.jpg}}
+    \subfigure[\small {Two}]{\includegraphics[keepaspectratio,width=3.000cm]{image-gimp.jpg}}
+    \\
+    \subfigure[\small {Three}]{\includegraphics[keepaspectratio,width=3.000cm]{image-gimp.jpg}}
+    \end{figure}
 
 
 
