@@ -8,7 +8,7 @@ title: test-figure.md
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
-@ figure{label:a}
+@figure{label:a}
   GIMP Logos.
 
   &img({width:3cm}image-gimp.jpg) One 
