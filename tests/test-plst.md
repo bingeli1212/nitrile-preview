@@ -1,43 +1,58 @@
 
-1. First day   
 
-   This is the day that
-   I die.
+# HL Example
 
-   ```
-   Task 1
-   Task 2 
-   Task 3
-   ```
+<> Apple
 
-   ~~~
-   Once upon a time, there was
-     a prince living in a castle, and then, 
-     and then, and then ... the story ends.
-   ~~~
+   Example 1
 
-   This is the day that
-   I die.
+   <> Red Apple
 
-   ~~~
-   Wind is gone,
-   Rain is fading,
-   Warmth is coming
-   ~~~
+   <> Green Apple
 
-   ~~~
-   > Apple   | 100     
-     Pear    | 10    
-     Banana  | 123   
-   ~~~
+<> Pear
 
-   ~~~
-   - More stuff  
-   - More stuff  
-   ~~~
 
-2. Second day
+# DL Example
 
-3. Third day
++ Apple
+
+   Example 1
+
+   + Red Apple
+
+   + Green Apple
+
++ Pear
+
+
+# OL Example
+
+* Apple
+
+   Example 1
+
+   * Red Apple
+
+   * Green Apple
+
+* Pear
+
+
+# UL Example
+
+- Apple
+
+   Example 1
+
+   - Red Apple
+
+   - Green Apple
+
+- Pear
+
+
+
+
 
 
