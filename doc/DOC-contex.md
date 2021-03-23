@@ -1187,7 +1187,16 @@ are center aligned.
     \externalfigure[cow][width=2cm]
     \stopalignment
 
+# Add a left margin
 
+To add a left margin to an environment, such as "startlines/stoplines" , place 
+this environment between "startitemize/stopitemize".
+
+    \startitemize
+    \startlines
+    ...
+    \stoplines
+    \stopitemize
 
 
 

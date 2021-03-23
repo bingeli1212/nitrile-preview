@@ -677,8 +677,11 @@ Following are styles recognized by NITRILE:
   directions.  The color of the drop shadow and opacity can be controlled by 
   setting the 'shadowcolor' and 'shadowopacity' property to a different value.
 
++ id:1
++ id:lines
 
-
+  Set the ID. This is currently utilized by the SAMP block to set the default
+  ID if it is not specifically set.
 
 
 
