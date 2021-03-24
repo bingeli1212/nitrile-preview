@@ -1003,7 +1003,7 @@
     "vee"                    : { "html": "&#x2228;"       , "tex":  "\\vee"                                       , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2228 LOGICAL OR"           },
     "wedge"                  : { "html": "&#x2227;"       , "tex":  "\\wedge"                                     , "width": 7  ,  "op": 1,  "usepackage":""         ,"comment":"U+2227 LOGICAL AND"           },
                   
-    "sdot"                   : { "html": "&#x22C5;"       , "tex":  "\\cdot"                                      , "width": 3  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C5 DOT OPERATOR"          },
+    "sdot"                   : { "html": "&#x22C5;"       , "tex":  "\\cdot"                                      , "width": 5  ,  "op": 1,  "usepackage":""         ,"comment":"U+22C5 DOT OPERATOR"          },
     "vellip"                 : { "html": "&#x22EE;"       , "tex":  "\\vdots"                                     , "width": 6.5,  "op": 1,  "usepackage":""         ,"comment":"U+22EE VERTICAL ELLIPSIS"           },
     "hellip"                 : { "html": "&#x2026;"       , "tex":  "\\hdots","cex":"\\dots"                      , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+2026 HORIZONTAL ELLIPSIS"           },
     "ctdot"                  : { "html": "&#x22EF;"       , "tex":  "\\dots","cex":"0x22EF"                       , "width": 10 ,  "op": 1,  "usepackage":""         ,"comment":"U+22EF MIDLINE HORIZONTAL ELLIPSIS"    },
