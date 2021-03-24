@@ -25,6 +25,9 @@ title: CONTEXT translation
   command. Note that the \dontleavehmode command will cause an extra blank vertical
   space if placed in front of some commands, thus its use has to be judicious.
 
+- Current the "linuxlibertine" does not yet support circled digit U+2460.
+
+
 
 # The Font size problem
 
