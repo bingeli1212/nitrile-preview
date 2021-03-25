@@ -1631,26 +1631,6 @@ built-in scalar function such as 'sin()', 'exp()', etc.
 
 
 
-# Accessing an x/y component of a path variable
-
-For a scalar expression, it is provision to access the x/y component
-of a path variable. In the following example the variable 'mx' will be
-assigned the sum of adding the "x" components of the first two points
-in path variable 'pts', which will be "1 + 3 = 4".
-
-    path pts = (1,2) (3,4)
-    let mx = &pts_0.x + &pts_1.x
-    label.ctr (\mx,0)
-
-Following is another example of adding the two "y" components of the
-first two points and assign the result to 'my'.
-
-    path pts = (1,2) (3,4)
-    let my = &pts_0.y + &pts_1.y
-    label.ctr (0,\my)
-
-
-
 # Environment variables
 
 Environment variables are symbols that holds a number. It can be used in places
@@ -1760,6 +1740,26 @@ translation.
 
 Note that if a scalar expression returns something that cannot be interpreted
 as a valid number, a string such as "Infinity" or "NaN" might be returned.
+
+It is also possible to extract the x/y component of a path point.
+In the following example the variable 'mx' will be
+assigned the sum of adding the "x" components of the first two points
+in path variable 'pts', which will be "1 + 3 = 4".
+
+    path pts = (1,2) (3,4)
+    let mx = &pts_0.x + &pts_1.x
+    label.ctr (\mx,0)
+
+Following is another example of adding the two "y" components of the
+first two points and assign the result to 'my'.
+
+    path pts = (1,2) (3,4)
+    let my = &pts_0.y + &pts_1.y
+    label.ctr (0,\my)
+
+
+
+
 
 
 
