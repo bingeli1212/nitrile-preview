@@ -2610,6 +2610,7 @@ darker.
 
 Following are Non-action commands:
 
+    var
     let
     for
     viewport
@@ -2628,6 +2629,40 @@ Following are Non-action commands:
 Non-action commands cannot be recorded and played back. However,
 they can be saved and later inserted into the program by the
 "source" command.
+
+
+
+# The 'var' command
+
+The 'var' command would define a variable that is capable of holding a 
+complex number. The basic syntax of using a 'var' command is similar to
+that of a 'let' command in that a variable name (must conform to the
+rule of a valid variable name) is specified followed by an equal sign
+and then an arithmetic expression. 
+
+    var a = 1 + 2
+  
+This variable 'a' can then be used inside another expression 
+directly.
+
+    var b = 3 * a
+
+Unlike 'let', which defines a environment variable that holds a real number,
+variables such as 'a' and 'b' above can hold a complex number. The imaginary
+part of a complex number is to be expressed by the constant 'I'. For instance,
+variable 'a' is to hold a value that is '1+2i' and 'b' the '3+6i'.
+
+    var a = 1 + 2*I
+    var b = 3 * a
+
+Note that it is perfectly legal for 'I' to also appear in an expression that
+is after the equal sign of a 'let' command, except that only the "real" part
+of the imaginary number that is the result of that expression will be
+extracted and assigned to the variable. In the example below the environment
+variable 'b' will be assigned a value is the real number of 3.
+
+    var a = 1 + 2*I
+    let b = 3 * a
 
 
 
