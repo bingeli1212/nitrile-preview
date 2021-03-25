@@ -4,100 +4,118 @@ title: Complex.js - ℂ in JavaScript
 
 Complex.js is a well tested JavaScript library to work with complex number
 arithmetic in JavaScript. It implements every elementary complex number
-manipulation function and the API is intentionally similar to Fraction.js.
-Furthermore, it's the basis of Polynomial.js and Math.js.
+manipulation function and the API is intentionally similar to ``Fraction.js``.
+Furthermore, it's the basis of ``Polynomial.js`` and ``Math.js``.
+
+This version has been modified so the following document is a modification
+of the original README file. The main change is that to create a complex
+number object we will have to use the ``Complex.create()`` function
+instead of calling ``new Complex()`` as was the case for the original 
+program.
 
 # Examples
 
-    let Complex = require('complex.js');
-    let c = new Complex("99.3+8i");
+    let {Complex} = require('nitrile-preview-complex.js');
+    let c = Complex.create("99.3+8i");
     c.mul({re: 3, im: 9}).div(4.9).sub(3, 2);
 
 A classical use case for complex numbers is solving quadratic equations `ax² +
 bx + c = 0` for all `a, b, c ∈ ℝ`:
 
     function quadraticRoot(a, b, c) {
-      let sqrt = Complex(b * b - 4 * a * c).sqrt()
-      let x1 = Complex(-b).add(sqrt).div(2 * a)
-      let x2 = Complex(-b).sub(sqrt).div(2 * a)
+      let sqrt = Complex.create(b * b - 4 * a * c).sqrt()
+      let x1 = Complex.create(-b).add(sqrt).div(2 * a)
+      let x2 = Complex.create(-b).sub(sqrt).div(2 * a)
       return {x1, x2}
     }
     // quadraticRoot(1, 4, 5) -> -2 ± i
 
-# Parser
+# The 'Complex.create' function
 
-Any function (see below) as well as the constructor of the *Complex* class
-parses its input like this.
+The 'Complex.create' function would parse a string, an object, a float,
+or two floats. If passed in an object, the object could be expected to
+contain different members, and they could be one of the following
+variants.
 
-You can pass either Objects, Doubles or Strings.
+    var a = Complex.create({re: real, im: imaginary});
+    var a = Complex.create({arg: angle, abs: radius});
+    var a = Complex.create({phi: angle, r: radius});
 
-# Objects
+If passed an array then it should be an arry of two numbers:
 
-    new Complex({re: real, im: imaginary});
-    new Complex({arg: angle, abs: radius});
-    new Complex({phi: angle, r: radius});
-    new Complex([real, imaginary]); // Vector/Array syntax
+    var a = Complex.create([real, imaginary]); // Vector/Array syntax
 
-If there are other attributes on the passed object, they're not getting
-preserved and have to be merged manually.
+If passed a single number, this number is treated as the real component
+of the complex number.
 
-# Doubles
+    var a = Complex.create(55.4);
 
-    new Complex(55.4);
+If passed a string, then it will scanned to see if it contains a imaginary
+part. Following are valid inputs.
 
-# Strings
+    var a = Complex.create("123.45");
+    var a = Complex.create("15+3i");
+    var a = Complex.create("i");
 
-    new Complex("123.45");
-    new Complex("15+3i");
-    new Complex("i");
+If passed two arguments, then each of them is expected to be the real
+and imaginary component of the complex number.
 
-# Two arguments
-
-    new Complex(3, 2); // 3+2i
+    var a = Complex.create(3, 2); // 3+2i
 
 # Attributes
 
-Every complex number object exposes its real and imaginary part as attribute `re` and `im`:
+For a returned object of a ``Complex.create`` function, it should have real and
+imaginary part as attribute `re` and `im`. This allows you to print each component
+such as follows.
 
-    let c = new Complex(3, 2);
+    let c = Complex.create(3, 2);
     console.log("Real part:", c.re); // 3
     console.log("Imaginary part:", c.im); // 2
 
 # Functions
 
-+ Complex sign()
++ Complex this.sign()
 
   Returns the complex sign, defined as the complex number normalized by it's absolute value
 
-+ Complex add(n)
++ Complex this.add(n)
 
   Adds another complex number
 
-+ Complex sub(n)
++ Complex this.sub(n)
 
   Subtracts another complex number
 
-+ Complex mul(n)
++ Complex this.mul(n)
 
   Multiplies the number with another complex number
 
-+ Complex div(n)
++ Complex this.div(n)
 
   Divides the number by another complex number
 
-+ Complex pow(exp)
++ Complex this.pow(exp)
 
-  Returns the number raised to the complex exponent (Note: `Complex.ZERO.pow(0) = Complex.ONE` by convention)
+  Returns the number raised to the complex exponent (Note: `Complex.ZERO.pow(0)
+  = Complex.ONE` by convention)
 
-+ Complex sqrt()
++ Complex this.sqrt()
 
   Returns the complex square root of the number
 
-+ Complex exp(n)
++ Complex this.exp()
 
-  Returns `e^n` with complex exponent `n`.
+  Returns `e^n` with complex exponent `n`. Following is how to show
+  the Euler's identity formula.
 
-+ Complex log()
+  ```verbatim
+  > var a = Complex.create(0,Math.PI)
+  undefined
+  > a.exp()
+  { re: -1, im: 1.2246467991473532e-16 }
+  ```
+
++ Complex this.log()
 
   Returns the natural logarithm (base `E`) of the actual complex number
 
@@ -107,71 +125,72 @@ Every complex number object exposes its real and imaginary part as attribute `re
   z.log().div(Math.log(base))
   ```
 
-+ double abs()
++ double this.abs()
 
   Calculates the magnitude of the complex number
 
-+ double arg()
++ double this.arg()
 
   Calculates the angle of the complex number
 
-+ Complex inverse()
++ Complex this.inverse()
 
   Calculates the multiplicative inverse of the complex number (1 / z)
 
-+ Complex conjugate()
++ Complex this.conjugate()
 
   Calculates the conjugate of the complex number (multiplies the imaginary part with -1)
 
-+ Complex neg()
++ Complex this.neg()
 
   Negates the number (multiplies both the real and imaginary part with -1) in order to get the additive inverse
 
-+ Complex floor([places=0])
++ Complex this.floor([places=0])
 
   Floors the complex number parts towards zero
 
-+ Complex ceil([places=0])
++ Complex this.ceil([places=0])
 
   Ceils the complex number parts off zero
 
-+ Complex round([places=0])
++ Complex this.round([places=0])
 
   Rounds the complex number parts
 
-+ boolean equals(n)
++ boolean this.equals(n)
 
   Checks if both numbers are exactly the same, if both numbers are infinite they
   are considered **not** equal.
 
-+ boolean isNaN()
++ boolean this.isNaN()
 
   Checks if the given number is not a number
 
-+ boolean isFinite()
++ boolean this.isFinite()
 
   Checks if the given number is finite
 
-+ Complex clone()
++ Complex this.clone()
 
-  Returns a new Complex instance with the same real and imaginary properties
+  Returns a new Complex object instance with the same real and imaginary
+  properties
 
-+ Array toVector()
++ Array this.toVector()
 
   Returns a Vector of the actual complex number with two components
 
-+ String toString()
++ String this.toString()
 
   Returns a string representation of the actual number. As of v1.9.0 the output is a bit more human readable
 
   ```verbatim   
-  new Complex(1, 2).toString(); // 1 + 2i
-  new Complex(0, 1).toString(); // i
-  new Complex(9, 0).toString(); // 9
-  new Complex(1, 1).toString(); // 1 + i
+  Complex.create(1, 2).toString(); // 1 + 2i
+  Complex.create(0, 1).toString(); // i
+  Complex.create(9, 0).toString(); // 9
+  Complex.create(1, 1).toString(); // 1 + i
   ```
 
-+ double valueOf()
++ double this.valueOf()
   
   Returns the real part of the number if imaginary part is zero. Otherwise `null`
 
@@ -199,8 +218,8 @@ overview of basic operations and how to implement them with complex.js:
 ## New vector
 
   ```verbatim
-  let v1 = new Complex(1, 0);
-  let v2 = new Complex(1, 1);
+  let v1 = Complex.create(1, 0);
+  let v2 = Complex.create(1, 1);
   ```
 
 ## Scale vector
@@ -242,6 +261,9 @@ overview of basic operations and how to implement them with complex.js:
 
 # Constants
 
+Following are built-in constants that are either an instance of a Complex
+object instance or a number itself. These constants can be used directly.
+
 + Complex.ZERO
 
   A complex zero value (south pole on the Riemann Sphere)
@@ -260,7 +282,12 @@ overview of basic operations and how to implement them with complex.js:
 
 + Complex.I
 
-  An imaginary number i instance
+  An imaginary number i instance. Following is an example of returning ``e^i``.
+
+  ```verbatim
+  var a = Complex.I.exp();
+  console.log(a.toString());
+  ```
 
 + Complex.PI
 
@@ -268,11 +295,19 @@ overview of basic operations and how to implement them with complex.js:
 
 + Complex.E
 
-  A complex euler number instance
+  A complex euler number instance. Following is another way of computing ``e^i``.
+
+  ```verbatim
+  var a = Complex.E.pow(Complex.I)
+  console.log(a.toString());
+  ```
 
 + Complex.EPSILON
 
-  A small epsilon value used for `equals()` comparison in order to circumvent double imprecision.
+  This is a number, that represents the infinitesimal amount that was being
+  used internally by the Complex class when it checks for equality of certain
+  quantities, such as during calls to `equals()`, in order to circumvent double
+  imprecision.
 
 
 
