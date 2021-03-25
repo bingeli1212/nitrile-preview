@@ -1609,8 +1609,16 @@ iteration will be an integer 0, and the second one 1, and so on.
 
 # The 'fn' command
 
-The 'fn' command serves to create a user defined function that can be used
-elsewhere. Currently it is only utilized by 'cartesian-yplot' and
+The 'fn' command serves to create a user defined arithmetic function.
+In the following example a new function 'f' is defined such that
+referencing it as 'f(4)' is equivalent to evaluating an expression that is
+'1 + log2(4)'. As a result, the environment variable 'a' is to
+hold a value of 3 after the command finishes.
+
+    fn f(x) = 1 + log2(x)
+    let a = f(4)
+
+Currently it is only utilized by 'cartesian-yplot' and
 'cartesian-yplot' commands.
 
     fn P(x) = pow(x,2)
@@ -2663,6 +2671,31 @@ variable 'b' will be assigned a value is the real number of 3.
 
     var a = 1 + 2*I
     let b = 3 * a
+
+Another thing that has to keep in mind that a variable defined by a 'var' command
+remains in effect for as long as the program goes. 
+
+If a function defined by a 'fn' command references a variable, this variable does not
+have to exist by the time the 'fn' command is run. However, it has to exist when the
+function is "called". Thus, following is valid.
+
+    fn f(x) = x + a
+    var a = 3
+    var b = f(4)
+
+The value of 'b' will be 7, rather than NaN, because when function 'f' is called 
+inside an expression for initializing the value for 'b', variable 'a' has already
+been defined. 
+
+Thus, in a sense, the 'var' command is to define a "global" variable. This variable
+exists before any 'fn' function is called, and will persist after. However, if a 'fn' function
+has an argument that is the same name as a 'var' variable, then this variable will
+be treated as the name of the argument. For instance, in the following example 'b'
+will be assigned a value of 1, not 3.
+
+    fn f(x) = x
+    var x = 3
+    var b = f(1)
 
 
 
