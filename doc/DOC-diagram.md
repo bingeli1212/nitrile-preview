@@ -2849,10 +2849,53 @@ The previous command sets up a Argand plane such that its center is
 located inside the viewport at the location of (5,5). From that
 location, each additional half the grid distance in both horizontal
 and vertical direction corresponds to one grid distance inside the
-Argand plane. To show a complex number, the 'argand-dot' command
-can be used, in which case a single complex number is to be passed to it.
+Argand plane. 
 
-    argand-dot (1+2*I) (2+1*I)
+The next four commands shown below in an example are designed to draw
+x-axis and y-axis, as well as ticks on either one of the axies,
+similar to the similar commands within a 'cartesian' command.
+
+    argand-xaxis -11 11
+    argand-yaxis -7 7
+    argand-xtick -5 -4 -3 -2 -1 1 2 3 4 5
+    argand-ytick -5 -4 -3 -2 -1 1 2 3 4 5
+
+To show a complex number within a dot, the 'argand-dot' command can be
+used. The command line for this command expectes a list of complex numbers,
+which can be specified using either literal syntax, such as a number placed 
+inside a set of parentheses, or a 'var' variable, such as 'a'
+in the following example.
+
+    var a = (2+2*I)
+    argand-dot (1+2*I) (2+1*I) a
+  
+A dot will be drawn in that location where the complex number is expected
+to be within that plane. The size of the dot is controlled by the "dot:"
+attribute of the configuration parameters. To place label next to the dot
+the 'argand-label' command can be used. 
+
+    argand-label.urt "1+2i" (1+2*I) 
+
+By default, the label's location is at the upper-right-hand corner
+of the dot. However, it can be changed by specifying an alignment 
+option to the command such as ".urt", ".ctr", ".lft", etc. If the label text
+is specfied it is used. But the latel text is omitted, the label text
+is automatically constructed from the complex number itself.
+
+    argand-label.urt (1+2*I)
+
+The font size, coloring, and appearance can be controlled by the 
+"fontsize", "fontfamily", "fontstyle", "fontcolor" attributes
+of the configuration settings. 
+
+The other common illustration of showing a complex nubmer is by drawing
+an arrow that originates from the origin and lands on top of the point,
+then the 'argand-arrow' command can be used for this purpose. This command
+expects at least two points, the first one the starting point of the arrow
+and the second one the point where the arrow ends. The following example
+would have drawn an arrow from the origin to "1+2j".
+
+    argand-arrow 0 (1+2*I)
 
 
 
