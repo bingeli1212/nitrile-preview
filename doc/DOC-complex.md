@@ -181,13 +181,20 @@ such as follows.
 
 + String this.toString()
 
-  Returns a string representation of the actual number. As of v1.9.0 the output is a bit more human readable
+  Returns a string representation of the actual number. As of v1.9.0 the output is a bit more human readable.
+
+  This function has since been modified from its original form such that its
+  output will have a parentheses around it if there is an imaginary part to it.
+  In addition the white space before and the after the plus-sign or minus-sign
+  are removed to make it look tight. This changes is to make it so that
+  this output is consistent with how complex numbers appear inside
+  a command line.
 
   ```verbatim   
-  Complex.create(1, 2).toString(); // 1 + 2i
-  Complex.create(0, 1).toString(); // i
+  Complex.create(1, 2).toString(); // (1+2i)
+  Complex.create(0, 1).toString(); // (i)
   Complex.create(9, 0).toString(); // 9
-  Complex.create(1, 1).toString(); // 1 + i
+  Complex.create(1, 1).toString(); // (1+i)
   ```
 
 + double this.valueOf()
