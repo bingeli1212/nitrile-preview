@@ -1273,7 +1273,7 @@ command that includes many sub-commands. All subcommands must follow
 the word 'cartesian' after a dot symbol. The subcommand itself can
 also have its own option, such as 'cartesian-label.rt'.
 
-The ``setup`` command would set up a Cartesian coordate to be used. The
+The ``cartesian-setup`` command would set up a Cartesian coordate to be used. The
 first two arguments defines the low left hand corner where the origin
 of the cartesian coordinates will appear inside the Diagram. It is
 specified in grid coordintes. For example, if they are passed as 2 and
@@ -1610,32 +1610,38 @@ iteration will be an integer 0, and the second one 1, and so on.
 # The 'fn' command
 
 The 'fn' command serves to create a user defined arithmetic function.
-In the following example a new function 'f' is defined such that
-referencing it as 'f(4)' is equivalent to evaluating an expression that is
-'1 + log2(4)'. As a result, the environment variable 'a' is to
-hold a value of 3 after the command finishes.
+This command starts with letter 'fn', followed immediately by a valid
+function names, an equal sign, and an arithmetic expression.
+
+In the following example a function named 'f' is being defined with a
+single argument and an expression that evaluates an arithmetic
+expression with 'x' as its argument. After this command, referencing
+this function with an argument such as "f(4)" inside any other
+arithmetic expression is equivalent to evaluating an expression that
+is "1 + log2(4)". In the following example, variable 'a' is being
+assigned a value of 3 at the end of that command.
 
     fn f(x) = 1 + log2(x)
     let a = f(4)
 
-Currently it is only utilized by 'cartesian-yplot' and
-'cartesian-yplot' commands.
+A function created by a 'fn' command can be thought of as a user-defined
+function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
+'floor', 'ceil', 'pow', etc. Some commands, such as 'cartesian-yplot', allows
+a function name string to be passed in that will be used for plotting a group
+of x/y coordinates, such as the one shown by the following example.
 
     fn P(x) = pow(x,2)
     cartesian-yplot {fn:P} 1 2 3
 
-This operation must start with a function name, which must follow the pattern
-of starting with an alpha letter followed by additional alpha or numerical
-letters. Thus, the valid function names are "a", "aa", "a0", etc, while "0",
-"0a", "0ab" are not valid function names.
 
-The function is to be followed immediately by a set of parentheses, within
-which is a list of arguments, separated by comma, followed by an equal sign,
-and then an arithmetic expression. So far the only command would make use of a
-function is the 'cartesian-xplot' and 'cartesian-yplot'.
 
-Note that the arithmetic expression can contain other funtions, including
-built-in scalar function such as 'sin()', 'exp()', etc.
+# Valid function and variable names
+
+A valid function or variable name must start with an upper case letter
+or lower case letter, and followed by additional letters or numbers.
+
+For instance, "a", "aa", "a0" are valid
+function names, while "0", "0a", "0ab" are not valid function names.
 
 
 
@@ -2822,6 +2828,31 @@ Following are built-in path that are readily available.
   This would have returned a point that coincides with the latest path point
   that was used to construct a path.
 
+
+
+# The 'argand' command
+
+The 'argand' command is designed for visually showing one or more
+complex numbers inside a complex plane, sometime known as an Argand
+plane. 
+
+
+This command has a similar feel to 'cartesian' command, that is
+designed to plot one or more two-dimensional points each of which has
+two x/y coordinates. It is also a compound command with many
+subcommands. For instance, 'argand-setup' would designate an area
+inside a diagram for showing the plots for the complex numbers.
+
+    argand-setup 5 5 0.5
+
+The previous command sets up a Argand plane such that its center is
+located inside the viewport at the location of (5,5). From that
+location, each additional half the grid distance in both horizontal
+and vertical direction corresponds to one grid distance inside the
+Argand plane. To show a complex number, the 'argand-dot' command
+can be used, in which case a single complex number is to be passed to it.
+
+    argand-dot (1+2*I) (2+1*I)
 
 
 
