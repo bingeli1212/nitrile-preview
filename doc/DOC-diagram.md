@@ -2724,15 +2724,29 @@ element of the array.
     array a = (1+2*I) (2+1*I) 2 (I) 
     argand-dot &a_1
     
-Note that for an array or a list of numbers of Complex number nature, the range-expression
-is always possible to express a range of complex numbers, rather having to list them
-manually one at a time. In the following example a total of 12 numbers will be added to 
-an array named 'a', where the first number is 0, and the last number (1+2*I), and the
-rest 10 numbers evenly distributed between the first and last number.
+The spread-expression is always possible to express a list of complex
+numbers scattered over a range. In the following example a total of 12
+numbers will be added to an array named 'a', where the first number is
+0, and the last number (1+2*I), and the rest 10 numbers scattered
+evenly between these two numbers.
 
-    array a = [0|10|1+2*I]
+    array a = 0!10!1+2*I
     argand-dot &a
     
+The range-expression could also be used to add a range numbers. In the following
+example the array of 'a' would have had four numbers that are 1, 4, 7, 10, as
+the range-expression below expresses that the first number being 1, the second
+number being 4, and the third number having the same increment between the first
+and the second. This were to continue until it goes over the last number,
+in which case the number is to be discarded and the whole process stop.
+
+    array a = 1~4~10
+    argand-dot &a
+
+Note that due the constrains of the computing resources the
+spread-expression and range-expression has each imposed a hard limit
+of 2048 which is the maximum numbers the list can hold.
+
 
 
 # The "group" command
