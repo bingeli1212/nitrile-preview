@@ -186,9 +186,9 @@ Following are styles recognized by NITRILE:
   - Arrow head at both start and end: 0x1 + 0x2 = 0x3
   ```
 
-+ nogrid:1
++ gridlines:none
 
-  Set to a 1 to disable the showing of grid. This option is checked by the 
+  Set to a 'none' to disable the showing of grid. This option is checked by the 
   diagram-bundle, which by default shows a grid as its background. Setting
   this option to 1 will disable it.
 
