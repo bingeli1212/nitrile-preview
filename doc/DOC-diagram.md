@@ -2624,6 +2624,7 @@ darker.
 
 Following are Non-action commands:
 
+    array
     var
     let
     for
@@ -2702,6 +2703,16 @@ will be assigned a value of 1, not 3.
     fn f(x) = x
     var x = 3
     var b = f(1)
+
+
+
+# The 'array' command
+
+The 'array' command is to create an array of Complex numbers. The array created
+can later appear inside a command line that expects a list of Complex numbers.
+
+    array a = (1+2*I) (2+1*I) 2 (I) 
+    argand-dot &a
 
 
 
@@ -2869,6 +2880,12 @@ in the following example.
     var a = (2+2*I)
     argand-dot (1+2*I) (2+1*I) a
   
+The 'argand-dot' command also recognizes an array and will try to plot
+each number of the array.
+
+    array arr = (1+2*I) (2+1*I) a
+    argand-dot &arr
+
 A dot will be drawn in that location where the complex number is expected
 to be within that plane. The size of the dot is controlled by the "dot:"
 attribute of the configuration parameters. To place label next to the dot
