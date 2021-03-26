@@ -2728,9 +2728,9 @@ Note that for an array or a list of numbers of Complex number nature, the range-
 is always possible to express a range of complex numbers, rather having to list them
 manually one at a time. In the following example a total of 12 numbers will be added to 
 an array named 'a', where the first number is 0, and the last number (1+2*I), and the
-rest 10 numbers evenly distributed between the first and last numbers.
+rest 10 numbers evenly distributed between the first and last number.
 
-    array a = [0:10:1+2*I]
+    array a = [0|10|1+2*I]
     argand-dot &a
     
 
