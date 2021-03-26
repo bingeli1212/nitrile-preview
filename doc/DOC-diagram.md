@@ -2714,6 +2714,25 @@ can later appear inside a command line that expects a list of Complex numbers.
     array a = (1+2*I) (2+1*I) 2 (I) 
     argand-dot &a
 
+Like a path, to reference points inside an array an ampersand symbol must
+be added before the symbol name that as assigned to the array. This is 
+to distinguish it from mistakenly treated as a 'var' variable. It is also
+possible to access an individual array element using the syntax of underscore.
+Following example would have plotted a single point that is the second
+element of the array.
+
+    array a = (1+2*I) (2+1*I) 2 (I) 
+    argand-dot &a_1
+    
+Note that for an array or a list of numbers of Complex number nature, the range-expression
+is always possible to express a range of complex numbers, rather having to list them
+manually one at a time. In the following example a total of 12 numbers will be added to 
+an array named 'a', where the first number is 0, and the last number (1+2*I), and the
+rest 10 numbers evenly distributed between the first and last numbers.
+
+    array a = [0:10:1+2*I]
+    argand-dot &a
+    
 
 
 # The "group" command
