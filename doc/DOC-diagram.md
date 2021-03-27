@@ -2967,8 +2967,20 @@ by a pair of quotation-marks, and additional arguments.  Whatever inside the quo
 are the considered the template expressing how a string is to be built.  Currently,
 only the following formatting groups are recognized.
 
++ %
+
+  This formatting group is to output the percent-sign itself
+
+  ```verbatim
+  format s := "%0.2d%%" 0.234567 
+
 + d 
 
-  This formatting group is to treat each arguments as a number.
+  This formatting group is to treat each arguments as a number. The integer after the period
+  inside the formatting group express the decimal places to be used for this number.
 
+  ```verbatim
+  format s := "%.2d" 1.23456789
+  ```
 
++ 
