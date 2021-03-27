@@ -2624,6 +2624,7 @@ darker.
 
 Following are Non-action commands:
 
+    format
     array
     var
     let
@@ -2949,5 +2950,25 @@ would have drawn an arrow from the origin to "1+2j".
 
 
 
+# The 'format' command
 
-  
+The 'format' command is designed to create an environment variable that holds
+a string which has been built according to some user-defined templates.
+In the following example the environment variable would have been modified to
+hold a string that is "1.06".
+
+    let num := pow(2,1/12)
+    format num := "%.2d" \num
+
+This command follows a convension that is similar to the 'let' command. The first word
+after the 'format' keyword is to be interpreted as the name of an environment variable,
+which should then be followed by a string that is ":=", and then a string that is quoted
+by a pair of quotation-marks, and additional arguments.  Whatever inside the quotation-marks
+are the considered the template expressing how a string is to be built.  Currently,
+only the following formatting groups are recognized.
+
++ d 
+
+  This formatting group is to treat each arguments as a number.
+
+
