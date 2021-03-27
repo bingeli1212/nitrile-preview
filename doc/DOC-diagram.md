@@ -1524,7 +1524,7 @@ A for-loop is provided by Diagram such that a number of commands
 can be repetitively executed, and each iteration these commands would
 have been run under a different set of arguments. The basic syntax is
 
-    for a=[1,2,3,4]
+    for a:=[1 2 3 4]
       draw (\a,\a)~(0,0)
 
 In the example, the 'draw' command will be executed exactly four
@@ -1544,7 +1544,7 @@ Following is an example of iterating over two
 loop variables: 'a' and 'b'.
 
     % Using for-loop
-    for a=[1,3] b=[2,4]
+    for a:=[1 3] b:=[2 4]
       draw (\a,\a)~(\b,\b)
 
 Following is the equivalent commands without using the for-loop.
@@ -1569,33 +1569,33 @@ for-loops. The toplevel for-loop offsers two loop variables:
 for-loop, but rather part of the toplevel for-loop.
 
     viewport 31 24
-    for a=[9,19,29] b=[0.4,0.5,0.6]
-      set refx \a
-      for c=[16,4]
-        set refy \c
+    for a:=[9 19 29] b:=[0.4 0.5 0.6]
+      origin x:\a
+      for c:=[16 4]
+        origin y:\c
         draw (0,0) [h:-6] [v:6]
         draw (0,0) [q:-6,0,-6,6]
         path P0 = (0,0)
         path P1 = (-6,0)
         path P2 = (-6,6)
         dot &P0 &P1 &P2
-        label.lrt "P_0" &P0
-        label.llft "P_1" &P1
-        label.ulft "P_2" &P2
-        path line1 = &P0 &P1
-        path line2 = &P1 &P2
-        path m0 = &midpoint{line1,\b }
-        path m1 = &midpoint{line2,\b }
+        label.lrt  "P₀" &P0
+        label.llft "P₁" &P1
+        label.ulft "P₂" &P2
+        path line1 = &P0 ~ &P1
+        path line2 = &P1 ~ &P2
+        path m0 = &midpoint{&line1,\b }
+        path m1 = &midpoint{&line2,\b }
         dot &m0 &m1
-        draw &m0 &m1
-        path line3 = &m0 &m1
+        draw &m0 ~ &m1
+        path line3 = &m0 ~ &m1
         path B = &midpoint{line3,\b }
         dot &B
-        label.bot "m_0" &m0
-        label.lft "m_1" {dx:-.1} &m1
+        label.bot "m₀" &m0
+        label.lft "m₁" {dx:-.1} &m1
         label.urt "B" &B
       label.bot "t=\b" (-3,-2)
-
+      
 Note that if a for-loop contains two or more loop variables, the loop
 will always interates to cover the longest sequence, and for a loop
 variable that has run out of numbers in its sequence, a zero will be
@@ -1909,28 +1909,26 @@ following command a total of 11 scalars will be supplied to the
 ``cartesian-yplot`` command.
 
     fn P(x) = pow(x,2)
-    cartesian-yplot {fn:P} [1:10]
+    cartesian-yplot {fn:P} 1~10
 
 A Range-expression must appears between a set of brackets, and the exact
 collection of scalars it represent depends on the synatx.
 
 When a Range-expression consists of two quantities separated by a single colon,
-such as "1:10", the first one denotes the ``base``, and the second one denotes
+such as "1~10", the first one denotes the ``base``, and the second one denotes
 the `limit`. The range of scalars this range-expression covers include all the
 numbers between the ``base`` and ``limit``, starting from the ``base``, with
 each additional number one greater than its predecessor, and with a final
 number not exceeding ``limit``. Thus, for the case of a range-expression
-"1:10", the scalars it entails are 1, 2, 3, 4, 5, 6, 7, 8, 9 and 10.
+"1~10", the scalars it entails are 1, 2, 3, 4, 5, 6, 7, 8, 9 and 10.
 
 If a Range-expression is given as a set of three quantities, separated by two
-colons, such as the case of "1:3:10", then the last quantity denotes the
+colons, such as the case of "1~4~10", then the last quantity denotes the
 ``limit``, and the middle quantity denotes the increment for each additional
-scalar after the ``base``.  Thus, in the case of "1:3:10", the scalars it
+scalar after the ``base``.  Thus, in the case of "1~4~10", the scalars it
 entails are: 1, 4, 7, 10.
 
-Otherwise, if the Range-expression expresses a quantity that are separated by
-commas, such as the case of [1,2,3,4,5,10], then it expresses the individual
-scalars each of which separated by commas.
+
 
 
 # Scalar List Construction
@@ -1940,14 +1938,16 @@ Following are additional commands showing various ways for a list of scalars to
 be constructed.
 
     cartesian-stick 10 11 20 21 
-    cartesian-xtick [1:10]
-    cartesian-xtick [1:3:10] 
-    cartesian-xtick [1:10] [20:3:30]
-    cartesian-xtick 1 (pow(1,2)) 2 (pow(2,2)) 3 (pow(3,2))
+    cartesian-xtick 1~10
+    cartesian-xtick 1~4~10 
+    cartesian-xtick 1~10 20~23~30
+    cartesian-xtick 1 pow(1,2) 2 pow(2,2) 3 pow(3,2)
     cartesian-xtick \x \y \x1 \y1 \x2 \y2            
+    cartesian-xtick 1!3!10
+    cartesian-xtick fn:exp 1 2 3 4 5 6~10
 
 Note that it is by default, a list of scalars are separated by one or more
-spaces.  However, when a range expression is encountered such as "[1:10]", then
+spaces.  However, when a range expression is encountered such as "1~10", then
 a list of scalars expressed by this range is also added to the list.
 
 It is also possible to specify an Scalar Expression such as "pow(3,2)" for
@@ -2102,10 +2102,10 @@ This feature allows for example, to repaint an existing node with a highlighted
 color and/or label.
 
     set id 0
-    for theta=[0:60:359]:
-      let r = 2
-      let x = cos(deg2rad(\theta)) * \r
-      let y = sin(deg2rad(\theta)) * \r
+    for theta:=[0~60~359]:
+      let r := 2
+      let x := cos(deg2rad(\theta)) * \r
+      let y := sin(deg2rad(\theta)) * \r
       node._ (\x,\y)
     node.0.1.2 {fillcolor:red}
 
@@ -2677,7 +2677,7 @@ extracted and assigned to the variable. In the example below the environment
 variable 'b' will be assigned a value is the real number of 3.
 
     var a = 1 + 2*I
-    let b = 3 * a
+    let b := 3 * a
 
 Another thing that has to keep in mind that a variable defined by a 'var' command
 remains in effect for as long as the program goes. 
