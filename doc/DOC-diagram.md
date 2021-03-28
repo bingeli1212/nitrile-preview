@@ -2973,14 +2973,77 @@ only the following formatting groups are recognized.
 
   ```verbatim
   format s := "%0.2d%%" 0.234567 
+  ```
+
++ f
+
+  This formatting group is to treat each arguments as a floating point
+  number. The number after the period inside the formatting group
+  express the decimal places to be used for this number.
+
+  ```verbatim
+  format s := "%.2f" 1.23456789
+  ## => "1.23"
+  ```
 
 + d 
 
-  This formatting group is to treat each arguments as a number. The integer after the period
-  inside the formatting group express the decimal places to be used for this number.
+  This formatting group would parse the argument as an integer.
 
   ```verbatim
-  format s := "%.2d" 1.23456789
+  format s := "%d" 0x10
+  ## => "16"
   ```
 
-+ 
++ x 
++ X
+
+  This formatting group is to output a hexdecimal number of the 
+  given quantity.
+
+  ```verbatim
+  format s := "%x" 15
+  ## => "f"
+  format s := "%X" 15
+  ## => "F"
+  ```
+
++ b
+
+  This formatting group is to output a binary number with one's and zero's.
+
+  ```verbatim
+  format s := "%b" 5
+  ## => "101"
+  ```
+
++ o 
+
+  This formatting group is to output an octal number.
+
+  ```verbatim
+  format s := "%o" 0xF0
+  ## => "360"
+  ```
+
++ c
+
+  This formatting group is to turn an integer to a Unicode character
+  with that given code point.
+
+  ```verbatim
+  format s := "%c" 65
+  ## => "A"
+  ```
+
++ s
+
+  This formatting group is to treat the argument simply as a string
+  with no particular assumption.
+
+  ```verbatim
+  format s := "%s-%s-%s" hello and world
+  ## => "hello-and-world"
+  ```
+
+  
