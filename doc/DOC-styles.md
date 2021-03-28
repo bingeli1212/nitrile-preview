@@ -616,10 +616,11 @@ Following are styles recognized by NITRILE:
 
   If this flags has been set then the text will be rubified.
 
-+ var:x 1 10 y 2 20 z 3 30
++ ranges:x/1/10 y/2/20 z/3/30
 
-  This value holds a list of variables and their respective start/end values.
-  This value is currently utilized by the 'animation' bundle.
+  This value holds a list of environment variables and the start/end
+  values for each one of them. This value is currently utilized by the
+  'animation' bundle.
   
 + steps:12
 
