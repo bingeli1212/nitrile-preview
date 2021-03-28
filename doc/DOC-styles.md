@@ -616,17 +616,17 @@ Following are styles recognized by NITRILE:
 
   If this flags has been set then the text will be rubified.
 
-+ ranges:x/1/10 y/2/20 z/3/30
++ range:x/1/10 y/2/20 z/3/30
 
   This value holds a list of environment variables and the start/end
   values for each one of them. This value is currently utilized by the
   'animation' bundle.
   
-+ steps:12
++ total:12
 
-  This value holds the total number steps for a variable to animate from its
-  start/end values.
-  This value is currently utilized by the 'animation' bundle.
+  This value holds the total amount. This value is currently utilized
+  by the 'animation' bundle to express the total number of animated 
+  diagrams to generate.
 
 + fillonly:1
 
