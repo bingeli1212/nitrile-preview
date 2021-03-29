@@ -2100,5 +2100,18 @@ the effect of clipping:
     \subfigure[\small {Three}]{\includegraphics[keepaspectratio,width=3.000cm]{image-gimp.jpg}}
     \end{figure}
 
+# Playing-card Suites
+
+LATEX-2e offers commands to support the symbols that shows up in the
+playing-cards: ``\clubsuit``, ``\diamondsuit``, ``\heartsuit``, and
+``\spadesuit``.  These symbols are for math mode only.
+
+
+
+
+
+
+
+
 
 
