@@ -403,28 +403,44 @@ Following are styles recognized by NITRILE:
 
   See dx-option.
 
-+ scalex:<number> 
++ scaleX:0.5
 
-  The scalex-option, scaley-option and rotate-option would work together to
-  scale an existing shape by these amount. It is current utilized by the
-  'fill', 'stroke', 'arrow', 'revarrow', and 'dblarrow' operation to place a
-  shape at a desired location.  In this case, these two parameters will
-  "shrink" or "expand" the shape in either the x-direction and/or y-direction
-  and also rotate the shape as well.
+  The scalex-option, scaley-option and rotate-option would work
+  together to scale an existing shape by these amount. It is current
+  utilized by the 'fill', 'stroke', 'arrow', 'revarrow', and
+  'dblarrow' commands when these commands are used to insert a
+  predefined shape that is described by an existing path name. In this
+  case, these two parameters will be used to "shrink" or "expand" the
+  shapes in the x-direction and/or y-direction and potentially rotate
+  the shape if the 'rotate' parameter is non-zero. 
 
-+ scaley:<number>
+  It is also currently utilized by the 'trump' command such that when
+  it is set to something other than 1, will either shrink or expand the
+  card beyond its normal size.
 
-  See scalex-option. 
++ scaleY:0.5
 
-+ rotate:<degrees>
+  See the description for 'scaleX'.
 
-  See scalex-option.
++ rotate:45
+
+  See the description for 'scaleY'.
+
+  This parameter is to describe a rotation angle in degrees, where a
+  positive number expresses the fact to rotate in a counter-clockwise
+  direction, and a negative number is for a rotation in a clockwise
+  direction.
+
+  Note: This option might work on some commands, such as draw, fill,
+  stroke, arrow, dblarrow, and revarrow. However, it does not work for
+  the 'trump' command, which would have asked that a text to be
+  rotated, which would have required a different method.
   
 + xstep:<length>
 
-  The xstep-option and ystep-option is used currently by the 'cartesian.grid'
-  to set the separation of each grid line in the x-direction.  The option value
-  is to be a number in grid unit.
+  The xstep-option and ystep-option is used currently by the
+  'cartesian.grid' to set the separation of each grid line in the
+  x-direction. The option value is to be a number in grid unit.
 
 + ystep:<length>
 
