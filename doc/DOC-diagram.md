@@ -3059,6 +3059,14 @@ command.
 
     trump-diamond-10 5 5
 
+For a standard card, the size is fixed at 5 grid unit in width and 6
+grid distance in height. For the previous command, the lower-bottom
+location of the card will be aligned with the coordinates (5,5). The
+font-size for any texts inside the card is fixed and is not
+configurable. The face of the card will always be filled with the
+color of white and is not configurable. The only visual changes that a
+user can provide is the width of the outline of the card.
+
 The second part of the command is the name for the suit. It should be
 one of the following names:
  
@@ -3067,17 +3075,24 @@ one of the following names:
      club
      spade
 
-The third part of the command is the letter for the individual card,
-is should be a integer number between 1-10, or a capital letter that
-is 'A', 'J', 'Q', or 'K'.
+The third part of the command is the letter for the individual card.
+It should be a integer between 1-10, or a capital letter that
+is either 'A', 'J', 'Q', or 'K'.
 
-The lower-bottom location of the card will be aligned with the
-coordinates (5,5). The card itself is always show at a size of 5 grid
-units wide and 6 grid units high. For diamond and heart the color red
-will be shown for all interior symbols. For club and spade, color
-black will be used. They are currently not configurable.
+For diamond and heart the color red will be shown for all interior
+symbols. For club and spade, color black will be used. These options
+are currently not configurable.
 
-The font-size for any texts inside the card is currently fixed at 11pt
-and is not configurable. The face of the card will always be filled with
-the color of white and is not configurable. The only visual changes
-that a user can provide is the width of the outline of the card. 
+However, if a different card size is desired, the width and height of
+the new card can be configured by setting the 'scaleX' and 'scaleY'
+configuration parameter. For instance, setting 'scaleX:0.5' and
+'scaleY:0.5' would have effective shrink the size of the card to 2.5
+grid distance in width, and 3 grid distance in height, or half of what
+it normally is. Note that the 'rotate' parameter will not have any
+effect on this command.  
+
+
+
+
+
+
