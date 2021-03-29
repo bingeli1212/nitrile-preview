@@ -3093,6 +3093,72 @@ effect on this command.
 
 
 
+# Copy-and-paste Buffers
+
+Copy-and-paste Buffers are internal buffers to Diagram. It saves
+buffers allowing a collection of lines in one instance of a Diagram invocation
+to be copied and later "pasted" into a location of another Diagram invocation. 
+
+Here, the term "buffer" is simply defined to be a collection of lines
+between to instances of comment lines. 
+
+When a comment line is detected inside a Diagram, the text after the percent-sign
+is scanned, and see if it fits one of the following two patterns:
+
+1. If the text fits the pattern of "(=word)" where "word" is a
+   placeholder for a string of one or more word characters, then lines
+   between this comment and the first occurence of the next comment
+   will be saved to a buffer, and the name of the buffer will be the
+   actual string denoted by "word".
+
+2. If the text fits the pattern of "(?word)" where "word" is a
+   placeholder reresenting any length of string having one or more
+   word characters, then it represents a desire to retrieve the
+   contents of a previous saved buffer for which its contents are to
+   be inserted into the current location of the source program. The
+   name of the named buffer is the string expressed by the "word".
+
+Following is an example of repeating the same block of commands inside
+another Diagram. The first Diagram has defined three buffers,
+assigning them names that are 'a', 'b', and 'c'. The second Diagram
+simply just asks that the program codes saved in buffer 'a' be pasted
+into the program at that location. The third and fourth Diagram does
+the same thing except for asking for a different buffer to be
+retrieved.
+
+    ```diagram
+    %%%(=a)
+    trump-diamond-J {scaleX:0.5,scaleY:0.5} 2  1
+    trump-heart-Q   {scaleX:0.5,scaleY:0.5} 7  1
+    trump-spade-K   {scaleX:0.5,scaleY:0.5} 12 1
+    trump-club-A    {scaleX:0.5,scaleY:0.5} 17 1
+    %%%(=b)
+    trump-diamond-10 {scaleX:0.5,scaleY:0.5} 2  5
+    trump-heart-9    {scaleX:0.5,scaleY:0.5} 7  5
+    trump-spade-8    {scaleX:0.5,scaleY:0.5} 12 5
+    trump-club-7     {scaleX:0.5,scaleY:0.5} 17 5
+    %%%(=c)
+    trump-diamond-6  {scaleX:0.5,scaleY:0.5} 2  9
+    trump-heart-5    {scaleX:0.5,scaleY:0.5} 6  9
+    trump-spade-4    {scaleX:0.5,scaleY:0.5} 10 9
+    trump-club-3     {scaleX:0.5,scaleY:0.5} 14 9
+    trump-club-2     {scaleX:0.5,scaleY:0.5} 18 9
+    ```
+
+    ```diagram
+    %%%(?a)
+    ```
+
+    ```diagram
+    %%%(?b)
+    ```
+
+    ```diagram
+    %%%(?c)
+    ```
+
+    
+
 
 
 
