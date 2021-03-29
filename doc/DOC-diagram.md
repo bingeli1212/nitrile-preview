@@ -3047,3 +3047,37 @@ only the following formatting groups are recognized.
   ```
 
   
+
+# The 'trump' command
+
+The 'trump' command is designed to show faces of a playing card. It
+has provision to show a card from 1-9, 'A', 'J', 'Q', and 'K', from
+any one of the four suits.
+
+To show a card of diamond-10 at coordinates (5,5), type the following
+command.
+
+    trump-diamond-10 5 5
+
+The second part of the command is the name for the suit. It should be
+one of the following names:
+ 
+     diamond
+     heart
+     club
+     spade
+
+The third part of the command is the letter for the individual card,
+is should be a integer number between 1-10, or a capital letter that
+is 'A', 'J', 'Q', or 'K'.
+
+The lower-bottom location of the card will be aligned with the
+coordinates (5,5). The card itself is always show at a size of 5 grid
+units wide and 6 grid units high. For diamond and heart the color red
+will be shown for all interior symbols. For club and spade, color
+black will be used. They are currently not configurable.
+
+The font-size for any texts inside the card is currently fixed at 11pt
+and is not configurable. The face of the card will always be filled with
+the color of white and is not configurable. The only visual changes
+that a user can provide is the width of the outline of the card. 
