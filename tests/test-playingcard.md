@@ -18,8 +18,9 @@ draw.spade {scaleX:10,scaleY:10,fillcolor:black} (0,0)
 ```
 ```diagram{outline,width:4cm}
 viewport 10 10
-path heart = (0.5,0.1) [c:-0.50,0.20,-0.50,0.90,0,0.70] [c:0.50,0.20,0.50,-0.50,0,-0.70] cycle
+path heart = (0.5,0.1) [c:-0.50,0.20,-0.45,0.90,0,0.65] [c:0.40,0.25,0.50,-0.45,0,-0.65] cycle
 draw.heart {scaleX:10,scaleY:10,fillcolor:red} (0,0)
+drawcontrolpoints &scale{&heart,10}
 ```
 ```diagram{outline,width:4cm}
 viewport 10 10
