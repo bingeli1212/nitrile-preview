@@ -102,6 +102,9 @@ Following is a list of other phrases that assumes the content of a math expressi
 - ``&root{...}{...}``
 - ``&overline{...}``
 - ``&overleftrightarrow{...}``
+- ``&overrightarrow{...}``
+- ``&underleftrightarrow{...}``
+- ``&underrightarrow{...}``
 
 Additional phrases might be added in the future. For each of the
 phrases above, the translation output would each have to do their best
