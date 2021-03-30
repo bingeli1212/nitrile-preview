@@ -1,17 +1,21 @@
+---
+title: test-trump.md
+---
 
-%^簡単・かんたん
 
-Variable: `a` and `b`
+# Slide 
 
-Math: ``\sqrt{2}`` and ``\sqrt{3}``
+a = &underleftrightarrow{AB}
 
-Em: The word \em{hello} is italic.
+a = &underrightarrow{AB}
 
-Uri: The word @uri{http://www.yahoo.com} is a uri.
+a = &overrightarrow{AB}
 
-Ref: The ref is @ref{tbl:one}.
+a = &overleftrightarrow{AB}
 
-Ruby: The ruby is @ruby{日本・にほん}
+a = &overline{AB}
 
-Ruby: The ruby is @ruby{簡単}
+a = &math{a &times; b}
+
+a = &frac{&root{a}{3}}{3}
 

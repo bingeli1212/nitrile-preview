@@ -105,6 +105,7 @@ Following is a list of other phrases that assumes the content of a math expressi
 - ``&overrightarrow{...}``
 - ``&underleftrightarrow{...}``
 - ``&underrightarrow{...}``
+- ``&sum{x}{0}{&infty;}``
 
 Additional phrases might be added in the future. For each of the
 phrases above, the translation output would each have to do their best
