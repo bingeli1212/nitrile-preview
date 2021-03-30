@@ -85,28 +85,60 @@ CONTEX offers a command called ``hyphenatedurl{...}`` that does the
 similar job of typesetting a potentially long URI text.
 
 
-# The 'math' phrase
+# All Math Phrases  
 
-This phrase is to treat all contents inside it as part of a math expression.
-The math expression differs from normal text expression in that all single letter
-symbols are considered variables. There are also operators such as plus-sign, minus-sign,
-and others that requires extra spacing around it. 
+These phrases are designed to treat all contents inside it as part of a math
+expression.  The math expression differs from normal text expression in that
+all single letter symbols are considered variables. There are also operators
+such as plus-sign, minus-sign, and others that requires extra spacing around
+it. 
 
 Following is a list of other phrases that assumes the content of a math expression.
 
-- ``&math{...}``
-- ``&FRAC{...}{...}``
-- ``&frac{...}{...}``
-- ``&BINOM{...}{...}``
-- ``&binom{...}{...}``
-- ``&sqrt{...}``
-- ``&root{...}{...}``
-- ``&overline{...}``
-- ``&overleftrightarrow{...}``
-- ``&overrightarrow{...}``
-- ``&underleftrightarrow{...}``
-- ``&underrightarrow{...}``
-- ``&sum{x}{0}{&infty;}``
++ ``&math{...}``
+
+
++ ``&FRAC{...}{...}``
+
+
++ ``&frac{...}{...}``
+
+
++ ``&BINOM{...}{...}``
+
+
++ ``&binom{...}{...}``
+
+
++ ``&sqrt{...}``
+
+
++ ``&root{...}{...}``
+
+
++ ``&overline{...}``
+
+
++ ``&overleftrightarrow{...}``
+
+
++ ``&overrightarrow{...}``
+
+
++ ``&underleftrightarrow{...}``
+
+
++ ``&underrightarrow{...}``
+
+
++ ``&sum{...}{...}``
+
+  This phrase would have setup a Summation symbol with a subscript and a
+  superscript.
+
+  ```verbatim
+  &sum{x=0}{&infty;} x
+  ```
 
 Additional phrases might be added in the future. For each of the
 phrases above, the translation output would each have to do their best
