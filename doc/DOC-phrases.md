@@ -101,6 +101,7 @@ Following is a list of other phrases that assumes the content of a math expressi
 - ``&sqrt{...}``
 - ``&root{...}{...}``
 - ``&overline{...}``
+- ``&overleftrightarrow{...}``
 
 Additional phrases might be added in the future. For each of the
 phrases above, the translation output would each have to do their best
