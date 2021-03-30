@@ -130,14 +130,35 @@ Following is a list of other phrases that assumes the content of a math expressi
 
 + ``&underrightarrow{...}``
 
++ ``&subsup{...}{...}{...}``
++ ``&sub{...}{...}``
++ ``&sup{...}{...}``
 
-+ ``&sum{...}{...}``
-
-  This phrase would have setup a Summation symbol with a subscript and a
-  superscript.
+  This phrase would have setup a subscription, a superscription and/or both.
+  Note that the first argument is always the base content.
 
   ```verbatim
-  &sum{x=0}{&infty;} x
+  &subsup{x}{i}{2}
+  &sub{x}{i}
+  &sup{x}{2}
+  ```
+
++ ``&sum{...}{...}{...}``
+
+  This phrase would have setup a Summation symbol with a subscript and a
+  superscript, and the contents that is the third argument.
+
+  ```verbatim
+  &sum{x=0}{&infty;}{x^2}
+  ```
+
++ ``&int{...}{...}{...}``
+
+  This phrase would have setup a Integral symbol with a subscript and a
+  superscript, and the contents that is the third argument.
+
+  ```verbatim
+  &sum{x=0}{&infty;}{x^2}
   ```
 
 Additional phrases might be added in the future. For each of the
@@ -159,6 +180,5 @@ symbols for as long as it is available as part of the current font.
 
 
 
-# 
 
 
