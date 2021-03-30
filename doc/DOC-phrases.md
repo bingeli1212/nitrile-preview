@@ -94,9 +94,12 @@ and others that requires extra spacing around it.
 
 Following is a list of other phrases that assumes the content of a math expression.
 
-- ``&FRAC{...}``
-- ``&frac{...}``
-- ``&binom{...}``
+- ``&math{...}``
+- ``&FRAC{...}{...}``
+- ``&frac{...}{...}``
+- ``&binom{...}{...}``
+- ``&sqrt{...}``
+- ``&root{...}{...}``
 
 Additional phrases might be added in the future. For each of the
 phrases above, the translation output would each have to do their best
