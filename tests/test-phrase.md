@@ -1,9 +1,14 @@
 ---
-title: test-trump.md
+title: test-phrase.md
 ---
 
+# Slide Sum
 
-# Slide 
+a = &sum{x}{0}{100}
+
+
+
+# Slide Others
 
 a = &underleftrightarrow{AB}
 
@@ -18,4 +23,14 @@ a = &overline{AB}
 a = &math{a &times; b}
 
 a = &frac{&root{a}{3}}{3}
+
+a = &binom{5}{3}
+
+
+# Slide Left-Right-Fences
+
+a = &math{\left\lparen &frac{1}{2} \right\rparen}
+
+a = &math{\left\lparen &frac{1}{2} + &frac{2}{3} \right\rparen}
+
 
