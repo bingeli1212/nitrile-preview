@@ -56,9 +56,9 @@ instance, if a figure which has been provided a label was placed
 somewhere in the document, then the 'ref' phrase would have been
 turned into a something that would point to this figure.
 
-    ~~~figure{label:fig1}
-    ...
-    ~~~
+    @ figure{label:fig1}
+      ...
+      ...
 
     Please see figure &ref{fig1} for more information.
 
