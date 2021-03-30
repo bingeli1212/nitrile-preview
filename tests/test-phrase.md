@@ -52,7 +52,9 @@ a = &subsup{x}{0}{&infty;}
 
 # Summation Symbols
 
-a = &sum{x=0}{&infty;}
+a = &sum{x=0}{&infty;}{x^2}
+
+
 
 
 
