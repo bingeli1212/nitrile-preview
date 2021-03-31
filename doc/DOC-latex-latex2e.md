@@ -2106,6 +2106,28 @@ LATEX-2e offers commands to support the symbols that shows up in the
 playing-cards: ``\clubsuit``, ``\diamondsuit``, ``\heartsuit``, and
 ``\spadesuit``.  These symbols are for math mode only.
 
+# The "operatorname" Operator
+
+The "operatorname" operator is used to define a dynamic operator on the fly
+within a LATEX document, without having to have it defined previously in a preamble.
+The operator is something akin to a symbol such as plus-sign or minus sign, such that
+it would provide a thin space if placed between two operands. If a string is
+defined as a "operatorname", it would also has the benefit of automatically adjusting
+it such that if it is followed by an open parenthesis then the thin space is moved away,
+giving the impression that it can be used as the name of a function.
+
+For instance, we can define the name "fun" as an operator, such that when placed in front
+of a string such as "x" it will have some thin space between the string "fun" and the text "x",
+while if placed in front of an open parenthesis the thin space goes away.
+
+    \(\operatorname{fun}x\)
+    \(\operatorname{fun}(x)\)
+
+When defining the name of a function it is possible to have some thin space between the names
+such that the operator name itself looks like it is made up of two words instead of a single word.
+
+    \(\operatorname{proj\,lim}x\)
+    \(\operatorname{proj\,lim}(x)\)
 
 
 
