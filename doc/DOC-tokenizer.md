@@ -234,14 +234,14 @@ same behavior as that of LATEX.
 
 # The \displaystyle command
 
-The \displaystyle command is there to force an inline math
-to be typeset as display math. It is supported, such that it
-will be translated to LATEX/CONTEX verbatim. For SVG
-translation it would result in the generation of
-presentation math a look and feel that is in agreement of a
-display math.
+The \displaystyle command that is common in the LATEX world is not to
+be recognized. However, there are commands such as ``\dfrac`` and
+``\dbinom`` that would generate a un-scaled down version of fractions.
 
 # Supported matrix and cases
+
+Following commands are recognized as to expressing a matrix, with or
+without the fences. 
 
     \begin{matrix} ... \end{matrix}
     \begin{pmatrix} ... \end{pmatrix}
@@ -251,9 +251,15 @@ display math.
     \begin{Vmatrix} ... \end{Vmatrix}
     \begin{cases} ... \end{cases}
 
-Note that syntax of NITRILE is identical to LATEX. CONTEX uses
-a different syntax and thus would need to be translated. For SVG
-the same look and feel is similated. 
+Inside these commands, following two commands are to be recognized for
+separating the rows and columns: ``\nc`` and ``\nr``. Following is an
+example of expressing a parenthesized matrix with 2 rows and 2
+columns. 
+
+    \begin{pmatrix}
+    a \nc b \nr
+    c \nc d
+    \end{pmatrix}
 
 # The compact layout mode 
 
