@@ -209,8 +209,10 @@
     { "name": "\\pmod",               "count": 1 },
        
     { "name": "\\sqrt",               "count": 1, "option": 1 },
-    { "name": "\\frac",               "count": 2 },
     { "name": "\\sfrac",              "count": 2 },
+    { "name": "\\dfrac",              "count": 2 },
+    { "name": "\\frac",               "count": 2 },
+    { "name": "\\dbinom",             "count": 2 },
     { "name": "\\binom",              "count": 2 }
   ],
   "smallLetters": {
