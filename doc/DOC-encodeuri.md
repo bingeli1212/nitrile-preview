@@ -12,6 +12,47 @@ one of these characters.
 
 # The encodeURIComponent() Function
 
+The ``encodeURIComponent()`` escapes all characters except:
+
+    A-Z a-z 0-9 - _ . ! ~ * ' ( )
+
+Use ``encodeURIComponent()`` on user-entered fields from forms POST'd to the
+server. This will encode & symbols that may inadvertently be generated during
+data entry for special HTML entities or other characters that require
+encoding/decoding.
+
+For example, if a user writes Jack & Jill, the text may get encoded as Jack
+&amp; Jill. Without ``encodeURIComponent()`` the ampersand could be interpretted on
+the server as the start of a new field and jeopardize the integrity of the
+data.
+
+For ``application/x-www-form-urlencoded``, spaces are to be replaced by +, so one
+may wish to follow a encodeURIComponent() replacement with an additional
+replacement of ``%20`` with ``+``.
+
+To be more stringent in adhering to RFC 3986 (which reserves ``!``, ``'``,
+``(``, ``)``, and *), even though these characters have no formalized URI
+delimiting uses, the following can be safely used:
+
+    function fixedEncodeURIComponent(str) {
+      return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
+        return '%' + c.charCodeAt(0).toString(16);
+      });
+    }
+
+Characters that can appear directly inside a URI by the rule of RFC-3986 
+are referred to by the RFC as the set of "Unreserved Characters". It includes
+all characters A-Z, a-z, digits 0-9, and additionally the following four
+symbols:
+
+    unreserved  = ALPHA / DIGIT / "-" / "." / "_" / "~"
+
+According to RFC-3986, characters that are allowed in a URI but do not have a
+reserved purpose are called unreserved.  These include uppercase and lowercase
+letters, decimal digits, hyphen, period, underscore, and tilde.
+
+# Comparisons
+
 The ``encodeURI()`` function differs from that of ``encodeURIComponent()`` as the later
 encodes additional characters that are not encoded by the first function.
 Following example program intends to show what happens given the same string input
