@@ -122,6 +122,8 @@ Ceil
     \binom{4}{0}    
     \binom{4}{1}    
     \binom{4}{2}    
+    \dfrac{1}{2}
+    \dbinom{1}{2}
 
 Note that commands \od, \pd, \dif are provided by COMMON MATH
 package. These commands are translated verbatim on LATEX,
