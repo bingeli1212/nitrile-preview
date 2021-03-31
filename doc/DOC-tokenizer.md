@@ -689,4 +689,8 @@ the math expression.
   that when being stringed together and it is the last character
   this extra space will be taken into account.
 
+- Note that it is not possible to insert caret and underscore
+  in math. These two are reserved characters that are for
+  designating superscripts and subscripts.
+
 
