@@ -281,6 +281,7 @@
     "log",
     "max",
     "min",
+    "projlim",
     "sec",
     "sech",
     "sin",
@@ -327,6 +328,11 @@
     "tan",
     "tanh"
   ],
+  "htmlMathOperators" : {
+    "limsup"        : "lim sup",
+    "liminf"        : "lim inf",
+    "projlim"       : "proj lim"
+  },
   "smallLetters": {
     "my_alpha"     : 2.5,    
     "my_beta"      : 0.2,    
