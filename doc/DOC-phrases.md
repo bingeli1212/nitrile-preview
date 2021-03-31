@@ -97,6 +97,12 @@ Following is a list of other phrases that assumes the content of a math expressi
 
 + ``&math{...}``
 
+  This phrase is typeset a generic math expression. Valid operations 
+  are following math commands:
+
+  ```verbatim
+  &math{\log = a + b}
+  ```
 
 + ``&dfrac{...}{...}``
 

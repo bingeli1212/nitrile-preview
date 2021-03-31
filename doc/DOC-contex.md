@@ -1201,7 +1201,41 @@ this environment between "startitemize/stopitemize".
     \stoplines
     \stopitemize
 
+# Following are Function that are defined by CONTEX
 
+In writing mathematics, the names of variables are in italics, but
+some common functions like trignomeric functions, min, max, log, etc.
+are always written in upright roman font. The following log like
+functions are defined in ConTeXt.
+
+    \arccos	\arcsin	\arctan	\arg	\cosh	\cos	\coth	\cot	\csc	\deg
+    \det	\dim	\exp	\gcd	\hom	\inf	\injlim	\ker	\lg	\liminf
+    \limsup	\lim	\ln	\log	\median	\max	\min	\mod	\div	\projlim
+    \Pr	\sec	\sinh	\sin	\sup	\tanh	\tan
+
+ConTeXt provides the command \definemathcommand to define new log like
+functions. For example, if you want to define a lcd function, you can
+do
+
+    \definemathcommand [lcd] [nolop] {\mfunction{lcd}}
+
+The nolop option tells ConTeXt that subscripts should be placed on the side of the command (as in trignometric functions) rather than underneath the command (as in min, max, and limits). If you want to place the subscript underneath the command, you can use limop instead. The \mfunction command sets its argument in the current math roman font. So,
+
+    \definemathcommand [lcd] [nolop] {\mfunction{lcd}}
+
+expands to
+
+    \def\lcd{\mathop{\mfunction{lcd}\nolimits}}}
+
+while
+
+    \definemathcommand [argmin] [limop] {\mfunction{arg\,min}}
+
+expands to
+
+    \def\argmin{\mathop{\mfunction{arg\,min}}} 
+    
+Notice no \limits or \nolimits
 
 
 
