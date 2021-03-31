@@ -40,7 +40,7 @@ a = &math{\left\lparen &frac{1}{2} + &frac{2}{3} \right\rparen}
 
 a = &math{ &FRAC{1}{2} + &frac{1}{3} + 5}
 
-a = &math{ &BINOM{1}{2} + &frac{1}{3} + 5}
+a = &math{ &BINOM{1}{2} + &binom{1}{3} + 5}
 
 
 
