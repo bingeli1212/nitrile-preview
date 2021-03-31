@@ -673,40 +673,51 @@ the math expression.
   clipped the top part of ``\xi``, while Safari does not have this
   problem.
   
-- In iBOOK, if the math has only a single letter that is ``\mathcal{L}`` 
-  then when it is displayed in iBOOK the right part of the letter
-  is clipped. This is probably correct because the standard
-  unicode SVG outline for this character shows that some part of
-  the character lies outside of the bounding box of the found,
-  and thus wheneven when the character is shown with the
-  character stretched over the entire length, this will only
-  apply to the portion of the character that is inside the
-  bounding box, and the part that is outside of the bounding box 
-  should by definition be outside of the bounding box. Not sure
-  how solve this, but a possible solution is to include, for each
-  character, an additional member in the 'math.json' file to
-  specify the extra amount of space to the left or right, such
-  that when being stringed together and it is the last character
-  this extra space will be taken into account.
+- In iBOOK, if the math has only a single letter that is
+  ``\mathcal{L}`` then when it is displayed in iBOOK the right part of
+  the letter is clipped. This is probably correct because the standard
+  unicode SVG outline for this character shows that some part of the
+  character lies outside of the bounding box of the found, and thus
+  wheneven when the character is shown with the character stretched
+  over the entire length, this will only apply to the portion of the
+  character that is inside the bounding box, and the part that is
+  outside of the bounding box should by definition be outside of the
+  bounding box. Not sure how solve this, but a possible solution is to
+  include, for each character, an additional member in the 'math.json'
+  file to specify the extra amount of space to the left or right, such
+  that when being stringed together and it is the last character this
+  extra space will be taken into account.
 
 - Note that it is not possible to insert caret and underscore
   in math. These two are reserved characters that are for
   designating superscripts and subscripts.
 
-- When a symbol is entered as a form such as ``&times;``, the name is assumed
-  to be a standard named entity that has been standardized by the web.
-  However, if a symbol is entered such as ``\log``, which starts with a
-  backslash, then it could be considered a math operator, whether it is a
-  predefined one or user-created one. However, before it is to be considered a
-  math operator, it is first checked to see it is not one of the entities, and
-  if it is, then it is still treated as such. Only when the name does not match
-  one of the entities, then it is considered as operator. For LATEX and CONTEX
-  each provides a way to dynamically create new operators. However, they each
-  provides a set of standard operators that have already been defined by the
-  system. Thus, the standard operator will be used first because being treated
-  as a new math operator. On the other hand, if an operator such as "times" is
-  entered as a entity name such as ``&times;``, then it is still to be treated
-  as an operator.
+- When a symbol is entered as a form such as ``&times;``, the name is
+  assumed to be a standard named entity that has been standardized by
+  the web. However, if a symbol is entered such as ``\log``, which
+  starts with a backslash, then it could be considered a math
+  operator, whether it is a predefined one or user-created one.
+  However, before it is to be considered a math operator, it is first
+  checked to see it is not one of the entities, and if it is, then it
+  is still treated as such. Only when the name does not match one of
+  the entities, then it is considered as operator. For LATEX and
+  CONTEX each provides a way to dynamically create new operators.
+  However, they each provides a set of standard operators that have
+  already been defined by the system. Thus, the standard operator will
+  be used first because being treated as a new math operator. On the
+  other hand, if an operator such as "times" is entered as a entity
+  name such as ``&times;``, then it is still to be treated as an
+  operator.
+
+- For an inline math the ``&math`` phrase should've been used, for
+  which a raw math expression is to be included in there. There are
+  other similar phrases such as ``&frac``, ``&binom``, ``&sqrt``,
+  ``&root``, etc. See "DOC-phrases" for additional math phrases.
+
+- For a display-math and/or equation blocks, a raw math expression by 
+  itself should've been used.
+
+
 
 
 

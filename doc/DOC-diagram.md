@@ -745,26 +745,29 @@ location, and for 'hbar', its left end aligns with the location.
 
 # The 'label' command
 
-Drawing text labels are done by using the 'label' command. For
-example, the following 'label' command will each draw a label at the
-given location.
+The 'label' command is designed to place a piece of text in one or more path
+points. For instance, each of the following 'label' commands will place a piece
+of text at the given location.
 
     label.rt "A" (1,1)
     label.lft "B" (2,2)
     label.top "C" (3,4)
 
-The 'label' command is designed to draw the same label at multiple
-locations. For example, we can draw the same letter A three times each
-at three different locations such as follows.
+The text must appear before any path points, and must enclosed within a set of
+quotation marks. 
+
+The text to be drawn is always to be shown in a single line. It will
+be shown in the first path point encountered. However, if additional
+path points are specified, then the same text is to be repeated 
+across the other path points.
 
     label "A" (1,1) (2,2) (3,4)
 
-Each subcommand specifies how the text is to be aligned relative to
-the locatoin. For example, the 'top' subcommand would have aligned the
-text so that it appears on top of the location, centered horizontally.
-When a label command is without its subcommand it defaults to 'urt',
-which basically asignes the lower left hand corner of the text with
-the loction.
+The option of this command specifies how the label is aligned relative
+to the path point. For instance, if the option is 'top' then the 
+text will be aligned in such a way that it appear on top of the 
+path point and centered horizontally. Without the option,
+it defaults to 'urt'.
 
     label.top   -  top
     label.bot   -  bottom
@@ -776,46 +779,37 @@ the loction.
     label.lrt   -  lower right
     label.ctr   -  centering the text
 
-The text to be drawn must be expressed using a set of quotation marks,
-and they must appear before any option and before any coordinates.
-Usually a single text is repeated in all locations. 
-
-    label "A" (1,1) (2,2) (3,4)
-
-However, it is possible to specify a different text for 
-each location.
+It is also possible to express the fact that each path point is to show a
+different piece of text, by placing double backslashes inside the text, such
+that the text is being divided into segments, where each segment represents an
+individual text to be placed at the location of one of the path points, 
+and in the same order. For instance, the following command would have placed
+letter "A" with the first point, letter "B" with the second point, and letter "C"
+with the third point.
 
     label "A \\ B \\ C" (1,1) (2,2) (3,4)
 
-It is also possible to express that a math expression instead of plain
-text. In this case use the backslash-left-parenthesis and
-backslash-right-parenthesis quotation for the text.
-
-    label \(A_0 \\ A_1 \\ A_2\) (1,1) (2,2) (3,4)
-
-The text will also be treated as math expression if the math-style
-option is set to 1. Thus, following is the equivalent of the
-previous example.
+It is also possible to express that a math expression instead of plain text.
+by including the "math:1" configuration option.
 
     label {math:1} "A_0 \\ A_1 \\ A_2" (1,1) (2,2) (3,4)
 
 # The 'text' command
 
 The text command is very similar to the label command except that it will look
-for double backslashes in the text and use that to draw multi-line text box.
+for double backslashes in the text and treat those as expressing line breaks of
+a larger single multi-line paragraph. 
 
     text.ulft {fontsize:7,dx:-0.5} "degree\\ 3" (-3,2)
     text.urt  {fontsize:7,dx:+0.5} "degree\\ 2" (3,2)
     text.llft {fontsize:7,dx:-0.5} "degree\\ 2" (-3,-2)
     text.lrt  {fontsize:7,dx:+0.5} "degree\\ 3" (3,-2)
 
-Unlike the label, it always treats the text as normal text, and not
-the math expression. This means that the backslash-left-parenthesis
-and backslash-right-parenthesis quoted text will be treated as if they
-are normal text.
+Unlike the 'label' command, it always treats the text as normal text, and not
+the math expression. If two or more coordinates are present, the multi-line 
+text paragraph will be repeated in each of these locations.
 
-The text operation can also have alignment specifier for it.
-
+Each 'text' command can also include alignments which are shown below.
 
     text.top   -  top
     text.bot   -  bottom

@@ -106,35 +106,56 @@ Following is a list of other phrases that assumes the content of a math expressi
 
 + ``&dfrac{...}{...}``
 
+  This phrase is to typeset a fraction expression.
 
 + ``&frac{...}{...}``
 
+  This phrase is to typeset a fraction expression such that the numerators
+  and denominators are each scaled down, resulting in a smaller appearance. 
 
 + ``&dbinom{...}{...}``
 
+  This phrase is to typeset a binomial expression, which is similar to a
+  fraction except that it does not have a middle dividing line.
 
 + ``&binom{...}{...}``
 
+  This phrase is to typeset a binomial expression, except that the entire
+  expression is scaled down.
 
 + ``&sqrt{...}``
 
+  This phrase is to typeset a sqrt.
 
 + ``&root{...}{...}``
 
+  This phrase is to typeset a root with a degree that is not 2.
+  The degree is to be given as the second argument.
 
 + ``&overline{...}``
 
+  This phrase is to typeset a set of variables decorated with an overline at
+  the top.
 
 + ``&overleftrightarrow{...}``
 
+  This phrase is to typeset a set of variables decorated with an left-right
+  arrow decorated at the top.
 
 + ``&overrightarrow{...}``
 
+  This phrase is to typeset a set of variables decorated with an right pointing
+  arrow decorated at the top.
 
 + ``&underleftrightarrow{...}``
 
+  This phrase is to typeset a set of variable(s) decorated with a left-right-pointing
+  arrow placed underneath the variable(s).
 
 + ``&underrightarrow{...}``
+
+  This phrase is to typeset a set of variable(s) decorated with a right-pointing
+  arrow placed underneath the variable(s).
 
 + ``&subsup{...}{...}{...}``
 + ``&sub{...}{...}``
