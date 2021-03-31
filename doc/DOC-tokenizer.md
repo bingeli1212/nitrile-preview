@@ -693,4 +693,21 @@ the math expression.
   in math. These two are reserved characters that are for
   designating superscripts and subscripts.
 
+- When a symbol is entered as a form such as ``&times;``, the name is assumed
+  to be a standard named entity that has been standardized by the web.
+  However, if a symbol is entered such as ``\log``, which starts with a
+  backslash, then it could be considered a math operator, whether it is a
+  predefined one or user-created one. However, before it is to be considered a
+  math operator, it is first checked to see it is not one of the entities, and
+  if it is, then it is still treated as such. Only when the name does not match
+  one of the entities, then it is considered as operator. For LATEX and CONTEX
+  each provides a way to dynamically create new operators. However, they each
+  provides a set of standard operators that have already been defined by the
+  system. Thus, the standard operator will be used first because being treated
+  as a new math operator. On the other hand, if an operator such as "times" is
+  entered as a entity name such as ``&times;``, then it is still to be treated
+  as an operator.
+
+
+
 
