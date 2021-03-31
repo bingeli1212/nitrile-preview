@@ -1214,12 +1214,15 @@ functions are defined in ConTeXt.
     \Pr	\sec	\sinh	\sin	\sup	\tanh	\tan
 
 ConTeXt provides the command \definemathcommand to define new log like
-functions. For example, if you want to define a lcd function, you can
-do
+functions. For example, if you want to define a lcd function, you can do
 
     \definemathcommand [lcd] [nolop] {\mfunction{lcd}}
 
-The nolop option tells ConTeXt that subscripts should be placed on the side of the command (as in trignometric functions) rather than underneath the command (as in min, max, and limits). If you want to place the subscript underneath the command, you can use limop instead. The \mfunction command sets its argument in the current math roman font. So,
+The nolop option tells ConTeXt that subscripts should be placed on the side of
+the command (as in trignometric functions) rather than underneath the command
+(as in min, max, and limits). If you want to place the subscript underneath the
+command, you can use limop instead. The \mfunction command sets its argument in
+the current math roman font. So,
 
     \definemathcommand [lcd] [nolop] {\mfunction{lcd}}
 
@@ -1236,6 +1239,19 @@ expands to
     \def\argmin{\mathop{\mfunction{arg\,min}}} 
     
 Notice no \limits or \nolimits
+
+Thus, it is possible to generate a function definition on the fly without having
+to previous define it in the preamble of a CONTEX document. For instance, if 
+a new function named "fun" is needed, we can have it appear within a CONTEX document
+such as follows. The first one is to have a thin space between the name "fun" and
+the argument "x", and the second one would have had no spacing between the name "fun"
+and the opening parenthesis.
+
+    a = \math{\mathop{\mfunction{fun}}x}
+    a = \math{\mathop{\mfunction{fun}}(x)}
+
+
+
 
 
 
