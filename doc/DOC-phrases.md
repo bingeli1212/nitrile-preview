@@ -98,13 +98,13 @@ Following is a list of other phrases that assumes the content of a math expressi
 + ``&math{...}``
 
 
-+ ``&FRAC{...}{...}``
++ ``&dfrac{...}{...}``
 
 
 + ``&frac{...}{...}``
 
 
-+ ``&BINOM{...}{...}``
++ ``&dbinom{...}{...}``
 
 
 + ``&binom{...}{...}``
