@@ -293,7 +293,7 @@ Following are the key points about the symbols:
   | &apos;              |  apos                  | [!apos!]
 ```
 
-# RELATIONAL OPERATORS
+# RELATIONAL OPERATORS I
 
 ```tabular{border:2;n:2}
   | Symbol              |  Command               | Comment
@@ -322,6 +322,11 @@ Following are the key points about the symbols:
   | &ggg;               |  ggg                   | [!ggg!]
   | &doteq;             |  doteq                 | [!doteq!]
   | &equiv;             |  equiv                 | [!equiv!]
+```
+
+# RELATIONAL OPERATORS II
+
+```tabular{border:2;n:2}
   | &approx;            |  approx                | [!approx!]
   | &cong;              |  cong                  | [!cong!]
   | &simeq;             |  simeq                 | [!simeq!]
@@ -485,7 +490,7 @@ Following are the key points about the symbols:
 
 # LEFT AND RIGHT POINTNG ARROWS
 
-~~~table{border:2;n:2;}
+```tabular{border:2;n:2;fr:1 2 4}
   | Symbol              |  Commands            | Comment
   ----------------------------------------------------------------
   | &mapsto;            |  mapsto              | [!mapsto!]
@@ -505,7 +510,7 @@ Following are the key points about the symbols:
   | &xharr;             |  xharr               | [!xharr!]
   | &hArr;              |  hArr                | [!hArr!]
   | &xhArr;             |  xhArr               | [!xhArr!]
-~~~
+```
 
 
 # UP AND DOWN POINTING ARROWS
@@ -659,88 +664,6 @@ must not be followed by another letter or digit such as
 | Y~mathbb       | Y~mathbf       | Y~mathit       | Y~mathcal
 | Z~mathbb       | Z~mathbf       | Z~mathit       | Z~mathcal
 ```
-
-
-
-# SUPERSCRIPTS
-
-The superscript a^1 is written as `a^1`. Superscript can only be a single digit,
-and the base can only be a single letter A-Z and/or a-z.
-
-In order to be recognized as a superscript, the
-base and superscript must be a single letter and/or digit. It
-can not follow immediately
-another word character such as ``aa^1``, ``1a^1``. The superscript
-cannot be followed immediately be another letter or digit either,
-such as ``a^0a``, or ``a^00``.
-
-Because of the limitation of the UNICODE superscript characters,
-only the letter n, and i, and digits 0-9 are available as superscript.
-The base can only be a single digit letter that is in the
-range of a-z, and/or A-Z.
-
-```tabular{border:2;n:2}
-  | Symbol               |  Commands             | Comment
-  ----------------------------------------------------------------
-  | a^0                  |  a^0                  |
-  | a^1                  |  a^1                  |
-  | a^2                  |  a^2                  |
-  | a^3                  |  a^3                  |
-  | a^4                  |  a^4                  |
-  | a^5                  |  a^5                  |
-  | a^6                  |  a^6                  |
-  | a^7                  |  a^7                  |
-  | a^8                  |  a^8                  |
-  | a^9                  |  a^9                  |
-  | a^n                  |  a^n                  |
-  | a^i                  |  a^i                  |
-  | a^c                  |  a^c                  |
-```
-
-
-# SUBSCRIPTS
-
-The subscript a_1 is written as `a_1`. The base and subscript
- can only be a single letter or digit.
-
-The base cannot immediately
- follow another word character such as ``aa_0``, ``1a_0``. The subscript
-cannot immediately be followed by another word
-character, such as ``a_0a``, or ``a_00``.
-
-Due to the limitation of available UNICODE subscript characters,
-only the letter x, h, k, l, m, n, p, s, t and digits 0-9 can serve
-as the subscript. The base can only be a letter in the range of
-a-z and A-Z.
-
-
-```tabular{border:2;n:2}
-  | Symbol               |  Commands             | Comment
-  ----------------------------------------------------------------
-  | a_1                  |  a_1                  |
-  | a_2                  |  a_2                  |
-  | a_3                  |  a_3                  |
-  | a_4                  |  a_4                  |
-  | a_5                  |  a_5                  |
-  | a_6                  |  a_6                  |
-  | a_7                  |  a_7                  |
-  | a_8                  |  a_8                  |
-  | a_9                  |  a_9                  |
-  | a_0                  |  a_0                  |
-  | a_a                  |  a_a                  |
-  | a_e                  |  a_e                  |
-  | a_o                  |  a_o                  |
-  | a_x                  |  a_x                  |
-  | a_h                  |  a_h                  |
-  | a_k                  |  a_k                  |
-  | a_l                  |  a_l                  |
-  | a_m                  |  a_m                  |
-  | a_n                  |  a_n                  |
-  | a_p                  |  a_p                  |
-  | a_s                  |  a_s                  |
-  | a_t                  |  a_t                  |
-```
-
 
 # COLONEQUAL RELATED SHAPES
 

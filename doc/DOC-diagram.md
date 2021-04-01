@@ -1233,11 +1233,6 @@ subpaths when they are stroked. The SVG has an attribute that can used for
 line-element. The available values are: 'butt', 'round', and 'square'. The
 default value is 'butt'.
 
-The "dashed withdots" option for "draw" will not show any visible dotted lines
-in the PDF file when linecap:=butt. The linecap:=rounded will has to be set in
-order to produce dotted-lines. Thus, currently the "set linedashed withdots"
-option is considered broken for MP generation. Do not use it for now. Use "set
-linedashed evenly" instead.
 
 
 
@@ -1349,7 +1344,7 @@ can be useful, such as the following:
 
 The name of the function could be arbitrary. However, it must be
 specified by the "f" member of the option. The function must have been
-previously defined by a 'fn' command, and must only accept one
+previously defined by a "fn" command, and must only accept one
 argument and return a single scalar.
 
 The 'cartesian-xplot' is similar except for that the input arguments
@@ -1512,14 +1507,14 @@ that is follows:
   that a single backslash is always escaped by another.
 
 
-# The for-loop
+# The 'for' Command
 
-A for-loop is provided by Diagram such that a number of commands
+A 'for' command is provided by Diagram such that a number of commands
 can be repetitively executed, and each iteration these commands would
 have been run under a different set of arguments. The basic syntax is
 
     for a:=[1 2 3 4]
-      draw (\a,\a)~(0,0)
+      draw (${a},${a})~(0,0)
 
 In the example, the 'draw' command will be executed exactly four
 times, each of which looks like the following.
@@ -1529,7 +1524,7 @@ times, each of which looks like the following.
     draw (3,3)~(0,0)
     draw (4,4)~(0,0)
 
-The for-loop starts with the keyword 'for', followed by a one or more
+The 'for' command starts with the keyword 'for', followed by a one or more
 assignments of variables to a range of floats. The colon at the end is
 optional. The for-loop would iterate over each loop variable over its
 corresponding sequences. Each loop variable is to become one of the
@@ -1539,7 +1534,7 @@ loop variables: 'a' and 'b'.
 
     % Using for-loop
     for a:=[1 3] b:=[2 4]
-      draw (\a,\a)~(\b,\b)
+      draw (${a},${a})~(${b},${b})
 
 Following is the equivalent commands without using the for-loop.
 
@@ -1564,9 +1559,9 @@ for-loop, but rather part of the toplevel for-loop.
 
     viewport 31 24
     for a:=[9 19 29] b:=[0.4 0.5 0.6]
-      origin x:\a
+      origin x:${a}
       for c:=[16 4]
-        origin y:\c
+        origin y:${c}
         draw (0,0) [h:-6] [v:6]
         draw (0,0) [q:-6,0,-6,6]
         path P0 = (0,0)
@@ -1578,33 +1573,31 @@ for-loop, but rather part of the toplevel for-loop.
         label.ulft "P₂" &P2
         path line1 = &P0 ~ &P1
         path line2 = &P1 ~ &P2
-        path m0 = &midpoint{&line1,\b }
-        path m1 = &midpoint{&line2,\b }
+        path m0 = &midpoint{&line1,${b} }
+        path m1 = &midpoint{&line2,${b} }
         dot &m0 &m1
         draw &m0 ~ &m1
         path line3 = &m0 ~ &m1
-        path B = &midpoint{line3,\b }
+        path B = &midpoint{line3,${b} }
         dot &B
         label.bot "m₀" &m0
         label.lft "m₁" {dx:-.1} &m1
         label.urt "B" &B
-      label.bot "t=\b" (-3,-2)
+      label.bot "t=${b}" (-3,-2)
       
-Note that if a for-loop contains two or more loop variables, the loop
-will always interates to cover the longest sequence, and for a loop
-variable that has run out of numbers in its sequence, a zero will be
-assumed for that variable.
+Note that if a 'for' command contains two or more loop variables, the loop will
+only go so far to cover the shortest sequence. 
 
-Each for-loop would have defined a new '@' environment variable that
-will be assigned to an integer that equates to the current iteration. The first
-iteration will be an integer 0, and the second one 1, and so on. 
+Each 'for' command would have also defined a new environment variable that is
+'@' that will be assigned to an integer that equates to the current iteration.
+The first iteration will be an integer 0, and the second one 1, and so on. 
 
 
 
-# The 'fn' command
+# The "fn" command
 
-The 'fn' command serves to create a user defined arithmetic function.
-This command starts with letter 'fn', followed immediately by a valid
+The "fn" command serves to create a user defined arithmetic function.
+This command starts with letter "fn", followed immediately by a valid
 function names, an equal sign, and an arithmetic expression.
 
 In the following example a function named 'f' is being defined with a
@@ -1618,7 +1611,7 @@ assigned a value of 3 at the end of that command.
     fn f(x) = 1 + log2(x)
     let a = f(4)
 
-A function created by a 'fn' command can be thought of as a user-defined
+A function created by a "fn" command can be thought of as a user-defined
 function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
 'floor', 'ceil', 'pow', etc. Some commands, such as 'cartesian-yplot', allows
 a function name string to be passed in that will be used for plotting a group
@@ -1641,46 +1634,56 @@ function names, while "0", "0a", "0ab" are not valid function names.
 
 # Environment variables
 
-Environment variables are symbols that holds a number. It can be used in places
-where numbers are expected.  In the following example the symbol 'pi' is
-assigned a quantity that 3.1415, which is then used inside the function body of
-'f' as well as part of the the 'draw' command.
+Environment variables are symbols that holds a number or a string. It
+can be specified anywhere within a command line and it will be
+replaced by the actual number or string contents because the command
+is processed.
 
-    let pi = 3.1415
-    fn f(x) = \pi/x
-    origin x:5
-    origin y:5
-    cartesian-xaxis -10 10
-    cartesian-yaxis -10 10
-    cartesian-yplot {f:f} [1:10]
-    arrow (0,0) (\pi,\pi)
+    let pi := 3.1415
+    fn f(x) = ${pi}/x
 
-One advantage of using a 'let' command to create an environment variable is the
-ability to allow for a "scalar expression" to be evaluated.  For example, it is
-possible to create a value that is exactly square root of 2 by doing the
-following.
+In the previous example the environment variable 'pi' is assigned a
+number that is approximately 3.1415, which is then used inside the
+command line of "fn". By the time the command "fn" is processed the
+command line becomes the following:
 
-    let a = sqrt(2)   
-    path a = (\a,\a)
+    fn f(x) = 3.1415/x
+
+On the right hand side of the ":=" operator an arithmetic expression
+is to be expected, which allows a number to generated based on the
+values of other numbers. In the following example the path variable
+"a" will be created with a single number that is approximate to
+(1.414,1.414).
+
+    let a := sqrt(2)   
+    path a = (${a},${a})
     dot &a
 
-Note that the environment variables must be accessed
-via the backslash notation. Its appearance is detected 
-and replaced in a command line before the command is
-being processed. This allows a environment variable to 
-be used anywhere in a command line. In the following example
-a environment variable 'a' is used to construct a path variable
-name.
- 
-    let a = 1
-    path path\a = (0,0) ~ (5,5)
-    draw path1
+The name of an environment variable are not limited to having
+to start with a letter, and followed by additional letters and
+numbers, like those required for a "var" variable and "fn" variable.
+However, it must be consisted entirely of word characters, which
+means no symbols or punctuations are allowed. Underscore is considered
+part of a word character and thus is allowed.
 
-The 'let' command is the one that create a environment on the
-fly. The other command is 'for', which would execute
-a block of codes several times and with each iteration renew 
-one or more environment variables to a new value according
-to their order in a list.
+An environment variable ``pi`` must appear in the form of ``${pi}``
+inside a statement in order for it to be recognized and replaced.  The
+replacement comes before the command line is being processed.  This
+flexibility allows an environment variable to appear anywhere in a
+command line and potentially serve many different purposes. In the
+following example an environment variable "a" is used to construct
+a path variable name that is "my1".
+
+    let a := 1 
+    path my${a} = (0,0) ~ (5,5) 
+    draw my${a} 
+
+Besides "let", two additional commands are designed to create
+environment variables: the "format" command and the "for" command.
+The "format" command would create an environment variable that holds a
+string. The "for" command would repeatedly execute a block of
+command, each time updating a list of environment variables to a new
+set of values according to their orders in the list.
 
 
 
@@ -1698,7 +1701,7 @@ multiplication and division operators. The multiplication operator is the
 asterisk, and the division operator is the slash character.
 
 It provides a list of built-in functions such as 'ln' and 'sqrt'. It also
-recognizes user defined functions which are created by a previous 'fn' command.  It
+recognizes user defined functions which are created by a previous "fn" command.  It
 supports operator precedence of multiplication and division over addition and
 subtraction, and recognizes parentheses for grouping. It also recognizes a
 number that is in the form of a scientific notation such as '2e5' or '2e-5'.
@@ -1708,42 +1711,42 @@ a environment variable 'a'. Note that 'E' and 'PI' are two built-in constants
 where the first one is the Euler's number and the second one being the
 ratio of the circumference of a circle to its diameter.
 
-    let a = (2+2)*(3+3)
-    let a = cos(3+0.1415) + 12
-    let a = 3 + pow(3,2)*3 + 2
-    let a = 3 + E + 2
-    let a = 3 + PI + 2
-    let a = sign(-5)
-    let a = 2*PI
-    let a = 2*2e5
-    let a = deg2rad(180)
-    let a = 1/0
-    let a = ln(0)
+    let a := (2+2)*(3+3)
+    let a := cos(3+0.1415) + 12
+    let a := 3 + pow(3,2)*3 + 2
+    let a := 3 + E + 2
+    let a := 3 + PI + 2
+    let a := sign(-5)
+    let a := 2*PI
+    let a := 2*2e5
+    let a := deg2rad(180)
+    let a := 1/0
+    let a := ln(0)
 
 Following are likely to be observed in the outputs of a HTML
 translation.
 
-    <!-- let a = (2+2)*(3+3) -->
+    <!-- let a := (2+2)*(3+3) -->
     <!-- ***let: a=24 -->
-    <!-- let a = cos(3+0.1415) + 12 -->
+    <!-- let a := cos(3+0.1415) + 12 -->
     <!-- ***let: a=11.000000004292344 -->
-    <!-- let a = 3 + pow(3,2)*3 + 2 -->
+    <!-- let a := 3 + pow(3,2)*3 + 2 -->
     <!-- ***let: a=32 -->
-    <!-- let a = 3 + E + 2 -->
+    <!-- let a := 3 + E + 2 -->
     <!-- ***let: a=7.718281828459045 -->
-    <!-- let a = 3 + PI + 2 -->
+    <!-- let a := 3 + PI + 2 -->
     <!-- ***let: a=8.141592653589793 -->
-    <!-- let a = sign(-5) -->
+    <!-- let a := sign(-5) -->
     <!-- ***let: a=-1 -->
-    <!-- let a = 2*PI -->
+    <!-- let a := 2*PI -->
     <!-- ***let: a=6.283185307179586 -->
-    <!-- let a = 2*2e5 -->
+    <!-- let a := 2*2e5 -->
     <!-- ***let: a=400000 -->
-    <!-- let a = deg2rad(180) -->
+    <!-- let a := deg2rad(180) -->
     <!-- ***let: a=3.141592653589793 -->
-    <!-- let a = 1/0 -->
+    <!-- let a := 1/0 -->
     <!-- ***let: a=Infinity -->
-    <!-- let a = ln(0) -->
+    <!-- let a := ln(0) -->
     <!-- ***let: a=-Infinity -->
 
 Note that if a scalar expression returns something that cannot be interpreted
@@ -1755,15 +1758,15 @@ assigned the sum of adding the "x" components of the first two points
 in path variable 'pts', which will be "1 + 3 = 4".
 
     path pts = (1,2) (3,4)
-    let mx = &pts_0.x + &pts_1.x
-    label.ctr (\mx,0)
+    let mx := &pts_0.x + &pts_1.x
+    label.ctr (${mx},0)
 
 Following is another example of adding the two "y" components of the
 first two points and assign the result to 'my'.
 
     path pts = (1,2) (3,4)
-    let my = &pts_0.y + &pts_1.y
-    label.ctr (0,\my)
+    let my := &pts_0.y + &pts_1.y
+    label.ctr (0,${my})
 
 
 
@@ -1771,9 +1774,9 @@ first two points and assign the result to 'my'.
 
 
 
-# Built-in Scalar Functions
+# Built-in Functions
 
-Following are built-in functions provided by Diagram
+Following are built-in functions provided by Diagram.
 
 + ln(x)
        
@@ -1872,9 +1875,22 @@ Following are built-in functions provided by Diagram
 
   Sign (+1 or -1 or 0) of a number
 
++ if(cond,x,y)
+
+  This function will return value 'x' if the condition is true, or 'y'
+  if the condition is false. In the following example environment
+  variable 'a' will be assigned a number that is 0 and 'b' a number
+  that is 1.
+
+  ```verbatim
+  fn f(x) = if(x>10,1,0)
+  let a := f(10)  
+  let b := f(11)  
+  ```
 
 
-# Built-in Scalar Constants
+
+# All Built-in Constants
 
 Following are built-in scalar constants, which can be used as if they
 are arguments. For instance, 
@@ -1893,20 +1909,7 @@ This the 'arc' env-variable would have been assigned the value of 6.28.
 
 
 
-# The Range-expression syntax
-
-A Range-expression serves to present one or more scalar quantities with a
-command that expects scalar quantities as part of its command line structure.
-When it appears as part of a group of scalar arguments of a command, it serves
-to express one or more scalar quantities for that command. For example, in the
-following command a total of 11 scalars will be supplied to the
-``cartesian-yplot`` command.
-
-    fn P(x) = pow(x,2)
-    cartesian-yplot {fn:P} 1~10
-
-A Range-expression must appears between a set of brackets, and the exact
-collection of scalars it represent depends on the synatx.
+# The range-expression Syntax
 
 When a Range-expression consists of two quantities separated by a single colon,
 such as "1~10", the first one denotes the ``base``, and the second one denotes
@@ -1923,51 +1926,69 @@ scalar after the ``base``.  Thus, in the case of "1~4~10", the scalars it
 entails are: 1, 4, 7, 10.
 
 
+# The spread-expression Syntax
+
+A spread-expression always consists of three expressions, each of
+which is separated by a exclamation mark from the other. For instance,
+the following spread-expression is to express a list of number from 1
+to 10, where the first number is 1 and the last number 10, and there
+are additional 3 numbers scattered evenly between the first number
+and the last number. This would have created a list consisting 
+of these numbers: 1, 3.25, 5.5, 7.75, 10.
+
+    1!3!10
 
 
-# Scalar List Construction
 
-A list of scalars is expected for certain commands instead of path points.
-Following are additional commands showing various ways for a list of scalars to
-be constructed.
+# List of Floats or Complex Numbers 
 
-    cartesian-stick 10 11 20 21 
+Certain commands expects a list of floats or complex numbers rather a
+path or a list of path points. For instance, the command 'cartesian'
+would expected a list of floats, in which case a list of float are to
+appear inside the command line, after the configuration option and
+label text.
+
+Following is a list of invoking 'cartesian-xtick' command each of
+which holding a list numbers. Note the different ways of how a list of
+numbers can be constructed. 
+
+    cartesian-xtick 10 11 20 21 
     cartesian-xtick 1~10
     cartesian-xtick 1~4~10 
     cartesian-xtick 1~10 20~23~30
     cartesian-xtick 1 pow(1,2) 2 pow(2,2) 3 pow(3,2)
-    cartesian-xtick \x \y \x1 \y1 \x2 \y2            
     cartesian-xtick 1!3!10
-    cartesian-xtick fn:exp 1 2 3 4 5 6~10
+    cartesian-xtick <map:exp> 1 2 3 4 5 6~10
+    cartesian-xtick <filter:exp> 1 2 3 4 5 6~10
 
-Note that it is by default, a list of scalars are separated by one or more
-spaces.  However, when a range expression is encountered such as "1~10", then
-a list of scalars expressed by this range is also added to the list.
+The command 'argand' would have always expected a list of complex
+numbers, except for certain subcommands.
 
-It is also possible to specify an Scalar Expression such as "pow(3,2)" for
-expressing a scalar.  In the previous example the scalar 9 is to be added to
-the list.  Note that for an expression nested functions are allowed, such as
-"sqrt(pow(1,2))". However, in all cases the expression cannot have any empty
-spaces within. In addition a Scalar Expression must be itself appear inside a
-pair of parentheses in order to be recognized as such.
+    argand-dot 1+1*I 2+2*I 3+5*I -1*I
+    argand-dot <map:exp> 1 2 3 4 5 6~10
 
-Note any environment variables such as "\x" would have already been
-replace by their scalar counterpart by the time the command is evaluated.
+For a given list, a cluster of non-whitespace characters is to be
+recognized processed as a component.  Each element can be a number by
+itself, an arithmetic expression, a range-expression, a
+spread-expression, or a directive such as "<map:exp>".
 
-The exact interpretation of the scalars would have depended on the nature of
-the command itself.  For instance, the 'cartesian-line' command would have
-interpreted each two consecutive scalars as expressing a path point in the form
-of (x,y) where 'x' is the first float and the 'y' the second. Thus for each
-two-scalar pair the first scalar becomes 'x' and the second one 'y'.  Same
-would have been for the 'catesian-dot' command.
+A "map" directive would have expressed a function such that each
+number encountered in the list from this point on will be sent to this
+function, and the output of which replaces the original number.
 
-    cartesian-dot {linecolor:red} 5 7 10 11
+A "filter" directive would have expressed a function such that the
+original number will discarded and not added to the list if the output
+of the function returns a number that is less than 1. 
 
-However, for 'cartesian-xtick' command, each scalar is interpreted as
-expressing a value in the x-axis.
+If two or more directives are encountered, then these directives will
+be applied in the reverse order in which they appear. For instance, in
+the following example the "filter" directive will be applied first
+before "map", thus throwing away first three numbers in the list and
+mapping the rest of the numbers by putting it through the function
+'exp()'.
 
-    cartesian-xtick 1 2 3 4 5
-
+    fn f(x) = if(x>3,1,0)
+    argand-dot <map:exp> <filter:f> 1 2 3 4 5 6~10
 
 
 
@@ -1993,8 +2014,8 @@ be configured to another such as "2" by doing the following
 
 The option after the command such as ".A" and ".B" is used to assign a
 name to this node, so that it can be referred to later by a command
-such as ``edge``. In the following example the ``edge`` command is to draw
-an edge between nodes "A" and "B".
+such as ``edge``. In the following example the ``edge`` command is to
+draw an edge between nodes "A" and "B".
 
     edge.A.B
 
@@ -2008,7 +2029,7 @@ the straight line direction to reach the destination node. A positive
 that number of degrees, and a negative "abr" expresses that it should
 make a clockwise rotation. Note that for the starting node if it is to
 make a counterclockwise rotation then the destination node is to have
-a clockwise rotation such that the incoming line is to have the same  
+a clockwise rotation such that the incoming line is to have the same
 abbration. The resulting quardratic Bezier curve is to be formed such
 that the control point of the Bezier curve is the intersection point
 where the two lines meet.
@@ -2064,7 +2085,6 @@ to a node, the name of the node should appear as an underscore.
 By default, the name automatically assigned to the first node is '0', and the
 second one '1', the third one '2', etc. 
 
-
 However, there are four different ways user can influence how an ID
 will be constructed, the first of which is to instruct that the ID
 should cycle through a-z. The second one is to instruct that the ID
@@ -2074,14 +2094,14 @@ way is to instruct that a name be constructed with a fixed prefix and
 a number afterwards.
 
 To achieve this, the 'set' command should be used with a key of 'id'
-and value to a starting ID. See the 'set id' command for various ways
+and value to a starting ID. See the 'id' command for various ways
 of setting a starting ID. In the following example the starting ID is
 set to be 'node10', which is itself assigned to the next node upon
 request. After the first assignment, the starting ID will be changed
 to 'node11' and 'node12', which will become the ID that gets assigned
 for the second and third auto ID assignment.
 
-    set id node10
+    id node10
     node._ (5,6)
     node._ (5,7)
     node._ (7,8)
@@ -2095,12 +2115,12 @@ redrawn at that location with the information provided at the command line.
 This feature allows for example, to repaint an existing node with a highlighted 
 color and/or label.
 
-    set id 0
+    id 0
     for theta:=[0~60~359]:
       let r := 2
-      let x := cos(deg2rad(\theta)) * \r
-      let y := sin(deg2rad(\theta)) * \r
-      node._ (\x,\y)
+      let x := cos(deg2rad(${theta})) * ${r}
+      let y := sin(deg2rad(${theta)}) * ${r}
+      node._ (${x},${y})
     node.0.1.2 {fillcolor:red}
 
 For an 'edge' command, the 'shift' style option can be utilized to allow for
@@ -2235,7 +2255,7 @@ itself to a point that is 3 grid units above.
     box.1 "Hello" (0,0)
     flow.1_n [v:3]
 
-# The "record" and "playback" operations
+# The 'record' and 'playback' commands   
 
 The 'record' operation allows for a group of action commands to be saved    
 and later played back.
@@ -2503,7 +2523,7 @@ will likely cause unpredictable result.
 
 
 
-# Specifying colors
+# Specifying Colors
 
 The colors in the DIAGRAM can be specified in several ways. The easiest is to
 use a named color, such as "red", "green", "blue", etc.  The second is to use
@@ -2520,7 +2540,7 @@ such as "hwb(30|10%|20%)" or "rgb(255|0|0)".
 
 
 
-# The source-operation
+# The 'source' command
 
 The source-operation is to load the previous saved sources and then 
 execute them at that location.
@@ -2619,18 +2639,18 @@ darker.
 Following are Non-action commands:
 
     format
-    array
-    var
     let
     for
+    array
+    var
+    fn
+    path
     viewport
     config
     source
     exit
-    path
     record
     playback
-    fn
     group
     id
     origin
@@ -2645,7 +2665,7 @@ they can be saved and later inserted into the program by the
 # The 'var' command
 
 The 'var' command would define a variable that is capable of holding a 
-complex number. The basic syntax of using a 'var' command is similar to
+Complex number. The basic syntax of using a 'var' command is similar to
 that of a 'let' command in that a variable name (must conform to the
 rule of a valid variable name) is specified followed by an equal sign
 and then an arithmetic expression. 
@@ -2677,8 +2697,8 @@ variable 'b' will be assigned a value is the real number of 3.
 Another thing that has to keep in mind that a variable defined by a 'var' command
 remains in effect for as long as the program goes. 
 
-If a function defined by a 'fn' command references a variable, this variable does not
-have to exist by the time the 'fn' command is run. However, it has to exist when the
+If a function defined by a "fn" command references a variable, this variable does not
+have to exist by the time the "fn" command is run. However, it has to exist when the
 function is "called". Thus, following is valid.
 
     fn f(x) = x + a
@@ -2689,11 +2709,12 @@ The value of 'b' will be 7, rather than NaN, because when function 'f' is called
 inside an expression for initializing the value for 'b', variable 'a' has already
 been defined. 
 
-Thus, in a sense, the 'var' command is to define a "global" variable. This variable
-exists before any 'fn' function is called, and will persist after. However, if a 'fn' function
-has an argument that is the same name as a 'var' variable, then this variable will
-be treated as the name of the argument. For instance, in the following example 'b'
-will be assigned a value of 1, not 3.
+Thus, in a sense, the 'var' command is to define a global variable.
+This variable exists before any "fn" function is called, and will
+persist after. However, if a "fn" function has an argument that is the
+same name as a 'var' variable, then this variable will be treated as
+the name of the argument. For instance, in the following example
+variable 'b' will be assigned a value of 1, not 3.
 
     fn f(x) = x
     var x = 3
@@ -2703,40 +2724,47 @@ will be assigned a value of 1, not 3.
 
 # The 'array' command
 
-The 'array' command is to create an array of Complex numbers. The array created
-can later appear inside a command line that expects a list of Complex numbers.
+The 'array' command is to create an array of Complex numbers. The
+array created can later appear inside a command line that expects a
+list of Complex numbers.
 
     array a = (1+2*I) (2+1*I) 2 (I) 
-    argand-dot &a
+    argand-dot @a
 
-Like a path, to reference points inside an array an ampersand symbol must
-be added before the symbol name that as assigned to the array. This is 
-to distinguish it from mistakenly treated as a 'var' variable. It is also
-possible to access an individual array element using the syntax of underscore.
-Following example would have plotted a single point that is the second
-element of the array.
+To reference an existing path that has already been defined inside a
+command where a list of complex numbers are expected, the array
+variable must appear in form of having an ampersand in front of it.
+
+This syntax distinguishes it from mistakenly being treated as a 'var'
+variable.  In addition, this syntax also makes it possible to access
+an individual array element rather than the entire array.  Following
+example would have plotted a single point that is the second element
+of the array.
 
     array a = (1+2*I) (2+1*I) 2 (I) 
-    argand-dot &a_1
+    argand-dot @a_1
     
-The spread-expression is always possible to express a list of complex
-numbers scattered over a range. In the following example a total of 12
-numbers will be added to an array named 'a', where the first number is
-0, and the last number (1+2*I), and the rest 10 numbers scattered
-evenly between these two numbers.
+When constructing an array, a single element of an array is recognized
+as a group of non-whitespace characters. This allows the flexibility
+to specify a number, such as "2", and expression, such as "2+2". It is
+also possible to include built-in variables, such as "E", "PI", or
+user defined variables created previously by the 'var' command.
+
+An spread-expression is also possible to appear as part of the list,
+which in itself expresses a number of complex numbers that are then
+inserted to the list.  In the following example a total of 12 numbers
+will be added to an array named where the first number is 0, and
+the last number (1+2*I), and the middle 10 numbers scattered evenly
+between these two numbers.
 
     array a = 0!10!1+2*I
-    argand-dot &a
     
-The range-expression could also be used to add a range numbers. In the following
-example the array of 'a' would have had four numbers that are 1, 4, 7, 10, as
-the range-expression below expresses that the first number being 1, the second
-number being 4, and the third number having the same increment between the first
-and the second. This were to continue until it goes over the last number,
-in which case the number is to be discarded and the whole process stop.
+The range-expression is another expression that allows for a range
+numbers to be added to the array. In the following example 
+a list of four numbers "1", "4", "7", and "10" will be added to the
+array.
 
     array a = 1~4~10
-    argand-dot &a
 
 Note that due the constrains of the computing resources the
 spread-expression and range-expression has each imposed a hard limit
@@ -2744,7 +2772,7 @@ of 2048 which is the maximum numbers the list can hold.
 
 
 
-# The "group" command
+# The 'group' command
 
 The "group" operation is to create a new group that holds a collection
 of attribute values such that they will be applied to an element
@@ -2804,7 +2832,7 @@ placed at the bottom of the line if the ".bot" subcommand is supplied.
 
 
 
-# The 'drawcontrolpoints' command
+# The 'drawcontrolpoints' Command
 
 This command would look for for presence of 'C' and 'Q' Bezier curves in the 
 path, and then draw the control points as well as the two end points of this
@@ -2813,7 +2841,7 @@ end points of the Bezier curves as square dots.
 
 
 
-# Built-in Paths
+# Built-in Path Names
 
 Following are built-in path that are readily available.
 
@@ -2946,20 +2974,21 @@ would have drawn an arrow from the origin to "1+2j".
 
 # The 'format' command
 
-The 'format' command is designed to create an environment variable that holds
-a string which has been built according to some user-defined templates.
-In the following example the environment variable would have been modified to
-hold a string that is "1.06".
+The 'format' command is designed to create an environment variable that holds a
+string which has been built according to some user-defined templates.  In the
+following example the environment variable would have been modified to hold a
+string that is "1.06".
 
     let num := pow(2,1/12)
-    format num := "%.2d" \num
+    format num := "%.2d" ${num}
 
-This command follows a convension that is similar to the 'let' command. The first word
-after the 'format' keyword is to be interpreted as the name of an environment variable,
-which should then be followed by a string that is ":=", and then a string that is quoted
-by a pair of quotation-marks, and additional arguments.  Whatever inside the quotation-marks
-are the considered the template expressing how a string is to be built.  Currently,
-only the following formatting groups are recognized.
+This command follows a convension that is similar to the 'let' command. The
+first word after the 'format' keyword is to be interpreted as the name of an
+environment variable, which should then be followed by a string that is ":=",
+and then a string that is quoted by a pair of quotation-marks, and additional
+arguments.  Whatever inside the quotation-marks are the considered the template
+expressing how a string is to be built.  Currently, only the following
+formatting groups are recognized.
 
 + %
 
