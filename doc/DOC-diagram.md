@@ -1585,12 +1585,15 @@ for-loop, but rather part of the toplevel for-loop.
         label.urt "B" &B
       label.bot "t=${b}" (-3,-2)
       
-Note that if a 'for' command contains two or more loop variables, the loop will
-only go so far to cover the shortest sequence. 
+Note that if a 'for' command contains two or more loop variables, the
+loop will go so far to cover the longest sequence, and will
+automatically assign the loop variables of the shorter sequence to
+zero if they have already run out the numbers.
 
-Each 'for' command would have also defined a new environment variable that is
-'@' that will be assigned to an integer that equates to the current iteration.
-The first iteration will be an integer 0, and the second one 1, and so on. 
+Each 'for' command would have also defined a new environment variable
+that is '@' that will be assigned to an integer that equates to the
+current iteration. The first iteration will be an integer 0, and the
+second one 1, and so on.
 
 
 
@@ -1752,24 +1755,24 @@ translation.
 Note that if a scalar expression returns something that cannot be interpreted
 as a valid number, a string such as "Infinity" or "NaN" might be returned.
 
-It is also possible to extract the x/y component of a path point.
-In the following example the variable 'mx' will be
-assigned the sum of adding the "x" components of the first two points
-in path variable 'pts', which will be "1 + 3 = 4".
+It is also possible for a scalar expression to contain a variable that
+refers to a x/y component of a path point. In the following example
+the variable 'mx' will be assigned the sum of adding the "x"
+components of the first two points in path variable 'pts', which will
+be "1 + 3 = 4".
 
-    path pts = (1,2) (3,4)
-    let mx := &pts_0.x + &pts_1.x
-    label.ctr (${mx},0)
+    path my = (1,2) (3,4)
+    let mx := my_0.x + my_1.x
+    let my := my_0.y + my_1.y
+    show ${mx}
+    show ${my}
 
-Following is another example of adding the two "y" components of the
-first two points and assign the result to 'my'.
+It is also possible to refer to an array element. To do that simply use the variable
+followed by an underscore itself.
 
-    path pts = (1,2) (3,4)
-    let my := &pts_0.y + &pts_1.y
-    label.ctr (0,${my})
-
-
-
+    array my = 1 2 3 4
+    let my := my_0 + my_1
+    show ${my}
 
 
 
@@ -1895,7 +1898,8 @@ Following are built-in functions provided by Diagram.
 Following are built-in scalar constants, which can be used as if they
 are arguments. For instance, 
 
-    let arc = 2*PI
+    let arc := 2*PI
+    let mynum := 1 + 2*I
 
 This the 'arc' env-variable would have been assigned the value of 6.28.
 
@@ -1906,6 +1910,12 @@ This the 'arc' env-variable would have been assigned the value of 6.28.
 + E
 
   The Euler's number (2.71828...), the base for the natural logarithm
+
++ I
+
+  The imaginary unit. This allows a complex number to be construct such as
+  "1+2*I", for a complex number that is "1+2i".
+
 
 
 
@@ -1948,47 +1958,69 @@ would expected a list of floats, in which case a list of float are to
 appear inside the command line, after the configuration option and
 label text.
 
-Following is a list of invoking 'cartesian-xtick' command each of
-which holding a list numbers. Note the different ways of how a list of
-numbers can be constructed. 
-
-    cartesian-xtick 10 11 20 21 
-    cartesian-xtick 1~10
-    cartesian-xtick 1~4~10 
-    cartesian-xtick 1~10 20~23~30
-    cartesian-xtick 1 pow(1,2) 2 pow(2,2) 3 pow(3,2)
-    cartesian-xtick 1!3!10
-    cartesian-xtick <map:exp> 1 2 3 4 5 6~10
-    cartesian-xtick <filter:exp> 1 2 3 4 5 6~10
-
-The command 'argand' would have always expected a list of complex
-numbers, except for certain subcommands.
-
     argand-dot 1+1*I 2+2*I 3+5*I -1*I
     argand-dot <map:exp> 1 2 3 4 5 6~10
 
-For a given list, a cluster of non-whitespace characters is to be
-recognized processed as a component.  Each element can be a number by
-itself, an arithmetic expression, a range-expression, a
-spread-expression, or a directive such as "<map:exp>".
+The previous examples shows how a argand-dot command would have
+expected a list of numbers to be present as part of its command line.
+It also goes to show the many different ways a list of numbers can be
+built. Similarly, the 'array' command would have expected the same
+type of numbers.
 
-A "map" directive would have expressed a function such that each
-number encountered in the list from this point on will be sent to this
-function, and the output of which replaces the original number.
+    array my1 = 1+1*I 2+2*I 3+5*I -1*I
+    array my2 = <map:exp> 1 2 3 4 5 6~10
 
-A "filter" directive would have expressed a function such that the
-original number will discarded and not added to the list if the output
-of the function returns a number that is less than 1. 
+Generally, each cluster of non-whitespace characters is to be
+processed and scanned.  This cluster will be scanned and see if it 
+fits one of the following patterns in this order.
+
+1. If it is a directive such as "<map:f>" where "f" denotes a valid
+   function, whether a built-in one or a user-defined one.
+
+2. If it is a spread-expression such as "1!3!10"
+
+3. If it is a range-expression such as "1~4~10"
+
+4. If it is an array such as "@a" 
+
+5. If it is an scalar expression such as "1", "2", "pow(2,3)", or others.
+
+6. If none of this matches then a NAN is generated for that number.
+
+When a spread-expression or range-expression is detected, all numbers expressed
+by this expression will be added to the final list. If an array is detected, all
+elements of that array is added to list. 
+
+If a directive is detected, it is saved to a directive list, and will be 
+used to "filter" the input from that point on. 
+
+A "map" directive would have expressed a complex number function such that
+each number encountered in the list from this point on will be sent to
+this function, and the output of this function replaces the original
+number. Note that the function is denoted by whatever follows the
+"map:", and it must be a valid built-in or user-defined complex number
+function.
+
+A "keep" directive would have expressed a complex number function such
+that the original number will be kept only if the output of this
+function returns something that is greater than or equal to 1.
+Otherwise this number will be discarded and not added to the list.
+
+A "drop" directive would have expressed a complex number function such
+that the original number will be discarded if the output of this
+function returns something that is greater than or equal to 1.
 
 If two or more directives are encountered, then these directives will
-be applied in the reverse order in which they appear. For instance, in
-the following example the "filter" directive will be applied first
-before "map", thus throwing away first three numbers in the list and
-mapping the rest of the numbers by putting it through the function
-'exp()'.
+be applied in the reverse order in which they are encountered in the
+command line. For instance, in the following example the "keep"
+directive would have been applied first before "map", discarding first
+three numbers in the list and returning a list of last three numbers
+with each one being square root of the original. 
 
     fn f(x) = if(x>3,1,0)
-    argand-dot <map:exp> <filter:f> 1 2 3 4 5 6~10
+    array my = <map:sqrt> <keep:f> 1 2 3 4 5 6
+    show @my
+    %%% 2.000 2.236 2.449
 
 
 
