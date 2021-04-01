@@ -700,28 +700,35 @@ the math expression.
 
 - When a symbol is entered as a form such as ``&times;``, the name is
   assumed to be a standard named entity that has been standardized by
-  the web. However, if a symbol is entered such as ``\log``, which
-  starts with a backslash, then it could be considered a math
-  operator, whether it is a predefined one or user-created one.
-  However, before it is to be considered a math operator, it is first
-  checked to see it is not one of the entities, and if it is, then it
-  is still treated as such. Only when the name does not match one of
-  the entities, then it is considered as operator. For LATEX and
-  CONTEX each provides a way to dynamically create new operators.
-  However, they each provides a set of standard operators that have
-  already been defined by the system. Thus, the standard operator will
-  be used first because being treated as a new math operator. On the
-  other hand, if an operator such as "times" is entered as a entity
-  name such as ``&times;``, then it is still to be treated as an
-  operator.
+  the web. If the name does not exist, for instance ``&a;``, then
+  entire string is shown instead, including the leading ampersand and
+  ending semicolon. Otherwise it could be considered a math operator
+  such as ``&times;``, or a normal letter such as ``&Phi;``.
+  
+- However, if a symbol is entered with a leading backslash, such as
+  ``\log``, the name would first go through a validity check to see if
+  it is a valid entity. If the answer is yes then it would go through
+  the same steps as that of the entity.  However, if the name is not
+  recognized then it is check by each local translation to see if it
+  is one of the predefined operator known to that translation. For
+  instance a ``\bmod`` would have been known to LATEX thus it will be
+  used as such. However, if it is not one of the known operators then
+  then this will be treated as a user-defined operator.  LATEX and
+  CONTEX each has provided a way to dynamically create user defined
+  math operators. The operator has the advantage of having a thin
+  space if appear directly in front of an operator, or will stay
+  closely if an open parenthesis is encountered instead.
 
 - For an inline math the ``&math`` phrase should've been used, for
   which a raw math expression is to be included in there. There are
   other similar phrases such as ``&frac``, ``&binom``, ``&sqrt``,
   ``&root``, etc. See "DOC-phrases" for additional math phrases.
 
-- For a display-math and/or equation blocks, a raw math expression by 
-  itself should've been used.
+- For displaymath the math-bundle should be used. It generates a
+  display  math for LATEX generation, which should center the math
+  expression at the middle of the page. For CONTEX it adds the
+  \startformula and \stopformula which is the CONTEX's way of
+  centering an expression and showing it display-math style.
 
 
 
