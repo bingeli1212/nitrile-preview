@@ -185,7 +185,7 @@ Following is a list of other phrases that assumes the content of a math expressi
   superscript, and the contents that is the third argument.
 
   ```verbatim
-  &sum{x=0}{&infty;}{x^2}
+  &int{0}{&infty;}{x^2}
   ```
 
 Additional phrases might be added in the future. For each of the
