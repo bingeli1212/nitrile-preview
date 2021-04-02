@@ -95,7 +95,9 @@ margin, and main text area.
 
 
 
-# Icons For the Title
+# Setup The Frame Title
+
+Each frame title is to be typeset as a standard CONTEX section, started by the 
 
 The icons used for each title of of the slide is the Unicode character U+2756
 BLACK DIAMOND MINUS WHITE X. It appears that the default font chosen for the
@@ -124,6 +126,99 @@ which serves as a name that can be used to later refer to this section, whether
 to show the section number or page number.
 
     Please see section \in[mysec1] for more information.
+
+The frame subtitle is to be typeset as 
+Since only the sections and subsections are to be present, they are configured
+as follows, each by calling the "setuphead" command.
+
+    \definecolor[myblue][r=.04,g=.04,b=.7] % a RGB color
+    \setuphead[section][style=\bfa,number=no,page=yes,margin=-6mm,color=myblue,after={}]
+    \setuphead[subsection][style=\bfxxsm,number=no,page=no,margin=-6mm,color=myblue,before={}]
+
+The "style=" option specifies that a bold font with a font size command of
+"bfxxsm". The "xxsm" portion of the command is the one that has been defined
+previously by a set of the following commands. These commands serve to reserve
+the names of sm, xsm, xxxsm, big, xbig, xxbig, huge, and xhuge for describing a
+relative font size of certain percentage.
+
+    \definefontsize[sm]
+    \definefontsize[xsm]
+    \definefontsize[xxsm]
+    \definefontsize[xxxsm]
+    \definefontsize[big]
+    \definefontsize[xbig]
+    \definefontsize[xxbig]
+    \definefontsize[huge]
+    \definefontsize[xhuge]
+    \definebodyfontenvironment
+      [default]
+      [sm=.9,xsm=.8,xxsm=.7,xxxsm=.5,
+       big=1.2,xbig=1.4,xxbig=1.7,huge=2.0,xhuge=2.3]
+
+The color of the section and subsection are to be described by the presence of
+the "color=" option, which must be followed by the name of a valid color. The
+standard colors such as "red" and "blue" are supplied by CONTEX by default, but
+users can also add addition color names to the pool. They can do that by
+running a command called "definecolor" which creates a new name that describes
+a particular color with RGB components.  The "before=" and "after=" option must
+be added to the "section" and "subsection" to force it to not added extra
+blanks after the section and before the subsection, with the hope of placing
+these two sections close together.
+
+It is sometimes that a frame subtitle be supplied with an itemized list. In this case 
+it can be done the following way, which is to include the entire block of text as part
+of the "title=" option.
+
+    \startsection[title={{\switchtobodyfont[zapfdingbats]❖} ...
+    \startsubsection[title={\startitemize[packed,joinedup]
+    \sym {\symbol[martinvogel 2][CircPipe]} A. One
+    \sym {\symbol[martinvogel 2][CircPipe]} B. Two
+    \sym {\symbol[martinvogel 2][CircPipe]} C. Three
+    \sym {\symbol[martinvogel 2][CircSteel]} D. Four
+    \stopitemize}]
+
+While this solution seems to still present a problem of having observed still a
+significant large portion of vertical spaces between the title and the itemized
+list, there is currently no obvious solutions to this.
+
+
+
+# Vertically Centering Contents
+
+Beamer will try to place the content vertically center within a frame. This
+could have significant visual impact if the contents are few. It will still
+need to be figured out how to accomplish the same objectives in CONTEX.
+
+By searching the web, someone has posted the following suggestion to the problem.
+
+    "In ConTeXt, the \framed command can be used to produce similar results. To
+    produce exactly the same output as the LaTeX commands requires the
+    specification of rather more options, but this is mainly because the
+    defaults are different."
+
+    a box with a table:
+
+    \framed
+       [location=middle, % vertically centered
+        align=flushleft, % align=no (default) is a normal hbox
+                         % align=flushleft/middle/flushright/normal is used for multiple lines
+        offset=5pt]      % to make the frame wider (as in LaTeX)
+       {1\\2\\3}
+
+    a midaligned parbox:
+
+    \framed
+       [location=middle, % vertically centered
+        align=normal,    % justified alignment
+        frame=off,       % no frame
+        width=1em]       % make box 1em wide; note that line breaking is not the same as in LaTeX (?)
+       {1 2 3}
+
+However, this solution does not seem to work very well. I don not see it
+automatically adjust to the height of the entire frame.
+
+
+
 
 
 

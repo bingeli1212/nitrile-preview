@@ -20,8 +20,8 @@
 \setscript[hanzi] % hyphenation
 \setuphead[part][number=yes]
 \setuphead[chapter][style=\bfd,number=yes]
-\setuphead[section][style=\bfa,number=no,page=yes,margin=-6mm,color=myblue]
-\setuphead[subsection][style=\bf,number=no]
+\setuphead[section][style=\bfa,number=no,page=yes,margin=-6mm,color=myblue,after={}]
+\setuphead[subsection][style=\bfxxsm,number=no,continue=yes,before={}]
 \setuphead[subsubsection][style=\bf,number=yes]
 \setuphead[subsubsubsection][style=\bf,number=yes]
 \setupinteraction[state=start,color=,contrastcolor=]
@@ -101,9 +101,6 @@
 \setupbodyfont[linuxlibertineni,11pt]
 \starttext
 
-\showsetups
-\showlayout
-
 
 
 \startsection[title={{\switchtobodyfont[zapfdingbats]❖} Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
@@ -150,7 +147,8 @@ draw one shifted (halfw,halfh) rotated (0) shifted (11.00*u,12.50*u) ;
 clip currentpicture to unitsquare xscaled (20*u) yscaled (15*u) ;
 \stopMPcode{}
 
-\startsection[title={Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
+\startsection[title={{\switchtobodyfont[zapfdingbats]❖} Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
+\startsubsection[title={Answer is 6}]
 
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -159,7 +157,60 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-\startsection[title={Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
+\startsection[title={{\switchtobodyfont[zapfdingbats]❖} Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
+\startsubsection[title={
+{\symbol[martinvogel 2][CircPipe]} A. One\crlf
+{\symbol[martinvogel 2][CircPipe]} B. Two\crlf
+{\symbol[martinvogel 2][CircPipe]} C. Three\crlf
+{\symbol[martinvogel 2][CircSteel]} D. Four }]
+
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+\startsection[title={{\switchtobodyfont[zapfdingbats]❖} Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
+\startsubsection[title={\startitemize[packed,joinedup]
+\sym {\symbol[martinvogel 2][CircPipe]} A. One
+\sym {\symbol[martinvogel 2][CircPipe]} B. Two
+\sym {\symbol[martinvogel 2][CircPipe]} C. Three
+\sym {\symbol[martinvogel 2][CircSteel]} D. Four
+\stopitemize}]
+
+\framed[location=middle, % vertically centered
+       align=normal,    % justified alignment
+       frame=off,       % no frame
+       width=\textwidth]{
+
+
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+
+}
+
+\startsection[title={{\switchtobodyfont[zapfdingbats]❖} Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
+\startsubsection[]
+
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+
+\stopsubsection
+\stopsection
 
 \stoptext
     
