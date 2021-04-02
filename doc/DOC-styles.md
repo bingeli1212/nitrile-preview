@@ -308,7 +308,7 @@ Following are styles recognized by NITRILE:
   'node' operation of a diagram-bundle such that the ID of the node is shown
   inside the node.
 
-+ tspan:1
++ multiline:1
 
   Set it to 1 to allow for certain commands to treat the entire text as multi-line
   text, rather than a collection of single-line labels. This option is currently
