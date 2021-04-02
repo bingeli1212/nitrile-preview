@@ -1,0 +1,148 @@
+% !TEX program = ConTeXt (LuaTeX)
+\enabletrackers[fonts.missing]
+
+
+\definepapersize[BEAMER][width=128mm,height=96mm]
+\setuppapersize[BEAMER]
+\setuplayout[topspace=3mm,header=0mm,footer=0mm,height=90mm,backspace=10mm,leftmarginwidth=10mm, leftmargindistance=0mm, rightmargindistance=0mm]
+\setuppagenumbering[location={},style=]
+\setupindenting[no,medium]
+\setupwhitespace[small]
+\setscript[hanzi] % hyphenation
+\setuphead[part][number=yes]
+\setuphead[chapter][style=\bfd,number=yes]
+\setuphead[section][style=\bfa,number=no,page=yes,margin=-6mm,color=middleblue]
+\setuphead[subsection][style=\bf,number=no]
+\setuphead[subsubsection][style=\bf,number=yes]
+\setuphead[subsubsubsection][style=\bf,number=yes]
+\setupinteraction[state=start,color=,contrastcolor=]
+\enableregime[utf] % enable unicode fonts
+\definefontfamily[linuxlibertine][serif][linuxlibertineo]
+\definefontfamily[linuxlibertine][sans][linuxbiolinumo]
+\definefontfamily[linuxlibertine][tt][linuxlibertinemonoo]
+\definefontfamily[dejavu][serif][dejavuserif]
+\definefontfamily[dejavu][sans][dejavusans]
+\definefontfamily[dejavu][tt][dejavusansmono]
+\definefontfamily[noto][serif][notoserifnormal]
+\definefontfamily[noto][sans][notosansnormal]
+\definefontfamily[noto][tt][notosansmononormal]
+\definefontfamily[zapfdingbats][serif][zapfdingbats]
+\definefontfamily[zapfdingbats][sans][zapfdingbats]
+\definefontfamily[cn][serif][arplsungtilgb]
+\definefontfamily[cn][sans][arplsungtilgb]
+\definefontfamily[tw][serif][arplmingti2lbig5]
+\definefontfamily[tw][sans][arplmingti2lbig5]
+\definefontfamily[jp][serif][ipaexmincho]
+\definefontfamily[jp][sans][ipaexmincho]
+\definefontfamily[kr][serif][baekmukbatang]
+\definefontfamily[kr][sans][baekmukbatang]
+\definemathcommand [arccot] [nolop] {\mfunction{arccot}}
+\definemathcommand [arsinh] [nolop] {\mfunction{arsinh}}
+\definemathcommand [arcosh] [nolop] {\mfunction{arcosh}}
+\definemathcommand [artanh] [nolop] {\mfunction{artanh}}
+\definemathcommand [arcoth] [nolop] {\mfunction{arcoth}}
+\definemathcommand [sech]   [nolop] {\mfunction{sech}}
+\definemathcommand [csch]   [nolop] {\mfunction{csch}}
+\definemathcommand [arcsec] [nolop] {\mfunction{arcsec}}
+\definemathcommand [arccsc] [nolop] {\mfunction{arccsc}}
+\definemathcommand [arsech] [nolop] {\mfunction{arsech}}
+\definemathcommand [arcsch] [nolop] {\mfunction{arcsch}}
+\usemodule[ruby]
+\usesymbols[mvs]
+\setupcaptions[minwidth=\textwidth, align=middle, location=top]
+\setupinteraction[state=start]
+\placebookmarks[part,chapter,section]
+\definecolor[cyan][r=0,g=1,b=1] % a RGB color
+\definecolor[magenta][r=1,g=0,b=1] % a RGB color
+\definecolor[darkgray][r=.35,g=.35,b=.35] % a RGB color
+\definecolor[gray][r=.5,g=.5,b=.5] % a RGB color
+\definecolor[lightgray][r=.75,g=.75,b=.75] % a RGB color
+\definecolor[brown][r=.72,g=.52,b=.04] % a RGB color
+\definecolor[lime][r=.67,g=1,b=.18] % a RGB color
+\definecolor[olive][r=.5,g=.5,b=0] % a RGB color
+\definecolor[orange][r=1,g=.5,b=0] % a RGB color
+\definecolor[pink][r=1,g=.75,b=.79] % a RGB color
+\definecolor[teal][r=0,g=.5,b=.5] % a RGB color
+\definecolor[purple][r=.8,g=.13,b=.13] % a RGB color
+\definecolor[violet][r=.5,g=0,b=.5] % a RGB color
+\definedescription[latexdesc][
+  headstyle=normal, style=normal, align=flushleft, 
+  alternative=hanging, width=fit, before=, after=]
+\definedescription[DL][
+  headstyle=bold, style=normal, align=flushleft, 
+  alternative=hanging, width=broad]
+\definedescription[HL][
+  headstyle=normal, style=normal, align=flushleft, 
+  alternative=hanging, width=broad]
+\definefontsize[sm]
+\definefontsize[xsm]
+\definefontsize[xxsm]
+\definefontsize[xxxsm]
+\definefontsize[big]
+\definefontsize[xbig]
+\definefontsize[xxbig]
+\definefontsize[huge]
+\definefontsize[xhuge]
+\definebodyfontenvironment
+  [default]
+  [sm=.9,xsm=.8,xxsm=.7,xxxsm=.5,
+   big=1.2,xbig=1.4,xxbig=1.7,huge=2.0,xhuge=2.3]
+\definefloat[listing][listings]
+\setupbodyfont[linuxlibertineni,11pt]
+\starttext
+
+\showsetups
+\showlayout
+
+
+
+\startsection[title={{\switchtobodyfont[zapfdingbats]❖} Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
+
+\dontleavehmode{}\startMPcode
+numeric u; u := 5mm;
+numeric pw; pw := u;
+numeric ph; ph := u;
+numeric textwidth; textwidth := \the\textwidth;
+numeric textheight; textheight := \the\textwidth;
+numeric ratio_w; ratio_w := 1;
+numeric ratio_h; ratio_h := 1;
+for i=0 upto 15: draw (0,i*u) --- (20*u,i*u) withcolor .92white; endfor;
+for i=0 upto 20: draw (i*u,0) --- (i*u,15*u) withcolor .92white; endfor;
+% <-- config fontsize 16 -->
+% <-- path uparrow = (0,0) [v:-2] (0,0) [l:-0.5,-0.5] (0,0) [l:+0.5,-0.5] -->
+% <-- ***coords: [M:0.00,0.00,0] [L:0.00,-2.00] [M:0.00,0.00,0] [L:-0.50,-0.50] [M:0.00,0.00,0] [L:0.50,-0.50] -->
+% <-- ***path: uparrow=[M:0.00,0.00,0] [L:0.00,-2.00] [M:0.00,0.00,0] [L:-0.50,-0.50] [M:0.00,0.00,0] [L:0.50,-0.50] -->
+% <-- let dy := 1.7 -->
+% <-- ***let: dy=1.700 -->
+% <-- origin at:&west right:1 up:5 -->
+% <-- label {math} "5 \\\\ + \\\\ \\sqrt{-4} \\\\ = \\\\ 5 + 2i" (0,0) [h:2] [h:2] [h:4] [h:2] -->
+% <-- ***coords: [M:0.00,0.00,0] [L:2.00,0.00] [L:4.00,0.00] [L:8.00,0.00] [L:10.00,0.00] -->
+picture one; one := textext("\switchtobodyfont[16pt]\math{5}");
+numeric halfw; halfw := bbwidth(one)/2 + 1.5pt;
+numeric halfh; halfh := 9.67pt;
+draw one shifted (halfw,halfh) rotated (0) shifted (1.00*u,12.50*u) ;
+picture one; one := textext("\switchtobodyfont[16pt]\math{+}");
+numeric halfw; halfw := bbwidth(one)/2 + 1.5pt;
+numeric halfh; halfh := 9.67pt;
+draw one shifted (halfw,halfh) rotated (0) shifted (3.00*u,12.50*u) ;
+picture one; one := textext("\switchtobodyfont[16pt]\math{\sqrt {- 4}}");
+numeric halfw; halfw := bbwidth(one)/2 + 1.5pt;
+numeric halfh; halfh := 9.67pt;
+draw one shifted (halfw,halfh) rotated (0) shifted (5.00*u,12.50*u) ;
+picture one; one := textext("\switchtobodyfont[16pt]\math{=}");
+numeric halfw; halfw := bbwidth(one)/2 + 1.5pt;
+numeric halfh; halfh := 9.67pt;
+draw one shifted (halfw,halfh) rotated (0) shifted (9.00*u,12.50*u) ;
+picture one; one := textext("\switchtobodyfont[16pt]\math{5 + 2 i}");
+numeric halfw; halfw := bbwidth(one)/2 + 1.5pt;
+numeric halfh; halfh := 9.67pt;
+draw one shifted (halfw,halfh) rotated (0) shifted (11.00*u,12.50*u) ;
+clip currentpicture to unitsquare xscaled (20*u) yscaled (15*u) ;
+\stopMPcode{}
+
+\startsection[title={Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
+
+\startsection[title={Adding \math{{5}} and \math{{\sqrt {- 4}}}},reference={undefined},bookmark={Adding &math{5} and &math{\sqrt{-4}}}]
+
+\stoptext
+    
