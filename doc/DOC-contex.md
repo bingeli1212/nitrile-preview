@@ -27,6 +27,10 @@ title: CONTEXT translation
 
 - Current the "linuxlibertine" does not yet support circled digit U+2460.
 
+- It has been noticed that when four Diagrams are being placed side by side and each
+  diagram is 4cm wide, inside a Gleamer frame, then the first three Diagrams would
+  have been placed at the first row and the last one wrapped, where LATEX and SVG
+  would each have wrapped the third one down to the next row.
 
 
 # The Font size problem
