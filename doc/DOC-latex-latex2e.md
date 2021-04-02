@@ -2129,8 +2129,34 @@ such that the operator name itself looks like it is made up of two words instead
     \(\operatorname{proj\,lim}x\)
     \(\operatorname{proj\,lim}(x)\)
 
+# Use the Fraktur Math Font
 
+To produce Fraktur letters in LaTeX, load the "amssymb" package and use
+the command \mathfrak{}.
 
+Symbols such as ``\mathfrak{A}`` are math symbols and can only be used
+in math mode. They are not intended to be a substitute for setting
+text in Fraktur font. This is consistent with the semantic distinction
+in Unicode described below.
+
+The Unicode standard tries to distinguish the appearance of a symbol
+from its semantics, though there are compromises. For example, the
+Greek letter Ω has Unicode code point U+03A9 but the symbol Ω for
+electrical resistance in Ohms is U+2621 even though they are rendered
+the same.
+
+The letters a through z, rendered in Fraktur font and used as
+mathematical symbols, have Unicode values U+1D51E through U+1D537.
+These values are in the “Supplementary Multilingual Plane” and do not
+commonly have font support.
+
+The corresponding letters A through Z are encoded as U+1D504 through
+U+1D51C, though interestingly a few letters are missing. The code
+point U+1D506, which you’d expect to be Fraktur C, is reserved. The
+spots corresponding to H, I, and R are also reserved. Presumably these
+are reserved because they are not commonly used as mathematical
+symbols. However, the corresponding bold versions U+1D56C through
+U+ID585 have no such gaps.
 
 
 
