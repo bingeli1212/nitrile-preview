@@ -60,6 +60,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch GLEAMER",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/gleamer.js",
+      "args": [
+        "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch SLIDE",
       "skipFiles": [
         "<node_internals>/**"
