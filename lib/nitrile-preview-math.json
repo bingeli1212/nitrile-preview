@@ -161,7 +161,6 @@
     { "name": "\\acute",              "count": 1,  "verbatim": 1 },
     { "name": "\\breve",              "count": 1,  "verbatim": 1 },
     { "name": "\\tilde",              "count": 1,  "verbatim": 1 },
-    { "name": "\\hrule",              "count": 1,  "verbatim": 1 },
 
     { "name": "\\dif",                "count": 1 },
     { "name": "\\od",                 "count": 2, "option": 1 },
