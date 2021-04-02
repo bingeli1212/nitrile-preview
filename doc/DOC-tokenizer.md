@@ -730,7 +730,19 @@ the math expression.
   \startformula and \stopformula which is the CONTEX's way of
   centering an expression and showing it display-math style.
 
+- For generating plain text within a math, use the ``\text{...}`` command, 
+  such as ``\text{Hello World}``.
+  The plain text cannot have braces, and could
+  contain letters, digits and punctuations. 
 
+- For generating a fill-in horizontal rule, use the ``\hrule{...}`` command,
+  such as ``\hrule{1}``. The numbers placed are recognized as expressing 
+  multiples of em.  For LATEX this translates to ``\rule{1em}{0.4pt}``. For 
+  CONTEX this translates to ``\hl[1]``. For HTML a SVG-line element is generated
+  that draw a horizontal line near the bottom. 
+  
+   
+  
 
 
 
