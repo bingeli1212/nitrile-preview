@@ -1891,6 +1891,16 @@ Following are built-in functions provided by Diagram.
   let b := f(11)  
   ```
 
++ isfinite(x)
+
+  This function returns 1 if the number is a finite number, ie. a number
+  that is not NAN is INFINITY. Otherwise it returns 0.
+
++ isnan(x)
+
+  This function returns 1 if the number is NAN, and otherwise it returns 0.
+
+
 
 
 # All Built-in Constants
