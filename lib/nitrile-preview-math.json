@@ -1229,8 +1229,8 @@
     "gimel"                  : { "html": "&#x2137;"       ,  "tex": "\\gimel"                             , "TM":1      ,"cex":"unicode"         , "width": 8  ,  "op": 0,  "usepackage":""         ,"comment":"U+2137 GIMEL SYMBOL"},
     "daleth"                 : { "html": "&#x2138;"       ,  "tex": "\\daleth"                            , "TM":1      ,"cex":"unicode"         , "width": 8  ,  "op": 0,  "usepackage":""         ,"comment":"U+2138 DALET SYMBOL"},
     
-    "therefore"              : { "html": "&#x2234;"       ,  "tex": "\\therefore"                         , "TM":1      ,"cex":"unicode"         , "width": 8  ,  "op": 1,  "usepackage":""         ,"comment":"U+2234 THEREFORE"},
-    "because"                : { "html": "&#x2235;"       ,  "tex": "\\because"                           , "TM":1      ,"cex":"unicode"         , "width": 8  ,  "op": 1,  "usepackage":""         ,"comment":"U+2235 BECAUSE"},
+    "therefore"              : { "html": "&#x2234;"       ,  "tex": "\\therefore"                         , "TM":0      ,"cex":"unicode"         , "width": 8  ,  "op": 1,  "usepackage":""         ,"comment":"U+2234 THEREFORE"},
+    "because"                : { "html": "&#x2235;"       ,  "tex": "\\because"                           , "TM":0      ,"cex":"unicode"         , "width": 8  ,  "op": 1,  "usepackage":""         ,"comment":"U+2235 BECAUSE"},
     
 
 
