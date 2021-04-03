@@ -1,8 +1,57 @@
 ---
-title: CONTEXT translation
+title: ConTeXt translation
 ---
 
 # Issues
+
+- Advantages of using CONTEX: (1) able to switch the main font to any font
+  installed by the system; (2) allow for temporarily switching to another 
+  for some part of the text, such as CJK; (3) consistant vertical spacing
+  between paragraphs; for an itemized list the bullets are flushed with
+  the left margin rather than having a visible left margin like that
+  of the LATEX; 
+  
+- Symbols in math mode are supported by typing their placing the Unicode
+  character directly in the document and with "\math{}" command. The "\math{}"
+  command can be nested, which works similarly to the "\ensuremath" command in
+  LATEX; 
+
+- For "\startitemize" command, if the option is not "packed", then there are
+  visible vertical white spaces between items. Unfortunately the amount of this
+  vertical space cannot be adjusted to be consistant with the inter-paragraph
+  vertical space, which is controlled by the "\setupwhitespace" command,
+  especially as it has been set to "small". 
+
+- The "\setupalign" command controls the entire article how texts are to be typeset.
+  Especially things such as hyphenation, justification, hanging. etc.
+
+  ```verbatim
+  \setupalign[nothyphenated,justified,hanging]
+  \setupalign[hyphenated,morehyphenation,flushleft]
+  ```
+
+- The "\startalignment" command is designed to locally change the alignment for 
+  one particular paragraph. It must be ended with "\stopalignment"
+
+  ```verbatim
+  \startalignment[center]
+  \startalignment[flushright]
+  ```
+
+- The "\setupwhitespace" controls inter-paragraph spacing. This is important especiall
+  when text indentation of each paragraph is turned off.
+
+  ```verbatim
+  \setupwhitespace[small]
+  \setupwhitespace[medium]
+  \setupwhitespace[line]
+  ```
+
+- Indentation is managed different than LATEX. See the section "Paragraph Indentations" below
+  for more information.
+
+- The "\type{}" command requires a balanced left-right-braces. Even when one of them
+  is being escaped.
 
 - Current version of CONTEX Y2020 seems to be broken for the "ruby" module.
   The `\ruby` command simply does not work and generate an compilation error.
@@ -32,14 +81,18 @@ title: CONTEXT translation
   have been placed at the first row and the last one wrapped, where LATEX and SVG
   would each have wrapped the third one down to the next row.
 
+- DO NOT know how to make a double horizontal rule for a "tabular".
+  It has been observed that for a "starttable" block, two consecutive "\HL" commands 
+  does not turn it into a double horizontal line. It seems that these two "\HL commands
+  are placed very close to each other and the horizontal line just appears to be
+  a little thicker.
 
-# The Font size problem
+- DO NOT KNOW how to change the entire font for the "startable" block such that
+  the table will be less taller than before. It is been seen that if a font switch 
+  such as "\bfxsm" is placed before "\starttable", then it the fonts are shrinked
+  but the table does not gets shorter and is still the same height.
 
-  If 'bodyfontsizept' and 'diagfontsizept' are set to 
-  different numbers, it has been observed that for '\sqrt{2}'
-  the left-hand part of the radical symbol will be clipped.
-  The problem disappear if both sizes are set to the same.
-
+- The current setup for typesetting a HL list works beautifully in CONTEX.
 
 # The \bTABLE problem
 
@@ -106,9 +159,9 @@ The only valid relative font sizes are the following:
 
 For example:
 
-  %!CONTEXT.fscode=xxsm
-  %!CONTEXT.fslisting=xxsm
-  %!CONTEXT.fstabular=sm  
+  %!ConTeXt.fscode=xxsm
+  %!ConTeXt.fslisting=xxsm
+  %!ConTeXt.fstabular=sm  
 
 Note that the relative font such as 'sm' is to be combined
 with other switches that specifies the typeface such
@@ -123,12 +176,12 @@ Unicode character or a collection of characters.
 
 
 
-# Creating a CONTEXT document
+# Creating a ConTeXt document
 
 When running 'nic' and the document is not a master document,
 then no chapter is to be created, and only sections are.
 In particular, each HDGS/1 block will become a "section"
-of the CONTEXT document, and the HDGS/2 block is to become
+of the ConTeXt document, and the HDGS/2 block is to become
 a subsection. If there is a HDGS/0 block it will also be 
 part of the generated TEX document, but it will not be 
 a section. It is simply a paragraph with a bigger font (\tfd).
@@ -149,42 +202,42 @@ HDGS/2 as a subsubsection, and so on.
 
 # The \mathscr command 
 
-The \mathscr is not available on CONTEXT and thus is not supported
+The \mathscr is not available on ConTeXt and thus is not supported
 on NITRILE.
 
-# Using libertine font
+# Use the "libertine" Font
 
 To use the Linux Libertine font, specify "linuxlibertineo" as the
 font family name. 
 
-  \setupbodyfont[linuxlibertineo]
-  \setupbodyfont[linuxlibertineo,12pt]
+    \setupbodyfont[linuxlibertineo]
+    \setupbodyfont[linuxlibertineo,12pt]
 
 There are other font family in there with 
 similar names but not sure what they are about.
 
-  $ mtxrun --script font --list --file -pattern=*libertine*
+    $ mtxrun --script font --list --file -pattern=*libertine*
 
-  familyname                weight     style    width    variant   fontname               filename               subfont   fontweight
+    familyname                weight     style    width    variant   fontname               filename               subfont   fontweight
 
-  linuxlibertinedisplayo    normal     normal   normal   normal    linlibertinedisplayo   LinLibertine_DR.otf              conflict: book
-  linuxlibertineinitialso   normal     normal   normal   normal    linlibertineio         LinLibertine_I.otf               conflict: book
-  linuxlibertinemonoo       normal     normal   normal   normal    linlibertinemo         LinLibertine_M.otf               conflict: book
-  linuxlibertinemonoo       bold       normal   normal   normal    linlibertinemob        LinLibertine_MB.otf
-  linuxlibertinemonoo       bold       italic   normal   normal    linlibertinemobo       LinLibertine_MBO.otf
-  linuxlibertinemonoo       normal     italic   normal   normal    linlibertinemoo        LinLibertine_MO.otf              conflict: book
-  linuxlibertineo           normal     normal   normal   normal    linlibertineo          LinLibertine_R.otf               conflict: book
-  linuxlibertineo           bold       normal   normal   normal    linlibertineob         LinLibertine_RB.otf
-  linuxlibertineo           bold       italic   normal   normal    linlibertineobi        LinLibertine_RBI.otf
-  linuxlibertineo           normal     italic   normal   normal    linlibertineoi         LinLibertine_RI.otf              conflict: book
-  linuxlibertineo           semibold   normal   normal   normal    linlibertineoz         LinLibertine_RZ.otf
-  linuxlibertineo           semibold   italic   normal   normal    linlibertineozi        LinLibertine_RZI.otf
+    linuxlibertinedisplayo    normal     normal   normal   normal    linlibertinedisplayo   LinLibertine_DR.otf              conflict: book
+    linuxlibertineinitialso   normal     normal   normal   normal    linlibertineio         LinLibertine_I.otf               conflict: book
+    linuxlibertinemonoo       normal     normal   normal   normal    linlibertinemo         LinLibertine_M.otf               conflict: book
+    linuxlibertinemonoo       bold       normal   normal   normal    linlibertinemob        LinLibertine_MB.otf
+    linuxlibertinemonoo       bold       italic   normal   normal    linlibertinemobo       LinLibertine_MBO.otf
+    linuxlibertinemonoo       normal     italic   normal   normal    linlibertinemoo        LinLibertine_MO.otf              conflict: book
+    linuxlibertineo           normal     normal   normal   normal    linlibertineo          LinLibertine_R.otf               conflict: book
+    linuxlibertineo           bold       normal   normal   normal    linlibertineob         LinLibertine_RB.otf
+    linuxlibertineo           bold       italic   normal   normal    linlibertineobi        LinLibertine_RBI.otf
+    linuxlibertineo           normal     italic   normal   normal    linlibertineoi         LinLibertine_RI.otf              conflict: book
+    linuxlibertineo           semibold   normal   normal   normal    linlibertineoz         LinLibertine_RZ.otf
+    linuxlibertineo           semibold   italic   normal   normal    linlibertineozi        LinLibertine_RZI.otf
 
 # Cons
 
 - Does not support \lstlisting, making code listing hard
 
-- The \sfrac in CONTEXT does not place the numerator/denominator side-by-side,
+- The \sfrac in ConTeXt does not place the numerator/denominator side-by-side,
   but instead laying them out top-to-bottom.
 
 - The \ruby command seems to be broken for Texlive2020 release, it worked for
@@ -214,7 +267,7 @@ similar names but not sure what they are about.
   broken and will generate random errors with no obvious cause.
 
 - When in twocolumn code, some of the lines are being compressed horizontally
-  when CONTEXT determines it is just a little too long to fit in a line and it
+  when ConTeXt determines it is just a little too long to fit in a line and it
   think it can just squeeze it in by shrinking all the spaces tighter.
   However, it has been observed that sometimes the parentheses are being drawn
   on top of other characters.
@@ -226,7 +279,7 @@ similar names but not sure what they are about.
 
 # Remarks
 
-- The name for the parser is 'CONTEXT'.
+- The name for the parser is 'ConTeXt'.
 
 - The \latexdesc command allows font switch commands and other to be 
   included as part of the key, math can also appear in there as well.
@@ -249,32 +302,32 @@ similar names but not sure what they are about.
 
 # Math formula
 
-The math formula generation for CONTEXT is done 
+The math formula generation for ConTeXt is done 
 as the following:
 
-  $  C &= a + &b\\
-       &= c + d
+    $  C &= a + &b\\
+         &= c + d
 
-  $ A + B &= a + b
+    $ A + B &= a + b
 
-  $ A + B + C &= c + d
+    $ A + B + C &= c + d
 
 The output would have been as follows:
 
-  \startformula
-  \startmathalignment[n=2]
-  \NC C \NC = a + b \NR
-  \NC  \NC = c + d \NR[+]
-  \stopmathalignment
-  \stopformula
-  \startformula
-  \startmathalignment[n=2]
-  \NC A + B + C \NC = c \NR
-  \stopmathalignment
-  \stopformula
-  \startformula
-    A + B = c
-  \stopformula
+    \startformula
+    \startmathalignment[n=2]
+    \NC C \NC = a + b \NR
+    \NC  \NC = c + d \NR[+]
+    \stopmathalignment
+    \stopformula
+    \startformula
+    \startmathalignment[n=2]
+    \NC A + B + C \NC = c \NR
+    \stopmathalignment
+    \stopformula
+    \startformula
+      A + B = c
+    \stopformula
 
 The result is that for the first \startformula, there are
 two lines on top of each other and these two lines will have
@@ -294,25 +347,25 @@ The solution is to configure it so that the gap is set to
 a fraction of the width of the page. Following is an example
 of setting it to be 6% of the page width.
 
-  \setupcombinations[distance=0.06\textwidth]
+    \setupcombinations[distance=0.06\textwidth]
 
-Following are examples copied from WIKI page of CONTEXT.
+Following are examples copied from WIKI page of ConTeXt.
 Suppressing both the horizontal and vertical gap between cells:
 
-  \setupcombinations[distance=0mm,after=]
+    \setupcombinations[distance=0mm,after=]
 
 A 10mm horizontal and vertical gap between cells:
 
-  \setupcombinations[distance=10mm,after={\blank[10mm]}]
+    \setupcombinations[distance=10mm,after={\blank[10mm]}]
 
 The distance between the content and its caption entry is set
 with the 'inbetween' parameter.
 
-Current the distance is made a parameter in CONTEXT
-that is CONTEXT.distance, it is set to a number that represents
+Current the distance is made a parameter in ConTeXt
+that is ConTeXt.distance, it is set to a number that represents
 the percentage of the page. For example '2' would mean two-percent
 of the page width. The \setupcombinations command is then placed
-at the preamble of each generated CONTEXT document that reflects
+at the preamble of each generated ConTeXt document that reflects
 this setting.
 
 # Paper size
@@ -320,21 +373,21 @@ this setting.
 The paper size is done by the \setpapersize command.
 Following option sets the paper size.
 
-  %!CONTEXT.papersize=A4
+    %!ConTeXt.papersize=A4
 
 # Page layout
 
 Layout of each page is done by the \setlayout command.
 
-  \setlayout[backspace=30mm,
-             cutspace=15mm,
-             width=30mm]
+    \setlayout[backspace=30mm,
+               cutspace=15mm,
+               width=30mm]
 
 Following options can be used to set this command.
 
-  %!CONTEXT.layout+=backspace=30
-  %!CONTEXT.layout+=cutspace=15mm
-  %!CONTEXT.layout+=width=15mm
+    %!ConTeXt.layout+=backspace=30
+    %!ConTeXt.layout+=cutspace=15mm
+    %!ConTeXt.layout+=width=15mm
 
 Note that the total distance of backspace, cutspace and width
 should equal to the width of the page, which has been set to A4,
@@ -344,14 +397,14 @@ assumed to be in mm.
 
 The vertical spaces are controlled by the following parameters:
 
-  \setlayout[topspace=20mm,
-             header=10mm,
-             footer=0mm,
-             height=250mm]
+    \setlayout[topspace=20mm,
+               header=10mm,
+               footer=0mm,
+               height=250mm]
 
 # Two column layout
 
-The two column layout for CONTEXT can be done. It involves using
+The two column layout for ConTeXt can be done. It involves using
 the command \startcolumns[balance=no] and \stopcolumns. Without
 additional setup, these two commands assumes a two column layout.
 The "n=3" option can be added to force a three-column layout.
@@ -388,19 +441,19 @@ to go to the next column.
 This command allows to configure a block of paragraphs so that
 it appears as multiple columns. 
 
-  \defineparagraphs[sidebyside][n=2]
-  \startsidebyside
-  Hello world left.
-  \sidebyside
-  Hello world right.
-  \stopsidebyside
+    \defineparagraphs[sidebyside][n=2]
+    \startsidebyside
+    Hello world left.
+    \sidebyside
+    Hello world right.
+    \stopsidebyside
 
 In this case, the word "Hello world left" will appear in its own
 column which is on the left hand side, while the word "Hello
 world right" will appear in its own column and it is on the right
 hand side of the first column. 
 
-Note that to use a CONTEXT "paragraph" this is the only way,
+Note that to use a ConTeXt "paragraph" this is the only way,
 which is to have to define a new paragraph with a new name.
 Another limitation is that all the texts of this paragraph is
 always to be kept together---this means if the text is long
@@ -415,10 +468,10 @@ one-column float.
 The only way of similating it is to use the
 \startpostponing..\page..\stoppostponing command. 
 
-  \startpostponing
-  ...
-  \page
-  \stoppostponing
+    \startpostponing
+    ...
+    \page
+    \stoppostponing
 
 It automatically switches to expand the float to cover both
 columns if the width of the float is *wider* than the width
@@ -457,27 +510,27 @@ protrude into the next cell to its right hand side.
 
 # Sections and chapters
 
-CONTEXT automatically chooses sections as the toplevel
+ConTeXt automatically chooses sections as the toplevel
 sectional headings when no \startchapter is detectd.
 
   
 # Generating customized part page
 
-Set the `CONTEXT.partpage` option to 1, and then 
-set the `CONTEXT.part` using segmented entry 
+Set the `ConTeXt.partpage` option to 1, and then 
+set the `ConTeXt.part` using segmented entry 
 syntax, where each entry to appear in its own line.
 
-  %^CONTEXT.partpage=1
-  %^CONTEXT.part+=\dontleavehmode
-  %^CONTEXT.part+=\blank[50mm]
-  %^CONTEXT.part+=\startalignment[flushleft]
-  %^CONTEXT.part+={\bfb Part ${1}}
-  %^CONTEXT.part+=\stopalignment
-  %^CONTEXT.part+=\blank[8mm]
-  %^CONTEXT.part+=\startalignment[flushleft]
-  %^CONTEXT.part+={\bfd ${text}}
-  %^CONTEXT.part+=\stopalignment
-  %^CONTEXT.part+=\page
+    %^ConTeXt.partpage=1
+    %^ConTeXt.part+=\dontleavehmode
+    %^ConTeXt.part+=\blank[50mm]
+    %^ConTeXt.part+=\startalignment[flushleft]
+    %^ConTeXt.part+={\bfb Part ${1}}
+    %^ConTeXt.part+=\stopalignment
+    %^ConTeXt.part+=\blank[8mm]
+    %^ConTeXt.part+=\startalignment[flushleft]
+    %^ConTeXt.part+={\bfd ${text}}
+    %^ConTeXt.part+=\stopalignment
+    %^ConTeXt.part+=\page
 
 Use `${text}` for a placehold for the title of 
 of the part, and `${1}` for the numbering 
@@ -549,25 +602,25 @@ In ConTeXt MkIV the command requires an additional [], thus you need to write
 
 # Shaded colors
 
-  \startMPcode
-  numeric u; u := 5mm;
-  numeric pu; pu := u;
-  numeric fr; fr := 1;
-  numeric textwidth; textwidth := \the\textwidth;
-  numeric textheight; textheight := \the\textwidth;
-  numeric ratio_w; ratio_w := 1;
-  numeric ratio_h; ratio_h := 1;
-  for i=0 upto 10: draw (0,i*u) --- (16*u,i*u) withcolor .9white; endfor;
-  for i=0 upto 16: draw (i*u,0) --- (i*u,10*u) withcolor .9white; endfor;
-  % <-- viewport 16 10 -->
-  % <-- width: 16 height: 10 -->
-  % <-- % cube -->
-  % <-- path cube = (0,0) [h:2] [v:2] [h:-2] cycle -->
-  % <-- saved cube=(0.00,0.00) (2.00,0.00) (2.00,2.00) (0.00,2.00) cycle -->
-  % <-- draw.cube {fillcolor:#666;angle:80} (12,2) -->
-  fill ((12.00,2.00)--(14.00,2.00)--(14.00,4.00)--(12.00,4.00)--cycle) scaled(u) withshademethod "linear" withshadevector (1,0) withshadecolors ((0.40,0.40,0.40),(1,1,1),(0.80,0.80,0.80));
-  linecap:=butt;linejoin:=mitered; draw ((12.00,2.00)--(14.00,2.00)--(14.00,4.00)--(12.00,4.00)--cycle) scaled(u) ;
-  \stopMPcode{}
+    \startMPcode
+    numeric u; u := 5mm;
+    numeric pu; pu := u;
+    numeric fr; fr := 1;
+    numeric textwidth; textwidth := \the\textwidth;
+    numeric textheight; textheight := \the\textwidth;
+    numeric ratio_w; ratio_w := 1;
+    numeric ratio_h; ratio_h := 1;
+    for i=0 upto 10: draw (0,i*u) --- (16*u,i*u) withcolor .9white; endfor;
+    for i=0 upto 16: draw (i*u,0) --- (i*u,10*u) withcolor .9white; endfor;
+    % <-- viewport 16 10 -->
+    % <-- width: 16 height: 10 -->
+    % <-- % cube -->
+    % <-- path cube = (0,0) [h:2] [v:2] [h:-2] cycle -->
+    % <-- saved cube=(0.00,0.00) (2.00,0.00) (2.00,2.00) (0.00,2.00) cycle -->
+    % <-- draw.cube {fillcolor:#666;angle:80} (12,2) -->
+    fill ((12.00,2.00)--(14.00,2.00)--(14.00,4.00)--(12.00,4.00)--cycle) scaled(u) withshademethod "linear" withshadevector (1,0) withshadecolors ((0.40,0.40,0.40),(1,1,1),(0.80,0.80,0.80));
+    linecap:=butt;linejoin:=mitered; draw ((12.00,2.00)--(14.00,2.00)--(14.00,4.00)--(12.00,4.00)--cycle) scaled(u) ;
+    \stopMPcode{}
 
 # Symbols
 
@@ -817,11 +870,11 @@ Following are additional format keys:
 
 + `m`
 
-  Each cell is in (inline) math mode. Equivalent to `b$ a$`
+  Each cell is in (inline) math mode. 
 
 + `M`
 
-  Each cell is in (display) math mode. Equivalent to `\{b$\displaystyle}a$}`
+  Each cell is in (display) math mode. 
 
 + `\m`
 
@@ -857,7 +910,7 @@ Following are additional format keys:
 
 + `C`
 
-  Color. Use it in combination with `\{` (e.g. `\{C{red} )
+  Color. Use it in combination with ``\{`` (e.g. ``\{C{red}`` )
 
 + `s`
 
@@ -971,27 +1024,27 @@ always be flushed against the left-hand side of the page.
 # Unicode Math Symbols
 
 [ Unicode Math symbols. ]
-CONTEXT has some support for math symbols in Unicode.
+ConTeXt has some support for math symbols in Unicode.
 For example, it does not provide support for \coloneq
 symbol but we can type a Unicode character U+2254 directly
 inside the math formular and it will work.
 
     \( A ≔ B \)
 
-When it is translated into a CONTEXT document it becomes
+When it is translated into a ConTeXt document it becomes
 
     \math{A ≔ B}
 
 And it just works.
 
 Following is a partial list of common LATEX symbols that
-cannot be found on the CONTEXT side such that it must be
+cannot be found on the ConTeXt side such that it must be
 typeset by a Unicode character.
 
 - \coloneq 
 - \ctdot
 
-Another interesting fact about CONTEXT is that for the following 
+Another interesting fact about ConTeXt is that for the following 
 \startpart command which has a "bookmark" entry expected to be
 filled in with a string that is to appear as a PDF bookmark,
 the value for the "bookmark" field can also contain a \math command
@@ -1253,6 +1306,1386 @@ and the opening parenthesis.
 
     a = \math{\mathop{\mfunction{fun}}x}
     a = \math{\mathop{\mfunction{fun}}(x)}
+
+# Paragraph Indentations
+
+In plain TeX, controlling indentation is simple: The user sets a value for
+parindent, and each new paragraph is indented by that value, unless explicitly
+begun with noindent. Environments can provide a noindent at the end of their
+definitions, and if the user wants to overrule that, he can add an explicit
+indent at the beginning of the next paragraph. For the most part, LaTeX follows
+the same convention.
+
+Indentation in ConTeXt are a bit different: it mostly does not rely on the
+presence of blank lines, but uses ``\setupindenting`` to manage general
+indentation, the ``indentnext=yes/no/auto`` key on environments to
+enable/disable indentation after them, and ``\indentation`` and
+``\noindentation`` to manually force/disable an indentation.
+
+The commands ``\indent``, ``\noindent``, ``\indenting``, and ``\noindenting``
+are present for historical reasons, but should not be used. Especially, they
+should not be confused with ``\indentation`` and ``\noindentation``.
+
+[ Setting up indentation for the whole document ]
+Almost all indentation involves two issues that need to be address: (1) when to
+indent, and (2) how much to indent. In ConTeXt, these issues can be addressed
+by running the ``\setupindenting`` command before the main body. This command
+expects a list of reserved words between the first set of square brackets.  Each
+reserve words conveys a specific meaning as to how the indentations are to be
+done for the entire document.
+
+```list
++ no yes: 
+  These reserved words turn indentation on/off
++ none small medium big dimension: 
+  These reserved words control the size of indentation
++ first next: 
+  These reserved words controls the indentation for the first paragraph. 
+  The behavior of which can also be overridden by each environments with the setting
+  of the indentnext=yes/no/auto.
++ odd even: 
+  These reserved words control the indentation of odd/even lines in \obeylines scopes
++ normal: 
+  These reserved words control the globally defined size of indent. Useful when used as 
+  the values of the indenting key of different environments.
+```
+
+[ Indentation immediately after an environment. ]
+The ``\setupindenting`` command is designed to indent each paragraph,
+regardless of their location or surroundings.  However, sometimes it might
+seems typographically correct for controlling the indentation of a paragraph
+depending on their relative position from environments surrounding it.
+
+For instance, it might seem to be typographically correct that a paragraph not
+be indented if it immediately follows an environment that is itemize,
+enumerations, definitions, formulas and/or floats. It also might be correct
+that a paragraph not be indented if it follows a head such as chapters,
+sections, and subsections.
+
+Fortunately, ConTeXt has designed it so that almost all environments has a key
+named "indentnext" that can be set to a value that is either "yes" or "no" that
+controls how the paragraph immediately following it should be indented.
+
+    \setupitemgroup[itemize][indentnext=no]
+
+Typically this key should've been assigned a value before the start of the main
+text.  Following are details of the indentation behavior for the paragraph
+immediately following the environment.
+
+```list
++ yes 
+  declares that the first paragraph following the environment should always be
+  indented.
++ no 
+  declares that the first paragraph following the environment should never be
+  indented.
++ auto 
+  declares that the next paragraph should be indented only if there is a blank
+  line detected after the environment and before the next paragraph. Setting
+  indentnext=auto is equivalent to the default plain TeX and LaTeX behaviour.
+```
+
+When set to "auto", the following paragraph will be indented only if there is
+a blank line between the end of the environment and the first line of the
+next paragraph. Thus, in the following example the paragraph starting with
+the word "Hello" is not to be indented.
+
+    \startitemize
+      \item Two
+    \stopitemize
+    Hello, this paragraph should not be indented.
+
+Following are some examples of calling variants of the "setup" command for
+many different environments.
+
+    % Do not indent paragraphs after \stopitemize
+    \setupitemgroup[itemize][indentnext=no]
+
+    % indent paragraphs after section heads
+    \setuphead[section][indentnext=yes]
+
+    % indent the paragraphs after all sectioning heads 
+    \setupheads[indentnext=yes] 
+
+    % indent paragraphs after formulas if there is a blank space in between
+    \setupformulas[indentnext=auto] 
+
+[ Indentation within an environment. ]
+The ``\setupindentation`` and the "indentnext" key takes care of controlling
+the indentation behavior of normal paragraphs, the indentation of paragraphs
+inside each environment itself are not affected.           
+
+By default, ConTeXt does not attempt to indent any paragraph within a
+particular environment. The indentations of these paragraph are left entirely
+to the implementation details of each environment itself.  For some environment,
+such as itemize, description, or enumeration, the environment provides a key
+named "indenting" that can be set to control the behavior of paragraphs with
+that environment.  Following is an examle which sets up so that the second
+paragraph after each item is to be indented by 40pt.
+
+    \setuppapersize[A5]
+    \setupindenting[medium,yes]
+    \setupitemgroup[itemize][indenting={40pt,next}]
+    \startitemize
+    \item This is an example of a multi|-|paragraph 
+          item inside an itemize environment.
+          ­
+          This second paragraph is indented by 40pt
+          (double the normal indentation).
+    \stopitemize
+
+In order to override the rule that has been setup for a particular paragraph, such
+as to force an indentation, the ``\indentation`` command can be used that should've
+been placed immediately in front of the paragraph.
+
+    \indentation This paragraph will be indented ...
+
+To suppress an indentation of a paragraph that otherwise would've been indented,
+the ``\noindent`` command can be used to place immediately in front of the paragraph.
+
+    \noindent This paragraph will NOT be indented ...
+
+Note that the ``\indent`` command which is a TEX native command does not work
+in ConTeXt.
+
+# The "itemize" Environment
+
+The "itemize" environment is to typeset itemized list. It starts with ``\startitemize``
+and ends with ``\stopitemize``. 
+
+    \startitemize
+    \item Apple
+    \item Pear 
+    \item Strawberry
+    \stopitemize
+
+The first arument for this command is the option.  Following are various
+options that can be specified for this environment.
+
+    \startitemize
+    \startitemize[n]
+    \startitemize[n,packed]
+    \startitemize[packed]
+    \startitemize[joinedup]
+    \startitemize[packed,joinedup]
+    \startitemize[text]
+
+The key/value pairs of this command can be specified as the second argument
+of this command.
+
+    \startitemize[text][textdistance=medium]
+
+When "text" is used, each item is treated as a list, such that if an item text
+is wrapped to the next line, the second line and beyond are not indented to
+flush with the text. Rather, the left margin of the second line and beyond is
+flushed with the bullet instead.  Note that the "textdistance" key which
+supposedly should have controled the vertical distance between items does not
+seem to work.
+
+When "joinup" is included, it suppress any additional spaces that might have
+been placed before and after the entire environment, such that this environment
+will have the same amount of vertical space between itself and the surrounding
+paragraphs, as those of any two normal paragraphs.
+
+After the start fo the ``\startitemize``, the ``\item`` command can be used which 
+is to designate a particular paragraph as an "item" of the environment. Besides,
+the command ``\item``, following are additional variants of it that can be used 
+in place of ``\item``, each of which serving a slightly different purpose.
+
+```list
++ \item 
+  to print ordinary items
++ \sym 
+  to print an item with a custom symbol
++ \mar 
+  to print an item with margin text
++ \sub 
+  to print an item with a continuation mark
++ \its 
+  to print an item with a row of marks (for response ranges)
++ \ran 
+  to print a range for the \its row
++ \head 
+  to print a head within the list
++ \but 
+  to print an item whose mark is an interactive button
++ \nop 
+  to print an item without a mark, and without incrementing the item counter
+```
+
+# The "bTABLE" environment
+
+The preferred way to typeset tables is to use what are called “natural tables”
+(also known as “automatic tables” or “HTML tables”). They are especially suited
+for XML conversions. See the &link{enattab.pdf} manual for many examples.
+
+To place a table use:
+
+    \placetable{Caption}
+    {\bTABLE
+    \bTR \bTD One \eTD \bTD two \eTD \eTR
+    \bTR \bTD One \eTD \bTD two \eTD \eTR
+    \eTABLE}
+
+A more elaborate example:
+
+This is our red-coloured table.
+
+    \setupcolors[state=start]
+    \setupTABLE[row][odd][background=color,
+                          backgroundcolor=red, 
+                          width=.2\textwidth]
+    \bTABLE[split=yes] % allow splitting over page boundaries
+      \bTR \bTD[nr=3] 1 \eTD \bTD[nc=2] 2/3     \eTD \bTD[nr=3] 4 \eTD \eTR
+      \bTR                   \bTD 2 \eTD \bTD 3 \eTD                   \eTR
+      \bTR                   \bTD 2 \eTD \bTD 3 \eTD                   \eTR
+      \bTR \bTD[nc=3] 1/2/3                     \eTD \bTD 4 \eTD       \eTR
+      \bTR \bTD 1       \eTD \bTD 2 \eTD \bTD 3 \eTD \bTD 4 \eTD       \eTR
+    \eTABLE
+
+Try to divide your table into...
+
+    \bTABLEhead (table header)
+    \bTABLEnext (alternate table header on following pages)
+    \bTABLEbody (table body)
+    \bTABLEfoot (table footer)
+
+and 
+
+    \setupTABLE[split=yes] or [split=repeat]
+
+see also tabl-ntb.mkiv
+
+If you must split a natural table over several pages, you can simply do this by
+adding ``\setupTABLE[split=yes]`` to your TABLE definition. Another way is to
+define it right at the TABLE start by adding the parameter ``[split=yes]`` (see
+example). However, ``\startlinecorrection`` can lead to unpredictable vertical
+spaces between rows.
+
+In this case the table head (all between ``\bTABLEhead`` and ``\eTABLEhead``)
+is printed only once at the beginning of the table. But if you use
+``[split=repeat]``, it is printed on top of every new page, that contains parts of
+your multipage table. Please take account of the fact, that the head cells are
+enclosed by ``\bTH`` and ``\eTH`` (and not ``\[be]TC``).
+
+If you want to use an alternative table header for all following pages, you can
+do this by defining an additional header. Just add the second header between
+``\bTABLEnext`` and ``\eTABLEnext``, right after your normal head definition.
+Now every additional page of the multipage table starts with the next table
+head.
+
+The table foot is declared between ``\bTABLEfoot`` and ``\eTABLEfoot``. It
+defines the concluding row of your natural table.
+
+Beware: Split tables often begin not on the page (or in the column, if you use
+them) where they could start, but on/in the next one. This is a known
+limitation due to the complicated calculation of remaining space on the page.
+That won't become better before this calculations are newly written in Lua.
+(Said Hans on 2010-09-24.)
+
+The following standalone example deals with all the mentioned aspects of
+natural tables. Just copy and paste it as a starting point for further
+experiments...
+
+    \starttext
+
+    \setupcolors[state=start]
+
+    % setup for all cells
+    \setupTABLE[r][each][style=\tfx\it, align=center]
+
+    % setup table head
+    \setupTABLE[r][first]
+      [background=color,
+       backgroundcolor=yellow]
+    % setup table footer
+    \setupTABLE[r][last]
+      [style=bold,
+       background=color,
+       backgroundcolor=green]
+
+    \bTABLE[split=repeat,option=stretch]
+    %
+    % IMPORTANT: use \bTH ... \eTH to enclose the head|next cells
+    \bTABLEhead
+    \bTR
+      \bTH  head1 \eTH
+      \bTH  head2 \eTH
+      \bTH  head3 \eTH
+    \eTR
+    \eTABLEhead
+    % 
+    \bTABLEnext % setup for next table head
+    \bTR [background=color,backgroundcolor=cyan]
+      \bTH  next1 \eTH
+      \bTH  next2 \eTH
+      \bTH  next3 \eTH
+    \eTR
+    \eTABLEnext
+    %
+    % the table body (main part)
+    %
+    \bTABLEbody
+    %
+    \dorecurse{100}{% 100 rows
+    \bTR
+      \bTC  body body body body body \eTC
+      \bTC  body body body body body \eTC
+      \bTC  body body body body body \eTC
+    \eTR
+    }%
+    %
+    \eTABLEbody
+    %
+    % the table foot
+    %
+    \bTABLEfoot
+    \bTR
+      \bTC  foot1 \eTC
+      \bTC  foot2 \eTC
+      \bTC  foot3 \eTC
+    \eTR
+    \eTABLEfoot
+    %
+    \eTABLE
+
+    \stoptext
+
+# The "chapters" and "sections"
+
+ConTeXt creates chapters with the ``\chapter`` command. The text that is put
+inside the curly braces is the chapter title that will appear.
+
+    \starttext
+    \chapter{First Chapter Title}
+    This is the text in the first chapter.
+    \chapter{Second Chapter Title}
+    This is the text in the second chapter.
+    \stoptext 
+
+The created document will automatically get sequential chapter numbers and each
+chapter will start on a new page. Similar to chapters, sections and subsections
+can be created with other header commands as shown in table 4.1.
+
+    Numbered Header    Numberless Header
+    ===============    =================
+    \chapter           \title
+    \section           \subject
+    \subsection        \subsubject
+    \subsubsection     \subsubsubject 
+
+The command has two arguments. The first optional argument is a square bracket
+pair and the second argument an argument in a curly braces pair. The curly
+braces contain the text that will be rendered in the document as the chapter
+title. The square bracket pair is optional and can be used for internal
+references elsewhere in the document.
+
+    \chapter[first-chapter]{This is the First Chapter Title}
+
+If somewhere else in the document you want to refer to this header, you type
+for example
+
+    \on{page}[first-chapter]
+
+Or, alternatively
+
+    \at{page}[first-chapter] 
+
+# A ConTEXt Document with a Table of Contents
+
+The command ``\placecontent`` creates a table of contents on the same page.
+
+    \starttext
+    \placecontent
+    \chapter{First Chapter Title}
+    This is the text in the first chapter.
+    \chapter{Second Chapter Title}
+    This is the text in the second chapter.
+    \stoptext
+
+The command ``\completecontent`` creates a table of contents on a new page.
+
+    \starttext
+    \completecontent
+    \chapter{First Chapter Title}
+    This is the text in the first chapter.
+    \chapter{Second Chapter Title}
+    This is the text in the second chapter.
+    \stoptext
+
+The chapter numbers assigned to each chapter in the document will automatically
+match the corresponding chapter numbers in the table of contents that ConTEXt
+creates with either the ``\placecontent`` or the ``\completecontent`` command. 
+
+# Changing the Header Style
+
+Look at the following ``\setuphead`` command example.
+
+    \setuphead[chapter][style=bold]
+
+This command will provide for chapter headers to have a bold font. The
+following command will arrange for section headers to be slanted.
+
+    \setuphead[section][style=slanted]
+
+The ``\definehead`` command together with the ``\setuphead`` commands can modify the
+headers as the following example illustrates.
+
+    \definehead[myheader][section]
+    \setuphead[myheader]
+    [numberstyle=bold,
+    textstyle=cap,
+    before=\hairline\blank,
+    after=\nowhitespace\hairline]
+    \myheader[myhead]{First Section Header Title}
+
+The ``\setupheads`` command is used to set up numbering of the numbered headings.
+
+    \setupheads[alternative=inmargin,separator=--]
+
+With this command, all numbers will appear in the margin, and ‘Section 1.1’
+will look like ‘Section 1- 1’. The ``\setupheads`` command should be put in the
+setup area of the document. 
+
+# The "setuppapersize" Command
+
+The ``\setuppapersize`` is used to define both the paper size for screen
+typesettings and paper size for printing.
+
+The ``\setuppapersize[A4,landscape][A3,landscape]`` command is to define a A4
+size in screen typesetting that would have to be printed in a A3 paper.
+Following are additional paper size recognized by ConTeXt.
+
+    A3                    ISO A3 standard
+    A4                    ISO A4 standard
+    A5                    ISO A5 standard
+    A6                    ISO A6 standard
+    S6
+    letter                U.S. letter standard
+    legal                 U.S. legal standard
+    portrait              rendered in portrait format
+    landscape             rendered in landscape format
+    oversized             adds 1.5 cm on each side
+    doublesized           double the height
+    doubleoversized
+    mirrored
+    rotated
+    90
+    180
+    270
+
+The ``\definepapersize`` command together with the ``\setuppapersize`` command can
+modify the paper size as the following example illustrates.
+
+    \definepapersize[mypapersize][width=8.5in,height=11in]
+    \setuppapersize[mypapersize][mypapersize]
+
+As indicated, after defining the ‘mypapersize’ option, it can be used just as
+well as the regular A3, A4, etc. paper sizes for both screen size and paper
+size. 
+
+# The Text in Header and Footer
+
+The ``\setupheadertexts`` and ``\setupfootertexts`` commands are used for creating a
+header and footer. Both have the following general syntax.
+
+    \setupheadertexts[...][...][...] 
+    \setupfootertexts[...][...][...]
+
+The commands have three arguments. The first square bracket pair is used to set
+the location of the header or footer. The header and footer itself are placed
+within the second square bracket pairs. In a double sided document, the second
+and third square bracket pairs are used for the header and the footer on the
+left and right side pages, respectively. Table 5.2 shows some of the command
+options that can be used at the first square bracket pair. 
+
+    Arg          Option           Description
+    ===========================================
+    1            text
+                 margin
+                 edge
+    -------------------------------------------
+    2            text
+                 section
+                 date
+                 mark
+    -------------------------------------------
+                 pagenumber
+    3            text
+                 section
+                 date
+                 mark
+                 pagenumber 
+    -------------------------------------------
+
+In many cases you can omit parameters, as in the next example.
+
+    \setupheadertexts[chapter]
+
+In this case the parameter ‘chapter’ is interpreted as an implicit option. This
+keyword will yield the title of the current chapter on the middle of the page
+header. This header will change dynamically at every new chapter. The following
+example illustrates the addition of the book title as well.
+
+    \setupheadertexts[my Book Title][chapter]
+
+In this case the text ‘my Book Title’ will appear on the left of the page
+header and the title of the current chapter on the right of the page header.
+You can setup the page header and footer with.
+
+    \setupheader[...]
+
+and
+
+    \setupheader[...] 
+
+Following are values that can be set for the "style=" key.
+
+```list
++ normal
++ bold
++ slanted
+```
+
+The following example illustrates its use.
+
+    \setupheadertexts[style=bold]
+or
+
+    \setupheadertexts[style=\ss]
+
+If you want to leave out the page header and footer on one particular page, for
+example the title page, you can use
+
+    \noheaderandfooterlines 
+
+# Set Global Page Numbers
+
+The ``\setuppagenumbering`` command is used for setting page numbers. The
+command has the following general syntax.
+
+    \setuppagenumbering[..,..=..,..]
+
+The command has a single argument in a square bracket pair that can contain
+multiple assignment options and their key values. Table 5.4 shows some of the
+``\setuppagenumbering`` command assignment options.
+
+Following are values for the "alternative=" key.
+
+```list
++ singlesided
++ doublesided
+```
+
+Following are values for the "location=" key.
+
+```list
++ header
++ footer
++ left  
++ right  
++ middle
++ margin
+```
+
+Following are values for the "conversion=" key.
+
+```list
++ numbers
++ characters
++ romannumerals
+```
+
+The "left=", "right=", and "text=" are to be set to the actual
+text.
+
+In order to remove page numbering entirely, set location to blank.
+
+    \setuppagenumbering[location=]
+
+# Changing Local Page Numbering
+
+Page numbering takes place automatically but you can enforce a page number with
+
+    \page[25]
+
+Sometimes it is better to state a relative page number like
+
+    \page[+2]
+
+or
+
+    \page[-2] 
+
+# Page Breaking
+
+A page can be enforced or blocked by the page command
+
+    \page[...]
+
+The ``\page`` command has a single argument in a square bracket pair that can
+contain a single keyword option. Following shows some of the available keyword
+options.
+
+```list
++ yes 
+  enforce a page
++ makeup 
+  enforce a page without filling
++ no 
+  no page
++ preference 
+  prefer a new page here
++ bigpreference 
+  great preference for a new page here
++ left 
+  next page is a left handside page
++ right 
+  next page is a right handside page
++ disable 
+  following commands have no effect
++ reset 
+  following commands do have effect
++ empty 
+  insert an empty page
++ last 
+  add pages until an even number is reached
++ quadriple 
+  add pages until foursome is reached 
+```
+
+# The Page Background
+
+The \setupbackgrounds command is used for aaaa. The command has the following
+general syntax.
+
+    \setupbackgrounds[...][..,..][..,..=..,..]
+
+The command has a single argument in a square bracket pair that can contain
+multiple keys and key values. 
+
+# Paragraph Separation
+
+In ConTEXt, you can start a new paragraph with either en empty line or the
+``\par`` command. It is advised to use empty lines as paragraph separators.
+This will lead to clearly structured and well organized input files and will
+prevent mistakes. Only in situations where a command has to be closed
+explicitly, the ``\par`` command should be used. 
+
+# Paragraph Formatting
+
+Sometime you want to apply a special format to paragraphs. You can define a special format with the
+\defineparagraphs command, after which you can specify the details of this format with the
+\setupparagraphs command, which have the following general syntax.
+
+    \defineparagraphs[..,..][..,..=..,..]
+    \setupparagraphs[..,..][..,..][..,..=..,..]
+
+A few ``\defineparagraphs`` command options are listed below.
+
+             key         value
+    ======================================
+    1        name              
+    --------------------------------------
+    2        n           number
+             rule        on     
+                         off    
+             height      fit    
+                         dimension
+             before      <command> 
+             after       <command> 
+             inner       <command> 
+             distance    <command> 
+             tolerance   verystrict
+                         strict      
+                         tolerant    
+                         verytolerant
+                         stretch      
+             align       left        
+                         right       
+                         middle      
+    --------------------------------------
+
+Following are some command options for the ``\setupparagraphs`` command.
+
+             key         value
+    ======================================
+    1        name              
+    --------------------------------------
+    2        number      
+             each        
+             style       normal 
+                         bold      
+                         slanted   
+             width       <command> 
+             height      <command> 
+             before      <command> 
+             after       <command> 
+             tolerance   verystrict
+                         strict      
+                         tolerant    
+                         verytolerant
+             align       left        
+                         right       
+                         middle      
+                         <width>     
+    --------------------------------------
+
+
+After defining a paragraph with ``\defineparagraphs`` you can format the
+paragraph with ``\setupparagraphs``. Next, you can start your paragraph with
+the ``\start`` and the ``\stop`` command combination. A new paragraph starts
+with the name of your paragraph, in this case ‘mypar’. 
+
+    \defineparagraphs[mypar]
+                     [n=3,
+                     before={\blank},
+                     after={\blank}]
+    \setupparagraphs[mypar]
+                    [1]
+                    [width=.08\textwidth,
+                    style=bold]
+    \setupparagraphs[mypar]
+                    [2]
+                    [width=.3\textwidth]
+    \startmypar
+    1360
+    \mypar
+    First oil painting in western Europe
+    \mypar
+    With the introduction of oil painting into western Europe, the earliest
+    naturalistic painting is created. Its subject is the French king, John the Good.
+    After this, naturalistic portraitures become prominent in European art.
+    \stopmypar
+
+Below is another example of paragraph formatting.
+
+    \defineparagraphs[paintpar]
+                      [n=3,
+                      before=,
+                      after=,distance=1em]
+    \setupparagraphs[paintpar]
+                      [1]
+                      [width=.1\textwidth]
+    \setupparagraphs[paintpar]
+                      [2]
+                      [width=.3\textwidth]
+    \startpaintpar
+    \it 1360
+    \paintpar
+    First oil painting in western Europe
+    \paintpar
+    With the introduction of oil painting into western Europe, the earliest
+    naturalistic painting is created. Its subject is the French king, John the Good.
+    After this, naturalistic portraitures become prominent in European art.
+    \stoppaintpar
+
+This can also be coded in a more cryptic and efficient way.
+
+    \paintpar 
+    \it 1360
+    \\
+    First oil painting in western Europe
+    \\
+    With the introduction of oil painting into western Europe, the earliest
+    naturalistic painting is created. Its subject is the French king, John the Good.
+    After this, naturalistic portraitures become prominent in European art.
+    \\
+
+The \\ columns are used as column separators and they are essential. In order
+to condense the ConTEXt code, this cane be coded as following.
+
+    \paintpar \it 1360
+    \\ First oil painting in western Europe
+    \\ With the introduction of oil painting into western Europe, the earliest
+    naturalistic painting is created. Its subject is the French king, John the Good.
+    After this, naturalistic portraitures become prominent in European art. \\ 
+
+# Paragraph Vertical Spacing
+
+Vertical spacing between paragraphs can be specified by.
+
+    \setupwhitespace[..,..]
+
+Following shows the available command options for the ``\setupwhitespace``
+command. 
+
+```list
++ none
++ small
++ medium
++ big
++ dimension 
+```
+
+When inter-paragraph spacing is specified there are two commands available that
+are seldom used.
+
+    \nowhitespace
+
+and
+
+    \whitespace
+
+If a paragraph contains horizontal lines, the line spacing requires extra care.
+Consider the following example where the ``\framed{some text}`` command is used to
+put lines around the word enclosed inside the curly braces pair. 
+
+    This is a paragraph that contains some words that are
+    \framed{enclosed with lines}
+    in order to show the required correction.
+
+When processed, we see an alignment problem that must be corrected. This can be
+done as following with the ``\startlinecorrection`` and ``\stoplinecorrection``
+command pair.
+
+    This is a paragraph that contains some words that are
+    \startlinecorrection
+    \framed{enclosed with lines}
+    \stoplinecorrection
+    in order to show the required correction.
+
+The vertical spacing of the output will be better. 
+
+# Implicit Vertical Spacing
+
+Furthermore, the ``\blank`` command provides for vertical white spacing, too.
+The general syntax for the ``\bank`` command is.
+
+    \blank[..,..]
+
+Following shows the available command options for the ``\blank`` command. 
+
+```list
++ none
++ small
++ medium
++ big
++ nowhite
++ back
++ white
++ dimension
+```
+
+You can specify the amount of blank space using keyword options such as small,
+middle, and big, which are related to the current font size as the following
+example illustrates.
+
+    This is the first line of text
+    \blank
+    This is the second line of text
+    \blank[big]
+    This is the third line of text
+    \blank[2*big]
+    This is the fourth line of text
+
+If you do not specify a parameter, the ``\blank`` command will yield the default
+space. Default spacing can be setup with
+
+    \setupblank[..,..] 
+
+This is a global parameter and is usually put in the setup area of the input
+file, so all vertical blank spaces in the document will get its properties. It
+has the same keyword options as the ``\blank`` command. Alternatively, a
+‘dimension’ such as for example ‘3pt’ can be specified. If you want to suppress
+vertical spacing you can use the following command combination. 
+
+    \startpacked[..,..] . . . \stoppacked 
+
+If you want to increase vertical spacing you can use the following command pair
+combination.
+
+    \startunpacked[..,..] . . . \stopunpacked
+
+The following code illustrates its use.
+
+    \defineparagraphs[year][n=2,before=,after=]
+    \year 500 \\ beginning of the middle ages \\
+    \year 1500 \\ end of the middle ages \\
+    \startpacked
+    \year 500 \\ beginning of the middle ages \\
+    \year 1500 \\ end of the middle ages \\
+    \stoppacked
+    \startunpacked
+    \year 500 \\ beginning of the middle ages \\
+    \year 1500 \\ end of the middle ages \\
+    \stopunpacked
+
+The first two lines have regular vertical spacing, the next two lines have
+reduced vertical spacing and the last two lines have increased vertical
+spacing. 
+
+# Explicit Vertical Spacing
+
+You can force vertical space as following.
+
+    \godown[...]
+
+The command has the same keyword options as the ``\blank`` command.
+Alternatively, a ‘distance’ such as for example ‘10in’ can be specified. 
+
+# Margin Text
+
+The ``\inmargin`` command is used to put text in the margin. The command has the
+following general syntax.
+
+    \inmargin{...}
+
+Where the text that needs to be put in the margin is put inside the curly
+braces pair as the following example illustrates.
+
+    \inmargin{this text will be put in the margin} 
+
+# Regular Outlined Text
+
+The ``\framed`` command is used to outline a text.
+
+    \framed[height=1cm,width=fit]{This text is outlined}
+
+The ``\framed`` command has the following general syntax.
+
+    \framed[..,..=..,..]{...}
+
+The command has two arguments. The first argument is a square bracket pair that
+optional and contains the properties of the outlining. The second argument is a
+curly braces pair that encloses the text that will be outlined. Table 7.7 shows
+some of the ``\framed`` command keys and their available key values. 
+
+    Option         Value
+    ==============================
+    width          fit
+                   cm 
+    height         fit
+    background        
+    ------------------------------
+
+# Inline Outlined Text
+
+The ``\inframed`` command is used to outline a text inline and is a better
+command to use to outline small pieces of text within a paragraph because it
+automatically takes care of interline spacing.  
+
+    This line has \inframed[width=fit]{some of its words} outlined.  
+
+The ``\inframed`` command uses the same general syntax and command options as
+the ``\framed`` command. 
+
+# Paragraph Outlined Text
+
+If you want to outline complete paragraphs you can use the following command pair combination.
+
+    \startframedtext[..,..] ... \stopframedtext
+
+The following code illustrates its use.
+
+    \startframedtext[width=.7\makeupwidth]
+    This text is a small paragraph and it shall be outlined. 
+    This is done with the ConTEXt startframed and stopframed 
+    command pair.
+    \blank
+    Various command options are available to modify the settings 
+    of the outlining.
+    \stopframedtext 
+
+# Alignment
+
+Single lines of text can be aligned with the commands ``\leftaligned``, ``\midaligned``
+and ``\rightalinged``, as demonstrated in the example below.
+
+    \leftaligned{\inframed[width=fit]{This text is aligned left}}
+    \midaligned{\inframed[height=1.5cm,frame=off]{This text is aligned in the middle}}
+    \rightaligned{\inframed[height=10mm]{This text is aligned right}}
+
+Alignment of paragraphs is done with the following commands.
+
+    \startalignment[..,..] . . . \stopalignment
+
+You can optionally specify the stretch tolerance and the vertical and
+horizontal direction.
+
+    \setuptolerance[..,..]
+
+Some ``\setuptolerance`` Command Options.
+
+In columns you could specify the tolerance as following.
+
+    \setuptolerance[horizontal,verytolerant]
+
+Horizontal and vertical alignment can be setup with the \setupalign command.
+
+    \setupalign[..,..] 
+
+Following are reserved words that can be placed into the first argument.
+
+```list
++ width
++ left
++ right
++ middle
++ broad
++ line
+```
+
+# Fonts and Font Switches
+
+The default font type in ConTEXt is Computer Modern Roman (CMR). You can also
+use the Lucinda Bright font family. Many of the font types of the American
+Mathematical Society (AMS), but also PostScript (pos) such as Times fonts can
+be used. Fonts can be installed using the ‘texfont.pl’ Perl script which can
+generate the font metrics needed. In ConTEXt there are four ways to switch
+fonts.
+
+```list
+1. A complete font change (\setupbodyfont, \switchtobodyfont).
+2. Font size (\tfa, tfb, etc.)
+3. Font style (\rm, \ss, etc.)
+4. Alternative font style (\bold, \sans, etc.)
+```
+
+If you want an overview of the available font family, you can type
+
+    \showbodyfont[cmr]
+
+This command will show a table with all font variations of the CMR font family. 
+
+[ Defining the Body Font at the Beginning of the Document. ]
+The ``\setupbodyfont`` command is used in the setup area of the input file to select the font family,
+style and size for a document. The following example would set at the setup area the font type for the
+document at sans serif at a size of 9 points.
+
+\setupbodyfont[sansserif,9pt]
+\starttext
+This is a text in sans-serif.
+\stoptext
+
+The ``\setupbodyfont`` command has the following general syntax.
+
+    \setupbodyfont[..,..,..]
+
+The command has a single argument that can contain a list of keywords.
+Following shows some of the keywords for this command.
+
+```list
++ sansserif
++ palatino
++ ber
++ 10pt
+```
+
+The following example specifies that you want to use the Karl Berry fontnames.
+
+    \setupbodyfont[ber,phv,ss]
+    \starttext
+    This is a text in sans-serif.
+    \stoptext
+
+With phv you specify that you want to load the Helvetica font definitions, and
+with ss you specify that you want to use a sans-serif font as the body font. To
+use the default postscript font Times, Helvetica and Courier, use
+
+    \setupbodyfont[ber,pos]
+    \starttext
+    This is a text in Times.
+    \stoptext
+
+[ Defining the Body Font in the Middle of the Document. ]
+
+The ``\switchtobodyfont`` command is used for changes mid-document and at
+section level. The command has the following general syntax.
+
+    \switchtobodyfont[..,..,..]
+
+The command has a single argument that can contain several keyword options. The
+following example starts with sans serif font type at 9 points and in the
+middle of the document, it changes to Palatino font type at 8 points.
+
+    \setupbodyfont[sansserif,9pt]
+    \starttext
+    This text will be rendered in the document 9 point sans serif.
+    \switchtobodyfont[palatino,8pt]
+    This text will be rendered in the document 8 point palatino.
+    \stoptext
+
+Font sizes are available from 4pt to 12pt. 
+
+[  Style and Size Switches in Commands. ]
+In a number of commands you can optionally specify style switches to obtain the
+desired typeface, for example
+
+    \setuphead[chapter][style=\boldslanted]
+
+You can also use size switches to change the typestyle inside a group, for
+example
+
+    \setuphead[chapter][style=\tfd]
+    
+Following shows some of the available typeface switch options, typestyle
+options shall be explained later in this chapter. 
+
+    \normal
+    \bold
+    \boldslanted
+    \bolditalic
+    \small
+    \smallbold
+    \smallboldslanted
+    \smallbolditalic
+    \sans
+    \sansbold
+    \slanted
+    \slantedbold
+    \italicbold
+    \smallnormal
+    \smallslanted 
+    \smallslantedbold
+    \smallitalicbold
+    \sansserif
+    \smallcaps
+
+You can either use those as style or size switches inside a group, or as a font
+changing command that takes an argument, for example
+
+    This is {\bold some bold text} but \bold{this text is bold} too.
+
+The result on the document is the same. 
+
+The font switch is used to change the local font setting, for example
+
+    There is some {\em emphasized text} in this line.
+
+The switch influences everything in its group. Notice how curly braces are used
+to keep font switching local.
+
+In running local text, the inline typeface can be changed into some other
+typeface. The following example shows how text is changed to slanted inside
+curly braces with the \sl command.  
+
+    This {\sl text} is slanted.
+
+```list
++ \sl 
+  slanted
++ \it 
+  italic
++ \bf 
+  bold 
+```
+
+In running local text, the inline typestyle can be changed into some other typestyle. The following
+example shows how some typestyle is changed inside curly braces with the \tfc command.
+
+  This {\tfc text} will be rendered in another typestyle. 
+
+Following are addtional options.
+
+```list
++ \tfxx 
+  somewhat smaller then \tfx
++ \tfx 
+  somewhat smaller then \ft
++ \tf 
+  actual style
++ \tfa 
+  somewhat greater then \tf
++ \tfb 
+  somewhat greater then \tfa
++ \tfc 
+  somewhat greater then \tfb
++ \tfd 
+  somewhat greater then \tfc 
+```
+
+The actual typestyle is indicated with \tf. If you want to switch to a somewhat
+greater size, you can type \tfa, \tfb, \tfc or \tfd.
+
+In running local text, the inline fontstyle can be changed locally into some
+other fontstyle. The following example shows how some text is changed to
+teletype fontstyle inside curly braces with the \tt command.
+
+    The {\tt text} will be rendered in teletype fontstyle. 
+
+Following are addtional options.
+
+```list
++ \rm
++ \ss
++ tt
+```
+
+[ Changing and Combining Local Typeface and Typestyle. ]
+It is also possible to combine a typeface and a typestyle. An addition of a, b, c or d to \sl, \it or
+\bf is also allowed. like at the following example where the commands \sl and \tfb are combined to
+the \slb command that renders the inline text both slanted and in a somewhat greater size. The
+following example will demonstrate the effect.
+
+    The {\slb text } will be rendered in another typeface and typestyle.
+
+Similarly, the combined commands \slc and \sld can be used. 
+
+[ Redefining the Body Font. ]
+For special purposes you can define your own font size using the
+\definebodyfont command, which has the following general syntax.
+
+    \definebodyfont[size][style][options]
+
+In the example below we will define the body font to be Roman at 9 points.
+
+    \definebodyfont[9pt][rm][tfe=cmr12 at 24pt]{\tfe Some Text}
+
+Additionally we redefine the \tfe command as a Computer Modern Roman font at 24
+points. 
+
+[ Emphasized Text. ]
+The command \em is used to emphasize text consistently throughout the document as the following
+example illustrates.
+
+    This {\em text } is emphasized. 
+    
+    This {\bf \em text} is both boldfaced and emphasized. 
+
+Emphasized words appear in either slanted or italic style. An emphasize within
+an already emphasized environment will result in normal print again, so some
+kind of contrast will be ensured.
+
+[ Small Caps. ]
+Many acronyms are printed in small capitals. In ConTEXt there are two types of
+small capitcals, real small caps and pseudo small caps. Real small caps are
+somewhat smaller than the capital of the actual bodyfont and are created with
+the {\sc...} command. Pseudo small caps are more intelligent since they adapt
+to the surrounding text and are created with the {\cap...} command.
+
+    This {\sc text} is in real small caps.
+
+    This {\cap text} is in pseudo small caps. 
+
+The reason for using pseudo small caps instead of real small caps is not just a
+matter of taste. 
+
+[ Block Quotations. ]
+The ``\startquotation`` and ``\stopquotation`` command pair creates quotations.
+
+    \startquotation
+    This is a quotation.
+    \stopquotation
+
+The ``\startquotation`` command creates the quotation and the
+``/stopquotation`` command closes off the quotation. 
+
+[ Inline Quotes. ]
+ConTEXt also has inline quotes that can be created with either the ``\quote``
+or ``\quotation`` commands.
+
+    This \quote{text} is single quoted.
+
+    This \quotation{text} is double quoted.
+
+The ``\quote`` command surrounds the quote with single quote characters. The
+``\quotation`` command surrounds the quote with double quote characters. 
+
+[ Verbatim Text. ]
+Text that is not subject to macro expansion is created with the ``\starttyping`` command and is closed
+off wit the ``\stoptyping`` command. The text inside this command pair will appear exactly as typed,
+meaning it will display typed text and the output will reflect the line breaks as the appear in the input.
+
+    \starttyping
+    This is verbatim text in ConTEXt that is not 
+    subject to macro expansion.
+    \stoptyping
+
+The text will be displayed with a monospace font such as for example Courier or
+Courier New.
+
+[ Inline Verbatim Text. ]
+The ``\type`` command is used for inline verbatim. The curly braces enclose the
+text that you want to type verbatim.  Be careful with the ``\type`` command since
+it will temporarily disable th eline breaking mechanism. 
+
+    This \type{text} is verbatim.
+
+[ Block Text Colors. ]
+The ``\setupcolor`` command activates the use of red, green and blue colored
+text and the ``\startcolor`` and ``\stopcolor`` command pair specifiy the
+colored text section.
+
+    \setupcolor[state=start]
+    \startcolor[red]
+    This text will be rendered red in the document.
+    \stopcolor
+
+[ Inline Colored Text. ]
+The ``\color`` command is used for coloring text inline.
+
+    \setupcolor[state=start]
+    This \color[green]{text} is green.
+
+    \setupcolor[state=start]
+    \startcolor[red]
+    This text will be rendered red and this 
+    \color[green]{text} is green.
+    \stopcolor
+
+On a black and white printer you will see only grey shades. 
+
+[ Background Text. ]
+In order to emphasize a section, you can use backgrounds with the
+``\startbackground`` and ``\stopbackground`` command pair as the following
+example illustrates.
+
+    \setupbackgrounds[background=screen,corner=round]
+    \startbackground
+    This text has a background with round corners.
+    \stopbackground
+
+The ``\setupbackgrounds`` command is used to set some values for the
+background. The background command has the following general syntax.
+
+    \setupbackgrounds[..,..=..,..]
+
+```list
++ background
+  It can be set to 'screen', or a color.
++ corner
+  It can be set to 'round'.
++ page
++ text
++ backgroundcolor
+```
+
+# Typesetting Multiline Math
+
+The multi-line math can be typeset using the native `\\displaylines`` command,
+which must appear inside a math mode.
+
+    $$
+    \displaylines{x = \sqrt{1}+\sqrt{2} \cr
+    y = \sqrt{2} + \sqrt{3} \cr
+    z = \sqrt{3} + \sqrt{4}}
+    $$
+
+The ``\startmathalignment`` command can also be used, but this would have to be
+placed between the "formula" environment which is a CONTEX-based environment,
+not TEX-based. One of the advantages of using ``\startmathalignment`` is that
+it allows multiline math equations to be aligned at the equal-sign of each
+line.
+
+    \startformula{\startmathalignment[n=2]
+    \NC x \NC = \sqrt {2} + \sqrt {3} \NR
+    \NC  \NC = \sqrt {2} + \sqrt {3} \NR
+    \NC  \NC = \sqrt {2} + \sqrt {3} \NR
+    \NC  \NR
+    \stopmathalignment}\stopformula
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
