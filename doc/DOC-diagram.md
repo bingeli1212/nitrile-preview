@@ -807,7 +807,12 @@ a larger single multi-line paragraph.
 
 Unlike the 'label' command, it always treats the text as normal text, and not
 the math expression. If two or more coordinates are present, the multi-line 
-text paragraph will be repeated in each of these locations.
+text paragraph will be repeated in each of these locations. 
+
+In addition, the 'text' command has the capability to style the font using
+the "fontfamily" and "fontstyle" style options. 
+
+    text.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7,dx:-0.5} "degree\\ 3" (-3,2)
 
 Each 'text' command can also include alignments which are shown below.
 
