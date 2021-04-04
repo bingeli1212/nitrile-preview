@@ -2696,18 +2696,37 @@ You should wrap TikZ graphics inside ``\hbox`` when placing them, for example:
       \draw (0, 0) circle (3cm);
     \stoptikzpicture}}
 
+# The "\dontleavehmode" Madness
 
+The "\dontleavehmode" is needed if multiple images are to be placed side by
+side.  For instance, if two image is placed inside a ``\hbox``, and the first
+image is to appear as the first item of a paragraph, then the two images 
+are to be stacked on top of each other if "\dontleavehmode" is not placed
+at the beginning of the paragraph.
 
+     \dontleavehmode
+     \hbox{\externalfigure[image-clock.png]}
+     \hbox{\externalfigure[image-clock.png]}
 
+Without this command the images maybe placed one on top of each other. This is
+especially true when the paragraph starts with an image instead of 
+a regular text.
+    
+     \hbox{\externalfigure[image-clock.png]}
+     \hbox{\externalfigure[image-clock.png]}
 
+Strangely, if the paragraph starts with a text then this command is not necessary
+because images are to be shown side by side.
 
+     The images are: \hbox{\externalfigure[image-clock.png]}
+     \hbox{\externalfigure[image-clock.png]}
 
+The "\dontleavehmode" command should be used judicially, as placing it in front of
+some other command can cause an extra vertical space to be generated. For instance,
+the following example would have caused the extra vertical space to be generated
+before "\placefigure".
 
-
-
-
-
-
-
+    \dontleavehmode
+    \placefigure[right,none][]{}{\externalfigure{image-clock.png}}
 
 
