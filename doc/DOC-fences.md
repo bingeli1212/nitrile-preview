@@ -17,6 +17,7 @@ as images, frames, etc. Following are recognized fences.
 - verbatim
 - tabbing
 - colorbutton
+- parbox
 
 
 If the name provided after the triple-backquote is not recognized
