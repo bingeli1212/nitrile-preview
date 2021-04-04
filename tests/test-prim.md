@@ -1,6 +1,7 @@
 ---
 title: test-text-2.md
 contex.cjk: 1
+latex.cjk: 1
 ---
 
 # Traditional
