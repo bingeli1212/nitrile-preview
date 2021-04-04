@@ -2688,6 +2688,14 @@ named "Logo" which is to appear on the left hand side of the page.
       {This is an example of a logo.}
       {\externalfigure[Logo]}
 
+# Using "\hbox"
+
+You should wrap TikZ graphics inside ``\hbox`` when placing them, for example:
+
+    \placefigure[here][fig:myfig]{My figure.}{\hbox{\starttikzpicture
+      \draw (0, 0) circle (3cm);
+    \stoptikzpicture}}
+
 
 
 
