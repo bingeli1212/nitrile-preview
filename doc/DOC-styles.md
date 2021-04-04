@@ -700,6 +700,11 @@ Following are styles recognized by NITRILE:
   Set the ID. This is currently utilized by the SAMP block to set the default
   ID if it is not specifically set.
 
++ wrap:left
++ wrap:right
+
+  Set it so that the image, diagram, or a table should be placed inside a wrap figure
+  such that the text should flow around it.
 
 
 

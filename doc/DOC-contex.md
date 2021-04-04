@@ -2675,7 +2675,18 @@ line.
     \NC  \NR
     \stopmathalignment}\stopformula
 
+# Typesetting a Wrapfigure
 
+The ``\placefigure`` command can be used to typeset a figure that is
+to appear on the left or right hand side of the page, with text
+flowing around it. Following is an example of typesetting a figure
+named "Logo" which is to appear on the left hand side of the page.
+
+    \placefigure
+      [left]
+      [fig:logo]
+      {This is an example of a logo.}
+      {\externalfigure[Logo]}
 
 
 
