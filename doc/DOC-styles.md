@@ -632,17 +632,20 @@ Following are styles recognized by NITRILE:
 
   If this flags has been set then the text will be rubified.
 
-+ range:x/1/10 y/2/20 z/3/30
++ animate:x/1/10 y/2/20 z/3/30
 
   This value holds a list of environment variables and the start/end
   values for each one of them. This value is currently utilized by the
-  'animation' bundle.
+  'diagram' bundle, such that if this property is set, then the diagram
+  will generate a number of animated diagrams each of which is made by
+  altering the set of environment variables to something between its start
+  and end values.
   
-+ total:12
++ quantity:12
 
-  This value holds the total amount. This value is currently utilized
-  by the 'animation' bundle to express the total number of animated 
-  diagrams to generate.
+  This value holds the quantity for certain operation. This value is currently utilized
+  by the 'diagram' bundle to express the total number of animated diagrams to be made if
+  its "animate" property has been set to something that is not an empty string. 
 
 + fillonly:1
 
