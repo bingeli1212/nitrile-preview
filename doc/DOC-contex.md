@@ -600,7 +600,37 @@ In ConTeXt MkIV the command requires an additional [], thus you need to write
         \NC r \NC right aligned \NC \AR
     \stoptabulate
 
-# Shaded colors
+# Gradient Color For Ball
+
+If the a gradient color is to be desired, and the "shade=" option has been set to
+"ball", then following "fill" command would have to be generated.
+
+    fill (...) withshademethod "circular" 
+               withshadecenter(-0.45,0.35) 
+               withshadedomain(0,1) 
+               withshadestep( withshadefraction 0.5 withshadecolors(\MPcolor{white},(0.000,0.502,0.502)) ) 
+               withshadestep( withshadefraction 1.0 withshadecolors((0.000,0.502,0.502),\MPcolor{black}) );
+    
+The "withshadecenter()" option is to be fixed at a value of "(-0.45,0.35)",
+which expresses the shift from the center towards the left and top. The
+"withshadedomain(0,1)" option expresses the extent of the color shift, where 0
+expresses a 0% and 1 means 100%.  The "withshadestep()" command would have
+setup a color keyframe. The first one is to extablish that at the 50% mark the
+color would have already shifted to being (0,0.5,0.5), and the color would
+have stayed at RGB(0,0.5,0.5) between the 50% mark and 100% mark.
+
+This is assumed that the user has provided at least one color for the "shadecolor" style.
+If this is not the case, then the color is assumed to be gray, or (0.5,0.5,0.5)
+
+    fill (...) withshademethod "circular" 
+               withshadecenter(-0.45,0.35) 
+               withshadedomain(0,1) 
+               withshadestep( withshadefraction 0.5 withshadecolors(\MPcolor{white},(0.5,0.5,0.5)) ) 
+               withshadestep( withshadefraction 1.0 withshadecolors((0.5,0.5,0.5),\MPcolor{black}) );
+
+# Gradient Color For Linear
+
+Following is an example of linear shading.
 
     \startMPcode
     numeric u; u := 5mm;
@@ -621,6 +651,31 @@ In ConTeXt MkIV the command requires an additional [], thus you need to write
     fill ((12.00,2.00)--(14.00,2.00)--(14.00,4.00)--(12.00,4.00)--cycle) scaled(u) withshademethod "linear" withshadevector (1,0) withshadecolors ((0.40,0.40,0.40),(1,1,1),(0.80,0.80,0.80));
     linecap:=butt;linejoin:=mitered; draw ((12.00,2.00)--(14.00,2.00)--(14.00,4.00)--(12.00,4.00)--cycle) scaled(u) ;
     \stopMPcode{}
+
+Following is an example of circular shade.
+
+Shading is available too. This mechanism is a bit more complex deep down
+because it needs resources as well as shading vectors that adapt themselves to
+the current scale. We will not go into detail about the shading properties
+here.
+
+    \startMPcode
+        comment("two shades with mp colors");
+        fill fullcircle scaled 5cm
+            withshademethod "circular"
+            withshadevector (2cm,1cm)
+            withshadecenter (.1,.5)
+            withshadedomain (.2,.6)
+            withshadefactor 1.2
+            withshadecolors (red,white)
+            ;
+        fill fullcircle scaled 5cm shifted (6cm,0)
+            withshademethod "circular"
+            withcolor "red" shadedinto "blue"
+        ;
+    \stopMPcode
+
+
 
 # Symbols
 
