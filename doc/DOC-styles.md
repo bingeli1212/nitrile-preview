@@ -186,6 +186,15 @@ Following are styles recognized by NITRILE:
   - Arrow head at both start and end: 0x1 + 0x2 = 0x3
   ```
 
++ gridcolor:red
++ gridcolor:green
++ gridcolor:blue
+
+  This value is to hold a string that describes the color for each grid line
+  drawn inside the viewport if the 'gridlines' is not set to 'none'.
+  This value is current used by diagram-bundle to draw background grids.
+  If absent, the diagram-bundle has its own default value.
+
 + gridlines:none
 
   Set to a 'none' to disable the showing of grid. This option is checked by the 
