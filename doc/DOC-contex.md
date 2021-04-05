@@ -94,6 +94,14 @@ title: ConTeXt translation
 
 - The current setup for typesetting a HL list works beautifully in CONTEX.
 
+- The ``\placefigure`` command could fail and cause a compile error if it is to generate
+  a "Figure" caption (where "none" isn't provided inside the first option argument of this
+  command). This has been observed inside Gleamer. For this reason, the "float_to_figure()"
+  function inside the contex.js has been changed such that if the title is empty, then 
+  a "none" is placed inside the first optional argument, thus effectively disabling the
+  generating of the "Figure" line, solving the problem and allowing the compile to continue
+  inside Gleamer.
+
 # The \bTABLE problem
 
 The LONG table expressed by \bTABLE would  start 
