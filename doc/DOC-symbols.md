@@ -792,7 +792,7 @@ must not be followed by another letter or digit such as
 
 # Non-standard Symbols
 
-```tabular{}
+```tabular
 | Symbol               | Command                | Comment
 ------------------------------------------------------------------
 | &BallotBox;          | BallotBox              | [!BallotBox!]        
