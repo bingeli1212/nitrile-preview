@@ -1631,23 +1631,7 @@
     "wmathit"                : { "html": "&#x1D464;"      ,  "tex": "\\mathit{w}"                         ,"TM":0    ,"cex":"unicode"      , "width": 9     ,"op":"0"   , "protrude": "2"  , "letter": "w"     },
     "xmathit"                : { "html": "&#x1D465;"      ,  "tex": "\\mathit{x}"                         ,"TM":0    ,"cex":"unicode"      , "width": 6     ,"op":"0"   , "protrude": "2"  , "letter": "x"     },
     "ymathit"                : { "html": "&#x1D466;"      ,  "tex": "\\mathit{y}"                         ,"TM":0    ,"cex":"unicode"      , "width": 6     ,"op":"0"   , "protrude": "2"  , "letter": "y"     },
-    "zmathit"                : { "html": "&#x1D467;"      ,  "tex": "\\mathit{z}"                         ,"TM":0    ,"cex":"unicode"      , "width": 6     ,"op":"0"   , "protrude": "2"  , "letter": "z"     },
-
-    "BallotBox"              : { "html": "&#x2610;"       ,  "tex": "\\faSquareO"                         ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2610 BALLOT BOX"},
-    "BallotBoxWithCheck"     : { "html": "&#x2611;"       ,  "tex": "\\faCheckSquareO"                    ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2611 BALLOT BOX WITH CHECK"},
-    "BallotBoxWithX"         : { "html": "&#x2612;"       ,  "tex": "\\faCheckSquareO"                    ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2612 BALLOT BOX WITH X"},
-    "CircleBoxO"             : { "html": "&#x25CB;"       ,  "tex": "\\faCircleO"                         ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25CB WHITE CIRCLE"},
-    "CircleBox"              : { "html": "&#x25CF;"       ,  "tex": "\\faCircle"                          ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25CF BLACK CIRCLE"},
-    "SquareBoxO"             : { "html": "&#x25FB;"       ,  "tex": "\\faSquareO"                         ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25EF LARGE CIRCLE"},
-    "SquareBox"              : { "html": "&#x25FC;"       ,  "tex": "\\faSquare"                          ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+2B24 LARGE BLACK CIRCLE"},
-    "ChevronLeft"            : { "html": "&#x02C2;"       ,  "tex": "\\faChevronLeft"                     ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25C2 LEFT-POINTING SMALL TRIANGLE"},
-    "ChevronRight"           : { "html": "&#x02C3;"       ,  "tex": "\\faChevronRight"                    ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25B8 RIGHT-POINTING SMALL TRIANGLE"},
-    "ChevronUp"              : { "html": "&#x02C4;"       ,  "tex": "\\faChevronUp"                       ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25B4 UP-POINTING SMALL TRIANGLE"},
-    "ChevronDown"            : { "html": "&#x02C5;"       ,  "tex": "\\faChevronDown"                     ,"TM":1    ,"cex":"unicode"      , "width": 0,    "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25BE DOWN-POINTING SMALL TRIANGLE"},
-    "BigSquare"              : { "html": "&#x25A2;"       ,  "tex": "\\faSquareO"                         ,"TM":1    ,"cex":"unicode"      , "width": 10 ,  "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+25A2 WHITE SQUARE WITH ROUNDED CORNERS"},
-    "CaretRight"             : { "html": "&#x25B8;"       ,  "tex": "\\faCaretRight"                      ,"TM":1    ,"cex":"unicode"      , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25B7 WHITE RIGHT-POINTING TRIANGLE"},    
-    "CaretDown"              : { "html": "&#x25BE;"       ,  "tex": "\\faCaretDown"                       ,"TM":1    ,"cex":"unicode"      , "width": 10 ,  "op": 0,  "usepackage":""         ,"comment":"U+25C1 WHITE LEFT-POINTING TRIANGLE"},
-    "Pencil"                 : { "html": "&#x270E;"       ,  "tex": "\\faPencil"                          ,"TM":1    ,"cex":"unicode"      , "width": 10 ,  "op": 0,  "usepackage":"fontawesome"  ,"comment":"U+270E Lower Right Pencil"}
+    "zmathit"                : { "html": "&#x1D467;"      ,  "tex": "\\mathit{z}"                         ,"TM":0    ,"cex":"unicode"      , "width": 6     ,"op":"0"   , "protrude": "2"  , "letter": "z"     }
 
   },
   "alt_symbol": {
