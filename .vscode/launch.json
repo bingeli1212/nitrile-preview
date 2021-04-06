@@ -95,6 +95,20 @@
       "args": [
         "a.md"
       ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch contexsymboldoc",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/contexsymboldoc.js",
+      "args": [
+        "a.md"
+      ]
     }
+
   ]
 }
