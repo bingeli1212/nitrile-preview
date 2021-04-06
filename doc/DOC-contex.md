@@ -81,26 +81,34 @@ title: ConTeXt translation
   have been placed at the first row and the last one wrapped, where LATEX and SVG
   would each have wrapped the third one down to the next row.
 
-- DO NOT know how to make a double horizontal rule for a "tabular".
-  It has been observed that for a "starttable" block, two consecutive "\HL" commands 
-  does not turn it into a double horizontal line. It seems that these two "\HL commands
-  are placed very close to each other and the horizontal line just appears to be
-  a little thicker.
+- DO NOT know how to make a double horizontal rule for a "tabular".  It has
+  been observed that for a "starttable" block, two consecutive "\HL" commands
+  does not turn it into a double horizontal line. It seems that these two "\HL
+  commands are placed very close to each other and the horizontal line just
+  appears to be a little thicker.
 
 - DO NOT KNOW how to change the entire font for the "startable" block such that
-  the table will be less taller than before. It is been seen that if a font switch 
-  such as "\bfxsm" is placed before "\starttable", then it the fonts are shrinked
-  but the table does not gets shorter and is still the same height.
+  the table will be less taller than before. It is been seen that if a font
+  switch such as "\bfxsm" is placed before "\starttable", then it the fonts are
+  shrinked but the table does not gets shorter and is still the same height.
 
 - The current setup for typesetting a HL list works beautifully in CONTEX.
 
-- The ``\placefigure`` command could fail and cause a compile error if it is to generate
-  a "Figure" caption (where "none" isn't provided inside the first option argument of this
-  command). This has been observed inside Gleamer. For this reason, the "float_to_figure()"
-  function inside the contex.js has been changed such that if the title is empty, then 
-  a "none" is placed inside the first optional argument, thus effectively disabling the
-  generating of the "Figure" line, solving the problem and allowing the compile to continue
+- The ``\placefigure`` command could fail and cause a compile error if it is to
+  generate a "Figure" caption (where "none" isn't provided inside the first
+  option argument of this command). This has been observed inside Gleamer. For
+  this reason, the "float_to_figure()" function inside the contex.js has been
+  changed such that if the title is empty, then a "none" is placed inside the
+  first optional argument, thus effectively disabling the generating of the
+  "Figure" line, solving the problem and allowing the compile to continue
   inside Gleamer.
+
+- When placing inline images using the combination of ``\hbox`` and
+  ``\externalfigure``, the images could still appear being placed to far to the
+  right such that it cuts into the spaces of the right margin, where it
+  should've been wrapped to the next line. So far, if placed inside a figure,
+  where each figure is wrapped by a "startcombination" and "stopcombination" commands,
+  it seems to have worked fine. But it still needs to be verified.
 
 # The \bTABLE problem
 

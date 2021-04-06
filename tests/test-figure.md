@@ -1,20 +1,31 @@
 ---
-title: test-figure.md
+title: a.md
+subtitle: Math Olympiad 2020 - 2021
+author: James Yu
+institute: Howard County Chinese Language School
 ---
+%diagram{dotsize:3, fillcolor:lightgray, linejoin:round, linecolor:teal, linesize:1, fontsize:8, outline:1, viewport:20 7, math:1}
 
-# Slide
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+# Ping-Pong Ball
 
-@figure{label:a}
-  GIMP Logos.
+@ figure
 
-  &img({width:3cm}image-gimp.jpg) One 
-  &img({width:3cm}image-gimp.jpg) Two
-  \\
-  &img({width:3cm}image-gimp.jpg) Three
+  ```img{width:2cm}
+  image-clock.png
+  ```
+  Picture
 
-The figure is &ref(a).
+  ```diagram{width:2cm}
+  viewport 10 10
+  draw (0,0) [l:10,10]
+  ```
+  Diagram 1
+  
 
+  ```diagram{width:2cm}
+  viewport 10 10
+  draw (0,0) [l:10,10]
+  ```
+  Diagram 2
+  

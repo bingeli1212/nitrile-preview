@@ -2158,7 +2158,9 @@ are reserved because they are not commonly used as mathematical
 symbols. However, the corresponding bold versions U+1D56C through
 U+ID585 have no such gaps.
 
+# Issues and Remarks
 
+- Sometimes the 'subfigure' would start with "(b)" for the first subfigure.
 
 
 
