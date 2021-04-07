@@ -741,7 +741,20 @@ the math expression.
   CONTEX this translates to ``\hl[1]``. For HTML a SVG-line element is generated
   that draw a horizontal line near the bottom. 
   
-   
+- For all math-variant symbols, such as "mathscr", "mathcal", "mathbb", etc,
+  these commands are no longer functioning. The replacement is to choose
+  a suitable symbol name apppriate for the variant. For instance, the symbol
+  name "Ascr" should be used for "mathscr" variant of letter "A". 
+
+- It is alright to write ``\overline \Ascr``, for example, that would mean 
+  ``\overline{\Ascr}``. The LATEX and CONTEX generation will automatically 
+  detect that and place a brace around it to make it conform to the 
+  local syntax standard. It has been observed that for LATEX if the command
+  "overline" was followed with a symbol without the brace it would have
+  broken the compile.
+
+
+
   
 
 
