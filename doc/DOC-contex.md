@@ -1,3 +1,4 @@
+
 ---
 title: ConTeXt translation
 ---
@@ -109,6 +110,9 @@ title: ConTeXt translation
   should've been wrapped to the next line. So far, if placed inside a figure,
   where each figure is wrapped by a "startcombination" and "stopcombination" commands,
   it seems to have worked fine. But it still needs to be verified.
+
+- The "linuxlibertine" font seems to have missing glyphs for ``Ascr`` to ``Zscr`` and
+  other math variant glyphs
 
 # The \bTABLE problem
 
