@@ -86,12 +86,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch LATEX",
+      "name": "Launch PDFLATEX",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/latex.js",
+      "program": "${workspaceFolder}/tests/pdflatex.js",
       "args": [
         "a.md"
       ]
@@ -105,6 +105,19 @@
       ],
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/contexsymboldoc.js",
+      "args": [
+        "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch latexsymboldoc",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/latexsymboldoc.js",
       "args": [
         "a.md"
       ]

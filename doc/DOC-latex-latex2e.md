@@ -2162,6 +2162,10 @@ U+ID585 have no such gaps.
 
 - Sometimes the 'subfigure' would start with "(b)" for the first subfigure.
 
+- The ``\mho`` math symbol seems to be missing. It has been replaced by 
+  ``\Omega``.
+
+
 
 
 

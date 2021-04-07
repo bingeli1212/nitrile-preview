@@ -1,13 +1,13 @@
 const { NitrilePreviewParser } = require('../lib/nitrile-preview-parser');
-const { NitrilePreviewLatex } = require('../lib/nitrile-preview-latex');
+const { NitrilePreviewPdflatex } = require('../lib/nitrile-preview-pdflatex');
 const utils = require('../lib/nitrile-preview-utils');
 
 var work = async (fname)=>{
   const parser = new NitrilePreviewParser();
   await parser.read_file_async(fname);
   await parser.read_import_async();
-  const translator = new NitrilePreviewLatex(parser);
-  var tex = translator.to_latex_document();
+  const translator = new NitrilePreviewPdflatex(parser);
+  var tex = translator.to_document();
   return tex;
 };
 
