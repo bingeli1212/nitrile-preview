@@ -114,6 +114,9 @@ title: ConTeXt translation
 - The "linuxlibertine" font seems to have missing glyphs for ``Ascr`` to ``Zscr`` and
   other math variant glyphs
 
+- For a figure, if there are multiple lines for a sub-caption,
+  the lines appear to be too far separated vertically from each other
+
 # The \bTABLE problem
 
 The LONG table expressed by \bTABLE would  start 
