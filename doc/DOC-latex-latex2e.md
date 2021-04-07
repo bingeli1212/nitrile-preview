@@ -474,8 +474,8 @@ As another more useful example, the definition:
     \newcommand{\seq}[2][n]{\lbrace #2_{0},\ldots,\,#2_{#1} \rbrace}
 
 means that the input ``$\seq{a}$`` produces the formula where the last
-element is &sub{a/n}, whereas the input ``$\seq[k]{x}$`` produces the
-formula where the last element is &sub{x/k}. In summary, the command:
+element is &sub{a}{n}, whereas the input ``$\seq[k]{x}$`` produces the
+formula where the last element is &sub{x}{k}. In summary, the command:
 
     \newcommand {<cmd>} [<num>] [<default>] {<definition>}
 
