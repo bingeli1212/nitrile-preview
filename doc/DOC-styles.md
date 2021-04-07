@@ -2,6 +2,8 @@
 title: Styles
 ---
 
+# Style Options
+
 Following are styles recognized by NITRILE:
 
 + halign:p(1cm) c c c c
@@ -717,6 +719,21 @@ Following are styles recognized by NITRILE:
 
   Set it so that the image, diagram, or a table should be placed inside a wrap figure
   such that the text should flow around it.
+
++ subfigure:1
+
+  This option is used exclusively by "figure" float, although it might extend to 
+  other floats in the figure.
+
+  Without it, a figure would treat each image as itself without any
+  subcaptions.  Thus each image will be arranged such that they each "floats"
+  from left to right, and then wrap to the next line. When there isn't space
+  around it anymore. 
+
+  When this option is set to 1 the figure environment would treat each images
+  as a "subfigure", such that they each would have a sub-caption, that goes
+  underneath each image.
+
 
 
 
