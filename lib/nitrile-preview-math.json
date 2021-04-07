@@ -852,7 +852,7 @@
     "asciitilde"             : { "html": "&#x007E;"       ,"tex":"\\textasciitilde"                      ,"lmath":""                          ,"cex":""               ,"cmath":"\\textasciitilde"   , "width": 0,    "op": 0,  "usepackage":"textcomp" },
 
     "nonbreakingspace"       : { "html": "&#x00A0;"       ,"tex":"~"                                     ,"lmath":""                          ,"cex":""               ,"cmath":"\\nobreakspace"     ,"width": 0,    "op": 0,  "usepackage":""         },
-    "exclamdown"             : { "html": "&#x00A1;"       ,"tex":"!`"                                    ,"lmath":""                          ,"cex":""               ,"cmath":"\\exclamdown"       ,"width": 0,    "op": 0,  "usepackage":""         },
+    "exclamdown"             : { "html": "&#x00A1;"       ,"tex":"\\textexclamdown"                      ,"lmath":""                          ,"cex":""               ,"cmath":"\\exclamdown"       ,"width": 0,    "op": 0,  "usepackage":""         },
     "cent"                   : { "html": "&#x00A2;"       ,"tex":"\\textcent"                            ,"lmath":""                          ,"cex":""               ,"cmath":"\\textcent"         ,"width": 0,    "op": 0,  "usepackage":"textcomp" },
     "sterling"               : { "html": "&#x00A3;"       ,"tex":"\\pounds"                              ,"lmath":""                          ,"cex":""               ,"cmath":"\\textsterling"     ,"width": 0,    "op": 0,  "usepackage":""         },
     "currency"               : { "html": "&#x00A4;"       ,"tex":"\\textcurrency"                        ,"lmath":""                          ,"cex":""               ,"cmath":"\\textcurrency"     ,"width": 0,    "op": 0,  "usepackage":""         },
@@ -883,7 +883,7 @@
     "onequarter"             : { "html": "&#x00BC;"       ,"tex":"\\textonequarter"                      ,"lmath":""                          ,"cex":""               ,"cmath":"\\onequarter"       ,"width": 0,    "op": 0,  "usepackage":""         },
     "onehalf"                : { "html": "&#x00BD;"       ,"tex":"\\textonehalf"                         ,"lmath":""                          ,"cex":""               ,"cmath":"\\onehalf"          ,"width": 0,    "op": 0,  "usepackage":""         },
     "threequarters"          : { "html": "&#x00BE;"       ,"tex":"\\textthreequarters"                   ,"lmath":""                          ,"cex":""               ,"cmath":"\\threequarter"     ,"width": 0,    "op": 0,  "usepackage":""         },
-    "questiondown"           : { "html": "&#x00BF;"       ,"tex":"?`"                                    ,"lmath":""                          ,"cex":""               ,"cmath":"\\questiondown"     ,"width": 0,    "op": 0,  "usepackage":""         },
+    "questiondown"           : { "html": "&#x00BF;"       ,"tex":"\\textquestiondown"                    ,"lmath":""                          ,"cex":""               ,"cmath":"\\questiondown"     ,"width": 0,    "op": 0,  "usepackage":""         },
        
     "Agrave"                 : { "html": "&#x00C0;"       ,"tex":"\\`{A}"                                ,"lmath":""                          ,"cex":""               ,"cmath":"\\Agrave         "  ,"width": 0,    "op": 0,  "usepackage":""         },
     "Aacute"                 : { "html": "&#x00C1;"       ,"tex":"\\'{A}"                                ,"lmath":""                          ,"cex":""               ,"cmath":"\\Aacute         "  ,"width": 0,    "op": 0,  "usepackage":""         },
