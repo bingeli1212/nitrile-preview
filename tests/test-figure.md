@@ -9,7 +9,7 @@ institute: Howard County Chinese Language School
 
 # Ping-Pong Ball
 
-@ figure
+@ figure{subfigure}
 
   ```img{width:2cm}
   image-clock.png
@@ -20,8 +20,9 @@ institute: Howard County Chinese Language School
   viewport 10 10
   draw (0,0) [l:10,10]
   ```
-  Diagram 1
+  Diagram showing a square and a line.
   
+  \\
 
   ```diagram{width:2cm}
   viewport 10 10
