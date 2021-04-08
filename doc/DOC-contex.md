@@ -2549,8 +2549,9 @@ curly braces with the \sl command.
   bold 
 ```
 
-In running local text, the inline typestyle can be changed into some other typestyle. The following
-example shows how some typestyle is changed inside curly braces with the \tfc command.
+In running local text, the inline typestyle can be changed into some other
+typestyle. The following example shows how some typestyle is changed inside
+curly braces with the \tfc command.
 
   This {\tfc text} will be rendered in another typestyle. 
 
@@ -2591,10 +2592,11 @@ Following are addtional options.
 ```
 
 [ Changing and Combining Local Typeface and Typestyle. ]
-It is also possible to combine a typeface and a typestyle. An addition of a, b, c or d to \sl, \it or
-\bf is also allowed. like at the following example where the commands \sl and \tfb are combined to
-the \slb command that renders the inline text both slanted and in a somewhat greater size. The
-following example will demonstrate the effect.
+It is also possible to combine a typeface and a typestyle. An addition of a, b,
+c or d to \sl, \it or \bf is also allowed. like at the following example where
+the commands \sl and \tfb are combined to the \slb command that renders the
+inline text both slanted and in a somewhat greater size. The following example
+will demonstrate the effect.
 
     The {\slb text } will be rendered in another typeface and typestyle.
 
@@ -2661,9 +2663,11 @@ The ``\quote`` command surrounds the quote with single quote characters. The
 ``\quotation`` command surrounds the quote with double quote characters. 
 
 [ Verbatim Text. ]
-Text that is not subject to macro expansion is created with the ``\starttyping`` command and is closed
-off wit the ``\stoptyping`` command. The text inside this command pair will appear exactly as typed,
-meaning it will display typed text and the output will reflect the line breaks as the appear in the input.
+Text that is not subject to macro expansion is created with the
+``\starttyping`` command and is closed off wit the ``\stoptyping`` command. The
+text inside this command pair will appear exactly as typed, meaning it will
+display typed text and the output will reflect the line breaks as the appear in
+the input.
 
     \starttyping
     This is verbatim text in ConTEXt that is not 
@@ -2806,5 +2810,33 @@ before "\placefigure".
 
     \dontleavehmode
     \placefigure[right,none][]{}{\externalfigure{image-clock.png}}
+
+# Typescript
+
+A TypeScript (as opposed to a font) contains font definitions for the
+individual font styles (regular, sans, math, etc. and bold, italic, bolditalic,
+etc.).
+
+I can list all the fonts with mtxrun --script fonts --list --all --pattern=*.
+But since \setupbodyfont[my-typescript] takes a TypeScript and not a font, I
+would like to know the installed TypeScripts.
+
+Default TypeScripts can be found in the type-imp-* files in the directory
+tex/texmf-context/tex/context/base/ (relative to the ConTeXt installation
+directory).
+
+If you installed TeX on a Mac with TexLive 2013, you can list them as such:
+
+    ls /usr/local/texlive/2013/texmf-dist/tex/context/base/type-imp-*
+
+and used in \setupbodyfont[my-typescript] without the type-imp- prefix.
+
+Furthermore there are TypeScripts which ship as third party modules. These can
+be found in "tex/context/third/typescripts/", or
+"texlive/2017/texmf-dist/tex/context/fonts/mkiv/"
+
+
+
+
 
 

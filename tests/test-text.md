@@ -63,5 +63,3 @@ config fontcolor red
 text.lrt "Hello\\World" (5,5)
 ```
 
-
-
