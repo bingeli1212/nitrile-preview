@@ -69,10 +69,7 @@
       ],
       "isBackground": true,
       "problemMatcher": [],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
+      "group": "build",
       "presentation": {
         "echo": true,
         "reveal": "always",
@@ -83,15 +80,18 @@
       }
     },
     {
-      "label": "nicontext",
+      "label": "nicamer",
       "type": "shell",
-      "command": "nicontext",
+      "command": "nicamer",
       "args": [
         "${file}"
       ],
-      "isBackground": true,
+      "isBackground": false,
       "problemMatcher": [],
-      "group": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "presentation": {
         "echo": true,
         "reveal": "always",
