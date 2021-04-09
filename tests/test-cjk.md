@@ -5,6 +5,9 @@ xelatex.post:  \newfontfamily{\jp}[Scale=0.85]{Osaka}
                \newfontfamily{\tw}[Scale=0.85]{Yuanti TC}
                \newfontfamily{\kr}[Scale=0.85]{AppleGothic}
                \XeTeXlinebreaklocale "th_TH"
+camer.post:   \usebodyfont[11pt]
+              \setscript[nihongo]
+              \usemodule[ruby]
 ---
 
 @ @
