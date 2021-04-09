@@ -11,7 +11,6 @@ camer.post:   \usebodyfont[hiragino-kaku,11pt]
               \setscript[nihongo]
               \usemodule[ruby]
 ---
-%日本・にほん
 
 @ @
 
