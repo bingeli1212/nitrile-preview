@@ -5,7 +5,7 @@ title: a.md
 # Slide
 
 @ figure
-  @fig:myfig
+  &label{fig:myfig}
   This is my figure.
 
   &img{image-clock.png}
