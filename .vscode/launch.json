@@ -99,6 +99,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch CAMER",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/camer.js",
+      "args": [
+        "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch contexsymboldoc",
       "skipFiles": [
         "<node_internals>/**"
