@@ -4,11 +4,12 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    
 
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch PAGE",
+      "name": "Launch page",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -21,59 +22,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch EPUB",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/epub.js",
-      "args":[
-        "a.md"
-      ]
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch CONTEXT",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/contex.js",
-      "args": [
-        "a.md"
-      ]
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch BEAMER",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/beamer.js",
-      "args": [
-        "a.md"
-      ]
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch GLEAMER",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/gleamer.js",
-      "args": [
-        "a.md"
-      ]
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch SLIDE",
+      "name": "Launch slide",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -86,20 +35,20 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch PDFLATEX",
+      "name": "Launch epub",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/pdflatex.js",
-      "args": [
+      "program": "${workspaceFolder}/tests/epub.js",
+      "args":[
         "a.md"
       ]
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch CAMER",
+      "name": "Launch camer",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -109,6 +58,48 @@
         "a.md"
       ]
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch creamer",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/creamer.js",
+      "args": [
+        "a.md"
+      ]
+    },
+
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch reportpdf",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/reportpdf.js",
+      "args": [
+        "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch beamerpdf",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/beamerpdf.js",
+      "args": [
+        "a.md"
+      ]
+    },
+
+
     {
       "type": "node",
       "request": "launch",
