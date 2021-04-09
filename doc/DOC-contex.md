@@ -111,11 +111,26 @@ title: ConTeXt translation
   where each figure is wrapped by a "startcombination" and "stopcombination" commands,
   it seems to have worked fine. But it still needs to be verified.
 
-- The "linuxlibertine" font seems to have missing glyphs for ``Ascr`` to ``Zscr`` and
-  other math variant glyphs
+- The "linuxlibertine" font seems to have missing glyphs for ``Ascr`` to
+  ``Zscr`` and other math variant glyphs. When using the default font these
+  glyphs showed up.
 
 - For a figure, if there are multiple lines for a sub-caption,
   the lines appear to be too far separated vertically from each other
+
+- For TexLive2021, the command "\softhyphen" does not work and would
+  cause a compile error
+
+- The "\startpart" and "\stoppart" command would not generate an output
+  even when the "title=" field of this command is set to a non-empty string.
+  The CONTEX documentation says that users are responsible for generating the
+  actual contents, for instance, by placing a bTABLE in here with titles,
+  subtitles, authors, and other texts. Another possibility is to use the
+  "\startalignment[middle]" and "\blank[0.2cm]" commands to group a list of
+  entries centered horizontally on the page, and use "\blank[2cm]" to move
+  down vertically by adding extra vertical spaces between paragraph.
+
+
 
 # The \bTABLE problem
 
