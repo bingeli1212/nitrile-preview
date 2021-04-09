@@ -1,12 +1,15 @@
 ---
 title: test-cjk.md
-latex.cjk: 1
-contex.cjk: 1
+xelatex.post:  \newfontfamily{\jp}[Scale=0.85]{Osaka}
+               \newfontfamily{\cn}[Scale=0.85]{Yuanti SC}
+               \newfontfamily{\tw}[Scale=0.85]{Yuanti TC}
+               \newfontfamily{\kr}[Scale=0.85]{AppleGothic}
+               \XeTeXlinebreaklocale "th_TH"
 ---
 
-@ fonts
+@ @
 
-  %xelatex.fonts+=cn,Wawati SC
+  %xelatex.fonts+=cn,Lantinghei TC
   %xelatex.fonts+=tw,Weibei SC
   %xelatex.fonts+=jp,YuMincho  
   %xelatex.fonts+=kr,AppleGothic
