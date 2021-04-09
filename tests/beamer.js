@@ -4,7 +4,7 @@ const utils = require('../lib/nitrile-preview-utils');
 
 var work = async ()=>{
   const parser = new NitrilePreviewParser();
-  const translator = new NitrilePreviewBeamer(parser);
+  const translator = new NitrilePreviewBeamer(parser,program);
   await parser.read_file_async(fname);
   var data = translator.to_beamer_document();
   return(data);
@@ -12,6 +12,7 @@ var work = async ()=>{
 
 console.log(process.argv);
 const fname = process.argv[2];
+const program = 'pdflatex';
 console.log(fname);
 
 if (fname) {
