@@ -5,10 +5,13 @@ xelatex.post:  \newfontfamily{\jp}[Scale=0.85]{Osaka}
                \newfontfamily{\tw}[Scale=0.85]{Yuanti TC}
                \newfontfamily{\kr}[Scale=0.85]{AppleGothic}
                \XeTeXlinebreaklocale "th_TH"
-camer.post:   \usebodyfont[11pt]
+camer.post:   \usebodyfont[hiragino-kaku,11pt]
+              \mainlanguage[ja]
+              \language[ja]
               \setscript[nihongo]
               \usemodule[ruby]
 ---
+%日本・にほん
 
 @ @
 
@@ -34,6 +37,10 @@ camer.post:   \usebodyfont[11pt]
 私の高校時代も給食のシステムがなかったので、
 自分でお昼を持っていかなければならず、
 私の母が弁当を作ってくれていた。
+
+    日本では母親がよく家族のために弁当を作っている。
+    In Japan a mother usually prepares Bento for 
+    family members.
 
 # Simplified Chinese
  
