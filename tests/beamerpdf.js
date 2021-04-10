@@ -6,6 +6,7 @@ var work = async ()=>{
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewBeamer(parser,program);
   await parser.read_file_async(fname);
+  await parser.read_master_async();
   var data = translator.to_document();
   return(data);
 };
