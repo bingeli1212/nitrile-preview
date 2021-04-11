@@ -130,6 +130,10 @@ title: ConTeXt translation
   entries centered horizontally on the page, and use "\blank[2cm]" to move
   down vertically by adding extra vertical spaces between paragraph.
 
+- The symbol names, defined in "char-def.lua", such as "onethird" does not 
+  word reliably. It seems to work in one release but would stop to work
+  in the subsequent release.
+
 
 
 # The \bTABLE problem
