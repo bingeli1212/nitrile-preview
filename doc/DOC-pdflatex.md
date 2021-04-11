@@ -1,4 +1,55 @@
-# PDFLATEX translation
+---
+title: PDFLATEX translation
+---
+
+
+# Issues and additional remarks
+
+- For Linux liberbine package which changes body font, the documentation
+  states to use font encoding using the following option. However, it
+  has been observed that on LuaLATEX if following package is used then
+  the bold-face went away.
+
+  \usepackage[T1]{fontenc}
+
+- The "xltabular" environment does not work with "twocolumn" mode. 
+  Thus, the LONG and CSVD blocks cannot be present if "twocolumn" 
+  is going to be an option for the document because both of these
+  blocks reply on "xltabular" environment. However, TABR 
+  uses float and thus is save with "twocolumn". TABB 
+  uses "tabbing" and is thus also safe with "twocolumn". 
+
+# The "tabbing" environment
+
+Following is an example of a "tabbing" environment in LATEX
+that can set the "tab-stop" to positions relative to the whole
+page width.
+
+  \begin{tabbing}
+  \hspace{0.234527\linewidth}\=\hspace{0.265473\linewidth}\=\hspace{0.234527\linewidth}\=\hspace{0.265473\linewidth}\kill
+  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
+  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
+  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
+  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
+  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
+  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
+  \end{tabbing}
+
+# The "pdflatex" program is very sensitive to unrecognized Unicode characters.
+  It will generate an error such as following if a unknown Unicode character 
+  is encountered. For this reason, the "smooth" and "polish" method has been
+  changed to also look for any unicode characters that are known to have its
+  symbol replacements defined by "math.json" file.
+
+  ```verbatim
+  ! Package ucs Error: Unknown Unicode character 64257 = U+FB01,
+  (ucs)                possibly declared in uni-251.def.
+  (ucs)                Type H to see if it is available with options.
+  See the ucs package documentation for explanation.
+  Type  H <return>  for immediate help.
+   ...
+  ```
+
 
 
 # Required LATEX Packages For PdfLaTeX
@@ -185,38 +236,6 @@ label" in the form of `$(#)`.
 
 Note that PICT, DIAG and FRMD would all be treated as "Figure."
 TABR will be treated as a "Table", and PROG as a "Program."
-
-# Issues and additional remarks
-
-- For Linux liberbine package which changes body font, the documentation
-  states to use font encoding using the following option. However, it
-  has been observed that on LuaLATEX if following package is used then
-  the bold-face went away.
-
-  \usepackage[T1]{fontenc}
-
-- The "xltabular" environment does not work with "twocolumn" mode. 
-  Thus, the LONG and CSVD blocks cannot be present if "twocolumn" 
-  is going to be an option for the document because both of these
-  blocks reply on "xltabular" environment. However, TABR 
-  uses float and thus is save with "twocolumn". TABB 
-  uses "tabbing" and is thus also safe with "twocolumn". 
-
-# The "tabbing" environment
-
-Following is an example of a "tabbing" environment in LATEX
-that can set the "tab-stop" to positions relative to the whole
-page width.
-
-  \begin{tabbing}
-  \hspace{0.234527\linewidth}\=\hspace{0.265473\linewidth}\=\hspace{0.234527\linewidth}\=\hspace{0.265473\linewidth}\kill
-  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
-  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
-  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
-  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
-  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
-  {\small{}hello} \> {\small{}world} \> {\small{}hello} \> {\small{}world} \\
-  \end{tabbing}
 
 # LATEX tables
 
