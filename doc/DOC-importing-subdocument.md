@@ -23,31 +23,31 @@ the "import" keyword.
 
     ---
     title: Data-Driven Documents
-    import: [part](Basic Concept)
-            [chapter](./d3-intro.md)
-            [chapter](./d3-datajoin.md)
-            [chapter](./d3-csv.md)
-            [chapter](./d3-selection.md)
-            [chapter](./d3-transformation.md)
-            [chapter](./d3-color.md)
-            [chapter](./d3-statistics.md)
-            [part](Layout)
-            [chapter](./d3-stack-layout.md)
-            [chapter](./d3-pack-layout.md)
-            [chapter](./d3-pie-layout.md)
-            [chapter](./d3-histogram.md)
-            [part](Data Generator)
-            [chapter](./d3-arc-generator.md)
-            [chapter](./d3-area-generator.md)
-            [chapter](./d3-symbol-generator.md)
-            [chapter](./d3-force.md)
-            [chapter](./d3-collections.md)
-            [chapter](./d3-geo.md)
-            [chapter](./d3-geodata-paths.md)
-            [chapter](./d3-scales.md)
-            [chapter](./d3-hierarchy.md)
-            [part](References)
-            [chapter](./d3-quickreference.md)
+    import: [part]Basic Concept
+            [chapter]./d3-intro.md
+            [chapter]./d3-datajoin.md
+            [chapter]./d3-csv.md
+            [chapter]./d3-selection.md
+            [chapter]./d3-transformation.md
+            [chapter]./d3-color.md
+            [chapter]./d3-statistics.md
+            [part]Layout
+            [chapter]./d3-stack-layout.md
+            [chapter]./d3-pack-layout.md
+            [chapter]./d3-pie-layout.md
+            [chapter]./d3-histogram.md
+            [part]Data Generator
+            [chapter]./d3-arc-generator.md
+            [chapter]./d3-area-generator.md
+            [chapter]./d3-symbol-generator.md
+            [chapter]./d3-force.md
+            [chapter]./d3-collections.md
+            [chapter]./d3-geo.md
+            [chapter]./d3-geodata-paths.md
+            [chapter]./d3-scales.md
+            [chapter]./d3-hierarchy.md
+            [part]References
+            [chapter]./d3-quickreference.md
     ---
 
 In the previous example, it has been stated that four "part" will be
@@ -75,12 +75,12 @@ acting as its two sections.
 
     ---
     title: Data-Driven Documents
-    import: [chapter](Introduction)
-            [section](./d3-intro.md)
-            [section](./d3-datajoin.md)
-            [chapter](Advanced)
-            [section](./d3-selection.md)
-            [section](./d3-transformation.md)
+    import: [chapter]Introduction
+            [section]./d3-intro.md
+            [section]./d3-datajoin.md
+            [chapter]Advanced
+            [section]./d3-selection.md
+            [section]./d3-transformation.md
     ---    
 
 
