@@ -31,6 +31,8 @@ test.md
 *.pgf
 *.tuc
 a.md
+b.md
+c.md
 *.syncctx
 *.vrb
 *.tmp
