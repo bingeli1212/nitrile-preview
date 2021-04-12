@@ -36,4 +36,5 @@ a.md
 *.tmp
 *.tui
 *.mp
+*.swo
 temp
