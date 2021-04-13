@@ -69,116 +69,103 @@ y + 7 + 8 = \sqrt{2}
 
 
 
-# Greek letters 
+# Math and text mix
+
+The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
+
+
+
+# Greek Letters Table 1
 
 @   table    
 
-    ```tabulate{border:1}
-    Name     | Symbol        |  Name      | Symbol        | Name         | Symbol            
-    ---------|---------------|------------|---------------|--------------|-------------
-    \Alpha   | \(\Alpha  \)  |   \Iota    | \(\Iota   \)  |     \Rho     | \(\Rho    \)     
-    \Beta    | \(\Beta   \)  |   \Kappa   | \(\Kappa  \)  |     \Sigma   | \(\Sigma  \)   
-    \Gamma   | \(\Gamma  \)  |   \Lambda  | \(\Lambda \)  |     \Tau     | \(\Tau    \)   
-    \Delta   | \(\Delta  \)  |   \Mu      | \(\Mu     \)  |     \Upsilon | \(\Upsilon\)   
-    \Epsilon | \(\Epsilon\)  |   \Nu      | \(\Nu     \)  |     \Phi     | \(\Phi    \)   
-    \Zeta    | \(\Zeta   \)  |   \Xi      | \(\Xi     \)  |     \Chi     | \(\Chi    \)   
-    \Eta     | \(\Eta    \)  |   \Omicron | \(\Omicron\)  |     \Psi     | \(\Psi    \)   
-    \Theta   | \(\Theta  \)  |   \Pi      | \(\Pi     \)  |     \Omega   | \(\Omega  \)   
-    ```
+    | Name     | Symbol           |  Name      | Symbol           | Name     | Symbol            
+    ------------------------------------------------------------------------------------------
+    | \Alpha   | &math{\Alpha  }  |  \Iota     | &math{\Iota   }  | \Rho     | &math{\Rho    }     
+    | \Beta    | &math{\Beta   }  |  \Kappa    | &math{\Kappa  }  | \Sigma   | &math{\Sigma  }   
+    | \Gamma   | &math{\Gamma  }  |  \Lambda   | &math{\Lambda }  | \Tau     | &math{\Tau    }   
+    | \Delta   | &math{\Delta  }  |  \Mu       | &math{\Mu     }  | \Upsilon | &math{\Upsilon}   
+    | \Epsilon | &math{\Epsilon}  |  \Nu       | &math{\Nu     }  | \Phi     | &math{\Phi    }   
+    | \Zeta    | &math{\Zeta   }  |  \Xi       | &math{\Xi     }  | \Chi     | &math{\Chi    }   
+    | \Eta     | &math{\Eta    }  |  \Omicron  | &math{\Omicron}  | \Psi     | &math{\Psi    }   
+    | \Theta   | &math{\Theta  }  |  \Pi       | &math{\Pi     }  | \Omega   | &math{\Omega  }   
+
+# Greek Letters Table 2
 
 @   table 
 
-    ```tabulate{border:1}
-    Name     | Symbol         |  Name      | Symbol        | Name         | Symbol            
-    ---------|----------------|------------|---------------|--------------|-------------
-    \alpha   | \(\alpha  \)   |   \iota    | \(\iota   \)  |     \rho     | \(\rho    \)        
-    \beta    | \(\beta   \)   |   \kappa   | \(\kappa  \)  |     \sigma   | \(\sigma  \) 
-    \gamma   | \(\gamma  \)   |   \lambda  | \(\lambda \)  |     \tau     | \(\tau    \)     
-    \delta   | \(\delta  \)   |   \mu      | \(\mu     \)  |     \upsilon | \(\upsilon\)       
-    \epsilon | \(\epsilon\)   |   \nu      | \(\nu     \)  |     \phi     | \(\phi    \)  
-    \zeta    | \(\zeta   \)   |   \xi      | \(\xi     \)  |     \chi     | \(\chi    \)   
-    \eta     | \(\eta    \)   |   \omicron | \(\omicron\)  |     \psi     | \(\psi    \)    
-    \theta   | \(\theta  \)   |   \pi      | \(\pi     \)  |     \omega   | \(\omega  \)  
-    ```
+    | Name     | Symbol            |  Name     | Symbol           | Name     | Symbol            
+    ------------------------------------------------------------------------------------------------------
+    | \alpha   | &math{\alpha  }   |  \iota    | &math{\iota   }  | \rho     | &math{\rho    }        
+    | \beta    | &math{\beta   }   |  \kappa   | &math{\kappa  }  | \sigma   | &math{\sigma  } 
+    | \gamma   | &math{\gamma  }   |  \lambda  | &math{\lambda }  | \tau     | &math{\tau    }     
+    | \delta   | &math{\delta  }   |  \mu      | &math{\mu     }  | \upsilon | &math{\upsilon}       
+    | \epsilon | &math{\epsilon}   |  \nu      | &math{\nu     }  | \phi     | &math{\phi    }  
+    | \zeta    | &math{\zeta   }   |  \xi      | &math{\xi     }  | \chi     | &math{\chi    }   
+    | \eta     | &math{\eta    }   |  \omicron | &math{\omicron}  | \psi     | &math{\psi    }    
+    | \theta   | &math{\theta  }   |  \pi      | &math{\pi     }  | \omega   | &math{\omega  }  
 
-@   table{label:a}
-    This is the caption.
+# Greek Letters Table 3
 
-    ```tabulate{border:1}
-    Letter      | Symbol
-    ------------|-------------------
-    \vartheta   | \(\vartheta  \)
-    \varrho     | \(\varrho    \)       
-    \varsigma   | \(\varsigma  \)           
-    \varphi     | \(\varphi    \)      
-    \varepsilon | \(\varepsilon\)           
-    ```
+@   table
+
+    | Name        | Symbol
+    ----------------------------------
+    | \vartheta   | &math{\vartheta  }
+    | \varrho     | &math{\varrho    }       
+    | \varsigma   | &math{\varsigma  }           
+    | \varphi     | &math{\varphi    }      
+    | \varepsilon | &math{\varepsilon}           
 
 
 # Math combinations
 
 - ``\sqrt{2}`` &br{}
-  \(\sqrt{2}\)
+  &math{\sqrt{2}}
 
 - ``\sqrt[3]{2}`` &br{}
-  \(\sqrt[3]{2}\)
+  &math{\sqrt[3]{2}}
 
 - ``\binom{a}{b}`` &br{}
-  \(\binom{a}{b}\)
+  &math{\binom{a}{b}}
 
 - ``\frac{a}{b}`` &br{}
-  \(\frac{a}{b}\)
+  &math{\frac{a}{b}}
 
 
 # Math accents
 
-- ``\dot{a}`` &br{}
-  \(\dot{a}\)
+- ``\dot{a}`` &math{\dot{a}}
 
-- ``\ddot{a}`` &br{}
-  \(\ddot{a}\)
+- ``\ddot{a}`` &math{\ddot{a}}
 
-- ``\dddot{a}`` &br{}
-  \(\dddot{a}\)
+- ``\dddot{a}`` &math{\dddot{a}}
 
-- ``\bar{a}`` &br{}
-  \(\bar{a}\)
+- ``\bar{a}`` &math{\bar{a}}
 
-- ``\vec{a}`` &br{}
-  \(\vec{a}\)
+- ``\vec{a}`` &math{\vec{a}}
 
-- ``\mathring{a}`` &br{}
-  \(\mathring{a}\)
+- ``\mathring{a}`` &math{\mathring{a}}
 
-- ``\hat{a}`` &br{}
-  \(\hat{a}\)
+- ``\hat{a}`` &math{\hat{a}}
 
-- ``\check{a}`` &br{}
-  \(\check{a}\)
+- ``\check{a}`` &math{\check{a}}
 
-- ``\grave{a}`` &br{}
-  \(\grave{a}\)
+- ``\grave{a}`` &math{\grave{a}}
 
-- ``\acute{a}`` &br{}
-  \(\acute{a}\)
+- ``\acute{a}`` &math{\acute{a}}
 
-- ``\breve{a}`` &br{}
-  \(\breve{a}\)
+- ``\breve{a}`` &math{\breve{a}}
 
-- ``\tilde{a}`` &br{}
-  \(\tilde{a}\)
+- ``\tilde{a}`` &math{\tilde{a}}
 
-- ``\widehat{abcdef}`` &br{}
-  \(\widehat{abcdef}\)
+- ``\widehat{abcdef}`` &math{\widehat{abcdef}}
 
-- ``\overline{abcdef}`` &br{}
-  \(\overline{abcdef}\)
+- ``\overline{abcdef}`` &math{\overline{abcdef}}
 
-- ``\overleftrightarrow{abcdef}`` &br{}
-  \(\overleftrightarrow{abcdef}\)
+- ``\overleftrightarrow{abcdef}`` &math{\overleftrightarrow{abcdef}}
 
-- ``\overrightarrow{abcdef}`` &br{}
-  \(\overrightarrow{abcdef}\)
+- ``\overrightarrow{abcdef}`` &math{\overrightarrow{abcdef}}
 
 
 
