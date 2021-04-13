@@ -136,35 +136,20 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 # Math accents
 
 - ``\dot{a}`` &math{\dot{a}}
-
 - ``\ddot{a}`` &math{\ddot{a}}
-
 - ``\dddot{a}`` &math{\dddot{a}}
-
 - ``\bar{a}`` &math{\bar{a}}
-
 - ``\vec{a}`` &math{\vec{a}}
-
 - ``\mathring{a}`` &math{\mathring{a}}
-
 - ``\hat{a}`` &math{\hat{a}}
-
 - ``\check{a}`` &math{\check{a}}
-
 - ``\grave{a}`` &math{\grave{a}}
-
 - ``\acute{a}`` &math{\acute{a}}
-
 - ``\breve{a}`` &math{\breve{a}}
-
 - ``\tilde{a}`` &math{\tilde{a}}
-
 - ``\widehat{abcdef}`` &math{\widehat{abcdef}}
-
 - ``\overline{abcdef}`` &math{\overline{abcdef}}
-
 - ``\overleftrightarrow{abcdef}`` &math{\overleftrightarrow{abcdef}}
-
 - ``\overrightarrow{abcdef}`` &math{\overrightarrow{abcdef}}
 
 
