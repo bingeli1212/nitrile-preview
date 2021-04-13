@@ -184,7 +184,7 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 # Math Variants 
 
 - ``000&ascr;&bscr;&cscr;111`` &br{}
-  &math{000&ascr;&bscr;&cscr;111}
+  &math{000&Ascr;&Bscr;&Cscr;111}
 
 - ``000&abf;&bbf;&cbf;111`` &br{}
   &math{000&abf;&bbf;&cbf;111} 
@@ -282,53 +282,53 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 
 # Fences I
 
-- ``&math{\left\lbrace a \right\rbrace}`` &br{}           &math{\left\lbrace a \right\rbrace}
+- ``\left\lbrace a \right\rbrace`` &br{}           &math{\left\lbrace a \right\rbrace}
 
-- ``&math{\left[ a \right]}`` &br{}                       &math{\left[ a \right]}
+- ``\left[ a \right]`` &br{}                       &math{\left[ a \right]}
 
-- ``&math{\left( a \right)}`` &br{}                       &math{\left( a \right)}
+- ``\left( a \right)`` &br{}                       &math{\left( a \right)}
 
-- ``&math{\left\vert a \right\vert}`` &br{}               &math{\left\vert a \right\vert}
+- ``\left\vert a \right\vert`` &br{}               &math{\left\vert a \right\vert}
 
 
 
 # Fences II
 
-- ``&math{\left\Vert a \right\Vert}`` &br{}               &math{\left\Vert a \right\Vert}
+- ``\left\Vert a \right\Vert`` &br{}               &math{\left\Vert a \right\Vert}
 
-- ``&math{\left\lang a \right\rang}`` &br{}               &math{\left\lang a \right\rang}
+- ``\left\lang a \right\rang`` &br{}               &math{\left\lang a \right\rang}
 
-- ``&math{\left\lbrace \frac 1 a \right\rbrace}`` &br{}   &math{\left\lbrace \frac 1 a \right\rbrace}
+- ``\left\lbrace \frac{1}{a} \right\rbrace`` &br{}   &math{\left\lbrace \frac{1}{a} \right\rbrace}
 
-- ``&math{\left[ \frac 1 a \right]}`` &br{}               &math{\left[ \frac 1 a \right]}
+- ``\left[ \frac{1}{a} \right]`` &br{}               &math{\left[ \frac{1}{a} \right]}
 
 
 
 # Fences III
 
-- ``&math{\left( \frac 1 a \right)}`` &br{}               &math{\left( \frac 1 a \right)}
+- ``\left( \frac{1}{a} \right)`` &br{}               &math{\left( \frac{1}{a} \right)}
 
-- ``&math{\left\vert \frac 1 a \right\vert}`` &br{}       &math{\left\vert \frac 1 a \right\vert}
+- ``\left\vert \frac{1}{a} \right\vert`` &br{}       &math{\left\vert \frac{1}{a} \right\vert}
 
-- ``&math{\left\Vert \frac 1 a \right\Vert}`` &br{}       &math{\left\Vert \frac 1 a \right\Vert}
+- ``\left\Vert \frac{1}{a} \right\Vert`` &br{}       &math{\left\Vert \frac{1}{a} \right\Vert}
 
-- ``&math{\left\lang \frac 1 a \right\rang}`` &br{}       &math{\left\lang \frac 1 a \right\rang}
+- ``\left\lang \frac{1}{a} \right\rang`` &br{}       &math{\left\lang \frac{1}{a} \right\rang}
 
 
 
 # Fences IV
 
-- ``&math{\left\lfloor \frac 1 a \right\rfloor}`` &br{}   &math{\left\lfloor \frac 1 a \right\rfloor}
+- ``\left\lfloor \frac{1}{a} \right\rfloor`` &br{}   &math{\left\lfloor \frac{1}{a} \right\rfloor}
 
-- ``&math{\left\lceil \frac 1 a \right\rceil}`` &br{}     &math{\left\lceil \frac 1 a \right\rceil}
+- ``\left\lceil \frac{1}{a} \right\rceil`` &br{}     &math{\left\lceil \frac{1}{a} \right\rceil}
 
-- ``&math{\left\lobrk \frac 1 a \right\robrk}`` &br{}     &math{\left\lobrk \frac 1 a \right\robrk}
+- ``\left\lobrk \frac{1}{a} \right\robrk`` &br{}     &math{\left\lobrk \frac{1}{a} \right\robrk}
 
 
 # eqcolon
 
-- ``&math{A \coloneq B}`` &br{} &math{A \coloneq B}
+- ``A \coloneq B`` &br{} &math{A \coloneq B}
 
-- ``&math{A \eqcolon B}`` &br{} &math{A \eqcolon B}
+- ``A \eqcolon B`` &br{} &math{A \eqcolon B}
 
 
