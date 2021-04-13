@@ -177,16 +177,20 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 
 # Text 
 
-- ``000\text{abc}111`` &math{000\text{abc}111}
+- ``000\text{abc}111`` &br{}
+  &math{000\text{abc}111}
 
 
 # Math Variants 
 
-- ``000&ascr;&bscr;&cscr;111`` &math{000&ascr;&bscr;&cscr;111}
+- ``000&ascr;&bscr;&cscr;111`` &br{}
+  &math{000&ascr;&bscr;&cscr;111}
 
-- ``000&abf;&bbf;&cbf;111`` &math{000&abf;&bbf;&cbf;111} 
+- ``000&abf;&bbf;&cbf;111`` &br{}
+  &math{000&abf;&bbf;&cbf;111} 
 
-- ``000&aopf;&bopf;&copf;111`` &math{000&aopf;&bopf;&copf;111} 
+- ``000&aopf;&bopf;&copf;111`` &br{}
+  &math{000&aopf;&bopf;&copf;111} 
 
 
 
@@ -263,11 +267,14 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 
 # Braces
 
-- ``\lbrace a + b \rbrace`` &math{\lbrace a + b \rbrace}
+- ``\lbrace a + b \rbrace`` &br{} 
+   &math{\lbrace a + b \rbrace}
 
-- ``[ a + b ]`` &math{[ a + b ]}
+- ``[ a + b ]`` &br{}
+  &math{[ a + b ]}
 
-- ``( a + b )`` &math{( a + b )}
+- ``( a + b )``  &br{}
+  &math{( a + b )}
 
 
 
@@ -275,53 +282,53 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 
 # Fences I
 
-- ``\(\left\lbrace a \right\rbrace\)`` &br{}           &math{\left\lbrace a \right\rbrace}
+- ``&math{\left\lbrace a \right\rbrace}`` &br{}           &math{\left\lbrace a \right\rbrace}
 
-- ``\(\left[ a \right]\)`` &br{}                       &math{\left[ a \right]}
+- ``&math{\left[ a \right]}`` &br{}                       &math{\left[ a \right]}
 
-- ``\(\left( a \right)\)`` &br{}                       &math{\left( a \right)}
+- ``&math{\left( a \right)}`` &br{}                       &math{\left( a \right)}
 
-- ``\(\left\vert a \right\vert\)`` &br{}               &math{\left\vert a \right\vert}
+- ``&math{\left\vert a \right\vert}`` &br{}               &math{\left\vert a \right\vert}
 
 
 
 # Fences II
 
-- ``\(\left\Vert a \right\Vert\)`` &br{}               &math{\left\Vert a \right\Vert}
+- ``&math{\left\Vert a \right\Vert}`` &br{}               &math{\left\Vert a \right\Vert}
 
-- ``\(\left\lang a \right\rang\)`` &br{}               &math{\left\lang a \right\rang}
+- ``&math{\left\lang a \right\rang}`` &br{}               &math{\left\lang a \right\rang}
 
-- ``\(\left\lbrace \frac 1 a \right\rbrace\)`` &br{}   &math{\left\lbrace \frac 1 a \right\rbrace}
+- ``&math{\left\lbrace \frac 1 a \right\rbrace}`` &br{}   &math{\left\lbrace \frac 1 a \right\rbrace}
 
-- ``\(\left[ \frac 1 a \right]\)`` &br{}               &math{\left[ \frac 1 a \right]}
+- ``&math{\left[ \frac 1 a \right]}`` &br{}               &math{\left[ \frac 1 a \right]}
 
 
 
 # Fences III
 
-- ``\(\left( \frac 1 a \right)\)`` &br{}               &math{\left( \frac 1 a \right)}
+- ``&math{\left( \frac 1 a \right)}`` &br{}               &math{\left( \frac 1 a \right)}
 
-- ``\(\left\vert \frac 1 a \right\vert\)`` &br{}       &math{\left\vert \frac 1 a \right\vert}
+- ``&math{\left\vert \frac 1 a \right\vert}`` &br{}       &math{\left\vert \frac 1 a \right\vert}
 
-- ``\(\left\Vert \frac 1 a \right\Vert\)`` &br{}       &math{\left\Vert \frac 1 a \right\Vert}
+- ``&math{\left\Vert \frac 1 a \right\Vert}`` &br{}       &math{\left\Vert \frac 1 a \right\Vert}
 
-- ``\(\left\lang \frac 1 a \right\rang\)`` &br{}       &math{\left\lang \frac 1 a \right\rang}
+- ``&math{\left\lang \frac 1 a \right\rang}`` &br{}       &math{\left\lang \frac 1 a \right\rang}
 
 
 
 # Fences IV
 
-- ``\(\left\lfloor \frac 1 a \right\rfloor\)`` &br{}   &math{\left\lfloor \frac 1 a \right\rfloor}
+- ``&math{\left\lfloor \frac 1 a \right\rfloor}`` &br{}   &math{\left\lfloor \frac 1 a \right\rfloor}
 
-- ``\(\left\lceil \frac 1 a \right\rceil\)`` &br{}     &math{\left\lceil \frac 1 a \right\rceil}
+- ``&math{\left\lceil \frac 1 a \right\rceil}`` &br{}     &math{\left\lceil \frac 1 a \right\rceil}
 
-- ``\(\left\lobrk \frac 1 a \right\robrk\)`` &br{}     &math{\left\lobrk \frac 1 a \right\robrk}
+- ``&math{\left\lobrk \frac 1 a \right\robrk}`` &br{}     &math{\left\lobrk \frac 1 a \right\robrk}
 
 
 # eqcolon
 
-- ``\(A \coloneq B\)`` &br{} &math{A \coloneq B}
+- ``&math{A \coloneq B}`` &br{} &math{A \coloneq B}
 
-- ``\(A \eqcolon B\)`` &br{} &math{A \eqcolon B}
+- ``&math{A \eqcolon B}`` &br{} &math{A \eqcolon B}
 
 
