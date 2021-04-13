@@ -134,6 +134,15 @@ title: ConTeXt translation
   word reliably. It seems to work in one release but would stop to work
   in the subsequent release.
 
+- A CONTEX version of a LATEX "\parbox" command can be done as follows:
+
+  \parbox{30mm}{Hello World} 
+
+  \framed[frame=off,width=30mm,align=flushleft]{Hello World}
+
+  It is also possible to place font switch commands before it:
+
+  {\switchtobodyfont[9pt]\framed[frame=off,width=30mm,align=flushleft]{Hello World}}
 
 
 # The \bTABLE problem
