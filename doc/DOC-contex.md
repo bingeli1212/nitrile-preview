@@ -1,4 +1,3 @@
-
 ---
 title: ConTeXt translation
 ---
@@ -492,12 +491,12 @@ to go to the next column.
 This command allows to configure a block of paragraphs so that
 it appears as multiple columns. 
 
-    \defineparagraphs[sidebyside][n=2]
-    \startsidebyside
+    \defineparagraphs[mypar][n=2]
+    \startmypar
     Hello world left.
-    \sidebyside
+    \mypar
     Hello world right.
-    \stopsidebyside
+    \stopmypar
 
 In this case, the word "Hello world left" will appear in its own
 column which is on the left hand side, while the word "Hello
@@ -510,6 +509,70 @@ Another limitation is that all the texts of this paragraph is
 always to be kept together---this means if the text is long
 they will not be split into multiple columns, in a two column
 layout mode, or spilled into the next page. 
+
+Another example could be the following:
+
+    \defineparagraphs
+       [mypar][n=3,before={\blank},after={\blank}]
+    \setupparagraphs
+       [mypar][1][width=.1\textwidth,character=bold]
+    \setupparagraphs
+       [mypar][2][width=.4\textwidth]
+
+    \startmypar
+    1252
+    \mypar
+    Hasselt obtains its city charter from bishop Hendrik van Vianden.
+    \mypar
+    Hendrik van Vianden was pressed by other towns not to agree with the
+    charter. It took Hasselt a long period of time to convince the
+    Bishop. After supporting the Bishop in a small war against the
+    Drents, the charter was released.
+    \stopmypar
+
+    \startmypar
+    1350
+    \mypar
+    Hasselt joins the Hanzepact to protect their international trade.
+    \mypar
+    The Hanzepact was of great importance for merchants in Hasselt. In
+    those days trading goods were taxed at every city, highway or
+    rivercrossing. After joining the Hanzepact duty free routes all over
+    Europe became available to Hasselt. However important the Hanzepact
+    was, Hasselt always stayed a minor member of the pact.
+    \stopmypar
+
+The previous example shows that after defining a paragraph with
+\defineparagraphs you can format the paragraph with "\setupparagraphs". Next
+you can start your paragraph with "\start..." and end it with "\stop..." A new
+paragraph starts with the name of your paragraph, in this case it is "\mypar".
+
+Here is another example:
+
+    \defineparagraphs[chempar]     [n=3,before=,after=,distance=1em]
+    \setupparagraphs [chempar] [1] [width=.12\textwidth]
+    \setupparagraphs [chempar] [2] [width=.4\textwidth]
+    \startchempar
+    Limekilns
+    \chempar
+    Hasselt has its own limekilns. These were build in 1504 and produced
+    quick lime up to 1956. Nowadays they are a touristic attraction.
+    \chempar
+    \chemical{CaCO_3, ̃,GIVES, ̃,CaO, ̃,+, ̃,CO_2}
+    \stopchempar
+
+By the way you could also type it in a more cryptic way:
+
+    \chempar Limekilns
+        \\ Hasselt has its own limekilns. They were build in 1504 and
+           produced quick lime up to 1956. Nowadays they form a
+           touristic attraction.
+        \\ \chemical{CaCO_3, ̃,GIVES, ̃,CaO, ̃,+, ̃,CO_2} \\
+
+The double backslashes are used as column separators and are essential.
+
+
+
 
 # One-column float for two column layout
 
@@ -1535,7 +1598,7 @@ paragraph after each item is to be indented by 40pt.
     \startitemize
     \item This is an example of a multi|-|paragraph 
           item inside an itemize environment.
-          ­
+          ­ 
           This second paragraph is indented by 40pt
           (double the normal indentation).
     \stopitemize
@@ -2862,6 +2925,30 @@ and used in \setupbodyfont[my-typescript] without the type-imp- prefix.
 Furthermore there are TypeScripts which ship as third party modules. These can
 be found in "tex/context/third/typescripts/", or
 "texlive/2017/texmf-dist/tex/context/fonts/mkiv/"
+
+
+# Merge Cells In a Row in "starttable"
+
+The "\use2" command in the following "startable" example shows how
+to use this command to merge two adjacent cells in a single table row
+into creating a single table cell that occupies the spaces of the second
+and third column.
+
+    \placetable{Opening hours library.}
+    \starttable[|l|c|c|]
+    \HL
+    \VL \bf Day   \VL \use2 \bf \Opening hours          \VL\SR
+    \HL
+    \VL Monday    \VL 14.00 -- 17.30 \VL 18.30 -- 20.30 \VL\FR
+    \VL Tuesday   \VL                \VL                \VL\MR
+    \VL Wednesday \VL 10.00 -- 12.00 \VL 14.00 -- 17.30 \VL\MR
+    \VL Thursday  \VL 14.00 -- 17.30 \VL 18.30 -- 20.30 \VL\MR
+    \VL Friday    \VL 14.00 -- 17.30 \VL                \VL\MR
+    \VL Saturday  \VL 10.00 -- 12.30 \VL                \VL\LR
+    \HL
+    \stoptable
+
+
 
 
 
