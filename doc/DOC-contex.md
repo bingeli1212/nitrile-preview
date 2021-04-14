@@ -2563,10 +2563,10 @@ The ``\setupbodyfont`` command is used in the setup area of the input file to se
 style and size for a document. The following example would set at the setup area the font type for the
 document at sans serif at a size of 9 points.
 
-\setupbodyfont[sansserif,9pt]
-\starttext
-This is a text in sans-serif.
-\stoptext
+    \setupbodyfont[sansserif,9pt]
+    \starttext
+    This is a text in sans-serif.
+    \stoptext
 
 The ``\setupbodyfont`` command has the following general syntax.
 
@@ -2575,12 +2575,10 @@ The ``\setupbodyfont`` command has the following general syntax.
 The command has a single argument that can contain a list of keywords.
 Following shows some of the keywords for this command.
 
-```list
-+ sansserif
-+ palatino
-+ ber
-+ 10pt
-```
+    sansserif
+    palatino
+    ber
+    10pt
 
 The following example specifies that you want to use the Karl Berry fontnames.
 
