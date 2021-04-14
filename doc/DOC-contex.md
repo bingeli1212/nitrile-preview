@@ -722,8 +722,12 @@ If the a gradient color is to be desired, and the "shade=" option has been set t
     fill (...) withshademethod "circular" 
                withshadecenter(-0.45,0.35) 
                withshadedomain(0,1) 
-               withshadestep( withshadefraction 0.5 withshadecolors(\MPcolor{white},(0.000,0.502,0.502)) ) 
-               withshadestep( withshadefraction 1.0 withshadecolors((0.000,0.502,0.502),\MPcolor{black}) );
+               withshadestep( 
+                 withshadefraction 0.5 
+                 withshadecolors(\MPcolor{white},(0.000,0.502,0.502)) ) 
+               withshadestep( 
+                 withshadefraction 1.0 
+                   withshadecolors((0.000,0.502,0.502),\MPcolor{black}) );
     
 The "withshadecenter()" option is to be fixed at a value of "(-0.45,0.35)",
 which expresses the shift from the center towards the left and top. The
@@ -739,8 +743,14 @@ If this is not the case, then the color is assumed to be gray, or (0.5,0.5,0.5)
     fill (...) withshademethod "circular" 
                withshadecenter(-0.45,0.35) 
                withshadedomain(0,1) 
-               withshadestep( withshadefraction 0.5 withshadecolors(\MPcolor{white},(0.5,0.5,0.5)) ) 
-               withshadestep( withshadefraction 1.0 withshadecolors((0.5,0.5,0.5),\MPcolor{black}) );
+               withshadestep( 
+                 withshadefraction 0.5 
+                 withshadecolors(\MPcolor{white},(0.5,0.5,0.5)) ) 
+               withshadestep( 
+                 withshadefraction 1.0 
+                 withshadecolors((0.5,0.5,0.5),\MPcolor{black}) );
+
+
 
 # Gradient Color For Linear
 
@@ -914,22 +924,37 @@ Following is what's been called "format keys":
 
 Following are what's called "command" within the table:
 
-- \AR	next row	make row with automatic vertical space adjustment
-- \NR	next row	make row with no vertical space adjustment
-- \FR	first row	make row, adjust upper spacing
-- \LR	last row	make row, adjust lower spacing
-- \MR	mid row	make row, adjust upper and lower spacing
-- \SR	separate row	make row, adjust upper and lower spacing
-- \VL	vertical line	draw a vertical line, go to next column
-- \NC	next column	go to next column
-- \HL	horizontal line	draw a horizontal
-- \DL	division line?	draw a division line over the next column
-- \DL[n]	division line?	draw a division line over n columns
-- \DC	division column?	draw a space over the next column
-- \DR	division row?	make row, adjust upper and lower spacing
-- \LOW{text}	—	lower text
+- \AR	
+  next row	make row with automatic vertical space adjustment
+- \NR	
+  next row	make row with no vertical space adjustment
+- \FR	
+  first row	make row, adjust upper spacing
+- \LR	
+  last row	make row, adjust lower spacing
+- \MR	
+  mid row	make row, adjust upper and lower spacing
+- \SR	
+  separate row	make row, adjust upper and lower spacing
+- \VL	
+  vertical line	draw a vertical line, go to next column
+- \NC	
+  next column	go to next column
+- \HL	
+  horizontal line	draw a horizontal
+- \DL	
+  division line?	draw a division line over the next column
+- \DL[n]	
+  division line?	draw a division line over n columns
+- \DC	
+  division column?	draw a space over the next column
+- \DR	
+  division row?	make row, adjust upper and lower spacing
+- \LOW{text}	
+  lower text
 - ? \DL, \DC and \DR are used in combination.
-- \TWO, \THREE etc.	—	use the space of the next two, three columns
+- \TWO, \THREE etc.		
+  use the space of the next two, three columns
 
 If a table is to be turned into a "float", then the \placetable
 command can be used.
@@ -1252,7 +1277,7 @@ height and width, which allows us to precisely figure where to
 shift. The MetaPost syntax even allows for a position to be 
 calculated such as to add a 2pt additional movement to the shift.
 
-In the following example a double-line text "Hello\\World" is being sent to
+In the following example a double-line text ``Hello\\World`` is being sent to
 location (5,5), where "Hello" is positioned so that it is centered
 horizontally, and vertically positioned just above that point. The word "World"
 is positioned above "Hello" with a 2pt separation between the bottom of the
@@ -1308,7 +1333,7 @@ This "hanging list" can be nested as well.
 
     \stopHL
 
-# Similating "description list"
+# Simulating CONTEX version of the "description list"
 
 The "description list" on CONTEX will have to be simulated in the same way.
 
@@ -1379,7 +1404,7 @@ This "description list" can be nested as well.
     \stopDL
 
 
-# Figure 
+# Typesetting a Floating Figure
 
 For a floating figure, all subfigures can be setup so that 
 images are placed side-by-side from left to right, and will
@@ -1391,15 +1416,31 @@ image using the start/stop combination command.
 
     \placefigure
     []
-    [a]
+    [myfig]
     {GIMP Logos.}
     {%
     \startalignment[middle]
     \dontleavehmode
-    \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
-    \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
-    \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
-    \hbox{\startcombination[1*1] {\externalfigure[image-gimp.jpg][]} { \small One} \stopcombination}
+    \hbox{%
+      \startcombination[1*1] 
+        {\externalfigure[image-gimp.jpg][]} 
+        { \small One} 
+      \stopcombination}
+    \hbox{%
+      \startcombination[1*1] 
+        {\externalfigure[image-gimp.jpg][]} 
+        { \small One} 
+      \stopcombination}
+    \hbox{%
+      \startcombination[1*1] 
+        {\externalfigure[image-gimp.jpg][]} 
+        { \small One} 
+      \stopcombination}
+    \hbox{%
+      \startcombination[1*1] 
+        {\externalfigure[image-gimp.jpg][]} 
+        { \small One} 
+      \stopcombination}
     \stopalignment
     }
 
@@ -2949,7 +2990,359 @@ and third column.
     \stoptable
 
 
+# The Chemical Symbol Formulas
 
+CONTEX is relying on the PICTEX macros of M.J. Wichura to draw this kind of
+structures. Though the chemical module consists of only two or three commands,
+it takes some practice to get the right results. This is how the input looks:
+
+    \placeformula[-]
+    \startformula
+    \startchemical[scale=small,width=fit,top=3000,bottom=3000]
+      \chemical[SIX,SB2356,DB14,Z2346,SR3,RZ3,-SR6,+SR6,-RZ6,+RZ6]
+               [C,N,C,C,H,H,H]
+      \chemical[PB:Z1,ONE,Z0,DIR8,Z0,SB24,DB7,Z27,PE][C,C,CH_3,O]
+      \chemical[PB:Z5,ONE,Z0,DIR6,Z0,SB24,DB7,Z47,PE][C,C,H_3C,O]
+      \chemical[SR24,RZ24][CH_3,H_3C]
+      \bottext{Compound A}
+    \stopchemical
+    \stopformula
+
+
+
+# Fontstyle and Size
+
+You select the font family, style and size for document with:
+
+    \setupcorps[..., ..., ...]
+
+Type \setupcorps[sansserif,9pt] in the setup area. 
+For changes in the mid-document and on paragraph level you should use:
+
+    \switchtocorps[..., ..., ...]
+
+Following is an example of what an CONTEX document should look like:
+
+  On November 10th (one day before Saint Martensday) the youth of
+  Hasselt go from door to door to sing a special song and they
+  accompany themselves with a {\em foekepot}. And they won’t go away
+  before you give them some money or sweets. The song goes like this:
+  \startnarrower
+  \switchtocorps[lbr,10pt]
+  \startlines
+  Foekepotterij, foekepotterij,
+  Geef mij een centje dan ga’k voorbij.
+  Geef mij een alfje dan blijf ik staan,
+  ’k Zak nog liever naar m’n arrenmoeder gaan.
+  Hier woont zo’n rieke man, die zo vulle gèven kan.
+  Gèf wat, old wat, gèf die arme stumpers wat,
+  ’k Eb zo lange met de foekepot elopen.
+  ’k Eb gien geld om brood te kopen.
+  Foekepotterij, foekepotterij,
+  Geef mij een centje dan ga’k voorbij.
+  \stoplines
+  \stopnarrower
+
+You should notice that \startnarrower · · · \stopnarrower is also used as a
+begin and end of the fontswitch. The function of \startlines and \stoplines in
+this example is obvious.
+
+If you want an overview of the available font family you can type:
+
+    \showcorps[cmr]
+
+This should've generated a table in your PDF that looks like the following
+
+    +---------------------------------+
+    |          [cmr]                  |
+    +---------------------------------+
+    |   |\tf|\sc|\sl|\it| ....        |
+    +---------------------------------+
+    |\rm|Ag |Ag |Ag |Ag | ....        |
+    |\ss|Ag |Ag |Ag |Ag | ....        |
+    |\tt|Ag |Ag |Ag |Ag | ....        |
+    +---------------------------------+
+
+For many commands one of its parameters is called "character" and it is
+designed to hold a value that describes the desired typestyle for that command.
+For example, the \setuphead command has a parameter called "character" that can
+be set to a command that describes the font size used for that section head.
+
+    \setuphead[chapter][character=\tfd]
+
+In this case the character size for chapters is indicated with a command \tfd.
+But instead of a command you could use the predefined options that are related
+to the actual typeface:
+
+    normal  bold  slanted  boldslanted  type  mediaeval
+    small  smallbold  smallslanted  smallboldslanted smalltype
+    capital cap
+
+In the running text (local) you can change the typestyle into roman, sans serif
+and teletype with \rm, \ss and \tt.
+
+You can change the typeface like italic and boldface with \sl and \bf.
+
+The typesize is available from 4pt to 12pt and is changed with \switchtocorps.
+
+The actual style is indicated with \tf. If you want to change into a somewhat
+greater size you can type \tfa, \tfb, \tfc and \tfd. An addition of a, b, c and
+d to \sl, \it and \bf is also allowed.
+
+    {\tfc Mintage}
+    In the period from {\tt 1404} till {\tt 1585} Hasselt had its own
+    {\sl right of coinage}. This right was challenged by other cities,
+    but the {\switchtocorps[7pt] bishops of Utrecht} did not honour these
+    {\slb protests}.
+
+The curly braces indicate begin and end of style or size switches.
+
+The \definecorps command allows you to create new font switch command that
+serves to capture several font related settings such as font styles, sizes and
+family, and with which you can change them all at once.
+
+   \definecorps[..,.1.,..][.2.][..,..=..,..]
+
+A definition could look like this:
+
+  \definecorps[12pt][rm][tfe=cmr12 at 48pt]
+  {\tfe Hasselt}
+
+Now \tfe will produce 48pt characters in the cmr font. Hasselt
+
+[ Small Caps. ] 
+Abbreviations like PDF (Portable Document Format) are printed in pseudo small
+caps. A small capital is somewhat smaller than the capital of the actual
+typeface. Pseudo small caps are produced with:
+
+    \kap{}
+
+If you compare following three different inputs:
+
+  PDF 
+  \kap{PDF} 
+  {\sc PDF}
+
+You will see that the command \sc shows the real small caps. The reason for
+using pseudo small caps instead of real small caps is just a matter of taste.
+
+[ Emphasized Text. ]
+To emphasize words consistently throughout your document you use:
+
+\em
+
+Following is an example:
+
+  If you walk through Hasselt you should {\bf \em watch out} for {\em
+  Amsterdammers}. An {\em Amsterdammer} is {\bf \em not} a person from
+  Amsterdam but a little stone pilar used to separate sidewalk and
+  road. A pedestrian should be protected by these {\em Amsterdammers}
+  against cars but more often people get hurt from tripping over them.
+
+Empasized words appear in a slanted style.  However, a nested emphasize word
+within an already emphasize paragraph is show using normal font again. 
+
+[ Teletyped Text. ]
+If you want to display typed text and want to keep your line breaking exactly
+as it is you use
+
+   \starttyping ... \stoptyping
+
+In the text you can use:
+
+    \type{...}
+
+The curly braces enclose the text you want in teletype. You have to be careful
+with \type because the line breaking mechanism is not working anymore.
+
+You can set up the ’typing’ with following two commands:
+
+    \setuptyping[]
+    \setuptype[]
+
+
+
+# Accents
+
+An accent can be added on top of a letter. Following are commands in CONTEX that
+allows an accent to be added. (All examples use letter u as the base)
+
+    \`{u}        \u{u}
+    \'{u}        \v{u}
+    \^{u}        \H{u}
+    \"{u}        \t{u}
+    \~{u}        \c{u}
+    \={u}        \d{u}
+    \.{u}        \b{u}
+
+Following are for adding double-top-dots for a dotless-i and a hat for a dotless-j.
+
+    \"{\i}
+    \^{\j}
+
+
+# Foreign Symbols
+
+CONTEX includes several commands that allows for input of some symbols that 
+are part of non-English alphabets.
+
+    \oe         \O
+    \OE         \l
+    \ae         \L
+    \AE         \SS
+    \aa         ?`
+    \AA         !`
+    \o         
+
+
+
+# Vertical Spacing Between Paragraphs
+
+The vertical spacing between paragraphs can be specified by:
+
+    \setupwhitespace[...]
+
+This document is produced with 
+
+    \setupwhitespace[small]   
+    \setupwhitespace[middle]   
+    \setupwhitespace[big]   
+    
+When a paragraph consists of a horizontal line or a table there is a small
+problem that must be corrected. For that purpose you could carry out a
+correction with:
+
+      \startlinecorrection
+      \starttable[|l|l|]
+      \HL
+      \NC \bf City \NC \bf Area code \NC\SR
+      \HL
+      \NC  Hasselt \NC 8060 -- 8065 \NC\SR
+      \HL
+      \stoptable
+      \stoplinecorrection
+
+Another command to deal with vertical spacing is:
+
+    \blank[..,...,..]
+
+The bracket pair is optional and within the bracket pair you can type the
+amount of spacing. Keywords like small, middle and big are related to the
+fontsize.
+
+    In official writings Hasselt always has the affix Ov. This is an
+    abbrevation for the province of {\em Overijssel}.
+    \blank[2*big]
+    The funny thing is that there is no other Hasselt in the Netherlands.
+    So it is redundant.
+    \blank
+    The affix is a leftover from the times that the Netherlands and
+    Belgium were one country under the reign of King Philip II of Spain.
+    \blank[2*big]
+    Hasselt in Belgium lies in the province of Limburg. One wonders if
+    the Belgian people write Hasselt (Li) on their letters.
+
+The command \blank when issued without the bracket pair is to generate a
+vertical space that agrees with the current settings of the \setupwhitespace.
+
+The \startpacked and \stoppacked commands can be used to temporarily suppress
+inter-paragraph spacing. For instance, in the example below the second part of the
+paragraph would have had two lines which are packed close together, whilst the
+first two lines will have visible vertical spaces between them
+
+    \defineparagraphs[city][n=2,before=,after=]
+
+    \city Hasselt (Ov) \\ Overijssel \\
+    \city Hasselt (Li) \\ Limburg    \\
+
+    \startpacked
+    \city Hasselt (Ov) \\ The Netherlands \\
+    \city Hasselt (Li) \\ Belgium
+    \stoppacked
+
+The \startunpacked and \stopunpacked commands are for doing the opposite.
+
+The \blank command would have only generated enough vertical spaces between
+paragraphs, and won't go over it if two or more of the same \blank commands are
+found to appear one after another.  However, the command \godown[] would have
+forced the downward spacing to be generated regardless.
+
+
+
+# Define Your Own Command
+
+A new command can be created that accept any number of arguments.
+For instance, a new command named \myputfugure can be created that
+can be used such as
+
+    \define[3]\myputfigure%
+      {\placefigure[here,force]
+      [fig:#1]
+      {#2}
+      {\externalfigure[#3][type=tif,width=5cm,frame=on]}}
+
+After this command is defined this way, anytime a command such as the following
+appear inside a CONTEX document:
+
+    \myputfigure{lion}{The Dutch lion is a sentry.}{hass13g}
+
+It would have been translated into the following command instead:
+
+    {\placefigure[here,force]
+    [fig:lion]
+    {The Dutch lion is a sentry.}
+    {\externalfigure[hass13g][type=tif,width=5cm,frame=on]}}
+
+A custom start/stop command pair can be created as well. Doing this requires
+the command of 
+
+    \definestartstop[...][...,..=..,...]
+
+For instance:
+
+    \definestartstop
+      [stars]
+      [commandos={\inleft{\hbox to
+                  \leftmarginwidth{\leaders\hbox{$\star$}\hfill}}},
+       before=\blank,
+       after=\blank]
+
+A new float can also be created by using the command
+
+    \definefloat[.1.][.2.]
+
+The bracket pairs are used for the name in singular and plural form. For 
+example:
+
+    \definefloat[intermezzo][intermezzos]
+
+Now the following commands are available:
+
+    \placeintermezzo[][]{}{}
+    \startintermezzotext ... \stopintermezzotext
+    \placelistofintermezzos
+    \completelistofintermezzos
+
+The newly defined floating block can be set up with:
+
+    \setupfloat[...][..,..=..,=..]
+    \setupfloats[..,..=..,..]
+    \setupcaption[...],[..,..=..,..]
+
+These commands are typed in the setup area and will have a global
+effect on all subsequent floating blocks. Following is an example,
+that shows the defining of a new float named "intermezzo". The 
+caption will be 
+
+    \setupfloats[place=middle]
+    \setupcaption[place=bottom,headstyle=boldslanted]
+    \placeintermezzo[][]{An intermezzo.}
+    \startframedtext
+    At the beginning of this century there was a tramline from Zwolle to
+    Blokzijl via Hasselt. Other means of transport became more important
+    and just before the second world war the tramline was stopped.
+    Nowadays such a tramline would have been become very profitable.
+    \stopframedtext
 
 
 
