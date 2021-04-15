@@ -7,13 +7,20 @@ title: SVG translation
 
 7 Reasons Why You Should Be Using Scalable Vector Graphics
 
-* SVGs are scalable and will render pixel-perfect at any resolution whereas JPEGs, PNGs and GIFs will not.
-* SVGs are vector images and therefore are usually much smaller in file-size than bitmap-based images.
-* Embedded SVGs can be styled using CSS.
-* They are SEO friendly allowing you to add keywords, descriptions and links directly to the markup.
-* SVGs can be embedded into the HTML which means they can be cached, edited directly using CSS and indexed for greater accessibility.
-* They are future proof. SVGs can be scaled indefinitely meaning that they will always render to pixel-perfection on newer display technologies such as 8K and beyond.
-* SVGs can be animated directly or by using CSS or JavaScript making it easy for web designers to add interactivity to a site.
+- SVGs are scalable and will render pixel-perfect at any resolution whereas
+  JPEGs, PNGs and GIFs will not.
+- SVGs are vector images and therefore are usually much smaller in file-size
+  than bitmap-based images.
+- Embedded SVGs can be styled using CSS.
+- They are SEO friendly allowing you to add keywords, descriptions and links
+  directly to the markup.
+- SVGs can be embedded into the HTML which means they can be cached, edited
+  directly using CSS and indexed for greater accessibility.
+- They are future proof. SVGs can be scaled indefinitely meaning that they will
+  always render to pixel-perfection on newer display technologies such as 8K
+  and beyond.
+- SVGs can be animated directly or by using CSS or JavaScript making it easy
+  for web designers to add interactivity to a site.
 
 
 
@@ -73,6 +80,83 @@ The color in SVG can be specified in following different forms.
     <use x = "370" y = "10" xlink:href = "#s3" fill = "rgb(100, 149, 237)"/>
     <use x = "440" y = "10" xlink:href = "#s3" fill = "#6495ED"/>
     <use x = "510" y = "10" xlink:href = "#s3" fill = "rgb(39.2%, 58.4%, 92.9%)"/>
+
+
+
+# Embed a PNG image inside a SVG
+
+The <image> SVG element includes images inside SVG documents. It
+can display raster image files or other SVG files.
+
+The only image formats SVG software must support are JPEG, PNG,
+and other SVG files. Animated GIF behavior is undefined.
+
+SVG files displayed with <image> are treated as an image:
+external resources aren't loaded, :visited styles aren't applied,
+and they cannot be interactive. To include dynamic SVG elements,
+try <use> with an external URL. To include SVG files and run
+scripts inside them, try <object> inside of <foreignObject>.
+
+Note: The HTML spec defines <image> as a synonym for <img> while
+parsing HTML. This specific element and its behavior only apply
+inside SVG documents or inline SVG.
+
+    <svg width="200" height="200"
+      xmlns="http://www.w3.org/2000/svg" 
+      xmlns:xlink="http://www.w3.org/1999/xlink">     
+      <image href="https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png"
+         height="200" width="200"/>
+    </svg>
+
+Following are the attributes of the "image" element (copied from developer.mozilla.org):
+
++ x  
++ y  
+  Positions the image horizontally from the origin.
++ width  
++ height 
+  The width and the height of the image renders at. Unlike HTML's <img>, these two
+  attributes are required.
++ href 
++ xlink:href 
+  Points at a URL for the image file.
++ preserveAspectRatio 
+  Controls how the image is scaled.
++ crossorigin 
+  Defines the value of the credentials flag for CORS requests.
+
+The "image" element is also to have the following "global" attributes:
+
+- Conditional processing attributes
+- Core attributes
+- Graphical event attributes
+- Presentation attributes
+- Xlink attributes
+- ``class``
+- ``style``
+- ``externalResourcesRequired``
+- ``transform``
+
+There are some important things to take note of. First of all, if you do not
+set the ``x`` or ``y`` attributes, they will be set to 0.
+
+The ``width`` and ``height`` attributes of the "image" element is required,
+without which the image will not be shown.  This is different that the behavior
+of the "img" element, which would have rendered the image using its native
+size, when the ``width`` and ``height`` are omited. Following is an example:
+
+    <image width="100%" height="10mm" href="./image-clock.png"/>
+
+The "image-clock.png" is a 125-by-125 pixel image.  In the previous example
+this image will be shown centered horizontally just below the top line of the
+viewport and its height will be set to 10mm. 
+
+This is because the ``width`` attribute, when set to "100%", is to entitle the
+image to the entire width of the viewport. However, since the
+``preserveAspectRatio`` attribute is set in such a way that the image must be
+preserving its aspect ratio, the image's width is only to be as large as its
+height.  Since the viewport's width is larger than 10mm, the image appears to
+be centered horizontally with visible margins on its left and right hand sides.
 
 
 

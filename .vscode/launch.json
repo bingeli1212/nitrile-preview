@@ -35,6 +35,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch pango",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/pango.js",
+      "args": [
+        "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch epub",
       "skipFiles": [
         "<node_internals>/**"
