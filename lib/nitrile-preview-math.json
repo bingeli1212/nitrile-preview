@@ -1263,8 +1263,8 @@
     "rsquo"                  : { "html": "&#x2019;"       ,"tex":"\\textquoteright"                      ,"lmath":""                          ,"cex":""                       ,"cmath":""                   ,"width":0                 ,"usepackage":""          ,"comment":"U+2019 RIGHT SINGLE QUOTATION MARK"},
     
     
-    "ndash"                  : { "html": "&#x2013;"       ,"tex":"\\textendash"                          ,"lmath":""                          ,"cex":""                       ,"cmath":""                   ,"width":0                 ,"usepackage":""         ,"comment":"U+2013 EN DASH"},
-    "mdash"                  : { "html": "&#x2014;"       ,"tex":"\\textemdash"                          ,"lmath":""                          ,"cex":""                       ,"cmath":""                   ,"width":0                 ,"usepackage":""         ,"comment":"U+2014 EM DASH"},
+    "ndash"                  : { "html": "&#x2013;"       ,"tex":"\\textendash"                          ,"lmath":""                          ,"cex":"\\endash"               ,"cmath":""                   ,"width":0                 ,"usepackage":""         ,"comment":"U+2013 EN DASH"},
+    "mdash"                  : { "html": "&#x2014;"       ,"tex":"\\textemdash"                          ,"lmath":""                          ,"cex":"\\emdash"               ,"cmath":""                   ,"width":0                 ,"usepackage":""         ,"comment":"U+2014 EM DASH"},
 
     "bigcirc"                : { "html": "&#x25EF;"       ,"tex":""                                      ,"lmath":"\\bigcirc"                 ,"cex":""                       ,"cmath":""                   ,"width":10                ,"usepackage":""             ,"comment":"U+25EF LARGE CIRCLE"},
     "bigtriangleup"          : { "html": "&#x25B3;"       ,"tex":""                                      ,"lmath":"\\bigtriangleup"           ,"cex":""                       ,"cmath":""                   ,"width":10                ,"usepackage":""             ,"comment":"U+25B3 WHITE UP-POINTING TRIANGLE"},
