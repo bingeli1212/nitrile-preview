@@ -108,7 +108,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/beamerpdf.js",
       "args": [
-        "/Users/james/github/tcl-notes/math-class-2020/math-class-1031.md"
+        "a.md"
       ]
     },
 
