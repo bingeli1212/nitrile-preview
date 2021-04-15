@@ -2167,5 +2167,14 @@ U+ID585 have no such gaps.
 
 
 
+# Draw An External Image inside a Tikz Picture
+
+Following is a TikZ Picture Command to draw an external image
+at (10mm,10mm) such that the image width is exactly 10mm wide.
+
+    \node[anchor=south west,inner sep=0pt] (russell) at (10mm,10mm)
+        {\includegraphics[width=10mm]{image-gimp.jpg}};
+
+
 
 

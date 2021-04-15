@@ -3344,5 +3344,14 @@ caption will be
 
 
 
+# METAFUN Draw External PNG
+
+Following is a METAFUN command to draw an external image inside a 
+METAFUN Picture and scale it so that its width is exactly 10mm
+and its lower-left hand corner is at (10mm,10mm).
+
+    picture p; p := externalfigure "image-gimp.jpg";
+    draw p scaled (10mm/bbwidth(p)) shifted (10mm,10mm);
+
 
 
