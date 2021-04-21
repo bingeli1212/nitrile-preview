@@ -22,6 +22,29 @@ title: ConTeXt translation
   vertical space, which is controlled by the "\setupwhitespace" command,
   especially as it has been set to "small". 
 
+  However, the latest discovery seems to have uncovered a way that allows for
+  the extra vertical spaces to be removed between items. In particular,
+  the option named "inbetween=" should be set to an empty string such as the following:
+
+  ```verbatim
+  \startitemize[][inbetween={},before={},after={}]
+  ...
+  \stopitemize
+  ```
+
+  In addition, the "before=" and "after=" should also be set to an empty string,
+  thus suppressing any extra vertical spaces before and after the entire list to
+  appear. It has been observed that the normal white spaces set by the "\setupwhitespace"
+  command would still be placed between this list and the surrounding paragraphs before
+  and after the list. Thus, the "before=" and "after=" option only seems to add extra
+  vertical spaces.
+
+  ```verbatim
+  \startitemize[packed,joinedup][inbetween={},before={},after={}]
+  ...
+  \stopitemize
+  ```
+
 - The "\setupalign" command controls the entire article how texts are to be typeset.
   Especially things such as hyphenation, justification, hanging. etc.
 
@@ -2940,6 +2963,15 @@ before "\placefigure".
 
     \dontleavehmode
     \placefigure[right,none][]{}{\externalfigure{image-clock.png}}
+
+For this reason, the "float_to_paragraph()" method has been implemented such that
+it would check the return value of "untext()", which could be calling one of the
+"fence_to_xxx" method, and return a "\externalfigure", or "\startMPcode" command.
+Both of which are to typeset an image. However, it has been observed that 
+the "\startMPcode" command at the beginning of a paragraph does not allow it
+to have the normal "whitespace" placed between itself and the paragraph before it.
+To fix it the solution is to place a "\dontleavehmode" command placed immediate
+before it.
 
 # Typescript
 
