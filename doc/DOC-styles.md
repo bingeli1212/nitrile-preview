@@ -701,12 +701,16 @@ Following are styles recognized by NITRILE:
 + shadow:1
 
   When set to 1 it instructs that a drop shadow effect is to be added.
-  Currently the only one that react this this option is the 'node' and 'box'
-  commands.  
+  Currently the only one that react this this option is the 'node', 'box'
+  and 'trump' commands.  
   
-  A drop shadow will be drawn shifted to the right and down for 1mm in both
+  A drop shadow will be drawn shifted to the right and down for 0.5mm in both
   directions.  The color of the drop shadow and opacity can be controlled by 
   setting the 'shadowcolor' and 'shadowopacity' property to a different value.
+  
+  However, the same 'shadow' key can be set to '2', '3' or more to increase the 
+  distance of the shadow. The distance of the shadow is computed as 0.5mm multipled
+  by the integer.
 
 + id:1
 + id:lines
