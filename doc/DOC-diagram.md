@@ -968,6 +968,14 @@ an absolute point, or a scalar.
   path b = &circlepoints{(0,0),2,30,60,90}
   ```
 
++ pie
+
+  Returns a closed path expressing a pie. 
+
+  ```verbatim
+  path b = &pie(center,radius,angle,span)
+  ```
+
 + circle 
 
   Returns a path expressing the circle. It has a syntax of:
