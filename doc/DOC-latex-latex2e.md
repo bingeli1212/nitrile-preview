@@ -1501,23 +1501,25 @@ when the "dvipsnames" option is included with the
 Within tables, individual cells, columns, and rows can be colored. To be able
 to use the commands, the option table must be set.
 
-- The cellcolor{Color} command colors the cell in which it was set.
+- The \cellcolor{Color} command colors the cell in which it was set.
 
-- The rowcolor{Color} command is set at the beginning of a row and colors it.
+- The \rowcolor{Color} command is set at the beginning of a row and colors it.
 
-- The rowcolors[Option]{Beginning line}{Odd Lines Color}{Even Lines Color}
+- The ``\rowcolors[Option]{Beginning line}{Odd Lines Color}{Even Lines Color}``
   command colors the lines accordingly. The command is placed before the table
   and affects all subsequent tables.
 
-- The columncolor{Color} command colors a column in the appropriate color. This
+- The \columncolor{Color} command colors a column in the appropriate color. This
   is used in the column definition of the table. The parentheses and the
   character are important here.
 
-    \begin{tabular}{r>{\columncolor{red}}cl}
-    A & B & C \\
-    1 & 2 & 3 \\
-    A & B & C \\
-    \end{tabular}
+  ~~~
+  \begin{tabular}{r>{\columncolor{red}}cl}
+  A & B & C \\
+  1 & 2 & 3 \\
+  A & B & C \\
+  \end{tabular}
+  ~~~
 
 # Change the font color of a text
 
@@ -1798,7 +1800,7 @@ There are a number of horizontal spacing macros for LaTeX:
 
   inserts what is called a "control space" (in text or math mode);
 
-+ ` ` 
++ ' ' 
 
   inserts an inter-word space in text mode (and is gobbled in math mode).
   Similarly for `\space` and `{ }`.
@@ -1857,7 +1859,8 @@ the label gets to be longer than 2 lines.
     \begin{document}
     \begin{tikzpicture}
     \draw[] (0.00mm,0.00mm)--(20.00mm,20.00mm) ;
-    \draw[] (0.00mm,0.00mm)--(20.00mm,20.00mm) node [pos=0.5, above, sloped] () {Hello World};
+    \draw[] (0.00mm,0.00mm)--(20.00mm,20.00mm) 
+      node [pos=0.5, above, sloped] () {Hello World};
     \end{tikzpicture}
     \end{document}
 
@@ -1873,7 +1876,8 @@ is a horizontal line.
     \begin{document}
     \begin{tikzpicture}
     \draw[] (0mm,0mm)--(20mm,20mm) ;
-    \draw[] (0mm,0mm)--(20mm,20mm)--(40mm,20mm) node [pos=0.5, above, sloped] () {Hello World};
+    \draw[] (0mm,0mm)--(20mm,20mm)--(40mm,20mm) 
+      node [pos=0.5, above, sloped] () {Hello World};
     \end{tikzpicture}
     \end{document}
 
@@ -1885,7 +1889,8 @@ at the side of the 'node' command will do.
     \usepackage{tikz}
     \begin{document}
     \begin{tikzpicture}
-    \draw[opacity=0] (0mm,0mm)--(20mm,20mm)--(40mm,20mm) node [opacity=1, pos=0.5, above, sloped] () {Hello World};
+    \draw[opacity=0] (0mm,0mm)--(20mm,20mm)--(40mm,20mm) 
+      node [opacity=1, pos=0.5, above, sloped] () {Hello World};
     \end{tikzpicture}
     \end{document}
 
@@ -1900,7 +1905,8 @@ way to add a drop shadow to a circle or an ellipse.
 # PGF Shading
 
     \documentclass[tikz]{standalone}    
-    \pgfdeclarefunctionalshading{Hermite-Gaussian modes}{\pgfpoint{-25bp}{-25bp}}{\pgfpoint{25bp}{25bp}}{}{
+    \pgfdeclarefunctionalshading{Hermite-Gaussian modes}
+      {\pgfpoint{-25bp}{-25bp}}{\pgfpoint{25bp}{25bp}}{}{
         10 atan sin 1000 mul cos 1 add
         exch
         10 atan sin 1000 mul cos 1 add
@@ -1908,7 +1914,7 @@ way to add a drop shadow to a circle or an ellipse.
         dup dup
     }
     \begin{document}
-        \tikz\path[shading=Hermite-Gaussian modes](-10,-10)rectangle(10,10);
+      \tikz\path[shading=Hermite-Gaussian modes](-10,-10)rectangle(10,10);
     \end{document}
 
 # The \displaylines command
