@@ -84,7 +84,19 @@
         "a.md"
       ]
     },
-
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch articlelualatex",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/articlelualatex.js",
+      "args": [
+        "a.md"
+      ]
+    },
     {
       "type": "node",
       "request": "launch",

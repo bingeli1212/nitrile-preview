@@ -36,7 +36,7 @@ Dutch, German, French, and Italian and support
 for output in many languages including western European, eastern European, 
 Arabic-script, 
 Chinese, Japanese, and Korean. It also 
-allows the user to use different TeX engines like pdfTeX, XeTeX, and LuaTeX without 
+allows the user to use different TeX engines like PdfTEX, XeTeX, and LuaTeX without 
 changing the user interface.
 
 As its native drawing engine, ConTeXt integrates a superset of MetaPost called 
@@ -165,12 +165,12 @@ In April 2019, LMTX (ConTeXt LuaMetaTeX) was announced.
     
     \stoptext
 
-[ LuaTeX ]
+[ LuaTEX ]
 
-LuaTeX is a TeX-based computer typesetting system which 
-started as a version of pdfTeX with a Lua scripting engine 
+LuaTEX is a TeX-based computer typesetting system which 
+started as a version of PdfTEX with a Lua scripting engine 
 embedded. After some experiments it was adopted by the TeX 
-Live distribution as a successor to pdfTeX (itself an 
+Live distribution as a successor to PdfTEX (itself an 
 extension of ε-TeX, which generates PDFs).
 Later in the project some functionality of Aleph was 
 included (esp. multi-directional typesetting). 
@@ -205,30 +205,38 @@ in plain TeX is still under development.
 
 So, what's LuaTEX? Short version: the hottest TEX engine 
 right now! Long version: It is the designated successor of 
-pdfTEX and includes all of its core features: direct generation 
+PdfTEX and includes all of its core features: direct generation 
 of PDF files with support for advanced PDF features and 
 micro-typographic enhancements to TEX typographic algorithms. 
 The main new features of LuaTEX are:
 
-1. Native support of Unicode, the modern standard for character classification and encod- ing, supporting all characters in the world, from English to traditional Chinese through Arabic, including a lot of mathematical (or otherwise specialised) symbols.
+1. Native support of Unicode, the modern standard for 
+   character classification and encoding, supporting all 
+   characters in the world, from English to traditional 
+   Chinese through Arabic, including a lot of mathematical 
+   (or otherwise specialised) symbols.
 
-2. Inclusion of Lua as an embedded scripting language (see section 1.3 for details).
+2. Inclusion of Lua as an embedded scripting language 
+   (see section 1.3 for details).
 
 3. A lot of wonderful Lua libraries, including:
 
-  - "fontloader": supporting modern font formats such as TrueType and OpenType;
+  - "fontloader": supporting modern font formats such as 
+    TrueType and OpenType;
   
-  - "font": allowing advanced manipulation of the fonts from within the document;
+  - "font": allowing advanced manipulation of the fonts 
+    from within the document;
   
   - "mplib": an embedded version of the graphic program MetaPost;
   
-  - "callback": providing hooks into parts of the TEX engine that were previously 
+  - "callback": providing hooks into parts of the TEX engine 
+    that were previously 
     inaccessible to the programmer;
   
   - other utility libraries for manipulating images, pdf files, etc.
 
 Some of these features, such as Unicode support, directly 
-impact all documents, while oth- ers merely provide tools that 
+impact all documents, while others merely provide tools that 
 package authors will use to provide you with more powerful commands 
 and other enhancements.
 
@@ -245,7 +253,7 @@ package, except it is associated with a particular command name.
 Imagine there is a command latex-article that would do the same 
 as latex, except you wouldn't need to say \documentclass{article} 
 at the begin- ning of your file. Similarly, in current distributions, 
-the command pdflatex is the same as the command pdftex except that 
+the command pdflatex is the same as the command PdfTEX except that 
 you don't need to put the instructions to load LATEX at the beginning 
 of your source file. 􏰀is is convenient, and slightly more efficient too.
 
@@ -286,6 +294,165 @@ The argument to these commands is the human-friendly name of the font,
 for example ``Latin Modern Roman`` rather than ``ec-lmr10``. You probably want 
 to use \defaultfontfeatures{Ligatures=TeX} before these commands to keep 
 the usual TEX substitutions (such as --- for an em-dash) working.
+
+The good news is: you can directly access any font on your operating 
+system (in addition to those of your TEX distribution) including 
+TrueType and OpenType fonts and have access to their most advanced 
+features. It means it is now easy to install for use with LuaLATEX 
+any modern font you may download or purchase from an editor and 
+benefit from their full potential.
+
+Now for the bad news: it is not always easy to get a list of 
+all available fonts. Under Windows with TEX Live, the 
+command-line tool ``fc-list`` lists them all, but is not very 
+friendly. Under Mac OS X, the Fontbook application lists the 
+fonts of your system, but not those of your TEX distribution. 
+Same with ``fc-list`` on Linux. More bad news: it is not easy to 
+access your old fonts that way. Happily, more fonts are available 
+in modern formats every day (well, month or year, actually, 
+if you count only good fonts).
+
+XeTEX shares two of the essential features of 
+LuaTEX: (1) native Unicode and (2) support for modern font formats. 
+However, it does not have the other features of LuaTEX. On the other 
+hand, it appears to be more stable than LuaTEX as of right now. 
+Though the implementation of XeTEX and LuaTEX concerning fonts
+are vastly different, 
+magically, the same ``fontspec`` package can be included by
+either engine without much trouble, owning to 
+the superior design of the package author, who
+had designed to provide the same set of
+font selection commands
+that could works in both situations.
+
+[ Lua ]
+
+The Lua is a nice, small language, obviously less surprising 
+and much easier to learn than TEX as a programming language.
+The essential reference is the very readable book Programming in Lua, 
+whose first edition is freely available online. For a quick start, 
+I recommend you read chapters 1 to 5 and have a quick glance at part 3. 
+Note that all the libraries mentioned in chapter 3 are included in 
+LuaTEX, but the os library is restricted for security reasons.
+Depending on your programming culture, you may be directly interested 
+in the rest of part 1 and part 2 which present more advanced features 
+of the language, but part 4 is useless in a LuaTEX context, 
+unless of course you want to hack LuaTEX itself. Finally, the 
+Lua reference manual is available online and comes with a handy index.
+
+The simplest way to execute Lua code from inside
+a TEX document is to use the \directlua command. 
+This command takes a single argument which is to be interpreted
+as the native code to Lua. Conversely, the output
+from the Lua code ``tex.sprint`` would have been sent back
+to TEX, replacing the command with that text. For example, the following 
+Lua code inside the \directlua command would have generated 
+the text that is "3.1415926535898". 
+
+    The $\pi$ is $\directlua{tex.sprint(math.pi)}$.
+
+The \directlua command can be called either from within 
+a text mode or from within a math mode. Following is 
+the same command that is called from within a text mode.
+
+    The $\pi$ is $\directlua{tex.sprint(math.pi)}$.
+
+[ The fontspec Package ]
+
+The ``fontspec`` package is designed for LuaTEX to offer
+commands such that they can be called from within a TEX document
+to permanently switch default fonts or temporarily switch 
+to another one for some specific unicode code points.
+
+- Specifically, 
+  use the \fontspec command to switch temporarily to your 
+  font.
+
+- If you are using always the same symbol, you can build a 
+  special command to insert this symbol, based on the 
+  same \fontspec command. 
+
+Following is an example of a LuaLATEX document.
+
+    \documentclass{article}
+    \usepackage{fontspec}
+    \newfontfamily\wingdingsfont{Wingdings}
+    \newcommand\wingdings[1]{{\wingdingsfont\symbol{#1}}}
+    \usepackage{fonttable}
+    \begin{document}
+    \wingdings{40} 123-4567-8900
+    \fonttable{Wingdings}
+    \end{document}
+
+By default, ``fontspec`` adjusts LATEX’s default maths setup in order 
+to maintain the correct Computer Modern symbols when the roman 
+font changes. However, it will attempt to avoid doing this if 
+another maths font package is loaded (such as mathpazo or the 
+unicode-math package).
+
+If you find that fontspec is incorrectly changing the maths 
+font when it shouldn’t be, apply the no-math package option 
+to manually suppress its behaviour here.
+
+If you wish to customise any part of the ``fontspec`` interface, 
+this should be done by creating your own ``fontspec.cfg`` file, 
+which will be automatically loaded if it is found by XeTEX 
+or LuaTEX. A ``fontspec.cfg`` file is distributed with ``fontspec``
+with a small number of defaults set up within it.
+To customise ``fontspec`` to your liking, use the standard ``.cfg``
+file as a starting point or write your own from scratch, then 
+either place it in the same folder as the main document for 
+isolated cases, or in a location that XeTEX or LuaTEX 
+searches by default; e.g. in MacTEX: ``~/Library/texmf/tex/latex/``.
+The package option no-config will suppress the loading of 
+the ``fontspec.cfg`` file under all circumstances.
+
+The \strong macro is used analogously to \emph but produces 
+variations in weight. If you
+need it in environment form, use 
+
+    \begin{strongenv}...\end{strongenv}.
+
+As with emphasis, this font-switching command is 
+intended to move through a range of font weights. 
+For example, if the fonts are set up correctly it allows 
+usage such as 
+
+    \strong{...\strong{...}} 
+    
+in which each 
+nested \strong macro increases the weight of the font.
+
+[ List of Fonts ]
+
+I can list all the fonts with 
+
+    mtxrun --script fonts --list --all --pattern=*
+
+[ Defining New Fonts To be Used ]
+
+The \newfontfamily command can be used to create a new fonts
+switch name such as "\jp" to be used. For instance. the following
+commands would have created font switches that are named "\jp",
+"\cn", "\tw", "\kr", and "\dingbats". The package "luatexja" 
+is needed if it is to typeset CJK characters that are longer than
+the width of one paragraph. It takes care of performing line breaks
+between CJK characters because otherwise the default line break
+algorithm does not generate a line break between two adjacent CJK
+characters without a space between them.
+
+    \usepackage{luatexja}
+    \newfontfamily{\jp}[]{ipaexmincho}
+    \newfontfamily{\cn}[]{arplsungtilgb}
+    \newfontfamily{\tw}[]{arplmingti2lbig5}
+    \newfontfamily{\kr}[]{baekmukbatang}
+    \newfontfamily{\dingbats}[]{zapfdingbats}
+
+Once defined, the "\jp" font switch name can be used
+inside a TEX document such as:
+
+    The Japanese word for "today" 
+    is {\jp{}今日}.
 
 # Typographical Capabilities
 
