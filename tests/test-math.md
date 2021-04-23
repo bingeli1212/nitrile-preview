@@ -1,5 +1,7 @@
 ---
 title: test-math.md
+program: lualatex
+translator: beamer
 ---
 
 # Normal text
