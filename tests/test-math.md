@@ -2,36 +2,38 @@
 title: test-math.md
 ---
 
+# Normal text
+
 This is the normal text. ``\sqrt{2}``
 
 # Display math One
 
-```math
+```displaymath
 e = \lim_{n\rarr\infty} {\left(1 + \frac{1}{n}\right)}^n
 ```
 
 # Display math split
 
-```math
+```displaymath
 e &= \lim_{n\rarr\infty} {\left(1 + \frac{1}{n}\right)}^n \cr
   &= a + b
 ```
 
 # Display math Sum
 
-```math
+```displaymath
 {\displaystyle e=\sum _{n=0}^{\infty }{\frac {1}{n!}}={\frac {1}{1}}+{\frac {1}{1}}+{\frac {1}{1\sdot 2}}+{\frac {1}{1\sdot 2\sdot 3}}+\ctdot }
 ```
 
 # Display math Int
 
-```math
+```displaymath
 {\displaystyle y=\int _{a}^{b} f(x) \dif{x}}
 ```
 
 # Display math Lim
 
-```math
+```displaymath
 {\displaystyle y=\lim _{x\rarr\infty} \frac{1}{x}}  
 ```
 
@@ -40,30 +42,30 @@ e &= \lim_{n\rarr\infty} {\left(1 + \frac{1}{n}\right)}^n \cr
 
 # Display math and aligned (no equation numbering)
 
-```math
+```displaymath
 x = \sqrt{2} + \sqrt{4} + \sqrt{5} 
 ```
 
-```math
+```displaymath
 x + 7 = \sqrt{2} + \sqrt{4} + \sqrt{5}
 ```
 
-```math
+```displaymath
 y + 7 + 8 = \sqrt{2} 
 ```
 
 
 # Display math not aligned (no equation numbering)
 
-```math
+```displaymath
 x = \sqrt{2} + \sqrt{4} + \sqrt{5}
 ```
 
-```math
+```displaymath
 x + 7 = \sqrt{2} + \sqrt{4} + \sqrt{5}
 ```
 
-```math
+```displaymath
 y + 7 + 8 = \sqrt{2} 
 ```
 
@@ -71,7 +73,7 @@ y + 7 + 8 = \sqrt{2}
 
 # Math and text mix
 
-The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
+The math symbol {{a}} and {{b}} are identifiers and &sqrt{2} is a sqrt.
 
 
 
@@ -79,98 +81,104 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 
 @   table    
 
+    ```tabular
     | Name     | Symbol           |  Name      | Symbol           | Name     | Symbol            
     ------------------------------------------------------------------------------------------
-    | \Alpha   | &math{\Alpha  }  |  \Iota     | &math{\Iota   }  | \Rho     | &math{\Rho    }     
-    | \Beta    | &math{\Beta   }  |  \Kappa    | &math{\Kappa  }  | \Sigma   | &math{\Sigma  }   
-    | \Gamma   | &math{\Gamma  }  |  \Lambda   | &math{\Lambda }  | \Tau     | &math{\Tau    }   
-    | \Delta   | &math{\Delta  }  |  \Mu       | &math{\Mu     }  | \Upsilon | &math{\Upsilon}   
-    | \Epsilon | &math{\Epsilon}  |  \Nu       | &math{\Nu     }  | \Phi     | &math{\Phi    }   
-    | \Zeta    | &math{\Zeta   }  |  \Xi       | &math{\Xi     }  | \Chi     | &math{\Chi    }   
-    | \Eta     | &math{\Eta    }  |  \Omicron  | &math{\Omicron}  | \Psi     | &math{\Psi    }   
-    | \Theta   | &math{\Theta  }  |  \Pi       | &math{\Pi     }  | \Omega   | &math{\Omega  }   
+    | \Alpha   | {{\Alpha  }}  |  \Iota     | {{\Iota   }}  | \Rho     | {{\Rho    }}     
+    | \Beta    | {{\Beta   }}  |  \Kappa    | {{\Kappa  }}  | \Sigma   | {{\Sigma  }}   
+    | \Gamma   | {{\Gamma  }}  |  \Lambda   | {{\Lambda }}  | \Tau     | {{\Tau    }}   
+    | \Delta   | {{\Delta  }}  |  \Mu       | {{\Mu     }}  | \Upsilon | {{\Upsilon}}   
+    | \Epsilon | {{\Epsilon}}  |  \Nu       | {{\Nu     }}  | \Phi     | {{\Phi    }}   
+    | \Zeta    | {{\Zeta   }}  |  \Xi       | {{\Xi     }}  | \Chi     | {{\Chi    }}   
+    | \Eta     | {{\Eta    }}  |  \Omicron  | {{\Omicron}}  | \Psi     | {{\Psi    }}   
+    | \Theta   | {{\Theta  }}  |  \Pi       | {{\Pi     }}  | \Omega   | {{\Omega  }}   
+    ```
 
 # Greek Letters Table 2
 
 @   table 
 
+    ```tabular
     | Name     | Symbol            |  Name     | Symbol           | Name     | Symbol            
     ------------------------------------------------------------------------------------------------------
-    | \alpha   | &math{\alpha  }   |  \iota    | &math{\iota   }  | \rho     | &math{\rho    }        
-    | \beta    | &math{\beta   }   |  \kappa   | &math{\kappa  }  | \sigma   | &math{\sigma  } 
-    | \gamma   | &math{\gamma  }   |  \lambda  | &math{\lambda }  | \tau     | &math{\tau    }     
-    | \delta   | &math{\delta  }   |  \mu      | &math{\mu     }  | \upsilon | &math{\upsilon}       
-    | \epsilon | &math{\epsilon}   |  \nu      | &math{\nu     }  | \phi     | &math{\phi    }  
-    | \zeta    | &math{\zeta   }   |  \xi      | &math{\xi     }  | \chi     | &math{\chi    }   
-    | \eta     | &math{\eta    }   |  \omicron | &math{\omicron}  | \psi     | &math{\psi    }    
-    | \theta   | &math{\theta  }   |  \pi      | &math{\pi     }  | \omega   | &math{\omega  }  
+    | \alpha   | {{\alpha  }}   |  \iota    | {{\iota   }}  | \rho     | {{\rho    }}        
+    | \beta    | {{\beta   }}   |  \kappa   | {{\kappa  }}  | \sigma   | {{\sigma  }} 
+    | \gamma   | {{\gamma  }}   |  \lambda  | {{\lambda }}  | \tau     | {{\tau    }}     
+    | \delta   | {{\delta  }}   |  \mu      | {{\mu     }}  | \upsilon | {{\upsilon}}       
+    | \epsilon | {{\epsilon}}   |  \nu      | {{\nu     }}  | \phi     | {{\phi    }}  
+    | \zeta    | {{\zeta   }}   |  \xi      | {{\xi     }}  | \chi     | {{\chi    }}   
+    | \eta     | {{\eta    }}   |  \omicron | {{\omicron}}  | \psi     | {{\psi    }}    
+    | \theta   | {{\theta  }}   |  \pi      | {{\pi     }}  | \omega   | {{\omega  }}  
+    ```
 
 # Greek Letters Table 3
 
 @   table
 
+    ```tabular
     | Name        | Symbol
     ----------------------------------
-    | \vartheta   | &math{\vartheta  }
-    | \varrho     | &math{\varrho    }       
-    | \varsigma   | &math{\varsigma  }           
-    | \varphi     | &math{\varphi    }      
-    | \varepsilon | &math{\varepsilon}           
+    | \vartheta   | {{\vartheta  }}
+    | \varrho     | {{\varrho    }}       
+    | \varsigma   | {{\varsigma  }}           
+    | \varphi     | {{\varphi    }}      
+    | \varepsilon | {{\varepsilon}}           
+    ```
 
 
 # Math combinations
 
 - ``\sqrt{2}`` &br{}
-  &math{\sqrt{2}}
+  {{\sqrt{2}}}
 
 - ``\sqrt[3]{2}`` &br{}
-  &math{\sqrt[3]{2}}
+  {{\sqrt[3]{2}}}
 
 - ``\binom{a}{b}`` &br{}
-  &math{\binom{a}{b}}
+  {{\binom{a}{b}}}
 
 - ``\frac{a}{b}`` &br{}
-  &math{\frac{a}{b}}
+  {{\frac{a}{b}}}
 
 
 # Math accents
 
-- ``\dot{a}`` &math{\dot{a}}
-- ``\ddot{a}`` &math{\ddot{a}}
-- ``\dddot{a}`` &math{\dddot{a}}
-- ``\bar{a}`` &math{\bar{a}}
-- ``\vec{a}`` &math{\vec{a}}
-- ``\mathring{a}`` &math{\mathring{a}}
-- ``\hat{a}`` &math{\hat{a}}
-- ``\check{a}`` &math{\check{a}}
-- ``\grave{a}`` &math{\grave{a}}
-- ``\acute{a}`` &math{\acute{a}}
-- ``\breve{a}`` &math{\breve{a}}
-- ``\tilde{a}`` &math{\tilde{a}}
-- ``\widehat{abcdef}`` &math{\widehat{abcdef}}
-- ``\overline{abcdef}`` &math{\overline{abcdef}}
-- ``\overleftrightarrow{abcdef}`` &math{\overleftrightarrow{abcdef}}
-- ``\overrightarrow{abcdef}`` &math{\overrightarrow{abcdef}}
+- ``\dot{a}`` {{\dot{a}}}
+- ``\ddot{a}`` {{\ddot{a}}}
+- ``\dddot{a}`` {{\dddot{a}}}
+- ``\bar{a}`` {{\bar{a}}}
+- ``\vec{a}`` {{\vec{a}}}
+- ``\mathring{a}`` {{\mathring{a}}}
+- ``\hat{a}`` {{\hat{a}}}
+- ``\check{a}`` {{\check{a}}}
+- ``\grave{a}`` {{\grave{a}}}
+- ``\acute{a}`` {{\acute{a}}}
+- ``\breve{a}`` {{\breve{a}}}
+- ``\tilde{a}`` {{\tilde{a}}}
+- ``\widehat{abcdef}`` {{\widehat{abcdef}}}
+- ``\overline{abcdef}`` {{\overline{abcdef}}}
+- ``\overleftrightarrow{abcdef}`` {{\overleftrightarrow{abcdef}}}
+- ``\overrightarrow{abcdef}`` {{\overrightarrow{abcdef}}}
 
 
 
 # Subscript and superscripts
 
-- ``a^2`` &math{a^2}
+- ``a^2`` {{a^2}}
 
-- ``a_i`` &math{a_i}
+- ``a_i`` {{a_i}}
 
-- ``a_i^2`` &math{a_i^2}
+- ``a_i^2`` {{a_i^2}}
 
-- ``{a + b}`` &math{{a + b}}
+- ``{a + b}`` {{{a + b}}}
 
-- ``{a + b}^2`` &math{{a + b}^2}
+- ``{a + b}^2`` {{{a + b}^2}}
 
-- ``{a + b}_i`` &math{{a + b}_i}
+- ``{a + b}_i`` {{{a + b}_i}}
 
-- ``a^{1+2}`` &math{a^{1+2}}
+- ``a^{1+2}`` {{a^{1+2}}}
 
-- ``a_{1+2}`` &math{a_{1+2}}
+- ``a_{1+2}`` {{a_{1+2}}}
 
 
 
@@ -178,89 +186,89 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 # Text 
 
 - ``000\text{abc}111`` &br{}
-  &math{000\text{abc}111}
+  {{000\text{abc}111}}
 
 
 # Math Variants 
 
 - ``000&ascr;&bscr;&cscr;111`` &br{}
-  &math{000&Ascr;&Bscr;&Cscr;111}
+  {{000&Ascr;&Bscr;&Cscr;111}}
 
 - ``000&abf;&bbf;&cbf;111`` &br{}
-  &math{000&abf;&bbf;&cbf;111} 
+  {{000&abf;&bbf;&cbf;111}} 
 
 - ``000&aopf;&bopf;&copf;111`` &br{}
-  &math{000&aopf;&bopf;&copf;111} 
+  {{000&aopf;&bopf;&copf;111}} 
 
 
 
 # Matrix I
 
 - ``\begin{matrix} a \end{matrix}``  &br{}
-  &math{\begin{matrix} a \end{matrix}}
+  {{\begin{matrix} a \end{matrix}}}
 
 - ``\begin{pmatrix} a \end{pmatrix}`` &br{}
-  &math{\begin{pmatrix} a \end{pmatrix}}
+  {{\begin{pmatrix} a \end{pmatrix}}}
 
 - ``\begin{bmatrix} a \end{bmatrix}`` &br{}
-  &math{\begin{bmatrix} a \end{bmatrix}}
+  {{\begin{bmatrix} a \end{bmatrix}}}
 
 - ``\begin{Bmatrix} a \end{Bmatrix}`` &br{}
-  &math{\begin{Bmatrix} a \end{Bmatrix}}
+  {{\begin{Bmatrix} a \end{Bmatrix}}}
 
 - ``\begin{vmatrix} a \end{vmatrix}`` &br{}
-  &math{\begin{vmatrix} a \end{vmatrix}}
+  {{\begin{vmatrix} a \end{vmatrix}}}
 
 - ``\begin{Vmatrix} a \end{Vmatrix}`` &br{}
-  &math{\begin{Vmatrix} a \end{Vmatrix}}
+  {{\begin{Vmatrix} a \end{Vmatrix}}}
 
 
 
 # Matrix II
 
 - ``\begin{matrix} a \nc b \nr c \nc d \end{matrix}`` &br{}
-  &math{\begin{matrix} a \nc b \nr c \nc d \end{matrix}}
+  {{\begin{matrix} a \nc b \nr c \nc d \end{matrix}}}
 
 - ``\begin{pmatrix} a \nc b \nr c \nc d \end{pmatrix}`` &br{}
-  &math{\begin{pmatrix} a \nc b \nr c \nc d \end{pmatrix}}
+  {{\begin{pmatrix} a \nc b \nr c \nc d \end{pmatrix}}}
 
 - ``\begin{bmatrix} a \nc b \nr c \nc d \end{bmatrix}`` &br{}
-  &math{\begin{bmatrix} a \nc b \nr c \nc d \end{bmatrix}}
+  {{\begin{bmatrix} a \nc b \nr c \nc d \end{bmatrix}}}
 
 - ``\begin{Bmatrix} a \nc b \nr c \nc d \end{Bmatrix}`` &br{}
-  &math{\begin{Bmatrix} a \nc b \nr c \nc d \end{Bmatrix}}
+  {{\begin{Bmatrix} a \nc b \nr c \nc d \end{Bmatrix}}}
 
 
 
 # Matrix III
 
 - ``\begin{vmatrix} a \nc b \nr c \nc d \end{vmatrix}`` &br{}
-  &math{\begin{vmatrix} a \nc b \nr c \nc d \end{vmatrix}}
+  {{\begin{vmatrix} a \nc b \nr c \nc d \end{vmatrix}}}
 
 - ``\begin{Vmatrix} a \nc b \nr c \nc d \end{Vmatrix}`` &br{}
-  &math{\begin{Vmatrix} a \nc b \nr c \nc d \end{Vmatrix}}
+  {{\begin{Vmatrix} a \nc b \nr c \nc d \end{Vmatrix}}}
 
 - ``\begin{pmatrix} a^2 \nc b^3 \nr \cos c \nc \sin d \end{pmatrix}`` &br{}
-  &math{\begin{pmatrix} a^2 \nc b^3 \nr \cos c \nc \sin d \end{pmatrix}}
+  {{\begin{pmatrix} a^2 \nc b^3 \nr \cos c \nc \sin d \end{pmatrix}}}
 
 
 
 # Derivative  
 
 - ``\dif{x}`` &br{}
-  &math{\dif{x}}
+  {{\dif{x}}}
 
 - ``\od{x^2}{x}`` &br{}
-  &math{\od{x^2}{x}}
+  {{\od{x^2}{x}}}
 
 - ``\pd{x^2}{x}`` &br{}
-  &math{\pd{x^2}{x}}
+  {{\pd{x^2}{x}}}
 
 - ``\od[2]{x^2}{x}`` &br{}
-  &math{\od[2]{x^2}{x}}
+  {{\od[2]{x^2}{x}}}
 
 - ``\pd[2]{x^2}{x}`` &br{}
-  &math{\pd[2]{x^2}{x}}
+  {{\pd[2]{x^2}{x}}}
 
 
 
@@ -268,13 +276,13 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 # Braces
 
 - ``\lbrace a + b \rbrace`` &br{} 
-   &math{\lbrace a + b \rbrace}
+   {{\lbrace a + b \rbrace}}
 
 - ``[ a + b ]`` &br{}
-  &math{[ a + b ]}
+  {{[ a + b ]}}
 
 - ``( a + b )``  &br{}
-  &math{( a + b )}
+  {{( a + b )}}
 
 
 
@@ -282,53 +290,54 @@ The math symbol &math{a} and &math{b} are identifiers and &sqrt{2} is a sqrt.
 
 # Fences I
 
-- ``\left\lbrace a \right\rbrace`` &br{}           &math{\left\lbrace a \right\rbrace}
+- ``\left\lbrace a \right\rbrace`` &br{}           {{\left\lbrace a \right\rbrace}}
 
-- ``\left[ a \right]`` &br{}                       &math{\left[ a \right]}
+- ``\left[ a \right]`` &br{}                       {{\left[ a \right]}}
 
-- ``\left( a \right)`` &br{}                       &math{\left( a \right)}
+- ``\left( a \right)`` &br{}                       {{\left( a \right)}}
 
-- ``\left\vert a \right\vert`` &br{}               &math{\left\vert a \right\vert}
+- ``\left\vert a \right\vert`` &br{}               {{\left\vert a \right\vert}}
 
 
 
 # Fences II
 
-- ``\left\Vert a \right\Vert`` &br{}               &math{\left\Vert a \right\Vert}
+- ``\left\Vert a \right\Vert`` &br{}               {{\left\Vert a \right\Vert}}
 
-- ``\left\lang a \right\rang`` &br{}               &math{\left\lang a \right\rang}
+- ``\left\lang a \right\rang`` &br{}               {{\left\lang a \right\rang}}
 
-- ``\left\lbrace \frac{1}{a} \right\rbrace`` &br{}   &math{\left\lbrace \frac{1}{a} \right\rbrace}
+- ``\left\lbrace \frac{1}{a} \right\rbrace`` &br{}   {{\left\lbrace \frac{1}{a} \right\rbrace}}
 
-- ``\left[ \frac{1}{a} \right]`` &br{}               &math{\left[ \frac{1}{a} \right]}
+- ``\left[ \frac{1}{a} \right]`` &br{}               {{\left[ \frac{1}{a} \right]}}
 
 
 
 # Fences III
 
-- ``\left( \frac{1}{a} \right)`` &br{}               &math{\left( \frac{1}{a} \right)}
+- ``\left( \frac{1}{a} \right)`` &br{}               {{\left( \frac{1}{a} \right)}}
 
-- ``\left\vert \frac{1}{a} \right\vert`` &br{}       &math{\left\vert \frac{1}{a} \right\vert}
+- ``\left\vert \frac{1}{a} \right\vert`` &br{}       {{\left\vert \frac{1}{a} \right\vert}}
 
-- ``\left\Vert \frac{1}{a} \right\Vert`` &br{}       &math{\left\Vert \frac{1}{a} \right\Vert}
+- ``\left\Vert \frac{1}{a} \right\Vert`` &br{}       {{\left\Vert \frac{1}{a} \right\Vert}}
 
-- ``\left\lang \frac{1}{a} \right\rang`` &br{}       &math{\left\lang \frac{1}{a} \right\rang}
+- ``\left\lang \frac{1}{a} \right\rang`` &br{}       {{\left\lang \frac{1}{a} \right\rang}}
 
 
 
 # Fences IV
 
-- ``\left\lfloor \frac{1}{a} \right\rfloor`` &br{}   &math{\left\lfloor \frac{1}{a} \right\rfloor}
+- ``\left\lfloor \frac{1}{a} \right\rfloor`` &br{}   {{\left\lfloor \frac{1}{a} \right\rfloor}}
 
-- ``\left\lceil \frac{1}{a} \right\rceil`` &br{}     &math{\left\lceil \frac{1}{a} \right\rceil}
+- ``\left\lceil \frac{1}{a} \right\rceil`` &br{}     {{\left\lceil \frac{1}{a} \right\rceil}}
 
-- ``\left\lobrk \frac{1}{a} \right\robrk`` &br{}     &math{\left\lobrk \frac{1}{a} \right\robrk}
+- ``\left\lobrk \frac{1}{a} \right\robrk`` &br{}     {{\left\lobrk \frac{1}{a} \right\robrk}}
 
 
 # eqcolon
 
-- ``A \coloneq B`` &br{} &math{A \coloneq B}
+- ``A \coloneq B`` &br{} {{A \coloneq B}}
 
-- ``A \eqcolon B`` &br{} &math{A \eqcolon B}
+- ``A \eqcolon B`` &br{} {{A \eqcolon B}}
+
 
 
