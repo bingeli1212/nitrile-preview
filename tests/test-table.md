@@ -1,4 +1,6 @@
-test-table.md
+---
+title: test-table.md
+---
 
 # Slide
 
@@ -6,20 +8,22 @@ test-table.md
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
-@   table{head,label:mytable,vrule:|||,hrule:---}
+@   table
     &label{utf8encoding}
     Hello World.
 
+    ```tabular{head,label:mytable,vrule:|||,hrule:---}
     | Name    | Symbol                                                                        
-    ----------|---------------                                                          
-    | Alpha   | &math{\Alpha  }                                                                 
-    | Beta    | &math{\Beta   }                                                               
-    | Gamma   | &math{\Gamma  }                                                               
-    | Delta   | &math{\Delta  }                                                               
-    | Epsilon | &math{\Epsilon}                                                               
-    | Zeta    | &math{\Zeta   }                                                               
-    | Eta     | &math{\Eta    }                                                               
-    | Theta   | &math{\Theta  }                                                               
+    --------------------------                                                          
+    | Alpha   | {{\Alpha  }}                                                                 
+    | Beta    | {{\Beta   }}                                                               
+    | Gamma   | {{\Gamma  }}                                                               
+    | Delta   | {{\Delta  }}                                                               
+    | Epsilon | {{\Epsilon}}                                                               
+    | Zeta    | {{\Zeta   }}                                                               
+    | Eta     | {{\Eta    }}                                                               
+    | Theta   | {{\Theta  }}                                                               
+    ```
 
 # Slide 2
 
@@ -27,19 +31,21 @@ nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
-@   table{head,label:mytable,vrule:|||,hrule:---}
+@   table
     Hello World.
 
+    ```tabular{head,label:mytable,vrule:|||,hrule:---}
     |  Name    | Symbol                                           
-    |----------|---------------                             
-    |  Iota    | &math{\Iota   }                                    
-    |  Kappa   | &math{\Kappa  }                                  
-    |  Lambda  | &math{\Lambda }                                  
-    |  Mu      | &math{\Mu     }                                  
-    |  Nu      | &math{\Nu     }                                  
-    |  Xi      | &math{\Xi     }                                  
-    |  Omicron | &math{\Omicron}                                  
-    |  Pi      | &math{\Pi     }                                  
+    ---------------------------                             
+    |  Iota    | {{\Iota   }}                                    
+    |  Kappa   | {{\Kappa  }}                                  
+    |  Lambda  | {{\Lambda }}                                  
+    |  Mu      | {{\Mu     }}                                  
+    |  Nu      | {{\Nu     }}                                  
+    |  Xi      | {{\Xi     }}                                  
+    |  Omicron | {{\Omicron}}                                  
+    |  Pi      | {{\Pi     }}                                  
+    ```
 
 # Slide 3
 
@@ -47,17 +53,23 @@ nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
-@   table{head,label:mytable,vrule:|||,hrule:---}
+@   table
     Hello World.
 
+    ```tabular{head,label:mytable,vrule:|||,hrule:---}
     | Name    | Symbol            
-    |---------|----------------
-    | Rho     | &math{\Rho    }     
-    | Sigma   | &math{\Sigma  }   
-    | Tau     | &math{\Tau    }   
-    | Upsilon | &math{\Upsilon}   
-    | Phi     | &math{\Phi    }   
-    | Chi     | &math{\Chi    }   
-    | Psi     | &math{\Psi    }   
-    | Omega   | &math{\Omega  }   
+    ---------------------------
+    | Rho     | {{\Rho    }}     
+    | Sigma   | {{\Sigma  }}   
+    | Tau     | {{\Tau    }}   
+    | Upsilon | {{\Upsilon}}   
+    | Phi     | {{\Phi    }}   
+    | Chi     | {{\Chi    }}   
+    | Psi     | {{\Psi    }}   
+    | Omega   | {{\Omega  }}   
+    ```
+
+
+
+
 
