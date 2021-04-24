@@ -908,7 +908,7 @@
     "Ocircumflex"            : { "html": "&#x00D4;"       ,"tex":"\\^{O}"                                ,"lmath":""                          ,"cex":"\\Ocircumflex    "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     "Otilde"                 : { "html": "&#x00D5;"       ,"tex":"\\~{O}"                                ,"lmath":""                          ,"cex":"\\Otilde         "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     "Odieresis"              : { "html": "&#x00D6;"       ,"tex":"\\\"{O}"                               ,"lmath":""                          ,"cex":"\\Odiaeresis     "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
-    "multiply"               : { "html": "&#x00D7;"       ,"tex":"\\texttimes"                           ,"lmath":"\\times"                   ,"cex":"\\textmultiply   "      ,"cmath":""                   ,"width": 0,    "op": 1,  "fonts":"dejavu"         },
+    "multiply"               : { "html": "&#x00D7;"       ,"tex":"\\texttimes"                           ,"lmath":"\\times"                   ,"cex":"\\textmultiply   "      ,"cmath":"\\times"            ,"width": 0,    "op": 1,  "fonts":"dejavu"         },
     "Oslash"                 : { "html": "&#x00D8;"       ,"tex":"\\O"                                   ,"lmath":""                          ,"cex":"\\Ostroke        "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     "Ugrave"                 : { "html": "&#x00D9;"       ,"tex":"\\`{U}"                                ,"lmath":""                          ,"cex":"\\Ugrave         "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     "Uacute"                 : { "html": "&#x00DA;"       ,"tex":"\\'{U}"                                ,"lmath":""                          ,"cex":"\\Uacute         "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
@@ -942,7 +942,7 @@
     "ocircumflex"            : { "html": "&#x00F4;"       ,"tex":"\\^{o}"                                ,"lmath":""                          ,"cex":"\\ocircumflex    "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     "otilde"                 : { "html": "&#x00F5;"       ,"tex":"\\~{o}"                                ,"lmath":""                          ,"cex":"\\otilde         "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     "odieresis"              : { "html": "&#x00F6;"       ,"tex":"\\\"{o}"                               ,"lmath":""                          ,"cex":"\\odiaeresis     "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
-    "divide"                 : { "html": "&#x00F7;"       ,"tex":"\\textdiv"                             ,"lmath":"\\div"                     ,"cex":"\\textdiv        "      ,"cmath":""                   ,"width": 0,    "op": 1,  "fonts":"dejavu"         },
+    "divide"                 : { "html": "&#x00F7;"       ,"tex":"\\textdiv"                             ,"lmath":"\\div"                     ,"cex":"\\textdiv        "      ,"cmath":"\\div"              ,"width": 0,    "op": 1,  "fonts":"dejavu"         },
     "oslash"                 : { "html": "&#x00F8;"       ,"tex":"\\o"                                   ,"lmath":""                          ,"cex":"\\ostroke        "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     "ugrave"                 : { "html": "&#x00F9;"       ,"tex":"\\`{u}"                                ,"lmath":""                          ,"cex":"\\ugrave         "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     "uacute"                 : { "html": "&#x00FA;"       ,"tex":"\\'{u}"                                ,"lmath":""                          ,"cex":"\\uacute         "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
@@ -952,6 +952,8 @@
     "thorn"                  : { "html": "&#x00FE;"       ,"tex":"\\th"                                  ,"lmath":""                          ,"cex":"\\thorn          "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     "ydieresis"              : { "html": "&#x00FF;"       ,"tex":"\\\"{y}"                               ,"lmath":""                          ,"cex":"\\ydiaeresis     "      ,"cmath":""                   ,"width": 0,    "op": 0,  "fonts":"dejavu"         },
     
+
+
     
     "Alpha"                  : { "html": "&#x0391;"       ,"tex":""                                      ,"lmath": "\\Alpha"                  ,"cex":""                       ,"cmath":""                   ,"width":8.5     ,"op":0   ,"fonts":"dejavu"         },
     "Beta"                   : { "html": "&#x0392;"       ,"tex":""                                      ,"lmath": "\\Beta"                   ,"cex":""                       ,"cmath":""                   ,"width":8.5     ,"op":0   ,"fonts":"dejavu"         },
@@ -1132,12 +1134,10 @@
     "coloneq"                : { "html": "&#x2254;"       ,"tex":""                                      ,"lmath":"\\coloneqq"                ,"cex":""                       ,"cmath":""                   ,"width":12      ,"op":1   ,"fonts":"dejavu"         ,"group":"Mathematical Operators U+2200 - U+22FF"},
     "eqcolon"                : { "html": "&#x2255;"       ,"tex":""                                      ,"lmath":"\\eqqcolon"                ,"cex":""                       ,"cmath":""                   ,"width":12      ,"op":1   ,"fonts":"dejavu"         ,"group":"Mathematical Operators U+2200 - U+22FF"},
 
-    
-    "leqslant"               : { "html": "&#x2A7D;"       ,"tex":""                                      ,"lmath":"\\leqslant"                ,"cex":""                       ,"cmath":"\\leqslant"         ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
-    "geqslant"               : { "html": "&#x2A7E;"       ,"tex":""                                      ,"lmath":"\\geqslant"                ,"cex":""                       ,"cmath":"\\geqslant"         ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
-    "times"                  : { "html": "&#x00D7;"       ,"tex":""                                      ,"lmath":"\\times"                   ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
-    "Cross"                  : { "html": "&#x2A2F;"       ,"tex":""                                      ,"lmath":"\\times"                   ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
-    "div"                    : { "html": "&#x00F7;"       ,"tex":""                                      ,"lmath":"\\div"                     ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
+
+    "leqslant"               : { "html": "&#x2A7D;"       ,"tex":""                                      ,"lmath":"\\leqslant"                ,"cex":""                       ,"cmath":"\\leqslant"         ,"width": 7      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Mathematical Operators U+2A00 - U+2AFF"},
+    "geqslant"               : { "html": "&#x2A7E;"       ,"tex":""                                      ,"lmath":"\\geqslant"                ,"cex":""                       ,"cmath":"\\geqslant"         ,"width": 7      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Mathematical Operators U+2A00 - U+2AFF"},
+    "Cross"                  : { "html": "&#x2A2F;"       ,"tex":""                                      ,"lmath":"\\times"                   ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Mathematical Operators U+2A00 - U+2AFF","comment":"Vector or Cross Product"},
     
         
     "lceil"                  : { "html": "&#x2308;"       ,"tex":""                                      ,"lmath":"\\lceil"                   ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Technical U+2300 - U+23FF" },
@@ -1149,6 +1149,8 @@
     "blank"                  : { "html": "&#x23B5;"       ,"tex":"\\textvisiblespace"                    ,"lmath":"\\;"                       ,"cex":""                       ,"cmath":"\\;"                ,"width":6       ,"op":0   ,"fonts":""               ,"group":"Miscellaneous Technical U+2300 - U+23FF" },
 
     
+
+
     "ulcorner"               : { "html": "&#x2E22;"       ,"tex":""                                      ,"lmath":"\\ulcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Punctuation U+2E00 - U+2E7F" },
     "urcorner"               : { "html": "&#x2E23;"       ,"tex":""                                      ,"lmath":"\\urcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Punctuation U+2E00 - U+2E7F" },
     "llcorner"               : { "html": "&#x2E24;"       ,"tex":""                                      ,"lmath":"\\llcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Punctuation U+2E00 - U+2E7F" },
@@ -1777,13 +1779,15 @@
     "aleph"                  : { "html": "&#x2135;"       ,"tex":""                                      ,"lmath":"\\aleph"                   ,"cex":""                       ,"cmath":"\\aleph"            ,"width":8      ,"op":0   ,"fonts":"dejavu"          ,"group":"Letter Like Symbol U+2100 - U+214F","comment":"U+2135 ALEF SYMBOL"},
     "beth"                   : { "html": "&#x2136;"       ,"tex":""                                      ,"lmath":"\\beth"                    ,"cex":""                       ,"cmath":"\\beth"             ,"width":8      ,"op":0   ,"fonts":"dejavu"          ,"group":"Letter Like Symbol U+2100 - U+214F","comment":"U+2136 BET SYMBOL"},
     "gimel"                  : { "html": "&#x2137;"       ,"tex":""                                      ,"lmath":"\\gimel"                   ,"cex":""                       ,"cmath":"\\gimel"            ,"width":8      ,"op":0   ,"fonts":"dejavu"          ,"group":"Letter Like Symbol U+2100 - U+214F","comment":"U+2137 GIMEL SYMBOL"},
-    "daleth"                 : { "html": "&#x2138;"       ,"tex":""                                      ,"lmath":"\\daleth"                  ,"cex":""                       ,"cmath":"\\daleth"           ,"width":8      ,"op":0   ,"fonts":"dejavu"          ,"group":"Letter Like Symbol U+2100 - U+214F","comment":"U+2138 DALET SYMBOL"},    
+    "daleth"                 : { "html": "&#x2138;"       ,"tex":""                                      ,"lmath":"\\daleth"                  ,"cex":""                       ,"cmath":"\\daleth"           ,"width":8      ,"op":0   ,"fonts":"dejavu"          ,"group":"Letter Like Symbol U+2100 - U+214F","comment":"U+2138 DALET SYMBOL"}  
 
 
-    "nbsp"                   : { "html": "&#x00A0;"       ,"tex":"\\quad"                                ,"lmath":"\\quad"                    ,"cex":""                       ,"cmath":""                   ,"width":12    ,"fonts":"dejavu"     }
     
   },
   "alt_symbol": {
+    "nbsp"     : "nonbreakingspace",
+    "times"    : "multiply",
+    "div"      : "divide",
     "xutri"    : "bigtriangleup",
     "xdtri"    : "bigtriangledown",
     "land"     : "wedge",
@@ -1798,7 +1802,6 @@
     "para"     : "paragraph",
     "middot"   : "periodcentered",
     "sect"     : "section",
-    "times"    : "multiply",
     "amp"      : "ampersand",
     "quot"     : "quotedbl",
     "apos"     : "quotesingle",
