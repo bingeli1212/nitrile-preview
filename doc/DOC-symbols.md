@@ -282,46 +282,66 @@ Following are the key points about the symbols:
  | &Digamma; and &digamma;                 |  `&Digamma;` and `&digamma;`
 ```
 
-# GENERAL    OPERATORS
+# ASCII OPERATORS
 
 ```tabular{border:2;n:2}
-| Symbol              |  Command               | Comment
-------------------------------------------------------------------------------
-| &DiacriticalGrave;  |  DiacriticalGrave      | [!DiacriticalGrave!]
-| &amp;               |  amp                   | [!amp!]
-| &quot;              |  quot                  | [!quot!]
-| &apos;              |  apos                  | [!apos!]
+| Symbol              | Command               
+----------------------------------------------
+| &grave;             | grave                 
+| &amp;               | amp                   
+| &quot;              | quot                  
+| &apos;              | apos                  
+| &dollar;            | dollar                
+| &verticalbar;       | verticalbar           
+| &vert;              | vert                  
+| &quotedbl;          | quotedbl              
+| &numbersign;        | numbersign    
+| &percent;           | percent        
+| &ampersand;         | ampersand
+| &quotesingle;       | quotesingle
+| &comma;             | comma
+| &hyphen;            | hyphen
+| &slash;             | slash
+| &greater;           | greater
+| &less;              | less
+| &at;                | at
+| &backslash;         | backslash
+| &asciicircm;        | asciicircm
+| &underscore;        | underscore
+| &braceleft;         | braceleft
+| &braceright;        | braceright
+| &asciitilde;        | asciitilde
 ```
 
 # RELATIONAL OPERATORS I
 
 ```tabular{border:2;n:2}
-| Symbol              |  Command               | Comment
-------------------------------------------------------------------------------
-| &nless;             |  nless                 | [!nless!]
-| &leq;               |  leq                   | [!leq!]
-| &leqslant;          |  leqslant              | [!leqslant!]
-| &nleq;              |  nleq                  | [!nleq!]
-| &nleqslant;         |  nleqslant             | [!nleqslant!]
-| &prec;              |  prec                  | [!prec!]
-| &nprec;             |  nprec                 | [!nprec!]
-| &preceq;            |  preceq                | [!preceq!]
-| &npreceq;           |  npreceq               | [!npreceq!]
-| &ll;                |  ll                    | [!ll!]
-| &lll;               |  lll                   | [!lll!]
-| &ngtr;              |  ngtr                  | [!ngtr!]
-| &geq;               |  geq                   | [!geq!]
-| &geqslant;          |  geqslant              | [!geqslant!]
-| &ngeq;              |  ngeq                  | [!ngeq!]
-| &ngeqslant;         |  ngeqslant             | [!ngeqslant!]
-| &succ;              |  succ                  | [!succ!]
-| &nsucc;             |  nsucc                 | [!nsucc!]
-| &succeq;            |  succeq                | [!succeq!]
-| &nsucceq;           |  nsucceq               | [!nsucceq!]
-| &gg;                |  gg                    | [!gg!]
-| &ggg;               |  ggg                   | [!ggg!]
-| &doteq;             |  doteq                 | [!doteq!]
-| &equiv;             |  equiv                 | [!equiv!]
+| Symbol              |  Command               
+-----------------------------------------------
+| &nless;             |  nless                 
+| &leq;               |  leq                   
+| &leqslant;          |  leqslant              
+| &nleq;              |  nleq                  
+| &nleqslant;         |  nleqslant             
+| &prec;              |  prec                  
+| &nprec;             |  nprec                 
+| &preceq;            |  preceq                
+| &npreceq;           |  npreceq               
+| &ll;                |  ll                    
+| &lll;               |  lll                   
+| &ngtr;              |  ngtr                  
+| &geq;               |  geq                   
+| &geqslant;          |  geqslant              
+| &ngeq;              |  ngeq                  
+| &ngeqslant;         |  ngeqslant             
+| &succ;              |  succ                  
+| &nsucc;             |  nsucc                 
+| &succeq;            |  succeq                
+| &nsucceq;           |  nsucceq               
+| &gg;                |  gg                    
+| &ggg;               |  ggg                   
+| &doteq;             |  doteq                 
+| &equiv;             |  equiv                 
 ```
 
 # RELATIONAL OPERATORS II
