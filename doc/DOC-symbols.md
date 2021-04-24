@@ -681,8 +681,6 @@ Following are the key points about the symbols:
 ```tabular{border:2;n:2}
 | Symbol              |  Command                
 ------------------------------------------------
-| &copy;              |  copy                   
-| &reg;               |  reg                    
 | &SM;                |  SM                     
 | &trade;             |  trade                  
 | &dagger;            |  dagger                 
@@ -695,42 +693,42 @@ Following are the key points about the symbols:
 # DINGBATS
 
 ```tabular{border:2;n:2}
-| Symbol              |  Command                | Comment
-------------------------------------------------------------------
-| &star;              |  star                   | [!star!]
-| &checkmark;         |  checkmark              | [!checkmark!]
-| &maltese;           |  maltese                | [!maltese!]
-| &cross;             |  cross                  | [!cross!]
+| Symbol              |  Command                
+------------------------------------------------
+| &star;              |  star                   
+| &checkmark;         |  checkmark              
+| &maltese;           |  maltese                
+| &cross;             |  cross                  
 ```
 
 
 # MATH OPERATORS U+2200 - U+22FF
 
 ```tabular{border:2;n:2}
-| Symbol              |  Command                | Comment
-------------------------------------------------------------------
-| &ang;               |  ang                    | [!ang!]
-| &angmsd;            |  angmsd                 | [!angmsd!]
-| &angsph;            |  angsph                 | [!angsph!]
+| Symbol              |  Command                
+------------------------------------------------
+| &ang;               |  ang                    
+| &angmsd;            |  angmsd                 
+| &angsph;            |  angsph                 
 ```
 
 
 # GEOMETRIC SHAPES
 
 ```tabular{border:2;n:2}
-| Symbol              |  Command                | Comment
-------------------------------------------------------------------
-| &bigcirc;           |  bigcirc                | [!bigcirc!]
-| &bigtriangleup;     |  bigtriangleup          | [!bigtriangleup!]
-| &bigtriangledown;   |  bigtriangledown        | [!bigtriangledown!]
-| &xutri;             |  xutri                  | [!xutri!]
-| &xdtri;             |  xdtri                  | [!xdtri!]
-| &utri;              |  utri                   | [!utri!]
-| &rtri;              |  rtri                   | [!rtri!]
-| &dtri;              |  dtri                   | [!dtri!]
-| &ltri;              |  ltri                   | [!ltri!]
-| &square;            |  square                 | [!square!]
-| &blacksquare;       |  blacksquare            | [!blacksquare!]
-| &cir;               |  cir                    | [!cir!]
+| Symbol              |  Command                
+------------------------------------------------
+| &bigcirc;           |  bigcirc                
+| &bigtriangleup;     |  bigtriangleup          
+| &bigtriangledown;   |  bigtriangledown        
+| &xutri;             |  xutri                  
+| &xdtri;             |  xdtri                  
+| &utri;              |  utri                   
+| &rtri;              |  rtri                   
+| &dtri;              |  dtri                   
+| &ltri;              |  ltri                   
+| &square;            |  square                 
+| &blacksquare;       |  blacksquare            
+| &cir;               |  cir                    
 ```
 
