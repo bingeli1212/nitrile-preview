@@ -1138,15 +1138,13 @@
     "times"                  : { "html": "&#x00D7;"       ,"tex":""                                      ,"lmath":"\\times"                   ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
     "Cross"                  : { "html": "&#x2A2F;"       ,"tex":""                                      ,"lmath":"\\times"                   ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
     "div"                    : { "html": "&#x00F7;"       ,"tex":""                                      ,"lmath":"\\div"                     ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
-    "Longdiv"                : { "html": "&#x27CC;"       ,"tex":""                                      ,"lmath":"\\surd"                    ,"cex":""                       ,"cmath":""                   ,"width": 9      ,"op":1   ,"fonts":"dejavu"         },
     "smile"                  : { "html": "&#x2323;"       ,"tex":""                                      ,"lmath":"\\smile"                   ,"cex":""                       ,"cmath":"\\smile"            ,"width": 10     ,"op":1   ,"fonts":"dejavu"         },
     "frown"                  : { "html": "&#x2322;"       ,"tex":""                                      ,"lmath":"\\frown"                   ,"cex":""                       ,"cmath":"\\frown"            ,"width": 10     ,"op":0   ,"fonts":"dejavu"         },                                                                                             
     
-
-
     
     
-    "perp"                   : { "html": "&#x27C2;"       ,"tex":""                                      ,"lmath":"\\perp"                    ,"cex":""                       ,"cmath":"\\perp"             ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
+    
+    
     "neg"                    : { "html": "&#x00AC;"       ,"tex":""                                      ,"lmath":"\\neg"                     ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":0   ,"fonts":"dejavu"          },
     "lceil"                  : { "html": "&#x2308;"       ,"tex":""                                      ,"lmath":"\\lceil"                   ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
     "rceil"                  : { "html": "&#x2309;"       ,"tex":""                                      ,"lmath":"\\rceil"                   ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
@@ -1156,20 +1154,23 @@
     "lrcorner"               : { "html": "&#x2E25;"       ,"tex":""                                      ,"lmath":"\\lrcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
     "lfloor"                 : { "html": "&#x230A;"       ,"tex":""                                      ,"lmath":"\\lfloor"                  ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
     "rfloor"                 : { "html": "&#x230B;"       ,"tex":""                                      ,"lmath":"\\rfloor"                  ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
-    "lang"                   : { "html": "&#x27E8;"       ,"tex":""                                      ,"lmath":"\\langle"                  ,"cex":""                       ,"cmath":""                   ,"width":5       ,"op":1   ,"fonts":"dejavu"          },
-    "rang"                   : { "html": "&#x27E9;"       ,"tex":""                                      ,"lmath":"\\rangle"                  ,"cex":""                       ,"cmath":""                   ,"width":5       ,"op":1   ,"fonts":"dejavu"          },
-    "lobrk"                  : { "html": "&#x27E6;"       ,"tex":""                                      ,"lmath":"\\llbracket"               ,"cex":""                       ,"cmath":""                   ,"width":5       ,"op":1   ,"fonts":"dejavu"          },
-    "robrk"                  : { "html": "&#x27E7;"       ,"tex":""                                      ,"lmath":"\\rrbracket"               ,"cex":""                       ,"cmath":""                   ,"width":5       ,"op":1   ,"fonts":"dejavu"          },
-    "vert"                   : { "html": "&#x007C;"       ,"tex":"\\|"                                   ,"lmath":"\\vert"                    ,"cex":"\\textbar"              ,"cmath":"\\vert"             ,"width":5       ,"op":1   ,"fonts":"dejavu"          },
-    "xlarr"                  : { "html": "&#x27F5;"       ,"tex":""                                      ,"lmath":"\\longleftarrow"           ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"          },
-    "xrarr"                  : { "html": "&#x27F6;"       ,"tex":""                                      ,"lmath":"\\longrightarrow"          ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"          },
-    "xharr"                  : { "html": "&#x27F7;"       ,"tex":""                                      ,"lmath":"\\longleftrightarrow"      ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"          },
-    "xlArr"                  : { "html": "&#x27F8;"       ,"tex":""                                      ,"lmath":"\\Longleftarrow"           ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"          },
-    "xrArr"                  : { "html": "&#x27F9;"       ,"tex":""                                      ,"lmath":"\\Longrightarrow"          ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"          },
-    "xhArr"                  : { "html": "&#x27FA;"       ,"tex":""                                      ,"lmath":"\\Longleftrightarrow"      ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"          },
-    "xmapsto"                : { "html": "&#x27FC;"       ,"tex":""                                      ,"lmath":"\\longmapsto"              ,"cex":""                       ,"cmath":""                   ,"width":16      ,"op":1   ,"fonts":"dejavu"          },
-
     
+    
+    "Longdiv"                : { "html": "&#x27CC;"       ,"tex":""                                      ,"lmath":"\\surd"                    ,"cex":""                       ,"cmath":""                   ,"width": 9      ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
+    "perp"                   : { "html": "&#x27C2;"       ,"tex":""                                      ,"lmath":"\\perp"                    ,"cex":""                       ,"cmath":"\\perp"             ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
+    "lang"                   : { "html": "&#x27E8;"       ,"tex":""                                      ,"lmath":"\\langle"                  ,"cex":""                       ,"cmath":""                   ,"width":5       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
+    "rang"                   : { "html": "&#x27E9;"       ,"tex":""                                      ,"lmath":"\\rangle"                  ,"cex":""                       ,"cmath":""                   ,"width":5       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
+    "lobrk"                  : { "html": "&#x27E6;"       ,"tex":""                                      ,"lmath":"\\llbracket"               ,"cex":""                       ,"cmath":"\\llbracket"        ,"width":5       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
+    "robrk"                  : { "html": "&#x27E7;"       ,"tex":""                                      ,"lmath":"\\rrbracket"               ,"cex":""                       ,"cmath":"\\rrbracket"        ,"width":5       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
+    
+
+    "xlarr"                  : { "html": "&#x27F5;"       ,"tex":""                                      ,"lmath":"\\longleftarrow"           ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Arrows-A U+27F0 - U+27FF" },
+    "xrarr"                  : { "html": "&#x27F6;"       ,"tex":""                                      ,"lmath":"\\longrightarrow"          ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Arrows-A U+27F0 - U+27FF" },
+    "xharr"                  : { "html": "&#x27F7;"       ,"tex":""                                      ,"lmath":"\\longleftrightarrow"      ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Arrows-A U+27F0 - U+27FF" },
+    "xlArr"                  : { "html": "&#x27F8;"       ,"tex":""                                      ,"lmath":"\\Longleftarrow"           ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Arrows-A U+27F0 - U+27FF" },
+    "xrArr"                  : { "html": "&#x27F9;"       ,"tex":""                                      ,"lmath":"\\Longrightarrow"          ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Arrows-A U+27F0 - U+27FF" },
+    "xhArr"                  : { "html": "&#x27FA;"       ,"tex":""                                      ,"lmath":"\\Longleftrightarrow"      ,"cex":""                       ,"cmath":""                   ,"width":18      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Arrows-A U+27F0 - U+27FF" },
+    "xmapsto"                : { "html": "&#x27FC;"       ,"tex":""                                      ,"lmath":"\\longmapsto"              ,"cex":""                       ,"cmath":""                   ,"width":16      ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Arrows-A U+27F0 - U+27FF" },
     
     
     "baht"                   : { "html": "&#x0E3F;"       ,"tex":"\\textbaht"                            ,"lmath":""                          ,"cex":""                       ,"cmath":""                   ,"width":0                 ,"fonts":"dejavu"         ,"group":"Thai U+0E00 - U+0E7F","comment":"U+0E3F THAI CURRENCY SYMBOL BAHT"},
@@ -1804,6 +1805,7 @@
     "apos"     : "quotesingle",
     "gt"       : "greater",
     "lt"       : "less",
+    "vert"     : "verticalbar",
     "ETH"      : "Eth",
     "AElig"    : "AE",
     "aelig"    : "ae",
