@@ -425,9 +425,37 @@ nested \strong macro increases the weight of the font.
 
 [ List of Fonts ]
 
-I can list all the fonts with 
+If all you need is a list of the registered fonts, you can run
+one of the following commands. The first one is to show all
+fonts installed by the system, and the second one will
+only show those fonts with the matching pattern.
 
+    mtxrun --script fonts --list --all
     mtxrun --script fonts --list --all --pattern=*
+
+These names are to be used with a CONTEX program only. The names
+to be used with a LuaTEX are different. They will have to be 
+obtained by running one of the follow commands:
+
+    luaotfload-tool --list=*
+
+You can use 
+
+    man 1 luaotfload-tool 
+    
+For additional details of this command.
+
+If you did not yet build the font indices you will have to do 
+so before running above commands. For example, you will need to
+run the following command for the system to build a internal
+database that will cover all fonts installed within the current
+system:
+
+    mtxrun --script fonts --reload
+
+For LuaTEX the following command should be issued:
+
+    luaotfload-tool --update
 
 [ Defining New Fonts To be Used ]
 
@@ -441,7 +469,6 @@ between CJK characters because otherwise the default line break
 algorithm does not generate a line break between two adjacent CJK
 characters without a space between them.
 
-    \usepackage{luatexja}
     \newfontfamily{\jp}[]{ipaexmincho}
     \newfontfamily{\cn}[]{arplsungtilgb}
     \newfontfamily{\tw}[]{arplmingti2lbig5}
@@ -453,6 +480,25 @@ inside a TEX document such as:
 
     The Japanese word for "today" 
     is {\jp{}今日}.
+    
+[ Line Breaks For Japanese Characters ]
+
+You will notice that by just choosing a Japanese font for one or more
+Japanese characters are not enough to get the current output. Especially,
+the line break does not happen as intended for Japanese characters, which
+typically do not have blanks inserted between them. This would have been
+translated into a situation where a long is just as long as the longest
+non-blank cluster of characters. 
+
+Following package is designed to address this problem.
+However, by including it it seems to have disrupted all the 
+font selections made by "fontspec" package, such that 
+the "dingbats" fonts no longer works.
+
+    \usepackage{luatexja}
+
+
+
 
 # Typographical Capabilities
 
