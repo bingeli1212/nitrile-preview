@@ -313,6 +313,7 @@ Following are the key points about the symbols:
 | &asciitilde;        | asciitilde
 ```
 
+
 # RELATIONAL OPERATORS I
 
 ```tabular{border:2;n:2}
@@ -674,7 +675,47 @@ Following are the key points about the symbols:
 | &hstrok;    | hstrok          | [!hstrok!]
 ```
 
-# GEOMETRIC SHAPES & DINGBAT
+
+# Letterlike Symbols, U+2100 - U+214F
+
+```tabular{border:2;n:2}
+| Symbol              |  Command                
+------------------------------------------------
+| &copy;              |  copy                   
+| &reg;               |  reg                    
+| &SM;                |  SM                     
+| &trade;             |  trade                  
+| &dagger;            |  dagger                 
+| &Dagger;            |  Dagger                 
+| &para;              |  para                   
+| &sect;              |  sect                   
+```
+
+
+# DINGBATS
+
+```tabular{border:2;n:2}
+| Symbol              |  Command                | Comment
+------------------------------------------------------------------
+| &star;              |  star                   | [!star!]
+| &checkmark;         |  checkmark              | [!checkmark!]
+| &maltese;           |  maltese                | [!maltese!]
+| &cross;             |  cross                  | [!cross!]
+```
+
+
+# MATH OPERATORS U+2200 - U+22FF
+
+```tabular{border:2;n:2}
+| Symbol              |  Command                | Comment
+------------------------------------------------------------------
+| &ang;               |  ang                    | [!ang!]
+| &angmsd;            |  angmsd                 | [!angmsd!]
+| &angsph;            |  angsph                 | [!angsph!]
+```
+
+
+# GEOMETRIC SHAPES
 
 ```tabular{border:2;n:2}
 | Symbol              |  Command                | Comment
@@ -682,21 +723,6 @@ Following are the key points about the symbols:
 | &bigcirc;           |  bigcirc                | [!bigcirc!]
 | &bigtriangleup;     |  bigtriangleup          | [!bigtriangleup!]
 | &bigtriangledown;   |  bigtriangledown        | [!bigtriangledown!]
-| &star;              |  star                   | [!star!]
-| &copy;              |  copy                   | [!copy!]
-| &reg;               |  reg                    | [!reg!]
-| &SM;                |  SM                     | [!SM!]
-| &trade;             |  trade                  | [!trade!]
-| &dagger;            |  dagger                 | [!dagger!]
-| &Dagger;            |  Dagger                 | [!Dagger!]
-| &para;              |  para                   | [!para!]
-| &sect;              |  sect                   | [!sect!]
-| &checkmark;         |  checkmark              | [!checkmark!]
-| &maltese;           |  maltese                | [!maltese!]
-| &cross;             |  cross                  | [!cross!]
-| &ang;               |  ang                    | [!ang!]
-| &angmsd;            |  angmsd                 | [!angmsd!]
-| &angsph;            |  angsph                 | [!angsph!]
 | &xutri;             |  xutri                  | [!xutri!]
 | &xdtri;             |  xdtri                  | [!xdtri!]
 | &utri;              |  utri                   | [!utri!]
