@@ -1079,10 +1079,6 @@
     "ctdot"                  : { "html": "&#x22EF;"       ,"tex":""                                      ,"lmath":"\\dots"                    ,"cex":""                       ,"cmath":"\\dots"             ,"width":10      ,"op":1   ,"fonts":"dejavu"          },
     "dtdot"                  : { "html": "&#x22F1;"       ,"tex":""                                      ,"lmath":"\\ddots"                   ,"cex":""                       ,"cmath":"\\ddots"            ,"width":10      ,"op":1   ,"fonts":"dejavu"          },
     "diamond"                : { "html": "&#x22C4;"       ,"tex":""                                      ,"lmath":"\\diamond"                 ,"cex":""                       ,"cmath":"\\diamond"                   ,"width":0       ,"op":1   ,"fonts":"dejavu"          },
-    "utri"                   : { "html": "&#x25B5;"       ,"tex":""                                      ,"lmath":"\\vartriangle"             ,"cex":""                       ,"cmath":""                   ,"width":6       ,"op":1   ,"fonts":"dejavu"          },
-    "dtri"                   : { "html": "&#x25BF;"       ,"tex":""                                      ,"lmath":"\\triangledown"            ,"cex":""                       ,"cmath":""                   ,"width":6       ,"op":1   ,"fonts":"dejavu"          },
-    "rtri"                   : { "html": "&#x25B9;"       ,"tex":""                                      ,"lmath":"\\vartriangleright"        ,"cex":""                       ,"cmath":"\\triangleright"    ,"width":6       ,"op":1   ,"fonts":"dejavu"    },
-    "ltri"                   : { "html": "&#x25C3;"       ,"tex":""                                      ,"lmath":"\\vartriangleleft"         ,"cex":""                       ,"cmath":"\\triangleleft"     ,"width":6       ,"op":1   ,"fonts":"dejavu"    },
     "vltri"                  : { "html": "&#x22B2;"       ,"tex":""                                      ,"lmath":"\\vartriangleleft"         ,"cex":""                       ,"cmath":"\\triangleleft"     ,"width":6       ,"op":1   ,"fonts":"dejavu"          },
     "vrtri"                  : { "html": "&#x22B3;"       ,"tex":""                                      ,"lmath":"\\vartriangleright"        ,"cex":""                       ,"cmath":"\\triangleright"    ,"width":6       ,"op":1   ,"fonts":"dejavu"          },
     "vltrie"                 : { "html": "&#x22B4;"       ,"tex":""                                      ,"lmath":"\\trianglelefteq"          ,"cex":""                       ,"cmath":"\\triangleleft"     ,"width":6       ,"op":1   ,"fonts":"dejavu"          },
@@ -1229,13 +1225,7 @@
     "ndash"                  : { "html": "&#x2013;"       ,"tex":"\\textendash"                          ,"lmath":""                          ,"cex":"\\endash"               ,"cmath":""                   ,"width":0                 ,"fonts":"dejavu"         ,"comment":"U+2013 EN DASH"},
     "mdash"                  : { "html": "&#x2014;"       ,"tex":"\\textemdash"                          ,"lmath":""                          ,"cex":"\\emdash"               ,"cmath":""                   ,"width":0                 ,"fonts":"dejavu"         ,"comment":"U+2014 EM DASH"},
 
-    "bigcirc"                : { "html": "&#x25EF;"       ,"tex":""                                      ,"lmath":"\\bigcirc"                 ,"cex":""                       ,"cmath":""                   ,"width":10                ,"fonts":"dejavu"         },              
-    "bigtriangleup"          : { "html": "&#x25B3;"       ,"tex":""                                      ,"lmath":"\\bigtriangleup"           ,"cex":""                       ,"cmath":""                   ,"width":10                ,"fonts":"dejavu"         },
-    "bigtriangledown"        : { "html": "&#x25BD;"       ,"tex":""                                      ,"lmath":"\\bigtriangledown"         ,"cex":""                       ,"cmath":""                   ,"width":10                ,"fonts":"dejavu"         },
    
-    "square"                 : { "html": "&#x25A1;"       ,"tex":""                                      ,"lmath":"\\square"                  ,"cex":""                       ,"cmath":""                   ,"width":0                 ,"fonts":"dejavu"         ,"comment":"U+25A1 WHITE SQUARE"},
-    "blacksquare"            : { "html": "&#x25AA;"       ,"tex":""                                      ,"lmath":"\\blacksquare"             ,"cex":""                       ,"cmath":""                   ,"width":0                 ,"fonts":"dejavu"         ,"comment":"U+25AA BLACK SMALL SQUARE"},
-    "cir"                    : { "html": "&#x25CB;"       ,"tex":""                                      ,"lmath":"\\circ"                    ,"cex":""                       ,"cmath":""                   ,"width":0                 ,"fonts":"dejavu"         ,"comment":"U+25CB WHITE CIRCLE"},
 
 
 
@@ -1718,13 +1708,21 @@
 
 
 
-
     "Ux25A0"                 : { "html": "&#x25A0;"       ,"tex":"\\ding{110}"                           ,"lmath":""                          ,"cex":""                       ,"cmath":""                   ,"width":7     ,"fonts":"dingbats"        ,"group":"Geometric Shapes U+25A0 - U+25FF"},
+    "square"                 : { "html": "&#x25A1;"       ,"tex":""                                      ,"lmath":"\\square"                  ,"cex":""                       ,"cmath":""                   ,"width":0     ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF","comment":"U+25A1 WHITE SQUARE"},
+    "blacksquare"            : { "html": "&#x25AA;"       ,"tex":""                                      ,"lmath":"\\blacksquare"             ,"cex":""                       ,"cmath":""                   ,"width":0     ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF","comment":"U+25AA BLACK SMALL SQUARE"},
     "Ux25B2"                 : { "html": "&#x25B2;"       ,"tex":"\\ding{115}"                           ,"lmath":""                          ,"cex":""                       ,"cmath":""                   ,"width":7     ,"fonts":"dingbats"        ,"group":"Geometric Shapes U+25A0 - U+25FF"},
     "Ux25BC"                 : { "html": "&#x25BC;"       ,"tex":"\\ding{116}"                           ,"lmath":""                          ,"cex":""                       ,"cmath":""                   ,"width":7     ,"fonts":"dingbats"        ,"group":"Geometric Shapes U+25A0 - U+25FF"},
     "Ux25C6"                 : { "html": "&#x25C6;"       ,"tex":"\\ding{117}"                           ,"lmath":""                          ,"cex":""                       ,"cmath":""                   ,"width":7     ,"fonts":"dingbats"        ,"group":"Geometric Shapes U+25A0 - U+25FF"},
+    "cir"                    : { "html": "&#x25CB;"       ,"tex":""                                      ,"lmath":"\\circ"                    ,"cex":""                       ,"cmath":""                   ,"width":0     ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF","comment":"U+25CB WHITE CIRCLE"},
     "Ux25CF"                 : { "html": "&#x25CF;"       ,"tex":"\\ding{108}"                           ,"lmath":""                          ,"cex":""                       ,"cmath":""                   ,"width":7     ,"fonts":"dingbats"        ,"group":"Geometric Shapes U+25A0 - U+25FF"},
-
+    "utri"                   : { "html": "&#x25B5;"       ,"tex":""                                      ,"lmath":"\\vartriangle"             ,"cex":""                       ,"cmath":""                   ,"width":6     ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF"},
+    "dtri"                   : { "html": "&#x25BF;"       ,"tex":""                                      ,"lmath":"\\triangledown"            ,"cex":""                       ,"cmath":""                   ,"width":6     ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF"},
+    "rtri"                   : { "html": "&#x25B9;"       ,"tex":""                                      ,"lmath":"\\vartriangleright"        ,"cex":""                       ,"cmath":"\\triangleright"    ,"width":6     ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF"},
+    "ltri"                   : { "html": "&#x25C3;"       ,"tex":""                                      ,"lmath":"\\vartriangleleft"         ,"cex":""                       ,"cmath":"\\triangleleft"     ,"width":6     ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF"},
+    "bigcirc"                : { "html": "&#x25EF;"       ,"tex":""                                      ,"lmath":"\\bigcirc"                 ,"cex":""                       ,"cmath":""                   ,"width":10    ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF"},              
+    "bigtriangleup"          : { "html": "&#x25B3;"       ,"tex":""                                      ,"lmath":"\\bigtriangleup"           ,"cex":""                       ,"cmath":""                   ,"width":10    ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF"},
+    "bigtriangledown"        : { "html": "&#x25BD;"       ,"tex":""                                      ,"lmath":"\\bigtriangledown"         ,"cex":""                       ,"cmath":""                   ,"width":10    ,"fonts":"dejavu"          ,"group":"Geometric Shapes U+25A0 - U+25FF"},
 
 
 
