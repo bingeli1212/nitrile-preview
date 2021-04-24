@@ -128,6 +128,18 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch docsymbols",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/docsymbols.js",
+      "args": [
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch contexsymboldoc",
       "skipFiles": [
         "<node_internals>/**"
