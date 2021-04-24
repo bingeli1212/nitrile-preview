@@ -1149,10 +1149,10 @@
     "blank"                  : { "html": "&#x23B5;"       ,"tex":"\\textvisiblespace"                    ,"lmath":"\\;"                       ,"cex":""                       ,"cmath":"\\;"                ,"width":6       ,"op":0   ,"fonts":""               ,"group":"Miscellaneous Technical U+2300 - U+23FF" },
 
     
-    "ulcorner"               : { "html": "&#x2E22;"       ,"tex":""                                      ,"lmath":"\\ulcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
-    "urcorner"               : { "html": "&#x2E23;"       ,"tex":""                                      ,"lmath":"\\urcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
-    "llcorner"               : { "html": "&#x2E24;"       ,"tex":""                                      ,"lmath":"\\llcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
-    "lrcorner"               : { "html": "&#x2E25;"       ,"tex":""                                      ,"lmath":"\\lrcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
+    "ulcorner"               : { "html": "&#x2E22;"       ,"tex":""                                      ,"lmath":"\\ulcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Punctuation U+2E00 - U+2E7F" },
+    "urcorner"               : { "html": "&#x2E23;"       ,"tex":""                                      ,"lmath":"\\urcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Punctuation U+2E00 - U+2E7F" },
+    "llcorner"               : { "html": "&#x2E24;"       ,"tex":""                                      ,"lmath":"\\llcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Punctuation U+2E00 - U+2E7F" },
+    "lrcorner"               : { "html": "&#x2E25;"       ,"tex":""                                      ,"lmath":"\\lrcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Supplemental Punctuation U+2E00 - U+2E7F" },
     
 
     "Longdiv"                : { "html": "&#x27CC;"       ,"tex":""                                      ,"lmath":"\\surd"                    ,"cex":""                       ,"cmath":""                   ,"width": 9      ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
