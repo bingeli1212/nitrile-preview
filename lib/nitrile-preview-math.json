@@ -1138,24 +1138,23 @@
     "times"                  : { "html": "&#x00D7;"       ,"tex":""                                      ,"lmath":"\\times"                   ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
     "Cross"                  : { "html": "&#x2A2F;"       ,"tex":""                                      ,"lmath":"\\times"                   ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
     "div"                    : { "html": "&#x00F7;"       ,"tex":""                                      ,"lmath":"\\div"                     ,"cex":""                       ,"cmath":""                   ,"width": 7      ,"op":1   ,"fonts":"dejavu"         },
-    "smile"                  : { "html": "&#x2323;"       ,"tex":""                                      ,"lmath":"\\smile"                   ,"cex":""                       ,"cmath":"\\smile"            ,"width": 10     ,"op":1   ,"fonts":"dejavu"         },
-    "frown"                  : { "html": "&#x2322;"       ,"tex":""                                      ,"lmath":"\\frown"                   ,"cex":""                       ,"cmath":"\\frown"            ,"width": 10     ,"op":0   ,"fonts":"dejavu"         },                                                                                             
     
+        
+    "lceil"                  : { "html": "&#x2308;"       ,"tex":""                                      ,"lmath":"\\lceil"                   ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Technical U+2300 - U+23FF" },
+    "rceil"                  : { "html": "&#x2309;"       ,"tex":""                                      ,"lmath":"\\rceil"                   ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Technical U+2300 - U+23FF" },
+    "lfloor"                 : { "html": "&#x230A;"       ,"tex":""                                      ,"lmath":"\\lfloor"                  ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Technical U+2300 - U+23FF" },
+    "rfloor"                 : { "html": "&#x230B;"       ,"tex":""                                      ,"lmath":"\\rfloor"                  ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Technical U+2300 - U+23FF" },
+    "smile"                  : { "html": "&#x2323;"       ,"tex":""                                      ,"lmath":"\\smile"                   ,"cex":""                       ,"cmath":"\\smile"            ,"width":10      ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Technical U+2300 - U+23FF" },
+    "frown"                  : { "html": "&#x2322;"       ,"tex":""                                      ,"lmath":"\\frown"                   ,"cex":""                       ,"cmath":"\\frown"            ,"width":10      ,"op":0   ,"fonts":"dejavu"         ,"group":"Miscellaneous Technical U+2300 - U+23FF" },                                                                                             
+    "blank"                  : { "html": "&#x23B5;"       ,"tex":"\\textvisiblespace"                    ,"lmath":"\\;"                       ,"cex":""                       ,"cmath":"\\;"                ,"width":6       ,"op":0   ,"fonts":""               ,"group":"Miscellaneous Technical U+2300 - U+23FF" },
+
     
-    
-    
-    
-    "neg"                    : { "html": "&#x00AC;"       ,"tex":""                                      ,"lmath":"\\neg"                     ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":0   ,"fonts":"dejavu"          },
-    "lceil"                  : { "html": "&#x2308;"       ,"tex":""                                      ,"lmath":"\\lceil"                   ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
-    "rceil"                  : { "html": "&#x2309;"       ,"tex":""                                      ,"lmath":"\\rceil"                   ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
     "ulcorner"               : { "html": "&#x2E22;"       ,"tex":""                                      ,"lmath":"\\ulcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
     "urcorner"               : { "html": "&#x2E23;"       ,"tex":""                                      ,"lmath":"\\urcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
     "llcorner"               : { "html": "&#x2E24;"       ,"tex":""                                      ,"lmath":"\\llcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
     "lrcorner"               : { "html": "&#x2E25;"       ,"tex":""                                      ,"lmath":"\\lrcorner"                ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
-    "lfloor"                 : { "html": "&#x230A;"       ,"tex":""                                      ,"lmath":"\\lfloor"                  ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
-    "rfloor"                 : { "html": "&#x230B;"       ,"tex":""                                      ,"lmath":"\\rfloor"                  ,"cex":""                       ,"cmath":""                   ,"width":7       ,"op":1   ,"fonts":"dejavu"          },
     
-    
+
     "Longdiv"                : { "html": "&#x27CC;"       ,"tex":""                                      ,"lmath":"\\surd"                    ,"cex":""                       ,"cmath":""                   ,"width": 9      ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
     "perp"                   : { "html": "&#x27C2;"       ,"tex":""                                      ,"lmath":"\\perp"                    ,"cex":""                       ,"cmath":"\\perp"             ,"width":7       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
     "lang"                   : { "html": "&#x27E8;"       ,"tex":""                                      ,"lmath":"\\langle"                  ,"cex":""                       ,"cmath":""                   ,"width":5       ,"op":1   ,"fonts":"dejavu"         ,"group":"Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF" },
@@ -1781,7 +1780,6 @@
     "daleth"                 : { "html": "&#x2138;"       ,"tex":""                                      ,"lmath":"\\daleth"                  ,"cex":""                       ,"cmath":"\\daleth"           ,"width":8      ,"op":0   ,"fonts":"dejavu"          ,"group":"Letter Like Symbol U+2100 - U+214F","comment":"U+2138 DALET SYMBOL"},    
 
 
-    "blank"                  : { "html": "&#x23B5;"       ,"tex":"\\textvisiblespace"                    ,"lmath":"\\;"                       ,"cex":""                       ,"cmath":""                   ,"width":6     ,"fonts":""           },
     "nbsp"                   : { "html": "&#x00A0;"       ,"tex":"\\quad"                                ,"lmath":"\\quad"                    ,"cex":""                       ,"cmath":""                   ,"width":12    ,"fonts":"dejavu"     }
     
   },
@@ -1790,6 +1788,7 @@
     "xdtri"    : "bigtriangledown",
     "land"     : "wedge",
     "lor"      : "vee",
+    "neg"      : "logicalnot",
     "laquo"    : "guillemotleft",  
     "raquo"    : "guillemotright",
     "pound"    : "sterling",
