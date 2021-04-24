@@ -2,4 +2,6 @@
 title: c.md
 ---
 
-c.md contents
+# Slide
+
+" # $ % & ' , _ . / > < @ \ ^ _ ` { | } ~ * [ ] “ ”
