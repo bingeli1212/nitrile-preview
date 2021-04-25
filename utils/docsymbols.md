@@ -1,8 +1,3 @@
----
-title: DOC Symbols
-program: context  
-translator: camer   
----
 
 @ longtable
   ASCII U+0000 - U-007F
