@@ -498,6 +498,294 @@ the "dingbats" fonts no longer works.
     \usepackage{luatexja}
 
 
+# Handing Fonts
+
+[ Symbols ]
+
+Symbols are named graphical or typographic elements. They can be divided into
+symbol sets, which gives some namespace independence, as well. You can load the
+symbol definitions from a symb-bla file with:
+
+    \usesymbols[bla]
+
+Given a symbol Snowman defined in a symbolset Weather Symbols, you could
+typeset the symbol with:
+
+    \setupsymbolset [Weather Symbols]
+    \symbol [Snowman]
+
+Or, alternatively, you don't need to load the entire symbolset:
+
+    \symbol[Weather Symbols][Snowman]
+
+You can override the existing symbols used at different levels in itemized
+lists by redefining the existing symbol numbers, with code like the following:
+
+    \usesymbols[mvs]
+    \definesymbol[1][{\symbol[martinvogel 2][PointingHand]}]
+    \definesymbol[2][{\symbol[martinvogel 2][CheckedBox]}]
+    \startitemize[packed]
+    \item item \item item
+     \startitemize[packed]
+     \item item \item item
+     \stopitemize
+    \item item
+    \stopitemize
+
+Following is an example that defines a green circle for symbol "YES" and a red
+circle for symbol "NO".
+
+    \startuniqueMPgraphic{0}
+        fill fullcircle scaled 1cm withcolor red ;
+    \stopuniqueMPgraphic
+    \startuniqueMPgraphic{1}
+        fill fullcircle scaled 1cm withcolor green ;
+    \stopuniqueMPgraphic
+    \starttext
+    \definesymbol[YES][\uniqueMPgraphic{1}]
+    \definesymbol[NOP][\uniqueMPgraphic{0}]
+    \stoptext
+
+Following is an example that creates a symbol set:
+
+    \definefontsynonym [WebDing] [file:webdings.ttf]
+    \def\WebDingSymbol{\getnamedglyphdirect{WebDing}}
+    \startsymbolset [webding]
+    \definesymbol[surf][\WebDingSymbol{surf}]
+    \definesymbol[motorcycle][\WebDingSymbol{motorcycle}]
+    \definesymbol[mountain][\WebDingSymbol{mountain}]
+    \definesymbol[art][\WebDingSymbol{art}]
+    \definesymbol[occasion][\WebDingSymbol{occasion}]
+    \stopsymbolset
+    \starttext
+    \tfc
+    \symbol[webding][surf]
+    \symbol[webding][motorcycle]
+    \symbol[webding][mountain]
+    \symbol[webding][art]
+    \symbol[webding][occasion]
+    \stoptext
+
+Note that the name "webding" in calling the \symbol command below 
+is due to the fact of the existance of a symbol set that is named "webding"
+which is afforded by the calling of \startsymbolset[webding] and \stopsymbolset,
+within which all \definesymbol commands called will be considered a symbol within
+this symbol set, the result of which is for the user to have to specify the name
+of this symbol set before the symbol, such as the following.
+
+    \symbol[webding][surf]
+
+Without the \startsymbolset[webding] and \stopsymbol commands, the same \definesymbol
+command would have created a symbol named "surf" such that it can be used
+within the main TEX body without the symbol set name, such as the following.
+
+    \symbol[surf]
+
+The ``\definefontsynonum[WebDing][file:webdings.ttf]`` command would have
+created a new font named "WebDing" that refers to this font. The
+``\getnamedglyphdirect{WebDing}{surf}`` command is useful to get the glyph
+named "surf" directly from the font file that is now called "WebDing", or
+"webdings.ttf". Thus, the ``\definesymbol[surf][\WebDingSymbol{surf}]``
+command can be thought to have been expanded to the following command:
+
+    \definesymbol[surf][\getnamedglyphdirect{WebDing}{surf}]
+
+Note that the string "surf" is a name that is assigned to a specific glyph
+within the font file "webdings.ttf". This name is not visible to an average
+user without having to look inside the font file itself. One way to do it
+is to open the font file "webdings.ttf" using a program such as "fontforge",
+which is a free download for Windows, Mac, and Linux. After openning
+the "webdings.ttf" file using "fontforge", the name of the glyph can be shown
+by clicking a glyph and then look at the info text shown near the top of the 
+window.
+
+[ Typescript ]
+
+The typescript environment functions as a container for the font and type definitions therein.
+
+Example
+
+In almost all cases the environment is used like this
+
+    \starttypescript [serif] [myname] [name]
+       \definefontsynonym [...]
+       ...
+    \stoptypescript
+    \starttypescript [sans] [myname] [name]
+       \definefontsynonym [...]
+       ...
+    \stoptypescript
+    \starttypescript [mono] [myname] [name]
+       \definefontsynonym [...]
+       ...
+    \stoptypescript
+
+immediately followed by
+
+    \starttypescript [myname]
+       \definetypeface [myname] [ss] [sans]  [...]
+       \definetypeface [myname] [rm] [serif] [...]
+       \definetypeface [myname] [tt] [mono]  [...]
+    \stoptypescript
+
+and the created definitions are then later used (perhaps in a different file) by:
+
+    \usetypescript [myname]
+    \setupbodyfont [myname]
+
+Following is an example:
+
+    $ mtxrun --script fonts --list --all
+    dejavusans                         dejavusans       ......   
+    dejavusansbold                     dejavusans       ......   
+    dejavusansboldoblique              dejavusans       ......   
+    dejavusansbook                     dejavusans       ......   
+    dejavusanscondensed                dejavusans       ......   
+    dejavusanscondensedbold            dejavusans       ......   
+    dejavusanscondensedboldoblique     dejavusans       ......   
+    dejavusanscondensedoblique         dejavusans       ......   
+    dejavusansextralight               dejavusans       ......   
+    dejavusansmono                     dejavusansmono   ......   
+    dejavusansmonobold                 dejavusansmono   ......   
+    dejavusansmonoboldoblique          dejavusansmono   ......   
+    dejavusansmonobook                 dejavusansmono   ......   
+    dejavusansmononormal               dejavusansmono   ......   
+    dejavusansmonooblique              dejavusansmono   ......   
+    dejavusansnormal                   dejavusans       ......   
+    dejavusansoblique                  dejavusans       ......   
+    dejavusanssemi                     dejavusans       ......   
+    dejavuserif                        dejavuserif      ......   
+    dejavuserifbold                    dejavuserif      ......   
+    dejavuserifbolditalic              dejavuserif      ......   
+    dejavuserifbook                    dejavuserif      ......   
+    dejavuserifcondensed               dejavuserif      ......   
+    dejavuserifcondensedbold           dejavuserif      ......   
+    dejavuserifcondensedbolditalic     dejavuserif      ......   
+    dejavuserifcondenseditalic         dejavuserif      ......   
+    dejavuserifitalic                  dejavuserif      ......   
+    dejavuserifnormal                  dejavuserif      ......   
+    dejavuserifsemi                    dejavuserif      ......   
+
+Given the output of the "mtxrun" run above, we can put following into
+the setup area of the TEX file.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Define first script named [serif][dejavu]
+    % Define second script named [sans][dejavu]
+    % Define the typeface dejavu; use serif for rm-fonts, sans serif for ss-fonts.
+    % Indicate the typeface to use.
+    \starttypescript [serif] [dejavu]
+      \definefontsynonym [Serif]             [name:dejavuserif]
+      \definefontsynonym [SerifBold]         [name:dejavuserif]
+      \definefontsynonym [SerifItalic]       [name:dejavuserif]
+      \definefontsynonym [SerifSlanted]      [name:dejavuserif]
+      \definefontsynonym [SerifBoldItalic]   [name:dejavuserif]
+      \definefontsynonym [SerifBoldSlanted]  [name:dejavuserif]
+      \definefontsynonym [SerifCaps]         [name:dejavuserif]
+    \stoptypescript
+    \starttypescript [sans] [dejavu]
+      \definefontsynonym [Sans]             [name:dejavuserif]
+      \definefontsynonym [SansBold]         [name:dejavuserif]
+      \definefontsynonym [SansItalic]       [name:dejavuserif]
+      \definefontsynonym [SansSlanted]      [name:dejavuserif]
+      \definefontsynonym [SansBoldItalic]   [name:dejavuserif]
+      \definefontsynonym [SansBoldSlanted]  [name:dejavuserif]
+      \definefontsynonym [SansCaps]         [name:dejavuserif]
+    \stoptypescript
+    \starttypescript [mono] [dejavu]
+      \definefontsynonym [Sans]             [name:dejavuserif]
+      \definefontsynonym [SansBold]         [name:dejavuserif]
+      \definefontsynonym [SansItalic]       [name:dejavuserif]
+      \definefontsynonym [SansSlanted]      [name:dejavuserif]
+      \definefontsynonym [SansBoldItalic]   [name:dejavuserif]
+      \definefontsynonym [SansBoldSlanted]  [name:dejavuserif]
+      \definefontsynonym [SansCaps]         [name:dejavuserif]
+    \stoptypescript
+    \definetypeface[dejavu][rm][serif][dejavu]
+    \definetypeface[dejavu][ss][sans][dejavu]
+    \definetypeface[dejavu][tt][mono][dejavu]
+    \usetypescript[dejavu][uc]
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+The first script is named ``[serif][dejavu]``. The second script is named
+``[sans][dejavu]``, and the third script is named ``[mono][dejavu]``. When we
+call ``\setupbodyfont[dejavu]`` command it tries to retrieves a typeface that 
+is associated with the name "dejavu", and will execute one the scripts
+associated with  that name depending on the particular choice of font that is
+currently being specified..
+
+By default, when the command is called ``\setupbodyfont[dejavu]`` it would 
+have meant the choice of the "serif" font for that font family. However,  when
+the same command is invoked as ``\setupbodyfont[dejavu,sans]``, thee the
+"sans" font is to be used instead. In either case, CONTEXT will pick a
+typescript to execute depending on the particular font family. Thus, for the
+first case the script gets picked is ``[serif][dejavu]``, and for the second
+case the script ``[sans][dejavu]``. Inside each script there are provisions allowing 
+it to decide what font to choose for a specific font style, such as
+italic, slanted, small cap, etc. 
+
+In our example we have made it clear such that all font family choices such as
+``\rm``, ``\ss``, or ``\tt`` and all font style choices within each font
+family would always result in choosing the same "dejavuserif" font.  This
+design is particular useful in a situation where a particular glyph is found
+to be implemented only by one particular font (such as "dejavuserif"), and not
+others (such as "dejavuserifbold"), in which case this design guarrentees that
+this glyph will always be shown regardless of the choice of font family and/or
+font style choices in a TEX document.
+
+The \definetypeface command sets up a typeface for use within a typescript.
+This typeface links a font style switch commands, such as ``\rm``, ``\ss``, or
+``\tt`` to an actual font family (or font set). The first argument specifies
+the typescript of which the newly defined typeface will be a part. The second
+argument is the font switch command. The third and fourth arguments are
+pointers to already declared font sets which are defined else where. In our 
+case it is name of the font family name that are defined by our previous calls
+to \definefontfamily.
+
+Note that the names in the third argument such as "serif" and "sans" do not
+have the same meaning as the names used in \setupbodyfont. When calling
+\setupbodyfont, these names have special meaning, which means they
+must be provided as is. However, for \definetypeface command, these names
+are nothing more than convenience names that are attached to a group of fonts
+by the person that wrote the font definition. They serves to denote a group
+that names a particular font family. Oftentimes, the same name such as "serif"
+and "sans" are chosen, but there are plenty other times that this is not
+the case.
+
+The fifth argument to \definetypeface specifies specific font size setups (if
+any), these will be covered in the reference manual. Almost always, specifying
+default will suffice.
+
+The optional sixth argument is used for tweaking font settings like the
+specification of font features or adjusting parameters. In this case, the two
+modern font sets are loaded with a small magnification, this evens out the
+visual heights of the font styles.
+
+Note that the typeface names are then usable as arguments to \setupbodyfont
+or \switchtobodyfont commands.
+
+As an alternative to using a typescript CONTEXT also has provided another
+command called \definefontfamily. This command is used in place of a
+typescript, such that a single name such as "dejavu" can be associated with
+three different fonts depending on the font family name switch. For example,
+the  folloing three \definefontfamily commands are designed to associate a
+different font for each one of the three font family of the name "dejavu". The
+name "dejavu" can then be used as a new font to be specified inside the
+\setupbodyfont and/or \switchtobodyfont commands, such as
+``\setupbodyfont[dejavu]``, or ``\setupbodyfont[dejavu,sans]``.
+
+    \definefontfamily[dejavu][serif][dejavuserif]
+    \definefontfamily[dejavu][sans][dejavusans]
+    \definefontfamily[dejavu][mono][dejavusansmono]
+
+One advantage of using \definefontfamily is that CONTEXT will automatically
+figure out the font to use for the font style within each font family. For
+instance, if the italic font style is to be the case where the current font
+family is serif, then it automatically switches to using the "dejavuserifbold"
+font because it knows that this font is the right choice. This command also
+seems to be smart enough to stay with the same font if a specific
+font style font is not found.
 
 
 # Typographical Capabilities
