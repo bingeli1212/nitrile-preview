@@ -1,6 +1,6 @@
 ---
 title: ConTeXt TeX Engine
-camer.setupbodyfont: linuxlibertine,11pt
+camer.setupbodyfont: linux,11pt
 ---
 
 # Background
@@ -731,8 +731,9 @@ inside the \setupbodyfont and \switchtobodyfont commands.
 As an alternative to calling \definetypeface, which is to associate a "bodyfont"
 name with a typescript, CONTEXT also has provided a
 command called \definefontfamily. This command is similar to \definetypeface
-except that its second argument is a name such as "serif", "sans", or "mono" to 
-express the typeface. Its third argument is the name of an exsiting font
+except that its second argument is a name such as "serif", "sans", "mono",
+or "math" rather than "rm", "ss", and "tt" for expressing a typeface. 
+Its third argument is the name of an exsiting font
 that is typically the second column of the output of the "mtxrun" program.
 
     \definefontfamily[mydejavu][serif][dejavuserif]
@@ -746,6 +747,33 @@ specified as "dejavuserif", then it will switch to using the "dejavuserifbold"
 font for a bold text because it knows that this font is the right choice. 
 This command also seems to be smart enough to stay with the same font if a
 specific font style font is not found.
+
+Instead of supplying the name that is observed by looking at the output of a
+"mtxrun" program run, a more descriptive name such as "Time New Roman",  or
+"Arial" can also be used intead. Not sure where one can go about finding a
+list of such names, but the program ``luaotfload-tool`` seems to generate a
+list of fonts where the name of the font is more description---a uppercase and
+lowercase mixed names, rather than all-lowercase ones reported by the "mtxrun"
+program. Following are examples of running this command, copied from the file
+named "font-sel.mkvi" that is located in
+"/usr/local/texlive/2021/texmf-dist/tex/context/base/mkiv".
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \definefontfamily [dejavu] [serif] [DejaVu Serif]
+    \definefontfamily [dejavu] [sans]  [DejaVu Sans]
+    \definefontfamily [dejavu] [mono]  [DejaVu Sans Mono]
+    \definefontfamily [dejavu] [math]  [XITS Math] [rscale=1.1]
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \definefontfamily [office] [serif] [Times New Roman]
+    \definefontfamily [office] [sans]  [Arial] [rscale=0.9]
+    \definefontfamily [office] [mono]  [Courier]
+    \definefontfamily [office] [math]  [TeX Gyre Termes Math]
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \definefontfamily [linux] [serif] [Linux Libertine O]
+    \definefontfamily [linux] [sans]  [Linux Biolinum O]
+    \definefontfamily [linux] [mono]  [Latin Modern Mono]
+    \definefontfamily [linux] [math]  [TeX Gyre Pagella Math] [rscale=0.9]
+
 
 [ Switching Fonts ]
 
@@ -775,6 +803,41 @@ which is in the same form as that of the \setupbodyfont.
 
     {\switchtobodyfont[mydejavu,sans,10pt]Hello}
 
+[ CJK Fonts ]
+
+Fonts that are designed to provide glyphs of CJK characters are typically only
+designed to provide glyphs for some characters in the Unicode block named "CJK
+Unified Ideographs U+4E00 - U+9FFF". This block serves as a place that holds
+most commonly used characters that are traditional Chinese, simplied Chinese,
+or Japanese kanji. Thus, some of the characters there could be found to exist
+exclusitively as a Japanese kanji, while others might appear in both traditional
+and simplified Chinese. Some glyphs might appear in all three languages. 
+
+In addition, fonts that are designed to work with a particular script might
+also choose to provide glyphs that are punctuations. These punctuations glyphs
+could be found to have been scattered in several different Unicode blocks.
+Following is an example of creating new "bodyfont" names that are "cn"
+(Simplified Chinese), "tw" (Traditional Chinese), "jp" (Japanese kanji), and
+"kr" (Korean Hangul). Each name is associated with a font that is known to
+have supplied glyphs for that language. All the fonts are freely
+provided for by TexLive distribution as of 2021.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \definefontfamily[cn][serif][arplsungtilgb]
+    \definefontfamily[cn][sans][arplsungtilgb]
+    \definefontfamily[cn][mono][arplsungtilgb]
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \definefontfamily[tw][serif][arplmingti2lbig5]
+    \definefontfamily[tw][sans][arplmingti2lbig5]
+    \definefontfamily[tw][mono][arplmingti2lbig5]
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \definefontfamily[jp][serif][ipaexmincho]
+    \definefontfamily[jp][sans][ipaexmincho]
+    \definefontfamily[jp][mono][ipaexmincho]
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \definefontfamily[kr][serif][baekmukbatang]
+    \definefontfamily[kr][sans][baekmukbatang]
+    \definefontfamily[kr][mono][baekmukbatang]
 
 
 # Typographical Capabilities
