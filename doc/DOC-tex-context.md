@@ -1,115 +1,103 @@
 ---
 title: ConTeXt TeX Engine
+camer.setupbodyfont: linuxlibertine,11pt
 ---
 
 # Background
 
-ConTeXt is a general-purpose document processor. Like LaTeX, it is derived from TeX. 
-It is especially suited for structured 
-documents, automated document production, very fine typography, and multi-lingual 
-typesetting. It is based in part on the TeX 
-typesetting system, and uses a document markup language for manuscript preparation. 
-The typographical and automated capabilities of 
-ConTeXt are extensive, including interfaces for handling microtypography, multiple 
-footnotes and footnote classes, and manipulating 
-OpenType fonts and features. Moreover, it offers extensive support for colors, 
-backgrounds, hyperlinks, presentations, figure-text 
-integration, and conditional compilation. It gives the user extensive control over 
-formatting while making it easy to create new 
-layouts and styles without learning the low-level TeX macro language.
+ConTeXt is a general-purpose document processor. Like LaTeX, it is derived
+from TeX.  It is especially suited for structured  documents, automated
+document production, very fine typography, and multi-lingual  typesetting. It
+is based in part on the TeX  typesetting system, and uses a document markup
+language for manuscript preparation.  The typographical and automated
+capabilities of  ConTeXt are extensive, including interfaces for handling
+microtypography, multiple  footnotes and footnote classes, and manipulating 
+OpenType fonts and features. Moreover, it offers extensive support for colors,
+ backgrounds, hyperlinks, presentations, figure-text  integration, and
+conditional compilation. It gives the user extensive control over  formatting
+while making it easy to create new  layouts and styles without learning the
+low-level TeX macro language.
 
-ConTeXt may be compared and contrasted with LaTeX, but the primary thrust of the two 
-are rather distinct. ConTeXt from the ground 
-up is a typography and typesetting system meant to provide users easy and consistent 
-access to advanced typographical 
-control—important 
-for general-purpose typesetting tasks. The original vision of LaTeX is to insulate 
-the user from typographical 
-decisions—a 
-useful approach for submitting e.g. articles for a scientific journal. LaTeX has 
-evolved from that original vision; at the same 
-time, ConTeXt's unified design avoids the package clashes that can happen with 
-LaTeX.
+ConTeXt may be compared and contrasted with LaTeX, but the primary thrust of
+the two  are rather distinct. ConTeXt from the ground  up is a typography and
+typesetting system meant to provide users easy and consistent  access to
+advanced typographical  control—important  for general-purpose typesetting
+tasks. The original vision of LaTeX is to insulate  the user from
+typographical  decisions—a  useful approach for submitting e.g. articles for a
+scientific journal. LaTeX has  evolved from that original vision; at the same 
+time, ConTeXt's unified design avoids the package clashes that can happen with
+ LaTeX.
 
-ConTeXt provides a multi-lingual user interface with support for markup in English, 
-Dutch, German, French, and Italian and support 
-for output in many languages including western European, eastern European, 
-Arabic-script, 
-Chinese, Japanese, and Korean. It also 
-allows the user to use different TeX engines like PdfTEX, XeTeX, and LuaTeX without 
-changing the user interface.
+ConTeXt provides a multi-lingual user interface with support for markup in
+English,  Dutch, German, French, and Italian and support  for output in many
+languages including western European, eastern European,  Arabic-script, 
+Chinese, Japanese, and Korean. It also  allows the user to use different TeX
+engines like PdfTEX, XeTeX, and LuaTeX without  changing the user interface.
 
-As its native drawing engine, ConTeXt integrates a superset of MetaPost called 
-MetaFun, which allows the users to use the 
-drawing abilities of MetaPost for page backgrounds and ornaments. Metafun can also 
-be used with stand alone MetaPost. ConTeXt also 
-supports the use of other external drawing engines, like PGF/TikZ and 
-PSTricks.
+As its native drawing engine, ConTeXt integrates a superset of MetaPost called
+ MetaFun, which allows the users to use the  drawing abilities of MetaPost for
+page backgrounds and ornaments. Metafun can also  be used with stand alone
+MetaPost. ConTeXt also  supports the use of other external drawing engines,
+like PGF/TikZ and  PSTricks.
 
-ConTeXt 
-also provides a macro package for typesetting chemical structure diagrams 
-with TeX called PPCHTeX, as well as many 
-other modules. This package can also be used with plain TeX and LaTeX.
+ConTeXt  also provides a macro package for typesetting chemical structure
+diagrams  with TeX called PPCHTeX, as well as many  other modules. This
+package can also be used with plain TeX and LaTeX.
 
-Originally entitled pragmatex, ConTeXt was given its name around 1996. by Hans 
-Hagen from PRAGMA Advanced Document Engineering 
-(Pragma ADE), a Netherlands-based company.
+Originally entitled pragmatex, ConTeXt was given its name around 1996. by Hans
+Hagen from PRAGMA Advanced Document Engineering  (Pragma ADE), a
+Netherlands-based company.
 
 [ License ]
 
-ConTeXt is free software: the program code (i.e. anything not under 
-the /doc subtree) is distributed under the GNU GPL; the documentation 
-is provided under Creative Commons Attribution NonCommercial 
-ShareAlike license.[14]
+ConTeXt is free software: the program code (i.e. anything not under  the /doc
+subtree) is distributed under the GNU GPL; the documentation  is provided
+under Creative Commons Attribution NonCommercial  ShareAlike license.[14]
 
-The ConTeXt official manual(2001) and ConTeXt official mini 
-tutorial (1999) are documents copyrighted by Pragma, but there 
-is a repository of the future new manual[15] released under 
-the GNU Free Documentation License.[16][17] As of April 2009 
-there is an up-to-date version of the fonts and typography chapters.[18]
+The ConTeXt official manual(2001) and ConTeXt official mini  tutorial (1999)
+are documents copyrighted by Pragma, but there  is a repository of the future
+new manual[15] released under  the GNU Free Documentation License.[16][17] As
+of April 2009  there is an up-to-date version of the fonts and typography
+chapters.[18]
 
 [ Versions ]
 
-The current version of ConTeXt is LMTX, introduced in April 
-2019 as the successor to Mark IV (MkIV).[19] Previous versions 
-— Mark II (MkII) and Mark I — are no longer maintained.
+The current version of ConTeXt is LMTX, introduced in April  2019 as the
+successor to Mark IV (MkIV).[19] Previous versions  — Mark II (MkII) and Mark
+I — are no longer maintained.
 
-According to the developers, the principal difference between 
-LMTX and its predecessors is that the newest version "uses a 
-compilation and scripting engine that is specifically developed 
-with ConTeXt in mind: LuaMetaTeX ... [which] has been optimised 
-heavily for ConTeXt use."
+According to the developers, the principal difference between  LMTX and its
+predecessors is that the newest version "uses a  compilation and scripting
+engine that is specifically developed  with ConTeXt in mind: LuaMetaTeX ...
+[which] has been optimised  heavily for ConTeXt use."
 
 
 [ History ]
 
-ConTeXt was created by Hans Hagen and Ton Otten of 
-Pragma ADE in the Netherlands around 1991
- due to the need for educational typesetting material.
+ConTeXt was created by Hans Hagen and Ton Otten of  Pragma ADE in the
+Netherlands around 1991 due to the need for educational typesetting material.
 
-Around 1996, Hans Hagen coined the name ConTeXt meaning 
-"text with tex" (con-tex-t; "con" is a Latin preposition meaning 
-"together with"). Before 1996 ConTeXt was used only within 
-Pragma ADE, but in 1996 it began to be adopted by a wider audience. 
-The first users outside Pragma were Taco Hoekwater, Berend de Boer 
-and Gilbert van den Dobbelsteen, and the first user outside the 
-Netherlands was Tobias Burnus.
+Around 1996, Hans Hagen coined the name ConTeXt meaning  "text with tex"
+(con-tex-t; "con" is a Latin preposition meaning  "together with"). Before
+1996 ConTeXt was used only within  Pragma ADE, but in 1996 it began to be
+adopted by a wider audience.  The first users outside Pragma were Taco
+Hoekwater, Berend de Boer  and Gilbert van den Dobbelsteen, and the first user
+outside the  Netherlands was Tobias Burnus.
 
 In July 2004, contextgarden.net wiki page was created.
 
-ConTeXt low-level code was originally written in Dutch. 
-Around 2005, the ConTeXt developers began translating this to 
-English, resulting in the version known as MKII, which is now 
-stable and frozen[citation needed].
+ConTeXt low-level code was originally written in Dutch.  Around 2005, the
+ConTeXt developers began translating this to  English, resulting in the
+version known as MKII, which is now  stable and frozen[citation needed].
 
-In August 2007, Hans Hagen presented the MKIV version, and the 
-first public beta was released later that year.
+In August 2007, Hans Hagen presented the MKIV version, and the  first public
+beta was released later that year.
 
-During the ConTeXt User Meeting 2008, Mojca Miklavec presented 
-ConTeXt Minimals, a distribution of ConTeXt containing the latest 
-binaries and intended to have a small memory footprint, thus 
-demanding less bandwidth for updates. In August 2008, this 
-distribution was registered as a project in launchpad web site.
+During the ConTeXt User Meeting 2008, Mojca Miklavec presented  ConTeXt
+Minimals, a distribution of ConTeXt containing the latest  binaries and
+intended to have a small memory footprint, thus  demanding less bandwidth for
+updates. In August 2008, this  distribution was registered as a project in
+launchpad web site.
 
 In June 2008, Patrick Gundlach wrote the first post in ConTeXt blog.
 
@@ -167,47 +155,41 @@ In April 2019, LMTX (ConTeXt LuaMetaTeX) was announced.
 
 [ LuaTEX ]
 
-LuaTEX is a TeX-based computer typesetting system which 
-started as a version of PdfTEX with a Lua scripting engine 
-embedded. After some experiments it was adopted by the TeX 
-Live distribution as a successor to PdfTEX (itself an 
-extension of ε-TeX, which generates PDFs).
-Later in the project some functionality of Aleph was 
-included (esp. multi-directional typesetting). 
-The project was originally sponsored by the 
-Oriental TeX project, founded by Idris Samawi 
-Hamid, Hans Hagen, and Taco Hoekwater.
+LuaTEX is a TeX-based computer typesetting system which  started as a version
+of PdfTEX with a Lua scripting engine  embedded. After some experiments it was
+adopted by the TeX  Live distribution as a successor to PdfTEX (itself an 
+extension of ε-TeX, which generates PDFs). Later in the project some
+functionality of Aleph was  included (esp. multi-directional typesetting). 
+The project was originally sponsored by the  Oriental TeX project, founded by
+Idris Samawi  Hamid, Hans Hagen, and Taco Hoekwater.
 
-The main objective of the project is to provide a version of 
-TeX where all internals are accessible from Lua. In the process 
-of opening up TeX much of the internal code is rewritten. Instead 
-of hard coding new features in TeX itself, users (or macro package writers) 
-can write their own extensions. LuaTeX offers support for OpenType 
-fonts with external modules. One of them, written in Lua, is provided
-by the LuaTeX team, but support for complex scripts is limited; there 
-is work in progress (as of 2019) to integrate HarfBuzz.
+The main objective of the project is to provide a version of  TeX where all
+internals are accessible from Lua. In the process  of opening up TeX much of
+the internal code is rewritten. Instead  of hard coding new features in TeX
+itself, users (or macro package writers)  can write their own extensions.
+LuaTeX offers support for OpenType  fonts with external modules. One of them,
+written in Lua, is provided by the LuaTeX team, but support for complex
+scripts is limited; there  is work in progress (as of 2019) to integrate
+HarfBuzz.
 
-A related project is MPLib (an extended MetaPost library module), 
-which brings a graphics engine into TeX.
+A related project is MPLib (an extended MetaPost library module),  which
+brings a graphics engine into TeX.
 
-The LuaTeX team consists of Luigi Scarso, Taco Hoekwater, Hartmut 
-Henkel and Hans Hagen.
+The LuaTeX team consists of Luigi Scarso, Taco Hoekwater, Hartmut  Henkel and
+Hans Hagen.
 
-The first public beta was launched at TUG 2007 in San Diego. 
-The first formal release was planned for the end of 2009, and 
-the first stable production version was released in 2010.
-Version 1.00 was released in September 2016 during ConTeXt 2016.
-As of October 2010, both ConTeXt mark IV and LaTeX with extra 
-packages (e.g. luaotfload, luamplib, luatexbase, luatextra) 
-make use of new LuaTeX features. Both are supported in TeX 
-Live 2010 with LuaTeX 0.60, and in LyX. Special support 
-in plain TeX is still under development.
+The first public beta was launched at TUG 2007 in San Diego.  The first formal
+release was planned for the end of 2009, and  the first stable production
+version was released in 2010. Version 1.00 was released in September 2016
+during ConTeXt 2016. As of October 2010, both ConTeXt mark IV and LaTeX with
+extra  packages (e.g. luaotfload, luamplib, luatexbase, luatextra)  make use
+of new LuaTeX features. Both are supported in TeX  Live 2010 with LuaTeX 0.60,
+and in LyX. Special support  in plain TeX is still under development.
 
-So, what's LuaTEX? Short version: the hottest TEX engine 
-right now! Long version: It is the designated successor of 
-PdfTEX and includes all of its core features: direct generation 
-of PDF files with support for advanced PDF features and 
-micro-typographic enhancements to TEX typographic algorithms. 
+So, what's LuaTEX? Short version: the hottest TEX engine  right now! Long
+version: It is the designated successor of  PdfTEX and includes all of its
+core features: direct generation  of PDF files with support for advanced PDF
+features and  micro-typographic enhancements to TEX typographic algorithms. 
 The main new features of LuaTEX are:
 
 1. Native support of Unicode, the modern standard for 
