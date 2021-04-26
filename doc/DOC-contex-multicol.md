@@ -381,8 +381,10 @@ figure &ref{fig:multicol-5}.
     \definecolumnset [example-1] [n=2]
     \definecolumnset [example-2] [n=2]
     \starttext \showgrid
-      \startcolumnset [example-1] \dorecurse {1}{\input tufte \par} \stopcolumnset
-      \startcolumnset [example-2] \dorecurse {1}{\input ward  \par} \stopcolumnset
+      \startcolumnset [example-1] 
+        \dorecurse {1}{\input tufte \par} \stopcolumnset
+      \startcolumnset [example-2] 
+        \dorecurse {1}{\input ward  \par} \stopcolumnset
     \stoptext
 
 @ figure
@@ -419,7 +421,7 @@ Note, use a double quote (") rather than a single quote (') for the ImageMagick 
 
 Use two double quotes for VBScript scripts:
 
-    Set objShell = wscript.createobject("wscript.shell")
-    objShell.Exec("magick ""e:/myimages/image.png"" ""e:/myimages/image.jpg""")
+    Set my = wscript.createobject("wscript.shell")
+    my.Exec("magick ""e:/myimages/image.png"" ""e:/myimages/image.jpg""")
 
 
