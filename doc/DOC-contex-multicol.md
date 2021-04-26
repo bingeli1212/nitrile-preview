@@ -105,19 +105,19 @@ Following is an example that will typeset the pages shown in figure
   The output when "n=2"
 
   ```img{width:22%,outline}
-  image-multicol-1-1.pdf
+  image-multicol-1-0.png
   ```
 
   ```img{width:22%,outline}
-  image-multicol-1-2.pdf
+  image-multicol-1-1.png
   ```
  
   ```img{width:22%,outline}
-  image-multicol-1-3.pdf
+  image-multicol-1-2.png
   ```
 
   ```img{width:22%,outline}
-  image-multicol-1-4.pdf
+  image-multicol-1-3.png
   ```
 
 However, if we were to modifiy the source of the \definecolumnset command such
@@ -139,19 +139,19 @@ pages shown in figure &ref{fig:multicol-2}.
   The output when "nleft=3,nright=2,width=5cm"
 
   ```img{width:22%,outline}
-  image-multicol-2-1.pdf
+  image-multicol-2-0.png
   ```
 
   ```img{width:22%,outline}
-  image-multicol-2-2.pdf
+  image-multicol-2-1.png
   ```
  
   ```img{width:22%,outline}
-  image-multicol-2-3.pdf
+  image-multicol-2-2.png
   ```
 
   ```img{width:22%,outline}
-  image-multicol-2-4.pdf
+  image-multicol-2-3.png
   ```
 
 It can be observed that the \definecolumnset command lives inside
@@ -278,15 +278,15 @@ figure &ref{fig:multicol-3}.
   and it is at the start of the columned text.
 
   ```img{width:25%,outline}
-  image-multicol-3-1.pdf
+  image-multicol-3-0.png
   ```
 
   ```img{width:25%,outline}
-  image-multicol-3-2.pdf
+  image-multicol-3-1.png
   ```
  
   ```img{width:25%,outline}
-  image-multicol-3-3.pdf
+  image-multicol-3-2.png
   ```
 
 However, when a column span is introduced into the column text, its
@@ -327,15 +327,15 @@ right hand side. The text seems to be on top of each other. See figure
   columned text.
 
   ```img{width:25%,outline}
-  image-multicol-4-1.pdf
+  image-multicol-4-0.png
   ```
 
   ```img{width:25%,outline}
-  image-multicol-4-2.pdf
+  image-multicol-4-1.png
   ```
  
   ```img{width:25%,outline}
-  image-multicol-4-3.pdf
+  image-multicol-4-2.png
   ```
 
 The \definecolumnsetarea command is designed to create a fixed area (e.g. for
@@ -392,26 +392,26 @@ figure &ref{fig:multicol-5}.
   the other.
 
   ```img{width:25%,outline}
-  image-multicol-5-1.pdf
+  image-multicol-5-0.png
   ```
 
   ```img{width:25%,outline}
-  image-multicol-5-2.pdf
+  image-multicol-5-1.png
   ```
  
- As a side note. To convert a multi-page PDF file to a number
- of PNG files where each PNG file represents a page, use the 
- following command:
+As a side note. To convert a multi-page PDF file to a number
+of PNG files where each PNG file represents a page, use the 
+following command:
 
-     convert x.pdf +adjoin x-%04d.png
+    convert x.pdf +adjoin x-%04d.png
 
 To verify that ImageMagick is working properly following
 commands can be run. If it works property then the logo
 would have been generated that are "logo.gif".
 
-magick logo: logo.gif
-magick identify logo.gif
-magick logo.gif win:
+    magick logo: logo.gif
+    magick identify logo.gif
+    magick logo.gif win:
 
 Note, use a double quote (") rather than a single quote (') for the ImageMagick command line under Windows:
 
