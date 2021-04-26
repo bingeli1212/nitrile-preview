@@ -498,7 +498,7 @@ the "dingbats" fonts no longer works.
     \usepackage{luatexja}
 
 
-# Handing Fonts
+# Handling Fonts
 
 [ Symbols ]
 
@@ -701,57 +701,38 @@ the setup area of the TEX file.
       \definefontsynonym [SansBoldSlanted]  [name:dejavuserif]
       \definefontsynonym [SansCaps]         [name:dejavuserif]
     \stoptypescript
-    \definetypeface[dejavu][rm][serif][dejavu]
-    \definetypeface[dejavu][ss][sans][dejavu]
-    \definetypeface[dejavu][tt][mono][dejavu]
-    \usetypescript[dejavu][uc]
+    \definetypeface[mydejavu][rm][serif][dejavu]
+    \definetypeface[mydejavu][ss][sans][dejavu]
+    \definetypeface[mydejavu][tt][mono][dejavu]
+    \usetypescript[mydejavu][uc]
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 The first script is named ``[serif][dejavu]``. The second script is named
-``[sans][dejavu]``, and the third script is named ``[mono][dejavu]``. When we
-call ``\setupbodyfont[dejavu]`` command it tries to retrieves a typeface that 
-is associated with the name "dejavu", and will execute one the scripts
-associated with  that name depending on the particular choice of font that is
-currently being specified..
-
-By default, when the command is called ``\setupbodyfont[dejavu]`` it would 
-have meant the choice of the "serif" font for that font family. However,  when
-the same command is invoked as ``\setupbodyfont[dejavu,sans]``, thee the
-"sans" font is to be used instead. In either case, CONTEXT will pick a
-typescript to execute depending on the particular font family. Thus, for the
-first case the script gets picked is ``[serif][dejavu]``, and for the second
-case the script ``[sans][dejavu]``. Inside each script there are provisions allowing 
-it to decide what font to choose for a specific font style, such as
-italic, slanted, small cap, etc. 
+``[sans][dejavu]``, and the third script is named ``[mono][dejavu]``. 
+Each script defines the choices of fonts to be used for each of the
+font styles, such as the font to use when the style is italic, bold,
+or bold and italic, each of which could be a font that is defined in 
+a different font file.
 
 In our example we have made it clear such that all font family choices such as
 ``\rm``, ``\ss``, or ``\tt`` and all font style choices within each font
-family would always result in choosing the same "dejavuserif" font.  This
-design is particular useful in a situation where a particular glyph is found
-to be implemented only by one particular font (such as "dejavuserif"), and not
-others (such as "dejavuserifbold"), in which case this design guarrentees that
-this glyph will always be shown regardless of the choice of font family and/or
-font style choices in a TEX document.
+family is going to come from the same "dejavuserif" font.  This design is
+delibrately chosen and suitable in a situation to show a  glyph that serves as
+a symbol where it makes sense such that this glyph is always to look the same
+regardless of the choice of the typeface and styles of the surrounding text.
+This also takes the issue where a particular glyph is found to be defined in
+one style, such as normal but not in italic or bold.
 
-The \definetypeface command sets up a typeface for use within a typescript.
-This typeface links a font style switch commands, such as ``\rm``, ``\ss``, or
-``\tt`` to an actual font family (or font set). The first argument specifies
-the typescript of which the newly defined typeface will be a part. The second
-argument is the font switch command. The third and fourth arguments are
-pointers to already declared font sets which are defined else where. In our 
-case it is name of the font family name that are defined by our previous calls
-to \definefontfamily.
-
-Note that the names in the third argument such as "serif" and "sans" do not
-have the same meaning as the names used in \setupbodyfont. When calling
-\setupbodyfont, these names have special meaning, which means they
-must be provided as is. However, for \definetypeface command, these names
-are nothing more than convenience names that are attached to a group of fonts
-by the person that wrote the font definition. They serves to denote a group
-that names a particular font family. Oftentimes, the same name such as "serif"
-and "sans" are chosen, but there are plenty other times that this is not
-the case.
+The \definetypeface command is designed to creates a new name that would
+serve as a name for a collection of typefaces. For instance, 
+the name "myfree" is created to serve as the name for serif, sans, and
+mono typeface coming from the font "free". 
+It does it by allowing the name "myfree" as the first argument.
+The second argument is one of the following: "rm", "ss", 
+or "tt". The third and fourth arguments are names of a individual typescript.
+Note that each typescript is identified by two names that are the 
+first and second argument of the \starttypescript command.
 
 The fifth argument to \definetypeface specifies specific font size setups (if
 any), these will be covered in the reference manual. Almost always, specifying
@@ -762,30 +743,56 @@ specification of font features or adjusting parameters. In this case, the two
 modern font sets are loaded with a small magnification, this evens out the
 visual heights of the font styles.
 
-Note that the typeface names are then usable as arguments to \setupbodyfont
-or \switchtobodyfont commands.
+Once defined, the name "myfree" becomes a "bodyfont" that can be used
+inside the \setupbodyfont and \switchtobodyfont commands.
 
-As an alternative to using a typescript CONTEXT also has provided another
-command called \definefontfamily. This command is used in place of a
-typescript, such that a single name such as "dejavu" can be associated with
-three different fonts depending on the font family name switch. For example,
-the  folloing three \definefontfamily commands are designed to associate a
-different font for each one of the three font family of the name "dejavu". The
-name "dejavu" can then be used as a new font to be specified inside the
-\setupbodyfont and/or \switchtobodyfont commands, such as
-``\setupbodyfont[dejavu]``, or ``\setupbodyfont[dejavu,sans]``.
+As an alternative to calling \definetypeface, which is to associate a "bodyfont"
+name with a typescript, CONTEXT also has provided a
+command called \definefontfamily. This command is similar to \definetypeface
+except that its second argument is a name such as "serif", "sans", or "mono" to 
+express the typeface. Its third argument is the name of an exsiting font
+that is typically the second column of the output of the "mtxrun" program.
 
-    \definefontfamily[dejavu][serif][dejavuserif]
-    \definefontfamily[dejavu][sans][dejavusans]
-    \definefontfamily[dejavu][mono][dejavusansmono]
+    \definefontfamily[mydejavu][serif][dejavuserif]
+    \definefontfamily[mydejavu][sans][dejavusans]
+    \definefontfamily[mydejavu][mono][dejavusansmono]
 
 One advantage of using \definefontfamily is that CONTEXT will automatically
-figure out the font to use for the font style within each font family. For
-instance, if the italic font style is to be the case where the current font
-family is serif, then it automatically switches to using the "dejavuserifbold"
-font because it knows that this font is the right choice. This command also
-seems to be smart enough to stay with the same font if a specific
-font style font is not found.
+recognize the "right" choice of a font for a font style such as italic or
+bold. For instance, if the current typeface is serif, and the name of font is
+specified as "dejavuserif", then it will switch to using the "dejavuserifbold"
+font for a bold text because it knows that this font is the right choice. 
+This command also seems to be smart enough to stay with the same font if a
+specific font style font is not found.
+
+[ Switching Fonts ]
+
+Setting up the main font for the entire document is done by calling the
+\setupbodyfont command in the setup area. This command expects a single
+argument, which is a list of features of this font, including the "bodyfont"
+name, the typeface, and size. 
+
+    \setupbodyfont[mydejavu]
+
+The name of the "bodyfont" is the string given to the  first argument to the
+\definetypeface command, or the string that is the first argument  to the
+\definefontfamily command. By default, when the command is invoked as
+``\setupbodyfont[mydejavu]``, it assumes the "serif" typeface that is
+associated with the bodyfont "mydejavu". If the same command is invoked as
+``\setupbodyfont[mydejavu,sans]`` then it assumes the "sans" typeface of the
+"mydejavu" bodyfont. Similarly, for a teletype typeface it will have  to be
+``\setupbodyfont[mydejavu,mono]``. The same command could also include the
+font size information. For instance to set the 10pt sans font for the main
+body following command can be used.
+
+    \setupbodyfont[mydejavu,sans,10pt]
+
+Similarly, the \switchtobodyfont command is to provide a temporary switch to a
+different "bodyfont" for a part of a main text. It expects a single argument
+which is in the same form as that of the \setupbodyfont.
+
+    {\switchtobodyfont[mydejavu,sans,10pt]Hello}
+
 
 
 # Typographical Capabilities
