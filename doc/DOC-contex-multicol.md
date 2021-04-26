@@ -91,6 +91,7 @@ In the examples that follow we use the following style to set up the layout:
 Following is an example that will typeset the pages shown in figure
 &ref{fig:multicol-1}.
 
+    \usemodule[visual]
     \definecolumnset[example][n=2]
     \setupindenting[yes,medium]
     \starttext
@@ -121,7 +122,8 @@ Following is an example that will typeset the pages shown in figure
 
 However, if we were to modifiy the source of the \definecolumnset command such
 that its second argument becomes the one that is shown as follows, the output
-will look different. See figure &ref{fig:multicol-2}
+will look different. Following is an example that will generate 
+pages shown in figure &ref{fig:multicol-2}.
 
     \usemodule[visual]
     \definecolumnset[example][nleft=3,nright=2,width=5cm]
@@ -253,7 +255,9 @@ are texts for the span. Note that the \startcolumnsetspan and \stopcolumnsetspan
 must be called between the \startcolumnset and \stopcolumnset command
 in order for it to take effect. In the example below it is called at the very
 beginning of the \startcolumnset and \stopcolumnset, making the span
-the very first part of the two-column text. See figure &ref{fig:multicol-3}.
+the very first part of the two-column text. Following
+is an example that will generate pages shown in
+figure &ref{fig:multicol-3}.
 
     \usemodule[visual]
     \definecolumnset[example][n=2]
@@ -372,6 +376,7 @@ the other, then the second one would likely to start at a new page.
 Following example would have generated the output that looks like the
 figure &ref{fig:multicol-5}.
 
+    \usemodule[visual]
     \setupindenting[yes,medium]
     \definecolumnset [example-1] [n=2]
     \definecolumnset [example-2] [n=2]
@@ -394,6 +399,27 @@ figure &ref{fig:multicol-5}.
   image-multicol-5-2.pdf
   ```
  
+ As a side note. To convert a multi-page PDF file to a number
+ of PNG files where each PNG file represents a page, use the 
+ following command:
 
+     convert x.pdf +adjoin x-%04d.png
+
+To verify that ImageMagick is working properly following
+commands can be run. If it works property then the logo
+would have been generated that are "logo.gif".
+
+magick logo: logo.gif
+magick identify logo.gif
+magick logo.gif win:
+
+Note, use a double quote (") rather than a single quote (') for the ImageMagick command line under Windows:
+
+    magick "e:/myimages/image.png" "e:/myimages/image.jpg"
+
+Use two double quotes for VBScript scripts:
+
+    Set objShell = wscript.createobject("wscript.shell")
+    objShell.Exec("magick ""e:/myimages/image.png"" ""e:/myimages/image.jpg""")
 
 

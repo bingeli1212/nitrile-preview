@@ -1,5 +1,6 @@
 ---
-title: ConTeXt translation
+title: Translation
+camer.setupbodyfont: linux,11pt
 ---
 
 # Issues
