@@ -236,12 +236,12 @@ the same. See figure &ref{fig:metafun-path-transformations}.
   image-metafun-5-6.png
   ```
 
-Figure &ref{fig:metafun-all} is a summary that showcases various 
+Table &ref{tab:metafun-all} is a summary that showcases various 
 transformation options for a path.
 
-@   figure
-    &label{fig:metafun-all}
-    All transformation options.
+@   table
+    &label{tab:metafun-all}
+    Path transformations.
 
     ```tabular
     METAPOST code              mathematical equivalent
@@ -255,12 +255,66 @@ transformation options for a path.
     (x,y) rotated r            (𝑥 cos(𝑟) − 𝑦 sin(𝑟), 𝑥 sin(𝑟) + 𝑦 cos(𝑟))
     ```
 
+Another transformation that is not listed 
+by the previous table 
+is the one named "reflectedabout", which
+is to transform the current path such that the new path
+is a reflection of the existing one 
+off a hypothetical "mirror". This hypothetical 
+"mirror" is really a line 
+expressed by a pair of coordinates, 
+which may or may not be parallel to the x-axis or y-axis. 
+Following is an example
+that showcases this transformation of a square 
+off a hypothetical "mirror" described by two points (2.4cm,-0.5cm) 
+and (2.6cm,3cm). The result is shown in figure 
+&ref{fig:metafun-reflectedabout}.
 
+    p reflectedabout((2.4cm,-0.5cm),(2.6cm,3cm))
 
+@   figure
+    &label{fig:metafun-reflectedabout}
+    Two squares where the one on the right hand side
+    is a mirrored reflection of the one on the left
+    hand side along the line of (2.4cm,-0.5cm),(2.6cm,3cm).
 
+    ```img{outline,width:6cm}
+    image-metafun-6.png
+    ```
 
+A ``zscaled`` transformation takes a pair of numbers which is to be 
+treated as a vector. When applied, its effect is similar
+to that of a rotation, especially when the argument is a unit vector.
+However, when the argument is not unit vector, it also has the effect
+of expanding or shrinking the path.  
 
-  
+    p zscaled (2,0.5) 
+
+Transformations can also be achieved by an explicitly defined 
+transformation matrix. Such a matrix must be assigned to a variable 
+whose type is ``transform``. When creating such a matrix, we typically
+start with an identity matrix, and then manipulate this matrix
+by applying transformations in the same mannor
+as if we were working with a path.
+
+    transform t ; 
+    t := identity scaled 2cm shifted (4cm,1cm) ; 
+
+With the prevous example, we have created a transformation matrix named
+``t``. Once created, we can go ahead and
+apply the transformation to an existing path by using
+the keyword "transformed" followed by the variable ``t`` 
+after an existing path.
+
+    p transformed t
+
+The keyword "identity" is a name of a built-in transformation matrix. The
+identity matrix is defined in such a way that it scales by a factor of one in
+both directions and shifts over the zero. There are other built-in
+transformation matrices as well. Using a transformation matrix can be quite
+useful  when it comes to saving typing and enforcing 
+consistency when the same transformation is to be repeated in many
+different locations. 
 
 
 
