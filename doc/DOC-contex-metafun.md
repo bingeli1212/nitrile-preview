@@ -502,9 +502,16 @@ this will fail:
     picture p ; p := image(draw textext("Foo"););
     \stopMPinclusions
 
-because inclusions happen before the local textexts get initialized and due to the multipass implementation are not seeN a second time. The order of processing is:
+because inclusions happen before the local textexts get initialized and due to the multipass implementation are not seeN a second time. The order of processing is shown
+by table &ref{fig:metafun-textext-init}.
 
+@   table
+    &label{fig:metafun-textext-init}
+    Orders of process for showing text.
+
+    ```tabular
     action             first pass      second pass
+    -------------------------------------------------
     definitions        yes
     extensions         yes
     inclusions         yes
@@ -512,6 +519,7 @@ because inclusions happen before the local textexts get initialized and due to t
     initializations    yes             yes
     metapost code      yes             yes
     end figure         yes             yes
+    ```
 
 The graph package (that comes with METAPOST) has some pseudo typesetting on board needed to format numbers. Because we don’t want to interfere with the definitions of macros used in that package we provide another set of macros for formatting: fmttext, thefmttext and rawfmttext.
 
@@ -558,6 +566,126 @@ Of course this extra formatter is also supported in the context command:
     \stopluacode
 
 This would have generated the same output as the one shown above.
+
+
+
+# Stroking a Path
+
+Once a path is constructed, it can be stroke, or filled if this 
+path is closed. When stroked, typically it will be stroked
+using a default line width, and with color black. However,
+a different color or line width can be specified.
+The common choice of command to stroke a path is ``draw``. But
+the ``drawarrow`` command can also be used, which would draw
+an arrowhead as well. Following example will produce a stroking
+of path that is shown by figure &ref{fig:metafun-stroke-1}.
+
+    path p ; p := (0cm,1cm)..(2cm,2cm)..(4cm,0cm)..(2.5cm,1cm)..cycle ;
+    drawarrow p withcolor .625red ;
+    draw p shifted (7cm,0) dashed withdots withcolor .625yellow ;
+
+@   figure 
+    &label{fig:metafun-stroke-1}
+    The result of stroking two paths.
+  
+    ```img{outline,width:8cm}
+    image-metafun-9.png
+    ```
+
+On a side note, once something is drawn, it is placed inside variable named 
+``currentpicture`` which is of type ``image``. This variable can be treated
+as if it is a customized variable declared by user. For instance, it can be assigned
+to another ``image`` variable such as following:
+
+    picture pic ; pic := currentpicture ;
+
+Once assigned, the current picture can be cleared to get ready to hold new
+contents. The following command effectively clears the picture memory and
+allows us to start anew.
+
+    currentpicture := nullpicture ;
+
+Interestingly, the new picture variable we have created can be "drawn" onto
+of the new ``currentpicture`` again by the ``draw`` command, and we
+can freely mix shift, rotate and slant transformation
+as we wanted.
+
+    draw pic rotated 45 withcolor red ;
+
+A picture can hold multiple paths. You may compare a picture to grouping as
+provided by drawing applications. See figure &ref{fig:metafun-multi-picture}
+which is the output of the following example.
+
+    draw (0cm,0cm)--(1cm,1cm) ; 
+    draw (1cm,0cm)--(0cm,1cm) ;
+    picture pic ; pic := currentpicture ;
+    draw pic shifted (3cm,0cm) ; 
+    draw pic shifted (6cm,0cm) ;
+    pic := currentpicture ; 
+    draw pic shifted (0cm,2cm) ;
+
+@   figure
+    &label{fig:metafun-multi-picture}
+    Using ``currentpicture`` to make multiple copies.
+
+    ```img{outline,width:8cm}
+    image-metafun-10.png
+    ```
+
+
+
+# Units
+
+Like TEX, METAPOST supports multiple units of length. In TEX, these units are
+hard coded and handled by the parser, where the internal unit of length is the
+scaled point (sp), something on the nanometer range. Because METAPOST is
+focused on POSTSCRIPT output, its internal unit is the big point (bp). All
+other units are derived from this unit and available as numeric instead of
+hard coded. Careful reading reveals that only the bp and in are fixed, while
+the rest of the dimensions are scalar multiples of bp.
+
+    mm= 2.83464;
+    pt= 0.99626;
+    dd= 1.06601;
+    bp:= 1; 
+    cm = 28.34645 ; 
+    pc = 11.95517 ; 
+    cc = 12.79213 ; 
+    in := 72 ;
+
+Since we are dealing with graphics, the most commonly used dimensions are pt,
+bp, mm, cm and in. Following is an example that creates a square of size
+1in in both directions, and a circle of 1in in diameter. It is produced
+by the following MetaFun code and the result of which is shown by 
+figure &ref{fig:metafun-textoneinch}.
+
+    fill fullsquare scaled 72.27pt withcolor .625yellow ;
+    fill fullcircle scaled 72.27pt withcolor white ;
+    label("72.27pt", center currentpicture) ;
+
+@   figure
+    &label{fig:metafun-textoneinch}
+    The square and circle of size 1 inch.
+
+    ```img
+    image-metafun-11.png
+    ```
+
+In METAPOST the following lines are identical:
+
+    draw fullcircle scaled 100 ;
+    draw fullcircle scaled 100bp ;
+
+You might be tempted to omit the unit, but this can be confusing, particularly
+if you also program in a language like METAFONT, where the pt is the base
+unit. This means that a circle scaled to 100 in METAPOST is not the same as a
+circle scaled to 100 in METAFONT. Consider the next definition:
+
+
+
+
+
+
 
 
 
