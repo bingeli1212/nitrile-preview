@@ -318,6 +318,112 @@ different locations.
 
 
 
+# Path Construction Operators
+
+In short, a path is a collection of points and instructions embedded within
+each point as to how to connect this point with the one before it. 
+The connection between two points of a path is going to come out as a 
+straight line or a Bezier curve between these two points when a path
+is stroked, or serve as part of a boundary of a closed region.  
+In particular, these instructions are stored internally as "control points"
+of a cubic Bezier curve.
+
+Take for example the figure &ref{fig:metafun-ellipses}. The figure on the
+right hand side shows the location of "control points" embedded inside a
+"stroked" path that is on the left hand side, in addition to the locations of
+the individual points.
+
+@   figure
+    &label{fig:metafun-ellipses}
+    The figure on the right
+    hand side shows the locations of all "control points" 
+    embedded inside a "stroked" path
+    that is on the left hand side.
+
+    ```img{outline,width:6cm}
+    image-metafun-7.png
+    ```
+
+Note that for a picture, 
+there is a concept of an origin, which is location where the point (0,0) would
+have been found. There is also the concept of a bounding box, which is the
+measurement of a rectangle which is the smallest size possible to cover all paths 
+inside a picture.
+
+For an individual path, there is the notion of an "open" path versus that of a
+"closed" path. For a closed path its last point always connects the first
+point, an concept  that is important when it is used to describe a "closed"
+region and which can be used for "filling".  An open path is a path is that
+not considered "closed" and can only be used for stroking.
+
+    path z0,z1,z2,z3;
+    z0 = (0.5cm,1.5cm) ; 
+    z1 = (2.5cm,2.5cm) ;
+    z2 = (6.5cm,0.5cm) ; 
+    z3 = (3.0cm,1.5cm) ;
+
+Figure &ref{fig:metafun-op1} describes a closed path 
+that is ``z0--z1--z2--z3--cycle``. Here, the double-hyphen is 
+considered an "operator" such that it adds the information to the path
+about how the points of z0 and z1 is to be connected.
+In addition, the keyword "cycle" is used to add information necessary
+to the path how the last point z3 is to be connected with the first 
+point z0.
+
+@   figure{subfigure}
+    &label{fig:metafun-op1}
+    (a) The path is ``z0--z1--z2--z3--cycle``.
+    (b) The path is ``z0..z1..z2..z2..cycle``. 
+
+    ```img{outline,width:6cm}
+    image-metafun-8-1.png
+    ```
+
+    ```img{outline,width:6cm}
+    image-metafun-8-2.png
+    ```
+
+    \\
+
+    ```img{outline,width:6cm}
+    image-metafun-8-3.png
+    ```
+
+    ```img{outline,width:6cm}
+    image-metafun-8-4.png
+    ```
+
+    \\
+
+    ```img{outline,width:6cm}
+    image-metafun-8-5.png
+    ```
+
+However, if we were to change the path construction to look like
+``z0..z1..z2..z3..cycle`` 
+the result would look different. In particular,
+the lines connecting these points will look like smoothed curves 
+transitioned smoothly from one point to another.
+
+If the path were to be constructed as 
+``z0---z1---z2---z3---cycle`` it would look very much
+like that of (c).
+However, if you were to take a look at the 
+location of the control points there are some visible distinctions.
+When double-hypen is used, it appears that the connection between
+two points are still cubic Bezier, except that the control points
+are placed in such locations where a curved line isn't produced.
+However, if triple-hyphen is used the result is simply a straight line,
+and no control points at all.
+
+The distinction between double-hyphen and triple-hyphen becomes
+more appearant if there is a mix of double-hyphen and double-dot between points. For
+instance, if we were to contruct a path that is
+``z0..z1..z2--z3..cycle``
+versus the one that is constructed as 
+``z0..z1..z2---z3..cycle``
+the result will be quite different. See figure (d) and (e).
+
 
 
 
