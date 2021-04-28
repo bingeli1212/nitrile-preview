@@ -401,6 +401,10 @@ figure &ref{fig:multicol-5}.
   image-multicol-5-1.png
   ```
  
+
+
+# Convert PDF file to PNG
+
 As a side note. To convert a multi-page PDF file to a number
 of PNG files where each PNG file represents a page, use the 
 following command:
@@ -415,7 +419,8 @@ would have been generated that are "logo.gif".
     magick identify logo.gif
     magick logo.gif win:
 
-Note, use a double quote (") rather than a single quote (') for the ImageMagick command line under Windows:
+Note, use a double quote (") rather than a single quote (') for the ImageMagick
+command line under Windows:
 
     magick "e:/myimages/image.png" "e:/myimages/image.jpg"
 
@@ -423,5 +428,40 @@ Use two double quotes for VBScript scripts:
 
     Set my = wscript.createobject("wscript.shell")
     my.Exec("magick ""e:/myimages/image.png"" ""e:/myimages/image.jpg""")
+
+If there is an error, then checks to make sure that 'gs' program is available. This is
+the program that comes as part of a "ghostscript" installation. 
+
+    $ which gs
+    /usr/local/bin/gs
+
+On Mac running "brew install ghostscript" should get it. 
+
+    $ brew install ghostscript 
+    $ brew install imagemagick
+
+
+
+# Convert SVG file to PNG
+
+To convert a SVG file to PNG, call the inkscape program with the following arguments.
+
+    /Applications/Inkscape.app/Contents/MacOS/inkscape --export-type="png" \
+       --export-dpi=300 image.svg
+
+The run of the previous command line would have generated an image file named "image.png" 
+in the current directory.
+
+Converting a SVG file to PNG using imagemagic requires the presence of "librsvg" library.
+It can be installed on Mac using brew such as
+
+    $ brew install librsvg
+
+Afterwards the command would work:
+
+    $ convert -density 1200 image.svg image.png
+
+
+
 
 

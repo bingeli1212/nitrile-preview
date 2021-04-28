@@ -839,6 +839,736 @@ provided for by TexLive distribution as of 2021.
     \definefontfamily[kr][sans][baekmukbatang]
     \definefontfamily[kr][mono][baekmukbatang]
 
+# Dynamics
+
+Sometimes you want to enable or disable a specific feature only for a specific
+span of text. Defining a font for only this occasion is overkill, especially
+when for instance features are used to fine-tune the typography as happens in
+the Oriental TEX project, which is related to LuaTEX. Instead of defining yet
+another font instance we can therefore enable and disable specific features.
+For this it is not needed to know the current font and its size.
+
+Dynamics are a special case of node mode and you don’t need to set it up when
+defining a font. In fact, a font defined in base mode can also be dynamic. We
+show some simple  examples of applying dynamic features.
+
+Let’s first define some feature sets:
+
+    \definefontfeature[f:smallcaps][smcp=yes]
+    \definefontfeature[f:nocaps]   [smcp=no]
+    \definefontfeature[f:oldstyle] [onum=yes]
+    \definefontfeature[f:newstyle] [onum=no]
+
+We can add and subtract these features from the current feature set that is
+bound to the current font. 
+The output is shown in figure &ref{fig:image-fonts-1}-(a)
+
+    \switchtobodyfont[pagella]    123 normal
+    \addfeature     {f:oldstyle}  123 oldstyle
+    \addfeature     {f:smallcaps} 123 olstyle smallcaps
+    \subtractfeature{f:oldstyle}  123 smallcaps
+    \subtractfeature{f:smallcaps} 123 normal
+
+@ figure{subfigure}
+  &label{fig:image-fonts-1}
+  Two outputs of using \addfeature and \subtractfeature commands.
+
+    ```img{outline,width:80%}
+    image-fonts-1.png
+    ```
+
+    \\
+
+    ```img{outline,width:80%}
+    image-fonts-2.png
+    ```
+
+The following does the same, but only uses addition. 
+The output is shown in figure &ref{fig:image-fonts-1}-(b)
+
+    \switchtobodyfont[pagella] 123 normal
+    \addfeature{f:oldstyle}    123 oldstyle
+    \addfeature{f:smallcaps}   123 olstyle smallcaps
+    \addfeature{f:newstyle}    123 smallcaps
+    \addfeature{f:nocaps}      123 normal
+
+You can also completely replace a feature set. Of course the set is only
+forgotten inside the current group.
+
+    \switchtobodyfont[pagella]   123 normal
+    \addfeature    {f:oldstyle}  123 oldstyle
+    \addfeature    {f:smallcaps} 123 olstyle smallcaps
+    \replacefeature{f:oldstyle}  123 oldstyle
+    \replacefeature{f:smallcaps} 123 smallcaps
+
+You can exercise some control with \resetfeature: 
+
+    \switchtobodyfont[pagella] 123 normal
+    \addfeature    [f:oldstyle]  123 oldstyle
+    \addfeature    [f:smallcaps] 123 olstyle smallcaps
+    \resetfeature                123 reset
+    \addfeature    [f:oldstyle]  123 oldstyle
+    \addfeature    [f:smallcaps] 123 olstyle smallcaps
+
+Note that in the last example we have switched to using left-right-brackets
+intead of left-right-braces for presenting command arguments.  Commands with
+braced and bracketed variants are designed to behave the same. There is also a
+generic command \feature that takes two arguments. Below we show all calls,
+with long and short variants:
+
+    \addfeature
+    \subtractfeature
+    \replacefeature
+    \resetandaddfeature[f:mine] \feature[local][f:mine] \feature[!][f:mine]
+    \revivefeature     [f:mine] \feature  [old][f:mine] \feature[>][f:mine]
+    \resetfeature               \feature[reset]         \feature[<]
+
+The \feature command can also be made to accept arguments that are surrounded
+by braces instead of brackets. As a bonus, the following also works:
+
+    \switchtobodyfont[pagella]
+    123 normal
+    \feature[+][f:smallcaps,f:oldstyle]
+    123 SmallCaps and OldStyle
+
+
+
+# Descretionaries
+
+One of the complications in supporting more complex features is that we can
+have  discretionary nodes. These are either inserted by the hyphenation
+engine, or explicitly by the user (directly or via macros). In most cases we
+don’t need to bother about this. For in- stance, more demanding scripts like
+Arabic don’t hyphenate, languages using the Latin script seldom want ligatures
+at hyphenation points (as they can be compound words) and/or avoid confusing
+hyphenation points, so what is left are specific user inserted dis-
+cretionaries. Add to that, that a proper font has not much kerning between
+lowercase characters and it will be clear that we can ignore most of this.
+Anyway, as we explicitly deal with user discretionaries, the next works out
+okay. Watch how we normally only have something special in the replacements
+text that shows up when no hyphenation is needed. The output is shown
+by figure &ref{fig:fonts-3}.
+
+    \language[nl]
+    \definedfont[file:texgyrepagella-regular.otf*default]
+    \hsize  1mm vereffenen \par
+    \hsize  1mm effe \par
+    \hsize  1mm e\discretionary{f-}{f}{ff}e \par
+    \hsize 20mm e\discretionary{f-}{f}{ff}e \par
+    \smallcaps
+    \hsize  1mm vereffenen \par
+    \hsize  1mm effe \par
+    \hsize  1mm e\discretionary{f-}{f}{ff}e \par
+    \hsize 20mm e\discretionary{f-}{f}{ff}e \par
+
+@ figure
+  &label{fig:fonts-3}
+  The output of uisng descretionaries.
+
+  ```img{outline,width:80%}
+  image-fonts-3.png
+  ```
+
+In base mode such things are handled by the TEX engine itself and it can deal
+with pretty complex cases. In node mode we use a simplification which in
+practice suffices. We will come back to this in section 5.2.12.
+
+
+
+# Efficiency
+
+The efficiency of the mechanisms described here depends on several factors. It
+will be clear that the larger the font, the more time it will take to load it.
+But what is large? Most cjk fonts are pretty large but also rather simple. A
+font like Zapfino on the other hand covers only latin but comes with many
+alternative shapes and a large set of rules. The Husayni font focusses on
+Arabic, which in itself has not that large an alphabet, but being an advanced
+script font, it has a lot of features and definitely a lot of rules.
+
+In terms of processing it’s safe to say that Latin is of average complexity.
+At most you will get some substitutions, like regular numerals being replaced
+by oldstyles, or ligature building, which involves a bit of analysis, and some
+kerning at the end. In base mode the substitutions have no overhead, simply
+because the character table already has references to the substituents and the
+replacement already takes place when defining the font. There ligature
+building and kerning are also fast because of the limited amount of lookups
+that also are already kept with the characters. In node mode however, the
+lists have to be parsed and tables have to be consulted so even Latin
+processing has some overhead: each glyph node is consulted and analyzed
+(either or not in its context), often multiple times. However, the code is
+rather optimized and we use caching of already analyzed data when possible.
+
+A cjk script is somewhat more complex on the one hand, but pretty simple on
+the other. Instead of font based kerning, we need to prevent or encourage
+breaks between certain characters. This information is not in the font and is
+processed otherwise but it does cost some time. The font part however is
+largely idle as there are no features to be applied. Even better, because the
+glyphs are large and the information density is high, the processing time per
+page is not much different from Latin. Base mode is good enough for most cjk.
+
+The Arabic script is another matter. There we definitely go beyond what base
+mode offers so we always end up in node mode. Also, because there is some
+analysis involved, quite some substitutions and in the end also positioning,
+these are the least efficient fonts in terms of processing time. Of course the
+fact that we mix directions also plays a role. If in the Husayni font you
+enable 30 features with an average of 5 rules per feature, a 300 character
+paragraph will take 45.000 actions.5 When multiple fonts are combined in a
+paragraph there will be more sweeps over the list and of course the
+replacements also have to happen.
+
+In a time when the average photo camera produces megabyte pictures it makes no
+sense to whine about the size of a font file. On the other hand as each font
+eventually ends up in memory as a Lua table, it makes sense to optimize that
+bit. This is why fonts are converted into a more efficient intermediate table
+that is cached on disk. This makes loading a font quite fast and due to shared
+tables memory usage rather efficient. Of course a scaled instance has to be
+generated too, but that is acceptable. To some extent loading and defining a
+font also depends on the way the macro package is set up.
+
+When comparing LuaTEX with for instance pdfTEX or XƎTEX you need to take into
+account that in ConTEXt MkIV we tend to use OpenType fonts only so there are
+less fonts loaded than in a more traditional setup. In ConTEXt startup time of
+MkIV is less than MkII although overall processing time is slower, which is
+due to Unicode being used and more functionality being provided. On the other
+hand, immediate MetaPost processing and more clever multipass handling wins
+back time. The impact of fonts on processing time in a regular document is
+therefore not that impressive. In practice a MkIV run can be faster than a
+MkII run, especially when MetaPost is used.
+
+In ConTEXt processing of node lists with respect to fonts is only one of the
+many manipulations of such lists and by now fonts are not really the
+bottleneck. The more not font related features users demand and enable, the
+less the relative impact of font processing becomes.
+
+Also, there are some advanced typographic extras that LuaTEX offers, like
+protrusion (think of hanging punctuation) and hz optimization (glyph scaling)
+and these slow down processing quite a lot, and they are not taking place at
+the Lua end at all, but this might change in MkIV. And, of course, typesetting
+involves more than fonts and other aspects can be way more demanding.
+
+
+
+# Introduction
+
+In traditional TEX a font is defined by referring to its filename. A
+definition looks like this:
+
+    \font \MyFontA = lmr10
+    \font \MyFontB = lmr10 at 20pt
+    \font \MyFontC = lmr10 scaled 1500
+
+The first definition defines the command MyFontA as a reference to the font
+stored in the file lmx10. No scaling takes place so the natural size is taken.
+This so called designsize is in no way standardized. Just look at these three
+specimen:
+
+```img{outline}
+image-fonts-4.png
+```
+
+The designsize is normally 10 point, but as there is no real reference for
+this a designer decides how to translate this into a visual representation. As
+a consequence the 20pt in the second line of the example definitions only
+means that the font is scaled to (normally) twice the designsize. The third
+line scaled by a factor 1.5 and the reason for using a value thousand times
+larger is that TEX’s numbers are integers.
+
+The next three lines are typical for Latin Modern (derived from Computer
+Modern) because this family comes in different design sizes.
+
+    \font \MyFontD = lmr12
+    \font \MyFontE = lmr12 at 20pt
+    \font \MyFontF = lmr12 scaled 1500
+
+Because the designsize is part of the font metrics the second line (\MyFontE)
+is of similar size as \MyFontB although the 12 point variant is visually
+better suited for scaling up.
+
+These definitions refer to files, but what file? What gets loaded is the file
+with name "name.tfm". Eventually for embedding in the (let’s assume pdf) file
+the outlines are taken from "name.pfb". At that stage, when present, a "name.vf"
+is consulted in order to resolve characters that are combinations of others
+(potentially from other pfb files). The mapping from "name.tfm" to "name.pfb"
+filename happens in the so called map file. This means that one can also refer
+to another file, for instance "name.ttf".
+
+All this logic is hard coded in the engine and because the virtual font
+mechanism was introduced later without extending the tfm format, it can be
+hard at times to figure out issues when a (maybe obsolete) virtual file is
+present (this can be the case if you have generated the tfm file from an afm
+file that comes with the pfb file when you buy one. But, in LuaTEX we no
+longer use traditional fonts and as a consequence we have more options open.
+Before we move on to them, we mention yet another definition:
+
+    \font \MyFontG = lmr12 sa 1.2
+
+This method is not part of TEX but is provided by ConTEXt, MkII as well as
+MkIV. It means as much as “scale this font to 1.2 times the bodyfontsize”. As
+this involves parsing the specification, it does not work as advertised here,
+but the next definition works okay:
+
+    \definefont[MyFontG][lmr12 sa 1.2]
+
+This indicates that we already had a parser for font specifications on board
+which in turn made it relatively easy to do even more parsing, for instance
+for font features as introduced in XeTEX and LuaTEX.
+
+
+
+# Specifications
+
+In LuaTEX we intercept the font loader. We do so for several reasons.
+
+- We want to make decisions on what file to load, this is needed when 
+  for instance there are files with the same name but different properties.
+- We want to be able to lookup by file, by name, and by more abstract 
+  specification. In doing so, we want to be as tolerant as possible.
+- We want to support several scaling methods, as discussed in the 
+  previous section.
+- We want to implement several strategies for passing features and 
+  defining non standard approaches.
+
+The formal specification of a font is as follows:
+
+    \definefont[PublicReference][filename]
+    \definefont[PublicReference][filename at dimension]
+    \definefont[PublicReference][filename scaled number]
+
+We already had that extended to:
+
+    \definefont[PublicReference][filename]
+    \definefont[PublicReference][filename at dimension]
+    \definefont[PublicReference][filename scaled number]
+    \definefont[PublicReference][filename sa number]
+
+So let’s generalize that to:
+
+    \definefont[PublicReference][filename scaling]
+
+And in MkIV we now have:
+
+    \definefont[PublicReference][filename*featurenames scaling]
+    \definefont[PublicReference][filename:featurespecication scaling]
+    \definefont[PublicReference][filename@virtualconstructor scaling]
+
+The second variant is seldom used and is only provided because some users have
+fonts defined in the XeTEX way. Users are advised not to use this method. The
+last method is special in the sense that it’s used to define fonts that are
+constructed using the built in virtual font constructors. This method is for
+instance used for defining virtual math fonts.
+
+The first method is what we use most. It is really important not to forget the
+feature specification. A rather safe bet is ``*default``. In a next chapter we
+will discuss the difference between these two; here we focus on the name part.
+
+The filename is in fact a symbolic name. In ConTEXt we have always used an
+indirect reference to fonts. Look at this:
+
+    \definefont[TitleFont][SerifBold*default sa 2]
+
+A reference like SerifBold makes it possible to define styles independent of
+the chosen font family. This reference eventually gets resolved to a real name
+and there can be a chain of references.
+
+Font definitions can be grouped into a larger setup using typescripts. In that
+case, we can set the features for a regular, italic, bold and bolditalic for
+the whole set but when a fontname has a specific feature associated (as in the
+previous examples) that one takes precedence.
+
+So far we talked about fonts being files, but in practice a lookup happens by
+file as well as by name as known to the system. In the next section this will
+be explained in more detail.
+
+
+
+# File
+
+You can force a file lookup with:
+    
+    \definefont[TitleFont][file:somefilename*default sa 2]
+
+If you use more symbolic names you can use the file: prefix in the mapping:
+
+    \definefontsynonym[SerifBold][file:somefile]
+    \definefont[TitleFont][SerifBold*default sa 2]
+
+In projects that are supposed to run for a long time I always use the file
+based lookup, because filenames tend to be rather stable. Also, as the lookup
+happens in the TEX directory structure, file lookups will rely on the general
+file search routines. This has the benefit that case is ignored. When no match
+is found the lookup will also use the font name database. Spaces and special
+characters are ignored.
+
+The name alone is not enough as there can be similar filenames with different
+suffixes. Therefore the lookup will happen in the order otf, ttf, afm, tfm and
+lua. You can force a lookup by being more explicit, like:
+
+    \definefont[TitleFont][file:somefilename.ttf*default sa 1]
+
+
+
+# Name
+
+Say that we want to use a Dejavu font and that instead of filenames we want to
+use its given name. The best way to find out what is available is to call for
+a list:
+
+    mtxrun --script font --list --all dejavu
+
+This produces the following list shown in figure &ref{fig:fonts-4}
+
+@ figure
+  &label{fig:fonts-4}
+  The output of the "mtxrun" command.
+
+  ```framed{outline,width:100%,framewidth:800}
+  dejavusans                       dejavusans          dejavusans                       DejaVuSans.ttf
+  dejavusansbold                   dejavusans          dejavusansbold                   DejaVuSans-Bold.ttf
+  dejavusansboldoblique            dejavusans          dejavusansboldoblique            DejaVuSans-BoldOblique.ttf
+  dejavusansbook                   dejavusans          dejavusans                       DejaVuSans.ttf
+  dejavusanscondensed              dejavusans          dejavusanscondensed              DejaVuSansCondensed.ttf
+  dejavusanscondensedbold          dejavusans          dejavusanscondensedbold          DejaVuSansCondensed-Bold.ttf
+  dejavusanscondensedboldoblique   dejavusans          dejavusanscondensedboldoblique   DejaVuSansCondensed-BoldOblique.ttf
+  dejavusanscondensedoblique       dejavusans          dejavusanscondensedoblique       DejaVuSansCondensed-Oblique.ttf
+  dejavusansextralight             dejavusans          dejavusansextralight             DejaVuSans-ExtraLight.ttf
+  dejavusansmono                   dejavusansmono      dejavusansmono                   DejaVuSansMono.ttf
+  dejavusansmonobold               dejavusansmono      dejavusansmonobold               DejaVuSansMono-Bold.ttf
+  dejavusansmonoboldoblique        dejavusansmono      dejavusansmonoboldoblique        DejaVuSansMono-BoldOblique.ttf
+  dejavusansmonobook               dejavusansmono      dejavusansmono                   DejaVuSansMono.ttf
+  dejavusansmononormal             dejavusansmono      dejavusansmonooblique            DejaVuSansMono-Oblique.ttf
+  dejavusansmonooblique            dejavusansmono      dejavusansmonooblique            DejaVuSansMono-Oblique.ttf
+  dejavusansnormal                 dejavusans          dejavusansoblique                DejaVuSans-Oblique.ttf
+  dejavusansoblique                dejavusans          dejavusansoblique                DejaVuSans-Oblique.ttf
+  dejavusanssemi                   dejavusans          dejavusanscondensedoblique       DejaVuSansCondensed-Oblique.ttf
+  dejavuserif                      dejavuserif         dejavuserif                      DejaVuSerif.ttf
+  dejavuserifbold                  dejavuserif         dejavuserifbold                  DejaVuSerif-Bold.ttf
+  dejavuserifbolditalic            dejavuserif         dejavuserifbolditalic            DejaVuSerif-BoldItalic.ttf
+  dejavuserifbook                  dejavuserif         dejavuserif                      DejaVuSerif.ttf
+  dejavuserifcondensed             dejavuserif         dejavuserifcondensed             DejaVuSerifCondensed.ttf
+  dejavuserifcondensedbold         dejavuserif         dejavuserifcondensedbold         DejaVuSerifCondensed-Bold.ttf
+  dejavuserifcondensedbolditalic   dejavuserif         dejavuserifcondensedbolditalic   DejaVuSerifCondensed-BoldItalic.ttf
+  dejavuserifcondenseditalic       dejavuserif         dejavuserifcondenseditalic       DejaVuSerifCondensed-Italic.ttf
+  dejavuserifitalic                dejavuserif         dejavuserifitalic                DejaVuSerif-Italic.ttf
+  dejavuserifnormal                dejavuserif         dejavuserifitalic                DejaVuSerif-Italic.ttf
+  dejavuserifsemi                  dejavuserif         dejavuserifcondenseditalic       DejaVuSerifCondensed-Italic.ttf
+  texgyredejavumath                texgyredejavumath   texgyredejavumathregular         texgyredejavu-math.otf
+  texgyredejavumathnormal          texgyredejavumath   texgyredejavumathregular         texgyredejavu-math.otf
+  texgyredejavumathregular         texgyredejavumath   texgyredejavumathregular         texgyredejavu-math.otf
+  ```
+
+The first column is the "identifier" column. The second is the "familyname"
+column. The third column is named "fontname", and the fourth column is named
+"filename". The first two columns mention the names that we can use to access
+a font. These are normalized names in the sense that we only kept letters and
+numbers. The \definefont command can be invoked to 
+create a "bodyfont" name that would refer to one of the 
+fonts reported by the "mtxrun" program. 
+In particular, the next three invocatios of the 
+\definefont are equivalent and would have all created the
+bodyfont name "TitleFont" that points to the same font 
+installed in the system by the file "dejavuserif.ttf", and
+reported both as identifier "dejavuserif" and "dejavuserifnormal".
+
+    \definefont[TitleFont][name:dejavuserif*default sa 1]
+    \definefont[TitleFont][name:dejavuserifnormal*default sa 1]
+    \definefont[TitleFont][name:dejavuserif.ttf*default sa 1]
+
+In this case there are two names that all point to 
+the file named ``dejavuserif.ttf``: 
+
+    dejavuserif
+    dejavuserifnormal
+
+There are some heuristics built into ConTEXt and we do some cleanup as well.
+For instance we interpret ital as italic. In a font there is sometimes
+information about the weight and we look at those properties as well.
+Unfortunately font names (even within a collection) are often rather
+inconsistent so you still need to know what you’re looking for. The more
+explicit you are, the less change of problems.
+
+
+
+# Spec
+
+There is often some logic in naming fonts but it’s not robust and really depends on how consistent a font designer or typefoundry has been. In ConTEXt we can access names by using a normalized scheme.
+
+    name-weight-style-width-variant
+
+The following values are valid:
+
++ weight
+  black bold demi demibold extrabold heavy 
+  light medium mediumbold normal regular semi 
+  semibold ultra ultrabold ultralight
++ style
+  italic normal oblique regular reverseitalic reverseoblique roman slanted
++ width
+  book condensed expanded normal thin
++ variant
+  normal oldstyle smallcaps
+
+The four specifiers are optional but the more you provide, the better the
+match. Let’s give an example:
+
+    mtxrun --script fonts --list --spec dejavu
+
+@ figure
+  &label{fig:fonts-5}
+  The output of the "mtxrun" command with the ``--spec`` switch
+  and the font named "dejavu" with no additional information
+  regarding weight, style, width, and variant.
+
+  ```framed{outline,width:100%,framewidth:800}
+  familyname       weight   style    width    variant   fontname         filename
+  dejavuserif      normal   normal   normal   normal    dejavuserif      DejaVuSerif.ttf
+  dejavusansmono   normal   normal   normal   normal    dejavusansmono   DejaVuSansMono.ttf
+  dejavusans       normal   normal   normal   normal    dejavusans       DejaVuSans.ttf
+  ```
+
+We can be more specific, for instance, the following example
+would have asked for font "dejavu-bold". The string "dejavu-bold"
+would have been considered as asking for a font named "dejavu" and
+the "weight" of which is "bold". The result of the following command
+is shown by figure &ref{fig:fonts-6}.
+
+    mtxrun --script fonts --list --spec dejavu-bold
+
+@ figure
+  &label{fig:fonts-6}
+  The output of the "mtxrun" command with the ``--spec`` switch and with 
+  font "dejavu-bold", which expressed a font named "dejavu" and of
+  weight "bold".
+
+  ```framed{outline,width:100%,framewidth:800}
+  familyname       weight   style    width    variant   fontname                   filename
+  dejavuserif      bold     normal   normal   normal    dejavuserifbold            DejaVuSerif-Bold.ttf
+  dejavuserif      bold     normal   normal   normal    dejavuserifcondensedbold   DejaVuSerifCondensed-Bold.ttf
+  dejavusansmono   bold     normal   normal   normal    dejavusansmonobold         DejaVuSansMono-Bold.ttf
+  dejavusans       bold     normal   normal   normal    dejavusansbold             DejaVuSans-Bold.ttf
+  dejavusans       bold     normal   normal   normal    dejavusanscondensedbold    DejaVuSansCondensed-Bold.ttf
+  ```
+ 
+If the query is going to include also "italic" which is the font style
+then the result is going to include that as well. Following command
+will generate a result that is shown by figure &ref{fig:fonts-7}.
+
+@ figure
+  &label{fig:fonts-7}
+  The output of the "mtxrun" command with the ``--spec`` switch and with 
+  font "dejavu-bold", which expressed a font named "dejavu" and of
+  weight "bold" and style "italic".
+
+  ```framed{outline,width:100%,framewidth:800}
+  dejavuserif      bold     italic   normal   normal    dejavuserifbolditalic       DejaVuSerif-BoldItalic.ttf
+  dejavusansmono   bold     italic   normal   normal    dejavusansmonoboldoblique   DejaVuSansMono-BoldOblique.ttf
+  dejavusans       bold     italic   normal   normal    dejavusansboldoblique       DejaVuSans-BoldOblique.ttf
+  ```
+
+As the first hit is used we need to be more specific with respect to the name,
+so lets do that in an example definition:
+
+    \definefont[TitleFont][spec:dejavuserif-bold-italic*default sa 1]
+
+Watch the prefix ``spec``. Wolfgang Schusters ``simplefonts`` module nowadays uses
+this method to define sets of fonts based on a name only specification. Of
+course that works best if a fontset has well defined properties.
+
+In short, the \definefont command has the following forms:
+
+    \definefont
+      [MyFont]
+      [namepart method specification size]
+
+For example:
+
+    \definefont
+      [MyFont]
+      [Bold*default at 12.3pt]
+
+We have already discussed the "namepart" and "size" in a previous chapter and
+here we will focus on the method. The method is represented by a character and
+although we currently only have a few methods there can be many more.
+
+This one is seldom used, but those coming from another macro package to
+ConTEXt might use it as first attempt to defining a font.
+
+    \definefont
+      [MyFont]
+      [Bold:+kern;+liga; at 12.3pt]
+
+This is the XeTEX way of defining fonts. A + means as much as “turn on this
+feature” so you can guess what the minus sign does. Alternatively you can use
+a key/value approach with semicolons as separator. If no value is given the
+value yes is assumed.
+
+    \definefont
+      [MyFont]
+      [Bold:kern=yes;liga=yes; at 12.3pt]
+
+When we started supporting XeTEX we ran into issues with already present
+features of ConTEXt as the XeTEX syntax also has some more obscure properties
+using slashes and brackets for signalling a file or name lookup. As in ConTEXt
+we prefer a more symbolic approach anyway, it never was a real issue.
+
+[ The feature-sets method ]
+
+The most natural way to associate a set of feature-set with a font instance.
+For instance, the feature named "default" is associated with this
+font in addition to set as being "Bold".
+
+    \definefont
+      [MyFont]
+      [Bold*default at 12.3pt]
+
+The feature-set that is named "default" is defined in
+``font-pre.mkiv`` as follows.
+
+    \definefontfeature
+      [default]
+      [always]
+      [liga=yes,
+       tlig=yes,
+       trep=yes] % texligatures=yes,texquotes=yes
+
+The same ``font-pre.mkiv`` file also provides the following
+similar definitions for other feature-sets names.
+
+    \definefontfeature
+      [always]
+      [mode=auto,
+       script=auto,
+       kern=yes,
+       mark=yes,
+       mkmk=yes,
+       curs=yes]
+
+    \definefontfeature
+      [smallcaps]
+      [always]
+      [smcp=yes,
+       tlig=yes,
+       trep=yes] % texligatures=yes,texquotes=yes
+
+    \definefontfeature
+      [oldstyle]
+      [always]
+      [onum=yes,
+       liga=yes,
+       tlig=yes,
+       trep=yes] % texligatures=yes,texquotes=yes
+
+    \definefontfeature % == default unless redefined
+      [ligatures]
+      [always]
+      [liga=yes,
+       tlig=yes,
+       trep=yes]
+
+    \definefontfeature % can be used for type1 fonts
+      [complete]
+      [always]
+      [compose=yes,
+       liga=yes,
+       tlig=yes,
+       trep=yes]
+
+    \definefontfeature
+      [none]
+      [mode=none,
+       features=no]
+
+The previous definitions have also shown that it is possible to create 
+a new feature-set that grows from an existing
+feature-set.
+However, do keep in mind that if a feature set is applied to a font,
+and later on the feature is changed, the new change will be effective for
+new fonts that have been applied this feature-set; old font names
+will not be affected. 
+
+In addition, two or more feature-sets can be specified, which
+is illustrated by an example that is follows, is to be applied
+with the feature-set of "always" and "oldstyle".
+
+    \definefont
+      [MyFont]
+      [Bold*always,oldstyle at 12.3pt]
+
+[ The virtual features method ]
+
+This method is somewhat special as it demands knowledge of the internals of
+the Con- TEXt font code. Much of it is still experimental but it is a nice
+playground. A good example of its usage can be found in the file m-punk.mkiv
+where we create a font out of MetaPost graphics.
+
+Another example is virtual math. As in the beginning of LuaTEX and MkIV there
+were only a few OpenType math fonts, and as I wanted to get rid of the old
+mechanisms, it was decided to virtualize the math fonts. For instance a Latin
+Modern Roman 10 point math font can be defined as follows:
+
+    \definefontsynonym
+      [LMMathRoman10-Regular]
+      [LMMath10-Regular@lmroman10-math]
+
+The name ``lmroman10-math`` is considered a virtual feature-set which 
+refers to a virtual definition and in this case, it is one
+using a built-in constructor and therefore we use a goodies file
+to specify the font. That file looks like the following:
+
+    return {
+      name = "lm-math",
+      version = "1.00",
+      comment = "Goodies that complement latin modern math.",
+      author = "Hans Hagen",
+      copyright = "ConTeXt development team",
+      mathematics = {
+        ...
+        virtuals = {
+          ...
+          ["lmroman10-math"] = ten,
+          ...
+        },
+        ... }
+      }
+    }
+
+
+Here ten is a previously defined table:
+
+    local ten = {
+      { name = "lmroman10-regular.otf", features = "virtualmath", main = true },
+      { name = "rm-lmr10.tfm", vector = "tex-mr-missing" } ,
+      { name = "lmmi10.tfm", vector = "tex-mi", skewchar = 0x7F },
+      { name = "lmmi10.tfm", vector = "tex-it", skewchar = 0x7F },
+      { name = "lmsy10.tfm", vector = "tex-sy", skewchar = 0x30, parameters = true } , 
+      { name = "lmex10.tfm", vector = "tex-ex", extension = true } ,
+      { name = "msam10.tfm", vector = "tex-ma" },
+      { name = "msbm10.tfm", vector = "tex-mb" },
+      { name = "stmary10.afm", vector = "tex-mc" },
+      { name = "lmroman10-bold.otf", vector = "tex-bf" } ,
+      { name = "lmmib10.tfm", vector = "tex-bi", skewchar = 0x7F } ,
+      { name = "lmsans10-regular.otf", vector = "tex-ss", optional =
+      { name = "lmmono10-regular.otf", vector = "tex-tt", optional =
+      { name = "eufm10.tfm", vector = "tex-fraktur", optional = true
+      { name = "eufb10.tfm", vector = "tex-fraktur-bold", optional =
+    }
+
+This says as much as: take lmroman10-regular.otf as starting point and
+overload slots with ones found in the following fonts. The vectors are
+predefined as they are shared with other font sets like px and tx.
+
+In due time more virtual methods might end up in ConTEXt because they are a
+convenient way to extend or manipulate fonts.
+
+
+
+
+
+
+
+
+
+
+
 
 # Typographical Capabilities
 
