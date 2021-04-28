@@ -184,6 +184,13 @@ by a "pair", where
 a "rotated" keyword is to be expected to be followed by
 a single number. 
 
+Yet another transformation is slanting.  The slant operation’s main
+application is in tilting fonts. The 𝑥-coodinates are increased by  a
+percentage of their 𝑦-coordinate, so here every 𝑥 becomes 𝑥+1.5𝑦, and the
+𝑦-coordinate is left untouched.  
+
+    a slanted 1.5;
+
 It is also possible to have multiple transformations to be
 included as part of a path construction.
 However, it is to remember that if this is the case, the 
@@ -197,6 +204,7 @@ the same. See figure &ref{fig:metafun-path-transformations}.
     path c; c := a shifted (5cm,0);
     path d; d := a rotated 45 shifted (5cm,0);
     path e; e := a shifted (5cm,0) rotated 45;
+    path f; f := a slanted 1.5;
 
 @ figure{subfigure}
   &label{fig:metafun-path-transformations}
@@ -224,7 +232,27 @@ the same. See figure &ref{fig:metafun-path-transformations}.
   image-metafun-5-5.png
   ```
 
+  ```img{outline,width:2cm}
+  image-metafun-5-6.png
+  ```
 
+Following is a summary that showcases various 
+transformation options for a path.
+
+    METAPOST code              mathematical equivalent
+    ----------------------------------------------------
+    (x,y) shifted (a,b)        (𝑥 + 𝑎, 𝑦 + 𝑏)
+    (x,y) scaled s             (𝑠𝑥, 𝑠𝑦)
+    (x,y) xscaled s            (𝑠𝑥, 𝑦) 
+    (x,y) yscaled s            (𝑥, 𝑠𝑦)
+    (x,y) zscaled (u,v)        (𝑥𝑢−𝑦𝑣,𝑥𝑣+𝑦𝑢)
+    (x,y) slanted s            (𝑥+𝑠𝑦,𝑦)
+    (x,y) rotated r            (𝑥 cos(𝑟) − 𝑦 sin(𝑟), 𝑥 sin(𝑟) + 𝑦 cos(𝑟))
+
+
+
+
+  
 
 
 
