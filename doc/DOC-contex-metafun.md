@@ -160,6 +160,75 @@ a different control point for each end point of a curve.
   image-metafun-4.png
   ```
 
+# Transformation
+
+Transformation refers to a process called "affine operation"
+that would translate points in a two dimensional space such that
+after the transformation all parallel lines before the transformation
+will stay parallel. Such operations include those that will
+move all points to a new location, rotate all points around
+a single point, expand and shrink all points around another
+point, etc.
+
+    path a; a := (1cm,1.5cm)--(2cm,1.5cm);
+    a := a shifted (4cm,3cm);
+    a := a rotated 15
+
+The keyword "shifted" and "rotated" are each a keyword
+that would trigger
+a transformation to be applied to a path before
+the keyword. Each keyword is to be followed by a specific
+argument that is unique to this keyword. For instance,
+the keyword "shifted" is to be expected to be followed 
+by a "pair", where
+a "rotated" keyword is to be expected to be followed by
+a single number. 
+
+It is also possible to have multiple transformations to be
+included as part of a path construction.
+However, it is to remember that if this is the case, the 
+transformation is applied in an order from left to right.
+In the following example there are a total of 5 paths 
+being created. Note that the path "d" and "e" are not
+the same. See figure &ref{fig:metafun-path-transformations}.
+
+    path a; a := (1cm,1cm)--(2cm,2cm);
+    path b; b := a rotated 45;
+    path c; c := a shifted (5cm,0);
+    path d; d := a rotated 45 shifted (5cm,0);
+    path e; e := a shifted (5cm,0) rotated 45;
+
+@ figure{subfigure}
+  &label{fig:metafun-path-transformations}
+  Each subfigure is assigned the same letter
+  as the name of the path expressed in the code
+  example.
+
+  ```img{outline,width:2cm}
+  image-metafun-5-1.png
+  ```
+
+  ```img{outline,width:2cm}
+  image-metafun-5-2.png
+  ```
+
+  ```img{outline,width:2cm}
+  image-metafun-5-3.png
+  ```
+
+  ```img{outline,width:2cm}
+  image-metafun-5-4.png
+  ```
+
+  ```img{outline,width:2cm}
+  image-metafun-5-5.png
+  ```
+
+
+
+
+
+
 
 
 # Named Colors
