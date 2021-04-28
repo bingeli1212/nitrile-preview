@@ -115,8 +115,8 @@ This is the format created by John Hobby when he first started MetaPost. The
 a connection between two points that are on either side of this operator. 
 In  addition, he has created the "double period" operator such that a Bezier
 curve is to be created between three or more points such that it pass through
-all these points. See figure &ref{fig:metafun-path} for the looks of generating
-pictures with straight lines and curved lines.
+all these points. See figure &ref{fig:metafun-path} for the looks of the
+generated pictures with the following command and the command above.
 
     path a: a = (1cm,1.5cm)..(2cm,1.5cm)..(2cm,2cm);
 
@@ -133,6 +133,32 @@ pictures with straight lines and curved lines.
   image-metafun-2.png
   ```
 
+If a path is to be constructed with a 
+precise location of one or two control points
+of a cubic Bezier curve, it should be constructed with double-dots
+and the keyword "controls". Following is an example 
+of specifying a control point that is shared by both end points
+of the curve.
+
+    path a; a := (1.5cm,1.5cm)..controls (2.75cm,1.25cm)..(2cm,0cm)
+
+Following is an example where there is
+a different control point for each end point of a curve.
+
+    path a; a := (1cm,1cm)..controls (.5cm,2cm) and (2.5cm,2cm)..(2cm,.5cm);
+
+@ figure{subfigure}
+  &label{fig:metafun-path-controls}
+  The figure on the left hand side is the path of "(1cm,1.5cm)--(2cm,1.5cm)".
+  the figure on the right hand side is the path of "(1cm,1.5cm)..(2cm,1.5cm)..(2cm,2cm)".
+
+  ```img{outline,width:2cm}
+  image-metafun-3.png
+  ```
+
+  ```img{outline,width:2cm}
+  image-metafun-4.png
+  ```
 
 
 
