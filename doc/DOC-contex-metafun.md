@@ -362,7 +362,7 @@ not considered "closed" and can only be used for stroking.
     z2 = (6.5cm,0.5cm) ; 
     z3 = (3.0cm,1.5cm) ;
 
-Figure &ref{fig:metafun-op1} describes a closed path 
+Figure &ref{fig:metafun-op1} (a) describes a closed path 
 that is ``z0--z1--z2--z3--cycle``. Here, the double-hyphen is 
 considered an "operator" such that it adds the information to the path
 about how the points of z0 and z1 is to be connected.
@@ -372,8 +372,7 @@ point z0.
 
 @   figure{subfigure}
     &label{fig:metafun-op1}
-    (a) The path is ``z0--z1--z2--z3--cycle``.
-    (b) The path is ``z0..z1..z2..z2..cycle``. 
+    Path contruction operators.
 
     ```img{outline,width:6cm}
     image-metafun-8-1.png
@@ -408,11 +407,11 @@ However, if we were to change the path construction to look like
 ``z0..z1..z2..z3..cycle`` 
 the result would look different. In particular,
 the lines connecting these points will look like smoothed curves 
-transitioned smoothly from one point to another.
+transitioned smoothly from one point to another. See figure (b).
 
 If the path were to be constructed as 
 ``z0---z1---z2---z3---cycle`` it would look very much
-like that of (c).
+like that of figure (c).
 However, if you were to take a look at the 
 location of the control points there are some visible distinctions.
 When double-hypen is used, it appears that the connection between
@@ -437,7 +436,10 @@ using an ampersand operator (&). See figure (f).
 
 # Named Colors
 
-The withcolor operator accepts a color expression but in METAFUN it also accepts a string indicat- ing a color defined at the TEX end. Most helpers that deal with colors are able to deal with named colors as well. Here are some examples. First we define a few colors:
+The withcolor operator accepts a color expression but in METAFUN it also
+accepts a string indicating a color defined at the TEX end. Most helpers that
+deal with colors are able to deal with named colors as well. Here are some
+examples. First we define a few colors:
 
     \definecolor[MyColor1][r=.5]
     \definecolor[MyColor2][g=.5]
