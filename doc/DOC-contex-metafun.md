@@ -421,12 +421,15 @@ However, if triple-hyphen is used the result is simply a straight line,
 and no control points at all.
 
 The distinction between double-hyphen and triple-hyphen becomes
-more appearant if there is a mix of double-hyphen and double-dot between points. For
-instance, if we were to contruct a path that is
-``z0..z1..z2--z3..cycle``
-versus the one that is constructed as 
-``z0..z1..z2---z3..cycle``
-the result will be quite different. See figure (d) and (e).
+more appearant if there is a mix of double-hyphen and double-dot 
+operators placed between path points. For
+instance, if we were to contruct a path as
+``z0..z1..z2--z3..cycle`` (figure (d))
+versus one that is  
+``z0..z1..z2---z3..cycle`` (figure (e)),
+the control point for z3 in both cases will be placed at different
+locations and thus the look of the resulting lines will be different 
+as well.
 
 It is also a possibility to contruct two or more path components where 
 each components is an independent cluster of connected points
@@ -457,6 +460,7 @@ Here we access them:
     addbackground
         withcolor .5[resolvedcolor("MyColor4"),resolvedcolor("MyColor2")] ;
     currentpicture := currentpicture ysized 4cm ;
+
 
 
 # Text Labels
