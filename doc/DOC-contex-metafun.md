@@ -399,6 +399,11 @@ point z0.
     image-metafun-8-5.png
     ```
 
+    ```img{outline,width:6cm}
+    image-metafun-8-6.png
+    ```
+
+
 However, if we were to change the path construction to look like
 ``z0..z1..z2..z3..cycle`` 
 the result would look different. In particular,
@@ -424,6 +429,9 @@ versus the one that is constructed as
 ``z0..z1..z2---z3..cycle``
 the result will be quite different. See figure (d) and (e).
 
+It is also a possibility to contruct two or more path components where 
+each components is an independent cluster of connected points
+using an ampersand operator (&). See figure (f).
 
 
 
