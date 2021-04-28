@@ -236,9 +236,14 @@ the same. See figure &ref{fig:metafun-path-transformations}.
   image-metafun-5-6.png
   ```
 
-Following is a summary that showcases various 
+Figure &ref{fig:metafun-all} is a summary that showcases various 
 transformation options for a path.
 
+@   figure
+    &label{fig:metafun-all}
+    All transformation options.
+
+    ```tabular
     METAPOST code              mathematical equivalent
     ----------------------------------------------------
     (x,y) shifted (a,b)        (𝑥 + 𝑎, 𝑦 + 𝑏)
@@ -248,6 +253,9 @@ transformation options for a path.
     (x,y) zscaled (u,v)        (𝑥𝑢−𝑦𝑣,𝑥𝑣+𝑦𝑢)
     (x,y) slanted s            (𝑥+𝑠𝑦,𝑦)
     (x,y) rotated r            (𝑥 cos(𝑟) − 𝑦 sin(𝑟), 𝑥 sin(𝑟) + 𝑦 cos(𝑟))
+    ```
+
+
 
 
 
