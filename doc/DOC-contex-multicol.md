@@ -409,6 +409,12 @@ As a side note. To convert a multi-page PDF file to a number
 of PNG files where each PNG file represents a page, use the 
 following command:
 
+    convert x.pdf -density 300 my.pdf my.png
+
+For a multi-page PDF file of three pages,
+this command will create images that are named my-0.png, my-1.png,
+my-2.png.
+
     convert x.pdf +adjoin x-%04d.png
 
 To verify that ImageMagick is working properly following
