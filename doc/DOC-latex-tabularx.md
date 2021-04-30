@@ -1,4 +1,6 @@
-# The LATEX tabularx package
+---
+title: The LATEX tabularx package
+---
 
 The LATEX tabularx package is preferred to allow for the typesetting
 if the entire table width is to be respected at a fixed width, 
@@ -49,7 +51,7 @@ included.
     \end{tabularx}
     %%%
 
-## The <ltablex> package
+# The <ltablex> package
 
 The ltablex package, is a extension of longtable to tabularx. Hence the caption
 shouldn't be separated from the table body, and the table doesn't float.
@@ -100,7 +102,7 @@ suffices to add a label when the footnote appears first.
 
 
 
-## Known problems with tabularx table
+# Known problems with tabularx table
 
   - It is known to generate the following error message when 
     two column setting is on.
@@ -129,7 +131,7 @@ suffices to add a label when the footnote appears first.
 
 
 
-## Following are copy and paste from the internet
+# Following are copy and paste from the internet
     
   - tabularx, awesome for column formatting but not for multi-page
     tables
