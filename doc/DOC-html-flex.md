@@ -2,26 +2,6 @@
 title: HTML/CSS Specifications
 ---
 
-# Break Columns
-
-Create a new div-element such that it will have a CSS of "break-before:column".
-
-    <div style='columns:2;'> 
-    Text ...
-    <div style='break-before:column;'></div> 
-    Text ...
-    </div>
-
-Note that contents inside a DIV-element with its "columns:2" setting, the
-"width:100%" style for a child element within it would have occupied only the
-entire width of the column, not the entire width of the DIV-element.
-
-To force manual break of the content into different columns, add the following
-before the contents. Note that it must be DIV-element, the SPAN-element won't
-work.
-
-    <div style='break-before:column;'></div> 
-
 # The "flex" Layout
 
 Some terminologies:
@@ -618,78 +598,4 @@ box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
 box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
 box {fillcolor:orange,opacity:0.3,w:8} "Hello World" /-1.5,/ (3,7)
 ```
-
-# Draw Text Along A Path
-
-Note that the dx='' attribute in this case is used to shift the text along 
-the path, such that when dx='' is set to be half the length of the path
-and text-anchor='middle' then the text is placed around the center
-of the path. the dy='' attribute shifts the text up and down the path, 
-such that when dy='' is negative it shifts text up and when dy='' is 
-positive it shifts text down. By default the text's base line aligns
-with the path.
-
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <!-- to hide the path, it is usually wrapped in a <defs> element -->
-      <!-- <defs> -->
-      <path id="MyPath" fill="none" stroke="red"
-            d="M10,90 Q90,90 90,45 Q90,10 50,10 Q10,10 10,40 Q10,70 45,70 Q70,70 75,50" />
-      <!-- </defs> -->
-      <text>
-        <textPath href="#MyPath">
-          Quick brown fox jumps over the lazy dog.
-        </textPath>
-      </text>
-    </svg>
-
-# Blurring the Color
-
-The <feGaussianBlur> SVG filter primitive blurs the input image by the amount
-specified in stdDeviation, which defines the bell-curve.
-
-This filter blurs an image. The parameter associated with this filter is the
-standard deviation (stdDeviation) which controls the distance from which
-neighboring pixels will be allowed to influence a pixel and hence, the amount
-of blurring.
-
-First, a filter is set up with an <feGaussianBlur> inside:
-
-    <filter id="A">
-     <feGaussianBlur stdDeviation="1" />
-    </filter>
-
-Then the <filter> is applied to an image to be blurred.
-
-    <rect x="42%" y="10%" width="16%" height="25%"
-    fill="white" filter="url(#A)"/>
-
-# Gradient Fill for Ball
-
-If the gradient fill is for a 'ball' type, then there is only one color needed
-to appear in the "shadecolor=" option, which is the color of the ball. The highlight
-of the ball is always to be shown in white, which is "rgb(255,255,255)". 
-Following is an example where the "shadecolor=teal" has been specified, where
-the color "teal" will have to be translated to a RGB color of "rgb(0,128,128)".
-
-    <defs>
-    <radialGradient id="1" cx="0.5" cy="0.5" fx="0.3" fy="0.3" r="0.5"> 
-      <stop offset="0%" stop-color="rgb(255,255,255)"/> 
-      <stop offset="100%" stop-color="rgb(0,128,128)"/> 
-    </radialGradient>
-    </defs>
-    <path d='... z' fill='url(#1)' stroke='none'/>
-
-If no color is specified by the "shadecolor=" option, then a gray color
-is assumed, in which case the "stop-color" will be set to "rgb(128,128,128)".
-
-    <defs>
-    <radialGradient id="1" cx="0.5" cy="0.5" fx="0.3" fy="0.3" r="0.5"> 
-      <stop offset="0%" stop-color="rgb(255,255,255)"/> 
-      <stop offset="100%" stop-color="rgb(128,128,128)"/> 
-    </radialGradient>
-    </defs>
-    <path d='... z' fill='url(#1)' stroke='none'/>
-
-
-
 
