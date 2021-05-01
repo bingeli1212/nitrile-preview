@@ -1561,10 +1561,150 @@ convenient way to extend or manipulate fonts.
 
 
 
+# The Mechanism
+
+Font switching is one of the eldest features of ConTEXt because font switching
+is indispensable in a macropackage. The last few years extensions to the font
+switching mechanism were inevitable. We have chosen the following starting
+points during the development of this mechanism:
+
+- To change a style must be easy, this means switching to: roman (serif,
+  regular), sans serif (support), teletype (or monospaced) etc. (\rm, \ss, \tt
+  etc.)
+- More than one variations of character must be available like slanted and bold
+  (\sl and \bf).
+- Different font families like Computer Modern Roman and Lucida Bright must be
+  supported.
+- Changing the bodyfont must also be easy, and so font size between 8pt and
+  12pt must be available by default.
+- Within a font different sub-- and superscripts must be available. The script
+  sizes can be used during switching of family, style and alternative.
+- Specific characteristics of a body font like font definition (encoding
+  vector) must be taken into account.
+
+Text can be typeset in different font sizes. We often use the unit pt to
+specify the size. The availability of these font sizes are defined in
+definition files. Traditionally font designers used to design a glyph
+collection for each font size, but nowadays most fonts have a design size of 10
+points. An exception to this rule is the Computer Modern Roman that comes with
+most TEX distributions.
+
+The most frequently used font sizes are predefined: 8, 9, 10, 11, 12 and 14.4
+points. When you use another size —for example for a titlepage— ConTEXt will
+define this font itself within the constraints of the used typeface. ConTEXt
+works with a precision of 1 digit which prevents unnecessary loading of
+fontsizes with small size differences. When a fontsize is not available ConTEXt
+prefers to use a somewhat smaller font size. We consider this to be more
+tolerable than a somewhat bigger font size.
+
+The bodyfont (main font), font style and size is set up with:
+
+    \setupbodyfont[..,...,..]
+    ...  name serif regular roman sans support sansserif mono type 
+         teletype handwritten calligraphic 5pt .. 12pt
+
+In a running text a temporary font switch is done with the command:
+
+    \switchtobodyfont[..,...,..]
+    ...   5pt ... 12pt small big global
+
+The most frequently used font sizes are predefined: 8, 9, 10, 11, 12 and 14.4
+points. When you use another size —for example for a titlepage— ConTEXt will
+define this font itself within the constraints of the used typeface. ConTEXt
+works with a precision of 1 digit which prevents unnecessary loading of
+fontsizes with small size differences. When a fontsize is not available ConTEXt
+prefers to use a somewhat smaller font size. We consider this to be more
+tolerable than a somewhat bigger font size.
 
 
 
+# The Font Switches
 
+The mechanism to switch from one style to another is rather complex and
+therefore hard to explain. To begin with, the terminology is a bit fuzzy. We
+call a collection of font shapes, like Lucida or Computer Modern Roman a
+family. Within such a family, the members can be grouped according to
+characteristics. Such a group is called a style. Examples of styles within a
+family are: roman, sans serif and teletype. We already saw that there can be
+alternative classifications, but they all refer to the pressence of serifs and
+the glyphs having equal widths. In some cases handwritten and/or calligraphic
+styles are also available. Within a style there can be alternatives, like
+boldface and slanted.
+
+There are different ways to change into a new a style or alternative. You can
+use \ss to switch to a sans serif font style and \bf to get a bold alternative.
+When a different style is chosen, the alternatives adapt themselves to this
+style. Often we will typeset the document in one family and style. This is
+called the bodyfont.
+
+A consequent use of commands like \bf and \sl in the text will automatically
+result in the desired bold and slanted altermatives when you change the family
+or style in the setup area of your input file. A somewhat faster way of style
+switching is done by \ssbf, \sssl, etc. but this should be used with care,
+since far less housekeeping takes place.
+
+The alternatives within a style are given below. The abbreviation \sl means
+slanted, \it means italic and \bf means boldface. Sometimes \bs and \bi are
+also available, meaning bold slanted and bold italic. When an alternative is
+not known, ConTEXt will choose a suitable replacement automatically.
+
+With \os we tell ConTEXt that we prefer mediaeval or old--style numbers 139
+over 139. The \sc generates Small Caps. With an x we switch to smaller font
+size, with a, b, c and d to a bigger one. The actual font style is stated by
+\tf or typeface.
+
+    \tfa \tfb \tfc \tfd
+    \tfx \bfx \slx \itx
+    \bf \sl \it \bs \bi \sc \os
+
+It depends on the completeness of the font definition files whether
+alternatives like \bfa, \bfb, etc. are available. Not all fonts have for
+instance italic and slanted or both their bold alternatives. In such
+situations, slanted and italic are threated as equivalents.
+
+Switching to a smaller font is accomplished by \tfx, \bfx, \slx, etc., which
+adapt themselves to the actual alternative. An even more general downscaling is
+achieved by \tx, which adapts itself to the style and alernative. This command
+is rather handy when one wants to write macros that act like a chameleon. Going
+one more step smaller, is possible too: \txx. Using \tx when \tx is already
+given, is equivalent to \txx.
+
+Frequent font switching leads to longer processing times. When no sub- or
+superscripts are used and you are very certain what font you want to use, you
+can perform fast font switches with: \rmsl, \ssbf, \tttf, etc.
+
+Switching to another font style is done by:
+
+    \rm \ss \tt \hw \cg
+
+When \rm is chosen ConTEXt will interpret the command \tfd as \rmd. All default
+font setups use tf--setups and will adapt automatically.
+
+The various commands will adapt themselves to the actual setup of font and
+size. For example:
+
+    {\rm test {\sl test} {\bf test} \tfc test {\tx test} {\bf test}}
+    {\ss test {\sl test \tx test} {\bf test \tx test}}
+
+When a character is not available the most acceptable alternative is chosen.
+We will not go into the typographical sins of underlining. These commands are
+discussed in section 11.5 (“Underline”).
+
+
+
+# Characters
+
+A number of commands use the parameter style to set up the font style and size.
+You can use commands like \sl or \rma or keywords like:
+
+    normal  bold  slanted  boldslanted  italic  bolditalic  type
+    small  smallbold  smallslanted  ...  smallitalic  ...  smalltype
+    capital
+
+The parameter mechanism is rather flexible so with the parameter style you can
+type bold and \bf or bf. Even the most low level kind of font switching
+commands like 12ptrmbf are permitted. This is fast but requires some insight in
+macros behind this mechanism.
 
 
 
@@ -1589,9 +1729,7 @@ convenient way to extend or manipulate fonts.
 - Create vector graphic drawings
 - Drawing the page backgrounds and ornaments
 
-# Support of PGF/TikZ
-
-
+# Support of PGF/T
 # Support of PSTricks
 
 
