@@ -118,7 +118,42 @@ will remain the same size regardless.
 
 
 
+# Framing a running text
 
+To frame part of a running text the \framed command can be used.
+
+    \placefigure
+      [left]
+      {none}
+      {\framed[align=middle]{happy\\birthday\\to you}}
+
+
+
+# Framing an entire paragraph
+
+To frame an entire paragraph use the \startframedtext command.
+
+    \startframedtext[left]
+    From an experiment that was conducted by C. van Noort (1993) it was
+    shown that the use of intermezzos as an attention enhancer is not very
+    effective.
+    \stopframedtext
+
+The \startframedtext comes with the following configurable options:
+
+    setupframedtexts[..,..=..,..]
+    bodyfont          5pt ... 12pt small big
+    style             normal bold slanted boldslanted type small... 
+                      command command
+    left              command
+    right             command
+    before            command
+    after             command
+    inner             command
+    linecorrection    on off   
+    depthcorrection   on off    
+    margin            standard yes no
+    ..=..             see p 210: \setupframed
 
 
 
