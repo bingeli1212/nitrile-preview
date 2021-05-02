@@ -157,4 +157,73 @@ The \startframedtext comes with the following configurable options:
 
 
 
+# Black Rules
+
+A Black Rules refers to a filled rectangle area that looks like a black box.
+
+    \blackrule[..,..=..,..]
+    ..=..  see p 216: \setupblackrules
+
+When the setup is left out, the default setup is used.
+
+    \setupblackrules[..,..=..,..]
+    width         dimension max
+    height        dimension max
+    depth         dimension max
+    alternative   a b
+    distance      dimension
+    n             number
+
+The height, depth, and width of a black rule are in accordance with
+the usual height, depth and width of TEX. When set to "max" 
+isntead of a real value the dimensions of TEX's \strutbox command
+are used. When we set all three dimensions to "max" we get.
+
+Black rules may have different purposes. You can use them as identifiers of
+sections or subsections. This paragraph is tagged by a black rule with default
+dimensions: 
+
+    \inleft{\blackrule}.
+
+A series of black rules can be typeset by using:
+
+    \blackrules[..,..=..,..]
+    ..=..   see p 216: \setupblackrules
+
+There are two versions. Version a sets n black rules next to each other with an
+equal specified width. Version b divides the specified width over the number of
+rules. This paragraph is tagged with \inleft{\blackrules}. The setup after
+\blackrule and \blackrules are optional.
+
+
+
+# Grids
+
+We can make squared paper (a sort of grid) with the command:
+
+    \grid[..,..=..,..]
+    x            number
+    y            number
+    nx           number
+    ny           number
+    dx           number
+    dy           number
+    xstep        number
+    ystep        number
+    offset       yes no
+    factor       number
+    scale        number
+    unit         cmptemmmexesin 
+    location     left middle
+
+The default setup produces a grid of 10 boxes horizontally
+and 10 boxes vertically. This grid can be used in the background
+when defining interactive areas in a figure. And for the sake
+of completeness it is described in this chapter.
+
+
+
+
+
+
 
