@@ -738,7 +738,10 @@ Following are styles recognized by NITRILE:
   as a "subfigure", such that they each would have a sub-caption, that goes
   underneath each image.
 
++ n:2
 
+  This option is used currently by the "columns" float to express the number
+  of columns. 
 
 
 
