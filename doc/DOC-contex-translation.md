@@ -70,6 +70,7 @@ camer.setupbodyfont: linux,11pt
   \setupwhitespace[small]
   \setupwhitespace[medium]
   \setupwhitespace[line]
+  \setupwhitespace[5pt]
   ```
 
 - Indentation is managed different than LATEX. See the section "Paragraph
