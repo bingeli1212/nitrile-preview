@@ -743,7 +743,14 @@ Following are styles recognized by NITRILE:
   This option is used currently by the "columns" float to express the number
   of columns. 
 
++ mar:1.23
 
+  This option is to specify the length of the two arrows drawn on the left/right
+  hand sides of a sloped text. When this option is present and the length is 
+  a number other than zero, it specifies the length of the two arrows that will be drawn
+  that points to the two end points given when drawing a sloped text.
+
+  
 
 
 
