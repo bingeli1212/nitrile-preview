@@ -242,4 +242,20 @@ Take a look at the following example:
 
 
 
+# Vertical Distance Between Rows
+
+The \TB command can be placed between two rows to add additional vertical
+spaces between rows.
+
+    \starttabulate
+      \NC one   \NC two   \NC\NR
+      \NC two   \NC three \NC\NR
+      \TB[halfline]
+      \NC four  \NC five  \NC\NR
+      \TB[line]
+      \NC four  \NC five  \NC\NR
+      \TB[1cm]
+      \NC eight \NC nine \NC\NR
+    \stoptabulate
+
 

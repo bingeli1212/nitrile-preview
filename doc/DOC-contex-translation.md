@@ -19,13 +19,14 @@ camer.setupbodyfont: linux,11pt
 
 - For "\startitemize" command, if the option is not "packed", then there are
   visible vertical white spaces between items. Unfortunately the amount of this
-  vertical space cannot be adjusted to be consistant with the inter-paragraph
-  vertical space, which is controlled by the "\setupwhitespace" command,
-  especially as it has been set to "small". 
+  vertical space is not consistant with the inter-paragraph
+  vertical space which is set by the "\setupwhitespace" command.
+  Especially when the whitespace is set to "small", vertical spaces between
+  items are larger than "small".
 
-  However, the latest discovery seems to have uncovered a way that allows for
-  the extra vertical spaces to be removed between items. In particular,
-  the option named "inbetween=" should be set to an empty string such as the following:
+  The latest discovery have uncovered a way to fix this issue.  In particular,
+  the option named "inbetween=" should be set to an empty string such as the
+  following:
 
   ```verbatim
   \startitemize[][inbetween={},before={},after={}]
@@ -71,8 +72,8 @@ camer.setupbodyfont: linux,11pt
   \setupwhitespace[line]
   ```
 
-- Indentation is managed different than LATEX. See the section "Paragraph Indentations" below
-  for more information.
+- Indentation is managed different than LATEX. See the section "Paragraph
+  Indentations" below for more information.
 
 - The "\type{}" command requires a balanced left-right-braces. Even when one of them
   is being escaped.
@@ -99,6 +100,9 @@ camer.setupbodyfont: linux,11pt
   space if placed in front of some commands, thus its use has to be judicious.
 
 - Current the "linuxlibertine" does not yet support circled digit U+2460.
+  The "linuxlibertine" font seems to have missing glyphs for ``Ascr`` to
+  ``Zscr`` and other math variant glyphs. When using the default font these
+  glyphs showed up.
 
 - It has been noticed that when four Diagrams are being placed side by side and each
   diagram is 4cm wide, inside a Gleamer frame, then the first three Diagrams would
@@ -134,10 +138,6 @@ camer.setupbodyfont: linux,11pt
   where each figure is wrapped by a "startcombination" and "stopcombination" commands,
   it seems to have worked fine. But it still needs to be verified.
 
-- The "linuxlibertine" font seems to have missing glyphs for ``Ascr`` to
-  ``Zscr`` and other math variant glyphs. When using the default font these
-  glyphs showed up.
-
 - For a figure, if there are multiple lines for a sub-caption,
   the lines appear to be too far separated vertically from each other
 
@@ -167,6 +167,20 @@ camer.setupbodyfont: linux,11pt
 
   {\switchtobodyfont[9pt]\framed[frame=off,width=30mm,align=flushleft]{Hello World}}
 
+- It has been observed that for "starttabulate", when the column is set to "p",
+  and the row contains a mix of normal text, math text, and display math, the
+  row does not allocate enough vertical space to contain the height necessary
+  for the math text such that the bottom part of the top row text would be
+  partially overlapping with the top part of the bottom row text.  For this reason
+  the "lines" fence is implemented using the "startlines" command.
+  
+- The "lines" fence is implemented using the "startlines" command, and "\crlf"
+  is placed after each line except for the last one. This is to address the
+  problem of turning all lines into a single line when "startlines" becomes   
+  part a head text (section,subsection,etc.) as was seen by slide.js when a solution
+  contains a list of radio button. Adding "\crlf" at the end of the lines seems
+  to have fixed the issue on the surface and not have caused any adverse effects    
+  for otherwise normal lines.
 
 # The \bTABLE problem
 
