@@ -195,3 +195,34 @@ number.
 # Struts
 
 
+
+
+# Hanging Paragraph
+
+If you want to indent paragraphs from the second line on, you can use this bit
+from Hans Hagen:
+
+    \definestartstop
+      [exdent]
+      [before={\startnarrower[left]\setupindenting[-\leftskip,yes]},
+       after=\stopnarrower]
+    \starttext
+    \startexdent
+    Thus, I came to the conclusion that the designer of 
+    a new system must not only be the implementer and first 
+    large--scale user; the designer should also write the fir...
+   
+    The separation of any of these four components would have hurt 
+    TEX significantly. If I had not participated fully in all 
+    these activities, literally hundreds of impr...
+   
+    But a system cannot be successful if it is too strongly influenced 
+    by a single person. Once the initial design is complete and 
+    fairly robust, the real test begins as...
+    \stopexdent
+    \stoptext
+
+
+
+
+
