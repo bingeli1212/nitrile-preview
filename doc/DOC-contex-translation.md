@@ -183,6 +183,14 @@ camer.setupbodyfont: linux,11pt
   to have fixed the issue on the surface and not have caused any adverse effects    
   for otherwise normal lines.
 
+- It is not possible to place an inline-diagram inside a table cell; the 'startMPcode"
+  "stopMPcode" commands compiles inside a "starttable" but does not generate
+  any pictures
+
+- The 'start-stop-formula" command pair is not a complete replacement of a "displaymath"
+  of LATEX, because it places visible whitespaces before and after the formula. It does
+  howver, stop placing a indent before the next paragraph after the formula.
+
 # The \bTABLE problem
 
 The LONG table expressed by \bTABLE would  start 
