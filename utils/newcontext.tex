@@ -1,0 +1,298 @@
+%!TEX program = ConTeXt (LuaTeX)
+\enableregime[utf] % enable unicode fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily [dejavu] [serif] [DejaVu Serif]
+\definefontfamily [dejavu] [sans]  [DejaVu Sans]
+\definefontfamily [dejavu] [mono]  [DejaVu Sans Mono]
+\definefontfamily [dejavu] [math]  [XITS Math] [rscale=1.1]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily [office] [serif] [Times New Roman]
+\definefontfamily [office] [sans]  [Arial] [rscale=0.9]
+\definefontfamily [office] [mono]  [Courier]
+\definefontfamily [office] [math]  [TeX Gyre Termes Math]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefallbackfamily [linux] [serif] [zapfdingbats] [range={miscellaneoussymbols,dingbats}]
+\definefallbackfamily [linux] [serif] [heitisc] [range={cjkunifiedideographs}]
+\definefontfamily [linux] [serif] [libertinusserif]   
+\definefontfamily [linux] [sans]  [libertinussans]
+\definefontfamily [linux] [mono]  [libertinusmono]
+\definefontfamily [linux] [math]  [libertinusmath]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily [source] [serif] [sourceserifpro]
+\definefontfamily [source] [sans]  [sourcesanspro]
+\definefontfamily [source] [mono]  [sourcecodepro]
+\definefontfamily [source] [math]  [TeX Gyre Pagella Math] [rscale=1.0]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily[noto][serif][notoserif]
+\definefontfamily[noto][sans][notosans]
+\definefontfamily[noto][mono][notosansmono]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily[cn][serif][heitisc]
+\definefontfamily[cn][sans][arplsungtilgb]
+\definefontfamily[cn][mono][arplsungtilgb]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily[tw][serif][arplmingti2lbig5]
+\definefontfamily[tw][sans][arplmingti2lbig5]
+\definefontfamily[tw][mono][arplmingti2lbig5]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily[jp][serif][ipaexmincho]
+\definefontfamily[jp][sans][ipaexmincho]
+\definefontfamily[jp][mono][ipaexmincho]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily[kr][serif][baekmukbatang]
+\definefontfamily[kr][sans][baekmukbatang]
+\definefontfamily[kr][mono][baekmukbatang]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define first script named [serif][free]
+% Define second script named [sans][free]
+% Define second script named [mono][free]
+% Define the typeface free; use serif for rm-fonts, sans serif for ss-fonts.
+% Indicate the typeface to use.
+\starttypescript [serif] [free]
+  \definefontsynonym [Serif]             [name:freeserifnormal]
+  \definefontsynonym [SerifBold]         [name:freeserifnormal]
+  \definefontsynonym [SerifItalic]       [name:freeserifnormal]
+  \definefontsynonym [SerifSlanted]      [name:freeserifnormal]
+  \definefontsynonym [SerifBoldItalic]   [name:freeserifnormal]
+  \definefontsynonym [SerifBoldSlanted]  [name:freeserifnormal]
+  \definefontsynonym [SerifCaps]         [name:freeserifnormal]
+\stoptypescript
+\starttypescript [sans] [free]
+  \definefontsynonym [Sans]             [name:freeserifnormal]
+  \definefontsynonym [SansBold]         [name:freeserifnormal]
+  \definefontsynonym [SansItalic]       [name:freeserifnormal]
+  \definefontsynonym [SansSlanted]      [name:freeserifnormal]
+  \definefontsynonym [SansBoldItalic]   [name:freeserifnormal]
+  \definefontsynonym [SansBoldSlanted]  [name:freeserifnormal]
+  \definefontsynonym [SansCaps]         [name:freeserifnormal]
+\stoptypescript
+\starttypescript [mono] [free]
+  \definefontsynonym [Sans]             [name:freeserifnormal]
+  \definefontsynonym [SansBold]         [name:freeserifnormal]
+  \definefontsynonym [SansItalic]       [name:freeserifnormal]
+  \definefontsynonym [SansSlanted]      [name:freeserifnormal]
+  \definefontsynonym [SansBoldItalic]   [name:freeserifnormal]
+  \definefontsynonym [SansBoldSlanted]  [name:freeserifnormal]
+  \definefontsynonym [SansCaps]         [name:freeserifnormal]
+\stoptypescript
+\definetypeface[fre][rm][serif][free]
+\definetypeface[fre][ss][sans][free]
+\definetypeface[fre][tt][mono][free]
+\usetypescript [fre][uc]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define first script named [serif][roboto]
+% Define second script named [sans][roboto]
+% Define second script named [mono][roboto]
+% Define the typeface roboto; use serif for rm-fonts, sans serif for ss-fonts.
+% Indicate the typeface to use.
+\starttypescript [serif] [roboto]
+  \definefontsynonym [Serif]             [name:robotoregular]
+  \definefontsynonym [SerifBold]         [name:robotoregular]
+  \definefontsynonym [SerifItalic]       [name:robotoregular]
+  \definefontsynonym [SerifSlanted]      [name:robotoregular]
+  \definefontsynonym [SerifBoldItalic]   [name:robotoregular]
+  \definefontsynonym [SerifBoldSlanted]  [name:robotoregular]
+  \definefontsynonym [SerifCaps]         [name:robotoregular]
+\stoptypescript
+\starttypescript [sans] [roboto]
+  \definefontsynonym [Sans]             [name:robotoregular]
+  \definefontsynonym [SansBold]         [name:robotoregular]
+  \definefontsynonym [SansItalic]       [name:robotoregular]
+  \definefontsynonym [SansSlanted]      [name:robotoregular]
+  \definefontsynonym [SansBoldItalic]   [name:robotoregular]
+  \definefontsynonym [SansBoldSlanted]  [name:robotoregular]
+  \definefontsynonym [SansCaps]         [name:robotoregular]
+\stoptypescript
+\starttypescript [mono] [roboto]
+  \definefontsynonym [Sans]             [name:robotoregular]
+  \definefontsynonym [SansBold]         [name:robotoregular]
+  \definefontsynonym [SansItalic]       [name:robotoregular]
+  \definefontsynonym [SansSlanted]      [name:robotoregular]
+  \definefontsynonym [SansBoldItalic]   [name:robotoregular]
+  \definefontsynonym [SansBoldSlanted]  [name:robotoregular]
+  \definefontsynonym [SansCaps]         [name:robotoregular]
+\stoptypescript
+\definetypeface[rob][rm][serif][roboto]
+\definetypeface[rob][ss][sans][roboto]
+\definetypeface[rob][tt][mono][roboto]
+\usetypescript [rob][uc]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define first script named [serif][dejavu]
+% Define second script named [sans][dejavu]
+% Define second script named [mono][dejavu]
+% Define the typeface dejavu; use serif for rm-fonts, sans serif for ss-fonts.
+% Indicate the typeface to use.
+\starttypescript [serif] [dejavu]
+  \definefontsynonym [Serif]             [name:dejavuserif]
+  \definefontsynonym [SerifBold]         [name:dejavuserif]
+  \definefontsynonym [SerifItalic]       [name:dejavuserif]
+  \definefontsynonym [SerifSlanted]      [name:dejavuserif]
+  \definefontsynonym [SerifBoldItalic]   [name:dejavuserif]
+  \definefontsynonym [SerifBoldSlanted]  [name:dejavuserif]
+  \definefontsynonym [SerifCaps]         [name:dejavuserif]
+\stoptypescript
+\starttypescript [sans] [dejavu]
+  \definefontsynonym [Sans]             [name:dejavuserif]
+  \definefontsynonym [SansBold]         [name:dejavuserif]
+  \definefontsynonym [SansItalic]       [name:dejavuserif]
+  \definefontsynonym [SansSlanted]      [name:dejavuserif]
+  \definefontsynonym [SansBoldItalic]   [name:dejavuserif]
+  \definefontsynonym [SansBoldSlanted]  [name:dejavuserif]
+  \definefontsynonym [SansCaps]         [name:dejavuserif]
+\stoptypescript
+\starttypescript [mono] [dejavu]
+  \definefontsynonym [Sans]             [name:dejavuserif]
+  \definefontsynonym [SansBold]         [name:dejavuserif]
+  \definefontsynonym [SansItalic]       [name:dejavuserif]
+  \definefontsynonym [SansSlanted]      [name:dejavuserif]
+  \definefontsynonym [SansBoldItalic]   [name:dejavuserif]
+  \definefontsynonym [SansBoldSlanted]  [name:dejavuserif]
+  \definefontsynonym [SansCaps]         [name:dejavuserif]
+\stoptypescript
+\definetypeface[dej][rm][serif][dejavu]
+\definetypeface[dej][ss][sans][dejavu]
+\definetypeface[dej][tt][mono][dejavu]
+\usetypescript [dej][uc]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definemathcommand [arccot] [nolop] {\mfunction{arccot}}
+\definemathcommand [arsinh] [nolop] {\mfunction{arsinh}}
+\definemathcommand [arcosh] [nolop] {\mfunction{arcosh}}
+\definemathcommand [artanh] [nolop] {\mfunction{artanh}}
+\definemathcommand [arcoth] [nolop] {\mfunction{arcoth}}
+\definemathcommand [sech]   [nolop] {\mfunction{sech}}
+\definemathcommand [csch]   [nolop] {\mfunction{csch}}
+\definemathcommand [arcsec] [nolop] {\mfunction{arcsec}}
+\definemathcommand [arccsc] [nolop] {\mfunction{arccsc}}
+\definemathcommand [arsech] [nolop] {\mfunction{arsech}}
+\definemathcommand [arcsch] [nolop] {\mfunction{arcsch}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usesymbols[mvs]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setupcaptions[minwidth=\textwidth, align=middle, location=top]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setupinteraction[state=start]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\placebookmarks[part,chapter,section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor[cyan][r=0,g=1,b=1] % a RGB color
+\definecolor[magenta][r=1,g=0,b=1] % a RGB color
+\definecolor[darkgray][r=.35,g=.35,b=.35] % a RGB color
+\definecolor[gray][r=.5,g=.5,b=.5] % a RGB color
+\definecolor[lightgray][r=.75,g=.75,b=.75] % a RGB color
+\definecolor[brown][r=.72,g=.52,b=.04] % a RGB color
+\definecolor[lime][r=.67,g=1,b=.18] % a RGB color
+\definecolor[olive][r=.5,g=.5,b=0] % a RGB color
+\definecolor[orange][r=1,g=.5,b=0] % a RGB color
+\definecolor[pink][r=1,g=.75,b=.79] % a RGB color
+\definecolor[teal][r=0,g=.5,b=.5] % a RGB color
+\definecolor[purple][r=.8,g=.13,b=.13] % a RGB color
+\definecolor[violet][r=.5,g=0,b=.5] % a RGB color
+%%%
+\definedescription[latexdesc][
+  headstyle=normal, style=normal, align=flushleft, 
+  alternative=hanging, width=fit, before=, after=]
+\definedescription[DLpacked][
+  headstyle=bold, style=normal, align=flushleft,
+  alternative=hanging, width=broad, before=, after=,]
+\definedescription[HLpacked][
+  headstyle=normal, style=normal, align=flushleft,
+  alternative=hanging, width=broad, before=, after=,]
+\definedescription[DL][
+  headstyle=bold, style=normal, align=flushleft, 
+  alternative=hanging, width=broad]
+\definedescription[HL][
+  headstyle=normal, style=normal, align=flushleft, 
+  alternative=hanging, width=broad]
+%%%
+\definefontsize[sm]
+\definefontsize[xsm]
+\definefontsize[xxsm]
+\definefontsize[xxxsm]
+\definefontsize[big]
+\definefontsize[xbig]
+\definefontsize[xxbig]
+\definefontsize[huge]
+\definefontsize[xhuge]
+\definebodyfontenvironment
+  [default]
+  [sm=.9,xsm=.8,xxsm=.7,xxxsm=.5,
+   big=1.2,xbig=1.4,xxbig=1.7,huge=2.0,xhuge=2.3]
+%%%
+\definefloat[listing][listings]
+%%%
+\enabletrackers[fonts.missing]
+\definepapersize[BEAMER][width=128mm,height=96mm]
+\setuppapersize[BEAMER]
+\setuplayout[topspace=3mm,
+             header=0mm,
+             footer=0mm,
+             height=90mm,
+             width=108mm,
+             backspace=10mm,
+             leftmarginwidth=0mm, 
+             rightmarginwidth=0mm, 
+             leftmargindistance=0mm, 
+             rightmargindistance=0mm]
+\setuppagenumbering[location={},style=]
+\setupindenting[no,medium]
+\setscript[hanzi] % hyphenation
+\definecolor[titleblue][r=0.0627,g=0.0627,b=0.6902]
+\setuphead[part][number=yes]
+\setuphead[chapter][style=\bfd,number=yes]
+\setuphead[section][style=\bfa,number=no,page=yes,margin=-6mm,color=titleblue,after={}]
+\setuphead[subsection][style=\bfxxsm,number=no,continue=yes,before={}]
+\setuphead[subsubsection][style=\bf,number=yes]
+\setuphead[subsubsubsection][style=\bf,number=yes]
+\setupinteraction[state=start,color=,contrastcolor=]
+\setuplines[before={},after={}]
+\setuptabulate[before={},after={}]
+\setupbodyfont[linux,11pt]
+\setupwhitespace[5pt]
+\setupcombination[style=small]
+\starttext
+\dontleavehmode
+\blank[2cm]
+\startalignment[center]
+\tfc \color[titleblue]{Untitle} \crlf
+\blank[1cm]
+\tfa  \crlf
+\blank[0.2cm]
+\tfa  \crlf
+\blank[0.2cm]
+\tfa  \crlf
+\blank[0.2cm]
+\tfa 5/6/2021
+\stopalignment
+\page
+
+
+\startsection[title={Table Of Contents},bookmark={Table Of Contents}]
+\startitemize[packed,joinedup]
+\sym ❖ Interior Angles of a Polygon
+\stopitemize
+\stopsection
+
+\startsection[title={❖ Interior Angles of a Polygon},bookmark={Interior Angles of a Polygon}]
+
+\startformula
+\sqrt{2} + a
+\stopformula
+
+{\switchtobodyfont[cn]日本}
+
+日本
+
+In general{\textcomma} the sum of interior angles of any polygon is \math{{( n - 2 ) \times 1 8 0}}{\textcomma} where \math{{n}} is the number of sides.
+
+\dontleavehmode\hbox{\externalfigure[image-clock.png][width=4cm,frame=on]}
+
+\dontleavehmode\hbox{\externalfigure[image-calc.svg][width=4cm,frame=on]}
+\startitemize[packed,joinedup]
+\stopitemize
+\stopsection
+
+\stoptext
