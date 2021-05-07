@@ -1839,6 +1839,8 @@ that is "force=yes".  This setup "force=yes" ensures that the glyphs of the
 relevant characters are replaced from the fallback font, overriding the glyphs
 that may exist in the base font for these characters.
 
+For the "range=" key following is possible:
 
+    range=0x00000-0xFFFFF
 
 

@@ -40,3 +40,4 @@ c.md
 *.mp
 *.swo
 temp
+tests/cleamer.sh
