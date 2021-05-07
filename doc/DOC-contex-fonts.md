@@ -1734,8 +1734,64 @@ macros behind this mechanism.
 
 
 
+# Unicode blocks
+
+A Unicode block, or, simply, a block, is any of the subsets of the Unicode code
+space that are listed in the file Blocks.txt[3] of the Unicode Character
+Database. The Unicode code space is the set of all code points, that is, the
+set of all integers from 0 to the integer whose hexadecimal representation is
+10FFF.
+
+The main properties of blocks are described in the Unicode Standard[1] (Section
+3.4, paragraph D10b). Every block is an interval of code points, and distinct
+blocks are disjoint from each other. In particular, the blocks form a partition
+of a subset of the Unicode code space.
+
+A block starts at a code point that is a multiple of 16. The number of code
+points in each block is also a multiple of 16. Thus, the hexadecimal
+representation of the first code point in a block is of the form pqrs0, and
+that of the last code point in it is of the form tuvwF, where p, q, r, s, t, u,
+v, and w, are hexadecimal digits.
+
+The Unicode Standard gives every block a unique name that describes the common
+semantic nature of its code points. These names are case insensitive, and the
+hyphens, spaces, and underscores, in them are insignificant. For example, one
+can refer to the block whose Unicode name is Myanmar Extended-A as
+myanmarextendeda, MyanmarExtendedA, or myanmar_extended_a. ConTeXt chooses the
+first of these alternative styles for the names of blocks, as described below.
+
+The number of code points in a block varies. Some, such as the block named
+Syriac Supplement, have just 16 code points, and some others, such as the block
+named CJK Unified Ideographs Extension B with 42720 elements, have thousands of
+code points.
+
+Every assigned code point belongs to some block, but there are blocks which
+contain unassigned code points too; for example, the block named Telugu
+contains the unassigned code point 0C50. On the other hand, there are some code
+points, necessarily unassigned, which do not belong to any block; the code
+point 0870 is one such. Thus, the set of all assigned code points is a proper
+subset of the union of all the blocks, and the union of all the blocks is a
+proper subset of the Unicode code space.
+
+
+# ConTeXt names of Unicode blocks
+
+ConTeXt has its own names for all the Unicode blocks. Most of them are obtained
+by converting the Unicode name of the block to the lower case, and removing the
+hyphens and spaces in the name. The article entitled List of Unicode blocks
+contains a table of Unicode blocks, their ConTeXt names, and links to more
+information about them.
+
+Further ranges can be seen in context/tex/texmf-context/tex/context/base/mkiv/char-ini.lua
+
 
 # Fallback Fonts
+
+A typical use of Unicode blocks is in the definition of fallback fonts to
+provide glyphs for certain characters. Sometimes, when writing a document in
+ConTeXt, one needs to typeset special symbols that are not available in the
+base font of the document. In such a situation, one can specify a fallback font
+to provide these missing symbols.
 
 To set a fallback font for \definefontfamily you have to put all
 \definefallbackfamily settings before the main font. It is also necessary to
@@ -1762,7 +1818,6 @@ Here is a sample of the unicode ranges included.
       miscellaneoussymbolsandpictographs,
       miscellaneoustechnical}]
 
-Further ranges can be seen in context/tex/texmf-context/tex/context/base/mkiv/char-ini.lua
 
 Note that multiple calls to \definefallbackfamily can be made each with a different set
 of Unicode ranges.
@@ -1778,4 +1833,12 @@ of Unicode ranges.
     ❖ 
     日本
     \stoptext
+
+For the \definefallbackfamily, the last argument could include a key-value pair
+that is "force=yes".  This setup "force=yes" ensures that the glyphs of the
+relevant characters are replaced from the fallback font, overriding the glyphs
+that may exist in the base font for these characters.
+
+
+
 

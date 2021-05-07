@@ -171,6 +171,7 @@
 \definemathcommand [arcsch] [nolop] {\mfunction{arcsch}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usesymbols[mvs]
+\usemodule[ruby]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setupcaptions[minwidth=\textwidth, align=middle, location=top]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -253,6 +254,7 @@
 \setupbodyfont[linux,11pt]
 \setupwhitespace[5pt]
 \setupcombination[style=small]
+\setupruby[align=left]
 \starttext
 \dontleavehmode
 \blank[2cm]
@@ -285,6 +287,9 @@
 {\switchtobodyfont[cn]日本}
 
 日本
+
+\ruby{日本}{にほん}
+
 
 In general{\textcomma} the sum of interior angles of any polygon is \math{{( n - 2 ) \times 1 8 0}}{\textcomma} where \math{{n}} is the number of sides.
 
