@@ -1734,3 +1734,48 @@ macros behind this mechanism.
 
 
 
+
+# Fallback Fonts
+
+To set a fallback font for \definefontfamily you have to put all
+\definefallbackfamily settings before the main font. It is also necessary to
+use the correct arguments for the range key, in your case you need
+miscellaneoussymbols and dingbats (and probably a few more).
+
+    \definefallbackfamily [mainface] [serif] [Noto Emoji] [range={miscellaneoussymbols,dingbats}]
+    \definefontfamily     [mainface] [serif] [Minion Pro]
+    \setupbodyfont[mainface]
+    \starttext
+    Noto Emoji symbols: \utfchar{"26F5} \utfchar{"2712}
+    \stoptext
+
+Here is a sample of the unicode ranges included.
+
+    \definefallbackfamily[main] [serif] [Noto Emoji]
+      [force=yes,range={emoticons,
+      dingbats,
+      miscellaneoussymbols,
+      ornamentaldingbats,
+      miscellaneousmathematicalsymbolsa,
+      miscellaneousmathematicalsymbolsb,miscellaneoussymbols,
+      miscellaneoussymbolsandarrows,
+      miscellaneoussymbolsandpictographs,
+      miscellaneoustechnical}]
+
+Further ranges can be seen in context/tex/texmf-context/tex/context/base/mkiv/char-ini.lua
+
+Note that multiple calls to \definefallbackfamily can be made each with a different set
+of Unicode ranges.
+
+    \definefallbackfamily [linux] [serif] [zapfdingbats] [range={miscellaneoussymbols,dingbats}]
+    \definefallbackfamily [linux] [serif] [heitisc] [range={cjkunifiedideographs}]
+    \definefontfamily [linux] [serif] [libertinusserif]
+    \definefontfamily [linux] [sans]  [libertinussans]
+    \definefontfamily [linux] [mono]  [libertinusmono]
+    \definefontfamily [linux] [math]  [libertinusmath]
+    \starttext
+    Interior Angles of a Polygon
+    ❖ 
+    日本
+    \stoptext
+
