@@ -1843,4 +1843,17 @@ For the "range=" key following is possible:
 
     range=0x00000-0xFFFFF
 
+Another example is to use the \definefontfallback command.
 
+    \definefontfallback [xits-fallback] [file:xits-math.otf] [023B0,023B1]
+    \definefontsynonym  [MathRoman]     [modern]             [fallbacks=xits-fallback]
+    \starttext
+    Consider this increasing sequence of moustached primes:
+    \startformula
+      \lmoustache 11 \rmoustache <
+      \lmoustache 29 \rmoustache <
+      \lmoustache 31 \rmoustache <
+      \lmoustache 37 \rmoustache <
+      \lmoustache 41 \rmoustache
+    \stopformula
+    \stoptext
