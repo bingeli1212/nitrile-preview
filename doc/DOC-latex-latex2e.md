@@ -1651,15 +1651,15 @@ can be set to the following.
 Note that the width of a column is automatically adjusted to cover the widest
 cell within that column.
 
-- ``@{Text}`` This creates a column in which each line automatically contains
-  the entry Text.
-- ``p{width}`` This creates a column with a fixed or predefined width. If the
+- For a ``@{Text}`` alignment it expresses that it should create a column 
+  in which each line automatically contains the text "Text".
+- For a ``p{width}`` alignment it expresses that it should create a column 
+  with a fixed or predefined width equal to "width". If the
   text within a cell, this column, is too long, it will be wrapped
   automatically. If a line break is to be set manually, it must be set with the
-  \newline command.  By using the pipe sign, you can insert a visible seperator
-  (a line) between the individual table columns.
-
-The pipe sign | draws a vertical line over the entire height of the table. If
+  \newline command.  
+  
+The pipe sign draws a vertical line over the entire height of the table. If
 it is placed between two columns, the separator between them results. However,
 it can also be set at the beginning and end of the column definition to
 indicate the left or right margin of the table.  Within a table, you can also
@@ -1691,12 +1691,13 @@ command in the preamble.
 
     \DeclareGraphicsExtensions{.png,.pdf}
 
-\DeclareGraphicsExtensions{comma-separated list of file extensions} Declare the
-filename extensions to try. This allows you to specify the order in which to
-choose graphic formats when you include graphic files by giving the filename
-without the extension, as in \includegraphics{functionplot}.
-
-In this example, LaTeX will find files in the PNG format before PDF files.
+This command is to contain a list of comma-separated file extensions. Each
+extention declare that if the file is given without a file extension that it
+should try to locate the file with this extension and see if it exists. The
+extensions will always be considered in the order in which they are listed.
+This allows you to pick a graphic file format such as PDF over PNG when more
+than one format is available for the same file name.
+In the following example LaTeX will find files in the PNG format before PDF files.
 
     \DeclareGraphicsExtensions{.png,PNG,.pdf,.PDF}
       ...
@@ -1713,7 +1714,7 @@ Because GNU/Linux and Macintosh filenames are case sensitive, the list of file
 extensions is case sensitive on those platforms. The Windows platform is not
 case sensitive.
 
-You are not required to include \DeclareGraphicsExtensions in your document;
+You do not have to use this command \DeclareGraphicsExtensions in your document;
 the printer driver has a sensible default. For example, the most recent
 pdftex.def has this extension list.
 
@@ -1726,96 +1727,78 @@ once. Show its value with
 
     \makeatletter\typeout{\Gin@extensions}\makeatother
 
-# Horizontal Spaces in LATEX
+# Producing Horizontal Spaces 
 
 There are a number of horizontal spacing macros for LaTeX:
 
-+ `\,` 
+- The ``\,`` command
+  inserts a .16667em space in text mode, or ``\thinmuskip`` (equivalent to
+  3mu) in math mode; there's an equivalent ``\thinspace`` command;
 
-  inserts a .16667em space in text mode, or `\thinmuskip` (equivalent to
-  3mu) in math mode; there's an equivalent `\thinspace` macro;
-
-+ `\!` 
-
-  is the negative equivalent to `\,`; there's an equivalent `\negthinspace`
+- The ``\!`` command
+  is the negative equivalent to ``\,``; there's an equivalent ``\negthinspace``
   macro;
 
-+ `\>` 
-
-  inserts a .2222em space in text mode, or `\medmuskip` (equivalent
+- The ``\>`` command
+  inserts a .2222em space in text mode, or ``\medmuskip`` (equivalent
   to 4.0mu plus 2.0mu minus 4.0mu) in math mode; there's an equivalent
   \medspace;
 
-+ `\:` 
+- The ``\:`` command
+  is the same as ``\>``;
 
-  is the same as `\>`
+- The ``\negmedspace`` command
+  is the negative equivalent to ``\medspace``;
 
-+ `\negmedspace` 
+- The ``\;`` command
+  inserts a .2777em space in text mode, or ``\thickmuskip`` (equivalent to
+  5.0mu plus 5.0mu) in math mode; there's an equivalent ``\thickspace``;
 
-  is the negative equivalent to `\medspace`;
+- The ``\negthickspace`` command
+  is the negative equivalent to ``\thickspace``;
 
-+ `\;` 
-
-  inserts a .2777em space in text mode, or `\thickmuskip` (equivalent to
-  5.0mu plus 5.0mu) in math mode; there's an equivalent `\thickspace`;
-
-+ `\negthickspace` 
-
-  is the negative equivalent to `\thickspace`;
-
-+ `\enspace` 
-
+- The ``\enspace`` command
   inserts a space of .5em in text or math mode;
 
-+ `\quad` 
-
+- The ``\quad`` command
   inserts a space of 1em in text or math mode;
 
-+ `\qquad` 
-
+- The ``\qquad`` command
   inserts a space of 2em in text or math mode;
 
-+ `\kern{<len>}` 
-
+- The ``\kern{<len>}`` command
   inserts a skip of <len> (may be negative) in text or math mode
-  (a plain TeX skip); there's also a math-specific `\mkern <math len>`;
+  (a plain TeX skip); there's also a math-specific ``\mkern <math len>``;
 
-+ `\hskip{<len>}` 
+- The ``\hskip{<len>}`` command
+  is similar to ``\kern``;
 
-  (similar to `\kern`);
-
-+ `\hspace{<len>}` 
-
+- The ``\hspace{<len>}`` command
   inserts a space of length <len> (may be negative) in math or
-  text mode (a LaTeX `\hskip`);
+  text mode (a LaTeX ``\hskip``);
 
-+ `\hphantom{<stuff>}` 
-
+- ``\hphantom{<stuff>}`` command
   inserts space of length equivalent to <stuff> in math or
-  text mode. `\phantom{<stuff>}` is similar, inserting a horizontal and vertical
-  space that matches <stuff>. Should be `\protected` when used in fragile
-  commands (like `\caption` and sectional headings);
+  text mode. ``\phantom{<stuff>}`` is similar, inserting a horizontal and vertical
+  space that matches <stuff>. Should be ``\protected`` when used in fragile
+  commands (like ``\caption`` and sectional headings);
 
-+ `\ ` 
-
+- The ``\ `` command
   inserts what is called a "control space" (in text or math mode);
 
-+ ' ' 
-
+- The regular space character
   inserts an inter-word space in text mode (and is gobbled in math mode).
-  Similarly for `\space` and `{ }`.
+  Similarly for ``\space`` and ``{ }``.
 
-+ `~` 
-
-  inserts an "unbreakable" space (similar to an HTML `&nbsp;`) (in text or
+- The ``~`` character
+  inserts an "unbreakable" space (similar to the "nbsp" entity in HTML) (in text or
   math mode);
 
-+ `\hfill` 
-
+- The ``\hfill`` command
   inserts a so-called "rubber length" or stretch between elements (in
   text or math mode). Note that you may need to provide a type of anchor to
   fill from/to; see What is the difference between 
-  `\hspace*{\fill}` and `\hfill`.
+  ``\hspace*{\fill}`` and ``\hfill``.
 
 # Two line labels in the description items
 
