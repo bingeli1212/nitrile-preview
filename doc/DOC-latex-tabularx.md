@@ -51,6 +51,7 @@ included.
     \end{tabularx}
     %%%
 
+
 # The <ltablex> package
 
 The ltablex package, is a extension of longtable to tabularx. Hence the caption
@@ -100,51 +101,45 @@ suffices to add a label when the footnote appears first.
     \end{document} 
 
 
-
-
 # Known problems with tabularx table
 
-  - It is known to generate the following error message when 
-    two column setting is on.
+It is known to generate the following error message when 
+two column setting is on.
 
-    ```
     ! Package longtable Error: longtable not in 1-column mode.
     See the longtable package documentation for explanation.
     Type  H <return>  for immediate help.
      ...
     l.23883 \end{tabularx}
-    ```
- 
-    It is still possible to finish compiling the document 
-    by using: `--interaction=nonstopmode`. However the output PDF
-    might look a little strange in some section of the document.
-    Ie., if a tabularx table is to be broken into two parts 
-    and the first part is at the bottom of the first column
-    of a page, the second part of the table is supposed to appear
-    at the beginning of second column of the same page. 
-    However, it has been observed that it actually started 
-    at the first column of the next page.
 
-  - A tabularx table does not need to placed inside a flushleft
-    environment to add additional margin space top and bottom.
-    It produces its own the top and bottom margins.
+With the previous error, it is still possible to finish compiling the document
+by using: `--interaction=nonstopmode`. However the output PDF might look a
+little strange in some section of the document.  Ie., if a tabularx table is to
+be broken into two parts and the first part is at the bottom of the first
+column of a page, the second part of the table is supposed to appear at the
+beginning of second column of the same page.  However, it has been observed
+that it actually started at the first column of the next page.
 
+A "tabularx" table produces visible vertical spaces before and after the
+environment in relation to the surrounding paragraphs, even when "parskip"
+package is not used.  This is similar to the effect produced by a "flushleft"
+environment.
 
 
 # Following are copy and paste from the internet
     
-  - tabularx, awesome for column formatting but not for multi-page
-    tables
+- tabularx, awesome for column formatting but not for multi-page
+  tables
 
-  - ltablex, awesome for combining tabularx with longtable but not
-    well matching with double-column documents (at least I haven't
-    managed to get around the changes ltablex does to the tabularx
-    package)
+- ltablex, awesome for combining tabularx with longtable but not
+  well matching with double-column documents (at least I haven't
+  managed to get around the changes ltablex does to the tabularx
+  package)
 
-  - xtab (enhancement of supertabular), awesome features but without
-    supporting tabularx-style column formatting (at least I haven't
-    managed)
+- xtab (enhancement of supertabular), awesome features but without
+  supporting tabularx-style column formatting (at least I haven't
+  managed)
 
-  - tabulary, which nicely automates column formatting but is not the
-    right thing to do multi-page tables
+- tabulary, which nicely automates column formatting but is not the
+  right thing to do multi-page tables
 
