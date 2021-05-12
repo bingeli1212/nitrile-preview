@@ -61,12 +61,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch camer",
+      "name": "Launch camper",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/camer.js",
+      "program": "${workspaceFolder}/tests/camper.js",
       "args": [
         "a.md"
       ]
@@ -74,12 +74,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch creamer",
+      "name": "Launch cleamer",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/creamer.js",
+      "program": "${workspaceFolder}/tests/cleamer.js",
       "args": [
         "a.md"
       ]

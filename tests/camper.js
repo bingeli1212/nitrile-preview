@@ -1,11 +1,11 @@
 const { NitrilePreviewParser } = require('../lib/nitrile-preview-parser');
-const { NitrilePreviewCamer } = require('../lib/nitrile-preview-camer');
+const { NitrilePreviewCamper } = require('../lib/nitrile-preview-camper');
 
 var work = async (fname)=>{
   const parser = new NitrilePreviewParser();
   await parser.read_file_async(fname);
   await parser.read_import_async();
-  const translator = new NitrilePreviewCamer(parser);
+  const translator = new NitrilePreviewCamper(parser);
   var tex = translator.to_document();
   return tex;
 };

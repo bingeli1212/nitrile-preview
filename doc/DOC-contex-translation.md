@@ -143,7 +143,8 @@ camer.setupbodyfont: linux,11pt
   the lines appear to be too far separated vertically from each other
 
 - For TexLive2021, the command "\softhyphen" does not work and would
-  cause a compile error
+  cause a compile error, for downloaded context it does not have this
+  problem.
 
 - The "\startpart" and "\stoppart" command would not generate an output
   even when the "title=" field of this command is set to a non-empty string.
@@ -170,26 +171,18 @@ camer.setupbodyfont: linux,11pt
 
 - It has been observed that for "starttabulate", when the column is set to "p",
   and the row contains a mix of normal text, math text, and display math, the
-  row does not allocate enough vertical space to contain the height necessary
-  for the math text such that the bottom part of the top row text would be
-  partially overlapping with the top part of the bottom row text.  For this reason
-  the "lines" fence is implemented using the "startlines" command.
+  row height is not big enough to hold the math text; the visual effect of this
+  is that the top part of the math text of the lower row touches the bottom
+  part of the text of the upper row.
+  For this reason the "lines" fence is implemented using the "startlines" command.
   
-- The "lines" fence is implemented using the "startlines" command, and "\crlf"
-  is placed after each line except for the last one. This is to address the
-  problem of turning all lines into a single line when "startlines" becomes   
-  part a head text (section,subsection,etc.) as was seen by slide.js when a solution
-  contains a list of radio button. Adding "\crlf" at the end of the lines seems
-  to have fixed the issue on the surface and not have caused any adverse effects    
-  for otherwise normal lines.
-
-- It is not possible to place an inline-diagram inside a table cell; the 'startMPcode"
-  "stopMPcode" commands compiles inside a "starttable" but does not generate
-  any pictures
-
 - The 'start-stop-formula" command pair is not a complete replacement of a "displaymath"
   of LATEX, because it places visible whitespaces before and after the formula. It does
   howver, stop placing a indent before the next paragraph after the formula.
+
+- The 'startlines' command would fail to produce a line-by-line paragraph when it appears
+  inside a 'startsection' command.
+
 
 # The \bTABLE problem
 

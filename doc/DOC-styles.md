@@ -652,11 +652,10 @@ Following are styles recognized by NITRILE:
   altering the set of environment variables to something between its start
   and end values.
   
-+ quantity:12
++ count:12
 
-  This value holds the quantity for certain operation. This value is currently utilized
-  by the 'diagram' bundle to express the total number of animated diagrams to be made if
-  its "animate" property has been set to something that is not an empty string. 
+  This value holds the count for certain operation. This value is currently utilized
+  by the 'diagrams' bundle to express the total number of animated diagrams to be made.
 
 + fillonly:1
 
