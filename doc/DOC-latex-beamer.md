@@ -1,11 +1,8 @@
 ---
-title: The "Beamer.JS" translation
+title: Translation To Beamer
 ---
 
-%samp:framed
-%frame:1
-
-The "Beamer.JS" translation intends to produce one or more slides
+The translation to Beamer intends to produce one or more slides
 using the LATEX "beamer" class.
 
 # The checkboxes
@@ -18,13 +15,13 @@ which corresponds to the first choice.
     Q: What is the type of the syllogism for the following 
     sentence?
       
-    ```    
-      1. All cars have wheels.
-      2. I drive a car.
-      3. Therefore, my car has wheels.
+    ```lines    
+    1. All cars have wheels.
+    2. I drive a car.
+    3. Therefore, my car has wheels.
     ```
     
-    ```    
+    ```lines    
     [ ] A. Categorical (If A is in C then B is in C)
     [ ] B. Disjunctive (If A is not true then B is true)
     [ ] C. Hypothetical (If A is true then B is true)
@@ -32,7 +29,7 @@ which corresponds to the first choice.
     
     [ Answer ] A
     
-    ```    
+    ```lines    
     [X] A. Categorical (If A is in C then B is in C)
     [ ] B. Disjunctive (If A is not true then B is true)
     [ ] C. Hypothetical (If A is true then B is true)
@@ -46,11 +43,13 @@ Following is an example.
     Q: What is the type of the syllogism for the following 
     sentence?
     
-      1. All cars have wheels.
-      2. I drive a car.
-      3. Therefore, my car has wheels.
-    
-    ```    
+    ```lines
+    1. All cars have wheels.
+    2. I drive a car.
+    3. Therefore, my car has wheels.
+    ```
+
+    ```lines    
     ( ) A. Categorical (If A is in C then B is in C)
     ( ) B. Disjunctive (If A is not true then B is true)
     ( ) C. Hypothetical (If A is true then B is true)
@@ -58,7 +57,7 @@ Following is an example.
     
     [ Answer ] A
     
-    ```    
+    ```lines    
     [X] A. Categorical (If A is in C then B is in C)
     [ ] B. Disjunctive (If A is not true then B is true)
     [ ] C. Hypothetical (If A is true then B is true)
@@ -111,34 +110,30 @@ correctly.
 
 It seems that the latest version of 1.07 has disabled the portrait or landscape option.
 
-```
-1.07 – bugfixed custom size handling, portrait or landscape settings are ignored now 
-1.06 – added the type1cm package for scalable math fonts
-1.05 – added version check for xkeyval package
-1.04 – added custom size handling
-1.03 – improved predefined size handling 1.02 – minor bugfixes
-1.01 – bugfixed size handling
-1.00 – first beamerposter release
-```
+    1.07 – bugfixed custom size handling, portrait or landscape settings are ignored now 
+    1.06 – added the type1cm package for scalable math fonts
+    1.05 – added version check for xkeyval package
+    1.04 – added custom size handling
+    1.03 – improved predefined size handling 1.02 – minor bugfixes
+    1.01 – bugfixed size handling
+    1.00 – first beamerposter release
 
 Following poster paper sizes are supported: DIN–A0, DIN–A1, DIN–A2,
 DIN–A3, DIN–A4, and custom sizes like double DIN–A0 possible
 
-```tabular
-DIN-Formate  | in mm
-==============================
-A0           | 841 x 1189 
-A1           | 594 x 841
-A2           | 420 x 594
-A3           | 297 x 420
-A4           | 210 x 297
-A5           | 148 x 210
-A6           | 105 x 148
-A7           | 74 x 105
-A8           | 52 x 74
-A9           | 37 x 52
-A10          | 26 x 37
-``` 
+    DIN-Formate  | in mm
+    ==============================
+    A0           | 841 x 1189 
+    A1           | 594 x 841
+    A2           | 420 x 594
+    A3           | 297 x 420
+    A4           | 210 x 297
+    A5           | 148 x 210
+    A6           | 105 x 148
+    A7           | 74 x 105
+    A8           | 52 x 74
+    A9           | 37 x 52
+    A10          | 26 x 37
 
 
 
@@ -153,7 +148,6 @@ a predefined value. By default, the paper size is
 128mm by 96mm(4:3).
 
     \documentclass[aspectratio=169]{beamer}
-
 
 + \documentclass[aspectratio=1610]{beamer}
   
