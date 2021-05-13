@@ -172,7 +172,7 @@ overflow the line.
   the line, and each subsequent flex item is placed flush with the preceding
   item.
 
-  ```diagram{outline}
+  ```diagram{frame}
   viewport 18 2
   config w 2
   config h 2
@@ -187,7 +187,7 @@ overflow the line.
   the last flex item is placed flush with the main-end edge of the line, and each
   preceding flex item is placed flush with the subsequent item.
 
-  ```diagram{outline}
+  ```diagram{frame}
   viewport 18 2
   config w 2
   config h 2
@@ -197,7 +197,7 @@ overflow the line.
   box "1\\2\\3" (0,0) [h:2] [h:2]
   ```
 
-+ `center`
++ ``center``
 
   Flex items are packed toward the center of the line. The flex items on the line
   are placed flush with each other and aligned in the center of the line, with
@@ -206,14 +206,14 @@ overflow the line.
   the line. (If the leftover free-space is negative, the flex items will overflow
   equally in both directions.)
 
-  ```diagram{outline}
+  ```diagram{frame}
   viewport 18 2
   config w 2
   config h 2
   set refxy right:6
   config fillcolor orange
   config opacity 0.3
-  box "1\\2\\3" (0,0) [h:2] [h:2]
+  box "1\\2\\3" right:6 (0,0) [h:2] [h:2]
   ```
 
 + `space-between`
@@ -226,7 +226,7 @@ overflow the line.
   main-end edge of the line, and the remaining flex items on the line are
   distributed so that the spacing between any two adjacent items is the same.
 
-  ```diagram{outline}
+  ```diagram{frame}
   viewport 18 2
   config w 2
   config h 2
@@ -245,7 +245,7 @@ overflow the line.
   items and the flex container edges is half the size of the spacing between flex
   items.
 
-  ```diagram{outline}
+  ```diagram{frame}
   viewport 18 2
   config w 2
   config h 2
@@ -405,7 +405,7 @@ flex-flow property specifies a multi-line flex container (due to the wrap
 keyword appearing in its value), the flex container will create an additional
 line to contain the last item.
  
-```diagram{outline} 
+```diagram{frame} 
 viewport 15 4 
 group my = {w:4,h:2,fillcolor:orange,opacity:0.3} 
 box {group:my} "1" (0,2) 
@@ -438,7 +438,7 @@ Because the `flex-flow` property specifies a multi-line flex container (due to
 the wrap keyword appearing in its value), the flex container will create an
 additional line to contain the last item.
 
-```diagram{outline}
+```diagram{frame}
 viewport 15 4
 group my = {w:5,h:2,fillcolor:orange,opacity:0.3} 
 group my2 = {w:15,h:2,fillcolor:orange,opacity:0.3} 
@@ -450,25 +450,25 @@ box {group:my2} "4" (0,0)
 
 [ Controlling flexibility of each flex item. ]
 The defining aspect of flex layout is the ability to make the flex items
-“flex”, altering their width/height to fill the available space in the main
+flexible, altering their width/height to fill the available space in the main
 dimension. This is done with the flex property. A flex container distributes
 free space to its items (proportional to their flex grow factor) to fill the
 container, or shrinks them (proportional to their flex shrink factor) to
 prevent overflow.
 
-The `flex` property is to be set with each flex item. Its value affects the
+The ``flex`` property is to be set with each flex item. Its value affects the
 final length of this flex item.  In particular, when a flex item is being
-managed by a flex container, the `width`/`height` property of the flex item
-becomes less important when its `flex` property is set, in which case the size
+managed by a flex container, the ``width`` and ``height`` property of the flex item
+becomes less important when its ``flex`` property is set, in which case the size
 of the flex item is recomputed based upon the actual contents of this value and
 the available spaces within the container. 
 
-The `flex` property is a shorthand that holds property values from three
-specialized properties: `flex-grow`, `flex-shrink`, and `flex-basis`.  A flex
-item is inflexible if both `flex-grow` and `flex-shrink` properties are set to
+The ``flex`` property is a shorthand that holds property values from three
+specialized properties: ``flex-grow``, ``flex-shrink``, and ``flex-basis``.  A flex
+item is inflexible if both ``flex-grow`` and ``flex-shrink`` properties are set to
 zero. Following are descriptions of the three properties individually.
 
-+ `flex-grow`
++ ``flex-grow``
 
   This "number" component sets flex-grow longhand and specifies the flex grow
   factor, which determines how much the flex item will grow relative to the
@@ -479,7 +479,7 @@ zero. Following are descriptions of the three properties individually.
   the flex values on the line is less than 1, they will take up less than 100%
   of the free space.
 
-+ `flex-shrink`
++ ``flex-shrink``
 
   This "number" component sets flex-shrink longhand and specifies the flex
   shrink factor, which determines how much the flex item will shrink relative
@@ -491,7 +491,7 @@ zero. Following are descriptions of the three properties individually.
   how much the item is able to shrink, so that e.g. a small item won’t shrink
   to zero before a larger item has been noticeably reduced.
 
-+ `flex-basis`
++ ``flex-basis``
 
   This component sets the `flex-basis longhand`, which specifies the flex basis:
   the initial main size of the flex item, before free space is distributed
@@ -499,13 +499,13 @@ zero. Following are descriptions of the three properties individually.
   values as the width and height properties (except that auto is treated
   differently) plus the content keyword:
 
-  + `auto`
+  + ``auto``
      
     When specified on a flex item, the auto keyword retrieves the value of the
     main size property as the used flex-basis. If that value is itself auto,
     then the used value is content.
 
-  + `content`
+  + ``content``
 
     Indicates an automatic size based on the flex item’s content. (It is
     typically equivalent to the max-content size, but with adjustments to
@@ -565,7 +565,7 @@ others aligned on the right.
       </ul>
     </nav>
 
-```diagram{outline}
+```diagram{frame}
 viewport 20 2
 config fillcolor orange
 config opacity 0.3
@@ -575,27 +575,111 @@ box {w:4,h:2} "Interact" (8,0)
 box {w:4,h:2} "Login"    (16,0)
 ```
 
+[ The ``align-self`` property. ]
+The property doesn't apply to block-level boxes, or to table cells. If a
+flexbox item's cross-axis margin is auto, then align-self is ignored.
+
++ ``auto``
+
+  Computes to the parent's align-items value.
+
++ ``normal``
+
+  The effect of this keyword is dependent of the layout mode we are in:
+
+  - In absolutely-positioned layouts, the keyword behaves like start on
+    replaced absolutely-positioned boxes, and as stretch on all other
+    absolutely-positioned boxes.
+
+  - In static position of absolutely-positioned layouts, the keyword behaves as
+    stretch.
+
+  - For flex items, the keyword behaves as stretch.
+
+  - For grid items, this keyword leads to a behavior similar to the one of
+    stretch, except for boxes with an aspect ratio or an intrinsic sizes where
+    it behaves like start.
+
+  - The property doesn't apply to block-level boxes, and to table cells.  
+
++ ``self-start``
+
+  Aligns the items to be flush with the edge of the alignment container
+  corresponding to the item's start side in the cross axis.
+
++ ``self-end``
+
+  Aligns the items to be flush with the edge of the alignment container
+  corresponding to the item's end side in the cross axis.
+
++ ``flex-start``
+
+  The cross-start margin edge of the flex item is flushed with the cross-start
+  edge of the line.
+
++ ``flex-end``
+
+  The cross-end margin edge of the flex item is flushed with the cross-end edge
+  of the line.
+
++ ``center``
+
+  The flex item's margin box is centered within the line on the cross-axis. If
+  the cross-size of the item is larger than the flex container, it will
+  overflow equally in both directions.
+
++ ``baseline``, ``first-baseline``, ``last-baseline``
+
+  Specifies participation in first- or last-baseline alignment: aligns the
+  alignment baseline of the box’s first or last baseline set with the
+  corresponding baseline in the shared first or last baseline set of all the
+  boxes in its baseline-sharing group.  The fallback alignment for first
+  baseline is start, the one for last baseline is end.
+
++ ``stretch``
+
+  If the combined size of the items along the cross axis is less than the size
+  of the alignment container and the item is auto-sized, its size is increased
+  equally (not proportionally), while still respecting the constraints imposed
+  by max-height/max-width (or equivalent functionality), so that the combined
+  size of all auto-sized items exactly fills the alignment container along the
+  cross axis.
+
++ ``safe``
+
+  If the size of the item overflows the alignment container, the item is
+  instead aligned as if the alignment mode were start.
+
++ ``unsafe``
+
+  Regardless of the relative sizes of the item and alignment container, the
+  given alignment value is honored.
+
+
 [[[ Example 4. ]]]
 The figure below illustrates the difference in cross-axis alignment in overflow
 situations between using auto margins and using the alignment properties.
-The items in the figure on the left are centered with margins, while those in
-the figure on the right are centered with align-self. If this column flex
-container was placed against the left edge of the page, the margin behavior
-would be more desirable, as the long item would be fully readable. In other
-circumstances, the true centering behavior might be better.
+All items on the left-hand side figure are centered using auto margins. All items
+on the right-hand side figure are centered using align-self style. 
 
-```diagram{outline}
+As can be seen, items aligned using auto margins would have to be limited by the availability of
+left margin, and would not go overboard had it already exhausted all left margin spaces,  
+and thus would let the content overflow far to the right hand side. On the other hand, items aligned
+using align-self style are not limited by the availability of left margin and thus will always
+be centered regardless.
+
+```diagram{frame}
 viewport 11 10
 draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
 box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
 box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
 box {fillcolor:orange,opacity:0.3,w:8} "Hello World" (3,7)
 ```
-```diagram{outline}
+```diagram{frame}
 viewport 11 10
 draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
 box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
 box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
-box {fillcolor:orange,opacity:0.3,w:8} "Hello World" /-1.5,/ (3,7)
+box {fillcolor:orange,opacity:0.3,w:8} "Hello World" left:1.5 (3,7)
 ```
 
