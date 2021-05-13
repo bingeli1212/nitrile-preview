@@ -1,9 +1,9 @@
 const { NitrilePreviewParser } = require('../lib/nitrile-preview-parser');
-const { NitrilePreviewCleamer } = require('../lib/nitrile-preview-creamer');
+const { NitrilePreviewCreamer } = require('../lib/nitrile-preview-creamer');
 
 var work = async ()=>{
   const parser = new NitrilePreviewParser();
-  const translator = new NitrilePreviewCleamer(parser);
+  const translator = new NitrilePreviewCreamer(parser);
   await parser.read_file_async(fname);
   var data = translator.to_document();
   return(data);
