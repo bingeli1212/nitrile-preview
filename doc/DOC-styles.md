@@ -754,7 +754,11 @@ Following are styles recognized by NITRILE:
   This option sets the text for the sub-title. It is to be used by an Img or Diagram
   bundle to set the subtitle text.
 
++ nocaption:1
 
+  When set to 1 this style asks that no caption text is to be shown. This option is currently
+  utilized by figure, table, longtable, and listing blocks to specifically suppress the showing
+  of caption text.
 
 
 
