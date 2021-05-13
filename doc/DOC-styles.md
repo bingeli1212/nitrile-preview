@@ -749,7 +749,12 @@ Following are styles recognized by NITRILE:
   a number other than zero, it specifies the length of the two arrows that will be drawn
   that points to the two end points given when drawing a sloped text.
 
-  
++ subtitle:text
+
+  This option sets the text for the sub-title. It is to be used by an Img or Diagram
+  bundle to set the subtitle text.
+
+
 
 
 
