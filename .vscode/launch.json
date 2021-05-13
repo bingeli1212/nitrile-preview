@@ -74,12 +74,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch cleamer",
+      "name": "Launch creamer",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/cleamer.js",
+      "program": "${workspaceFolder}/tests/creamer.js",
       "args": [
         "a.md"
       ]
