@@ -1,7 +1,7 @@
 ---
 title: MetaFun
-camer.setupbodyfont: linux,11pt
 ---
+%img{frame}
 
 # Introduction
 
@@ -126,11 +126,11 @@ generated pictures with the following command and the command above.
   the figure on the right hand side is the path of "(1cm,1.5cm)..(2cm,1.5cm)..(2cm,2cm)".
 
   ```img{outline,width:2cm}
-  image-metafun-1.png
+  image image-metafun-1.png
   ```
 
   ```img{outline,width:2cm}
-  image-metafun-2.png
+  image image-metafun-2.png
   ```
 
 If a path is to be constructed with a 
@@ -153,11 +153,11 @@ a different control point for each end point of a curve.
   the figure on the right hand side is the path of "(1cm,1.5cm)..(2cm,1.5cm)..(2cm,2cm)".
 
   ```img{outline,width:2cm}
-  image-metafun-3.png
+  image image-metafun-3.png
   ```
 
   ```img{outline,width:2cm}
-  image-metafun-4.png
+  image image-metafun-4.png
   ```
 
 # Transformation
@@ -213,27 +213,27 @@ the same. See figure &ref{fig:metafun-path-transformations}.
   example.
 
   ```img{outline,width:2cm}
-  image-metafun-5-1.png
+  image image-metafun-5-1.png
   ```
 
   ```img{outline,width:2cm}
-  image-metafun-5-2.png
+  image image-metafun-5-2.png
   ```
 
   ```img{outline,width:2cm}
-  image-metafun-5-3.png
+  image image-metafun-5-3.png
   ```
 
   ```img{outline,width:2cm}
-  image-metafun-5-4.png
+  image image-metafun-5-4.png
   ```
 
   ```img{outline,width:2cm}
-  image-metafun-5-5.png
+  image image-metafun-5-5.png
   ```
 
   ```img{outline,width:2cm}
-  image-metafun-5-6.png
+  image image-metafun-5-6.png
   ```
 
 Table &ref{tab:metafun-all} is a summary that showcases various 
@@ -279,7 +279,7 @@ and (2.6cm,3cm). The result is shown in figure
     hand side along the line of (2.4cm,-0.5cm),(2.6cm,3cm).
 
     ```img{outline,width:6cm}
-    image-metafun-6.png
+    image image-metafun-6.png
     ```
 
 A ``zscaled`` transformation takes a pair of numbers which is to be 
@@ -341,7 +341,7 @@ the individual points.
     that is on the left hand side.
 
     ```img{outline,width:6cm}
-    image-metafun-7.png
+    image image-metafun-7.png
     ```
 
 Note that for a picture, 
@@ -375,31 +375,31 @@ point z0.
     Path contruction operators.
 
     ```img{outline,width:6cm}
-    image-metafun-8-1.png
+    image image-metafun-8-1.png
     ```
 
     ```img{outline,width:6cm}
-    image-metafun-8-2.png
-    ```
-
-    \\
-
-    ```img{outline,width:6cm}
-    image-metafun-8-3.png
-    ```
-
-    ```img{outline,width:6cm}
-    image-metafun-8-4.png
+    image image-metafun-8-2.png
     ```
 
     \\
 
     ```img{outline,width:6cm}
-    image-metafun-8-5.png
+    image image-metafun-8-3.png
     ```
 
     ```img{outline,width:6cm}
-    image-metafun-8-6.png
+    image image-metafun-8-4.png
+    ```
+
+    \\
+
+    ```img{outline,width:6cm}
+    image image-metafun-8-5.png
+    ```
+
+    ```img{outline,width:6cm}
+    image image-metafun-8-6.png
     ```
 
 
@@ -457,9 +457,22 @@ Here we access them:
     fill fullcircle scaled  6 withcolor complemented "MyColor3" ;
     fill fullcircle scaled  4 withcolor "MyColor4" randomized 2 ;
     fill fullcircle scaled  2 withcolor "MyColor4" randomized 2 ;
-    addbackground
-        withcolor .5[resolvedcolor("MyColor4"),resolvedcolor("MyColor2")] ;
+    addbackground withcolor 
+      .5[resolvedcolor("MyColor4"),resolvedcolor("MyColor2")] ;
     currentpicture := currentpicture ysized 4cm ;
+
+If want to add a background 
+color to a picture you can do that afterwards by using the 
+``addbackground`` command.
+This command can be handy when you don’t know in advance 
+what size the picture will have.
+          
+    fill fullcircle scaled 1cm withcolor .625red ;
+      addbackground withcolor .625 yellow ;
+
+The background is just a filled rectangle that 
+gets the same size as the current picture, that is 
+put on top of it.
 
 
 
@@ -542,8 +555,10 @@ demonstrates this:
        draw thefmttext.rt("@!texexp!", 10.4698E30,
        draw thefmttext.rt("@1!texexp!",10.4698E30,
        draw thefmttext.rt("@2!texexp!",10.4698E30,"@2.3f",
-       draw thefmttext.rt("@3!texexp!",10.4698E30,false,"@2i",  (0,-4LineHeight)) ;
-       draw thefmttext.rt("@3!texexp!",10.4698E30,"@2.3f","@2i",(0,-5LineHeight)) ;
+       draw thefmttext.rt("@3!texexp!",10.4698E30,false,"@2i",  
+                          (0,-4LineHeight)) ;
+       draw thefmttext.rt("@3!texexp!",10.4698E30,"@2.3f","@2i",
+                          (0,-5LineHeight)) ;
       ) withcolor darkblue ;
     \stopMPcode
 
@@ -589,7 +604,7 @@ of path that is shown by figure &ref{fig:metafun-stroke-1}.
     The result of stroking two paths.
   
     ```img{outline,width:8cm}
-    image-metafun-9.png
+    image image-metafun-9.png
     ```
 
 On a side note, once something is drawn, it is placed inside variable named 
@@ -629,7 +644,7 @@ which is the output of the following example.
     Using ``currentpicture`` to make multiple copies.
 
     ```img{outline,width:8cm}
-    image-metafun-10.png
+    image image-metafun-10.png
     ```
 
 
@@ -668,7 +683,7 @@ figure &ref{fig:metafun-textoneinch}.
     The square and circle of size 1 inch.
 
     ```img
-    image-metafun-11.png
+    image image-metafun-11.png
     ```
 
 In METAPOST the following lines are identical:
