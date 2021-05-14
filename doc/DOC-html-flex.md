@@ -31,17 +31,31 @@ work in the context of a flex layout. In particular,
 - a flex container does not contribute a first formatted line or
   first letter to their ancestors;
   thus, the notation of ``::first-line`` and/or ``::first-letter`` 
-  pseudo-element done to a flex container has no effect
+  pseudo-element done to a flex container has no effect;
+
+- margins of two adjacent flex items do not collapse. 
+
+In addition, if a specific direction of a margin is set to ``auto``, 
+which is called an &em{auto margin}, it serves to expand to absorb 
+all extra space in that direction. An auto margin
+can be set to achieve the effect of aligning that item in the cross-axis 
+dimension if the margin is set at that direction. 
+The same auto margin could also be used to push 
+a flex item away from one of its neighboring items
+in the main-axis dimension if the margin happens to be facing that direction.
 
 Loosely speaking, flex items of a flex container are considered
 "in-flow contents" of this flex container.
-As for a HTML structure,
-each child element of a flex container element becomes a flex item. 
-Texts between child elements are wrapped inside an anonymous block container 
-that becomes an flex item itself.
-However, if those text contains only white
-space then this element is considered invisible 
-(or as if it had been set the ``display:none`` property value.)
+As for a HTML document,
+each child element of a flex container parent automatically becomes a flex item 
+of that container.
+All text between two child elements are indirectly becoming part of a flex item
+by being wrapped inside an anonymous element where that element itself becoming
+the flex item.
+Should those text contains only white
+space then this anonymous element is not rendered,  
+which could be considered equivalent to being set the ``display:none``
+property.
 
 @ figure{subfigure}
   &label{flex:container}
@@ -90,26 +104,6 @@ position is static (behaving exactly as if position were relative).
 
 Note: Descendants that are positioned outside a flex item still participate in
 any stacking context established by the flex item.
-
-
-# Setting Margins of a Flexbox Item
-
-One important visual difference one might notice when looking at a flex
-layout is that the margins of two adjacent flex items do not collapse. This 
-behavior is
-different than what one would have observed when looking at a layout done
-by a block layout module, child elements are
-resolved against the inline size of their containing block, e.g.
-left/right/top/bottom percentages all resolve against their containing block’s
-width in horizontal writing modes.
-
-In addition, if a specific direction of a margin is set to ``auto``, 
-which is called an &em{auto margin}, it serves to expand to absorb 
-all extra space in that direction. Auto margins
-can be set to achieve the effect of alignment in the cross dimension if it is
-set in that direction, 
-or it could be used to push a flex item from its neighboring items
-if it is set in the dimension of the main axis.
 
 
 # Aligning Flex Items Within the Container
