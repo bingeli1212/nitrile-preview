@@ -362,7 +362,7 @@ not considered "closed" and can only be used for stroking.
     z2 = (6.5cm,0.5cm) ; 
     z3 = (3.0cm,1.5cm) ;
 
-Figure &ref{fig:metafun-op1} (a) describes a closed path 
+Figure-&ref{fig:metafun-op1}-a describes a closed path 
 that is ``z0--z1--z2--z3--cycle``. Here, the double-hyphen is 
 considered an "operator" such that it adds the information to the path
 about how the points of z0 and z1 is to be connected.
@@ -374,31 +374,43 @@ point z0.
     &label{fig:metafun-op1}
     Path contruction operators.
 
-    ```img{outline,width:6cm}
+    ```img{outline,width:6cm,subtitle}
+    ``z0--z1--z2--z3--cycle``
+    ---
     image image-metafun-8-1.png
     ```
 
-    ```img{outline,width:6cm}
+    ```img{outline,width:6cm,subtitle}
+    ``z0..z1..z2..z3..cycle``
+    ---
     image image-metafun-8-2.png
     ```
 
     \\
 
-    ```img{outline,width:6cm}
+    ```img{outline,width:6cm,subtitle}
+    ``z0---z1---z2---z3---cycle``
+    ---
     image image-metafun-8-3.png
     ```
 
-    ```img{outline,width:6cm}
+    ```img{outline,width:6cm,subtitle}
+    ``z0..z1..z2--z3..cycle``
+    ---
     image image-metafun-8-4.png
     ```
 
     \\
 
-    ```img{outline,width:6cm}
+    ```img{outline,width:6cm,subtitle}
+    ``z0..z1..z2---z3..cycle``
+    ---
     image image-metafun-8-5.png
     ```
 
-    ```img{outline,width:6cm}
+    ```img{outline,width:6cm,subtitle}
+    ``z0..z1..z2 & z2..z3..z0 & cycle``
+    ---
     image image-metafun-8-6.png
     ```
 
@@ -407,7 +419,8 @@ However, if we were to change the path construction to look like
 ``z0..z1..z2..z3..cycle`` 
 the result would look different. In particular,
 the lines connecting these points will look like smoothed curves 
-transitioned smoothly from one point to another. See figure (b).
+transitioned smoothly from one point to another. 
+See Figure-&ref{fig:metafun-op1}-b.
 
 If the path were to be constructed as 
 ``z0---z1---z2---z3---cycle`` it would look very much
@@ -421,19 +434,20 @@ However, if triple-hyphen is used the result is simply a straight line,
 and no control points at all.
 
 The distinction between double-hyphen and triple-hyphen becomes
-more appearant if there is a mix of double-hyphen and double-dot 
-operators placed between path points. For
-instance, if we were to contruct a path as
-``z0..z1..z2--z3..cycle`` (figure (d))
-versus one that is  
-``z0..z1..z2---z3..cycle`` (figure (e)),
-the control point for z3 in both cases will be placed at different
-locations and thus the look of the resulting lines will be different 
-as well.
+more apparent if it is to be mixed with a double-dot 
+operator. 
+Figure-&ref{fig:metafun-op1}-d shows a situation 
+where a double-dot is to follow a double-hyphen. 
+Figure-&ref{fig:metafun-op1}-e shows a situation
+where a double-dot is to following a triple-hyphen. 
+Since a double-hyphen would generate a new point
+with a control point that is about one-third distance
+from itself to the starting point,
+
 
 It is also a possibility to contruct two or more path components where 
 each components is an independent cluster of connected points
-using an ampersand operator (&). See figure (f).
+using an ampersand operator (&) (Figure-&ref{fig:metafun-op1}-f).
 
 
 
@@ -537,7 +551,8 @@ by table &ref{fig:metafun-textext-init}.
 The graph package (that comes with METAPOST) has some pseudo typesetting on board needed to format numbers. Because we don’t want to interfere with the definitions of macros used in that package we provide another set of macros for formatting: fmttext, thefmttext and rawfmttext.
 
     \startMPcode
-    draw thefmttext("\bf@3.2f done",123.45678) withcolor darkred ;
+    draw thefmttext("\bf@3.2f done",123.45678) 
+      withcolor darkred ;
     \stopMPcode
 
 Here we pass one variable to the format but there can be more: 123.46 done. In
