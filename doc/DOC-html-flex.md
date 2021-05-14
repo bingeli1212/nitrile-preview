@@ -63,7 +63,9 @@ property.
   two of which are the Div-elements, one anonymous element, 
   and one Span-element.
 
-  ```verbatim{frame}
+  ```verbatim{frame,subtitle}
+  HTML
+  ---
   <div style="display:flex">
     <div>block</div>
     <div style="float:left;">float</div>
@@ -76,7 +78,9 @@ property.
   </div>
   ```
   \\
-  ```diagram{frame}
+  ```diagram{frame,subtitle}
+  Visual
+  ---
   viewport 21 4
   config fillcolor orange
   config opacity 0.3
@@ -547,22 +551,25 @@ a flex container is able to enlarge or shrink the cross size
 of a flex item based on their initial size in that dimension
 and the available space given by the container.
 
-[ The `flex` property. ] This property determines how &em{flexible} a flex item is. 
-When this property is set, the native `width` and `height` properties of this
-item become less important.
-This property is a shorthand property that hold one or many property values each 
+[ The `flex` property. ] This property determines the &em{flexibility} 
+of a flex item.
+This property is a shorthand property that holds a list of 
+property values each 
 of which coming from one of the following
 three areas: `flex-grow`, `flex-shrink`, and `flex-basis`. 
- 
-In particular, a flex item is considered &em{inflexible} 
-if both its `flex-grow` and `flex-shrink` properties are set to
-zero. However, if both of these properties are set to a number other than zero, 
-then it is considered as &em{completely flexible}.
-When an item is marked as flexible, 
-each number would serve as a "growth factor" or "shrink factor" that will
-be used to determine how much it should grow or shrink relative
-to its peers.
+The first two properties serve
+as "growth factor" or "shrink factor" that will
+be used to determine how fast it should grow or shrink relative
+to other peer items.
+The last property restates or resets
+initial size of the item.
 
+In general, a flex item is considered &em{completely flexible} 
+if both its `flex-grow` and `flex-shrink` properties have been set to
+something other than zero.
+If both properties have been set to zero then this item is considered
+to be &em{completely inflexible}.
+ 
 [ The `flex-grow` property. ]
 This property holds a number that expresses the growth
 factor of this item. This factor is used to determine how this flex item 
@@ -613,7 +620,7 @@ In addition, it can be set to ``auto`` and/or ``content``.
     equivalent effect can be achieved by setting the ``flex-basis:auto`` 
     together with a main size (width or height) of ``auto``.
 
-- [length]
+- <length> or <percentage>
 
     For all other values, `flex-basis` is resolved the same way as for [width]
     and [height].  When omitted from the flex shorthand, its specified value is
