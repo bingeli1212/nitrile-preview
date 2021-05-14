@@ -1,123 +1,89 @@
 ---
-title: HTML/CSS Specifications
+title: CSS Flexbox Layout Module
 ---
 
-# The "flex" Layout
+# CSS Flexbox Layout Module
 
-Some terminologies:
+Before the Flexbox Layout module, there were four layout modes:
 
-+ main axis
-+ main dimension
+- Block, for sections in a webpage
+- Inline, for text
+- Table, for two-dimensional table data
+- Positioned, for explicit position of an element
 
-  The main axis of a flex container is the primary axis along which flex items
-  are laid out. It extends in the main dimension.
+The Flexible Box Layout Module, makes it easier to design flexible responsive
+layout structure without using float or positioning.
 
-+ main-start property
-+ main-end property
 
-  The flex items are placed within the container starting on the main-start side
-  and going toward the main-end side.
+# Flex Containers and Flex Items
 
-+ main size
-+ main size property
+Flex containers are not considered block containers, thus some properties that 
+would normally work in the context of a block layout do not necessarily 
+work in the context of a flex layout. In particular,
 
-  The width or height of a flex container or flex item, whichever is in the main
-  dimension, is that box’s main size. Its main size property is thus either its
-  width or height property, whichever is in the main dimension. Similarly, its
-  min and max main size properties are its min-width/max-width or
-  min-height/max-height properties, whichever is in the main dimension, and
-  determine its min/max main size.
+- setting the `float` property of a flex item do not create the sense of a 
+  "float", an effect of which that was achieved in the context
+  of a block layout by taking this element out-of-flow;
 
-+ cross axis
-+ cross dimension
+- setting the `vertical-align` property on a flex item 
+  has no visual effect;
 
-  The axis perpendicular to the main axis is called the cross axis. It extends in
-  the cross dimension.
+- a flex container does not contribute a first formatted line or
+  first letter to their ancestors;
+  thus, the notation of ``::first-line`` and/or ``::first-letter`` 
+  pseudo-element done to a flex container has no effect
 
-+ `cross-start` property
-+ `cross-end` property
+Loosely speaking, flex items of a flex container are considered
+"in-flow contents" of this flex container.
+As for a HTML structure,
+each child element of a flex container element becomes a flex item. 
+Texts between child elements are wrapped inside an anonymous block container 
+that becomes an flex item itself.
+However, if those text contains only white
+space then this element is considered invisible 
+(or as if it had been set the ``display:none`` property value.)
 
-  Flex lines are filled with items and placed into the container starting on the
-  cross-start side of the flex container and going toward the cross-end side.
+@ figure{subfigure}
+  &label{flex:container}
+  Following is a flex container with four flex items:
+  two of which are the Div-elements, one anonymous element, 
+  and one Span-element.
 
-+ cross size
-+ cross size property
+  ```verbatim{frame}
+  <div style="display:flex">
+    <div>block</div>
+    <div style="float:left;">float</div>
+    anonymous
+    <span>
+      item 1
+      <q style="display:block">item 2</q>
+      item 3
+    </span>
+  </div>
+  ```
+  \\
+  ```diagram{frame}
+  viewport 21 4
+  config fillcolor orange
+  config opacity 0.3
+  box {w:4,h:4} "block" (0,0)
+  box {w:3,h:4} "float" (4,0)
+  box {w:10,h:4} "anonymous" (7,0)
+  box {w:4,h:4,multiline} "item 1\\&quot;item 2&quot;\\item 3" (17,0)
+  ```
 
-  The width or height of a flex container or flex item, whichever is in the cross
-  dimension, is that box’s cross size. Its cross size property is thus either its
-  width or height property, whichever is in the cross dimension. Similarly, its
-  min and max cross size properties are its min-width/max-width or
-  min-height/max-height properties, whichever is in the cross dimension, and
-  determine its min/max cross size.
+See figure &ref{flex:container} for an example of a flex container of
+four flex items.
+Note also that in the case that an anonymous item is created
+it is unstyleable. It means that it is impossible to write CSS rules
+to specifically target this item. As a result
+it will inherit styles
+(such as font settings) from the flex container instead.
 
-Flex containers are not block containers, and so some properties that were
-designed with the assumption of block layout don’t apply in the context of flex
-layout. In particular:
 
-- float and clear do not create floating or clearance of flex item, and do not
-  take it out-of-flow.
+# The Z-Ordering of a Flexbox Item
 
-- vertical-align has no effect on a flex item.
-
-- the ::first-line and ::first-letter pseudo-elements do not apply to flex
-  containers, and flex containers do not contribute a first formatted line or
-  first letter to their ancestors.
-
-Loosely speaking, the flex items of a flex container are boxes representing its
-in-flow contents.
-
-Each in-flow child of a flex container becomes a flex item, and each contiguous
-sequence of child text runs is wrapped in an anonymous block container flex
-item. However, if the entire sequence of child text runs contains only white
-space (i.e. characters that can be affected by the white-space property) it is
-instead not rendered (just as if its text nodes were display:none).
-
-    <div style="display:flex">
-        <!-- flex item: block child -->
-        <div id="item1">block</div>
-        <!-- flex item: floated element; floating is ignored -->
-        <div id="item2" style="float: left;">float</div>
-        <!-- flex item: anonymous block box around inline content -->
-        anonymous item 3
-        <!-- flex item: inline child -->
-        <span>
-            item 4
-            <!-- flex items do not split around blocks -->
-            <q style="display: block" id=not-an-item>item 4</q>
-            item 4
-        </span>
-    </div>
-
-```diagram
-viewport 21 4
-config fillcolor orange
-config opacity 0.3
-box {w:4,h:4} "block" (0,0)
-box {w:3,h:4} "float" (4,0)
-box {w:10,h:4} "anonymous item 3" (7,0)
-box {w:4,h:4} "item 4\\&quot;item 4&quot;\\item 4" (17,0)
-```
-
-Note that the inter-element white space disappears: it does not become its own
-flex item, even though the inter-element text does get wrapped in an anonymous
-flex item.
-
-Note also that the anonymous item’s box is unstyleable, since there is no
-element to assign style rules to. Its contents will however inherit styles
-(such as font settings) from the flex container.
-
-[ Margins. ]
-The margins of adjacent flex items do not collapse.
-Percentage margins and paddings on flex items, like those on block boxes, are
-resolved against the inline size of their containing block, e.g.
-left/right/top/bottom percentages all resolve against their containing block’s
-width in horizontal writing modes.
-
-Auto margins expand to absorb extra space in the corresponding dimension. They
-can be used for alignment, or to push adjacent flex items apart. See Aligning
-with auto margins.
-
-[ Z-Ordering. ] Flex items paint exactly the same as inline blocks,
+Flex items paint exactly the same as inline blocks,
 except that order-modified document order is used in place of raw document
 order, and z-index values other than auto create a stacking context even if
 position is static (behaving exactly as if position were relative).
@@ -125,47 +91,104 @@ position is static (behaving exactly as if position were relative).
 Note: Descendants that are positioned outside a flex item still participate in
 any stacking context established by the flex item.
 
-[ Ordering and Orientation ] The contents of a flex container can be laid out
+
+# Setting Margins of a Flexbox Item
+
+One important visual difference one might notice when looking at a flex
+layout is that the margins of two adjacent flex items do not collapse. This 
+behavior is
+different than what one would have observed when looking at a layout done
+by a block layout module, child elements are
+resolved against the inline size of their containing block, e.g.
+left/right/top/bottom percentages all resolve against their containing block’s
+width in horizontal writing modes.
+
+In addition, if a specific direction of a margin is set to ``auto``, 
+which is called an &em{auto margin}, it serves to expand to absorb 
+all extra space in that direction. Auto margins
+can be set to achieve the effect of alignment in the cross dimension if it is
+set in that direction, 
+or it could be used to push a flex item from its neighboring items
+if it is set in the dimension of the main axis.
+
+
+# Aligning Flex Items Within the Container
+
+Items within a flex container are to be aligned vertically and/or horizontally.
+Before the details are discussed following are some
+key concepts that are to be covered first.
+
+[ The main axis. ]
+The &em{main axis} of a flex container is the primary axis along which flex items
+are laid out. It is either horizontal or vertical. 
+The direction within which the main axis extends is sometimes
+called the &em{main dimension}.
+
+The width or height of a flex container or flex item
+is considered the box's &em{main size} if it happens to align
+with the main axis. For instance, if the main axis is the horizontal axis,
+then the flex item's width becomes the main size of this flex item. 
+If the same flex item also has a property named `min-width` or `max-width`,
+the values they represent 
+would be considered the &em{min main size} and/or &em{max main size} 
+of this flex item.
+
+[ The cross axis. ]
+The &em{cross axis} is always the one that is
+perpendicular to the main axis. The dimension it extends is
+called the cross dimension. For instance, if the main axis is the horizontal
+axis, then the cross axis is the vertical axis. On the other hand,
+if the main axis is the vertical axis, the cross axis is the horizontal
+axis.
+
+The width or height of flex item would be considered its &em{cross size}, 
+if it happens to align with its cross axis. For instance, if the cross axis
+is the vertical axis, then its height would be considered its cross size.
+
+The contents of a flex container can be laid out
 in any direction and in any order. This allows an author to trivially achieve
 effects that would previously have required complex or fragile methods, such as
 hacks using the float and clear properties. This functionality is exposed
 through the `flex-direction`, `flex-wrap`, and `order` properties.
 
-The `flex-direction` property specifies how flex items are placed in the flex
-container, by setting the direction of the flex container’s main axis. This
-determines the direction in which flex items are laid out.
+[ The `flex-direction` property. ] This property 
+sets the direction and orientation of the main axis of the flex container. 
+For a horizontal main axis, its value could be ``row`` or ``row-reverse``.
+For a vertical main axis, its value could be ``column`` or ``column-reverse``.
 
-+ `row`
+- ``row``
 
   The flex container’s main axis has the same orientation as the inline axis of
   the current writing mode. The main-start and main-end directions are
   equivalent to the inline-start and inline-end directions, respectively, of
   the current writing mode.
 
-+ `row-reverse`
+- ``row-reverse``
 
   Same as row, except the main-start and main-end directions are swapped.
 
-+ `column`
+- ``column``
 
   The flex container’s main axis has the same orientation as the block axis of
   the current writing mode. The main-start and main-end directions are
   equivalent to the block-start and block-end directions, respectively, of the
   current writing mode.
 
-+ `column-reverse`
+- ``column-reverse``
 
   Same as column, except the main-start and main-end directions are swapped.
 
-[ The `justify-content` property. ] The `justify-content` property aligns flex
-items along the main axis of the current line of the flex container. This is
+[ The `justify-content` property. ] This property determines how flex
+items are aligned along the main axis of the flex container. 
+
+This is
 done after any flexible lengths and any auto margins have been resolved.
 Typically it helps distribute extra free space leftover when either all the
 flex items on a line are inflexible, or are flexible but have reached their
 maximum size. It also exerts some control over the alignment of items when they
 overflow the line.
 
-+ `flex-start`
+- ``flex-start``
 
   Flex items are packed toward the start of the line. The main-start margin edge
   of the first flex item on the line is placed flush with the main-start edge of
@@ -181,7 +204,7 @@ overflow the line.
   box "1\\2\\3" (0,0) [h:2] [h:2]
   ```
 
-+ `flex-end`
+- ``flex-end``
 
   Flex items are packed toward the end of the line. The main-end margin edge of
   the last flex item is placed flush with the main-end edge of the line, and each
@@ -191,13 +214,13 @@ overflow the line.
   viewport 18 2
   config w 2
   config h 2
-  set refxy right:12
+  origin right:12
   config fillcolor orange
   config opacity 0.3
   box "1\\2\\3" (0,0) [h:2] [h:2]
   ```
 
-+ ``center``
+- ``center``
 
   Flex items are packed toward the center of the line. The flex items on the line
   are placed flush with each other and aligned in the center of the line, with
@@ -210,13 +233,13 @@ overflow the line.
   viewport 18 2
   config w 2
   config h 2
-  set refxy right:6
+  origin right:6
   config fillcolor orange
   config opacity 0.3
-  box "1\\2\\3" right:6 (0,0) [h:2] [h:2]
+  box "1\\2\\3" (0,0) [h:2] [h:2]
   ```
 
-+ `space-between`
+- ``space-between``
 
   Flex items are evenly distributed in the line. If the leftover free-space is
   negative or there is only a single flex item on the line, this value is
@@ -235,7 +258,7 @@ overflow the line.
   box "1\\2\\3" (0,0) [h:8] [h:8] 
   ```
 
-+ `space-around`
+- ``space-around``
 
   Flex items are evenly distributed in the line, with half-size spaces on either
   end. If the leftover free-space is negative or there is only a single flex item
@@ -254,40 +277,43 @@ overflow the line.
   box "1\\2\\3" (3,0) [h:5] [h:5] 
   ```
 
-[ The `align-items` and `align-self` properties. ]
-Flex items can be aligned in the cross axis of the current line of the flex
-container, similar to `justify-content` but in the perpendicular direction.
-The `align-items` sets the default alignment for all of the flex container’s items,
-including anonymous flex items. The `align-self` allows this default alignment
-to be overridden for individual flex items. (For anonymous flex items,
-`align-self` always matches the value of `align-items` on their associated flex
-container.)
+[ The `align-items` and `align-self` properties. ] These
+properties are designed to determine how flex items are aligned
+along the cross axis.
 
-If either of the flex item’s `cross-axis` margins is set to `auto`, the
-`align-self` property has no effect.
+In particular, the `align-items` property is to be set to a flex container
+to set the default alignment for all flex items,
+including anonymous flex items. The `align-self` property is to be 
+set on individual flex items which allows for a specific flex item's
+cross axis alignment to be overridden. 
+However, for `align-self` to take effect, ensure that the cross-axis margin of that
+item in that direction is not set to ``auto``.
+Otherwise, the `align-self` property will have no effect.
 
-+ `auto`
+Following are the possible values for these two properties.
+
+- ``auto``
 
   Defers cross-axis alignment control to the value of `align-items` on the
   parent box. (This is the initial value of `align-self`.)
 
-+ `flex-start`
+- ``flex-start``
 
   The cross-start margin edge of the flex item is placed flush with the
   cross-start edge of the line.
 
-+ `flex-end`
+- ``flex-end``
 
   The cross-end margin edge of the flex item is placed flush with the cross-end
   edge of the line.
 
-+ `center`
+- ``center``
 
   The flex item’s margin box is centered in the cross axis within the line. (If
   the cross size of the flex line is less than that of the flex item, it will
   overflow equally in both directions.)
 
-+ `baseline`
+- ``baseline``
 
   The flex item participates in baseline alignment: all participating flex items
   on the line are aligned such that their baselines align, and the item with the
@@ -296,7 +322,7 @@ If either of the flex item’s `cross-axis` margins is set to `auto`, the
   baseline in the necessary axis, then one is synthesized from the flex item’s
   border box.
 
-+ `stretch`
+- ``stretch``
 
   If the cross size property of the flex item computes to auto, and neither of
   the cross-axis margins are auto, the flex item is stretched. Its used value is
@@ -309,34 +335,59 @@ The `align-content` property is designed to align
 each line of flex items across the cross-axis. This property will have no effect
 when there is only a single line.
 
-
 [ The `order` property. ]
-Many web pages have a similar shape in the markup, with a header on top, a
-footer on bottom, and then a content area and one or two additional columns in
-the middle. Generally, it’s desirable that the content come first in the page’s
-source code, before the additional columns. However, this makes many common
-designs, such as simply having the additional columns on the left and the
-content area on the right, difficult to achieve. This has been addressed in
-many ways over the years, often going by the name "Holy Grail Layout" when
-there are two additional columns. order makes this trivial. For example, take
-the following sketch of a page’s code and desired layout:
+The `order` property allows for arbitrary re-arranging the order of
+flex items within a container to make it possible for some items to 
+appear before or after other items
+regardless of their natives orders inside the DOM.
+This allows for greater flexibility when it comes to determining
+the order of their appearances because 
+the order is no longer constrained by their natural 
+order within the DOM.
 
-    <!DOCTYPE html>
-    <header>...</header>
-    <main>
-       <article>...</article>
-       <nav>...</nav>
-       <aside>...</aside>
-    </main>
-    <footer>...</footer> 
+@ figure{subfigure}
+  &label{flex:order}
+  A flex container with three items each of which
+  assigned a order such that the item "article" appears
+  in the middle rather than being at the beginning.
+  
+  ```verbatim{frame,subtitle}
+  HTML
+  ---
+  <!DOCTYPE html>
+  <header>...</header>
+  <main>
+     <article>...</article>
+     <nav>...</nav>
+     <aside>...</aside>
+  </main>
+  <footer>...</footer> 
+  ```  
+  ```diagram{frame,subtitle,width:8cm}
+  Visual
+  ---
+  viewport 18 8
+  config fillcolor orange
+  config opacity 0.3
+  box {w:18,h:2} "footer" (0,0)
+  box {w:18,h:2} "header" (0,6)
+  box {w:4,h:4} "nav"      (0,2)
+  box {w:10,h:4} "article" (4,2)
+  box {w:4,h:4} "aside"    (14,2)
+  ```
+  \\
+  ```verbatim{frame,subtitle}
+  CSS
+  ---
+  main { display: flex; }
+  main > article { order:2; min-width:12em; flex:1; }
+  main > nav     { order:1; width: 200px; }
+  main > aside   { order:3; width: 200px; }
+  ```
 
-Here is the CSS:
-
-    main { display: flex; }
-    main > article { order: 2; min-width: 12em; flex:1; }
-    main > nav     { order: 1; width: 200px; }
-    main > aside   { order: 3; width: 200px; }
-
+See figure &ref{flex:order} for an example of setting the `order` property
+of each flex item to alter their order of appearance
+within the container.
 As an added bonus, the columns will all be equal-height by default, and the
 main content will be as wide as necessary to fill the screen. Additionally,
 this can then be combined with media queries to switch to an all-vertical
@@ -351,18 +402,11 @@ layout on narrow screens:
       }
     }
 
-```diagram
-viewport 18 8
-config fillcolor orange
-config opacity 0.3
-box {w:18,h:2} "footer" (0,0)
-box {w:18,h:2} "header" (0,6)
-box {w:4,h:4} "nav"      (0,2)
-box {w:10,h:4} "article" (4,2)
-box {w:4,h:4} "aside"    (14,2)
-```
 
-[ Flex Lines. ]
+
+
+# Multi-line Flexbox Layout
+
 Flex items in a flex container are laid out and aligned within flex lines,
 hypothetical containers used for grouping and alignment by the layout
 algorithm. A flex container can be either single-line or multi-line, depending
@@ -380,255 +424,343 @@ on the `flex-wrap` property:
   line contains at least one flex item, unless the flex container itself is
   completely empty.
 
-[[[ Example 1. ]]]
-This example shows four buttons that do not fit side-by-side horizontally, and
-therefore will wrap into multiple lines.
+@ figure{subfigure}
+  &label{flex:example-1} 
+  This example shows four buttons that do not fit side-by-side horizontally, and
+  therefore will wrap into multiple lines.
+  Since the container is 300px wide, only three of the items fit onto a single
+  line. They take up 240px, with 60px left over of remaining space.  Because the
+  flex-flow property specifies a multi-line flex container (due to the wrap
+  keyword appearing in its value), the flex container will create an additional
+  line to contain the last item.
 
-    #flex {
-      display: flex;
-      flex-flow: row wrap;
-      width: 300px;
-    }
-    .item {
-      width: 80px;
-    }
-    <div id="flex">
-      <div class="item">1</div>
-      <div class="item">2</div>
-      <div class="item">3</div>
-      <div class="item">4</div>
-    </div>
-
-Since the container is 300px wide, only three of the items fit onto a single
-line. They take up 240px, with 60px left over of remaining space.  Because the
-flex-flow property specifies a multi-line flex container (due to the wrap
-keyword appearing in its value), the flex container will create an additional
-line to contain the last item.
- 
-```diagram{frame} 
-viewport 15 4 
-group my = {w:4,h:2,fillcolor:orange,opacity:0.3} 
-box {group:my} "1" (0,2) 
-box {group:my} "2" (4,2) 
-box {group:my} "3" (8,2) 
-box {group:my} "4" (0,0) 
-```
+  ```verbatim{frame,subtitle}
+  CSS
+  ---
+  #flex {
+    display: flex;
+    flex-flow: row wrap;
+    width: 300px;
+  }
+  .item {
+    width: 80px;
+  }
+  ```
+  ```verbatim{frame,subtitle}
+  HTML
+  ---
+  <div id="flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+  </div>
+  ```
+  \\
+  ```diagram{frame,subtitle}
+  Visual.
+  --- 
+  viewport 15 4 
+  group my = {w:4,h:2,fillcolor:orange,opacity:0.3} 
+  box {group:my} "1" (0,2) 
+  box {group:my} "2" (4,2) 
+  box {group:my} "3" (8,2) 
+  box {group:my} "4" (0,0) 
+  ```
 
 Once content is broken into lines, each line is laid out independently;
-flexible lengths and the justify-content and align-self properties only
+the `justify-content` and `align-self` properties only
 consider the items on a single line at a time.
 
-In a multi-line flex container (even one with only a single line), the cross
-size of each line is the minimum size necessary to contain the flex items on
-the line (after alignment due to align-self), and the lines are aligned within
-the flex container with the align-content property. In a single-line flex
-container, the cross size of the line is the cross size of the flex container,
-and align-content has no effect. The main size of a line is always the same as
-the main size of the flex container’s content box.
+In a multi-line flex container, the cross
+size of each line is the minimum size necessary to hold all flex items of
+that line. This is also true when there were only  
+a single line being shown due to the availability of only a few flex items.
 
-[[[ Example 2. ]]]
-Here’s the same example as the previous, except that the flex items have all
-been given `flex:auto`. The first line has 60px of remaining space, and all of
-the items have the same flexibility, so each of the three items on that line
-will receive 20px of extra width, each ending up 100px wide. The remaining item
-is on a line of its own and will stretch to the entire width of the line, i.e.
-300px.  Since the container is 300px wide, only three of the items fit onto a
-single line. They take up 240px, with 60px left over of remaining space.
-Because the `flex-flow` property specifies a multi-line flex container (due to
-the wrap keyword appearing in its value), the flex container will create an
-additional line to contain the last item.
+Whether it is shown as a single line or multiple lines,
+each line is called a &em{flex line}. 
+Flex lines themselves can be configured as to how they would position themselves
+with the same flex container such as to move to one end of the container, 
+to stay centered within the container, or to be spread out.
+This control this behavior it is to set the `align-content` property
+of the flex container. 
 
-```diagram{frame}
-viewport 15 4
-group my = {w:5,h:2,fillcolor:orange,opacity:0.3} 
-group my2 = {w:15,h:2,fillcolor:orange,opacity:0.3} 
-box {group:my} "1" (0,2) 
-box {group:my} "2" (5,2) 
-box {group:my} "3" (10,2) 
-box {group:my2} "4" (0,0) 
-```
+For a single-line flex
+container, the cross size of the flex line is always the 
+cross size of the flex container. Because there is only a single
+flex line and its size is the same as the container, 
+the `align-content` property would have no effect regardless of what
+value it has been set to. 
 
-[ Controlling flexibility of each flex item. ]
-The defining aspect of flex layout is the ability to make the flex items
-flexible, altering their width/height to fill the available space in the main
-dimension. This is done with the flex property. A flex container distributes
-free space to its items (proportional to their flex grow factor) to fill the
-container, or shrinks them (proportional to their flex shrink factor) to
-prevent overflow.
+@ figure{subfigure}
+  &label{flex:example-2}
+  Here’s the same example as the previous, except that the flex items have all
+  been given `flex:auto`. The first line has 60px of remaining space, and all of
+  the items have the same flexibility, so each of the three items on that line
+  will receive 20px of extra width, each ending up 100px wide. The remaining item
+  is on a line of its own and will stretch to the entire width of the line, i.e.
+  300px.  Since the container is 300px wide, only three of the items fit onto a
+  single line. They take up 240px, with 60px left over of remaining space.
+  Because the `flex-flow` property specifies a multi-line flex container (due to
+  the wrap keyword appearing in its value), the flex container will create an
+  additional line to contain the last item.
 
-The ``flex`` property is to be set with each flex item. Its value affects the
-final length of this flex item.  In particular, when a flex item is being
-managed by a flex container, the ``width`` and ``height`` property of the flex item
-becomes less important when its ``flex`` property is set, in which case the size
-of the flex item is recomputed based upon the actual contents of this value and
-the available spaces within the container. 
+  ```verbatim{frame,subtitle}
+  CSS
+  ---
+  #flex {
+    display: flex;
+    flex-flow: row wrap;
+    width: 300px;
+  }
+  .item {
+    width: 80px;
+    flex: auto;
+  }
+  ```
+  ```verbatim{frame,subtitle}
+  HTML
+  ---
+  <div id="flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+  </div>
+  ```
+  \\
+  ```diagram{frame,subtitle}
+  Visual
+  ---
+  viewport 15 4
+  group my = {w:5,h:2,fillcolor:orange,opacity:0.3} 
+  group my2 = {w:15,h:2,fillcolor:orange,opacity:0.3} 
+  box {group:my} "1" (0,2) 
+  box {group:my} "2" (5,2) 
+  box {group:my} "3" (10,2) 
+  box {group:my2} "4" (0,0) 
+  ```
 
-The ``flex`` property is a shorthand that holds property values from three
-specialized properties: ``flex-grow``, ``flex-shrink``, and ``flex-basis``.  A flex
-item is inflexible if both ``flex-grow`` and ``flex-shrink`` properties are set to
-zero. Following are descriptions of the three properties individually.
 
-+ ``flex-grow``
+# Expanding and Shrinking of a Flex Item
 
-  This "number" component sets flex-grow longhand and specifies the flex grow
-  factor, which determines how much the flex item will grow relative to the
-  rest of the flex items in the flex container when positive free space is
-  distributed. When omitted, it is set to 1.
+In addition to managing the locations of each flex item,
+the main axis and cross axis size of a flex item can also be changed.
+This particular behavior is controlling by assigning the appropriate values 
+of the `flex` property of that flex item. 
+Depending on the particular value,
+a flex container is able to enlarge or shrink the cross size
+of a flex item based on their initial size in that dimension
+and the available space given by the container.
 
-  Flex values between 0 and 1 have a somewhat special behavior: when the sum of
-  the flex values on the line is less than 1, they will take up less than 100%
-  of the free space.
+[ The `flex` property. ] This property determines how &em{flexible} a flex item is. 
+When this property is set, the native `width` and `height` properties of this
+item become less important.
+This property is a shorthand property that hold one or many property values each 
+of which coming from one of the following
+three areas: `flex-grow`, `flex-shrink`, and `flex-basis`. 
+ 
+In particular, a flex item is considered &em{inflexible} 
+if both its `flex-grow` and `flex-shrink` properties are set to
+zero. However, if both of these properties are set to a number other than zero, 
+then it is considered as &em{completely flexible}.
+When an item is marked as flexible, 
+each number would serve as a "growth factor" or "shrink factor" that will
+be used to determine how much it should grow or shrink relative
+to its peers.
 
-+ ``flex-shrink``
+[ The `flex-grow` property. ]
+This property holds a number that expresses the growth
+factor of this item. This factor is used to determine how this flex item 
+is to grow relative to other
+items when positive free space is
+distributed. When omitted, it is set to 1.
+Flex values between 0 and 1 have a somewhat special behavior: when the sum of
+the flex values on the line is less than 1, together 
+they will take up less than 100 percent
+of the free space.
 
-  This "number" component sets flex-shrink longhand and specifies the flex
-  shrink factor, which determines how much the flex item will shrink relative
-  to the rest of the flex items in the flex container when negative free space
-  is distributed. When omitted, it is set to 1.
+[ The `flex-shrink` property. ]
+This property holds a number that expresses the 
+shrink factor of this item. This factor determines how this flex item 
+will shrink relative
+to other items in the container when negative free space
+is distributed. When omitted, it is set to 1.
+The flex shrink factor is multiplied by the flex base size when
+determining how much a particular item should shrink. 
+This prevents a small item from being shrunk 
+to zero before a larger item had a chance to 
+be noticeably reduced.
 
-  Note: The flex shrink factor is multiplied by the flex base size when
-  distributing negative space. This distributes negative space in proportion to
-  how much the item is able to shrink, so that e.g. a small item won’t shrink
-  to zero before a larger item has been noticeably reduced.
+[ The `flex-basis` property. ]
+This property sets the flex basis, which
+describes the main size of the flex item.  
+This property accepts the same
+length values as the `width` and `height` properties would.
+In addition, it can be set to ``auto`` and/or ``content``.
 
-+ ``flex-basis``
-
-  This component sets the `flex-basis longhand`, which specifies the flex basis:
-  the initial main size of the flex item, before free space is distributed
-  according to the flex factors.  The `flex-basis` property accepts the same
-  values as the width and height properties (except that auto is treated
-  differently) plus the content keyword:
-
-  + ``auto``
+- ``auto``
      
-    When specified on a flex item, the auto keyword retrieves the value of the
-    main size property as the used flex-basis. If that value is itself auto,
-    then the used value is content.
+    When specified on a flex item, the ``auto`` keyword retrieves the value 
+    that has been set to its
+    main size property. If that value is itself ``auto``,
+    then it behaves the same as ``content``.
 
-  + ``content``
+- ``content``
 
-    Indicates an automatic size based on the flex item’s content. (It is
-    typically equivalent to the max-content size, but with adjustments to
+    This value expresses that the item’s native content size should be used. 
+    This size is typically equivalent to the max-content size, but it could
+    be adjusted to
     handle aspect ratios, intrinsic sizing constraints, and orthogonal flows;
-    see details in §9 Flex Layout Algorithm.)
+    see details in §9 Flex Layout Algorithm.
 
     Note: This value was not present in the initial release of Flexible Box
     Layout, and thus some older implementations will not support it. The
-    equivalent effect can be achieved by using auto together with a main size
-    (width or height) of auto.
+    equivalent effect can be achieved by setting the ``flex-basis:auto`` 
+    together with a main size (width or height) of ``auto``.
 
-  + [width]
+- [length]
 
     For all other values, `flex-basis` is resolved the same way as for [width]
     and [height].  When omitted from the flex shorthand, its specified value is
     0. When omitted from the `flex` shorthand, its specified value is assumed
     to be 0.
 
-When `flex:none` is encountered, the "none" keyword expands to be "0 0 auto".
-Authors are encouraged to control flexibility using the flex shorthand rather
+When ``flex:none`` is encountered, the ``none`` keyword expands to be ``0 0 auto``.
+Authors are encouraged to control flexibility using the `flex` shorthand rather
 than with its longhand properties directly, as the shorthand correctly resets
 any unspecified components to accommodate common uses.
 
-[ Aligning with "auto" margins. ] Auto margins on flex items have an effect
-very similar to auto margins in block flow:
 
-- During calculations of flex bases and flexible lengths, auto margins are
-  treated as 0.
+# Aligning Flex Items In the Cross-Axis Dimension
 
-- Prior to alignment via justify-content and align-self, any positive free space
-  is distributed to auto margins in that dimension.
+There are several ways to achieve the effect of aligning flex items
+in the cross-axis dimension. The first method
+involves assigning ``auto`` to the appropriate margin of the item. 
+For instance, when the main
+axis is horizontal, then the word ``auto`` can be set to the `margin-top` and 
+`margin-bottom`
+property of a flex item to allow it to be adjusted in its vertical dimension.
 
-- Overflowing boxes ignore their auto margins and overflow in the end direction.
+Another method involves assigning an appropriate value to the `align-self` property 
+of this item.
+
+[ Aligning with auto margins. ] Auto margins refers to the process of 
+setting one of the `margin` 
+properties of a flex item to ``auto``. 
+When set, a flex item would have effects
+very similar to those one would have observed when the same item is under
+a normal block flow. In particular,
+
+- during calculations of flex bases and flexible lengths, auto margins are
+  treated as 0;
+
+- prior to alignment via `justify-content` and `align-self`, any positive free space
+  is distributed to auto margins in that dimension;
+
+- overflowing boxes ignore their auto margins and overflow in the end direction.
 
 Note: If free space is distributed to auto margins, the alignment properties
-will have no effect in that dimension because the margins will have stolen all
-the free space left over after flexing.
+will have no effect in that dimension because the margins would have already
+absorbed all the free space. Thus from a the perspective of a container,
+there had been no free spaces to be managed with.
 
-[[[ Example 3. ]]]
-One use of auto margins in the main axis is to separate flex items into
-distinct "groups". The following example shows how to use this to reproduce a
-common UI pattern - a single bar of actions with some aligned on the left and
-others aligned on the right.
+@ figure{subfigure}
+  &label{flex:example-3}
+  The following example shows that by setting ``margin-left:auto``
+  property of a flex item, 
+  it would've absorbed all the free spaces to its left,
+  creating a visual gap between itself and the item before it.
 
-    nav > ul {
-      display: flex;
-    }
-    nav > ul > #login {
-      margin-left: auto;
-    }
-    <nav>
-      <ul>
-        <li>About</li>
-        <li>Projects</li>
-        <li>Interact</li>
-        <li id="login">Login</li>
-      </ul>
-    </nav>
+  ```verbatim{frame,subtitle}
+  CSS
+  ---
+  nav > ul {
+    display: flex;
+  }
+  nav > ul > #login {
+    margin-left: auto;
+  }
+  ```
+  ```verbatim{frame,subtitle}
+  HTML
+  ---
+  <nav>
+    <ul>
+      <li>About</li>
+      <li>Projects</li>
+      <li>Interact</li>
+      <li id="login">Login</li>
+    </ul>
+  </nav>
+  ```
+  \\
+  ```diagram{frame,subtitle}
+  Visual
+  ---
+  viewport 20 2
+  config fillcolor orange
+  config opacity 0.3
+  box {w:4,h:2} "About"    (0,0)
+  box {w:4,h:2} "Projects" (4,0)
+  box {w:4,h:2} "Interact" (8,0)
+  box {w:4,h:2} "Login"    (16,0)
+  ```
 
-```diagram{frame}
-viewport 20 2
-config fillcolor orange
-config opacity 0.3
-box {w:4,h:2} "About"    (0,0)
-box {w:4,h:2} "Projects" (4,0)
-box {w:4,h:2} "Interact" (8,0)
-box {w:4,h:2} "Login"    (16,0)
-```
-
-[ The ``align-self`` property. ]
+[ The `align-self` property. ]
 The property doesn't apply to block-level boxes, or to table cells. If a
-flexbox item's cross-axis margin is auto, then align-self is ignored.
+flex item's cross-axis margin is set to ``auto``, then this property is ignored.
 
-+ ``auto``
+- ``auto``
 
   Computes to the parent's align-items value.
 
-+ ``normal``
+- ``normal``
 
   The effect of this keyword is dependent of the layout mode we are in:
 
-  - In absolutely-positioned layouts, the keyword behaves like start on
+  - in absolutely-positioned layouts, the keyword behaves like start on
     replaced absolutely-positioned boxes, and as stretch on all other
-    absolutely-positioned boxes.
+    absolutely-positioned boxes;
 
-  - In static position of absolutely-positioned layouts, the keyword behaves as
-    stretch.
+  - in static position of absolutely-positioned layouts, the keyword behaves as
+    stretch;
 
-  - For flex items, the keyword behaves as stretch.
+  - for flex items, the keyword behaves as stretch;
 
-  - For grid items, this keyword leads to a behavior similar to the one of
+  - for grid items, this keyword leads to a behavior similar to the one of
     stretch, except for boxes with an aspect ratio or an intrinsic sizes where
-    it behaves like start.
+    it behaves like start;
 
-  - The property doesn't apply to block-level boxes, and to table cells.  
+  - the property doesn't apply to block-level boxes, and to table cells.
 
-+ ``self-start``
+- ``self-start``
 
   Aligns the items to be flush with the edge of the alignment container
   corresponding to the item's start side in the cross axis.
 
-+ ``self-end``
+- ``self-end``
 
   Aligns the items to be flush with the edge of the alignment container
   corresponding to the item's end side in the cross axis.
 
-+ ``flex-start``
+- ``flex-start``
 
   The cross-start margin edge of the flex item is flushed with the cross-start
   edge of the line.
 
-+ ``flex-end``
+- ``flex-end``
 
   The cross-end margin edge of the flex item is flushed with the cross-end edge
   of the line.
 
-+ ``center``
+- ``center``
 
   The flex item's margin box is centered within the line on the cross-axis. If
   the cross-size of the item is larger than the flex container, it will
   overflow equally in both directions.
 
-+ ``baseline``, ``first-baseline``, ``last-baseline``
+- ``baseline``, ``first-baseline``, ``last-baseline``
 
   Specifies participation in first- or last-baseline alignment: aligns the
   alignment baseline of the box’s first or last baseline set with the
@@ -636,7 +768,7 @@ flexbox item's cross-axis margin is auto, then align-self is ignored.
   boxes in its baseline-sharing group.  The fallback alignment for first
   baseline is start, the one for last baseline is end.
 
-+ ``stretch``
+- ``stretch``
 
   If the combined size of the items along the cross axis is less than the size
   of the alignment container and the item is auto-sized, its size is increased
@@ -645,41 +777,47 @@ flexbox item's cross-axis margin is auto, then align-self is ignored.
   size of all auto-sized items exactly fills the alignment container along the
   cross axis.
 
-+ ``safe``
+- ``safe``
 
   If the size of the item overflows the alignment container, the item is
   instead aligned as if the alignment mode were start.
 
-+ ``unsafe``
+- ``unsafe``
 
   Regardless of the relative sizes of the item and alignment container, the
   given alignment value is honored.
 
-
-[[[ Example 4. ]]]
-The figure below illustrates the difference in cross-axis alignment in overflow
+Figure &ref{flex:example-4} illustrates the difference in cross-axis alignment in overflow
 situations between using auto margins and using the alignment properties.
 All items on the left-hand side figure are centered using auto margins. All items
 on the right-hand side figure are centered using align-self style. 
 
-As can be seen, items aligned using auto margins would have to be limited by the availability of
-left margin, and would not go overboard had it already exhausted all left margin spaces,  
-and thus would let the content overflow far to the right hand side. On the other hand, items aligned
-using align-self style are not limited by the availability of left margin and thus will always
-be centered regardless.
-
-```diagram{frame}
-viewport 11 10
-draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
-box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
-box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
-box {fillcolor:orange,opacity:0.3,w:8} "Hello World" (3,7)
-```
-```diagram{frame}
-viewport 11 10
-draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
-box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
-box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
-box {fillcolor:orange,opacity:0.3,w:8} "Hello World" left:1.5 (3,7)
-```
+@ figure{subfigure}
+  &label{flex:example-4}
+  Items aligned using auto margins would have to be limited by the availability of
+  left margin, and would not go overboard past the left margin boundary 
+  had it already exhausted all left margin spaces.
+  Instead, the contents overflow past the margin on the right hand side. 
+  On the other hand, items aligned
+  using align-self style are not limited by the availability of left margin and thus will always
+  be centered regardless.
+  
+  ```diagram{frame,subtitle}
+  Using auto margins.
+  ---
+  viewport 11 10
+  draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
+  box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
+  box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
+  box {fillcolor:orange,opacity:0.3,w:8} "Hello World" (3,7)
+  ```
+  ```diagram{frame,subtitle}
+  Using ``align-self:center`` property.
+  ---
+  viewport 11 10
+  draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
+  box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
+  box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
+  box {fillcolor:orange,opacity:0.3,w:8} "Hello World" left:1.5 (3,7)
+  ```
 
