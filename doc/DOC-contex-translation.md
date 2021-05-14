@@ -173,8 +173,7 @@ camer.setupbodyfont: linux,11pt
   and the row contains a mix of normal text, math text, and display math, the
   row height is not big enough to hold the math text; the visual effect of this
   is that the top part of the math text of the lower row touches the bottom
-  part of the text of the upper row.
-  For this reason the "lines" fence is implemented using the "startlines" command.
+  part of the text of the upper row. If it is set to 'l" then this problem goes away.
   
 - The 'start-stop-formula" command pair is not a complete replacement of a "displaymath"
   of LATEX, because it places visible whitespaces before and after the formula. It does
