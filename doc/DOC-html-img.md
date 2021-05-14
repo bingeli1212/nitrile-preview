@@ -19,7 +19,7 @@ decide how it should resize itself given the new
 dimension. This decision comes down to setting
 the "object-fit" style.
 
-+ object-fit:contain
+- ``object-fit:contain``
 
   When "object-fit:contain" is set, the image will
   be resized so that it is completely contained
@@ -27,12 +27,12 @@ the "object-fit" style.
   This is the style to use if the entire image
   needs to be visible the whole time.
 
-  ```
-    <img style='object-fit:contain;width:10cm;height:5cm' 
-      src='tree.png' />`;
+  ```verbatim
+  <img style='object-fit:contain;width:10cm;height:5cm' 
+       src='tree.png' />`;
   ```
 
-+ object-fit:cover
+- ``object-fit:cover``
 
   When "object-fit:cover" is specified, the entire container box
   should be covered by the image with no empty area. This means if the
@@ -41,20 +41,20 @@ the "object-fit" style.
   will always maintain its aspect ratio regardless and will not be
   distorted.
 
-+ object-fit:fill
+- ``object-fit:fill``
 
   When "object-fill" is specified, the image will be stretched in both
   direction to fill the container box. No part of the image will be lost,
   and image is likely distorted. This is the same behavior as
   if this style option is not specified. 
 
-+ object-fit:none
+- ``object-fit:none``
 
   You can also specify "object-fit:none", which in this case will not 
   resize the image in anyway. The image will be shown in its native
   size.
 
-+ object-fit:scale-down
+- object-fit:scale-down
 
   The content is sized as if none or contain were specified, whichever
   would result in a smaller concrete object size.

@@ -2,7 +2,7 @@
 title: Text related CSS
 ---
 
-Following are CSS style related to styling 
+Following is a list of CSS styles related to styling 
 text.
 
     text-weight:
