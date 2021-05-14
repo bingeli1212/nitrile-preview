@@ -1,5 +1,5 @@
 ---
-title: Semantic Tags
+title: HTML Semantic Tags
 ---
 
 # The <article> tag
