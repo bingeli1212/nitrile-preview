@@ -222,6 +222,23 @@ when defining interactive areas in a figure. And for the sake
 of completeness it is described in this chapter.
 
 
+# Fillin Rules
+
+How to typeset that using ConTeXt? I could think of a plain 
+TeX solution: create an appropriate \leaders to create a 
+ruled line; insert appropriate \vskip between the lines. 
+Before trying to code it, I decoded to quickly grep ConTeXt 
+base for \leaders to see if a similar macro was already 
+implemented. Sure enough, ConTeXt had a macro for that: 
+\thinrules (and \setupthinrules to change space between 
+the lines, color and thickness of the rule, etc.) Thus, 
+to get the result shown above, I needed:
+
+    Fill in the blanks \thinrules[n=2] 
+
+This will create a thin rule that extends from the end of the 
+word "blanks" and run to the end of the current line, and then
+cover the entire next line with this rule.
 
 
 
