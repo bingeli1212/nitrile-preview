@@ -46,7 +46,7 @@ Materials needed: Sticky notes or cards, a large piece of flipchart paper or new
 - ARROW: Direction of flow from one step or decision to another.
 - RECTANGLE: A rectangle represent an interim step. The text inside the box explains the process. Usually, only one rrow goes out of the box.
 - DIAMOND: A diamond represents a decision point; lines coming into the diamond represents the external impetus; lines oming out of the diamond represents decisions, each of which should lead to another process or another decision point.
-- PARALLELGRAM: It represents external information entering or leaving the system; an example input would be a sales rder from a customer; an example output can be a product to be delivered to the customer.
+- PARALLELOGRAM: It represents external information entering or leaving the system; an example input would be a sales rder from a customer; an example output can be a product to be delivered to the customer.
 - DOCUMENT: A document symbol represents a document recording point where information will be logged, such as to an nternal database system, or a paper printout, etc.
 - OVAL: This symbol would contain a letter inside. It indicates that the flow continues on a matching symbol containing he same letter somewhere else on a different page.
 - BUTT: Delay or wait or bottleneck.
