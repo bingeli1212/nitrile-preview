@@ -463,13 +463,14 @@ Following are styles recognized by NITRILE:
   only available values are listed below. If the type string is unrecognized it
   is assumed to be 'rect', which is the default type.
 
-  ```
+  ```verbatim
   RECT
   RRECT
-  HEXGON
-  TRIANGLE     
+  HEX   
+  TRI     
+  DOWNTRI 
   PGRAM
-  DIAMOND
+  RHOMBUS
   ```
 
 + bartype:<string>
