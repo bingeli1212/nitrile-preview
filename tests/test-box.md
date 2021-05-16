@@ -8,7 +8,9 @@ title: test-box.md
 viewport 17 9
 config w 2
 config h 2
-config boxtype PGRAM 
+config rdx 0.2
+config rdy 0.2
+config boxtype RECT  
 origin at:&center
 box.1 {fillcolor:red} "1" (0,0)
 box.2 {fillcolor:red} "2" (4,0)
@@ -22,7 +24,8 @@ arrow {linesize:2,linecolor:green} <box.2:s,+2,-2> ~ <box.2:s,0,-2> ~ <box.2:s>
 viewport 17 9
 config w 2
 config h 2
-config boxtype PGRAM 
+config rdx 0.2
+config boxtype PARA  
 origin at:&center
 box.1 {fillcolor:red} "1" (0,0)
 box.2 {fillcolor:red} "2" (4,0)
@@ -35,7 +38,8 @@ arrow {linesize:2,linecolor:green} <box.1:s> ~ <box.1:s,0,-2> ~ <box.2:s,0,-2> ~
 viewport 17 9
 config w 2
 config h 2
-config boxtype PGRAM 
+config rdx 0.2
+config boxtype HEXG  
 origin at:&center left:2 down:2
 box.1 {fillcolor:red} "1" (0,0)
 box.2 {fillcolor:red} "2" (4,4)
@@ -43,6 +47,20 @@ arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
 ```
 
 # Slide 4
+
+```diagram{frame}
+viewport 17 9
+config w 4
+config h 2
+config rdx 0.2
+config boxtype ELLI  
+origin at:&center left:2 down:2
+box.1 {fillcolor:red} "1" (0,0)
+box.2 {fillcolor:red} "2" (4,4)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# Slide FlowChart
 
 ```diagram{frame}
 viewport 22 16
