@@ -2223,7 +2223,7 @@ regardless the choice of the boxtype, the geometry of the
 shape will always be confined to the width and height given
 by "w" and "h".
 
-    box {boxtype:rrect} "Hello\\World" (0,0)
+    box {boxtype:RRECT} "Hello\\World" (0,0)
 
 A box can come with an ID string, which must consists of all
 word characters. If it is provided, then the ID string is
@@ -2236,7 +2236,7 @@ redrawn with a different text because the location and
 the type of the box has already been saved with the given
 id "1".
 
-    box.1 {boxtype:rrect} "Hello\\World" (0,0)
+    box.1 {boxtype:RRECT} "Hello\\World" (0,0)
     box.1 "Goodbye" 
 
 The previous example would have had two text being drawn on 
@@ -2244,11 +2244,19 @@ top of each other. This might not be a desirable effect, but
 if a "fillcolor" is provided then previous text would have
 been erased first.
 
-    box.1 {boxtype:rrect} "Hello\\World" (0,0)
+    box.1 {boxtype:RRECT} "Hello\\World" (0,0)
     box.1 {fillcolor:brown} "Goodbye" 
 
 If the id of the box is underscore, it will be assigned an Id in the same
-mannor as that of the 'node' command.
+mannor as that of the 'node' command. 
+
+Unlike the "node" command, if more than one coordinates are provided, then 
+each box would have been assigned a different id, but it would have inherited
+the same text, because a box is designed to draw multi-line text. Thus,
+it would interpret the double-backslashes as line breaks. In another word,
+the double-backslashes are not used to split text among different boxes,
+all texts are being passed to the box which will be interpreting the double-backslashes
+as line breaks.
 
 # The 'flow' command
 
