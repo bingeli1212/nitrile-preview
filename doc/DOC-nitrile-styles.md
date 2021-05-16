@@ -473,11 +473,17 @@ Following are styles recognized by NITRILE:
   - RHOM
   - ELLI
   - TERM
-  - DELY
+  - RDEL
+  - LDEL
   - SDOC
   - MDOC
   - STOR
   - FORM
+  - SUBP
+  - DOBJ
+  - UOBJ
+  - LOBJ
+  - ROBJ
   
 + bartype:<string>
 

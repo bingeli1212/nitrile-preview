@@ -164,6 +164,86 @@ box.3 {w:2,h:2,fillcolor:red,linecolor:white} "2" (6,0)
 arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
 ```
 
+# BOX SUBP
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype SUBP  
+config linesize 1
+origin at:&center left:2 down:4
+box.1 {w:4,h:2,fillcolor:red,linecolor:white} "1" (0,0)
+box.2 {w:2,h:4,fillcolor:red,linecolor:white} "2" (4,4)
+box.3 {w:2,h:2,fillcolor:red,linecolor:white} "2" (6,0)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX DOBJ
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype DOBJ  
+config linesize 1
+origin at:&center left:2 down:4
+box.1 {w:4,h:2,fillcolor:red,linecolor:white} "1" (0,0)
+box.2 {w:2,h:4,fillcolor:red,linecolor:white} "2" (4,4)
+box.3 {w:2,h:2,fillcolor:red,linecolor:white} "2" (6,0)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX UOBJ
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype UOBJ  
+config linesize 1
+origin at:&center left:2 down:4
+box.1 {w:4,h:2,fillcolor:red,linecolor:white} "1" (0,0)
+box.2 {w:2,h:4,fillcolor:red,linecolor:white} "2" (4,4)
+box.3 {w:2,h:2,fillcolor:red,linecolor:white} "2" (6,0)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX LOBJ
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype LOBJ  
+config linesize 1
+origin at:&center left:2 down:4
+box.1 {w:4,h:2,fillcolor:red,linecolor:white} "1" (0,0)
+box.2 {w:2,h:4,fillcolor:red,linecolor:white} "2" (4,4)
+box.3 {w:2,h:2,fillcolor:red,linecolor:white} "2" (6,0)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX ROBJ
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype ROBJ  
+config linesize 1
+origin at:&center left:2 down:4
+box.1 {w:4,h:2,fillcolor:red,linecolor:white} "1" (0,0)
+box.2 {w:2,h:4,fillcolor:red,linecolor:white} "2" (4,4)
+box.3 {w:2,h:2,fillcolor:red,linecolor:white} "2" (6,0)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
 # Slide FlowChart
 
 ```diagram{frame}
