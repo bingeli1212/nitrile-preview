@@ -5,12 +5,13 @@ test-node.md
 
 ```diagram{frame}
 viewport 13 7
-config r 0.8
+config r 0.5
 config showid 1
 origin at:&center 
-node.a (0,0)
-node.b (5,0)
-flow {linesize:3,linecolor:orange} <node.a_e> <node.b_w>
+node.a {linesize:1,fillcolor:teal} (0,0)
+node.b {linesize:1,fillcolor:teal} (3,0)
+flow {linesize:3,linecolor:red} <node.a_e> <node.b_w>
+dblarrow {linesize:3,linecolor:red} (0,2) [h:3]
 ```
 
 
