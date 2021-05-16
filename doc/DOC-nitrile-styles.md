@@ -467,12 +467,12 @@ Following are styles recognized by NITRILE:
 
   ```verbatim
   RECT
-  RRECT
-  HEX   
-  TRI     
-  DOWNTRI 
-  PGRAM
-  RHOMBUS
+  HEXG   
+  UTRI     
+  DTRI 
+  PARA
+  RHOM
+  ELLI
   ```
 
 + bartype:<string>
