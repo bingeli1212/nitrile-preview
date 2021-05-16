@@ -2260,61 +2260,7 @@ the double-backslashes are not used to split text among different boxes,
 all texts are being passed to the box which will be interpreting the double-backslashes
 as line breaks.
 
-# The 'flow' command
 
-The 'flow' command is designed to connect boxes with arrows. 
-
-    box.1 "Hello" (0,0)
-    box.2 "World" (4,4)
-    flow <1_n> <2_w> 
-
-The connection of arrow lines will be made from one part of the box to the
-other. The part of the box where lines emanate is called the anchor. There
-are 8 different anchor points for a box, named "n", "s", "w", "e", "nw",
-"ne", "sw", and "se", where each one stands for north, south, west, east,
-northwest, northeast, southwest, and southeast respectively. If an anchor
-point is not specified, an invalid name was specified then "sw" is assumed.
-
-The name of an anchor point is expected to follow the ID of a box after an
-underscore. 
-
-The boxes are specified using a special "flow" form that starts and ends
-with a the angle brackets. Within the set of brackets there should be expected
-three arguments, each of which separated by a comma. The first one is the
-Id-and-anchor notation designating a named box and its anchor point. The second
-and third argument is the x/y offset from that anchor point.
-
-If additional intermediate points are to be drawn such that the flow would come to 
-those points first, then they can be added between the two boxes. The following
-example shows that an intermediate point should be reach first before
-connecting with box 1. This intermediate point is located 2 grid units above the north
-anchor of the box 1.
-
-    box.1 "Hello" (0,0)
-    box.2 "World" (4,4)
-    flow <1_n> <1_n,0,2> <2_w> 
-
-Note that an intermediate point does not always have to be with the first box.
-In the following example the two intermediate points are specified with reference
-to the first box and the second box.
-
-    viewport 17 9
-    config w 2
-    config h 2
-    config boxtype PGRAM
-    origin at:&center
-    box.1 {fillcolor:red,shadow} "1" (0,0)
-    box.2 {fillcolor:red,shadow} "2" (4,0)
-    flow <1_s> <1_s,0,-2> <2_s,0,-2> <2_s>
-
-It is thus possible for a flow to start from a free point outside of a box, or 
-flow to a free point that is not attached to any box.
-
-    box.1 {fillcolor:red,shadow} "1" (0,0)
-    box.2 {fillcolor:red,shadow} "2" (4,0)
-    flow <1_n,0,2> <1_n>
-    flow <2_s> <2_s,0,-2>
-    
 
 # The 'record' and 'playback' commands   
 
