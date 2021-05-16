@@ -1775,8 +1775,8 @@ components of the first two points in path variable 'pts', which will
 be "1 + 3 = 4".
 
     path my = (1,2) (3,4)
-    let mx := my_0.x + my_1.x
-    let my := my_0.y + my_1.y
+    let mx := &my_0.x + &my_1.x
+    let my := &my_0.y + &my_1.y
     show ${mx}
     show ${my}
 
@@ -1784,7 +1784,7 @@ It is also possible to refer to an array element. To do that simply use the vari
 followed by an underscore itself.
 
     array my = 1 2 3 4
-    let my := my_0 + my_1
+    let my := @my_0 + @my_1
     show ${my}
 
 
@@ -2109,15 +2109,17 @@ Thus, the following example would have drawn a curved edge that is to
 come out of the first node at the top of the circle, and then entering
 the second node on its left-hand side. This is because the straight
 line direction would be a 45 degree from the first node to the second
-node, and thus an addition turning of 45 degree angle would have
-placed the starting direction at a 90 degree angle. Since the turning
-would be semantical, the destination node would have its angle turned
-in the opposite direction.
+node, and a negative 45 degree abbration expresses that it should start
+out with an angle that is 45 degrees turned to the left hand side 
+of the normal trajectory, placing the starting direction at a due north 
+direction. 
 
     node.A  (1,1)
     node.B  (5,5)
-    edge.A.B {abr:45}
+    edge.A.B {abr:-45}
 
+A positive "abr" option would have expressed that it should veer away 
+towards the right hand side of the normal trajectory.
 If the edge is going to include arrow heads, then the 'arrowhead' style option
 should've been provided.
 
@@ -3006,7 +3008,7 @@ The 'argand-dot' command also recognizes an array and will try to plot
 each number of the array.
 
     array arr = (1+2*I) (2+1*I) a
-    argand-dot &arr
+    argand-dot @arr
 
 A dot will be drawn in that location where the complex number is expected
 to be within that plane. The size of the dot is controlled by the "dot:"
