@@ -389,7 +389,9 @@ Following are styles recognized by NITRILE:
   expresses an angle in the unit of degrees.  It is currently being utilized by
   the 'edge' operation such that when this option is set it expresses that a
   Bezier curve should be drawn instead of a straight line that connects two
-  different nodes. The wider this value, the more curved edge should end up.
+  different nodes. A negative value expresses that it should veer to the left
+  hand side of the normal trajectory. A positive value expresses that it should
+  veer to the right hand side.
 
 + shift:<length>
 
