@@ -465,16 +465,20 @@ Following are styles recognized by NITRILE:
   only available values are listed below. If the type string is unrecognized it
   is assumed to be 'rect', which is the default type.
 
-  ```verbatim
-  RECT
-  HEXG   
-  UTRI     
-  DTRI 
-  PARA
-  RHOM
-  ELLI
-  ```
-
+  - RECT
+  - HEXG   
+  - UTRI     
+  - DTRI 
+  - PARA
+  - RHOM
+  - ELLI
+  - TERM
+  - DELY
+  - SDOC
+  - MDOC
+  - STOR
+  - FORM
+  
 + bartype:<string>
 
   The bartype-option can be sets to indicate what bar it is to draw. It is

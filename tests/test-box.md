@@ -60,6 +60,110 @@ box.2 {fillcolor:red} "2" (4,4)
 arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
 ```
 
+# BOX TERM
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype TERM  
+origin at:&center left:2 down:2
+box.1 {fillcolor:red} "1" (0,0)
+box.2 {fillcolor:red} "2" (4,4)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX RDEL
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype RDEL  
+origin at:&center left:2 down:2
+box.1 {fillcolor:red} "1" (0,0)
+box.2 {fillcolor:red} "2" (4,4)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX LDEL
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype LDEL  
+origin at:&center left:2 down:2
+box.1 {fillcolor:red} "1" (0,0)
+box.2 {fillcolor:red} "2" (4,4)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX SDOC
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype SDOC  
+origin at:&center left:2 down:2
+box.1 {fillcolor:red} "1" (0,0)
+box.2 {fillcolor:red} "2" (4,4)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX MDOC
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config linesize 1
+config linecolor white
+config boxtype MDOC  
+origin at:&center left:2 down:2
+box.1 {fillcolor:red} "1" (0,0)
+box.2 {fillcolor:red} "2" (4,4)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX STOR
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype STOR  
+config linesize 1
+origin at:&center left:2 down:4
+box.1 {w:4,h:2,fillcolor:red,linecolor:white} "1" (0,0)
+box.2 {w:2,h:4,fillcolor:red,linecolor:white} "2" (4,4)
+box.3 {w:2,h:2,fillcolor:red,linecolor:white} "2" (6,0)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
+# BOX FORM
+
+```diagram{frame}
+viewport 18 10
+config w 4
+config h 2
+config rdx 0.2
+config boxtype FORM  
+config linesize 1
+origin at:&center left:2 down:4
+box.1 {w:4,h:2,fillcolor:red,linecolor:white} "1" (0,0)
+box.2 {w:2,h:4,fillcolor:red,linecolor:white} "2" (4,4)
+box.3 {w:2,h:2,fillcolor:red,linecolor:white} "2" (6,0)
+arrow {linesize:2,linecolor:green} <box.1:n> ~ <box.1:n,0,3> ~ <box.2:w>
+```
+
 # Slide FlowChart
 
 ```diagram{frame}
