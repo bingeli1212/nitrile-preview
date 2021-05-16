@@ -2264,7 +2264,7 @@ The 'flow' command is designed to connect boxes with arrows.
 
     box.1 "Hello" (0,0)
     box.2 "World" (4,4)
-    flow.1_n.2_w 
+    flow <1_n> <2_w> 
 
 The connection of arrow lines will be made from one part of the box to the
 other. The part of the box where lines emanate is called the anchor. There
@@ -2276,48 +2276,43 @@ point is not specified, an invalid name was specified then "sw" is assumed.
 The name of an anchor point is expected to follow the ID of a box after an
 underscore. 
 
-At least two valid box IDs must be provided to allow a line between two boxes
-to appear. Additional ID-and-anchor-combination found after the
-second box are ignored. In the following example only the flow between the first
-box and the second is drawn.
+The boxes are specified using a special "flow" form that starts and ends
+with a the angle brackets. Within the set of brackets there should be expected
+three arguments, each of which separated by a comma. The first one is the
+Id-and-anchor notation designating a named box and its anchor point. The second
+and third argument is the x/y offset from that anchor point.
+
+If additional intermediate points are to be drawn such that the flow would come to 
+those points first, then they can be added between the two boxes. The following
+example shows that an intermediate point should be reach first before
+connecting with box 1. This intermediate point is located 2 grid units above the north
+anchor of the box 1.
 
     box.1 "Hello" (0,0)
     box.2 "World" (4,4)
-    box.3 "World2" (-4,4)
-    flow.1_n.2_w.3_e 
+    flow <1_n> <1_n,0,2> <2_w> 
 
-Sometimes a straight line connection between two boxes aren't the best choice.
-It would be a good idea to have a polyline that goes somewhere else first
-before reaching to the destination box. If this is going to be the case,
-we place the "intermediate" points at the command line. In the following example
-the flow would have started from the first anchor point, reaching an intermediate
-point that is 3 grid distance above it,
-followed by another intermediate point that is 1 grid distance to the right and 2 grid 
-distance above the first intermediate point, 
-before finally landing on the second anchor point.
+Note that an intermediate point does not always have to be with the first box.
+In the following example the two intermediate points are specified with reference
+to the first box and the second box.
 
-    box.1 "Hello" (0,0)
-    box.2 "World" (4,4)
-    box.3 "World2" (-4,4)
-    flow.1_n.2_w <,3> <1,2>
+    viewport 17 9
+    config w 2
+    config h 2
+    config boxtype PGRAM
+    origin at:&center
+    box.1 {fillcolor:red,shadow} "1" (0,0)
+    box.2 {fillcolor:red,shadow} "2" (4,0)
+    flow <1_s> <1_s,0,-2> <2_s,0,-2> <2_s>
 
-The intermediate points should best be specified using the "flow" coordinates,
-as it will be relative to the anchor and to the subsequent intermediate points.
-However, absolute points can also allowed.
+It is thus possible for a flow to start from a free point outside of a box, or 
+flow to a free point that is not attached to any box.
 
-    box.1 "Hello" (0,0)
-    box.2 "World" (4,4)
-    box.3 "World2" (-4,4)
-    flow.1_n.2_w (0,5)
-
-In the case where only a single box is encountered in the flow command, then 
-the flow line would have landed to a free point if some intermediate points
-are given. Otherwise the flow is not drawn. Following example would have shown
-a flow that goes out from the first anchor point and extend for 3 grid distances
-upwards.
-
-    box.1 "Hello" (0,0)
-    flow.1_n <,3>
+    box.1 {fillcolor:red,shadow} "1" (0,0)
+    box.2 {fillcolor:red,shadow} "2" (4,0)
+    flow <1_n,0,2> <1_n>
+    flow <2_s> <2_s,0,-2>
+    
 
 # The 'record' and 'playback' commands   
 
