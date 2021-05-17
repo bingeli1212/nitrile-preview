@@ -873,14 +873,13 @@ The output is shown in figure &ref{fig:image-fonts-1}-(a)
   &label{fig:image-fonts-1}
   Two outputs of using \addfeature and \subtractfeature commands.
 
-    ```img{outline,width:80%}
-    image-fonts-1.png
-    ```
+    ```img{frame,width:80%}
+    image image-fonts-1.png
 
     \\
 
-    ```img{outline,width:80%}
-    image-fonts-2.png
+    ```img{frame,width:80%}
+    image image-fonts-2.png
     ```
 
 The following does the same, but only uses addition. 
@@ -965,8 +964,8 @@ by figure &ref{fig:fonts-3}.
   &label{fig:fonts-3}
   The output of uisng descretionaries.
 
-  ```img{outline,width:80%}
-  image-fonts-3.png
+  ```img{frame,width:80%}
+  image image-fonts-3.png
   ```
 
 In base mode such things are handled by the TEX engine itself and it can deal
@@ -1062,8 +1061,8 @@ stored in the file lmx10. No scaling takes place so the natural size is taken.
 This so called designsize is in no way standardized. Just look at these three
 specimen:
 
-```img{outline}
-image-fonts-4.png
+```img{frame}
+image image-fonts-4.png
 ```
 
 The designsize is normally 10 point, but as there is no real reference for
@@ -1221,7 +1220,7 @@ This produces the following list shown in figure &ref{fig:fonts-4}
   &label{fig:fonts-4}
   The output of the "mtxrun" command.
 
-  ```framed{outline,width:100%,framewidth:800}
+  ```ink{frame,width:100%,framewidth:800}
   dejavusans                       dejavusans          dejavusans                       DejaVuSans.ttf
   dejavusansbold                   dejavusans          dejavusansbold                   DejaVuSans-Bold.ttf
   dejavusansboldoblique            dejavusans          dejavusansboldoblique            DejaVuSans-BoldOblique.ttf
@@ -1318,7 +1317,7 @@ match. Let’s give an example:
   and the font named "dejavu" with no additional information
   regarding weight, style, width, and variant.
 
-  ```framed{outline,width:100%,framewidth:800}
+  ```ink{frame,width:100%,framewidth:800}
   familyname       weight   style    width    variant   fontname         filename
   dejavuserif      normal   normal   normal   normal    dejavuserif      DejaVuSerif.ttf
   dejavusansmono   normal   normal   normal   normal    dejavusansmono   DejaVuSansMono.ttf
@@ -1339,7 +1338,7 @@ is shown by figure &ref{fig:fonts-6}.
   font "dejavu-bold", which expressed a font named "dejavu" and of
   weight "bold".
 
-  ```framed{outline,width:100%,framewidth:800}
+  ```ink{frame,width:100%,framewidth:800}
   familyname       weight   style    width    variant   fontname                   filename
   dejavuserif      bold     normal   normal   normal    dejavuserifbold            DejaVuSerif-Bold.ttf
   dejavuserif      bold     normal   normal   normal    dejavuserifcondensedbold   DejaVuSerifCondensed-Bold.ttf
@@ -1358,7 +1357,7 @@ will generate a result that is shown by figure &ref{fig:fonts-7}.
   font "dejavu-bold", which expressed a font named "dejavu" and of
   weight "bold" and style "italic".
 
-  ```framed{outline,width:100%,framewidth:800}
+  ```ink{frame,width:100%,framewidth:800}
   dejavuserif      bold     italic   normal   normal    dejavuserifbolditalic       DejaVuSerif-BoldItalic.ttf
   dejavusansmono   bold     italic   normal   normal    dejavusansmonoboldoblique   DejaVuSansMono-BoldOblique.ttf
   dejavusans       bold     italic   normal   normal    dejavusansboldoblique       DejaVuSans-BoldOblique.ttf
