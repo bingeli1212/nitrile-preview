@@ -1,82 +1,11 @@
 % !TEX program = ConTeXt (LuaTeX)
 \enabletrackers[fonts.missing]
-
-
-
-\setuppagenumbering[location={header,right},style=]
-\setupindenting[no,medium]
-\setscript[hanzi] % hyphenation
-\setuphead[part][number=yes]
-\setuphead[chapter][style=\bfd,number=yes]
-\setuphead[section][style=\bfa,number=yes]
-\setuphead[subsection][style=\bf,number=yes]
-\setuphead[subsubsection][style=\bf,number=yes]
-\setuphead[subsubsubsection][style=\bf,number=yes]
-\setupinteraction[state=start,color=,contrastcolor=]
 \enableregime[utf] % enable unicode fonts
-\definefontfamily[de][serif][dejavusans]
-\definefontfamily[za][serif][zapfdingbats]
-\definefontfamily[cn][serif][arplsungtilgb]
-\definefontfamily[tw][serif][arplmingti2lbig5]
-\definefontfamily[jp][serif][ipaexmincho]
-\definefontfamily[kr][serif][baekmukbatang]
-\definefontfamily[de][sans][dejavusans]
-\definefontfamily[za][sans][zapfdingbats]
-\definefontfamily[cn][sans][arplsungtilgb]
-\definefontfamily[tw][sans][arplmingti2lbig5]
-\definefontfamily[jp][sans][ipaexmincho]
-\definefontfamily[kr][sans][baekmukbatang]
-\definemathcommand [arccot] [nolop] {\mfunction{arccot}}
-\definemathcommand [arsinh] [nolop] {\mfunction{arsinh}}
-\definemathcommand [arcosh] [nolop] {\mfunction{arcosh}}
-\definemathcommand [artanh] [nolop] {\mfunction{artanh}}
-\definemathcommand [arcoth] [nolop] {\mfunction{arcoth}}
-\definemathcommand [sech]   [nolop] {\mfunction{sech}}
-\definemathcommand [csch]   [nolop] {\mfunction{csch}}
-\definemathcommand [arcsec] [nolop] {\mfunction{arcsec}}
-\definemathcommand [arccsc] [nolop] {\mfunction{arccsc}}
-\definemathcommand [arsech] [nolop] {\mfunction{arsech}}
-\definemathcommand [arcsch] [nolop] {\mfunction{arcsch}}
-\usemodule[ruby]
-\usemodule[char-def]
 \usesymbols[mvs]
-\setupcaptions[minwidth=\textwidth, align=middle, location=top]
-\setupinteraction[state=start]
-\placebookmarks[part,chapter,section]
-\definecolor[cyan][r=0,g=1,b=1] % a RGB color
-\definecolor[magenta][r=1,g=0,b=1] % a RGB color
-\definecolor[darkgray][r=.35,g=.35,b=.35] % a RGB color
-\definecolor[gray][r=.5,g=.5,b=.5] % a RGB color
-\definecolor[lightgray][r=.75,g=.75,b=.75] % a RGB color
-\definecolor[brown][r=.72,g=.52,b=.04] % a RGB color
-\definecolor[lime][r=.67,g=1,b=.18] % a RGB color
-\definecolor[olive][r=.5,g=.5,b=0] % a RGB color
-\definecolor[orange][r=1,g=.5,b=0] % a RGB color
-\definecolor[pink][r=1,g=.75,b=.79] % a RGB color
-\definecolor[teal][r=0,g=.5,b=.5] % a RGB color
-\definecolor[purple][r=.8,g=.13,b=.13] % a RGB color
-\definecolor[violet][r=.5,g=0,b=.5] % a RGB color
-\definedescription[latexdesc][
-  headstyle=normal, style=normal, align=flushleft, 
-  alternative=hanging, width=fit, before=, after=]
-\definedescription[latexdescbroad][
-  headstyle=normal, style=normal, align=flushleft, 
-  alternative=hanging, width=fit]
-\definefontsize[sm]
-\definefontsize[xsm]
-\definefontsize[xxsm]
-\definefontsize[xxxsm]
-\definefontsize[big]
-\definefontsize[xbig]
-\definefontsize[xxbig]
-\definefontsize[huge]
-\definefontsize[xhuge]
-\definebodyfontenvironment
-  [default]
-  [sm=.9,xsm=.8,xxsm=.7,xxxsm=.5,
-   big=1.2,xbig=1.4,xxbig=1.7,huge=2.0,xhuge=2.3]
-\setupcombinations[distance=0.02\textwidth]
-\definefloat[listing][listings]
+\definefontfamily [linux] [serif] [libertinusserif]
+\definefontfamily [linux] [sans]  [libertinussans]
+\definefontfamily [linux] [mono]  [libertinusmono] [rscale=0.9]
+\definefontfamily [linux] [math]  [libertinusmath]
 \starttext
 
 \startsection[title={martinvogel 2},reference={undefined},bookmark={}]
