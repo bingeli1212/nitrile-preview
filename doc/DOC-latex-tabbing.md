@@ -16,7 +16,7 @@ To use tabs, you want to use the "tabbing" environment. (This is all described o
 
 This would produce:
 
-```framed
+```ink
 If it's raining
    then put on boots
         take hat;

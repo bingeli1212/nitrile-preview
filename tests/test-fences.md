@@ -12,7 +12,7 @@ The diagram is:
 
 The frame is:
 
-```framed{width:3in}
+```ink{width:3in}
 viewport 2 2 
 
 circle.pie {r:0.8;a1:0;a2:72} (1,1)
@@ -35,7 +35,7 @@ circle.pie {r:0.8;a1:0;a2:72} (1,1)
     circle.pie {r:0.8;a1:0;a2:72} (1,1)
   ```
 
-& ```framed{width:3in}
+& ```ink{width:3in}
     viewport 2 2 
 
     circle.pie {r:0.8;a1:0;a2:72} (1,1)

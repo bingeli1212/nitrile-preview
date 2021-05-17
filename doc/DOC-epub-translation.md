@@ -6,7 +6,7 @@ title: EPUB Generation
 
 An example "package.opf" file:
 
-```framed
+```ink
 <?xml version='1.0' encoding='UTF-8'?>
 <package xmlns='http://www.idpf.org/2007/opf' 
   version='3.0' xml:lang='en' unique-identifier='pub-id'>
