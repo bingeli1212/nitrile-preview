@@ -183,6 +183,113 @@ camer.setupbodyfont: linux,11pt
   inside a 'startsection' command.
 
 
+# The CJK font problem
+
+The CJK refers to a set of characters, symbols, and punctuations that are
+uniquely associated with languaged used by Japanese, Chinese, and Korean people
+and within the associated region. The glyphs associated with the associated
+characters have very different appearances than the other characters we would
+called Latin glyphs. In particular, following is the set of Unicode ranges that
+are currently being recoginzed as CJK characters.
+
+    return this.is_within(cc,0x4E00,0x9FFF) //CJK Unified Ideographs
+        || this.is_within(cc,0x3040,0x309F) //hiragana
+        || this.is_within(cc,0x30A0,0x30FF) //katakana
+        || this.is_within(cc,0xAC00,0xD7A3) //Hangul Syllable
+        || this.is_within(cc,0x3400,0x4DBF) //CJK Unified Ideographs Extension A, U+3400 - U+4DBF
+        || this.is_within(cc,0x3000,0x303F) //CJK Symbols and Punctuation
+        ;
+
+Most fonts do not include any glyphs within these ranges. Fortunately, some
+fonts do. However, due to the design of the Han unification of Unicode, the
+characters, symbols, and punctuations are from CJK are intermixed into a unified
+range, and this is particular true for the range of 0x4E00-0x9FFF, and
+0x3000-0x303F. For instance, fonts that are designed to target a Japanese
+language would provide a subset of glyphs within 0x4E00-0x9FFF and leave some
+glyphs within this range unimplemented. On the other hand, fonts that targets
+Chinese users would choose to implement only the glyphs that are found in the
+region of China and Taiwan, and would not implement the glyphs that would only
+be found in Japan. Worse, the mainland China, Hong Kong, and Taiwan has each had
+a variant of what's called simplified and traditional Chinese character such
+that the same character would have two distanct appearances, where the former
+tends to have less strokes than the later, and both of which is supposed to have
+the same interpretation. Thus, some fonts would choose to only implement the
+"simplified" version of the character and the other the more "traditional"
+version instead, targetting users only of some specific regions.
+
+For this reason, CONTEX has built an internal map that serves to identify for a
+particular code point, which one of the four languages and regions (cn, tw, jp,
+and kr) have traditionally chosen to implement it. Each language has been a
+language code, where "cn" expressing the area of mainland China, and the choice
+of "simplified" Chinese characters, "tw" being the area of Taiwan and Hong Kong,
+and the choice of "traditional" Chinese characterss, "jp" being the area of
+Japan, where kanji is the norm, and "kr" being the area of Korean Peninsula.
+
+Note that for some glyphs it might be the choices of several languages.
+
+During the translation, whenever a CJK Unicode character is identified, this map
+is consulted and the first language is chosen. However, if another CJK
+characters is to follow, then these two characters will be merged and they
+become a piece of text. This process is to continue until a non-CJK character is
+encountered. The most common language that implements all the characters is
+chose as the language of this text. This strategy should work if all the
+characters are from the same language.
+
+However, should CJK characters from different languages are found, such as the
+case where the first two characters are only for a "cn" region and the last two
+are only found in a "jp" region, then the first two characters will be placed
+under "cn" and the last two under "jp".
+
+For all CJK characters the name of the language serves as the font family name as well.
+For instance, if the text "中文" is recognized as coming from region "cn", then following
+will be placed in the translated text. 
+
+    {\switchtobodyfont[cn]我是中国人。}
+
+Likewise, the following text will be placed in the translated text assuming that it is
+is recognized as coming from region "jp".
+
+    {\switchtobodyfont[jp]私は日本人です。}
+
+Note that the punctuation at the end of the sentence will be recognized as
+either from the "cn" region or the region of "jp" because both "cn" and "jp"
+languages are known to have provided a glyph for it.
+
+However, the font family names "cn", "tw", "jp" and "kr" are not know to CONTEX. The process
+of making these font family names known would have to be done manually. In particular, 
+this process is done by setting the "contex.langs" entry in the frontmatter section 
+of the MD document.
+
+    ---
+    title: My Document Title.
+    contex.langs: cn=arplsungtilgb
+                  jp=hiraginominchopro
+                  kr=baekmukbatang
+                  tw=arplmingti2lbig5
+    ---
+
+For each entry, CONTEX will generate a \definefontfamily command
+for the three family variants such as follow:
+
+    \definefontfamily[jp][serif][hiraginominchopro]
+    \definefontfamily[jp][sans][hiraginominchopro]
+    \definefontfamily[jp][mono][hiraginominchopro]
+
+Note that the previous name was only used as an example and would likely to be
+different from system to system, as each compute would have had installed a
+different set of fonts. The list of available fonts can be obtained by running
+the "mtxrun" program.
+
+Regardless a particular language has been specified to be associated with a
+font, the \switchtobodyfont command will be inserted before each CJK text. In
+the absence of having the font name such as "jp" defined, CONTEX simply ignores
+this text and compilation proceeds without error. The following CONTEX command
+is useful to be placed inside the setup area of a document to force CONTEX to
+report the situation when a particular code point is known to be painted by a
+font but for some reason that font has not provided a glyph for it.
+
+
+
 # The \bTABLE problem
 
 The LONG table expressed by \bTABLE would  start 
