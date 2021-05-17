@@ -199,7 +199,7 @@ overflow the line.
   config h 2
   config fillcolor orange
   config opacity 0.3
-  box "1\\2\\3" (0,0) [h:2] [h:2]
+  box "1" (0,0) [h:2] [h:2]
   ```
 
 - ``flex-end``
@@ -215,7 +215,7 @@ overflow the line.
   origin right:12
   config fillcolor orange
   config opacity 0.3
-  box "1\\2\\3" (0,0) [h:2] [h:2]
+  box "1" (0,0) [h:2] [h:2]
   ```
 
 - ``center``
@@ -234,7 +234,7 @@ overflow the line.
   origin right:6
   config fillcolor orange
   config opacity 0.3
-  box "1\\2\\3" (0,0) [h:2] [h:2]
+  box "1" (0,0) [h:2] [h:2]
   ```
 
 - ``space-between``
@@ -253,7 +253,7 @@ overflow the line.
   config h 2
   config fillcolor orange
   config opacity 0.3
-  box "1\\2\\3" (0,0) [h:8] [h:8] 
+  box "1" (0,0) [h:8] [h:8] 
   ```
 
 - ``space-around``
@@ -272,7 +272,7 @@ overflow the line.
   config h 2
   config fillcolor orange
   config opacity 0.3
-  box "1\\2\\3" (3,0) [h:5] [h:5] 
+  box "1" (3,0) [h:5] [h:5] 
   ```
 
 [ The `align-items` and `align-self` properties. ] These
