@@ -2479,6 +2479,22 @@ The outer color seems to be at a location away from the inner
 color that is the average of the half width and half height of the rectangle.
 
 
+# The 'prodofprimesws' command
+
+This command is to show a sheet that demonstrates the progression
+of obtaining all prime factors of a given number. 
+
+    prodofprimesws "12 2 2 3" (5,5)
+
+Note that the result is to show the original product with a list of primes
+that are to the left of that number. At this time all prime factors need to be
+given as part of the input. For instance, the number "12" above is the product,
+followed by 2, 2, and 3 which is the three prime factors of this product. 
+
+In the future it might be desirable for it to automatically figure out the 
+prime factor by itself.
+
+
 # The 'multiws' command
 
 The multiws-operation allows for a multiplication worksheet
