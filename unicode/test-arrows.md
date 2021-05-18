@@ -4,7 +4,7 @@ title: test-arrows.md
 
 2190..21FF; Arrows
 
-# 2190    
+# U+2190    
 
   ```tabular{vrule:|||}
   U+2190      &utfchar{2190}      U+2198      &utfchar{2198}
@@ -17,7 +17,7 @@ title: test-arrows.md
   U+2197      &utfchar{2197}      U+219F      &utfchar{219F}
   ```
 
-# 21A0    
+# U+21A0    
 
   ```tabular{vrule:|||}
   U+21A0      &utfchar{21A0}      U+21A8      &utfchar{21A8}
@@ -30,7 +30,7 @@ title: test-arrows.md
   U+21A7      &utfchar{21A7}      U+21AF      &utfchar{21AF}
   ```
 
-# 21B0    
+# U+21B0    
 
   ```tabular{vrule:|||}
   U+21B0      &utfchar{21B0}      U+21B8      &utfchar{21B8}
@@ -43,7 +43,7 @@ title: test-arrows.md
   U+21B7      &utfchar{21B7}      U+21BF      &utfchar{21BF}
   ```
 
-# 21C0    
+# U+21C0    
 
   ```tabular{vrule:|||}
   U+21C0      &utfchar{21C0}      U+21C8      &utfchar{21C8}
@@ -56,7 +56,7 @@ title: test-arrows.md
   U+21C7      &utfchar{21C7}      U+21CF      &utfchar{21CF}
   ```
 
-# 21D0   
+# U+21D0   
 
   ```tabular{vrule:|||}
   U+21D0      &utfchar{21D0}      U+21D8      &utfchar{21D8}
@@ -69,7 +69,7 @@ title: test-arrows.md
   U+21D7      &utfchar{21D7}      U+21DF      &utfchar{21DF}
   ```
 
-# 21E0   
+# U+21E0   
 
   ```tabular{vrule:|||}
   U+21E0      &utfchar{21E0}      U+21E8      &utfchar{21E8}
@@ -82,7 +82,7 @@ title: test-arrows.md
   U+21E7      &utfchar{21E7}      U+21EF      &utfchar{21EF}
   ```
 
-# 21F0   
+# U+21F0   
 
   ```tabular{vrule:|||}
   U+21F0      &utfchar{21F0}      U+21F8      &utfchar{21F8}
