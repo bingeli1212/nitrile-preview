@@ -39,5 +39,5 @@ c.md
 *.tui
 *.mp
 *.swo
+*.sh
 temp
-tests/cleamer.sh
