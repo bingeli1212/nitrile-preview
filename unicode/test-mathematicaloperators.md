@@ -134,7 +134,7 @@ title: test-mathematicaloperators.md
   U+2297      &utfchar{2297}      U+229F      &utfchar{229F}
   ```
 
-# 22A0     
+# U+22A0     
 
   ```tabular{vrule:|||}
   U+22A0      &utfchar{22A0}      U+22A8      &utfchar{22A8}
