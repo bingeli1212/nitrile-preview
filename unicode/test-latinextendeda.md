@@ -2,7 +2,7 @@
 title: test-latinextendeda.md
 ---
 
-Latin Extended A
+0100..017F; Latin Extended-A
 
 # U+0100
 

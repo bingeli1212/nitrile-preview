@@ -2,9 +2,9 @@
 title: test-mathematicaloperators.md
 ---
 
-first = 0x02200, last = 0x022FF
+2200..22FF; Mathematical Operators
 
-# 2200   
+# U+2200   
 
   ```tabular{vrule:|||}
   U+2200      &utfchar{2200}      U+2208      &utfchar{2208}
@@ -17,7 +17,7 @@ first = 0x02200, last = 0x022FF
   U+2207      &utfchar{2207}      U+220F      &utfchar{220F}
   ```
 
-# 2210   
+# U+2210   
 
   ```tabular{vrule:|||}
   U+2210      &utfchar{2210}      U+2218      &utfchar{2218}
@@ -30,7 +30,7 @@ first = 0x02200, last = 0x022FF
   U+2217      &utfchar{2217}      U+221F      &utfchar{221F}
   ```
 
-# 2220   
+# U+2220   
 
   ```tabular{vrule:|||}
   U+2220      &utfchar{2220}      U+2228      &utfchar{2228}
@@ -43,7 +43,7 @@ first = 0x02200, last = 0x022FF
   U+2227      &utfchar{2227}      U+222F      &utfchar{222F}
   ```
 
-# 2230   
+# U+2230   
 
   ```tabular{vrule:|||}
   U+2230      &utfchar{2230}      U+2238      &utfchar{2238}
@@ -56,7 +56,7 @@ first = 0x02200, last = 0x022FF
   U+2237      &utfchar{2237}      U+223F      &utfchar{223F}
   ```
 
-# 2240   
+# U+2240   
 
   ```tabular{vrule:|||}
   U+2240      &utfchar{2240}      U+2248      &utfchar{2248}
@@ -69,7 +69,7 @@ first = 0x02200, last = 0x022FF
   U+2247      &utfchar{2247}      U+224F      &utfchar{224F}
   ```
 
-# 2250   
+# U+2250   
 
   ```tabular{vrule:|||}
   U+2250      &utfchar{2250}      U+2258      &utfchar{2258}
@@ -82,7 +82,7 @@ first = 0x02200, last = 0x022FF
   U+2257      &utfchar{2257}      U+225F      &utfchar{225F}
   ```
 
-# 2260   
+# U+2260   
 
   ```tabular{vrule:|||}
   U+2260      &utfchar{2260}      U+2268      &utfchar{2268}
@@ -95,7 +95,7 @@ first = 0x02200, last = 0x022FF
   U+2267      &utfchar{2267}      U+226F      &utfchar{226F}
   ```
 
-# 2270   
+# U+2270   
 
   ```tabular{vrule:|||}
   U+2270      &utfchar{2270}      U+2278      &utfchar{2278}
@@ -108,7 +108,7 @@ first = 0x02200, last = 0x022FF
   U+2277      &utfchar{2277}      U+227F      &utfchar{227F}
   ```
 
-# 2280   
+# U+2280   
 
   ```tabular{vrule:|||}
   U+2280      &utfchar{2280}      U+2288      &utfchar{2288}
@@ -121,7 +121,7 @@ first = 0x02200, last = 0x022FF
   U+2287      &utfchar{2287}      U+228F      &utfchar{228F}
   ```
 
-# 2290    
+# U+2290    
 
   ```tabular{vrule:|||}
   U+2290      &utfchar{2290}      U+2298      &utfchar{2298}
@@ -147,7 +147,7 @@ first = 0x02200, last = 0x022FF
   U+22A7      &utfchar{22A7}      U+22AF      &utfchar{22AF}
   ```
 
-# 22B0     
+# U+22B0     
 
   ```tabular{vrule:|||}
   U+22B0      &utfchar{22B0}      U+22B8      &utfchar{22B8}
@@ -160,7 +160,7 @@ first = 0x02200, last = 0x022FF
   U+22B7      &utfchar{22B7}      U+22BF      &utfchar{22BF}
   ```
 
-# 22C0     
+# U+22C0     
 
   ```tabular{vrule:|||}
   U+22C0      &utfchar{22C0}      U+22C8      &utfchar{22C8}
@@ -173,7 +173,7 @@ first = 0x02200, last = 0x022FF
   U+22C7      &utfchar{22C7}      U+22CF      &utfchar{22CF}
   ```
 
-# 22D0     
+# U+22D0     
 
   ```tabular{vrule:|||}
   U+22D0      &utfchar{22D0}      U+22D8      &utfchar{22D8}
@@ -186,7 +186,7 @@ first = 0x02200, last = 0x022FF
   U+22D7      &utfchar{22D7}      U+22DF      &utfchar{22DF}
   ```
 
-# 22E0     
+# U+22E0     
 
   ```tabular{vrule:|||}
   U+22E0      &utfchar{22E0}      U+22E8      &utfchar{22E8}
@@ -199,7 +199,7 @@ first = 0x02200, last = 0x022FF
   U+22E7      &utfchar{22E7}      U+22EF      &utfchar{22EF}
   ```
 
-# 22F0     
+# U+22F0     
 
   ```tabular{vrule:|||}
   U+22F0      &utfchar{22F0}      U+22F8      &utfchar{22F8}
