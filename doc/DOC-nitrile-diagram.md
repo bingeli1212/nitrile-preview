@@ -563,6 +563,15 @@ Each of the following syntax denotes a relative point.
   along the line of the mirror with a point on one side of the line, and see
   where that point will land on the other side of the line after folding.
 
++ [sweep:-1,0,180] 
+
+  This is to construct an arc of a given radius that is the same in both X and
+  Y dimension. The first two argument is the relative position to the current
+  position where the center of the arc is. The last argument is the number in
+  degrees representing the angle to sweep over. A positive angle expresses that
+  the sweep should happen in a counter-clockwise direction, and a negative
+  value expresses a clockwise sweep.
+
 + [dot:0.2]
 
   This is to place a circle centered at the last position with a given
