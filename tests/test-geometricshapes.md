@@ -2,7 +2,7 @@
 title: test-geometricshapes.md
 ---
 
-# 25A_
+# 25A0
 
   ```tabular{vrule:|||}
   U+25A0      &utfchar{25A0}      U+25A8      &utfchar{25A8}
@@ -15,7 +15,7 @@ title: test-geometricshapes.md
   U+25A7      &utfchar{25A7}      U+25AF      &utfchar{25AF}
   ```
 
-# 25B_   
+# 25B0   
 
   ```tabular{vrule:|||}
   U+25B0      &utfchar{25B0}      U+25B8      &utfchar{25B8}
@@ -29,7 +29,7 @@ title: test-geometricshapes.md
   ```
 
 
-# 25C_   
+# 25C0   
 
   ```tabular{vrule:|||}
   U+25C0      &utfchar{25C0}      U+25C8      &utfchar{25C8}
@@ -43,7 +43,7 @@ title: test-geometricshapes.md
   ```
 
 
-# 25D_   
+# 25D0   
 
   ```tabular{vrule:|||}
   U+25D0      &utfchar{25D0}      U+25D8      &utfchar{25D8}
@@ -57,7 +57,7 @@ title: test-geometricshapes.md
   ```
 
 
-# 25E_   
+# 25E0   
 
   ```tabular{vrule:|||}
   U+25E0      &utfchar{25E0}      U+25E8      &utfchar{25E8}
@@ -71,7 +71,7 @@ title: test-geometricshapes.md
   ```
 
 
-# 25F_   
+# 25F0   
 
   ```tabular{vrule:|||}
   U+25F0      &utfchar{25F0}      U+25F8      &utfchar{25F8}
