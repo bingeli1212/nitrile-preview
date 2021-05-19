@@ -76,4 +76,12 @@ into a PDF.
 * Check the PDF output Hello-world.pdf.
 
 
+# Command Line
+
+Following is the command to run to compile a CONTEX document.
+
+    $HOME/bin/context/tex/texmf-osx-64/bin/mtxrun --autogenerate --script context --autopdf $*
+
+
+
 
