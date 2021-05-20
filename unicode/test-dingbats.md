@@ -2,7 +2,7 @@
 title: test-dingbats.md
 ---
 
-# Slide 1
+# U+2700 
 
   ```tabular{vrule:|||}
   U+2700      &utfchar{2700}      U+2708      &utfchar{2708}
@@ -15,7 +15,7 @@ title: test-dingbats.md
   U+2707      &utfchar{2707}      U+270F      &utfchar{270F}
   ```
 
-# Slide 2
+# U+2710 
 
   ```tabular{vrule:|||}
   U+2710      &utfchar{2710}      U+2718      &utfchar{2718}
@@ -28,7 +28,7 @@ title: test-dingbats.md
   U+2717      &utfchar{2717}      U+271F      &utfchar{271F}
   ```
 
-# Slide 3
+# U+2720  
 
   ```tabular{vrule:|||}
   U+2720      &utfchar{2720}      U+2728      &utfchar{2728}
@@ -41,7 +41,7 @@ title: test-dingbats.md
   U+2727      &utfchar{2727}      U+272F      &utfchar{272F}
   ```
 
-# Slide 4
+# U+2730  
 
   ```tabular{vrule:|||}
   U+2730      &utfchar{2730}      U+2738      &utfchar{2738}
@@ -54,7 +54,7 @@ title: test-dingbats.md
   U+2737      &utfchar{2737}      U+273F      &utfchar{273F}
   ```
 
-# Slide 5
+# U+2740  
 
   ```tabular{vrule:|||}
   U+2740      &utfchar{2740}      U+2748      &utfchar{2748}
@@ -67,7 +67,7 @@ title: test-dingbats.md
   U+2747      &utfchar{2747}      U+274F      &utfchar{274F}
   ```
 
-# Slide 6
+# U+2750  
 
   ```tabular{vrule:|||}
   U+2750      &utfchar{2750}      U+2758      &utfchar{2758}
@@ -80,7 +80,7 @@ title: test-dingbats.md
   U+2757      &utfchar{2757}      U+275F      &utfchar{275F}
   ```
 
-# Slide 7
+# U+2760  
 
   ```tabular{vrule:|||}
   U+2760      &utfchar{2760}      U+2768      &utfchar{2768}
@@ -93,7 +93,7 @@ title: test-dingbats.md
   U+2767      &utfchar{2767}      U+276F      &utfchar{276F}
   ```
 
-# Slide 8
+# U+2770 
 
   ```tabular{vrule:|||}
   U+2770      &utfchar{2770}      U+2778      &utfchar{2778}
@@ -106,7 +106,7 @@ title: test-dingbats.md
   U+2777      &utfchar{2777}      U+277F      &utfchar{277F}
   ```
 
-# Slide 9
+# U+2780 
 
   ```tabular{vrule:|||}
   U+2780      &utfchar{2780}      U+2788      &utfchar{2788}
@@ -119,7 +119,7 @@ title: test-dingbats.md
   U+2787      &utfchar{2787}      U+278F      &utfchar{278F}
   ```
 
-# Slide 10
+# U+2790  
 
   ```tabular{vrule:|||}
   U+2790      &utfchar{2790}      U+2798      &utfchar{2798}
@@ -132,7 +132,7 @@ title: test-dingbats.md
   U+2797      &utfchar{2797}      U+279F      &utfchar{279F}
   ```
 
-# Slide 11
+# U+27A0   
 
   ```tabular{vrule:|||}
   U+27A0      &utfchar{27A0}      U+27A8      &utfchar{27A8}
@@ -145,7 +145,7 @@ title: test-dingbats.md
   U+27A7      &utfchar{27A7}      U+27AF      &utfchar{27AF}
   ```
 
-# Slide 12
+# U+27B0   
 
   ```tabular{vrule:|||}
   U+27B0      &utfchar{27B0}      U+27B8      &utfchar{27B8}
