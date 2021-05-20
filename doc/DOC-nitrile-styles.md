@@ -733,7 +733,8 @@ Following are styles recognized by NITRILE:
 + n:2
 
   This option is used currently by the "columns" float to express the number
-  of columns. 
+  of columns. It is also used by "figure" float to express the maximum number
+  of columns for each subfigure row.
 
 + mar:1.23
 
