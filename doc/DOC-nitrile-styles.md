@@ -743,6 +743,16 @@ Following are styles recognized by NITRILE:
   a number other than zero, it specifies the length of the two arrows that will be drawn
   that points to the two end points given when drawing a sloped text.
 
++ t:0.5
+
+  This option is used currently by the "diagram" command when it draws an edge between
+  two nodes. It uses this setting to determine where along the line of the edge
+  it should place the text. The default value is 0.5, which is to express that the text
+  is drawn on top of the middle of the qbezier line. If it is set to something less than
+  0.5 then the text will be moving away from the center and towards the start
+  end of the line. A value larger than 0.5 will move the text towards the end point
+  of the line. The value of 't' must be between 0 and 1.
+
 + subtitle:text
 
   This option sets the text for the sub-title. It is to be used by an Img or Diagram
