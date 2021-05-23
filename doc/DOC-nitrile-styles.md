@@ -753,11 +753,6 @@ Following are styles recognized by NITRILE:
   end of the line. A value larger than 0.5 will move the text towards the end point
   of the line. The value of 't' must be between 0 and 1.
 
-+ subtitle:text
-
-  This option sets the text for the sub-title. It is to be used by an Img or Diagram
-  bundle to set the subtitle text.
-
 + nocaption:1
 
   When set to 1 this style asks that no caption text is to be shown. This option is currently
