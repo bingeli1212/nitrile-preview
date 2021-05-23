@@ -1960,18 +1960,20 @@ This the 'arc' env-variable would have been assigned the value of 6.28.
 # The range-expression Syntax
 
 When a Range-expression consists of two quantities separated by a single colon,
-such as "1~10", the first one denotes the ``base``, and the second one denotes
+such as "1:10", the first one denotes the ``base``, and the second one denotes
 the `limit`. The range of scalars this range-expression covers include all the
 numbers between the ``base`` and ``limit``, starting from the ``base``, with
 each additional number one greater than its predecessor, and with a final
 number not exceeding ``limit``. Thus, for the case of a range-expression
-"1~10", the scalars it entails are 1, 2, 3, 4, 5, 6, 7, 8, 9 and 10.
+"1:10", the scalars it entails are 1, 2, 3, 4, 5, 6, 7, 8, 9 and 10.
 
 If a Range-expression is given as a set of three quantities, separated by two
-colons, such as the case of "1~4~10", then the last quantity denotes the
-``limit``, and the middle quantity denotes the increment for each additional
-scalar after the ``base``.  Thus, in the case of "1~4~10", the scalars it
-entails are: 1, 4, 7, 10.
+colons, such as the case of "1:4:10", then the last quantity denotes the
+``limit``, and the middle quantity denotes the next number after the first
+number, and the difference between this number and the first will be used as
+the increment for each additional numbers after the second number until it went
+over the limit which is the third number.  Thus, in the case of "1:4:10", the
+scalars it entails are: 1, 4, 7, 10.
 
 
 # The spread-expression Syntax
@@ -1988,7 +1990,7 @@ of these numbers: 1, 3.25, 5.5, 7.75, 10.
 
 
 
-# List of Floats or Complex Numbers 
+# List of Complex Numbers 
 
 Certain commands expects a list of floats or complex numbers rather a
 path or a list of path points. For instance, the command 'cartesian'
@@ -1997,7 +1999,7 @@ appear inside the command line, after the configuration option and
 label text.
 
     argand-dot 1+1*I 2+2*I 3+5*I -1*I
-    argand-dot <map:exp> 1 2 3 4 5 6~10
+    argand-dot ~map:exp 1 2 3 4 5 6~10
 
 The previous examples shows how a argand-dot command would have
 expected a list of numbers to be present as part of its command line.
@@ -2006,22 +2008,26 @@ built. Similarly, the 'array' command would have expected the same
 type of numbers.
 
     array my1 = 1+1*I 2+2*I 3+5*I -1*I
-    array my2 = <map:exp> 1 2 3 4 5 6~10
+    array my2 = ~map:exp 1 2 3 4 5 6~10
 
 Generally, each cluster of non-whitespace characters is to be
 processed and scanned.  This cluster will be scanned and see if it 
 fits one of the following patterns in this order.
 
-1. If it is a directive such as "<map:f>" where "f" denotes a valid
+1. If it is a directive such as "~fn:f" then "f" denotes a valid
    function, whether a built-in one or a user-defined one.
 
 2. If it is a spread-expression such as "1!3!10"
 
-3. If it is a range-expression such as "1~4~10"
+3. If it is a range-expression such as "1:4:10"
 
 4. If it is an array such as "@a" 
 
-5. If it is an scalar expression such as "1", "2", "pow(2,3)", or others.
+5. If it is an scalar expression such as "1", "2", "PI", "I", "pow(2,3)", or others.
+   Any expression starting with a letter such as 'a', 'b', 'a0', 'b10' and not
+   to be followed by a set of parenthese is to be recognized as user-defined or
+   built in variable.  If this variable is not defined then a NaN 
+   is inserted. 
 
 6. If none of this matches then a NAN is generated for that number.
 
