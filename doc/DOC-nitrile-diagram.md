@@ -758,15 +758,15 @@ the grid. Note that for 'vbar', it's lower end point aligns with the
 location, and for 'hbar', its left end aligns with the location.
 
 
-# The 'label' command
+# The 'text' command
 
-The 'label' command is designed to place a piece of text in one or more path
-points. For instance, each of the following 'label' commands will place a piece
+The 'text' command is designed to place a piece of text in one or more path
+points. For instance, each of the following 'text' commands will place a piece
 of text at the given location.
 
-    label.rt "A" (1,1)
-    label.lft "B" (2,2)
-    label.top "C" (3,4)
+    text.rt "A" (1,1)
+    text.lft "B" (2,2)
+    text.top "C" (3,4)
 
 The text must appear before any path points, and must enclosed within a set of
 quotation marks. 
@@ -776,23 +776,23 @@ be shown in the first path point encountered. However, if additional
 path points are specified, then the same text is to be repeated 
 across the other path points.
 
-    label "A" (1,1) (2,2) (3,4)
+    text "A" (1,1) (2,2) (3,4)
 
-The option of this command specifies how the label is aligned relative
+The option of this command specifies how the text is aligned relative
 to the path point. For instance, if the option is 'top' then the 
 text will be aligned in such a way that it appear on top of the 
 path point and centered horizontally. Without the option,
 it defaults to 'urt'.
 
-    label.top   -  top
-    label.bot   -  bottom
-    label.lft   -  left
-    label.rt    -  right
-    label.ulft  -  upper left
-    label.llft  -  lower left
-    label.urt   -  upper right
-    label.lrt   -  lower right
-    label.ctr   -  centering the text
+    text.top   -  top
+    text.bot   -  bottom
+    text.lft   -  left
+    text.rt    -  right
+    text.ulft  -  upper left
+    text.llft  -  lower left
+    text.urt   -  upper right
+    text.lrt   -  lower right
+    text.ctr   -  centering the text
 
 It is also possible to express the fact that each path point is to show a
 different piece of text, by placing double backslashes inside the text, such
@@ -802,32 +802,30 @@ and in the same order. For instance, the following command would have placed
 letter "A" with the first point, letter "B" with the second point, and letter "C"
 with the third point.
 
-    label "A \\ B \\ C" (1,1) (2,2) (3,4)
+    text "A" "B" "C" (1,1) (2,2) (3,4)
 
 It is also possible to express that a math expression instead of plain text.
-by including the "math:1" configuration option.
+by setting is such that each text starts with "{{" and ends with "}}".
+In the following example the first and the last text labels are 
+treated as math text while the middle one is treated as plain text.
 
-    label {math:1} "A_0 \\ A_1 \\ A_2" (1,1) (2,2) (3,4)
+    text {math:1} "{{A_0}}" "Hello" "{{A_2}}" (1,1) (2,2) (3,4)
 
-# The 'text' command
+The text command also allows for each entry to be laid out such that it is
+multi-line paragraph. Note that this only works for plain text, and not
+for math.
 
-The text command is very similar to the label command except that it will look
-for double backslashes in the text and treat those as expressing line breaks of
-a larger single multi-line paragraph. 
-
-    text.ulft {fontsize:7,dx:-0.5} "degree\\ 3" (-3,2)
-    text.urt  {fontsize:7,dx:+0.5} "degree\\ 2" (3,2)
-    text.llft {fontsize:7,dx:-0.5} "degree\\ 2" (-3,-2)
-    text.lrt  {fontsize:7,dx:+0.5} "degree\\ 3" (3,-2)
-
-Unlike the 'label' command, it always treats the text as normal text, and not
-the math expression. If two or more coordinates are present, the multi-line 
-text paragraph will be repeated in each of these locations. 
+    text.ulft {fontsize:7} "degree\\3" (-3,2)
+    text.urt  {fontsize:7} "degree\\2" (3,2)
+    text.llft {fontsize:7} "degree\\2" (-3,-2)
+    text.lrt  {fontsize:7} "degree\\3" (3,-2)
 
 In addition, the 'text' command has the capability to style the font using
-the "fontfamily" and "fontstyle" style options. 
+the "fontfamily" and "fontstyle" style options. Note that this might not 
+always work for something. For instance, for LATEX and CONTEX it is not
+possible for specifying both a monospace and an italic.
 
-    text.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7,dx:-0.5} "degree\\ 3" (-3,2)
+    text.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7} "degree\\3" (-3,2)
 
 Each 'text' command can also include alignments which are shown below.
 
