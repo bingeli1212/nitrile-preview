@@ -572,6 +572,12 @@ Each of the following syntax denotes a relative point.
   the sweep should happen in a counter-clockwise direction, and a negative
   value expresses a clockwise sweep.
 
++ [protrude:2] 
+
+  This is to a line protruding from the current extending a distance of
+  "2", in the same direction that goes from the one before the current point
+  to the current point.
+
 + [dot:0.2]
 
   This is to place a circle centered at the last position with a given
