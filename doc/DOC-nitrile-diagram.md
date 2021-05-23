@@ -637,7 +637,7 @@ During a path construction, each path point can be given an additional
 "directives". For example, the directives "x:2" and "y:3" are designed to set
 the offset such that the horizontal distance is 2 and vertical distance 3.
 
-    path a = x:2 y:3 (0,0) [h:2] [v:2]
+    path a = ^x:2 ^y:3 (0,0) [h:2] [v:2]
 
 The resulting path of the previous command would have produced a path that is
 (2,3) ~ (4,3) ~ (4,5).  
@@ -648,10 +648,10 @@ offset.
 
 Following are additional directives.  
 
-+ left:2
-+ right:2
-+ up:2
-+ down:2
++ ^left:2
++ ^right:2
++ ^up:2
++ ^down:2
 
   The 'left', 'right', 'up', and 'down' directives is each to shift the offset
   in the direction as instructed for a given number of grid distances.  The
@@ -663,32 +663,53 @@ Following are additional directives.
   For instance: 'right:-2', or 'top:-2', 'right:-2.3', or 'top:-2.3', in which
   case the offset will be shifted in the opposite direction.
 
-+ at:&a
++ ^at:&a
++ ^at:center
++ ^at:north
++ ^at:south
++ ^at:east
++ ^at:west
++ ^at:northwest
++ ^at:northeast
++ ^at:southwest
++ ^at:southeast
 
   This directive is to set the current offset so that it coincides with the
   first point of a path named "a". The value after the colon is expected to be
   a string that holds the name of an existing path, such as '&a', or a
   path-index designation, such as `&a_0`, `&a_1`, `&a_2`, etc.
 
-+ x:2
-+ y:2
-+ X:2
-+ Y:2
++ ^x:2
++ ^y:2
++ ^X:2
++ ^Y:2
 
-  The "x:" directive will set the offset to an absolute coordinate in the horizontal
+  The "^x:" directive will set the offset to an absolute coordinate in the horizontal
   direction where 0 is the left hand side of the viewport.
 
-  The "y:" directive will set the offset to an absolute coordinate in the vertical
+  The "^y:" directive will set the offset to an absolute coordinate in the vertical
   direction where 0 is the bottom of the viewport.
 
-  The "X:" directive sets the offset to an absolute coordiate in the horizontal 
+  The "^X:" directive sets the offset to an absolute coordiate in the horizontal 
   direction where 0 is the right hand side of the viewport and 1 is one unit grid
   immediately to the right hand side of the viewport.
 
-  The "Y:" directive sets the offset to an absolute coordinate in the vertical 
+  The "^Y:" directive sets the offset to an absolute coordinate in the vertical 
   direction where 0 is the top side of the viewport and 1 is one unit grid
   immediately below the top side of the viewport.
 
++ ^veer:-20
++ ^veer:+20
+
+  Set the 'lastabr' value to a float. This value, when set to something other than
+  zero, will cause a line drawing operation to draw a qbezier curve instead, with
+  the control point located at the intersection of two lines each of which stems out
+  from the two end points veering to an angle that equals to the absolute value
+  of the number given. The sign of this number determines the direction of the angle.
+  In particular, a negative value would cause the control point located to the left-hand
+  side of the line from the source to the target. A positive value would have cause it
+  to appear on the right-hand side of the line going from the source to destination.
+  Default it is set to 0.
 
 
 # Saving the 'lastpt'
