@@ -383,7 +383,7 @@ the line.  Following is an example of drawing an upper pointing arrow such that
 the body of the arrow is drawn with a line that is 2pt thicker than its arrow
 head.
 
-    draw hints:2 (0,0) ~ (0,2)  (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
+    draw ^hints:2 (0,0) ~ (0,2)  (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
 
 The path above consists of three path segments: the first of which draws
 the arrow body, where the last two each drawing one part of the arrow head.
@@ -605,6 +605,21 @@ Each of the following syntax denotes a relative point.
   Note that multiple consecutive "m" operations will not result in
   multiple "moved points", but rather a single moved point that
   is the last operation.
+
+
+# Expressing points that are anchor points of node or box
+
+It is possible to refer to the anchor point of a node or a box.
+The node or box must be referenced by its id, and an anchor point
+that is relevant to that particular article.
+Following example draws a line between two points where the first 
+point is located 2 grid distance to the left and 3 grid distance north 
+of the node with id "a" and the anchor of that node is the north of the node,
+and the second point being the "north" anchor itself.
+
+    draw <node.a:n,-2,3> ~ <node.a:n>
+
+
 
 
 
@@ -3204,18 +3219,33 @@ between to instances of comment lines.
 When a comment line is detected inside a Diagram, the text after the percent-sign
 is scanned, and see if it fits one of the following two patterns:
 
-1. If the text fits the pattern of "(=word)" where "word" is a
+1. If the text befits the pattern of "(=word)" where "word" is a
    placeholder for a string of one or more word characters, then lines
    between this comment and the first occurence of the next comment
    will be saved to a buffer, and the name of the buffer will be the
    actual string denoted by "word".
 
-2. If the text fits the pattern of "(?word)" where "word" is a
+2. If the text befits the pattern of "(?word)" where "word" is a
    placeholder reresenting any length of string having one or more
    word characters, then it represents a desire to retrieve the
    contents of a previous saved buffer for which its contents are to
    be inserted into the current location of the source program. The
    name of the named buffer is the string expressed by the "word".
+
+Note that for a copy-buffer, it the limit of the buffer line only extends
+as far as the a comment line where the number of percent-signs agrees
+with the one that starts the buffer. For instance, if the line starts
+the copy-buffer is
+
+    %%%(=a)
+
+Then the copy buffer will include all lines up till the line that is
+
+   %%%
+
+not including this line. The paste buffer line does not have this 
+limitation. As soon as the paste buffer line is detected, all the previous
+copied contents will be inserted at that location.
 
 Following is an example of repeating the same block of commands inside
 another Diagram. The first Diagram has defined three buffers,
@@ -3231,11 +3261,13 @@ retrieved.
     trump-heart-Q   {scaleX:0.5,scaleY:0.5} 7  1
     trump-spade-K   {scaleX:0.5,scaleY:0.5} 12 1
     trump-club-A    {scaleX:0.5,scaleY:0.5} 17 1
+    %%%
     %%%(=b)
     trump-diamond-10 {scaleX:0.5,scaleY:0.5} 2  5
     trump-heart-9    {scaleX:0.5,scaleY:0.5} 7  5
     trump-spade-8    {scaleX:0.5,scaleY:0.5} 12 5
     trump-club-7     {scaleX:0.5,scaleY:0.5} 17 5
+    %%%
     %%%(=c)
     trump-diamond-6  {scaleX:0.5,scaleY:0.5} 2  9
     trump-heart-5    {scaleX:0.5,scaleY:0.5} 6  9
