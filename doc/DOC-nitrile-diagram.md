@@ -2348,51 +2348,6 @@ as line breaks.
 
 
 
-# The 'record' and 'playback' commands   
-
-The 'record' operation allows for a group of action commands to be saved    
-and later played back.
-
-    %%% recording spider
-    record spider | draw {fillcolor:white} &ellipse{(0,1.4),0.65,1.0}
-    record spider | draw {fillcolor:white} &ellipse{(0,0.3),0.4,0.3}
-    record spider | fill {fillcolor:black} &circle{(-0.2,0.25),0.1}
-    record spider | fill {fillcolor:black} &circle{(+0.2,0.25),0.1}
-    record spider | draw (+0.3,0.45) [clock:+35,1] [clock:+35,0.4] [dot:0.1]
-    record spider | draw (+0.3,0.45) [clock:+55,1] [clock:+35,0.4] [dot:0.1]
-    record spider | draw (+0.3,0.45) [clock:+75,1] [clock:+35,0.4] [dot:0.1]
-    record spider | draw (+0.3,0.45) [clock:+95,1] [clock:+35,0.4] [dot:0.1]
-    record spider | draw (-0.3,0.45) [clock:-35,1] [clock:-35,0.4] [dot:0.1]
-    record spider | draw (-0.3,0.45) [clock:-55,1] [clock:-35,0.4] [dot:0.1]
-    record spider | draw (-0.3,0.45) [clock:-75,1] [clock:-35,0.4] [dot:0.1]
-    record spider | draw (-0.3,0.45) [clock:-95,1] [clock:-35,0.4] [dot:0.1]
-
-And then play it back at a later time
-
-    playback spider
-    
-Note that only actions commands can be recorded.  The "record" and "playback"
-operations are themselves not part of the "action" commands, thus, they can't
-recorded or played back.
-
-When being play back, all the commands previous recorded as executed
-as is, including the original path name and locations.  Thus, 
-it might be a good idea to ensure that the path names are not changed between
-recording and playback.
-
-Note that the playback is going to respect the current settings of "refxy". Thus
-it is possible to playback the same group commands each time under a different
-"refxy" settings, simulating "pasting" multiple objects in different locations.
-
-There are a couple of things about recording/playing back.
-
-1. The any environment variable presented in the command line might have
-   already been replaced when it is recorded, if they are present in the
-   environment when it is recorded
-
-2. It will still respect all current 'config' settings and 'refxy' settings.
-
-
 
 # Gradient Fill
 
@@ -2756,22 +2711,18 @@ Following are Non-action commands:
     format
     let
     for
-    array
-    var
-    fn
-    path
     viewport
     config
-    source
     exit
-    record
-    playback
+    path
+    fn
+    var
+    array
     group
     id
     origin
     show
-    subtitle
-
+    
 Non-action commands cannot be recorded and played back. However,
 they can be saved and later inserted into the program by the
 "source" command.
