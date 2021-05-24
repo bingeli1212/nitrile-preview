@@ -361,14 +361,15 @@ MetaPost, as otherwise the compilation will complain.
 
 Following are currently defined hint flags.
 
-    linedashed = 1;
-    linesize2  = 2;
-    linesize4  = 4;
-    nostroke   = 8;
-    nofill     = 16
-    lighter    = 32;
-    darker     = 64;
-    hallow     = 128; //no fill if no fillcolor isn't set
+    linedashed     make the line a dashed line
+    linesize2      change the line size to 2pt
+    linesize4      change the line size to 4pt
+    nostroke       no stroke 
+    nofill         no fill even for a closed path
+    lighter        the fill color should be lighter version of the current fill color
+    darker         the fill color should be a darker version of the current fill color
+    shadow         this path segment is drawn as a drop shadow (and thus 
+                   deserves some special treatment if possible)
 
 A hint value is an integer that is the bitwise OR'ed value of all the flags
 that was shown above.  The hints are extra values hinted by the user to request
@@ -383,20 +384,11 @@ the line.  Following is an example of drawing an upper pointing arrow such that
 the body of the arrow is drawn with a line that is 2pt thicker than its arrow
 head.
 
-    draw ^hints:2 (0,0) ~ (0,2)  (0,2) [l:-0.5,-0.5] (0,2) [l:0.5,-0.5]
+    draw ^hint:linesize2 (0,0)~(0,2) () (0,2)[l:-0.5,-0.5] () (0,2)[l:0.5,-0.5]
 
-The path above consists of three path segments: the first of which draws
-the arrow body, where the last two each drawing one part of the arrow head.
-
-To express a hint use the "hints:" directive as follows before the first
-point of a line segment. The hints specified will be attached to the
-next point encountered in the path construction line.
-Once assigned to path point, the hints will be cleared internally and subsequent
-path points will not be affected.
-
-In the previous example there are path segments, and the hints:2 is attached
-to the first point of the first segment. The last two segments
-are not affected by the hints and will remain unhinted.
+The path above consists of three path segments: only the first line segment will 
+be affected by the hint.  The next two segments will not be affected. As
+soon as a path segment is terminated by (cycle) or (), the hint is reset.
 
 
 
