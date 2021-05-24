@@ -112,20 +112,29 @@ not recommended and may result in distorted picture.
 The 'origin' command sets the following parameters for the current
 drawing environment.
 
-+ origin up:2
-+ origin down:2
-+ origin left:2
-+ origin right:2
-+ origin x:2
-+ origin y:2
-+ origin X:2
-+ origin Y:2
-+ origin sx:2.5
-+ origin sy:2.5
-+ origin s:2.5
-+ origin at:&a
-+ origin mark:a
-+ origin reset
+- origin ^up:2
+- origin ^down:2
+- origin ^left:2
+- origin ^right:2
+- origin ^x:2
+- origin ^y:2
+- origin ^X:2
+- origin ^Y:2
+- origin ^sx:2.5
+- origin ^sy:2.5
+- origin ^s:2.5
+- origin ^at:a
+- origin ^mark:a
+- origin ^reset
+- origin ^center
+- origin ^north
+- origin ^south
+- origin ^northwest
+- origin ^southwest
+- origin ^northeast
+- origin ^southeast
+- origin ^east
+- origin ^west
 
   If it starts with "left:<x>", "right:<x>", "up:<y>", 
   "down:<y>", where the distance expresses the number of grid units
@@ -154,19 +163,19 @@ drawing environment.
   If it is "s:2.5" then it sets the scaling factor in the horizontal and
   vertical direction to be 2.5. 
   
-  If it is "at:&a" then the offset will be set to a point coincides with the first
+  If it is "at:a" then the offset will be set to a point coincides with the first
   point of that path.
 
-  If it is "at:&a_0" then the offset will be set to a point coincides with the first
+  If it is "at:a_0" then the offset will be set to a point coincides with the first
   point of that path.
 
-  If it is "at:&a_1" then the offset will be set to a point coincides with the second
+  If it is "at:a_1" then the offset will be set to a point coincides with the second
   point of that path.
 
-  If it is "at:&a_2" then the offset will be set to a point coincides with the third
+  If it is "at:a_2" then the offset will be set to a point coincides with the third
   point of that path.
 
-  If it is "at:&a_3" then the offset will be set to a point coincides with the forth
+  If it is "at:a_3" then the offset will be set to a point coincides with the forth
   point of that path.
 
   If it is "mark:a" then it creates a new path variable named 'a' such that it
@@ -176,6 +185,9 @@ drawing environment.
   If it starts with "reset" then the current origin will be set to (0,0) and the 
   scaling factors will be reset to 1 in both horizontal and vertical directions.
 
+  If it starts with 'center', 'north', 'south', 'northwest', 'northeast', 'southwest', 
+  'southeast', 'east' and 'west', then it sets the origin to the center,  the four  
+  corners of the viewport, or the middle of the four sides of it.
 
 
 # The 'id' command
@@ -577,7 +589,6 @@ Each of the following syntax denotes a relative point.
   operation and the current point is not changed.
 
 + [m:2,-2]
-+ [m:last]
 + [m:&a]
 
   This operation is to terminate any existing line segment
@@ -585,18 +596,30 @@ Each of the following syntax denotes a relative point.
   will be assigned this point.
   
   For [m:2,-2], the two numbers express a relative position
-  from the current 'lastpt', after which the 'lastpt' is updated
-  to the new location.
+  from the current 'lastpt', after which the current point updated
+  to this new location.
 
-  For [m:last], the saved 'lastpt' from a previous path construction
-  is used.
-
-  For [m:&a], the first point of an existing path named 'a' will become the
-  current moved point.
+  For [m:&a], it will move to the first point of an existing path 
+  named 'a' and this point also becomes the current point.
 
   Note that multiple consecutive "m" operations will not result in
   multiple "moved points", but rather a single moved point that
   is the last operation.
+
+  This operation has the advantage that allows for the first point of
+  a path segment to be moved relative to its current location.
+  This allows for the case where the current point is given from
+  a path such as the following such that the new moved point will 
+  be a relative position relative to that whatever that path variable
+  points to. In the following example a line will be drawn from the 
+  location of the current path 'O' such that the starting position will
+  be 1 grid distance below and to the left of it, followed by a line
+  drawn from that point to a new location that is 2 grid distance
+  above and to the right.
+
+  ```
+  draw &O[m:-1,-1][l:2,2]
+  ```
 
 
 # Expressing points that are anchor points of node or box
@@ -670,7 +693,13 @@ Following are additional directives.
   For instance: 'right:-2', or 'top:-2', 'right:-2.3', or 'top:-2.3', in which
   case the offset will be shifted in the opposite direction.
 
-+ ^at:&a
++ ^at:a
+
+  This directive is to set the current offset so that it coincides with the
+  first point of a path named "a". The value after the colon is expected to be
+  a string that holds the name of an existing path, such as 'a', or a
+  path-index designation, such as `a_0`, `a_1`, `a_2`, etc.
+
 + ^at:center
 + ^at:north
 + ^at:south
@@ -681,10 +710,8 @@ Following are additional directives.
 + ^at:southwest
 + ^at:southeast
 
-  This directive is to set the current offset so that it coincides with the
-  first point of a path named "a". The value after the colon is expected to be
-  a string that holds the name of an existing path, such as '&a', or a
-  path-index designation, such as `&a_0`, `&a_1`, `&a_2`, etc.
+  This directive would move the offset to the center of the viewport, 
+  the four corners of it, or the mniddle of the four side of the viewport.
 
 + ^x:2
 + ^y:2
@@ -709,14 +736,26 @@ Following are additional directives.
 + ^veer:+20
 
   Set the 'lastabr' value to a float. This value, when set to something other than
-  zero, will cause a line drawing operation to draw a qbezier curve instead, with
-  the control point located at the intersection of two lines each of which stems out
-  from the two end points veering to an angle that equals to the absolute value
-  of the number given. The sign of this number determines the direction of the angle.
-  In particular, a negative value would cause the control point located to the left-hand
-  side of the line from the source to the target. A positive value would have cause it
-  to appear on the right-hand side of the line going from the source to destination.
-  Default it is set to 0.
+  zero, will cause a line drawing operation to veer to the left or right before
+  connecting with the destination point. The drawn line is typically
+  a quadratic Bezier curve, with the
+  the control point set at the intersection of two lines each of which stems out
+  of the one of the end points veering at an angle that equals to the absolute value
+  of the number given after the colon. 
+  
+  The sign of this number determines the direction of the veering.
+  In particular, a negative value would cause the veering to happen to the left-hand
+  side of the line going from the source to the target. A positive value would have cause it
+  to veer on the right-hand side of the line going from the source to destination.
+
+  The 'lastabr' value is initially set to 0, signaling that a straight line going
+  from source to target is to be drawn. To reset the 'lastabr' to 0, use '0' for
+  the 'veer' directive. Following example would draw a curved lines from (0,0)
+  to (10,0), and a straight line from (10,0) to (20,0)
+
+  ```
+  draw ^veer:-20 (0,0) ~ (10,0) ^veer:0 ~ (20,0)
+  ```
 
 
 # Saving the 'lastpt'
