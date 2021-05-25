@@ -3510,3 +3510,19 @@ and its lower-left hand corner is at (10mm,10mm).
 
 
 
+# The \hrule With a Fillin Text
+
+You can use \startsubstack … \stopsubstack. The mathalign manual for a more detailed description and examples of this command.
+
+    \starttext
+    \startformula
+      \sum_{\startsubstack
+          i \in S \NR
+          i \in T \NR
+          \stopsubstack
+        }i
+    \stopformula
+    \stoptext
+
+
+    

@@ -1539,5 +1539,31 @@ these two blocks involve using 'luamplib' package which is only
 available on LuaLatex.
 
 
+# The \hrule Fillin Text
+
+The The \substack command from AMSMATH can be used for this purpose.
+Following is an example of using this command.
+
+    \documentclass[twocolumn]{article}
+    \usepackage{lipsum}
+    \usepackage{amsmath}
+
+    \begin{document}
+    \lipsum*[2]
+    The \emph{total expected loss of diversity} is
+    \[
+    \sum_{\substack{\textup{all}\\\textup{languages}}}
+      \left(\begin{smallmatrix}
+      \textup{Language}\\
+      \text{Distinctiveness}
+      \end{smallmatrix}\right)
+      \cdot
+      \Pr\left(\begin{smallmatrix}
+        \textup{Language}\\
+        \textup{dies}
+        \end{smallmatrix}\right)
+    \]
+    \lipsum[3]
+    \end{document}
 
 

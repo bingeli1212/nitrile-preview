@@ -3270,7 +3270,59 @@ retrieved.
     %%%(?c)
     ```
 
+
+# Fillin Data
+
+It is possible to also add text above the hrule done by the 
+\hrule command. This feature is possible to allow for creating
+a figure with only the hrule, followed by another diagram with
+the same hrule but with added text on top of it.
+
+It is done by supplying each \hrule with an option that serves
+as the ID for this hrule, such as 
+
+    \hrule[A]{5}
+
+Which will draw a line of 5em long by default. However, if an option
+named "A" is set, either by the style option or by 'config' command,
+then the text of it should be treated as a math text that would
+be parsed and the result of which stacked on top this hrule. Following
+is an example where the first diagram draws four hrules each of which
+were given an ID of A, B, C, and D. The second diagram would have loaded
+the same source, but in its style supplying the option of A, B, C and D
+each of which is a string of math text. Thus, when the second diagram
+is drawn it would have seen the math text associated with the ID of 
+each of the four hrule, and will then pull the math text from the style
+and the use it to place it on the top of the hrule.
     
+    ```diagram{width:100%,save:ex3}
+    viewport 22 12
+    origin ^northwest
+    draw (0,0) ~ [v:-14]
+    draw (3,0) ~ [v:-14]
+    draw (6,0) ~ [v:-14]
+    for y:=[0:2:12]:
+      draw (0,-${y}) [h:22]
+    %%% table
+    origin ^down:1
+    origin ^x:1.5
+    text.ctr "x"  "y"  ^down:0  (0,0) [h:3] 
+    text.ctr "1"  "2"  ^down:2  (0,0) [h:3] 
+    text.ctr "2"  "3"  ^down:4  (0,0) [h:3]
+    text.ctr "3"  "4"  ^down:6  (0,0) [h:3]
+    text.ctr "4"  "5"  ^down:8  (0,0) [h:3]
+    text.ctr "10" "11" ^down:10 (0,0) [h:3]
+    origin ^x:3.5
+    text.rt "{{f(x,y)=x^2+y+1}}"       ^down:0  (3,0)
+    text.rt "{{f(1,2)=4}}"             ^down:2  (3,0)
+    text.rt "{{f(2,3)=\hrule[A]{5}}}"     ^down:4  (3,0) 
+    text.rt "{{f(3,4)=\hrule[B]{5}}}"     ^down:6  (3,0) 
+    text.rt "{{f(4,5)=\hrule[C]{5}}}"     ^down:8  (3,0) 
+    text.rt "{{f(10,11)=\hrule[D]{5}}}"   ^down:10 (3,0) 
+    ```
+
+    ```diagram{width:100%,A:8,B:14,C:22,D:112,load:ex3}
+    ```
 
 
 
