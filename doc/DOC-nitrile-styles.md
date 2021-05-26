@@ -482,6 +482,9 @@ Following are styles recognized by NITRILE:
   - UOBJ
   - LOBJ
   - ROBJ
+
+  There is also a type named "NONE" that would not draw the box at all. This feature 
+  is useful if only the text of the box is desired.
   
 + bartype:<string>
 

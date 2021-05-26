@@ -2311,7 +2311,7 @@ regardless the choice of the boxtype, the geometry of the
 shape will always be confined to the width and height given
 by "w" and "h".
 
-    box {boxtype:RRECT} "Hello\\World" (0,0)
+    box {boxtype:RECT} "Hello\\World" (0,0)
 
 A box can come with an ID string, which must consists of all
 word characters. If it is provided, then the ID string is
@@ -2324,7 +2324,7 @@ redrawn with a different text because the location and
 the type of the box has already been saved with the given
 id "1".
 
-    box.1 {boxtype:RRECT} "Hello\\World" (0,0)
+    box.1 {boxtype:RECT} "Hello\\World" (0,0)
     box.1 "Goodbye" 
 
 The previous example would have had two text being drawn on 
@@ -2332,7 +2332,7 @@ top of each other. This might not be a desirable effect, but
 if a "fillcolor" is provided then previous text would have
 been erased first.
 
-    box.1 {boxtype:RRECT} "Hello\\World" (0,0)
+    box.1 {boxtype:RECT} "Hello\\World" (0,0)
     box.1 {fillcolor:brown} "Goodbye" 
 
 If the id of the box is underscore, it will be assigned an Id in the same
