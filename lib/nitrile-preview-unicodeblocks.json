@@ -1,5 +1,4 @@
-{
-  "blocks": [
+[
     { "start":"0x0000", "stop":"0x007F", "cjk":0, "comment": "Basic Latin" },
     { "start":"0x0080", "stop":"0x00FF", "cjk":0, "comment": "Latin-1 Supplement" },
     { "start":"0x0100", "stop":"0x017F", "cjk":0, "comment": "Latin Extended-A" },
@@ -163,5 +162,5 @@
     { "start":"0xFE70", "stop":"0xFEFF", "cjk":0, "comment": "Arabic Presentation Forms-B" },
     { "start":"0xFF00", "stop":"0xFFEF", "cjk":1, "comment": "Halfwidth and Fullwidth Forms" },
     { "start":"0xFFF0", "stop":"0xFFFF", "cjk":0, "comment": "Specials" }
-  ]
-}
+]
+
