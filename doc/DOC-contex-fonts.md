@@ -1691,6 +1691,108 @@ discussed in section 11.5 (“Underline”).
 
 
 
+# Mnemonic font switches
+
+While learning a document markup language like ConTeXt, it can be hard to
+remember all the commands. ConTeXt provides other, easy-to-remember font
+switches. So for bold you can use \bold, for italic you can use \italic, for
+slanted you can use \slanted, and so on. You can probably guess what the
+following do:
+
+    \normal	           \slanted
+    \boldslanted	     \slantedbold
+    \bolditalic	       \italicbold
+    \small	           \smallnormal
+    \smallbold	       \smallslanted
+    \smallboldslanted	 \smallslantedbold
+    \smallbolditalic	 \smallitalicbold
+    \sans	             \sansserif
+    \sansbold	         \smallcaps
+
+In addition, the commands \smallbodyfont and \bigbodyfont can be used to change
+the font size. The relative size depends on the value of big and small in
+\definebodyfontenvironment.
+
+These mnemonic font switches are pretty smart. You can either use them as font
+style switches inside a { group }, or as a font changing command that takes an
+argument. For example,
+
+    This is {\bold bold} and so is \bold{this}. But this is not.
+
+These mnemonic font switches can also be used for all "style=" options, and
+while using them as style options, you can just give the command name without
+the backslash. For example:
+
+    \setuphead[section][style=bold]
+
+(\boldface shown above is also defined to parallel the \typeface and \swapface switches.)
+
+
+
+# Capitalizing Words
+
+Note that \WORD, \Word and all following macros aren't switches, but commands
+(brackets behind, not around): 
+
+    {\em switch}, vs \Word{macro}.
+
+Following are additional commands:
+
+- \setcharactercasing Pass casing command (Word, WORD, etc) as a keyword
+- \WORDS convert text into uppercase
+- \Words turn first character of each word into uppercase
+- \Caps turn first character of each word into small caps
+- \Cap turn first character into small caps
+- \cap turn text into small caps
+- \sc start using small caps (preserve capitals)
+
+
+
+# Underline, strike through, and overline
+
+Underlined, struck, and overlined text can be achieved with \overbar ,
+\overbars, \overstrike, \overstrikes, \underbar, and \underbars.  The canonical
+way is \overstrike{text}. However, it you're using mycrotypography with
+\setupalign[hz,hanging] expect the rule to be placed over the character (with
+the Latin Modern fonts you should not have this problem, experienced with Linux
+Libertine and mkiv). This is not what is expected. The workaround is to put the
+overstriked text in a \inframed and then turn on the "frame=off" option.
+
+    bla bla bla \inframed[frame=off]{\overstrike{striked}} bla bla
+
+
+
+# Complete font (bodyfont) change
+
+If you need to change to a different font size and take care of interline
+spacing, you can change the bodyfont by using \switchtobodyfont. For example,
+to switch to 12pt you can use \switchtobodyfont[12pt].
+
+ConTeXt provides two relative sizes, called big and small. So, to increase the
+bodyfont size, use \switchtobodyfont[big] (or \setbigbodyfont), and to decrease
+the bodyfont size, use \switchtobodyfont[small] (or \setsmallbodyfont). The
+exact size used for big and small can be set using \definebodyfontenvironment.
+
+The \setupbodyfont command accepts all the same arguments as \switchtobodyfont.
+The difference between the two is that \setupbodyfont also changes the font for
+headers, footers and other page markings, while \switchtobodyfont does not. So
+you should use \setupbodyfont for global font definitions to apply to the whole
+document, and \switchtobodyfont for local font changes (i.e. changes to the
+running text only). The effect of \switchtobodyfont can be localized within a
+group as usual.
+
+So far we have discussed style and size changes within a given typeface family.
+If you want to use a different typeface altogether, such as Times or Palatino,
+use \switchtobodyfont[times] or \switchtobodyfont[palatino]. Here "times" and
+"palatino" each refers to the name of the typescript definitions for the font.
+ConTeXt distribution comes with some pre-defined typescripts; if you want to
+switch to another font, you need to define your own typescript. For details,
+see the page on fonts.
+
+
+
+
+
 # Characters
 
 A number of commands use the parameter style to set up the font style and size.
