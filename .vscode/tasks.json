@@ -23,9 +23,9 @@
       }
     },
     {
-      "label": "nibeamer",
+      "label": "nitranslator",
       "type": "shell",
-      "command": "nibeamer",
+      "command": "nitranslator",
       "args": [
         "${file}"
       ],
