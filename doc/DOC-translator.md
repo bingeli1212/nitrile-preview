@@ -67,6 +67,7 @@ of the PDF file into this directory as well, in addition to the original
 PDF file that was created in the same directory as the original MD file.
 
 
+
 # The "rename" Frontmatter Config
 
 The "rename" config entry is designed to hold a Boolean value such that,
@@ -76,6 +77,59 @@ work in conjunction with the "dest" entry. It does not have any effect
 if the "dest" entry is not set. The file will be renamed so that it matches
 the title of the document.
 
+
+
+# The Camper.JS Translator
+
+The Camper.JS translator serves to generated a CONTEX document of paper A4.
+The papersize is actually configuration to others by the use of the "papersize" 
+config entry. However, this translator serves to generate a document that resembles
+the "report" document class under LATEX. Following are frontmatter config entries
+implemented.
+
+- ``camper.papersize`` 
+ 
+  This entry serves to hold the paper size. Valid entries are "A4", "A5",
+  "Letter", "Legal", etc.
+
+- ``camper.bodyfont``
+
+  This entry serves to hold the name of the font family and size that would apply to
+  the entire document. So far, the only font family supported is "linux", which 
+  is configured to point to the Linux Libertine font family, which includes fonts
+  of LibertineSerif, LibertineSans, LibertineMono, and LibertineMath.
+
+  This entry should hold a string, with the name of the font family and font size
+  specification each separated by a comma. For instance, the string "linux,11pt"
+  is the default, which serves to express that the body font is Linux Libertine, and 
+  the font size is 11pt. To change to a 10pt body font, use "10pt". 
+
+
+
+# The Creamer.JS Translator
+
+The Creamer.JS translator serves to generated a CONTEX document that resembles
+a PowerPoint presentation under windows or Keynote presentation under MacOSX. 
+
+The slide is currently configured to be always at the size of 128mm by 96mm and
+is not configurable.  However, unlike the Beamer.JS class, if the content
+cannot fit in the current slide, it will automatically be moved to a new slide
+that is created automatically. This behavior is different that those observed
+under Beamer.JS, in which case all contents created for a specific slide will
+not see them being split into two or more slides. Following is the config entry
+that can be used for this translator.
+
+- ``creamer.bodyfont``
+
+  This entry serves to hold the name of the font family and size that would apply to
+  the entire document. So far, the only font family supported is "linux", which 
+  is configured to point to the Linux Libertine font family, which includes fonts
+  of LibertineSerif, LibertineSans, LibertineMono, and LibertineMath.
+
+  This entry should hold a string, with the name of the font family and font size
+  specification each separated by a comma. For instance, the string "linux,11pt"
+  is the default, which serves to express that the body font is Linux Libertine, and 
+  the font size is 11pt. To change to a 10pt body font, use "10pt". 
 
 
 
