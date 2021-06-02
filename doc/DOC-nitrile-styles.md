@@ -20,7 +20,7 @@ Following are styles recognized by NITRILE:
   The fr-option is designed to express relative column widthes, which is
   a list of integers separated by spaces.
 
-+ outline:1
++ frame:1
 
   Set this option to 1 to allow an outline to be show for the bundle. This
   would work for some bundles but might not work for all.
