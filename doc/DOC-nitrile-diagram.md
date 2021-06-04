@@ -586,37 +586,16 @@ Each of the following syntax denotes a relative point.
   operation and the current point is not changed.
 
 + [m:2,-2]
-+ [m:&a]
 
-  This operation is to terminate any existing line segment
-  and start a new one. The first point of the new line segment
-  will be assigned this point.
+  This operation is to create a new 'M' point that denotes the start of a
+  new path segment.
   
   For [m:2,-2], the two numbers express a relative position
-  from the current 'lastpt', after which the current point updated
+  from the current 'lastpt', after which the current point is updated
   to this new location.
 
-  For [m:&a], it will move to the first point of an existing path 
-  named 'a' and this point also becomes the current point.
 
-  Note that multiple consecutive "m" operations will not result in
-  multiple "moved points", but rather a single moved point that
-  is the last operation.
 
-  This operation has the advantage that allows for the first point of
-  a path segment to be moved relative to its current location.
-  This allows for the case where the current point is given from
-  a path such as the following such that the new moved point will 
-  be a relative position relative to that whatever that path variable
-  points to. In the following example a line will be drawn from the 
-  location of the current path 'O' such that the starting position will
-  be 1 grid distance below and to the left of it, followed by a line
-  drawn from that point to a new location that is 2 grid distance
-  above and to the right.
-
-  ```
-  draw &O[m:-1,-1][l:2,2]
-  ```
 
 
 # Expressing points that are anchor points of node or box
