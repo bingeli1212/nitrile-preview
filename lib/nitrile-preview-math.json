@@ -285,7 +285,8 @@
     "sinh",
     "sup",
     "tan",
-    "tanh"
+    "tanh",
+    "cosh"
   ],
   "htmlMathOperators" : {
     "limsup"        : "lim sup",
