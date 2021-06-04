@@ -1663,6 +1663,18 @@ and the opening parenthesis.
     a = \math{\mathop{\mfunction{fun}}x}
     a = \math{\mathop{\mfunction{fun}}(x)}
 
+However, it seems that for a translation of 
+
+    \csch^2 x 
+
+Would not have had the superscript 2 placed at the right place if "csch" function
+is defined by the \definemathcommand. This means that if "csch" function is defined
+in such a way, the previous translation would have had the superscript 2 placed on
+top of "csch" text rather than showing up as a superscript on the top-right hand 
+corner.
+
+
+
 # Paragraph Indentations
 
 In plain TeX, controlling indentation is simple: The user sets a value for
@@ -3512,7 +3524,8 @@ and its lower-left hand corner is at (10mm,10mm).
 
 # The \hrule With a Fillin Text
 
-You can use \startsubstack … \stopsubstack. The mathalign manual for a more detailed description and examples of this command.
+You can use \startsubstack … \stopsubstack. The mathalign manual for a more
+detailed description and examples of this command.
 
     \starttext
     \startformula
