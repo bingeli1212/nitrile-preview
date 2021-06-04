@@ -284,6 +284,8 @@
     "sin",
     "sinh",
     "sup",
+    "sech",
+    "csch",
     "tan",
     "tanh",
     "cosh"
