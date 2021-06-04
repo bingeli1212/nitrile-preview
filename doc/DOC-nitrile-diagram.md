@@ -53,7 +53,6 @@ returned by the 'encodeURIComponent()' function.
 
 Following is an example of a diagram block.
 
-    viewport 32 20
     % variables
     path a = (1,1) ~ (5,5) ~ (5,1) ~ (1,1) 
     path b = (1,1) .. (5,5) .. (5,1) .. (1,1) 
@@ -72,9 +71,10 @@ corresponds to the width of a single grid.
 In Diagram a grid is drawn as the background by default. The size of
 the grid is 20 grid units length long in the horizontal direction and
 10 grid unit length long in the vertical directon. You can change that
-by the viewport-operation.
+by setting viewport configuration setting
 
-    viewport 20 10
+    ```diagram{viewport:20 10}
+    ```
 
 Each grid is by default 5mm in length, thus, a total of 20 grid units
 in horizontal direction will generate an image of 200mm in width, and
@@ -83,11 +83,8 @@ of 100mm. To set the unit to a different length, include the third argument
 as the viewport-option. For example, to set the viewport to the previous
 width and height and such that each grid is 6mm-by-6mm, do the following. 
 
-    viewport 20 10 6
-
-However, the viewport-operation is ignored if there is a viewport-style
-that is present, in which case the values in viewport-style is to be
-used instead.
+    ```diagram{viewport:20 10 6}
+    ```
 
 
 
@@ -1650,7 +1647,6 @@ for-loops. The toplevel for-loop offsers two loop variables:
 'c'. Note that the last 'label.bot' command is not part of the nested
 for-loop, but rather part of the toplevel for-loop.
 
-    viewport 31 24
     for a:=[9 19 29] b:=[0.4 0.5 0.6]
       origin x:${a}
       for c:=[16 4]
@@ -2604,27 +2600,6 @@ such as "hwb(30|10%|20%)" or "rgb(255|0|0)".
 
 
 
-# The 'source' command
-
-The source-operation is to load the previous saved sources and then 
-execute them at that location.
-
-    ```{save:src1}
-    draw (0,0)~(10,10)
-    ```
-
-    ```diagram
-    viewport 20 20
-    source src1
-    ```
-
-When fence is detected without a name, no output is generated. However, if
-there are "load" or "save" as part of the style configuration, then the body
-text of the fence is still to be loaded and saved just as it would when the
-name is not empty. This feature allows for a piece of text to be saved to a
-internal buffer with the intention to be retrieved later by others.
-
-
 # The 'lego' command
 
 The lego-operation allows for drawing of placing Lego-like
@@ -2711,7 +2686,6 @@ Following are Non-action commands:
     format
     let
     for
-    viewport
     config
     exit
     path
@@ -2723,11 +2697,6 @@ Following are Non-action commands:
     origin
     show
     
-Non-action commands cannot be recorded and played back. However,
-they can be saved and later inserted into the program by the
-"source" command.
-
-
 
 # The 'var' command
 
@@ -3295,8 +3264,7 @@ is drawn it would have seen the math text associated with the ID of
 each of the four hrule, and will then pull the math text from the style
 and the use it to place it on the top of the hrule.
     
-    ```diagram{width:100%,save:ex3}
-    viewport 22 12
+    ```diagram{width:100%,save:ex3,viewport:22 12}
     origin ^northwest
     draw (0,0) ~ [v:-14]
     draw (3,0) ~ [v:-14]
