@@ -754,6 +754,11 @@ Following are additional directives.
   draw ^veer:-20 (0,0) ~ (10,0) ^veer:0 ~ (20,0)
   ```
 
++ ^lastx:2
++ ^lasty:2
+
+  Set the x or y position of the 'lastpt' position. No output is generated. However,
+  after this, all relative points will be computed based off this new position.
 
 # Saving the 'lastpt'
 
