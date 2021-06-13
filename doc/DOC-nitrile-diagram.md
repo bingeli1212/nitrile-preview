@@ -891,9 +891,9 @@ an absolute point, or a scalar.
   returns a path with a single point: (1.5,2), which is the mid point
   of (1,1) and (2,3).
 
-  ~~~          
+  ```          
   path b = &midpoint{(1,1),(2,3)}
-  ~~~
+  ```
 
   Note that only the first two points of a path is used. The other
   points are ignored. Thus if path a has three points, then the third
@@ -907,9 +907,9 @@ an absolute point, or a scalar.
   it should return the same path as that with a single argument. Thus,
   following example will return the same result as the one before.
 
-  ~~~          
+  ```          
   path b = &midpoint{(1,1),(2,3),0.5}
-  ~~~
+  ```
 
 + scatterpoints 
 
@@ -924,9 +924,9 @@ an absolute point, or a scalar.
   In the following example two middle points will be created
   such that the path contains four points.
 
-  ~~~
+  ```
   path a = &scatterpoints{(1,0),(10,0),2}
-  ~~~
+  ```
 
 + linelineintersect 
 
@@ -938,9 +938,9 @@ an absolute point, or a scalar.
   'a' and 'b' are considered. The rest of the points of 'a' and 'b'
   are ignored.
 
-  ~~~
+  ```
   path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
-  ~~~
+  ```
 
 
 + linecircleintersect 
@@ -950,9 +950,9 @@ an absolute point, or a scalar.
   following diagram the pts variable 'pts' will hold two points: (6,2)
   and (4,2).
 
-  ~~~
+  ```
   path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
-  ~~~
+  ```
 
   Note that the returned point is always arranged such that the first
   point is on the left hand side of the second point.
@@ -961,9 +961,9 @@ an absolute point, or a scalar.
 
   This method returns one or two points where two circles intersect.
 
-  ~~~
+  ```
   path b = &circlecircleintersect{(0,0),10,(5,0),10}
-  ~~~
+  ```
 
 
 + circlecircleintersectclip
@@ -972,14 +972,14 @@ an absolute point, or a scalar.
   the intersection area of the two circle areas. Note that it is
   important that the circle on the left-hand side is specified first.
 
-  ~~~
+  ```
   circle {r:3} (5,6)
   circle {r:3} (9,6)
   draw (5,5) (8,1)
   path c = &circlecircleintersectclip{(5,6),3,(9,6),3,0}
   % fill the intersection of A and B
   fill &c
-  ~~~
+  ```
 
 + circlecirclediffclip
 
@@ -991,7 +991,7 @@ an absolute point, or a scalar.
   it is important that the circle on the left-hand side is specified
   first.
 
-  ~~~
+  ```
   circle {r:3} (5,6)
   circle {r:3} (9,6)
   draw (5,5) (8,1)
@@ -1001,7 +1001,7 @@ an absolute point, or a scalar.
   fill &c
   % fill remains of B
   fill &d
-  ~~~
+  ```
 
 + circlepoints 
 
@@ -1012,17 +1012,17 @@ an absolute point, or a scalar.
   The returned value is the coords of individual points at these
   angles.
 
-  ~~~
+  ```
   path b = &circlepoints{(0,0),2,30,60,90}
-  ~~~
+  ```
 
 + pie
 
   Returns a closed path expressing a pie. 
 
-  ~~~
+  ```
   path b = &pie(center,radius,angle,span)
-  ~~~
+  ```
 
 + circle 
 
@@ -1030,9 +1030,9 @@ an absolute point, or a scalar.
   &circle(center,radius), where 'center' is a path with at least one
   point, and 'radius' a scalar.
 
-  ~~~
+  ```
   path b = &circle(center,radius)
-  ~~~
+  ```
 
 + ellipse 
 
@@ -1040,10 +1040,10 @@ an absolute point, or a scalar.
   The fourth argument is the rotation in degrees, in counterclockwise
   rotation.
 
-  ~~~
+  ```
   path b = &ellipse(&center,xradius,yradius)
   path b = &ellipse(&center,xradius,yradius,rotation)
-  ~~~
+  ```
 
 + rectangle 
 
@@ -1054,19 +1054,19 @@ an absolute point, or a scalar.
   width and height of it. The third one construct a rectangle with
   just the width and height, assuming the anchor point to be at (0,0)
   
-  ~~~
+  ```
   path b = &rectangle{&point1,&point2}
   path b = &rectangle{&point,width,height}
   path b = &rectangle{width,height}
-  ~~~
+  ```
 
 + triangle 
 
   This returns a path expressing a triangle of three points. The syntax is: 
 
-  ~~~
+  ```
   path b = &triangle(&point1,&point2,&point3)
-  ~~~
+  ```
 
 + equilateraltriangle{(0,0),3}
 
@@ -1092,17 +1092,17 @@ an absolute point, or a scalar.
 
   This returns a path expressing a polyline. The syntax is:
 
-  ~~~
+  ```
   path b = &polyline{&point1,&point2,&point3,...}
-  ~~~
+  ```
 
 + polygon  
 
   This returns a path expressing a polygon. The syntax is:
 
-  ~~~
+  ```
   path b = &polygon{&point1,&point2,&point3,...}
-  ~~~
+  ```
 
 + arctravel{&center,start_point,sweep_angle}
 
@@ -1122,9 +1122,9 @@ an absolute point, or a scalar.
   from 'center', then the tracing stops as soon as it intersects with
   the radius-ray that passes through 'q'. 
 
-  ~~~
+  ```
   path b = arcspan{&center,start_point,end_point}
-  ~~~
+  ```
 
 + arcsweep{&center,r,start_angle,sweep_angle}
 
@@ -1139,9 +1139,9 @@ an absolute point, or a scalar.
   This expresses a upright cylinder drawn with an ellipse at the
   bottom, with xradius/yradius, and a given height. The syntax is:
 
-  ~~~
+  ```
   path b = &cylinder{&center,xradius,yradius,height}
-  ~~~
+  ```
 
 + ymirror 
 
@@ -1150,10 +1150,10 @@ an absolute point, or a scalar.
   that is a value on X-axis. The following example returns a new path
   that is a mirrored image of 'a' off the x-axis.
 
-  ~~~
+  ```
   path a = ...
   path b = &ymirror{&a,0}
-  ~~~
+  ```
 
 + mirror 
 
@@ -1161,12 +1161,12 @@ an absolute point, or a scalar.
   image of the given point along a given line. In the following example
   the returned point 'a1' would have been set to (-5,0)
 
-  ~~~
+  ```
   path a = (5,0)
   path b = (0,0)
   path c = (0,10)
   path a1 = &mirror{&a,&b,&c}
-  ~~~
+  ```
 
 + bbox 
 
@@ -1181,9 +1181,9 @@ an absolute point, or a scalar.
   The following example would have drawn a grid of 10-by-10, with grid
   line separation of 1 in both directions.
 
-  ~~~
+  ```
   path a = &grid{10,10,1,1}
-  ~~~
+  ```
 
 + perpoint
 
@@ -1194,17 +1194,17 @@ an absolute point, or a scalar.
   from the first point for a distance that is the length of the third 
   argument. The following example is to return the point that is (1,0)
 
-  ~~~
+  ```
   path a = &perpoint{(0,0),(1,0),1}
-  ~~~
+  ```
 
   The second form would have had three points, and the returned value
   is a point on the line segment that is the first two points. The following
   example is to return the point that is (0.5,0)
 
-  ~~~
+  ```
   path a = &perpoint{(0,0),(2,0),(0.5,1)}
-  ~~~
+  ```
 
 + rotate{&A,90}
 
@@ -1695,61 +1695,6 @@ function names, while "0", "0a", "0ab" are not valid function names.
 
 
 
-# Environment variables
-
-Environment variables are symbols that holds a number or a string. It
-can be specified anywhere within a command line and it will be
-replaced by the actual number or string contents because the command
-is processed.
-
-    let pi := 3.1415
-    fn f(x) = ${pi}/x
-
-In the previous example the environment variable 'pi' is assigned a
-number that is approximately 3.1415, which is then used inside the
-command line of "fn". By the time the command "fn" is processed the
-command line becomes the following:
-
-    fn f(x) = 3.1415/x
-
-On the right hand side of the ":=" operator an arithmetic expression
-is to be expected, which allows a number to generated based on the
-values of other numbers. In the following example the path variable
-"a" will be created with a single number that is approximate to
-(1.414,1.414).
-
-    let a := sqrt(2)   
-    path a = (${a},${a})
-    dot &a
-
-The name of an environment variable are not limited to having
-to start with a letter, and followed by additional letters and
-numbers, like those required for a "var" variable and "fn" variable.
-However, it must be consisted entirely of word characters, which
-means no symbols or punctuations are allowed. Underscore is considered
-part of a word character and thus is allowed.
-
-An environment variable ``pi`` must appear in the form of ``${pi}``
-inside a statement in order for it to be recognized and replaced.  The
-replacement comes before the command line is being processed.  This
-flexibility allows an environment variable to appear anywhere in a
-command line and potentially serve many different purposes. In the
-following example an environment variable "a" is used to construct
-a path variable name that is "my1".
-
-    let a := 1 
-    path my${a} = (0,0) ~ (5,5) 
-    draw my${a} 
-
-Besides "let", two additional commands are designed to create
-environment variables: the "format" command and the "for" command.
-The "format" command would create an environment variable that holds a
-string. The "for" command would repeatedly execute a block of
-command, each time updating a list of environment variables to a new
-set of values according to their orders in the list.
-
-
-
 # Scalar Expression
 
 A "scalar expression" is an expression that evaluates to a number.  It can
@@ -1945,11 +1890,11 @@ Following are built-in functions provided by Diagram.
   variable 'a' will be assigned a number that is 0 and 'b' a number
   that is 1.
 
-  ~~~
+  ```
   fn f(x) = if(x>10,1,0)
   let a := f(10)  
   let b := f(11)  
-  ~~~
+  ```
 
 + isfinite(x)
 
@@ -2740,6 +2685,27 @@ of the variable does not have to be defined at that time, where if a
 dollar-expression is used then that variable is expected to exist by the time
 it is used.
 
+Besides "let", two additional commands are designed to create
+environment variables: the "format" command and the "for" command.
+The "format" command would create an environment variable that holds a
+string. The "for" command would repeatedly execute a block of
+command, each time updating a list of environment variables to a new
+set of values according to their orders in the list.
+
+Note that in the situation where the arithmetic expression generates
+a NaN situation, such as when a number is divided by zero, then the 
+the variable will be holding something akins to a NaN, and the dollar-expression
+would have produced a string that is either "NaN" or "Infinity", 
+which would then appear literally as part of the command having it.
+
+    let a := 1/0
+    draw (0,0)~(${a},${a})
+
+The previous example would have been equilvalent to the following commands:
+
+    let a := 1/0
+    draw (0,0)~(Infinity,Infinity)
+
 
 
 # The 'array' command
@@ -3012,9 +2978,9 @@ formatting groups are recognized.
 
   This formatting group is to output the percent-sign itself
 
-  ~~~
+  ```
   format s := "%0.2d%%" 0.234567 
-  ~~~
+  ```
 
 + f
 
@@ -3022,19 +2988,19 @@ formatting groups are recognized.
   number. The number after the period inside the formatting group
   express the decimal places to be used for this number.
 
-  ~~~
+  ```
   format s := "%.2f" 1.23456789
   ## => "1.23"
-  ~~~
+  ```
 
 + d 
 
   This formatting group would parse the argument as an integer.
 
-  ~~~
+  ```
   format s := "%d" 0x10
   ## => "16"
-  ~~~
+  ```
 
 + x 
 
@@ -3044,12 +3010,12 @@ formatting groups are recognized.
   the upper-case ``X`` letter would've generated a hex
   number with all letters between A-Z in uppercases.
 
-  ~~~
+  ```
   format s := "%x" 15
   ## => "f"
   format s := "%X" 15
   ## => "F"
-  ~~~
+  ```
 
 + X
 
@@ -3059,39 +3025,39 @@ formatting groups are recognized.
 
   This formatting group is to output a binary number with one's and zero's.
 
-  ~~~
+  ```
   format s := "%b" 5
   ## => "101"
-  ~~~
+  ```
 
 + o 
 
   This formatting group is to output an octal number.
 
-  ~~~
+  ```
   format s := "%o" 0xF0
   ## => "360"
-  ~~~
+  ```
 
 + c
 
   This formatting group is to turn an integer to a Unicode character
   with that given code point.
 
-  ~~~
+  ```
   format s := "%c" 65
   ## => "A"
-  ~~~
+  ```
 
 + s
 
   This formatting group is to treat the argument simply as a string
   with no particular assumption.
 
-  ~~~
+  ```
   format s := "%s-%s-%s" hello and world
   ## => "hello-and-world"
-  ~~~
+  ```
 
   
 
