@@ -277,26 +277,12 @@ to variable 'b' as follows.
     path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
     path [a,,b] = &A
 
-Note that the last variable gets all remaining points. This, variable
-'b' will get the last two points, which are (3,4) and (4,5). However,
-you can choose to allow only a single point to be assigned to the last
-variable by including an additional slash after this variable.
-
-    path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
-    path [a,,b,] = &A
-
-Similarly you can also add slashes at the beginning to skip first few
-points. Following example will skip the first two points and assign
+Following example will skip the first two points and assign
 the remaining two points to variable 'a'.
 
     path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
     path [,,a] = &A
 
-Following is an example of drawing dots.
-
-    path p = (1,2) ~ (2,3) ~ (3,4)
-    path p = (5,6) ~ (7,8)
-    dot &p1 &p2 (9,9)
 
 
 # The draw/fill/stroke commands    
