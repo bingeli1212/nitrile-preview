@@ -1672,7 +1672,7 @@ is "1 + log2(4)". In the following example, variable 'a' is being
 assigned a value of 3 at the end of that command.
 
     fn f(x) = 1 + log2(x)
-    let a = f(4)
+    let a := f(4)
 
 A function created by a "fn" command can be thought of as a user-defined
 function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
@@ -2661,7 +2661,6 @@ Following are Non-action commands:
     exit
     path
     fn
-    var
     array
     group
     id
@@ -2669,63 +2668,77 @@ Following are Non-action commands:
     show
     
 
-# The 'var' command
+# The 'let' command
 
-The 'var' command would define a variable that is capable of holding a 
-Complex number. The basic syntax of using a 'var' command is similar to
-that of a 'let' command in that a variable name (must conform to the
-rule of a valid variable name) is specified followed by an equal sign
-and then an arithmetic expression. 
+The 'let' command would define a variable that is capable of holding a 
+Complex number. The basic syntax of using a 'let' command is the following:
 
-    var a = 1 + 2
+    let a := 1 + 2
+    let b := 3 * a
+    let c := abs(b) + sqrt(b)
   
-This variable 'a' can then be used inside another expression 
-directly.
+It starts with the keyword 'let', followed by the variable name, followed
+by ":=", and followed by an arithmetic expression which may contain 
+number, variables, and function.
 
-    var b = 3 * a
+The imaginary part of a complex number is to be expressed by the constant 'I'.
+For instance, variable 'a' is to hold a value that is '1+2i' and 'b' the
+'3+6i'.
 
-Unlike 'let', which defines a environment variable that holds a real number,
-variables such as 'a' and 'b' above can hold a complex number. The imaginary
-part of a complex number is to be expressed by the constant 'I'. For instance,
-variable 'a' is to hold a value that is '1+2i' and 'b' the '3+6i'.
-
-    var a = 1 + 2*I
-    var b = 3 * a
-
-Note that it is perfectly legal for 'I' to also appear in an expression that
-is after the equal sign of a 'let' command, except that only the "real" part
-of the imaginary number that is the result of that expression will be
-extracted and assigned to the variable. In the example below the environment
-variable 'b' will be assigned a value is the real number of 3.
-
-    var a = 1 + 2*I
+    let a := 1 + 2*I
     let b := 3 * a
 
-Another thing that has to keep in mind that a variable defined by a 'var' command
-remains in effect for as long as the program goes. 
+Another thing that has to keep in mind that a variable defined by a 'let' command
+remains only in effect within its own scope. This mean that if this command appears
+inside a body of a 'for' loop, then this variable will only be visible within this
+body and only after it has been created. 
 
-If a function defined by a "fn" command references a variable, this variable does not
-have to exist by the time the "fn" command is run. However, it has to exist when the
-function is "called". Thus, following is valid.
+A variable defined by the 'let' command is also visible within the function
+body of a 'fn' command. In the following case the variable 'b' will be assigned
+the value of '7'.
+
+    let a := 5
+    fn f(x) = x + a
+    let b := f(2)
+
+Note that if the body of a function defined by a "fn" command references a
+variable, this variable does not have to exist at the time the "fn" command is
+run. However, it does has to exist when the function is "called". Thus, the
+following would have had the same effect of the one above
 
     fn f(x) = x + a
-    var a = 3
-    var b = f(4)
+    let a := 5
+    let b := f(2)
 
-The value of 'b' will be 7, rather than NaN, because when function 'f' is called 
-inside an expression for initializing the value for 'b', variable 'a' has already
-been defined. 
+A variable defined by the 'let' command can also appears within the
+dollar-expression such as 
 
-Thus, in a sense, the 'var' command is to define a global variable.
-This variable exists before any "fn" function is called, and will
-persist after. However, if a "fn" function has an argument that is the
-same name as a 'var' variable, then this variable will be treated as
-the name of the argument. For instance, in the following example
-variable 'b' will be assigned a value of 1, not 3.
+    let a := 1
+    draw (0,0)~(${a},${2*a})
+    
+in which case the 'draw' command above will be run as 
 
-    fn f(x) = x
-    var x = 3
-    var b = f(1)
+    draw (0,0)~(1,2)
+
+The same dollar-expression can also appear within a 'fn' command body.
+However, the only difference is that it will be replaced by a string that 
+equals to the 'real' value of that variable, as a variable is capable of holding
+a complex number. Thus, the dollar-expression is defined to replace any Complex 
+number expression with a string that equals to its real part only. Thus,
+following two definitions of functions are equilvalent.
+
+    let a := 5
+    fn f(x) = x + a
+    let b := f(2)
+
+    let a := 5
+    fn f(x) = x + ${a}
+    let b := f(2)
+
+One advantage of not using the dollar-sign within a 'fn' body is that the value
+of the variable does not have to be defined at that time, where if a
+dollar-expression is used then that variable is expected to exist by the time
+it is used.
 
 
 
@@ -2741,9 +2754,7 @@ list of Complex numbers.
 To reference an existing path that has already been defined inside a
 command where a list of complex numbers are expected, the array
 variable must appear in form of having an ampersand in front of it.
-
-This syntax distinguishes it from mistakenly being treated as a 'var'
-variable.  In addition, this syntax also makes it possible to access
+In addition, this syntax also makes it possible to access
 an individual array element rather than the entire array.  Following
 example would have plotted a single point that is the second element
 of the array.
@@ -2755,7 +2766,7 @@ When constructing an array, a single element of an array is recognized
 as a group of non-whitespace characters. This allows the flexibility
 to specify a number, such as "2", and expression, such as "2+2". It is
 also possible to include built-in variables, such as "E", "PI", or
-user defined variables created previously by the 'var' command.
+user defined variables created previously by the 'let' command.
 
 An spread-expression is also possible to appear as part of the list,
 which in itself expresses a number of complex numbers that are then
@@ -2937,10 +2948,10 @@ similar to the similar commands within a 'cartesian' command.
 To show a complex number within a dot, the 'argand-dot' command can be
 used. The command line for this command expectes a list of complex numbers,
 which can be specified using either literal syntax, such as a number placed 
-inside a set of parentheses, or a 'var' variable, such as 'a'
+inside a set of parentheses, or a 'let' variable, such as 'a'
 in the following example.
 
-    var a = (2+2*I)
+    let a := (2+2*I)
     argand-dot (1+2*I) (2+1*I) a
   
 The 'argand-dot' command also recognizes an array and will try to plot
