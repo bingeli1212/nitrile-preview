@@ -1976,7 +1976,7 @@ appear inside the command line, after the configuration option and
 label text.
 
     argand-dot 1+1*I 2+2*I 3+5*I -1*I
-    argand-dot ~map:exp 1 2 3 4 5 6~10
+    argand-dot ^fn:exp 1 2 3 4 5 6:10
 
 The previous examples shows how a argand-dot command would have
 expected a list of numbers to be present as part of its command line.
@@ -1984,8 +1984,9 @@ It also goes to show the many different ways a list of numbers can be
 built. Similarly, the 'array' command would have expected the same
 type of numbers.
 
-    array my1 = 1+1*I 2+2*I 3+5*I -1*I
-    array my2 = ~map:exp 1 2 3 4 5 6~10
+    array my1 = 1+1i 2+2i 3+5i -1i
+    array my2 = ^fn:exp 1 2 3 4 5 6:10
+    array my1 = ${a} ${a+2} ${3+5i} 
 
 Generally, each cluster of non-whitespace characters is to be
 processed and scanned.  This cluster will be scanned and see if it 
