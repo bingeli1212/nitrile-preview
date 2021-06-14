@@ -1574,8 +1574,9 @@ A 'for' command is provided by Diagram such that a number of commands
 can be repetitively executed, and each iteration these commands would
 have been run under a different set of arguments. The basic syntax is
 
-    for a:=[1 2 3 4]
+    for a in [1, 2, 3, 4]; do
       draw (${a},${a})~(0,0)
+    done
 
 In the example, the 'draw' command will be executed exactly four
 times, each of which looks like the following.
@@ -1586,16 +1587,28 @@ times, each of which looks like the following.
     draw (4,4)~(0,0)
 
 The 'for' command starts with the keyword 'for', followed by a one or more
-assignments of variables to a range of floats. The colon at the end is
-optional. The for-loop would iterate over each loop variable over its
-corresponding sequences. Each loop variable is to become one of the
-environment variables that is going to exist even after the loop has ended. 
-Following is an example of iterating over two
-loop variables: 'a' and 'b'.
+pairing of a "loop variable" to a range of floats. 
+Each pairing must be terminated by a semicolon,
+and additional pairs are allowed. 
+The last part of the 'for' command must be the word "do".
+
+The 'for' command is designed to repeat the execution of its "loop body",
+which consists of a list of command up until the line "done", but not including
+this line. The exact number of repetition depends on the total of floats
+being iterated over. The total number of repetitions is always equal to the longest
+number of floats in each pairing, and the variable without additional floats to iterate over will simply
+retain its last assigned value.
+
+During each iteration, each loop variable is to become an environment variable,
+which can be accessed via a dollar-expression, or be used in other places where
+an environment variable is expected.
+
+Following is an example of iterating over two loop variables: 'a' and 'b'.
 
     % Using for-loop
-    for a:=[1 3] b:=[2 4]
+    for a in [1,3]; b in [2,4]; do
       draw (${a},${a})~(${b},${b})
+    done
 
 Following is the equivalent commands without using the for-loop.
 
@@ -1603,24 +1616,18 @@ Following is the equivalent commands without using the for-loop.
     draw (1,1)~(2,2)
     draw (3,3)~(4,4)
 
-Note that all lines of the loop body must have an indentation level
-that is greater than the indentation of the for-loop itself.
-If a line is encountered that is of the same or less of an indentation
-level as that of the for-loop, then that line is not
-considered as part of the loop body, and no additional lines will be
-considered for inclusion as the loop body.
+Note that it is recommanded that the lines of the loop body be indented
+with at least one space. This allows for the recognition of the line "done"
+which must be by itself for the entire line, and without indentation. 
+The loop body, once extracted, will undergo "trimming" such that all lines
+will be trimmed the same number of white spaces on the left hand side. 
+This design allows for writing of "nested for loop" possible, such that 
+inner loop will retain its independence during the extraction of loop body
+of the outer loop.
 
-This design also permits the inclusion of additional nested for-loop,
-each of which only to have its own loop body being indented even
-further inwards. The following example show the implementation of two
-for-loops. The toplevel for-loop offsers two loop variables:
-'a', and 'b', and the nested for-loop offers one loop symbol:
-'c'. Note that the last 'label.bot' command is not part of the nested
-for-loop, but rather part of the toplevel for-loop.
-
-    for a:=[9 19 29] b:=[0.4 0.5 0.6]
+    for a in [9,19,29]; b in [0.4,0.5,0.6]; do
       origin x:${a}
-      for c:=[16 4]
+      for c in [16,4]; do
         origin y:${c}
         draw (0,0) [h:-6] [v:6]
         draw (0,0) [q:-6,0,-6,6]
@@ -1643,17 +1650,20 @@ for-loop, but rather part of the toplevel for-loop.
         label.bot "m₀" &m0
         label.lft "m₁" {dx:-.1} &m1
         label.urt "B" &B
+      done
       label.bot "t=${b}" (-3,-2)
+    done
       
-Note that if a 'for' command contains two or more loop variables, the
-loop will go so far to cover the longest sequence, and will
-automatically assign the loop variables of the shorter sequence to
-zero if they have already run out the numbers.
+Each 'for' command would have also added a new environment variable
+called '@' that will be assigned an integer equal to the
+current iteration. The first iteration will be an integer 1, and the
+second one 2, and so on. Note that during the situation of a nested loop,
+the same '@' env variable will be overridden by the inner for loop.
 
-Each 'for' command would have also defined a new environment variable
-that is '@' that will be assigned to an integer that equates to the
-current iteration. The first iteration will be an integer 0, and the
-second one 1, and so on.
+The syntax for each pairing is so far only supporting the "in" keyword,
+such that the loop variable is found to be followed by the word "in",
+and then the list of floats. The list of floats would follow the same
+format found in other commands such as "cartesian".
 
 
 
@@ -1672,7 +1682,7 @@ is "1 + log2(4)". In the following example, variable 'a' is being
 assigned a value of 3 at the end of that command.
 
     fn f(x) = 1 + log2(x)
-    let a := f(4)
+    var a = f(4)
 
 A function created by a "fn" command can be thought of as a user-defined
 function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
@@ -1697,11 +1707,22 @@ function names, while "0", "0a", "0ab" are not valid function names.
 
 # Scalar Expression
 
-A "scalar expression" is an expression that evaluates to a number.  It can
-appear on the right hand side of the equal sign of a "let" or "fn" command.  It
-is also recognized as part of a float if placed inside a set of parenthesis.
+A "scalar expression" is an expression that evaluates to a number.  
 
-    cartesian-xtick 0 1 2 (1+2) 
+    var a = (2+2)*(3+3)
+    var a = cos(3+0.1415) + 12
+    var a = 3 + pow(3,2)*3 + 2
+    var a = 3 + E + 2
+    var a = 3 + PI + 2
+    var a = sign(-5)
+    var a = 2*PI
+    var a = 2*2e5
+    var a = deg2rad(180)
+    var a = 1/0
+    var a = ln(0)
+
+The 'var' command expectes a scalar expression on the right hand side of the
+equal sign that follows a variable name.
 
 The scalar expression has a syntax very much like those supported by the 'expr'
 command of a modern day Tcl interpreter. It recognizes the plus, minus,
@@ -1719,46 +1740,36 @@ a environment variable 'a'. Note that 'E' and 'PI' are two built-in constants
 where the first one is the Euler's number and the second one being the
 ratio of the circumference of a circle to its diameter.
 
-    let a := (2+2)*(3+3)
-    let a := cos(3+0.1415) + 12
-    let a := 3 + pow(3,2)*3 + 2
-    let a := 3 + E + 2
-    let a := 3 + PI + 2
-    let a := sign(-5)
-    let a := 2*PI
-    let a := 2*2e5
-    let a := deg2rad(180)
-    let a := 1/0
-    let a := ln(0)
+Following is likely what to be observed in the outputs of a translation.
 
-Following are likely to be observed in the outputs of a HTML
-translation.
-
-    <!-- let a := (2+2)*(3+3) -->
-    <!-- ***let: a=24 -->
-    <!-- let a := cos(3+0.1415) + 12 -->
-    <!-- ***let: a=11.000000004292344 -->
-    <!-- let a := 3 + pow(3,2)*3 + 2 -->
-    <!-- ***let: a=32 -->
-    <!-- let a := 3 + E + 2 -->
-    <!-- ***let: a=7.718281828459045 -->
-    <!-- let a := 3 + PI + 2 -->
-    <!-- ***let: a=8.141592653589793 -->
-    <!-- let a := sign(-5) -->
-    <!-- ***let: a=-1 -->
-    <!-- let a := 2*PI -->
-    <!-- ***let: a=6.283185307179586 -->
-    <!-- let a := 2*2e5 -->
-    <!-- ***let: a=400000 -->
-    <!-- let a := deg2rad(180) -->
-    <!-- ***let: a=3.141592653589793 -->
-    <!-- let a := 1/0 -->
-    <!-- ***let: a=Infinity -->
-    <!-- let a := ln(0) -->
-    <!-- ***let: a=-Infinity -->
+    % <-- var a = (2+2)*(3+3) -->
+    % <-- *** env a = 24.000000 -->
+    % <-- var a = cos(3+0.1415) + 12 -->
+    % <-- *** env a = 11.000000 -->
+    % <-- var a = 3 + pow(3,2)*3 + 2 -->
+    % <-- *** env a = 32.000000 -->
+    % <-- var a = 3 + E + 2 -->
+    % <-- *** env a = 7.718282 -->
+    % <-- var a = 3 + PI + 2 -->
+    % <-- *** env a = 8.141593 -->
+    % <-- var a = sign(-5) -->
+    % <-- *** env a = -1.000000 -->
+    % <-- var a = 2*PI -->
+    % <-- *** env a = 6.283185 -->
+    % <-- var a = 2*2e5 -->
+    % <-- *** env a = 400000.000000 -->
+    % <-- var a = deg2rad(180) -->
+    % <-- *** env a = 3.141593 -->
+    % <-- var a = 1/0 -->
+    % <-- *** env a = Infinity -->
+    % <-- var a = ln(0) -->
+    % <-- *** env a = Infinity -->
+    % <-- show ${a} -->
+    % <-- show Infinity -->
+    % <-- *** show Infinity -->
 
 Note that if a scalar expression returns something that cannot be interpreted
-as a valid number, a string such as "Infinity" or "NaN" might be returned.
+as a valid number, "Infinity" or "NaN" might be observed.
 
 It is also possible for a scalar expression to contain a variable that
 refers to a x/y component of a path point. In the following example
@@ -1766,18 +1777,132 @@ the variable 'mx' will be assigned the sum of adding the "x"
 components of the first two points in path variable 'pts', which will
 be "1 + 3 = 4".
 
-    path my = (1,2) (3,4)
-    let mx := &my_0.x + &my_1.x
-    let my := &my_0.y + &my_1.y
-    show ${mx}
-    show ${my}
+    path a = (1,2)~(3,4)
+    var x = &a_0.x + &a_1.x
+    var y = &a_0.y + &a_1.y
+    show ${x}
+    show ${y}
+
+The dollor-expressin is designed to turn any expression into a string. For instance
+the expression of ``${x}`` would have replaced itself with the actual value of the
+variable ``x``. If ``x`` does not exist as a valid variable, "NaN" is returned. 
+
+    var x = 1
+    show ${x}
+
+This would have been equivalent to the following single command
+  
+    show 1.000000
+
+This is because by default, the precision is set to 6, which means any numerical
+value will automatically be shown as a floating-point number with 6 digits of
+decimal places. This precision can be changed by setting the "precision" option.
+
+    config precision 10
+    var x = 1
+    show ${x}
+
+The previous commands would be equivalent to the following single command:
+
+    show 1.0000000000
+
+However, as a special exception, if the variable is by itself and it
+is recognized to be a string, such as the one generated by the "format" command,
+then it is shown verbatim.
+
+    format x = "Hello world"
+    show ${x}
+
+This would have been equivalent to the following command
+
+    show Hello world
+
+
+
+# List of scalars
+
+A list of scalars is also an expression that denotes a list of scalars, 
+instead of a single one. 
+
+    var a[] = 0 1 2 (1+2) 
+
+The same 'var' command, when the variable is followed by a set of open and
+closed brackets, is to expect a list of scalars instead of a single scalar.
+
+The set of rules for denoting a list of scalars is different than that used for
+denoting a single scalar. The main difference is that, by default, each scalar
+is to be understood to be separated from its neighboring scalars by one of more
+white spaces. In the previous example, a list of four scalars are recognized,
+and last one is also recognized as an expression and will be processed as such.
+
+In addition, following four syntaxes are recognized.
+
+- Properties
+- Texts
+- List-expression 
+- Spread-expresson
+- Range-expression
+
+The properties will be recognized as starting and ending with a set of braces.
+
+    var a[] = {linesize:0,fillcolor:white} ...
+
+The texts will be regonized by the starting and ending of a set of quotation marks.
+
+    var a[] = "hello" "world" "good morning"
+
+The list-expression will be recognized by the starting and ending of a set of brackets.
+
+    var a[] = [1,2,3,4]
+
+The spread-expression will be recognized by the presence of an exclamation mark
+within the expression. The following example would have produced a total of 22
+points, with the first point being 0, and the last point being 10, and
+additional 20 points generated between 0 and 10 such that the distance between
+any two neighboring points is the same.
+
+    var a[] = [0!20!10]
+
+The range-expression comes with two flavors, the one with two colons, and the one with
+three colons. The only difference between the two is that the first one assumes a step
+of 1, and the second one is computed dynamically based on the distance of the first 
+one and the second one. For instance, following example would have generated a list
+of numbers that are 1, 2, 3, 4, 5, 6, 7, 8, 9, and 10.
+
+    var a[] = [1:10]
+
+The following would have generated a list composed numbers that are 1, 4, 7, 10.
+
+    var a[] = [1:4:10]
+
+Note that in the case of the having three columns the middle number serves as the 
+second number after the first one, and additional numbers are generated with the same
+difference between the second and the first, and with the last number not exceeding
+the third one.
+
+These expressions can also be freely mixed. For instance, following all
+all valid ways of genetating a list of numbers from 1-10.
+
+    var a[] = 1 2 3 [4:10]
+    var a[] = [1:2] [3:4] 5 6 7 [8:10]
+    var a[] = [1,2,3,4] [5,6,7,8] 9 10
+
+The dollar-expression, which encountering a single variable that is denotes
+a list of scalars, it will be shown as such, with each scalar separated by a single space.
+
+    var a[] = 1 2 3 4
+    show ${a}
+
+The previous two commands would have seen following outputs:
+
+    % <-- var a[] = 1 2 3 4 -->
+    % <-- *** env a[] = 1.000000 2.000000 3.000000 4.000000 -->
+    % <-- show ${a} -->
+    % <-- *** show 1.000000 2.000000 3.000000 4.000000 -->
 
 It is also possible to refer to an array element. To do that simply use the variable
 followed by an underscore itself.
 
-    array my = 1 2 3 4
-    let my := @my_0 + @my_1
-    show ${my}
 
 
 
