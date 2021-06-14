@@ -760,6 +760,11 @@ Following are styles recognized by NITRILE:
   utilized by figure, table, longtable, and listing blocks to specifically suppress the showing
   of caption text.
 
++ precision:6
+
+  This is an integer set to the number of decimal places for printing out scalar
+  numbers. The default is 6.
+
 
 
 
