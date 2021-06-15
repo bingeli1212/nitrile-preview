@@ -726,37 +726,50 @@ Following are additional directives.
   direction where 0 is the top side of the viewport and 1 is one unit grid
   immediately below the top side of the viewport.
 
-+ ^veer:-20
-+ ^veer:+20
 
-  Set the 'lastabr' value to a float. This value, when set to something other than
-  zero, will cause a line drawing operation to veer to the left or right before
-  connecting with the destination point. The drawn line is typically
-  a quadratic Bezier curve, with the
-  the control point set at the intersection of two lines each of which stems out
-  of the one of the end points veering at an angle that equals to the absolute value
-  of the number given after the colon. 
+# Veering the left or right
+
++ ^veer:left
++ ^veer:right
+
+  Set is so that the veer will turn to the left instead of right
+  which is the default. The veer is enabled by two or more tilde
+  joints between coordinate points.
+
+  ```
+  draw ^veer:left (0,0)~~(10,0) 
+  ```
+
+
+# Saving and restoring the 'lastpt'
+
+The 'lastpt' is a special point that is updated everytime a new coordinate
+is issued, or when a relative point is specified. It is not moved when 
+a path function is invoked, or an entire path segment is added from 
+another path variable. In particular, 'lastat', 'lastx' and 'lasty' 
+directives would restore the last point from a previous path, or be given a fixed
+location. The 'lastpt' directive would save the current 'lastpt' under a new
+path name.
+
++ ^lastat:a
+
+  Set the x/y position of the 'lastpt' to that of the first point
+  of an existing path "a".
+
++ ^lastx:2
+
+  Set the x position of the 'lastpt' to this number.
+
++ ^lasty:2
+
+  Set the y position of the 'lastpt' to this number.
+
++ ^lastpt:a
+
+  Save the current x/y positions of the 'lastpt' to a path
+  named "a", overriding the existing path if it already exists.
   
-  The sign of this number determines the direction of the veering.
-  In particular, a negative value would cause the veering to happen to the left-hand
-  side of the line going from the source to the target. A positive value would have cause it
-  to veer on the right-hand side of the line going from the source to destination.
 
-  The 'lastabr' value is initially set to 0, signaling that a straight line going
-  from source to target is to be drawn. To reset the 'lastabr' to 0, use '0' for
-  the 'veer' directive. Following example would draw a curved lines from (0,0)
-  to (10,0), and a straight line from (10,0) to (20,0)
-
-  ```
-  draw ^veer:-20 (0,0) ~ (10,0) ^veer:0 ~ (20,0)
-  ```
-
-+ ^lastptx:2
-+ ^lastpty:2
-+ ^lastpt:A
-
-  Set the x or y position of the 'lastpt' position. No output is generated. However,
-  after this, all relative points will be computed based off this new position.
 
 # Saving the 'lastpt'
 
@@ -771,7 +784,7 @@ the the current settings of the 'lastpt' is saved to a new path named 'a'. If
 'a' already exists it will be overwritten. For instance, in the following
 example the dot will be drawn at a location that (5,5).
 
-    path a = (0,0) [l:5,5] mark:b [l:1,1]
+    path a = (0,0) [l:5,5] ^mark:b [l:1,1]
     dot &b
 
 
