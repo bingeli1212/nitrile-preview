@@ -744,6 +744,17 @@ whileas the second method would equates to a no-op.
 The the example above, the "dummy1" path would have contained a single "cycle" point,
 and the "dummy2" path would have had zero path points in it.
 
+The second method would also move the 'lastpt' to that of the retrieved path point, 
+if successful. Thus, it is absolute critical to use the second method when starting
+a M point followed by relative points, which would rely on the 'lastpt' being updated
+correctly. The first method would not have updated the 'lastpt' thus making it impossible
+to use relative points correctly. In the following example, the path "dummy1" would 
+not have been created correctly and the path "dummy2" would.
+
+    path a = (1,1)
+    path dummy1 = &a[l:3,4]
+    path dummy2 = (&a)[l:3,4]
+
 Each path would also allow for a 'path function' to be specifed. A 
 path function is similar to a named path, except that its contents
 is dynamically generated based on the information expressed by
