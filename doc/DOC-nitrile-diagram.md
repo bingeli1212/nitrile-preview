@@ -3299,5 +3299,10 @@ and the use it to place it on the top of the hrule.
     ```
 
 
+# Define custom colors
 
+There are 10 custom colors, namely color1 to color10, that can
+be used. These colors are predefined and can be used.
+
+    
 
