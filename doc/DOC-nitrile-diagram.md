@@ -631,8 +631,146 @@ and the second point being the "north" anchor itself.
 
 
 
+# Constructing a path
 
-# Setting the 'hints'
+A path is a collection of points, with each point expressing how the last point
+is connected with this point, whether it is a straight line, or a Bezier curve,
+or an arc. When the path is "stroked" a line is to appear tracing the path,
+similar to how blots of ink are left marks on a piece of paper.
+
+There several ways to reference a path or an internal point of a 
+path. Note that the internal points of a path could be one of the 
+following types: M, L, C, Q, A, and z. The letter M expresses that
+the point is a "move" point, similar to the "M" point in a SVG path. 
+The "L" is a "lineto" point, which expresses that a straight line is to be 
+drawn between the last point and this point. The "C" is a cubic Bezier curve,
+and "Q" is a quadratic Bezier curve. The "A" is an "arc" curve, and "z"
+represents a cycle, in which case a straight line is to be drawn connecting
+this point to the "M" point that started this path. 
+
+Note that a "M" point does not connect with any previous point and is usually
+the first point of a path. SVG has been observed to not generated any visual
+output if the first point isn't a M point. The same is true for TiKz. The
+MetaFun would go a step further and generate a compile error if this is the 
+case. This, the translation of MetaFun have been designed to avoid this situation.
+
+The Diagram allows
+for multiple "M" points to appear inside a single path line description, 
+making it possible to construct several pathes at the same time, where each
+path could be closed or not closed. The following example would have 
+generated two paths where the first one is a straight line from (0,0) to (3,4),
+and the second one from (2,2) to (5,6).
+
+    path a = (0,0)[l:3,4] (2,2)[l:3,4]
+
+A path can be saved and later retrieved by a name. This can be
+done by the 'path' command. There are other ways create a path as well.
+The name of a path must conform a valid symbol name, which must
+start with an upper case or lower case letters, and
+followed by one or more letters and/or digits. Note underscore
+or other punctuations are allowd. Followig are valid path names:
+
+    a
+    ab
+    a0
+    ab0
+    ab00
+    ab00ab00
+
+To reference a path using the symbol, the symbol must start 
+with an ampersand. For instance ``&a`` would have referenced the
+entire path associated with this path. However, it is also possible
+to reference a single path point of "a" such as ``&a_0``, which
+would describe the first point of this path.
+
+    path a = (0,0)[l:3,4] (2,2)[l:3,4]
+    path b = &a
+    path c = &a_1
+    path d = (&a)
+    path e = (&a_1)
+
+Notice that there exists two different ways of referencing an existing path or
+path points: the one without any parentheses, and the one with parentheses placd
+around it. The first method allows path points of an existing path to be copied
+verbatim without modification, and the second method would only retrieve the
+position information of a single path point, would rely on line drawing
+instruction of this path point to come from elsewhere.
+
+There are pros and cons associated with each method. The first method would be
+benefical if multiple paths are to be combined in order to create a new
+"composite" path, such that the line drawing instructions embedded within each
+path point is preserved. However, if you were to create a new path which would
+require including an existing path point, you would use the second method, such
+that only the location information of that path point is retrieved, but the line
+drawing instruction to this point still comes from local environment. 
+
+For instance, in the following example the first point of 'c' would be a L
+point at location (3,4).
+
+    path c = &a_1
+
+However, for the following example the first point of 'e' would be a
+M point at location (3,4).
+
+    path e = (&a_1)
+
+Since, line connection information of location environment is ignored
+for the first method, the following method would have created a L point
+and a M point, with the first one being a L point at (3,4), and second one 
+a M point at (2,2).
+
+    path dummy = &a_1 &a_2
+
+However, the following method would have allowed the first point be a M point
+and the second one a L point, with the first one being a L point at (3,4), and
+second one a M point at (2,2).
+
+    path dummy = (&a_1)~(&a_2)
+
+Note that the second method would always retrieve a single point, even when the
+symbol does not come with an index. For instance, the ``(&a)`` notation would
+have retrieved the location of the first point of "a" which is (0,0).
+
+When it comes to the "cycle" point, which is expressed by the presence of ``[z]``,
+the first method and the second would have an even bigger difference. Due
+to the fact that a "cycle" point is an independent path point by itself, 
+of type "z", the first method would have copied the "cycle" point literally, 
+whileas the second method would equates to a no-op. 
+
+    path a = (0,0)[l:3,4][z]
+    path dummy1 = &a_2
+    path dummy2 = (&a_2)
+
+The the example above, the "dummy1" path would have contained a single "cycle" point,
+and the "dummy2" path would have had zero path points in it.
+
+Each path would also allow for a 'path function' to be specifed. A 
+path function is similar to a named path, except that its contents
+is dynamically generated based on the information expressed by
+its "arguments". For instance, the following path function "circle" would
+have returned a complete path that describes a circle centered
+at location (2,3) and with a radius of 4.
+
+    path a = &circle{(2,3),4}
+
+A path function always returns a path. However, each path function would have
+different requirements for its arguments. The arguments for the "circle" path
+function that are used for the previous example are (2,3), and 4, the first of
+which is a path, and the second of which is a scalar. As a matter of fact, these
+are the only two argument types. The path function of "circle" would have
+expected the first argument to be a path, and second one a scalar. It would
+retrieve the first point of the path as the center of the circle, and the scalar
+as the radius of the circle. to be arranged in this manner. For other path
+functions, the number of arguments and the types of each argument could vary.
+
+For an argument that is of a path type, it would either expect a literal point
+notation, such as (2,3), or named path notation, such as ``&o``. For instance,
+the same circle path function could be invoked as follows.
+
+    path o = (2,3)
+    path a = &circle{&o,4}
+
+[ Setting the 'hints' ]
 
 There is an internal variable named 'hints' that holds the last hints
 designated by the user. To set this variable, use the "hints:" directive.
@@ -653,8 +791,7 @@ designated by the user. To set this variable, use the "hints:" directive.
   would not be affected by the setting of the previous hints.
 
 
-
-# Moving the 'offset' 
+[ Setting up the 'offset' ]
 
 During a path construction, each path point can be given an additional
 "offset".  The exact distance of the offset is controled by one or more
@@ -670,7 +807,8 @@ Note that the process of moving a horizontal or vertical translation distance
 will at the same time move the 'lastpt' such that it coincides with the
 offset.
 
-Following are additional directives.  
+Following are additional directives related to updating or setting
+offsets.
 
 + ^left:2
 + ^right:2
@@ -727,7 +865,15 @@ Following are additional directives.
   immediately below the top side of the viewport.
 
 
-# Veering the left or right
+[ Setting up 'veer' direction ]
+
+Veer is a curve that connects two points. Normally, the "~" join would
+construct a straight line between two points. However, the "~~", "~~~", "~~~~",
+"~~~~" and "~~~~~~" are five "veer" curves that would put in place a quadratic
+Bezier curve in place of the straight line. Normally, the veer curve would veer to the
+right hand side going from the first point to the second point. However, but
+setting the directive "veer" to a string "left", the veer curve would then veer
+to the left hand side instead.
 
 + ^veer:left
 + ^veer:right
@@ -741,15 +887,14 @@ Following are additional directives.
   ```
 
 
-# Saving and restoring the 'lastpt'
+[ Saving and restoring the 'lastpt' ]
 
-The 'lastpt' is a special point that is updated everytime a new coordinate
-is issued, or when a relative point is specified. It is not moved when 
-a path function is invoked, or an entire path segment is added from 
-another path variable. In particular, 'lastat', 'lastx' and 'lasty' 
-directives would restore the last point from a previous path, or be given a fixed
-location. The 'lastpt' directive would save the current 'lastpt' under a new
-path name.
+The 'lastpt' is a special point that is updated everytime a new point is
+specified. It is also moved when a relative point is specified. It is not moved
+when a path function is invoked, or an entire path segment is added from another
+path variable. In addition, '^lastat', '^lastx' and '^lasty' directives could
+directly modify the 'lastpt', and the '^lastpt' directive could save the current
+location of the 'lastpt' to a new path variable or updating an existing one.
 
 + ^lastat:a
 
@@ -768,6 +913,8 @@ path name.
 
   Save the current x/y positions of the 'lastpt' to a path
   named "a", overriding the existing path if it already exists.
+
+
 
 
 
