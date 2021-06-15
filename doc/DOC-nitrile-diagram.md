@@ -121,7 +121,7 @@ drawing environment.
 - origin ^sy:2.5
 - origin ^s:2.5
 - origin ^at:a
-- origin ^mark:a
+- origin ^pt:a
 - origin ^reset
 - origin ^center
 - origin ^north
@@ -175,7 +175,7 @@ drawing environment.
   If it is "at:a_3" then the offset will be set to a point coincides with the forth
   point of that path.
 
-  If it is "mark:a" then it creates a new path variable named 'a' such that it
+  If it is "pt:a" then it creates a new path variable named 'a' such that it
   contains a single point that coincides with the current settings of the
   new origin.  If this path variable already exists it will be overwritten.
 
@@ -768,24 +768,7 @@ path name.
 
   Save the current x/y positions of the 'lastpt' to a path
   named "a", overriding the existing path if it already exists.
-  
 
-
-# Saving the 'lastpt'
-
-During a path construction, the x/y coordinates of each new path point is saved
-internally which is then used when constructing a relative point.  This point
-is know as the 'lastpt'.  This point can accessed anytime via the '&lastpt'
-path variable, in which case the path returned always contains a single point.
-
-The current last point can also be saved to another path such that it can be
-retrieved later. To do that the "mark:a" directive can be used, in which case
-the the current settings of the 'lastpt' is saved to a new path named 'a'. If
-'a' already exists it will be overwritten. For instance, in the following
-example the dot will be drawn at a location that (5,5).
-
-    path a = (0,0) [l:5,5] ^mark:b [l:1,1]
-    dot &b
 
 
 # The 'dot' command
