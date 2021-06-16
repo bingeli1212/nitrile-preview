@@ -2010,17 +2010,25 @@ This would have been equivalent to the following command
 # List of scalars
 
 A list of scalars is also an expression that denotes a list of scalars, 
-instead of a single one. 
+instead of a single one. This expression is enabled whenever a list
+of scalars is expected, such as after the equal sign of a 'var' command
+when the variable is preceeded by an at-sign, in which case the variable
+is expected as an array that is to hold a list of numbers instead
+of holding a single one.
 
-    var a[] = 0 1 2 (1+2) 
+    var @a = 0 1 2 (1+2) 
 
-A list of scalars is expected after a 'var' command, when the variable
-is immediately followed by a set of brackets, in which case it signals
-that it is to create an "array" variable where the variable is to hold
-a list of scalars, instead of just a single one. Besides, the 'var' command,
-the syntax for expressing a list of scalars appears within the 
-'for' command, as part of the arguments of a 'cartesian', 'argand', 'lego', 
-etc.
+The same expression could be found elsewhere where a list of scalar is expected,
+such as for a 'cartesian' and 'argand' command.
+
+    cartesian-yplot {fn:f} 0 1 2 (1+2)
+    argand-dot 0 1 2 (1+2)
+
+It could also be found in a 'for' loop command
+
+    for a in 0 1 2 (1+2); do
+      ...
+    done
 
 The set of rules for denoting a list of scalars is different than that used for
 denoting a single scalar. The main difference is that, by default, each scalar
@@ -2037,25 +2045,13 @@ In addition, following four syntaxes are recognized.
 - Range-expression
 - A fn-directive
 
-The properties will be recognized as starting and ending with a set of braces.
-
-    var a[] = {linesize:0,fillcolor:white} ...
-
-The texts will be regonized by the starting and ending of a set of quotation marks.
-
-    var a[] = "hello" "world" "good morning"
-
-The list-expression will be recognized by the starting and ending of a set of brackets.
-
-    var a[] = [1,2,3,4]
-
 The spread-expression will be recognized by the presence of an exclamation mark
 within the expression. The following example would have produced a total of 22
 points, with the first point being 0, and the last point being 10, and
 additional 20 points generated between 0 and 10 such that the distance between
 any two neighboring points is the same.
 
-    var a[] = [0!20!10]
+    var @a = [0!20!10]
 
 The range-expression comes with two flavors, the one with two colons, and the one with
 three colons. The only difference between the two is that the first one assumes a step
@@ -2063,73 +2059,100 @@ of 1, and the second one is computed dynamically based on the distance of the fi
 one and the second one. For instance, following example would have generated a list
 of numbers that are 1, 2, 3, 4, 5, 6, 7, 8, 9, and 10.
 
-    var a[] = [1:10]
+    var @a = [1:10]
 
 The following would have generated a list composed numbers that are 1, 4, 7, 10.
 
-    var a[] = [1:4:10]
+    var @a = [1:4:10]
 
 Note that in the case of the having three columns the middle number serves as the 
 second number after the first one, and additional numbers are generated with the same
 difference between the second and the first, and with the last number not exceeding
-the third one.
+the third one. 
 
-These expressions can also be freely mixed. For instance, following all
-all valid ways of genetating a list of numbers from 1-10.
+If none of the previous patterns were found to be true, then it is assumed to be
+a list-expression, where each number is to following the previous one and is separated
+by a comma.
 
-    var a[] = 1 2 3 [4:10]
-    var a[] = [1:2] [3:4] 5 6 7 [8:10]
-    var a[] = [1,2,3,4] [5,6,7,8] 9 10
+    var @a = [1, 2, 3, 4]
+    var @a = [1,2,3,4]
 
-Other than those above, a directive is also to be recognized. A directive adds extra
+Note that the spaces after each comma is optional. In addition,
+the spread-expression and two range-expressions 
+can be freely mixed and appear in the same expression for describing
+a list of number. Following are all
+valid expression of genetating a list of integers from 1-10.
+
+    var @a = 1 2 3 [4:10]
+    var @a = [1:2] [3:4] 5 6 7 [8:10]
+    var @a = [1,2,3,4] [5,6,7,8] 9 10
+
+We can also copy an existing array when building a new array. For instance,
+when array "a" has been built like that in the previous example, we can copy its
+content when building a new array named "b" such as follows.
+
+    var @b = @a 11 12 13
+
+The array "b" will be a list of integers from 1-13. The way of referencing an existing
+array using notation such as "@a" can even be found in a 'for' loop such as the following,
+in which case the variable "i" will iterate over all numbers held by array "@a".
+
+    for i in @a; do
+      show ${i}
+    done
+
+An entire array can be show by the dollar-expression as well. Ensure that the array
+variable is to appear by itself, and there are no other arithmetic operations involved.
+
+    var @a = 1 2 3
+    show ${a}
+
+A directive is also to be recognized. A directive adds extra
 possibility to the list of numbers. For the moment only the "fn" directive is supported. This
 directive allows for a function to be called such that the output of this function
 replaces the original scalar.
 
-    var a[] = ^fn:sqrt 1 2 3 4 5 6
+    var @a = ^fn:sqrt 1 2 3 4 5 6
     show ${a}
 
 Following would be the output of these commands:
 
-    % <-- var a[] = ^fn:sqrt 1 2 3 4 5 6 -->
-    % <-- *** env a[] = 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 -->
+    % <-- var @a = ^fn:sqrt 1 2 3 -->
+    % <-- *** env @a = 1 1.4142135623730951 1.7320508075688772 -->
     % <-- show ${a} -->
-    % <-- *** show 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 -->
+    % <-- *** show 1 1.4142135623730951 1.7320508075688772 -->
 
 If two "fn" directives are encountered, the last "fn" is called first, and the output 
 of which becomes the input to the first "fn". 
 
     fn add2(x) = x+2
-    var a[] = ^fn:add2 ^fn:sqrt 1 2 3 4 5 6
+    var @a = ^fn:add2 ^fn:sqrt 1 2 3
     show ${a}
 
 In the previous example each scalar is to go
-through the "expr" function first before being sent to the "add2" function.
+through the "sqrt" function first before being sent to the "add2" function.
 
     % <-- fn add2(x) = x+2 -->
     % <-- *** fn add2(x) = x+2 -->
-    % <-- var a[] = ^fn:add2 ^fn:sqrt 1 2 3 4 5 6 -->
-    % <-- *** env a[] = 3.000000 3.414214 3.732051 4.000000 4.236068 4.449490 -->
-
-The dollar-expression, which would recognize that a variable denotes a
-list of scalars rather than a single scalar, 
-would generate a string showing all these scalars each separated by a single space.
-
-    var a[] = 1 2 3 4
-    show ${a}
-
-These commands would have seen following outputs:
-
-    % <-- var a[] = 1 2 3 4 -->
-    % <-- *** env a[] = 1.000000 2.000000 3.000000 4.000000 -->
+    % <-- var @a = ^fn:add2 ^fn:sqrt 1 2 3 -->
+    % <-- *** env @a = 3 3.414213562373095 3.732050807568877 -->
     % <-- show ${a} -->
-    % <-- *** show 1.000000 2.000000 3.000000 4.000000 -->
+    % <-- *** show 3 3.414213562373095 3.732050807568877 -->
 
 It is also possible to refer to an array element. To do that simply use the variable
 followed by an underscore itself.
 
+    var @a = 1 2 3
+    var @b = a_1 a_2
 
+Following would be the result of the translation.
 
+    % <-- var @a = 1 2 3 -->
+    % <-- *** env @a = 1 2 3 -->
+    % <-- var @b = a_1 a_2 -->
+    % <-- *** env @b = 2 3 -->
+    % <-- show ${b} -->
+    % <-- *** show 2 3 -->
 
 
 # Built-in Functions
