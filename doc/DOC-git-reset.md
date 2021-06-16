@@ -2,31 +2,24 @@
 title: Restoring Old Verions
 ---
 
+Reset will rewind your current HEAD branch to the specified version.  In our
+example above, we'd like to return to the one before the current revision -
+effectively making our last commit undone.
 
-# How can I restore a previous version of my project?
+    $ git reset --soft HEAD~1
 
-Using a version control system like Git brings a fantastic benefit: you can
-return to any old version of your project at any time. Returning to an Old
-Revision
+Note the ``--soft`` flag: this makes sure that the changes in undone revisions
+are preserved. After running the command, you'll find the changes as
+uncommitted local modifications in your working copy.
 
-The fastest way to restore an old version is to use the "reset" command:
+If you don't want to keep these changes, simply use the ``--hard ``flag. 
+Be sure to only do this when you're sure you don't need these changes anymore.
+
+    $ git reset --head HEAD~1
+
+The same technique allows you to return to any previous revision:
 
     $ git reset --hard 0ad5a7a6
-
-This will rewind your HEAD branch to the specified version. All commits that
-came after this version are effectively undone; your project is exactly as it
-was at that point in time.
-
-The reset command comes with a couple of options, one of the more interesting
-ones being the "--soft" flag. If you use it instead of --hard, Git will keep all
-the changes in those "undone" commits as local modifications:
-
-    $ git reset --soft 0ad5a7a6
-
-You'll be left with a couple of changes in your working copy and can then decide
-what to do with them.
-
-# Restoring a Revision in a New Local Branch
 
 As said, using the reset command on your HEAD branch is a quite drastic action:
 it will remove any commits (on this branch) that came after the specified
@@ -45,5 +38,9 @@ current HEAD revision, you also need to provide a commit hash - the old project
 revision we want to restore.
 
 Voilà: you now have a new branch named "old-project-state" reflecting the old
-version of your project - without touching or even removing any other commits or
-branches.
+version of your project - without touching or even removing any other commits
+or branches. You can then merge the change in this branch to that of the HEAD,
+effectively "restoring" the old changes.
+
+
+
