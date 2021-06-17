@@ -1,7 +1,8 @@
 ---
 title: The Diagram
-latex.features: parskip
-latex.cjk: 1
+translator: camper
+program: camper
+dest: .
 ---
 
 A diagram block is to generate a diagram with vector based figures,
@@ -133,92 +134,92 @@ drawing environment.
 - origin ^east
 - origin ^west
 
-  If it starts with "left:<x>", "right:<x>", "up:<y>", 
-  "down:<y>", where the distance expresses the number of grid units
-  to move in that direction. 
-  
-  If it starts with "x:", then it expresses the distance from the left hand side
-  of the viewport. 
+If it starts with "left:<x>", "right:<x>", "up:<y>", 
+"down:<y>", where the distance expresses the number of grid units
+to move in that direction. 
 
-  If it starts with "y:", then it expresses the distance from the bottom side
-  of the viewport.
-  
-  If it starts with "X:", then what follows will be interpreted as 
-  expressing a number that is "x" number of unit distances from the right hand side
-  of the viewport.
-  
-  If it starts with "Y:", then what follows is to be interpreted as
-  expressing a number that is "x" number of unit distances away from the top of the
-  viewport.
+If it starts with "x:", then it expresses the distance from the left hand side
+of the viewport. 
 
-  If it is "sx:2.5" then it sets the scaling factor in the horizontal direction 
-  to be 2.5. 
+If it starts with "y:", then it expresses the distance from the bottom side
+of the viewport.
 
-  If it is "sy:2.5" then it sets the scaling factor in the vertical direction 
-  to be 2.5. 
-  
-  If it is "s:2.5" then it sets the scaling factor in the horizontal and
-  vertical direction to be 2.5. 
-  
-  If it is "at:a" then the offset will be set to a point coincides with the first
-  point of that path.
+If it starts with "X:", then what follows will be interpreted as 
+expressing a number that is "x" number of unit distances from the right hand side
+of the viewport.
 
-  If it is "at:a_0" then the offset will be set to a point coincides with the first
-  point of that path.
+If it starts with "Y:", then what follows is to be interpreted as
+expressing a number that is "x" number of unit distances away from the top of the
+viewport.
 
-  If it is "at:a_1" then the offset will be set to a point coincides with the second
-  point of that path.
+If it is "sx:2.5" then it sets the scaling factor in the horizontal direction 
+to be 2.5. 
 
-  If it is "at:a_2" then the offset will be set to a point coincides with the third
-  point of that path.
+If it is "sy:2.5" then it sets the scaling factor in the vertical direction 
+to be 2.5. 
 
-  If it is "at:a_3" then the offset will be set to a point coincides with the forth
-  point of that path.
+If it is "s:2.5" then it sets the scaling factor in the horizontal and
+vertical direction to be 2.5. 
 
-  If it is "pt:a" then it creates a new path variable named 'a' such that it
-  contains a single point that coincides with the current settings of the
-  new origin.  If this path variable already exists it will be overwritten.
+If it is "at:a" then the offset will be set to a point coincides with the first
+point of that path.
 
-  If it starts with "reset" then the current origin will be set to (0,0) and the 
-  scaling factors will be reset to 1 in both horizontal and vertical directions.
+If it is "at:a_0" then the offset will be set to a point coincides with the first
+point of that path.
 
-  If it starts with 'center', 'north', 'south', 'northwest', 'northeast', 'southwest', 
-  'southeast', 'east' and 'west', then it sets the origin to the center,  the four  
-  corners of the viewport, or the middle of the four sides of it.
+If it is "at:a_1" then the offset will be set to a point coincides with the second
+point of that path.
+
+If it is "at:a_2" then the offset will be set to a point coincides with the third
+point of that path.
+
+If it is "at:a_3" then the offset will be set to a point coincides with the forth
+point of that path.
+
+If it is "pt:a" then it creates a new path variable named 'a' such that it
+contains a single point that coincides with the current settings of the
+new origin.  If this path variable already exists it will be overwritten.
+
+If it starts with "reset" then the current origin will be set to (0,0) and the 
+scaling factors will be reset to 1 in both horizontal and vertical directions.
+
+If it starts with 'center', 'north', 'south', 'northwest', 'northeast', 'southwest', 
+'southeast', 'east' and 'west', then it sets the origin to the center,  the four  
+corners of the viewport, or the middle of the four sides of it.
 
 
 # The 'id' command
 
-+ id 0
-+ id 1
-+ id a
-+ id A
-+ id A0
-+ id a12
-+ id node0
-+ id node12
+- id 0
+- id 1
+- id a
+- id A
+- id A0
+- id a12
+- id node0
+- id node12
 
-  Set the "id" to a string. This string would be interpreted in constructing
-  ID(s) for path, node, and other commands that would have required an ID.
+Set the "id" to a string. This string would be interpreted in constructing
+ID(s) for path, node, and other commands that would have required an ID.
 
-  If set to a string then it must be either 'a' or 'A'. If set to 'a' then the
-  next ID assigned will be 'a', after which the 'id' is changed to 'b'. It
-  cycles through 'a' to 'z', and then go back to being 'a' again.  If set to
-  'A', then it cycles through 'A' to 'Z' and then go back to being 'A' again.
+If set to a string then it must be either 'a' or 'A'. If set to 'a' then the
+next ID assigned will be 'a', after which the 'id' is changed to 'b'. It
+cycles through 'a' to 'z', and then go back to being 'a' again.  If set to
+'A', then it cycles through 'A' to 'Z' and then go back to being 'A' again.
 
-  If set to an integer, then that integer will become the next assigned ID, and
-  then the 'id' parameter will be incremented by 1. 
-  
-  It can also be set to a string such as 'A0', 'a12', 'node0', 'node12', with a
-  pattern of one of more alpha letters followed by one of more digits. In this
-  case this ID will be used as is for the next auto ID assignment, but then
-  this ID will be changed such that the alpha letters remain the same but
-  number incremented by 1.  For instance, if the current 'id' parameter is
-  'A0', it will become 'A1' after 'A0' has been assigned. Similarly, 'a12' is
-  to become 'a13', 'node0' to 'node1', and 'node12' to 'node13'. 
+If set to an integer, then that integer will become the next assigned ID, and
+then the 'id' parameter will be incremented by 1. 
 
-  If none of the previous pattern is detected, the first assigned ID
-  will be 0, and then next one 1, etc.
+It can also be set to a string such as 'A0', 'a12', 'node0', 'node12', with a
+pattern of one of more alpha letters followed by one of more digits. In this
+case this ID will be used as is for the next auto ID assignment, but then
+this ID will be changed such that the alpha letters remain the same but
+number incremented by 1.  For instance, if the current 'id' parameter is
+'A0', it will become 'A1' after 'A0' has been assigned. Similarly, 'a12' is
+to become 'a13', 'node0' to 'node1', and 'node12' to 'node13'. 
+
+If none of the previous pattern is detected, the first assigned ID
+will be 0, and then next one 1, etc.
 
 
 
@@ -384,39 +385,6 @@ attempt to fill the area, even when the area is not closed. For
 MetaPost/MetaFun the path will have to be closed before calling the 'fill'
 MetaPost, as otherwise the compilation will complain.
 
-# Hint Flags
-
-Following are currently defined hint flags.
-
-    linedashed     make the line a dashed line
-    linesize2      change the line size to 2pt
-    linesize4      change the line size to 4pt
-    nostroke       no stroke 
-    nofill         no fill even for a closed path
-    lighter        the fill color should be lighter version of the current fill color
-    darker         the fill color should be a darker version of the current fill color
-    shadow         this path segment is drawn as a drop shadow (and thus 
-                   deserves some special treatment if possible)
-
-A hint value is an integer that is the bitwise OR'ed value of all the flags
-that was shown above.  The hints are extra values hinted by the user to request
-that certain segment of their path should be drawn a little differently than
-the rest.
-
-For instance, if we were to construct a path to represent an arrow, and we want
-the line of the arrow body to be thicker than the lines of the arrow head, we
-could do that by specifying a hint value of "2", which is the value of
-"linesize2", which serves to add a 2pt thickness to the existing thickness of
-the line.  Following is an example of drawing an upper pointing arrow such that
-the body of the arrow is drawn with a line that is 2pt thicker than its arrow
-head.
-
-    draw ^hint:linesize2 (0,0)~(0,2) () (0,2)[l:-0.5,-0.5] () (0,2)[l:0.5,-0.5]
-
-The path above consists of three path segments: only the first line segment will 
-be affected by the hint.  The next two segments will not be affected. As
-soon as a path segment is terminated by (cycle) or (), the hint is reset.
-
 
 
 
@@ -467,169 +435,6 @@ of an arc. However, a square can be forced if ".sq" option is given.
     drawlinesegarc.sq (2,0)~(0,0)~(0,2)
 
 
-# Expressing relative points of a path
-
-Each of the following syntax denotes a relative point.
-
-+ [l:dx,dy] 
-
- This to draw a line from the current point to the new location is
- relative to the current point by dx and dy. Note that dx and dy are
- specified in Cartesian coordinates, thus positive dx is towards the
- right, and positive dy is towards the top.
-
-+ [h:dx]
-
-	This is to draw a horizontal line.
-  
-+ [v:dy] 
-
-	This is to draw a vertical line.
-
-+ [a:rx,ry,angle,bigarcflag,sweepflag,dx,dy] 
-
-  This is to draw an arc to the end point that is dx/dy away from the
-  current point. The arc is assumed to trace alone an elliptical arc
-  with x-axis and y-axis each of which having a radius of 'rx' and
-  'ry'. The angle is in the unit of degrees, specifying the rotation
-  of the ellipse if any, with a positive number denoting a
-  counter-clockwise rotation. The 'bigarcflag' is set to 1 if the arc
-  to be drawn are the longer of the two between the starting point and
-  end point. Otherwise the shorter arc is to be drawn. The 'sweepflag'
-  expresses whether the arc is to travel counterclockwise or clockwise
-  from the current point to the new point; the value 0 is for a
-  anti-clockwise rotation and the value 1 is for a clockwise rotation.
-  Thus, to draw an arc from the last point to a new point that is on
-  its right hand side of the last point, and if the sweepflag is set
-  to 0, then the arc will always appear below both points.
-
-+ [c:dx1,dy1,dx2,dy2,dx,dy] 
-
-  This is to draw a cubic Bezier curve from the current point to the
-  new point that is dx/dy away. The (dx1,dy1), and (dx2,dy2) are two
-  control points. Note that all numbers are specified relative to the
-  last point.
-
-+ [s:dx2,dy2,dx,dy] 
-
-  This is to draw a cubic Bezier curve from the current point to the
-  new point that is dx/dy away. Only the second point of the current
-  Bezier curve needs to be provided. The first control point is
-  deduced from the second control point of the previous cubic Bezier
-  curve operation. If the previous operation is not a cubic Bezier
-  curve drawing, but a quadratic Bezier curve drawing, then the first
-  control point of the quadratic curve is used to deduce the first
-  control point of the current operation. If it is neither a cubic nor
-  a quadrilatic, then the last point is assumed.
-
-+ [q:dx1,dy1,dx,dy] 
-	
-  This is to draw a quadrilatic Bezier curve. The dx1/dy1 is the only
-  control point. The dx/dy is the new point. All positions are
-  expressed relative to the last point.
-
-+ [t:dx,dy] 
-
-  This is to draw a quadratic Bezier curve with the first control
-  point deduced from a previous Bezier curve operation. If a previous
-  operation is not a Bezier curve operation, then the last point is
-  assumed to be control point, in which case the drawn curve will be
-  straight line.
-
-+ [angledist:30,1] 
-+ [angledist:30,1,2,2] 
-
-  The [angledist:30,1] directive is to construct a new line segment from the
-  current point to a new location that is 1 unit distance away and 30 degrees
-  counter-clockwise rotation from due east.
-  
-  The [angledist:30,1,1,1] directive is similar to the one before except for
-  the fact that the 30 degree rotation is now to start from a non-zero degree
-  angle that is formed between the reference point (1,1) and the current point:
-  if the current point is (0,0) then the reference angle is 45 degrees, such
-  that the constructed line segment is to land at a point that is 75 degrees 
-  rotation from due east.
-
-+ [turn:30,1] 
-
-  This is to create a new point that is equivalent to making a left hand turn
-  of 30 degrees from the direction you have arrived at the current point, and
-  then travel for one more unit length. If it is to make a right hand turn,
-  then set the angle to a negative number.
-
-+ [clock:30,1]
-+ [clock:30,1,4,0]
-
-  This is to create a new point that is away from the current point in a
-  direciton described by the angle, where angle 0 is straight north, and 90
-  degree is to the right hand side, -90 to the left hand side, and 180 is due
-  south. The first argument is the angle, and the second one is the distance
-  away from the current point.
-
-  If there are a total of four arguments, then the last two arguments
-  represents the x/y coordinates of a point from which the base angle is to be
-  computed. The base angle is the angle formed between the due north line and
-  the line between the current point and the new point. The clock angle is then
-  being added on top of the base angle before used to figure out the new
-  location.
-
-+ [flip:5,5] 
-
-  This is to construct a new point that is the mirror image of the given point
-  (5,5).  The exact location of the new location depends on the last two points
-  traveled, the direction of which is treated as a mirror to which the new point
-  will be reflected upon. The net result could be thought of as folding a paper
-  along the line of the mirror with a point on one side of the line, and see
-  where that point will land on the other side of the line after folding.
-
-+ [sweep:-1,0,180] 
-
-  This is to construct an arc of a given radius that is the same in both X and
-  Y dimension. The first two argument is the relative position to the current
-  position where the center of the arc is. The last argument is the number in
-  degrees representing the angle to sweep over. A positive angle expresses that
-  the sweep should happen in a counter-clockwise direction, and a negative
-  value expresses a clockwise sweep.
-
-+ [protrude:2] 
-
-  This is to a line protruding from the current extending a distance of
-  "2", in the same direction that goes from the one before the current point
-  to the current point.
-
-+ [dot:0.2]
-
-  This is to place a circle centered at the last position with a given
-  radius of 0.2. The current path segment will be closed after this
-  operation and the current point is not changed.
-
-+ [m:2,-2]
-
-  This operation is to create a new 'M' point that denotes the start of a
-  new path segment.
-  
-  For [m:2,-2], the two numbers express a relative position
-  from the current 'lastpt', after which the current point is updated
-  to this new location.
-
-
-
-
-
-# Expressing points that are anchor points of node or box
-
-It is possible to refer to the anchor point of a node or a box.
-The node or box must be referenced by its id, and an anchor point
-that is relevant to that particular article.
-Following example draws a line between two points where the first 
-point is located 2 grid distance to the left and 3 grid distance north 
-of the node with id "a" and the anchor of that node is the north of the node,
-and the second point being the "north" anchor itself.
-
-    draw <node.a:n,-2,3> ~ <node.a:n>
-
-
-
 
 # Constructing a path
 
@@ -662,6 +467,183 @@ generated two paths where the first one is a straight line from (0,0) to (3,4),
 and the second one from (2,2) to (5,6).
 
     path a = (0,0)[l:3,4] (2,2)[l:3,4]
+
+
+## Relative points
+
+Each of the following syntax denotes a relative point.
+
+- [l:dx,dy] 
+
+This to draw a line from the current point to the new location is
+relative to the current point by dx and dy. Note that dx and dy are
+specified in Cartesian coordinates, thus positive dx is towards the
+right, and positive dy is towards the top.
+
+ [h:dx]
+
+This is to draw a horizontal line.
+  
+- [v:dy] 
+
+This is to draw a vertical line.
+
+- [a:rx,ry,angle,bigarcflag,sweepflag,dx,dy] 
+
+This is to draw an arc to the end point that is dx/dy away from the
+current point. The arc is assumed to trace alone an elliptical arc
+with x-axis and y-axis each of which having a radius of 'rx' and
+'ry'. The angle is in the unit of degrees, specifying the rotation
+of the ellipse if any, with a positive number denoting a
+counter-clockwise rotation. The 'bigarcflag' is set to 1 if the arc
+to be drawn are the longer of the two between the starting point and
+end point. Otherwise the shorter arc is to be drawn. The 'sweepflag'
+expresses whether the arc is to travel counterclockwise or clockwise
+from the current point to the new point; the value 0 is for a
+anti-clockwise rotation and the value 1 is for a clockwise rotation.
+Thus, to draw an arc from the last point to a new point that is on
+its right hand side of the last point, and if the sweepflag is set
+to 0, then the arc will always appear below both points.
+
+- [c:dx1,dy1,dx2,dy2,dx,dy] 
+
+This is to draw a cubic Bezier curve from the current point to the
+new point that is dx/dy away. The (dx1,dy1), and (dx2,dy2) are two
+control points. Note that all numbers are specified relative to the
+last point.
+
+- [s:dx2,dy2,dx,dy] 
+
+This is to draw a cubic Bezier curve from the current point to the
+new point that is dx/dy away. Only the second point of the current
+Bezier curve needs to be provided. The first control point is
+deduced from the second control point of the previous cubic Bezier
+curve operation. If the previous operation is not a cubic Bezier
+curve drawing, but a quadratic Bezier curve drawing, then the first
+control point of the quadratic curve is used to deduce the first
+control point of the current operation. If it is neither a cubic nor
+a quadrilatic, then the last point is assumed.
+
+- [q:dx1,dy1,dx,dy] 
+	
+This is to draw a quadrilatic Bezier curve. The dx1/dy1 is the only
+control point. The dx/dy is the new point. All positions are
+expressed relative to the last point.
+
+- [t:dx,dy] 
+
+This is to draw a quadratic Bezier curve with the first control
+point deduced from a previous Bezier curve operation. If a previous
+operation is not a Bezier curve operation, then the last point is
+assumed to be control point, in which case the drawn curve will be
+straight line.
+
+- [angledist:30,1] 
+- [angledist:30,1,2,2] 
+
+The [angledist:30,1] directive is to construct a new line segment from the
+current point to a new location that is 1 unit distance away and 30 degrees
+counter-clockwise rotation from due east.
+
+The [angledist:30,1,1,1] directive is similar to the one before except for
+the fact that the 30 degree rotation is now to start from a non-zero degree
+angle that is formed between the reference point (1,1) and the current point:
+if the current point is (0,0) then the reference angle is 45 degrees, such
+that the constructed line segment is to land at a point that is 75 degrees 
+rotation from due east.
+
+- [turn:30,1] 
+
+This is to create a new point that is equivalent to making a left hand turn
+of 30 degrees from the direction you have arrived at the current point, and
+then travel for one more unit length. If it is to make a right hand turn,
+then set the angle to a negative number.
+
+- [clock:30,1]
+- [clock:30,1,4,0]
+
+This is to create a new point that is away from the current point in a
+direciton described by the angle, where angle 0 is straight north, and 90
+degree is to the right hand side, -90 to the left hand side, and 180 is due
+south. The first argument is the angle, and the second one is the distance
+away from the current point.
+
+If there are a total of four arguments, then the last two arguments
+represents the x/y coordinates of a point from which the base angle is to be
+computed. The base angle is the angle formed between the due north line and
+the line between the current point and the new point. The clock angle is then
+being added on top of the base angle before used to figure out the new
+location.
+
+- [flip:5,5] 
+
+This is to construct a new point that is the mirror image of the given point
+(5,5).  The exact location of the new location depends on the last two points
+traveled, the direction of which is treated as a mirror to which the new point
+will be reflected upon. The net result could be thought of as folding a paper
+along the line of the mirror with a point on one side of the line, and see
+where that point will land on the other side of the line after folding.
+
+- [sweep:-1,0,180] 
+
+This is to construct an arc of a given radius that is the same in both X and
+Y dimension. The first two argument is the relative position to the current
+position where the center of the arc is. The last argument is the number in
+degrees representing the angle to sweep over. A positive angle expresses that
+the sweep should happen in a counter-clockwise direction, and a negative
+value expresses a clockwise sweep.
+
+- [protrude:2] 
+
+This is to a line protruding from the current extending a distance of
+"2", in the same direction that goes from the one before the current point
+to the current point.
+
+- [dot:0.2]
+
+This is to place a circle centered at the last position with a given
+radius of 0.2. The current path segment will be closed after this
+operation and the current point is not changed.
+
+- [m:2,-2]
+
+This operation is to create a new 'M' point that denotes the start of a
+new path segment.
+
+For [m:2,-2], the two numbers express a relative position
+from the current 'lastpt', after which the current point is updated
+to this new location.
+
+
+[ Points of objects]
+
+It is possible to add a path point that is an existing point of an object, such
+as a node or box. A node or a box is an object crreated by the the use of the
+'node' or 'box' command. Each of these command creates one or more objects named
+a node or a box.
+
+Both the node and a box are able to be referred to by a Id, which consists of
+word characters, such as letters, digits, and underscores. Unlike a symbol name,
+which must start with a letter, the Id of a node or a box does not have this
+restriction. Any combination of word characters is allows.
+
+For a node, which is always a circle, and a box, which is by default a
+rectangle, but could also be other shapes by the use of the 'boxtype' attribute,
+there are anchor points thare points around the outline of the shape, that can
+be used as the position of the path. Following example draws a line between two
+points where the first point is located 2 grid distance to the left and 3 grid
+distance north of the node of id "a", to the anchor of another node that is the
+at the due north of the node.
+
+    draw <node.a:n,-2,3> ~ <node.a:n>
+
+The syntax for expressing an "anchor" point of an object the use of a set of
+angle brackets, within which the Id of the object, followed by a period and the
+anchor name,and then the colon, and then two numbers expressing the offset from
+that point. This syntax allows for a line to be drawn from a point outside of
+this anchor to an anchor itself, which is what happened for the example above.
+
+## Saving an retrieving a path
 
 A path can be saved and later retrieved by a name. This can be
 done by the 'path' command. There are other ways create a path as well.
@@ -731,29 +713,68 @@ Note that the second method would always retrieve a single point, even when the
 symbol does not come with an index. For instance, the ``(&a)`` notation would
 have retrieved the location of the first point of "a" which is (0,0).
 
-When it comes to the "cycle" point, which is expressed by the presence of ``[z]``,
-the first method and the second would have an even bigger difference. Due
-to the fact that a "cycle" point is an independent path point by itself, 
-of type "z", the first method would have copied the "cycle" point literally, 
-whileas the second method would equates to a no-op. 
+## Closing a path
+
+When it comes to "closing" a path, which means to express the fact that the last point
+of the path should always be connected with the first of the path, thus creating 
+a "closed" path, creating an area that is "inside the path". This allows for 
+possibilities of filling
+this area with a specific fill color a gradient. 
+
+The syntax for expressing a "closed" path is to add ``[z]`` to the end
+of the path expression. Internally, this would translate to creating an internal
+path point that is marked as "z", as opposed to other path points such as "M", "L",
+"Q", "C", and "A". 
+This means that for the following example, there would be three internal
+path points for path "a":
 
     path a = (0,0)[l:3,4][z]
+
+Care should be taken when a path point of "a" is to be used when constructing
+another path, such as "dummy1" below. For the example of "dummy1" below, this
+path would have had a single internal path point that is of type "z". 
+While for the path of "dummy2", it would be empty because the position of a
+"z" point does not exist.
+
     path dummy1 = &a_2
     path dummy2 = (&a_2)
 
-The the example above, the "dummy1" path would have contained a single "cycle" point,
-and the "dummy2" path would have had zero path points in it.
+## The 'lastpt'
 
-The second method would also move the 'lastpt' to that of the retrieved path point, 
-if successful. Thus, it is absolute critical to use the second method when starting
-a M point followed by relative points, which would rely on the 'lastpt' being updated
-correctly. The first method would not have updated the 'lastpt' thus making it impossible
-to use relative points correctly. In the following example, the path "dummy1" would 
-not have been created correctly and the path "dummy2" would.
+When constructing a path, the last position of a path point is remembered,
+and will be utilized when a new path point is added using a relative-point
+expression. In the following example the three internal points of a path
+is at (0,1), (3,1), and (3,5), because the relative point expression
+would add a distance the 'lastpt' when computing its own position.
+
+    path a = (0,1)[h:3][v:4]
+
+The same 'lastpt' will persist to the next construction expression, 
+whether it is part of a 'path' command or another. 
+This means that if there is another 'path' command immediately following
+the previous 'path' command, it would inherit the same 'lastpt' position 
+when the command started with the same position as the 'lastpt'
+when the last 'path' command ended. This means that the path "b" in the following
+example would have had a single point that is (4,6).
+
+    path a = (0,1)[h:3][v:4]
+    path b = [l:1,1]
+
+Note that the 'lastpt' would only move when an absolute point or a relative
+point is specified. It will not be moved when an existing path point from anther
+path is "pasted", such as the following example, which might not have
+created the path for "dummy1" that is (1,1) and (4,5) as was expected.
 
     path a = (1,1)
-    path dummy1 = &a[l:3,4]
-    path dummy2 = (&a)[l:3,4]
+    path dummy1 = &a [l:3,4]
+
+To ensure that the path created is indeed (1,1) and (4,5), it should be changed
+to the following.
+
+    path a = (1,1)
+    path dummy2 = (&a) [l:3,4]
+
+## Path functions
 
 Each path would also allow for a 'path function' to be specifed. A 
 path function is similar to a named path, except that its contents
@@ -781,28 +802,74 @@ the same circle path function could be invoked as follows.
     path o = (2,3)
     path a = &circle{&o,4}
 
-[ Setting the 'hints' ]
+Note that 'lastpt' is not moved when a path function is encountered.
+
+## Setting the 'hint'
 
 There is an internal variable named 'hints' that holds the last hints
-designated by the user. To set this variable, use the "hints:" directive.
+designated by the user. To set this variable, use the "hint:" directive.
 
-+ hints:1
+- hint:linedashed
+- hint:linedashed|linesize2
+- hint:linedashed|linesize2|linesize4
 
-  The "hints:1" directive will set the 'hints' to 1. The value
-  after the colon is expected to be an integer that is bitwise OR'ed
-  value of hint flags.  See the section "Hint Flags" for more information.
-  Following example sets up a hint such that for a path the line between
-  (0,0) and (5,5) should've been drawn using a dashed line. 
+The value can be "OR'ed" together using one or more of the following
+values:
 
-    path a = hints:1 (0,0) [l:5,5] (2,2) [l:5,5] 
++ linedashed     
+  make the line a dashed line
++ linesize2      
+  change the line size to 2pt
++ linesize4      
+  change the line size to 4pt
++ nostroke       
+  no stroke 
++ nofill         
+  no fill even for a closed path
++ lighter        
+  the fill color should be lighter version of the current fill color
++ darker         
+  the fill color should be a darker version of the current fill color
++ shadow         
+  this path segment is drawn as a drop shadow (and thus 
+  deserves some special treatment if possible)
 
-  Note that a hint only extends as far as the length of particular component 
-  of a path following a path, and thus it must be set before the start of a 
-  component. This in the previous example the line segment from (2,2) to (7,7)
-  would not be affected by the setting of the previous hints.
+A hint value is an integer that is the bitwise OR'ed value of all the flags
+that was shown above.  The hints are extra values hinted by the user to request
+that certain segment of their path should be drawn a little differently than
+the rest.
+
+For instance, if we were to construct a path to represent an arrow, and we want
+the line of the arrow body to be thicker than the lines of the arrow head, we
+could do that by specifying a hint value of "2", which is the value of
+"linesize2", which serves to add a 2pt thickness to the existing thickness of
+the line.  Following is an example of drawing an upper pointing arrow such that
+the body of the arrow is drawn with a line that is 2pt thicker than its arrow
+head.
+
+    draw ^hint:linesize2 (0,0)~(0,2) () (0,2)[l:-0.5,-0.5] () (0,2)[l:0.5,-0.5]
+
+The path above consists of three path segments: only the first line segment will 
+be affected by the hint.  The next two segments will not be affected. As
+soon as a path segment is terminated by (cycle) or (), the hint is reset.
 
 
-[ Setting up the 'offset' ]
+
+The "hints:1" directive will set the 'hints' to 1. The value
+after the colon is expected to be an integer that is bitwise OR'ed
+value of hint flags.  See the section "Hint Flags" for more information.
+Following example sets up a hint such that for a path the line between
+(0,0) and (5,5) should've been drawn using a dashed line. 
+
+  path a = hints:1 (0,0) [l:5,5] (2,2) [l:5,5] 
+
+Note that a hint only extends as far as the length of particular component 
+of a path following a path, and thus it must be set before the start of a 
+component. This in the previous example the line segment from (2,2) to (7,7)
+would not be affected by the setting of the previous hints.
+
+
+## Setting up the 'offset'
 
 During a path construction, each path point can be given an additional
 "offset".  The exact distance of the offset is controled by one or more
@@ -821,62 +888,62 @@ offset.
 Following are additional directives related to updating or setting
 offsets.
 
-+ ^left:2
-+ ^right:2
-+ ^up:2
-+ ^down:2
+- ^left:2
+- ^right:2
+- ^up:2
+- ^down:2
 
-  The 'left', 'right', 'up', and 'down' directives is each to shift the offset
-  in the direction as instructed for a given number of grid distances.  The
-  value after the colon is expected to be a number that expresses the number of
-  grid units.  Note also that these operations are accumulative such that
-  incurring two "up:1" equals a single "up:2".
+The 'left', 'right', 'up', and 'down' directives is each to shift the offset
+in the direction as instructed for a given number of grid distances.  The
+value after the colon is expected to be a number that expresses the number of
+grid units.  Note also that these operations are accumulative such that
+incurring two "up:1" equals a single "up:2".
 
-  Note that it is legal to use negative numbers for each of these directives.
-  For instance: 'right:-2', or 'top:-2', 'right:-2.3', or 'top:-2.3', in which
-  case the offset will be shifted in the opposite direction.
+Note that it is legal to use negative numbers for each of these directives.
+For instance: 'right:-2', or 'top:-2', 'right:-2.3', or 'top:-2.3', in which
+case the offset will be shifted in the opposite direction.
 
-+ ^at:a
+- ^at:a
 
-  This directive is to set the current offset so that it coincides with the
-  first point of a path named "a". The value after the colon is expected to be
-  a string that holds the name of an existing path, such as 'a', or a
-  path-index designation, such as `a_0`, `a_1`, `a_2`, etc.
+This directive is to set the current offset so that it coincides with the
+first point of a path named "a". The value after the colon is expected to be
+a string that holds the name of an existing path, such as 'a', or a
+path-index designation, such as `a_0`, `a_1`, `a_2`, etc.
 
-+ ^at:center
-+ ^at:north
-+ ^at:south
-+ ^at:east
-+ ^at:west
-+ ^at:northwest
-+ ^at:northeast
-+ ^at:southwest
-+ ^at:southeast
+- ^at:center
+- ^at:north
+- ^at:south
+- ^at:east
+- ^at:west
+- ^at:northwest
+- ^at:northeast
+- ^at:southwest
+- ^at:southeast
 
-  This directive would move the offset to the center of the viewport, 
-  the four corners of it, or the mniddle of the four side of the viewport.
+This directive would move the offset to the center of the viewport, 
+the four corners of it, or the mniddle of the four side of the viewport.
 
-+ ^x:2
-+ ^y:2
-+ ^X:2
-+ ^Y:2
+- ^x:2
+- ^y:2
+- ^X:2
+- ^Y:2
 
-  The "^x:" directive will set the offset to an absolute coordinate in the horizontal
-  direction where 0 is the left hand side of the viewport.
+The "^x:" directive will set the offset to an absolute coordinate in the horizontal
+direction where 0 is the left hand side of the viewport.
 
-  The "^y:" directive will set the offset to an absolute coordinate in the vertical
-  direction where 0 is the bottom of the viewport.
+The "^y:" directive will set the offset to an absolute coordinate in the vertical
+direction where 0 is the bottom of the viewport.
 
-  The "^X:" directive sets the offset to an absolute coordiate in the horizontal 
-  direction where 0 is the right hand side of the viewport and 1 is one unit grid
-  immediately to the right hand side of the viewport.
+The "^X:" directive sets the offset to an absolute coordiate in the horizontal 
+direction where 0 is the right hand side of the viewport and 1 is one unit grid
+immediately to the right hand side of the viewport.
 
-  The "^Y:" directive sets the offset to an absolute coordinate in the vertical 
-  direction where 0 is the top side of the viewport and 1 is one unit grid
-  immediately below the top side of the viewport.
+The "^Y:" directive sets the offset to an absolute coordinate in the vertical 
+direction where 0 is the top side of the viewport and 1 is one unit grid
+immediately below the top side of the viewport.
 
 
-[ Setting up 'veer' direction ]
+## Setting up 'veer' direction
 
 Veer is a curve that connects two points. Normally, the "~" join would
 construct a straight line between two points. However, the "~~", "~~~", "~~~~",
@@ -886,19 +953,18 @@ right hand side going from the first point to the second point. However, but
 setting the directive "veer" to a string "left", the veer curve would then veer
 to the left hand side instead.
 
-+ ^veer:left
-+ ^veer:right
+- ^veer:left
+- ^veer:right
 
-  Set is so that the veer will turn to the left instead of right
-  which is the default. The veer is enabled by two or more tilde
-  joints between coordinate points.
+Set is so that the veer will turn to the left instead of right
+which is the default. The veer is enabled by two or more tilde
+joints between coordinate points.
 
-  ```
-  draw ^veer:left (0,0)~~(10,0) 
-  ```
+```
+draw ^veer:left (0,0)~~(10,0) 
+```
 
-
-[ Saving and restoring the 'lastpt' ]
+## Saving and restoring the 'lastpt'
 
 The 'lastpt' is a special point that is updated everytime a new point is
 specified. It is also moved when a relative point is specified. It is not moved
@@ -907,23 +973,23 @@ path variable. In addition, '^lastat', '^lastx' and '^lasty' directives could
 directly modify the 'lastpt', and the '^lastpt' directive could save the current
 location of the 'lastpt' to a new path variable or updating an existing one.
 
-+ ^lastat:a
+- ^lastat:a
 
-  Set the x/y position of the 'lastpt' to that of the first point
-  of an existing path "a".
+Set the x/y position of the 'lastpt' to that of the first point
+of an existing path "a".
 
-+ ^lastx:2
+- ^lastx:2
 
-  Set the x position of the 'lastpt' to this number.
+Set the x position of the 'lastpt' to this number.
 
-+ ^lasty:2
+- ^lasty:2
 
-  Set the y position of the 'lastpt' to this number.
+Set the y position of the 'lastpt' to this number.
 
-+ ^lastpt:a
+- ^lastpt:a
 
-  Save the current x/y positions of the 'lastpt' to a path
-  named "a", overriding the existing path if it already exists.
+Save the current x/y positions of the 'lastpt' to a path
+named "a", overriding the existing path if it already exists.
 
 
 
@@ -1072,339 +1138,339 @@ an absolute point, or a scalar.
 
 + midpoint 
 
-  The ``midpoint`` function returns the mid point of the first two
-  points in a path expression if a single argument is given. Following
-  returns a path with a single point: (1.5,2), which is the mid point
-  of (1,1) and (2,3).
+The ``midpoint`` function returns the mid point of the first two
+points in a path expression if a single argument is given. Following
+returns a path with a single point: (1.5,2), which is the mid point
+of (1,1) and (2,3).
 
-  ```          
-  path b = &midpoint{(1,1),(2,3)}
-  ```
+```          
+path b = &midpoint{(1,1),(2,3)}
+```
 
-  Note that only the first two points of a path is used. The other
-  points are ignored. Thus if path a has three points, then the third
-  point is simply ignored.
+Note that only the first two points of a path is used. The other
+points are ignored. Thus if path a has three points, then the third
+point is simply ignored.
 
-  If two arguments are given, it does a linear interpolation alone the
-  line segment of the first two points, and return a point that
-  corresponds to the percentage of the path traveled from the first
-  point to the second. The second argument is an floating point number
-  between 0-1. For example, if 0.5 is given as the second parameters,
-  it should return the same path as that with a single argument. Thus,
-  following example will return the same result as the one before.
+If two arguments are given, it does a linear interpolation alone the
+line segment of the first two points, and return a point that
+corresponds to the percentage of the path traveled from the first
+point to the second. The second argument is an floating point number
+between 0-1. For example, if 0.5 is given as the second parameters,
+it should return the same path as that with a single argument. Thus,
+following example will return the same result as the one before.
 
-  ```          
-  path b = &midpoint{(1,1),(2,3),0.5}
-  ```
+```          
+path b = &midpoint{(1,1),(2,3),0.5}
+```
 
 + scatterpoints 
 
-  The ``scatterpoints`` function is to create new path with the
-  points distributed evenly beteen the two end points. The 
-  first and the second argument denotes the first and the last
-  point of the path. The third argument is a scalar 
-  expressing how many middle points it needs to create between
-  the two end points. Thus if it is zero then the path will
-  be just the starting and ending points. If it is 1 then
-  the path will be three points, with one point in the middle.
-  In the following example two middle points will be created
-  such that the path contains four points.
+The ``scatterpoints`` function is to create new path with the
+points distributed evenly beteen the two end points. The 
+first and the second argument denotes the first and the last
+point of the path. The third argument is a scalar 
+expressing how many middle points it needs to create between
+the two end points. Thus if it is zero then the path will
+be just the starting and ending points. If it is 1 then
+the path will be three points, with one point in the middle.
+In the following example two middle points will be created
+such that the path contains four points.
 
-  ```
-  path a = &scatterpoints{(1,0),(10,0),2}
-  ```
+```
+path a = &scatterpoints{(1,0),(10,0),2}
+```
 
 + linelineintersect 
 
-  The ``linelineintersect`` Returns new a path that contains a
-  single point which is the point at which the two lines intersect.
-  The first line is described by the symbol 'a', which must have at
-  least two points. The second line is described by the symbol 'b',
-  which must have at least two points. Only the first two points of
-  'a' and 'b' are considered. The rest of the points of 'a' and 'b'
-  are ignored.
+The ``linelineintersect`` Returns new a path that contains a
+single point which is the point at which the two lines intersect.
+The first line is described by the symbol 'a', which must have at
+least two points. The second line is described by the symbol 'b',
+which must have at least two points. Only the first two points of
+'a' and 'b' are considered. The rest of the points of 'a' and 'b'
+are ignored.
 
-  ```
-  path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
-  ```
+```
+path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
+```
 
 
 + linecircleintersect 
 
-  The ``linecircleintersect`` function returns new a path that
-  contains two points for the line and circle intersection. In the
-  following diagram the pts variable 'pts' will hold two points: (6,2)
-  and (4,2).
+The ``linecircleintersect`` function returns new a path that
+contains two points for the line and circle intersection. In the
+following diagram the pts variable 'pts' will hold two points: (6,2)
+and (4,2).
 
-  ```
-  path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
-  ```
+```
+path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
+```
 
-  Note that the returned point is always arranged such that the first
-  point is on the left hand side of the second point.
+Note that the returned point is always arranged such that the first
+point is on the left hand side of the second point.
 
 + circlecircleintersect 
 
-  This method returns one or two points where two circles intersect.
+This method returns one or two points where two circles intersect.
 
-  ```
-  path b = &circlecircleintersect{(0,0),10,(5,0),10}
-  ```
+```
+path b = &circlecircleintersect{(0,0),10,(5,0),10}
+```
 
 
 + circlecircleintersectclip
 
-  This method returns a closed path that describes the area that is
-  the intersection area of the two circle areas. Note that it is
-  important that the circle on the left-hand side is specified first.
+This method returns a closed path that describes the area that is
+the intersection area of the two circle areas. Note that it is
+important that the circle on the left-hand side is specified first.
 
-  ```
-  circle {r:3} (5,6)
-  circle {r:3} (9,6)
-  draw (5,5) (8,1)
-  path c = &circlecircleintersectclip{(5,6),3,(9,6),3,0}
-  % fill the intersection of A and B
-  fill &c
-  ```
+```
+circle {r:3} (5,6)
+circle {r:3} (9,6)
+draw (5,5) (8,1)
+path c = &circlecircleintersectclip{(5,6),3,(9,6),3,0}
+% fill the intersection of A and B
+fill &c
+```
 
 + circlecirclediffclip
 
-  This method returns a closed path that describes the area of one of
-  the circles after it has been clipped away for the area that
-  overlaps with another circle The 5th argument controls which area to
-  remain. If set to 0 then the circle on the left-hand side remains,
-  and if set to 1 the circle on the left hand side remains. Note that
-  it is important that the circle on the left-hand side is specified
-  first.
+This method returns a closed path that describes the area of one of
+the circles after it has been clipped away for the area that
+overlaps with another circle The 5th argument controls which area to
+remain. If set to 0 then the circle on the left-hand side remains,
+and if set to 1 the circle on the left hand side remains. Note that
+it is important that the circle on the left-hand side is specified
+first.
 
-  ```
-  circle {r:3} (5,6)
-  circle {r:3} (9,6)
-  draw (5,5) (8,1)
-  path c = &circlecirclediffclip{(5,6),3,(9,6),3,0}
-  path d = &circlecirclediffclip{(5,6),3,(9,6),3,1}
-  % fill remains of A
-  fill &c
-  % fill remains of B
-  fill &d
-  ```
+```
+circle {r:3} (5,6)
+circle {r:3} (9,6)
+draw (5,5) (8,1)
+path c = &circlecirclediffclip{(5,6),3,(9,6),3,0}
+path d = &circlecirclediffclip{(5,6),3,(9,6),3,1}
+% fill remains of A
+fill &c
+% fill remains of B
+fill &d
+```
 
 + circlepoints 
 
-  The general syntax is: &circlepoints(center,r,a1,a2,a3...), where
-  the 'center' denotes a path with a point expressing the circle
-  center, and 'r' for the radius of the circle, and 'a1', 'a2', 'a3',
-  etc., that expresses the angles starting from the first quadrant.
-  The returned value is the coords of individual points at these
-  angles.
+The general syntax is: &circlepoints(center,r,a1,a2,a3...), where
+the 'center' denotes a path with a point expressing the circle
+center, and 'r' for the radius of the circle, and 'a1', 'a2', 'a3',
+etc., that expresses the angles starting from the first quadrant.
+The returned value is the coords of individual points at these
+angles.
 
-  ```
-  path b = &circlepoints{(0,0),2,30,60,90}
-  ```
+```
+path b = &circlepoints{(0,0),2,30,60,90}
+```
 
 + pie
 
-  Returns a closed path expressing a pie. 
+Returns a closed path expressing a pie. 
 
-  ```
-  path b = &pie(center,radius,angle,span)
-  ```
+```
+path b = &pie(center,radius,angle,span)
+```
 
 + circle 
 
-  Returns a path expressing the circle. It has a syntax of:
-  &circle(center,radius), where 'center' is a path with at least one
-  point, and 'radius' a scalar.
+Returns a path expressing the circle. It has a syntax of:
+&circle(center,radius), where 'center' is a path with at least one
+point, and 'radius' a scalar.
 
-  ```
-  path b = &circle(center,radius)
-  ```
+```
+path b = &circle(center,radius)
+```
 
 + ellipse 
 
-  This return a path expressing an ellipse. The syntax is following.
-  The fourth argument is the rotation in degrees, in counterclockwise
-  rotation.
+This return a path expressing an ellipse. The syntax is following.
+The fourth argument is the rotation in degrees, in counterclockwise
+rotation.
 
-  ```
-  path b = &ellipse(&center,xradius,yradius)
-  path b = &ellipse(&center,xradius,yradius,rotation)
-  ```
+```
+path b = &ellipse(&center,xradius,yradius)
+path b = &ellipse(&center,xradius,yradius,rotation)
+```
 
 + rectangle 
 
-  This returns a path expressing a rectangle between to points. There
-  are three ways construct the triangle, that is shown below. The
-  first one construct a rectangle between to opposing points. The
-  second one constructs a rectangle with an anchor point and then the
-  width and height of it. The third one construct a rectangle with
-  just the width and height, assuming the anchor point to be at (0,0)
-  
-  ```
-  path b = &rectangle{&point1,&point2}
-  path b = &rectangle{&point,width,height}
-  path b = &rectangle{width,height}
-  ```
+This returns a path expressing a rectangle between to points. There
+are three ways construct the triangle, that is shown below. The
+first one construct a rectangle between to opposing points. The
+second one constructs a rectangle with an anchor point and then the
+width and height of it. The third one construct a rectangle with
+just the width and height, assuming the anchor point to be at (0,0)
+
+```
+path b = &rectangle{&point1,&point2}
+path b = &rectangle{&point,width,height}
+path b = &rectangle{width,height}
+```
 
 + triangle 
 
-  This returns a path expressing a triangle of three points. The syntax is: 
+This returns a path expressing a triangle of three points. The syntax is: 
 
-  ```
-  path b = &triangle(&point1,&point2,&point3)
-  ```
+```
+path b = &triangle(&point1,&point2,&point3)
+```
 
 + equilateraltriangle{(0,0),3}
 
-  This returns a equilateral-triangle centered at (0,0) and with a side
-  measurement equal to 3 grid length.
+This returns a equilateral-triangle centered at (0,0) and with a side
+measurement equal to 3 grid length.
 
 + regularpentagon{(0,0),3}
 
-  This returns a regular pentagon centered at (0,0) and with a side measurement
-  equal to 3 grid length.
+This returns a regular pentagon centered at (0,0) and with a side measurement
+equal to 3 grid length.
 
 + asaTriangle{&Left,B,a,C}
 
-  This returns a triangle ABC when two angles and the side between the two
-  angles are known.  The triangle is oriented such that the known side is layed
-  horizontally with its left end point being at the point given by the 'Left'
-  argument. The second argument expresses the angle of the triangle located at
-  the left end point of the side, and the forth argument expresses the angle at
-  the endpoint on the right hand side.  The third argument is the length of the
-  side between the two angles.
+This returns a triangle ABC when two angles and the side between the two
+angles are known.  The triangle is oriented such that the known side is layed
+horizontally with its left end point being at the point given by the 'Left'
+argument. The second argument expresses the angle of the triangle located at
+the left end point of the side, and the forth argument expresses the angle at
+the endpoint on the right hand side.  The third argument is the length of the
+side between the two angles.
 
 + polyline 
 
-  This returns a path expressing a polyline. The syntax is:
+This returns a path expressing a polyline. The syntax is:
 
-  ```
-  path b = &polyline{&point1,&point2,&point3,...}
-  ```
+```
+path b = &polyline{&point1,&point2,&point3,...}
+```
 
 + polygon  
 
-  This returns a path expressing a polygon. The syntax is:
+This returns a path expressing a polygon. The syntax is:
 
-  ```
-  path b = &polygon{&point1,&point2,&point3,...}
-  ```
+```
+path b = &polygon{&point1,&point2,&point3,...}
+```
 
 + arctravel{&center,start_point,sweep_angle}
 
-  This returns a path that draws an arc. The arc is to start at the point 'p'
-  that is at a circle centered at 'center'. The arc is then to trace out part
-  of the circle by following an angle equal to 'sweep_a' number of degrees.
-  Positive 'sweep_a' is to trace in anti-clockwise direction and negative
-  'sweep_a' is to trace in clockwise direction.
+This returns a path that draws an arc. The arc is to start at the point 'p'
+that is at a circle centered at 'center'. The arc is then to trace out part
+of the circle by following an angle equal to 'sweep_a' number of degrees.
+Positive 'sweep_a' is to trace in anti-clockwise direction and negative
+'sweep_a' is to trace in clockwise direction.
 
 + arcspan
 
-  Similar to 'arctravel', this function is the return a path that draws an
-  arc. The arc is to start at the point 'p' that is at a circle
-  centered at 'center'. The arc is then to trace out part of the
-  circle, always in the direction of anti-clockwise direction, until
-  it meats the point 'q'. If 'q' is found to be closer or further away
-  from 'center', then the tracing stops as soon as it intersects with
-  the radius-ray that passes through 'q'. 
+Similar to 'arctravel', this function is the return a path that draws an
+arc. The arc is to start at the point 'p' that is at a circle
+centered at 'center'. The arc is then to trace out part of the
+circle, always in the direction of anti-clockwise direction, until
+it meats the point 'q'. If 'q' is found to be closer or further away
+from 'center', then the tracing stops as soon as it intersects with
+the radius-ray that passes through 'q'. 
 
-  ```
-  path b = arcspan{&center,start_point,end_point}
-  ```
+```
+path b = arcspan{&center,start_point,end_point}
+```
 
 + arcsweep{&center,r,start_angle,sweep_angle}
 
-  Similar to 'arc', this function is to return a path that is to sweep
-  across a given angle starting from known angle. The center of the
-  arc is 'center', 'r' is the radius of the arc, the 'start_a' is the
-  starting angle, and 'sweep_a' is the angle to sweep across in the
-  counter counter-clockwise direction.
+Similar to 'arc', this function is to return a path that is to sweep
+across a given angle starting from known angle. The center of the
+arc is 'center', 'r' is the radius of the arc, the 'start_a' is the
+starting angle, and 'sweep_a' is the angle to sweep across in the
+counter counter-clockwise direction.
 
 + cylinder 
 
-  This expresses a upright cylinder drawn with an ellipse at the
-  bottom, with xradius/yradius, and a given height. The syntax is:
+This expresses a upright cylinder drawn with an ellipse at the
+bottom, with xradius/yradius, and a given height. The syntax is:
 
-  ```
-  path b = &cylinder{&center,xradius,yradius,height}
-  ```
+```
+path b = &cylinder{&center,xradius,yradius,height}
+```
 
 + ymirror 
 
-  This returns a new path that is a mirror image of a given path. The
-  first argument is the old path, and the second argument is a scalar
-  that is a value on X-axis. The following example returns a new path
-  that is a mirrored image of 'a' off the x-axis.
+This returns a new path that is a mirror image of a given path. The
+first argument is the old path, and the second argument is a scalar
+that is a value on X-axis. The following example returns a new path
+that is a mirrored image of 'a' off the x-axis.
 
-  ```
-  path a = ...
-  path b = &ymirror{&a,0}
-  ```
+```
+path a = ...
+path b = &ymirror{&a,0}
+```
 
 + mirror 
 
-  This returns a new path that holds a single point that is the mirror
-  image of the given point along a given line. In the following example
-  the returned point 'a1' would have been set to (-5,0)
+This returns a new path that holds a single point that is the mirror
+image of the given point along a given line. In the following example
+the returned point 'a1' would have been set to (-5,0)
 
-  ```
-  path a = (5,0)
-  path b = (0,0)
-  path c = (0,10)
-  path a1 = &mirror{&a,&b,&c}
-  ```
+```
+path a = (5,0)
+path b = (0,0)
+path c = (0,10)
+path a1 = &mirror{&a,&b,&c}
+```
 
 + bbox 
 
-  This returns a new path that represents the rectangle of the
-  viewport.
+This returns a new path that represents the rectangle of the
+viewport.
 
 + grid
 
-  This returns a new path that represents a grid. It expects four 
-  arguments, the first two of which is the width and height of the grid,
-  and the last two represents the steps in the x-direction and y-direction.
-  The following example would have drawn a grid of 10-by-10, with grid
-  line separation of 1 in both directions.
+This returns a new path that represents a grid. It expects four 
+arguments, the first two of which is the width and height of the grid,
+and the last two represents the steps in the x-direction and y-direction.
+The following example would have drawn a grid of 10-by-10, with grid
+line separation of 1 in both directions.
 
-  ```
-  path a = &grid{10,10,1,1}
-  ```
+```
+path a = &grid{10,10,1,1}
+```
 
 + perpoint
 
-  This returns a new path of a single point that is perpendicular to 
-  the existing line. It has two different forms. The first form is to 
-  have the first two arguments being the points of two lines, and the third
-  is the length of the line. The returned point is formed by departing
-  from the first point for a distance that is the length of the third 
-  argument. The following example is to return the point that is (1,0)
+This returns a new path of a single point that is perpendicular to 
+the existing line. It has two different forms. The first form is to 
+have the first two arguments being the points of two lines, and the third
+is the length of the line. The returned point is formed by departing
+from the first point for a distance that is the length of the third 
+argument. The following example is to return the point that is (1,0)
 
-  ```
-  path a = &perpoint{(0,0),(1,0),1}
-  ```
+```
+path a = &perpoint{(0,0),(1,0),1}
+```
 
-  The second form would have had three points, and the returned value
-  is a point on the line segment that is the first two points. The following
-  example is to return the point that is (0.5,0)
+The second form would have had three points, and the returned value
+is a point on the line segment that is the first two points. The following
+example is to return the point that is (0.5,0)
 
-  ```
-  path a = &perpoint{(0,0),(2,0),(0.5,1)}
-  ```
+```
+path a = &perpoint{(0,0),(2,0),(0.5,1)}
+```
 
 + rotate{&A,90}
 
-  This rotates a given path by a certain angle in an anti-clockwise rotation.
+This rotates a given path by a certain angle in an anti-clockwise rotation.
 
 + translate{&A,10,20}
 
-  This translates a given path by a given distance in X and Y direction.
+This translates a given path by a given distance in X and Y direction.
 
 + bisect{&A,&B,&C,r}
- 
-  This will compute a new point that lines on the line that is the result 
-  of bisecting the angle ABC, and with a distance of 'r' away
-  from vertex 'B'.
+
+This will compute a new point that lines on the line that is the result 
+of bisecting the angle ABC, and with a distance of 'r' away
+from vertex 'B'.
 
 
 
