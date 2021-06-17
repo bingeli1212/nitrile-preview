@@ -443,35 +443,109 @@ is connected with this point, whether it is a straight line, or a Bezier curve,
 or an arc. When the path is "stroked" a line is to appear tracing the path,
 similar to how blots of ink are left marks on a piece of paper.
 
-There several ways to reference a path or an internal point of a 
-path. Note that the internal points of a path could be one of the 
-following types: M, L, C, Q, A, and z. The letter M expresses that
-the point is a "move" point, similar to the "M" point in a SVG path. 
-The "L" is a "lineto" point, which expresses that a straight line is to be 
-drawn between the last point and this point. The "C" is a cubic Bezier curve,
-and "Q" is a quadratic Bezier curve. The "A" is an "arc" curve, and "z"
-represents a cycle, in which case a straight line is to be drawn connecting
-this point to the "M" point that started this path. 
+    path a = (0,0)~(3,4) (2,2)~(5,6)
+
+Each point of a path is represented internally as a "path point". 
+Each point can be categorized into one of the following
+types:
+
++ M
+  A "moveto" point.
++ L
+  A "lineto" point.
++ C
+  A cubic Bezier curve point.
++ Q
+  A quadratic Bezier curve point.
++ A
+  A arc curve point
++ z
+  A "closed" path point.
+
+The letter M expresses that the point is a "moveto" point, similar to the "M"
+point in a SVG path. A path is always started by the presence of this point. The
+"L" is a "lineto" point, which expresses that a straight line is to be drawn
+between the last point and this point. The "C" is a cubic Bezier curve, and "Q"
+is a quadratic Bezier curve. The "A" is an "arc" curve, and "z" represents that
+the current path should be closed, and a straight line is to be drawn between
+this point and the "M" point that started this path.
 
 Note that a "M" point does not connect with any previous point and is usually
 the first point of a path. SVG has been observed to not generated any visual
 output if the first point isn't a M point. The same is true for TiKz. The
 MetaFun would go a step further and generate a compile error if this is the 
-case. This, the translation of MetaFun have been designed to avoid this situation.
+case. This, the translation of MetaFun have been designed to avoid 
+generating any path at all if the first point is not a M point.
 
-The Diagram allows
-for multiple "M" points to appear inside a single path line description, 
-making it possible to construct several pathes at the same time, where each
-path could be closed or not closed. The following example would have 
-generated two paths where the first one is a straight line from (0,0) to (3,4),
-and the second one from (2,2) to (5,6).
+For a Diagram, it is possible to specify multiple
+"M" points, such as the following case.
 
-    path a = (0,0)[l:3,4] (2,2)[l:3,4]
+    path a = (0,0) (2,2)
+    draw &a
+
+In this case, the path "a" is composed of two M points. When being
+translated into SVG, MetaFun, or TikZ, each of the M point would have started a
+new path. For instance, for SVG translation, there will be two <path> elements.
+For MetaFun, there will be two draw commands, and the same will be true for
+TikZ. This arrangement makes it possible to describe two independent path
+within a single path variable. Thus, in the following example two lines will
+be drawn, one from (0,0) to (1,1) and one from (2,2) to (3,4). 
+
+    path a = (0,0)~(1,1) (2,2)~(3,4)
+
+The presence of "~" is a notation for expression that there should be a 
+"line join" between the current point and the point that follows. Aside from
+"~", there are five other joins.
+
++ ~~
++ ~~~
++ ~~~~
++ ~~~~~
++ ~~~~~~
++ ..
+
+The first five would have each created a "veer join" that creates a curve
+between the two points. The first "veer" join would be the least curved,
+and the last one would be the most curved. 
+Each "veered" curve nothing but a quadratic Bezier curve, which is 
+determined automatically by the distance of the two end points
+and a preset "curvature" corresponding to the join.
+
+The last one would create a "smooth" cubic Bezier curve that go through 
+three or more points. 
+
+    path a = (0,0)..(2,0)..(2,2)
+
+In the previous example a smooth curve will be created going three points (0,0),
+(2,0), and (2,2). The curves between are the first point and second point, and
+the one between the second and the third point, are both cubic Bezier curves,
+and each of which would have its control points automatically calculated based
+on the location of all three points in order to ensure "smoothness", and is
+likely to change if more points are to appear.
+
+    path a = (0,0)..(2,0)..(2,2)..(2,4)
+ 
+There is no limit to the total number of points that can be joint by this
+"join", but in order for a curve to appear, there needs to be at least three
+points, and these three points cannot be "coliear", meaning they cannot all
+be on the same straight line.
 
 
 ## Relative points
 
-Each of the following syntax denotes a relative point.
+The "join" type specified would have worked only between absolute points, 
+which is to appear inside a pair of parentheses. However, sometimes it is also
+necessary to add additional path points using relative points, where the point
+is specified relative to the position of the point before it. These points all
+have an advantage, such that when the position of the previous point changes, 
+the position of the relative points will change with it.
+
+All relative points share the same syntax pattern. They
+would all be surrounded by a pair of brackets. Within the bracket the first 
+part is always a string that serves as the "instruction" or "type"
+as to how the remaining numbers are to be interpreted. The instruction is then
+followed by a colon, and then a list of numbers. These numbers will be interpreted
+in accordance of the specific "type" of the relative point.
 
 - [l:dx,dy] 
 
@@ -480,7 +554,7 @@ relative to the current point by dx and dy. Note that dx and dy are
 specified in Cartesian coordinates, thus positive dx is towards the
 right, and positive dy is towards the top.
 
- [h:dx]
+- [h:dx]
 
 This is to draw a horizontal line.
   
@@ -575,14 +649,16 @@ the line between the current point and the new point. The clock angle is then
 being added on top of the base angle before used to figure out the new
 location.
 
-- [flip:5,5] 
+- [flip:1,3] 
 
 This is to construct a new point that is the mirror image of the given point
-(5,5).  The exact location of the new location depends on the last two points
-traveled, the direction of which is treated as a mirror to which the new point
-will be reflected upon. The net result could be thought of as folding a paper
-along the line of the mirror with a point on one side of the line, and see
-where that point will land on the other side of the line after folding.
+that is 1 grid distance to the right and 3 grid distance upwards from the
+current point. The exact location of the new location depends on the last two
+points traveled, the direction of which is treated as a mirror to which the new
+point will be reflected upon. The net result could be thought of as folding a
+paper along the line of the mirror with a point on one side of the line, and see
+where that point will land on the other side of the line after folding. 
+The new point would be added as a "L" point.
 
 - [sweep:-1,0,180] 
 
@@ -591,57 +667,48 @@ Y dimension. The first two argument is the relative position to the current
 position where the center of the arc is. The last argument is the number in
 degrees representing the angle to sweep over. A positive angle expresses that
 the sweep should happen in a counter-clockwise direction, and a negative
-value expresses a clockwise sweep.
+value expresses a clockwise sweep. The new point would be added as a "A" point.
 
 - [protrude:2] 
 
 This is to a line protruding from the current extending a distance of
 "2", in the same direction that goes from the one before the current point
-to the current point.
+to the current point. The new point will be added as a "L" point.
 
-- [dot:0.2]
-
-This is to place a circle centered at the last position with a given
-radius of 0.2. The current path segment will be closed after this
-operation and the current point is not changed.
-
-- [m:2,-2]
+- [m:2,3]
 
 This operation is to create a new 'M' point that denotes the start of a
-new path segment.
+new path segment. The location of the new "M" point will be 2 grid spaces
+to the right and 3 grid distance upwards. The new point will be added
+as a "M" point.
 
-For [m:2,-2], the two numbers express a relative position
-from the current 'lastpt', after which the current point is updated
-to this new location.
+One insteresting effect of using is point is that it will update the last M"
+point, if the last point is already a "M" point, instead of creating a new "M"
+point. Thus, multiple appearances of the "m" relative point would have resulted
+a single "M" point in the resulting path, where the same "M" point is moved to a
+new location relative to its last location. 
 
+## Anchor points of an object 
 
-[ Points of objects]
+It is possible to add a path point that is the location of an existing anchor
+point of an object. For instance, if a node with id "1" has been created prior,
+it is possible to construct a path expressing a line from (0,0) to
+the "n" anchor of that node using the following command.
 
-It is possible to add a path point that is an existing point of an object, such
-as a node or box. A node or a box is an object crreated by the the use of the
-'node' or 'box' command. Each of these command creates one or more objects named
-a node or a box.
+    path (0,0) ~ <node.1:n>
 
-Both the node and a box are able to be referred to by a Id, which consists of
-word characters, such as letters, digits, and underscores. Unlike a symbol name,
-which must start with a letter, the Id of a node or a box does not have this
-restriction. Any combination of word characters is allows.
+An anchor point of an object would all follow the same syntax pattern, where
+it is surrounded by a pair of angle brackets. The first part would always
+the type of the object, such as "node" or "box", which are so far the only
+two supported objects in Diagram. The Id of the object is to follow a period
+which is itself appear immediately after the object type. The anchor is to
+follow the Id after a colon. It is also possible to add additional integers
+after anchor, which would be interpreted as the offset from that anchor location.
+For instance, following command would draw a line between a point to the "n" anchor
+of a "node" object with id "1", where the first point is 2 grid distances to the
+west and 3 grid distances to the north of the anchor point.
 
-For a node, which is always a circle, and a box, which is by default a
-rectangle, but could also be other shapes by the use of the 'boxtype' attribute,
-there are anchor points thare points around the outline of the shape, that can
-be used as the position of the path. Following example draws a line between two
-points where the first point is located 2 grid distance to the left and 3 grid
-distance north of the node of id "a", to the anchor of another node that is the
-at the due north of the node.
-
-    draw <node.a:n,-2,3> ~ <node.a:n>
-
-The syntax for expressing an "anchor" point of an object the use of a set of
-angle brackets, within which the Id of the object, followed by a period and the
-anchor name,and then the colon, and then two numbers expressing the offset from
-that point. This syntax allows for a line to be drawn from a point outside of
-this anchor to an anchor itself, which is what happened for the example above.
+    draw <node.1:n,-2,3> ~ <node.1:n>
 
 ## Saving an retrieving a path
 
@@ -847,21 +914,13 @@ the line.  Following is an example of drawing an upper pointing arrow such that
 the body of the arrow is drawn with a line that is 2pt thicker than its arrow
 head.
 
-    draw ^hint:linesize2 (0,0)~(0,2) () (0,2)[l:-0.5,-0.5] () (0,2)[l:0.5,-0.5]
+    draw ^hint:linesize2 (0,0)~(0,2) \
+         (0,2)[l:-0.5,-0.5] \
+         (0,2)[l:0.5,-0.5]
 
 The path above consists of three path segments: only the first line segment will 
 be affected by the hint.  The next two segments will not be affected. As
 soon as a path segment is terminated by (cycle) or (), the hint is reset.
-
-
-
-The "hints:1" directive will set the 'hints' to 1. The value
-after the colon is expected to be an integer that is bitwise OR'ed
-value of hint flags.  See the section "Hint Flags" for more information.
-Following example sets up a hint such that for a path the line between
-(0,0) and (5,5) should've been drawn using a dashed line. 
-
-  path a = hints:1 (0,0) [l:5,5] (2,2) [l:5,5] 
 
 Note that a hint only extends as far as the length of particular component 
 of a path following a path, and thus it must be set before the start of a 
@@ -1112,19 +1171,10 @@ the "fontfamily" and "fontstyle" style options. Note that this might not
 always work for something. For instance, for LATEX and CONTEX it is not
 possible for specifying both a monospace and an italic.
 
-    text.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7} "degree\\3" (-3,2)
+    text.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7} \
+          "degree\\3" (-3,2)
 
-Each 'text' command can also include alignments which are shown below.
 
-    text.top   -  top
-    text.bot   -  bottom
-    text.lft   -  left
-    text.rt    -  right
-    text.ulft  -  upper left
-    text.llft  -  lower left
-    text.urt   -  upper right
-    text.lrt   -  lower right
-    text.ctr   -  centering the text
 
 # Path functions
 
@@ -1136,7 +1186,7 @@ rectangle with a given width/height located at certain point.
 Note that for a path function all its arguments must be either a path variable,
 an absolute point, or a scalar.
 
-+ midpoint 
+- midpoint 
 
 The ``midpoint`` function returns the mid point of the first two
 points in a path expression if a single argument is given. Following
@@ -1163,7 +1213,7 @@ following example will return the same result as the one before.
 path b = &midpoint{(1,1),(2,3),0.5}
 ```
 
-+ scatterpoints 
+- scatterpoints 
 
 The ``scatterpoints`` function is to create new path with the
 points distributed evenly beteen the two end points. The 
@@ -1180,7 +1230,7 @@ such that the path contains four points.
 path a = &scatterpoints{(1,0),(10,0),2}
 ```
 
-+ linelineintersect 
+- linelineintersect 
 
 The ``linelineintersect`` Returns new a path that contains a
 single point which is the point at which the two lines intersect.
@@ -1195,7 +1245,7 @@ path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)}
 ```
 
 
-+ linecircleintersect 
+- linecircleintersect 
 
 The ``linecircleintersect`` function returns new a path that
 contains two points for the line and circle intersection. In the
@@ -1209,7 +1259,7 @@ path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
 Note that the returned point is always arranged such that the first
 point is on the left hand side of the second point.
 
-+ circlecircleintersect 
+- circlecircleintersect 
 
 This method returns one or two points where two circles intersect.
 
@@ -1217,8 +1267,7 @@ This method returns one or two points where two circles intersect.
 path b = &circlecircleintersect{(0,0),10,(5,0),10}
 ```
 
-
-+ circlecircleintersectclip
+- circlecircleintersectclip
 
 This method returns a closed path that describes the area that is
 the intersection area of the two circle areas. Note that it is
@@ -1233,7 +1282,7 @@ path c = &circlecircleintersectclip{(5,6),3,(9,6),3,0}
 fill &c
 ```
 
-+ circlecirclediffclip
+- circlecirclediffclip
 
 This method returns a closed path that describes the area of one of
 the circles after it has been clipped away for the area that
@@ -1255,7 +1304,7 @@ fill &c
 fill &d
 ```
 
-+ circlepoints 
+- circlepoints 
 
 The general syntax is: &circlepoints(center,r,a1,a2,a3...), where
 the 'center' denotes a path with a point expressing the circle
@@ -1268,7 +1317,7 @@ angles.
 path b = &circlepoints{(0,0),2,30,60,90}
 ```
 
-+ pie
+- pie
 
 Returns a closed path expressing a pie. 
 
@@ -1276,7 +1325,7 @@ Returns a closed path expressing a pie.
 path b = &pie(center,radius,angle,span)
 ```
 
-+ circle 
+- circle 
 
 Returns a path expressing the circle. It has a syntax of:
 &circle(center,radius), where 'center' is a path with at least one
@@ -1286,7 +1335,7 @@ point, and 'radius' a scalar.
 path b = &circle(center,radius)
 ```
 
-+ ellipse 
+- ellipse 
 
 This return a path expressing an ellipse. The syntax is following.
 The fourth argument is the rotation in degrees, in counterclockwise
@@ -1297,7 +1346,7 @@ path b = &ellipse(&center,xradius,yradius)
 path b = &ellipse(&center,xradius,yradius,rotation)
 ```
 
-+ rectangle 
+- rectangle 
 
 This returns a path expressing a rectangle between to points. There
 are three ways construct the triangle, that is shown below. The
@@ -1312,7 +1361,7 @@ path b = &rectangle{&point,width,height}
 path b = &rectangle{width,height}
 ```
 
-+ triangle 
+- triangle 
 
 This returns a path expressing a triangle of three points. The syntax is: 
 
@@ -1320,17 +1369,17 @@ This returns a path expressing a triangle of three points. The syntax is:
 path b = &triangle(&point1,&point2,&point3)
 ```
 
-+ equilateraltriangle{(0,0),3}
+- equilateraltriangle{(0,0),3}
 
 This returns a equilateral-triangle centered at (0,0) and with a side
 measurement equal to 3 grid length.
 
-+ regularpentagon{(0,0),3}
+- regularpentagon{(0,0),3}
 
 This returns a regular pentagon centered at (0,0) and with a side measurement
 equal to 3 grid length.
 
-+ asaTriangle{&Left,B,a,C}
+- asatriangle{&Left,B,a,C}
 
 This returns a triangle ABC when two angles and the side between the two
 angles are known.  The triangle is oriented such that the known side is layed
@@ -1340,7 +1389,7 @@ the left end point of the side, and the forth argument expresses the angle at
 the endpoint on the right hand side.  The third argument is the length of the
 side between the two angles.
 
-+ polyline 
+- polyline 
 
 This returns a path expressing a polyline. The syntax is:
 
@@ -1348,7 +1397,7 @@ This returns a path expressing a polyline. The syntax is:
 path b = &polyline{&point1,&point2,&point3,...}
 ```
 
-+ polygon  
+- polygon  
 
 This returns a path expressing a polygon. The syntax is:
 
@@ -1356,37 +1405,7 @@ This returns a path expressing a polygon. The syntax is:
 path b = &polygon{&point1,&point2,&point3,...}
 ```
 
-+ arctravel{&center,start_point,sweep_angle}
-
-This returns a path that draws an arc. The arc is to start at the point 'p'
-that is at a circle centered at 'center'. The arc is then to trace out part
-of the circle by following an angle equal to 'sweep_a' number of degrees.
-Positive 'sweep_a' is to trace in anti-clockwise direction and negative
-'sweep_a' is to trace in clockwise direction.
-
-+ arcspan
-
-Similar to 'arctravel', this function is the return a path that draws an
-arc. The arc is to start at the point 'p' that is at a circle
-centered at 'center'. The arc is then to trace out part of the
-circle, always in the direction of anti-clockwise direction, until
-it meats the point 'q'. If 'q' is found to be closer or further away
-from 'center', then the tracing stops as soon as it intersects with
-the radius-ray that passes through 'q'. 
-
-```
-path b = arcspan{&center,start_point,end_point}
-```
-
-+ arcsweep{&center,r,start_angle,sweep_angle}
-
-Similar to 'arc', this function is to return a path that is to sweep
-across a given angle starting from known angle. The center of the
-arc is 'center', 'r' is the radius of the arc, the 'start_a' is the
-starting angle, and 'sweep_a' is the angle to sweep across in the
-counter counter-clockwise direction.
-
-+ cylinder 
+- cylinder 
 
 This expresses a upright cylinder drawn with an ellipse at the
 bottom, with xradius/yradius, and a given height. The syntax is:
@@ -1395,7 +1414,7 @@ bottom, with xradius/yradius, and a given height. The syntax is:
 path b = &cylinder{&center,xradius,yradius,height}
 ```
 
-+ ymirror 
+- ymirror 
 
 This returns a new path that is a mirror image of a given path. The
 first argument is the old path, and the second argument is a scalar
@@ -1407,7 +1426,7 @@ path a = ...
 path b = &ymirror{&a,0}
 ```
 
-+ mirror 
+- mirror 
 
 This returns a new path that holds a single point that is the mirror
 image of the given point along a given line. In the following example
@@ -1420,12 +1439,12 @@ path c = (0,10)
 path a1 = &mirror{&a,&b,&c}
 ```
 
-+ bbox 
+- bbox 
 
 This returns a new path that represents the rectangle of the
 viewport.
 
-+ grid
+- grid
 
 This returns a new path that represents a grid. It expects four 
 arguments, the first two of which is the width and height of the grid,
@@ -1437,7 +1456,7 @@ line separation of 1 in both directions.
 path a = &grid{10,10,1,1}
 ```
 
-+ perpoint
+- perpoint
 
 This returns a new path of a single point that is perpendicular to 
 the existing line. It has two different forms. The first form is to 
@@ -1458,15 +1477,15 @@ example is to return the point that is (0.5,0)
 path a = &perpoint{(0,0),(2,0),(0.5,1)}
 ```
 
-+ rotate{&A,90}
+- rotate{&A,90}
 
 This rotates a given path by a certain angle in an anti-clockwise rotation.
 
-+ translate{&A,10,20}
+- translate{&A,10,20}
 
 This translates a given path by a given distance in X and Y direction.
 
-+ bisect{&A,&B,&C,r}
+- bisect{&A,&B,&C,r}
 
 This will compute a new point that lines on the line that is the result 
 of bisecting the angle ABC, and with a distance of 'r' away
