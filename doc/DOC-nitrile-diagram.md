@@ -3211,8 +3211,8 @@ The same 'var' command is also able to create an "array" variable, in which
 case a list of numbers, rather than a single number, is to be assigned to this
 symbol name, and later on be access in various places.
 
-    var a[] = 1 2 3
-    text "${a[0]}" "${a[1]}" "${a[2]}" (0,0) [h:1] [h:1]
+    var @a = 1 2 3
+    text "${a_0}" "${a_1}" "${a_2}" (0,0) [h:1] [h:1]
 
 The previous example has created an array of three numbers, and was later
 on used to generate text output on various locations, pulling the content of 
