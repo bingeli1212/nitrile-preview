@@ -55,7 +55,7 @@ returned by the 'encodeURIComponent()' function.
 Following is an example of a diagram block.
 
     % variables
-    path a = (1,1) ~ (5,5) ~ (5,1) ~ (1,1) 
+    path a = (1,1) -- (5,5) -- (5,1) -- (1,1) 
     path b = (1,1) .. (5,5) .. (5,1) .. (1,1) 
     % draw
     draw  &a
@@ -231,32 +231,7 @@ variable must start with a upper case or lower case letters, and
 followed by one or more upper case or lower case letters, or digits.
 Symbols and operators are not allowed.
 
-    path a = (1,1) ~ (2,2) ~ (3,4)
-
-To reference all points in a path variable, use the at-sign followed
-by the variable name. This notation serves to connect the last point
-to the first of the new path variable. If additional points are
-specified, they will be connected to the last point of the previous
-path.
-
-    draw &a
-    draw &a ~ (5,5)
-    draw (0,0) ~ &a ~ (5,5)
-
-Typically, a path expression consists of one or more coordinates
-(points), and join types. A join type can only be '~' or '..'. The
-'~' join type is to express a 'lineto' operation between the last
-point and the next point. A '..' join type is to express a 'curveto'
-operation between the last point and the next point. A point should
-always be expressed between a set of parentheses, such as ``(1,1)``,
-``(2,2)``, ``(3,4)``, etc.
-
-However, Diagram also has something called 'path function'. It's main
-purpose is to create new a new path based on points of existing path
-variables. In the following example a new path variable 'c' is created
-and is assigned the first point of the path 'a'.
-
-    path c = &midpoint{&a,0}
+    path a = (1,1) -- (2,2) -- (3,4)
 
 The path command also has provision to allow for something akin to
 JavaScript "array destructuring" statement, in which case individual
@@ -266,7 +241,7 @@ instruction path variables 'a', 'b' and 'c' are each created and
 assigned three different points of the same path that was drawn by the
 ``draw`` statement.
 
-    path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
+    path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
     path [a,b,c] = &A
 
 Each sub-variable must be separated from other sub-variables by one or
@@ -275,13 +250,13 @@ not including any variables in between slashes. For example, you can
 choose to assign the first point to variable 'a' and the third point
 to variable 'b' as follows.
 
-    path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
+    path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
     path [a,,b] = &A
 
 Following example will skip the first two points and assign
 the remaining two points to variable 'a'.
 
-    path A = (1,1) ~ (2,2) ~ (3,4) ~ (4,5)
+    path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
     path [,,a] = &A
 
 Note that the name of the path, as well as that of a scalar variable, a scalar
@@ -334,7 +309,7 @@ Typically it is straight lines, but Bezier curves are also supported.
 This includes quadratic and cubic curves. The SVG arc is also
 supported.
 
-    draw (0,0)~(1,1)~(2,2)
+    draw (0,0)--(1,1)--(2,2)
 
 The 'fill' command is similar to 'draw', except that it fills the path
 with the default filled color, without drawing the the outline of the
@@ -360,14 +335,12 @@ contains multiple disjoint segments. For example, we can express to draw two
 disjoint line in a single 'draw' command such that the first line segment goes
 from (0,0) to (2,3) and the second line segment goes from (4,5) to (6,7). 
 
-    draw (0,0)~(2,3) (4,5)~(6,7)
+    draw (0,0)--(2,3) (4,5)--(6,7)
 
-In additional, if the 'cycle' keyword appears then it also means the end of the
-current path segment and the start of a new one. In this case no null point
-needs to be specified. In the following example two path segment is to e
-created, with one consisting of a triangle, and another one a line.
+For example, for the following 'draw' command, where
+there is a closed triangle and a line. 
 
-    draw (0,0)~(2,0)~(2,2) cycle (4,0)~(6,2)
+    draw (0,0)--(2,0)--(2,2)[z] (4,0)--(6,2)
 
 For MetaPost output, each path segment requires a separate "draw" command. For
 SVG, a single PATH elements is sufficient; the SVG is implemented such that a
@@ -432,7 +405,7 @@ a square is to be drawn instead of the arc.
 If the angle is found to be around 90, then a square is drawn instead
 of an arc. However, a square can be forced if ".sq" option is given.
 
-    drawlinesegarc.sq (2,0)~(0,0)~(0,2)
+    drawlinesegarc.sq (2,0)--(0,0)--(0,2)
 
 
 
@@ -443,7 +416,7 @@ is connected with this point, whether it is a straight line, or a Bezier curve,
 or an arc. When the path is "stroked" a line is to appear tracing the path,
 similar to how blots of ink are left marks on a piece of paper.
 
-    path a = (0,0)~(3,4) (2,2)~(5,6)
+    path a = (0,0)--(3,4) (2,2)--(5,6)
 
 Each point of a path is represented internally as a "path point". 
 Each point can be categorized into one of the following
@@ -491,11 +464,13 @@ TikZ. This arrangement makes it possible to describe two independent path
 within a single path variable. Thus, in the following example two lines will
 be drawn, one from (0,0) to (1,1) and one from (2,2) to (3,4). 
 
-    path a = (0,0)~(1,1) (2,2)~(3,4)
+    path a = (0,0)--(1,1) (2,2)--(3,4)
 
-The presence of "~" is a notation for expression that there should be a 
-"line join" between the current point and the point that follows. Normally
-this would be a straight line. But it is also possible to connect two points
+The presence of "--" is a notation for expression that there should be a 
+straight drawn between the current point and the point that follows. 
+It is called a "line join". 
+
+It is also possible to connect two points
 using a quadratic Bezier curve by using the "~~" join.
 When using the "~~" join, or "abr join", a quadratic Bezier curve is to be
 determined and placed between these two points. The control point is computed
@@ -503,7 +478,7 @@ by moving the midpoint of the straight line between the two points towards
 the left side of the direction or the right-hand side of the direction from
 the first point to the second.
 
-    path a = ^abr:30 (0,3) ~~ (10,3) 
+    path a = ^abr:30 (0,3)~~(10,3) 
 
 Here the "abr" directive will be followed by a number that expresses an angle
 in degrees that is rotated around the first
@@ -514,8 +489,8 @@ both point such that the intersecting point appears on the right hand side of th
 straight line direction, and a negative number would mean a rotation such that
 the control point would appear on the left hand side of the straight line direction.
 
-    path a = ^abr:-30 (0,3) ~~ (10,3)
-    path b = ^abr:30 (0,3) ~~ (10,3)
+    path a = ^abr:-30 (0,3)~~(10,3)
+    path b = ^abr:30 (0,3)~~(10,3)
 
 Thus, for path "a" the curved line would appear at the top, and for path "b"
 the curved line would appear at the bottom.
@@ -708,7 +683,7 @@ point of an object. For instance, if a node with id "1" has been created prior,
 it is possible to construct a path expressing a line from (0,0) to
 the "n" anchor of that node using the following command.
 
-    path (0,0) ~ <node.1:n>
+    path (0,0)--<node.1:n>
 
 An anchor point of an object would all follow the same syntax pattern, where
 it is surrounded by a pair of angle brackets. The first part would always
@@ -721,7 +696,7 @@ For instance, following command would draw a line between a point to the "n" anc
 of a "node" object with id "1", where the first point is 2 grid distances to the
 west and 3 grid distances to the north of the anchor point.
 
-    draw <node.1:n,-2,3> ~ <node.1:n>
+    draw <node.1:n,-2,3>--<node.1:n>
 
 ## Saving an retrieving a path
 
@@ -787,7 +762,7 @@ However, the following method would have allowed the first point be a M point
 and the second one a L point, with the first one being a L point at (3,4), and
 second one a M point at (2,2).
 
-    path dummy = (&a_1)~(&a_2)
+    path dummy = (&a_1)--(&a_2)
 
 Note that the second method would always retrieve a single point, even when the
 symbol does not come with an index. For instance, the ``(&a)`` notation would
@@ -927,7 +902,7 @@ the line.  Following is an example of drawing an upper pointing arrow such that
 the body of the arrow is drawn with a line that is 2pt thicker than its arrow
 head.
 
-    draw ^hint:linesize2 (0,0)~(0,2) \
+    draw ^hint:linesize2 (0,0)--(0,2) \
          (0,2)[l:-0.5,-0.5] \
          (0,2)[l:0.5,-0.5]
 
@@ -940,7 +915,6 @@ of a path following a path, and thus it must be set before the start of a
 component. This in the previous example the line segment from (2,2) to (7,7)
 would not be affected by the setting of the previous hints.
 
-
 ## Setting up the 'offset'
 
 During a path construction, each path point can be given an additional
@@ -948,10 +922,11 @@ During a path construction, each path point can be given an additional
 "directives". For example, the directives "x:2" and "y:3" are designed to set
 the offset such that the horizontal distance is 2 and vertical distance 3.
 
-    path a = ^x:2 ^y:3 (0,0) [h:2] [v:2]
+    path a = ^x:2 ^y:3 (0,0)[h:2][v:2]
 
 The resulting path of the previous command would have produced a path that is
-(2,3) ~ (4,3) ~ (4,5).  
+composed of following three points: (2,3), (4,3),  (4,5), and there are
+straigh lines between these points.
 
 Note that the process of moving a horizontal or vertical translation distance
 will at the same time move the 'lastpt' such that it coincides with the
@@ -1013,28 +988,6 @@ immediately to the right hand side of the viewport.
 The "^Y:" directive sets the offset to an absolute coordinate in the vertical 
 direction where 0 is the top side of the viewport and 1 is one unit grid
 immediately below the top side of the viewport.
-
-
-## Setting up 'veer' direction
-
-Veer is a curve that connects two points. Normally, the "~" join would
-construct a straight line between two points. However, the "~~", "~~~", "~~~~",
-"~~~~" and "~~~~~~" are five "veer" curves that would put in place a quadratic
-Bezier curve in place of the straight line. Normally, the veer curve would veer to the
-right hand side going from the first point to the second point. However, but
-setting the directive "veer" to a string "left", the veer curve would then veer
-to the left hand side instead.
-
-- ^veer:left
-- ^veer:right
-
-Set is so that the veer will turn to the left instead of right
-which is the default. The veer is enabled by two or more tilde
-joints between coordinate points.
-
-```
-draw ^veer:left (0,0)~~(10,0) 
-```
 
 ## Saving and restoring the 'lastpt'
 
@@ -1810,9 +1763,9 @@ it is attached to, and is always shown as black.
 If a coordinates is to be used directly then there are three commands that will
 draw a arrow, reverse arrow, and double arrow for each path segments.
 
-    arrow     (0,0)~(3,4)  (2,2)[h:4]
-    revarrow  (0,0)~(3,4)  (2,2)[h:4]
-    dblarrow  (0,0)~(3,4)  (2,2)[h:4]
+    arrow     (0,0)--(3,4)  (2,2)[h:4]
+    revarrow  (0,0)--(3,4)  (2,2)[h:4]
+    dblarrow  (0,0)--(3,4)  (2,2)[h:4]
 
 However, for other operations such as 'drawlinesegarc', then
 the 'arrowhead' should be set for the style, which is an integer
@@ -1859,16 +1812,16 @@ can be repetitively executed, and each iteration these commands would
 have been run under a different set of arguments. The basic syntax is
 
     for a in [1, 2, 3, 4]; do
-      draw (${a},${a})~(0,0)
+      draw (${a},${a})--(0,0)
     done
 
 In the example, the 'draw' command will be executed exactly four
 times, each of which looks like the following.
 
-    draw (1,1)~(0,0)
-    draw (2,2)~(0,0)
-    draw (3,3)~(0,0)
-    draw (4,4)~(0,0)
+    draw (1,1)--(0,0)
+    draw (2,2)--(0,0)
+    draw (3,3)--(0,0)
+    draw (4,4)--(0,0)
 
 The 'for' command starts with the keyword 'for', followed by a one or more
 pairing of a "loop variable" to a range of floats. 
@@ -1891,14 +1844,14 @@ Following is an example of iterating over two loop variables: 'a' and 'b'.
 
     % Using for-loop
     for a in [1,3]; b in [2,4]; do
-      draw (${a},${a})~(${b},${b})
+      draw (${a},${a})--(${b},${b})
     done
 
 Following is the equivalent commands without using the for-loop.
 
     % Not using the for-loop
-    draw (1,1)~(2,2)
-    draw (3,3)~(4,4)
+    draw (1,1)--(2,2)
+    draw (3,3)--(4,4)
 
 Note that it is recommanded that the lines of the loop body be indented
 with at least one space. This allows for the recognition of the line "done"
@@ -1922,13 +1875,13 @@ of the outer loop.
         label.lrt  "P₀" &P0
         label.llft "P₁" &P1
         label.ulft "P₂" &P2
-        path line1 = &P0 ~ &P1
-        path line2 = &P1 ~ &P2
+        path line1 = &P0 -- &P1
+        path line2 = &P1 -- &P2
         path m0 = &midpoint{&line1,${b} }
         path m1 = &midpoint{&line2,${b} }
         dot &m0 &m1
-        draw &m0 ~ &m1
-        path line3 = &m0 ~ &m1
+        draw &m0 -- &m1
+        path line3 = &m0 -- &m1
         path B = &midpoint{line3,${b} }
         dot &B
         label.bot "m₀" &m0
@@ -2063,7 +2016,7 @@ the variable 'mx' will be assigned the sum of adding the "x"
 components of the first two points in path variable 'pts', which will
 be "1 + 3 = 4".
 
-    path a = (1,2)~(3,4)
+    path a = (1,2)--(3,4)
     var x = &a_0.x + &a_1.x
     var y = &a_0.y + &a_1.y
     show ${x}
@@ -2609,7 +2562,7 @@ possible to draw a line from (0,0) to the "o9" anchor point of node 1
 as is shown by the following example.
 
     node.1 (5,5)
-    draw (0,0) ~ <node.1.o9>
+    draw (0,0) -- <node.1.o9>
 
 
 
@@ -2672,7 +2625,7 @@ command and provide a point using object-expression such as the following.
 
     box.1 "Hello\\World" (0,0)
     box.2 "Goodbye" (5,5)
-    draw <box.1:e> ~ <box.2:w>
+    draw <box.1:e> -- <box.2:w>
 
 This would have drawn a straight line from the "e" anchor point of box 1
 to the "w" anchor point of box 2. The anchor points of a box is follows:
@@ -2700,7 +2653,7 @@ to a slightly different location other than the default one provided.
 
     box.1 "Hello\\World" (0,0)
     box.2 "Goodbye" (5,5)
-    draw <box.1:e,0,0.1> ~ <box.2:w,0,-0.1>
+    draw <box.1:e,0,0.1> -- <box.2:w,0,-0.1>
 
 In the previous example, the "e" anchor point of box 1 will be moved up
 for 0.1 grid unit, and the "w" anchor point of box 2 will be moved down
@@ -3266,7 +3219,7 @@ The 'var' command is to create an environment variable that
 is the result of an arithmetic expression. 
 
     var a = pow(2,1/12)
-    draw (0,0)~(a,a)
+    draw (0,0)--(a,a)
 
 The previous example has created an environment variable named 'a', 
 which has been assigned a numerical value that is equivalent to 
@@ -3615,9 +3568,9 @@ and the use it to place it on the top of the hrule.
     
     ```diagram{width:100%,save:ex3,viewport:22 12}
     origin ^northwest
-    draw (0,0) ~ [v:-14]
-    draw (3,0) ~ [v:-14]
-    draw (6,0) ~ [v:-14]
+    draw (0,0) -- [v:-14]
+    draw (3,0) -- [v:-14]
+    draw (6,0) -- [v:-14]
     for y:=[0:2:12]:
       draw (0,-${y}) [h:22]
     %%% table
