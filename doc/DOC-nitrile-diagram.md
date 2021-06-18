@@ -2619,9 +2619,10 @@ the location of a "node" is always its center, and the 'r' member of the config
 controls the radius of the node, which would be the half width and half height
 of the node if that node has been configured as a type of RREC or RECT. 
 
-In addition, a box cannot be connected via an 'edge' command. If a line is to be
-drawn between boxes to connect them, considering using 'draw' or 'stroke'
-command and provide a point using object-expression such as the following.
+Note that a box cannot be connected via an 'edge' command. 
+However, if a path is to go through
+an anchor point of a box, such a point can be specified using
+the object-expression such as the following.
 
     box.1 "Hello\\World" (0,0)
     box.2 "Goodbye" (5,5)
@@ -2657,7 +2658,12 @@ to a slightly different location other than the default one provided.
 
 In the previous example, the "e" anchor point of box 1 will be moved up
 for 0.1 grid unit, and the "w" anchor point of box 2 will be moved down
-for 0.1 grid unit.
+for 0.1 grid unit. If for some reason the anchor point is missing, such as
+the following, then the lower-left point of the box is assumed.
+
+    box.1 "Hello\\World" (0,0)
+    box.2 "Goodbye" (5,5)
+    draw (@box.1,0,0.1)--(@box.2,0,-0.1)
 
 
 # Gradient Fill
