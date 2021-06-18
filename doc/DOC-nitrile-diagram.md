@@ -2581,6 +2581,37 @@ of the config.
     node {nodetype:RREC} (0,0)
     node {nodetype:RECT} (5,5)
 
+The first one would have created a rounded square, and the second a 
+plain square. The width and height of the square is 2 times the 'r'. 
+
+Instead of drawing a connecting line between two nodes, where the end point
+of that line is will be calculated so that it lands on the border of that
+node, it is also possible to specify an anchor point of a node, so that 
+it can be used inside a "draw" or "stroke" command or other commands
+as a path point. The valid names of a node are the following:
+
+    o1
+    o2
+    o3
+    o4
+    o5
+    o6
+    o7
+    o8
+    o9
+    o10
+    o11
+    o12
+
+Each anchor point corresponds to the hour label of a clock, such as "o3" would be
+the anchor that is due east, and "o9" an anchor point at due west. This makes it 
+possible to draw a line from (0,0) to the "o9" anchor point of node 1 
+as is shown by the following example.
+
+    node.1 (5,5)
+    draw (0,0) ~ <node.1.o9>
+
+
 
 
 # The 'box' command
