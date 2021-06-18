@@ -683,7 +683,7 @@ point of an object. For instance, if a node with id "1" has been created prior,
 it is possible to construct a path expressing a line from (0,0) to
 the "n" anchor of that node using the following command.
 
-    path (0,0)--<node.1:n>
+    path (0,0)--(@node.1:n)
 
 An anchor point of an object would all follow the same syntax pattern, where
 it is surrounded by a pair of angle brackets. The first part would always
@@ -696,7 +696,7 @@ For instance, following command would draw a line between a point to the "n" anc
 of a "node" object with id "1", where the first point is 2 grid distances to the
 west and 3 grid distances to the north of the anchor point.
 
-    draw <node.1:n,-2,3>--<node.1:n>
+    draw (@node.1:n,-2,3)--(@node.1:n)
 
 ## Saving an retrieving a path
 
@@ -2562,7 +2562,7 @@ possible to draw a line from (0,0) to the "o9" anchor point of node 1
 as is shown by the following example.
 
     node.1 (5,5)
-    draw (0,0) -- <node.1.o9>
+    draw (0,0) -- (@node.1:o9)
 
 
 
@@ -2625,7 +2625,7 @@ command and provide a point using object-expression such as the following.
 
     box.1 "Hello\\World" (0,0)
     box.2 "Goodbye" (5,5)
-    draw <box.1:e> -- <box.2:w>
+    draw (@box.1:e)--(@box.2:w)
 
 This would have drawn a straight line from the "e" anchor point of box 1
 to the "w" anchor point of box 2. The anchor points of a box is follows:
@@ -2653,7 +2653,7 @@ to a slightly different location other than the default one provided.
 
     box.1 "Hello\\World" (0,0)
     box.2 "Goodbye" (5,5)
-    draw <box.1:e,0,0.1> -- <box.2:w,0,-0.1>
+    draw (@box.1:e,0,0.1)--(@box.2:w,0,-0.1)
 
 In the previous example, the "e" anchor point of box 1 will be moved up
 for 0.1 grid unit, and the "w" anchor point of box 2 will be moved down
