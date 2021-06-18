@@ -2574,6 +2574,13 @@ When the edge is a loop, which is the case when the two vertices are
 the same, then the shift-option expresses an additional centrifugal
 distance from the center of the node.
 
+Aside from being a circle, a node can also have two additional shapes,
+namely RREC and RECT, which is controlled by the "nodetype" member
+of the config. 
+
+    node {nodetype:RREC} (0,0)
+    node {nodetype:RECT} (5,5)
+
 
 
 # The 'box' command
@@ -2584,20 +2591,9 @@ options. If absent, the 'w' is assumed to be 3 and 'h' 2.
   
     box {w:3, h:2} (0,0) (1,2)  
     
-It is also possible to place a label inside a box. If there are more than one
-points appearing in the command line, then each point will get one part of the
-text. If there is only one point in the command line, then that point get all
-the text, much like how a "text" operation would have been done. In the
-following example the string "hello" will be assigned to the first box that
-appear in (0,0), and the string "world" will be assigned to the second box that
-appear in (1,2).
+It is also possible to place a label inside a box. 
 
-    box {w:3, h:2} "hello\\world" (0,0) (1,2) 
-
-However, in the following example the box will get the
-entire text and the text will appear on two separate lines.
-
-    box {w:3, h:2} "hello\\world" (0,0) 
+    box {w:3, h:2} "hello\\world" "Goodbye" (0,0) (1,2) 
     
 The "boxtype" style holds the type of boxes to be drawn,
 other than the default rectangular shape.  Note that
@@ -2632,15 +2628,52 @@ been erased first.
 If the id of the box is underscore, it will be assigned an Id in the same
 mannor as that of the 'node' command. 
 
-Unlike the "node" command, if more than one coordinates are provided, then 
-each box would have been assigned a different id, but it would have inherited
-the same text, because a box is designed to draw multi-line text. Thus,
-it would interpret the double-backslashes as line breaks. In another word,
-the double-backslashes are not used to split text among different boxes,
-all texts are being passed to the box which will be interpreting the double-backslashes
-as line breaks.
+Unlike the "node" command, the location of a box is always the lower-left
+hand corner of the box, where the 'w' and 'h' member of the config 
+controls the width and height of the box stemming from that point. On the other hand,
+the location of a "node" is always its center, and the 'r' member of the config
+controls the radius of the node, which would be the half width and half height
+of the node if that node has been configured as a type of RREC or RECT. 
 
+In addition, a box cannot be connected via an 'edge' command. If a line is to be
+drawn between boxes to connect them, considering using 'draw' or 'stroke'
+command and provide a point using object-expression such as the following.
 
+    box.1 "Hello\\World" (0,0)
+    box.2 "Goodbye" (5,5)
+    draw <box.1:e> ~ <box.2:w>
+
+This would have drawn a straight line from the "e" anchor point of box 1
+to the "w" anchor point of box 2. The anchor points of a box is follows:
+
++ e
+  The "east" of a box
++ w
+  The "west" of a box
++ n
+  The "north" of a box
++ s
+  THe "south" of a box
++ sw
+  The "southwest" of a box
++ se 
+  The "southeast" of a box
++ nw
+  The "northwest" of a box
+" ne
+  The "northeast" of a box
+
+Note that an object-expression allows additional arguments that provides
+"offset" to the anchor point. This allows the anchor point to be "fine-tuned"
+to a slightly different location other than the default one provided.
+
+    box.1 "Hello\\World" (0,0)
+    box.2 "Goodbye" (5,5)
+    draw <box.1:e,0,0.1> ~ <box.2:w,0,-0.1>
+
+In the previous example, the "e" anchor point of box 1 will be moved up
+for 0.1 grid unit, and the "w" anchor point of box 2 will be moved down
+for 0.1 grid unit.
 
 
 # Gradient Fill

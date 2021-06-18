@@ -457,6 +457,12 @@ Following are styles recognized by NITRILE:
 
   See xstep-opion. 
 
++ nodetype:<string>
+
+  - CIRC
+  - RECT
+  - RREC
+
 + boxtype:<string>
 
   The boxtype-option sets the type of box for the box-operation. Currently the
@@ -464,6 +470,7 @@ Following are styles recognized by NITRILE:
   is assumed to be 'rect', which is the default type.
 
   - RECT
+  - RREC
   - HEXG   
   - UTRI     
   - DTRI 
