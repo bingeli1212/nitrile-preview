@@ -494,40 +494,53 @@ be drawn, one from (0,0) to (1,1) and one from (2,2) to (3,4).
     path a = (0,0)~(1,1) (2,2)~(3,4)
 
 The presence of "~" is a notation for expression that there should be a 
-"line join" between the current point and the point that follows. Aside from
-"~", there are five other joins.
+"line join" between the current point and the point that follows. Normally
+this would be a straight line. But it is also possible to connect two points
+using a quadratic Bezier curve by using the "~~" join.
+When using the "~~" join, or "abr join", a quadratic Bezier curve is to be
+determined and placed between these two points. The control point is computed
+by moving the midpoint of the straight line between the two points towards 
+the left side of the direction or the right-hand side of the direction from
+the first point to the second.
 
-+ ~~
-+ ~~~
-+ ~~~~
-+ ~~~~~
-+ ~~~~~~
-+ ..
+    path a = ^abr:30 (0,3) ~~ (10,3) 
 
-The first five would have each created a "veer join" that creates a curve
-between the two points. The first "veer" join would be the least curved,
-and the last one would be the most curved. 
-Each "veered" curve nothing but a quadratic Bezier curve, which is 
-determined automatically by the distance of the two end points
-and a preset "curvature" corresponding to the join.
+Here the "abr" directive will be followed by a number that expresses an angle
+in degrees that is rotated around the first
+point and second point. These two rotations would each produce a ray 
+and the control point of the quadratic Bezier curve
+is where these two rays meet. A positive number would means for a rotation of 
+both point such that the intersecting point appears on the right hand side of the
+straight line direction, and a negative number would mean a rotation such that
+the control point would appear on the left hand side of the straight line direction.
 
-The last one would create a "smooth" cubic Bezier curve that go through 
-three or more points. 
+    path a = ^abr:-30 (0,3) ~~ (10,3)
+    path b = ^abr:30 (0,3) ~~ (10,3)
+
+Thus, for path "a" the curved line would appear at the top, and for path "b"
+the curved line would appear at the bottom.
+
+Aside the "abr join", there is also a possibility of a "hobby join". This would
+be marked by the presence of double-dots between points, such as follows.
 
     path a = (0,0)..(2,0)..(2,2)
 
 In the previous example a smooth curve will be created going three points (0,0),
-(2,0), and (2,2). The curves between are the first point and second point, and
-the one between the second and the third point, are both cubic Bezier curves,
-and each of which would have its control points automatically calculated based
-on the location of all three points in order to ensure "smoothness", and is
-likely to change if more points are to appear.
+(2,0), and (2,2). The entire curve is actually two independent curves one going
+from the first point to second point, and another one going from the second
+point to the third point, both of which are cubic Bezier curves. The control
+points of both are automatically computed based on the location of three points
+in order to ensure a "smooth" transition from the end of the first curve to the
+beginning of the second. This means that if another point were to be added all
+the curves would have to be recalculated. Thus, with the addition of the third
+point, there will be three cubic Bezier curves and the first two are going to
+have a different appearances than those in the previous example.
 
     path a = (0,0)..(2,0)..(2,2)..(2,4)
  
-There is no limit to the total number of points that can be joint by this
-"join", but in order for a curve to appear, there needs to be at least three
-points, and these three points cannot be "coliear", meaning they cannot all
+There is no limit to the total number of points that can be joint by the
+"hobby join". However, in order for a curve to appear, there needs to be at least three
+points, and these three points cannot be "colinear", meaning they cannot all
 be on the same straight line.
 
 
