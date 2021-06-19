@@ -2303,35 +2303,41 @@ possible for specifying both a monospace and an italic.
 The 'cartesian' is a compound command that has different subcommands listed
 below.
 
-- cartesian-setup xorigin yorigin gridrange
-- cartesian-grid xmin ymin xmax ymax
-- cartesian-xaxis xmin xmax
-- cartesian-yaxis ymin ymax
-- cartesian-ytick y1 y2 y3 ...
-- cartesian-xtick x1 x2 x3 ...
-- cartesian-yplot {f:P} x1 x2 x3 ...
-- cartesian-xplot {f:P} y1 y2 y3 ...
-- cartesian-dot x1 y1 x2 y2 x3 y3 ...
-- cartesian-line x1 y1 x2 y2 x3 y3 ...
-- cartesian-arrow x1 y1 x2 y2 x3 y3 ...
-- cartesian-text.rt x1 y1 x2 y2 x3 y3 ...
-- cartesian-ellipse x y Rx Ry Phi
-- cartesian-arc x y R startAngle stopAngle
+- cartesian.1.setup xorigin yorigin gridrange
+- cartesian.1.grid xmin ymin xmax ymax
+- cartesian.1.xaxis xmin xmax
+- cartesian.1.yaxis ymin ymax
+- cartesian.1.ytick y1 y2 y3 ...
+- cartesian.1.xtick x1 x2 x3 ...
+- cartesian.1.yplot {f:P} x1 x2 x3 ...
+- cartesian.1.xplot {f:P} y1 y2 y3 ...
+- cartesian.1.dot x1 y1 x2 y2 x3 y3 ...
+- cartesian.1.line x1 y1 x2 y2 x3 y3 ...
+- cartesian.1.arrow x1 y1 x2 y2 x3 y3 ...
+- cartesian.1.text.rt x1 y1 x2 y2 x3 y3 ...
+- cartesian.1.ellipse x y Rx Ry Phi
+- cartesian.1.arc x y R startAngle stopAngle
 
 The ``cartesian`` command is used to draw plots, curves, axis, ticks
 that are related to a single Cartesian coordinate. It is a composite
 command that includes many sub-commands. All subcommands must follow
 the word 'cartesian' after a dot symbol. The subcommand itself can
-also have its own option, such as 'cartesian-label.rt'.
+also have its own option, such as 'cartesian.label.rt'.
 
-The ``cartesian-setup`` command would set up a Cartesian coordate to be used. The
+The cartesian command is a compound command. It has many subcommands. which
+must be listed after the dot. The first string after the dot serves
+as the ID of the cartesian, in cases where there might be multiple
+setups of a cartesian coordinates, in which case each cartesian coordinate
+is capable of its own setup.
+
+The ``cartesian.setup`` command would set up a Cartesian coordate to be used. The
 first two arguments defines the low left hand corner where the origin
 of the cartesian coordinates will appear inside the Diagram. It is
 specified in grid coordintes. For example, if they are passed as 2 and
 3, then the origin of the Cartesian coordinates will appear at the
 location of (2,3) of the Diagram.
 
-    cartesian-setup 2 3 0.5
+    cartesian.1.setup 2 3 0.5
 
 The third argument can be omitted. If provided, it states the how to
 interpret the input range of the Cartesian coordinates. For example,
@@ -2344,21 +2350,21 @@ will appear at the location (2,3) + (2,2) = (4,5) inside the Diagram,
 where (2,3) is the location of the origin, and (2,2) is where the
 point is relative to the origin.
 
-The ``cartesian-grid`` command asks to draw a grid with the lower-left
+The ``cartesian.1.grid`` command asks to draw a grid with the lower-left
 corner at (xmin,ymin) and upper-right corner at (xmax,ymax). The increment
 is default at 1. The increment for x-direction can be set by the xstep-option
 and the increment for y-direction can be set by the ystep-option.
 
-    cartesian-grid -5 -5 5 5
-    cartesian-grid {xstep:0.5, ystep:0.5} -5 -5 5 5
+    cartesian.1.grid -5 -5 5 5
+    cartesian.1.grid {xstep:0.5, ystep:0.5} -5 -5 5 5
 
 The ``cartesian-xaxis`` command is to draw the x-axis. The only two
 parameters passed to it is the lower and upper range that this axis
 entails. Similarly, the ``cartesian-yaxis`` command draws the y-axis
 with similar parameter requirements.
 
-    cartesian-xaxis -0.75 5.6
-    cartesian-yaxis -0.75 4.5
+    cartesian.1.xaxis -0.75 5.6
+    cartesian.1.yaxis -0.75 4.5
 
 The ``cartesian-xtick`` is used to draw ticks as well as labels on the
 x-axis of the coordinate. The list of arguments passed to this command
@@ -2368,14 +2374,14 @@ passed as "1 2 3" then the ticks will appear where (1,0), (2,0), and
 unerneath that tick. Similarly, the ``cartesian-ytick`` command does the
 same thing except for that it is for the y-axis.
 
-    cartesian-xtick 1 2 3 4 5
-    cartesian-ytick 1 2 3 4
+    cartesian.1.xtick 1 2 3 4 5
+    cartesian.1.ytick 1 2 3 4
 
 The `cartesian dot` command shows one or more points as dots inside
 the coordinate. Every two numbers are interpreted as a pair of (x,y)
 coordinates.
 
-    cartesian-dot  -4 0 4 0 \
+    cartesian.1.dot  -4 0 4 0 \
                   -5 0 5 0
 
 The 'cartesian-line' and 'cartesian-arrow' commands are similar,
@@ -2383,9 +2389,7 @@ except for that the first one will draw connecting lines between all
 points, and the second one also adds an arrowhead at the very end of
 the line.
 
-    cartesian-line  -4 0 4 0 \
-                    -5 0 5 0
-    cartesian-arrow -4 0 4 0 \
+    cartesian.1.line  -4 0 4 0 \
                     -5 0 5 0
 
 The 'cartesian-yplot; is similar to 'cartesian-dot', in that it
@@ -2395,26 +2399,26 @@ supplied function, which must be provided by the "f" member of the
 option.
 
     fn P(x) = pow(x,2)
-    cartesian-yplot {f:P} 1 2 3 4 5
+    cartesian.1.yplot {f:P} 1 2 3 4 5
 
 In the previous example, following points will be shown: (1,1), (2,4),
 (3,9), (4,16), and (5,25) as dots. The Range expression in this case
 can be useful, such as the following:
 
     fn P(v) = pow(v,2)
-    cartesian-yplot {f:P} [1:5]
+    cartesian.1.yplot {f:P} [1:5]
 
 The name of the function could be arbitrary. However, it must be
 specified by the "f" member of the option. The function must have been
 previously defined by a "fn" command, and must only accept one
 argument and return a single scalar.
 
-The 'cartesian-xplot' is similar except for that the input arguments
+The 'cartesian.1.xplot' is similar except for that the input arguments
 expresses a range of values as the y-coordinates of the points, and
 the funtion generates the corresponding x-coordinates.
 
     fn P(v) = sqrt(v)
-    cartesian-xplot {f:P} 1 4 9 25 16 25
+    cartesian.1.xplot {f:P} 1 4 9 25 16 25
 
 The ``cartesian-label`` command draws a text at the location of the
 cartesian coord. The text itself is expressed via the quotation marks
@@ -2423,30 +2427,8 @@ example draw texts at location (-5,0), (-5,1) and (-5,2) of the
 Cartesian coordinates, and at each point the text will be "P(0)",
 "P(1)", and "P(2)". The text is to appear at the bottom of each point.
 
-    cartesian-label.bot "P(0)\\P(1)\\P(2)" -5 0 -5 1 -5 2
+    cartesian.1.text.bot "P(0)\\P(1)\\P(2)" -5 0 -5 1 -5 2
 
-The 'cartesian-ellipse' will draw an ellipse centered at the location.
-There can only be one ellipse to be drawn, and the signature of the
-arguments are:
-
-    cartesian-ellipse <x> <y> <Rx> <Ry> <Phi>
-
-The 'x' and 'y' are coodinates for the center point of the ellipse.
-Each of the 'Rx' and 'Ry' is the semi-major or semi-minor axis in
-horizontal or vertical direction. 'Phi' is the measurement of the
-angle rotation of the entire ellipse around the center. If it is a
-counter-clockwise rotation. It is in degrees.
-
-The "cartesian-arc" command will draw an arc with the given center,
-radius, start and stop angle. The signature of the function looks like
-the following.
-
-    cartesian-arc x y R startAngle stopAngle
-
-The 'x' and 'y' are coordinates expressing the center of the arc. 'R'
-is the radius of the arc. 'startAngle' and 'stopAngle' are the angles
-expressing starting angle and stopping angle of the arc. They are both
-in degrees.
 
 
 # The 'barchart' command
