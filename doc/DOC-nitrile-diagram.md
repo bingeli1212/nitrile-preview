@@ -1257,18 +1257,20 @@ line separation of 1 in both directions.
 path a = &grid{10,10,1,1}
 ```
 
-- perpoint
+- rotatepoint
 
-This returns a new path of a single point that is perpendicular to 
-the existing line. It has two different forms. The first form is to 
-have the first two arguments being the points of two lines, and the third
-is the length of the line. The returned point is formed by departing
-from the first point for a distance that is the length of the third 
-argument. The following example is to return the point that is (1,0)
+This function would first rotate the point around a given point and then adjust
+the new point alone the line between itself and the center such that its
+distance from the center is exactly the given length.  The following example
+would rotate the point (1,0) around a center that is (0,0) for 90 degrees
+counter-clockwise angle and the finally adjust itself such that its
+distance from the center is exactly 2.
 
 ```
-path a = &perpoint{(0,0),(1,0),1}
+path a = &droppoint{(0,0),(1,0),90,2}
 ```
+
+- droppoint
 
 The second form would have had three points, and the returned value
 is a point on the line segment that is the first two points. The following
