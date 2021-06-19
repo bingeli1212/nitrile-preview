@@ -167,7 +167,7 @@ width and height and such that each grid is 6mm-by-6mm, do the following.
 
 Action command are those that would generate a translation such as those metafun
 commands, tikz commands, or SVG entries. Example action commands are 'draw',
-'text', 'dot', etc.
+'drawtext', 'drawdot', etc.
 
 Non-action commands are those that is used to configure environments, create and
 update variables, function, and path, etc. Following are Non-action commands:
@@ -1359,7 +1359,7 @@ draw a arrow, reverse arrow, and double arrow for each path segments.
     revarrow  (0,0)--(3,4)  (2,2)[h:4]
     dblarrow  (0,0)--(3,4)  (2,2)[h:4]
 
-However, for other operations such as 'drawlinesegarc', then
+However, for other operations such as 'drawanglearc', then
 the 'arrowhead' should be set for the style, which is an integer
 that is follows:
 
@@ -2101,7 +2101,7 @@ MetaPost, as otherwise the compilation will complain.
 
 
 
-# The 'drawlinesegcong' operation
+# The 'drawcongbar' operation
 
 This operation is to draw a short bar to indicate the congrudencies
 of two or more line segments. It will look for all line segments
@@ -2110,7 +2110,7 @@ style) in the middle of the line. In the following example a short
 bar is to be drawn in the middle of the horizontal line and in the middle
 of the vertical line.
 
-    drawlinesegcong (0,0) [h:4] [v:4]
+    drawcongbar (0,0) [h:4] [v:4]
 
 The length of the short bar is determined by the barlength-option,
 The bartype-option will also be checked
@@ -2118,9 +2118,10 @@ to see if it has been set. It can be set to 'double' to indicate a double bar,
 or 'triple' to indicate a triple bar. The gap between the bar lines are determined
 by the gap-option, which defaults to 0.1 unit length.
 
-# The 'drawlinesegarc' command
 
-The 'drawlinesegarc' command is to draw an arc or half square showing
+# The 'drawanglearc' command
+
+The 'drawanglearc' command is to draw an arc or half square showing
 the angle formed by two consecutive line segments of a polyline
 encountered in the given path. The angles formed is assumed to start
 from the first point to the third point, where the second point acts
@@ -2137,51 +2138,76 @@ closed then the angle between the last point and the first point is
 also to be drawn. If any of the angle is found to be exact 90 degrees,
 a square is to be drawn instead of the arc.
 
-    path tri = &triangle{(0,0),(4,0),(2,2)}
-    stroke &tri
-    drawlinesegarc "1\\2\\3" &tri
+    drawanglearc "1" "2" (2,0)--(0,0)--(0,2)
 
 If the angle is found to be around 90, then a square is drawn instead
 of an arc. However, a square can be forced if ".sq" option is given.
 
-    drawlinesegarc.sq (2,0)--(0,0)--(0,2)
+    drawanglearc.sq "1" "2" (2,0)--(0,0)--(0,2)
+
+
+# The 'drawcenteredtext' command
+
+The 'drawcenteredtext' command is to draw a piece of text
+in the center of a line segment found in the path.
+
+    path tri = &triangle{(0,0),(4,0),(2,2)}
+    stroke &tri
+    drawcenteredtext "1" "2" "3" &tri
+
+
+# The 'drawslopedtext' command
+
+The 'drawslopedtext' command is to draw a sloped text centered along a line
+segment.  The command scans for the presence of all line
+segments in the coodinates provided, and for every line segment found,
+place a label that run along the slope of the line.
+
+    drawslopedtext "Hello" "World" (0,0) [h:4] [v:4]
+
+By default, the text will be placed on top of the line. But it can be 
+placed at the bottom of the line if the ".bot" subcommand is supplied.
+
+    drawslopedtext.bot "Hello" "World" (0,0) [h:4] [v:4]
 
 
 
-# The 'dot' command
 
-The 'dot' command is to draw a dot to mark the location. Similar to
+
+# The 'drawdot' command
+
+The 'drawdot' command is to draw a dot to mark the location. Similar to
 the primitive command, a single dot is to be repeated for all points
 on the given path. Thus, following command will draw three dots each
 at three different locations of the input path.
 
-    dot (1,1) (3,4) [l:2,1]
+    drawdot (1,1) (3,4) [l:2,1]
 
-The 'dot' command provide several subcommands that allows for a
+The 'drawdot' command provide several subcommands that allows for a
 different shape to be drawn instead of a circular dot.
 
-    dot.hbar (1,1) (3,4) [l:2,1]
-    dot.vbar (1,1) (3,4) [l:2,1]
+    drawdot.hbar (1,1) (3,4) [l:2,1]
+    drawdot.vbar (1,1) (3,4) [l:2,1]
 
-For 'dot' command, the color can be specified using the 'dotcolor'.
+For 'drawdot' command, the color can be specified using the 'dotcolor'.
 
-    dot {dotcolor:orange} (1,1) (3,4) [l:2,1]
+    drawdot {dotcolor:orange} (1,1) (3,4) [l:2,1]
 
 For 'hbar' and 'vbar' subcommands the 'linecolor' attribute would have
 expressed the color of the lines.
 
-    dot.hbar {linecolor:orange} (1,1) (3,4) [l:2,1]
-    dot.vbar {linecolor:orange} (1,1) (3,4) [l:2,1]
+    drawdot.hbar {linecolor:orange} (1,1) (3,4) [l:2,1]
+    drawdot.vbar {linecolor:orange} (1,1) (3,4) [l:2,1]
 
 The diameter of the dot can be set using the 'dotsize' attribute.
 
-    dot {dotcolor:orange, dotsize:10} (1,1) (3,4) [l:2,1]
+    drawdot {dotcolor:orange, dotsize:10} (1,1) (3,4) [l:2,1]
 
 For 'hbar' and 'vbar' subcommands the 'linesize' attribute would hve
 expressed the width of the line.
 
-    dot.hbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
-    dot.vbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
+    drawdot.hbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
+    drawdot.vbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
 
 The 'dotsize' and 'linesize' are both expressed in terms of 'pt'. For
 'hbar' and 'vbar' commands, the length of the bar can be specified via
@@ -2190,23 +2216,23 @@ length in grid unit. If not specified, the default value is 0.25,
 which is one-quarter the length of a grid, and it can be changed to a
 different value by the 'set barlength' command.
 
-    dot.hbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
-    dot.vbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
+    drawot.hbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
+    drawdot.vbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
 
 Here, the length of each bar is going to be about half the length of
 the grid. Note that for 'vbar', it's lower end point aligns with the
 location, and for 'hbar', its left end aligns with the location.
 
 
-# The 'text' command
+# The 'drawtext' command
 
-The 'text' command is designed to place a piece of text in one or more path
-points. For instance, each of the following 'text' commands will place a piece
+The 'drawtext' command is designed to place a piece of text in one or more path
+points. For instance, each of the following 'drawtext' commands will place a piece
 of text at the given location.
 
-    text.rt "A" (1,1)
-    text.lft "B" (2,2)
-    text.top "C" (3,4)
+    drawtext.rt "A" (1,1)
+    drawtext.lft "B" (2,2)
+    drawtext.top "C" (3,4)
 
 The text must appear before any path points, and must enclosed within a set of
 quotation marks. 
@@ -2216,7 +2242,7 @@ be shown in the first path point encountered. However, if additional
 path points are specified, then the same text is to be repeated 
 across the other path points.
 
-    text "A" (1,1) (2,2) (3,4)
+    drawtext "A" (1,1) (2,2) (3,4)
 
 The option of this command specifies how the text is aligned relative
 to the path point. For instance, if the option is 'top' then the 
@@ -2224,15 +2250,15 @@ text will be aligned in such a way that it appear on top of the
 path point and centered horizontally. Without the option,
 it defaults to 'urt'.
 
-    text.top   -  top
-    text.bot   -  bottom
-    text.lft   -  left
-    text.rt    -  right
-    text.ulft  -  upper left
-    text.llft  -  lower left
-    text.urt   -  upper right
-    text.lrt   -  lower right
-    text.ctr   -  centering the text
+    drawtext.top   -  top
+    drawtext.bot   -  bottom
+    drawtext.lft   -  left
+    drawtext.rt    -  right
+    drawtext.ulft  -  upper left
+    drawtext.llft  -  lower left
+    drawtext.urt   -  upper right
+    drawtext.lrt   -  lower right
+    drawtext.ctr   -  centering the text
 
 It is also possible to express the fact that each path point is to show a
 different piece of text, by placing double backslashes inside the text, such
@@ -2242,30 +2268,30 @@ and in the same order. For instance, the following command would have placed
 letter "A" with the first point, letter "B" with the second point, and letter "C"
 with the third point.
 
-    text "A" "B" "C" (1,1) (2,2) (3,4)
+    drawtext "A" "B" "C" (1,1) (2,2) (3,4)
 
 It is also possible to express that a math expression instead of plain text.
 by setting is such that each text starts with "{{" and ends with "}}".
 In the following example the first and the last text labels are 
 treated as math text while the middle one is treated as plain text.
 
-    text {math:1} "{{A_0}}" "Hello" "{{A_2}}" (1,1) (2,2) (3,4)
+    drawtext {math:1} "{{A_0}}" "Hello" "{{A_2}}" (1,1) (2,2) (3,4)
 
 The text command also allows for each entry to be laid out such that it is
 multi-line paragraph. Note that this only works for plain text, and not
 for math.
 
-    text.ulft {fontsize:7} "degree\\3" (-3,2)
-    text.urt  {fontsize:7} "degree\\2" (3,2)
-    text.llft {fontsize:7} "degree\\2" (-3,-2)
-    text.lrt  {fontsize:7} "degree\\3" (3,-2)
+    drawtext.ulft {fontsize:7} "degree\\3" (-3,2)
+    drawtext.urt  {fontsize:7} "degree\\2" (3,2)
+    drawtext.llft {fontsize:7} "degree\\2" (-3,-2)
+    drawtext.lrt  {fontsize:7} "degree\\3" (3,-2)
 
-In addition, the 'text' command has the capability to style the font using
+In addition, the 'drawtext' command has the capability to style the font using
 the "fontfamily" and "fontstyle" style options. Note that this might not 
 always work for something. For instance, for LATEX and CONTEX it is not
 possible for specifying both a monospace and an italic.
 
-    text.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7} \
+    drawtext.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7} \
           "degree\\3" (-3,2)
 
 
@@ -3067,21 +3093,6 @@ is shaded darker. For lego-show2 operation the face facing
 upward is shaded lighter and the face facing right is shaded
 darker. 
 
-
-
-# The 'slopedtext' command
-
-The 'slopedtext' command is to draw a sloped text centered along a line
-segment.  The command scans for the presence of all line
-segments in the coodinates provided, and for every line segment found,
-place a label that run along the slope of the line.
-
-    slopedtext "Hello\\World" (0,0) [h:4] [v:4]
-
-By default, the text will be placed on top of the line. But it can be 
-placed at the bottom of the line if the ".bot" subcommand is supplied.
-
-    slopedtext.bot "Hello\\World" (0,0) [h:4] [v:4]
 
 
 
