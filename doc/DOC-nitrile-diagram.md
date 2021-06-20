@@ -879,45 +879,31 @@ second and third vector path will not have the same hint as the first.
 
 ## Setting up the 'offset'
 
-During a path construction, each path point can be given an additional
-"offset".  This allows for the same path to be repeated over several command,
-where each command is to provide its own "offset", giving the illusion that the 
-same path is to appear at several different locations.
-For intance, the following three 'draw' command would have drawn the same path
-three times, each time starting at a different location.
+During a path construction, each path point is subject to an internal "offset".
+The "offset" is nothing but a number in horizontal and vertical direction.
+When either the numbers are not zero, all future points of this path will be
+added this additional distance in the x or y direction. This allows for the
+same path construction description to be repeated over a number of commands
+each time at a possibly different "location".
 
     draw           (0,0)[h:2][v:2]
-    draw ^x:1 ^y:1 (0,0)[h:2][v:2]
     draw ^x:2 ^y:3 (0,0)[h:2][v:2]
 
 In the previous example, the second 'draw' command is said to have established
 an offset that is (1,1), shifting all points of the subsequent path points
-horizontally to the right by 1, and vertically upwards by 1.  Similarly, the
-third 'draw' command would have shifted all path points by 2 and 3.
+horizontally to the right by 2, and vertically upwards by 3.  
 
-An offset is established by adding one or more "directive". A directive is a
-special syntax that serves to supply additional information necessary to
-building a path.
+Following are directives for setting and moving offsets.
 
+- ^x:2
+- ^y:2
+- ^X:2
+- ^Y:2
 - ^left:2
 - ^right:2
 - ^up:2
 - ^down:2
-
-The 'left', 'right', 'up', and 'down' directives is each to shift the offset
-in the direction as instructed for a given number of grid distances.  The
-value after the colon is expected to be a number that expresses the number of
-grid units.  Note also that these operations are accumulative such that
-incurring two "up:1" equals a single "up:2". Using of negative numbers is 
-also allowed.
-
 - ^at:a
-
-This directive is to set the current offset so that it coincides with the first
-point of a path named "a". The value after the colon is expected to be the name
-of an existing path, such as 'a', or 'a_1' for expressing the second point of
-path 'a'. 
-
 - ^center
 - ^north
 - ^south
@@ -928,52 +914,37 @@ path 'a'.
 - ^southwest
 - ^southeast
 
-This directive would move the offset to the center or other part of the viewport.
+The "^x", "^y", "^X" and "^Y" directive would each set the x or y direction directly. 
+The lowercase x/y would start from the origin. The uppercase X/Y would start from the other side
+of the viewport.
 
-- ^x:2
-- ^y:2
-- ^X:2
-- ^Y:2
+The '^left', '^right', '^up', and '^down' directives is each to shift the offset
+in the direction as instructed for a given number of grid distances.  The
+value after the colon is expected to be a number that expresses the number of
+grid units.  Note also that these operations are accumulative such that
+incurring two "up:1" equals a single "up:2". Using of negative numbers is 
+also allowed.
 
-The "^x:" directive will set the offset to an absolute coordinate in the horizontal
-direction where 0 is the left hand side of the viewport.
+The '^at:a' directive is to set the current offset so that it coincides with the first
+point of a path named "a". The value after the colon is expected to be the name
+of an existing path, such as 'a', or 'a_1' for expressing the second point of
+path 'a'. 
 
-The "^y:" directive will set the offset to an absolute coordinate in the vertical
-direction where 0 is the bottom of the viewport.
-
-The "^X:" directive sets the offset to an absolute coordiate in the horizontal 
-direction where 0 is the right hand side of the viewport and 1 is one unit grid
-immediately to the right hand side of the viewport.
-
-The "^Y:" directive sets the offset to an absolute coordinate in the vertical 
-direction where 0 is the top side of the viewport and 1 is one unit grid
-immediately below the top side of the viewport.
+The '^center', '^north', '^south', '^east', '^west', '^northwest',
+'^northeast', '^southwest', and '^southeast' directives would set the origin
+relative to the current size of the viewport.
 
 ## Saving 'lastpt'
 
-- ^lastat:a
+- ^lastpt:a
 
-It is possible to save the current location of the 'lastpt' to a path.
-The following example would create a new path named "b" containing
-a single M point that is at (4,5).
+Any time during a path construction, it is possible to save the current
+location of the 'lastpt' to a path variable so that it can be retrieved laster.
+The following example would create a new path named "b" containing a single M
+point that is at (4,5).
 
-    path a = (1,1)[l:3,4] ^lastpt:b
+    path a = (1,1) [l:3,4] ^lastpt:b [l:5,6]
 
-## Restoring 'lastpt'
-
-- ^lastx:2
-
-Restore the 'lastpt' so that its x-position is 2.
-
-- ^lasty:2
-
-Restore the 'lastpt' so that its y-position is 2.
-
-- ^lastat:a
-
-Restore the 'lastpt' so that its location coincides with the 
-first point of path "a". If the path is empty, or its first
-point is not a valid point, then the 'lastpt' is not updated.
 
 
 
