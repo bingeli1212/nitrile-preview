@@ -2498,6 +2498,67 @@ bar is 1.5, etc.
 The text will always be centered at location, and placed directly
 below the bar.
 
+# The 'if' command
+
+The 'if' command is used to conditionally execute some block of codes
+depending on the condition of an Boolean expression, such as 'i > 10',
+'i == 10', 'i >= 10', 'i < 10', 'i <= 10', and 'i != 10', etc.
+
+    if i > 10; then
+      show ${i}
+    elif i > 5; then
+      show ${i}
+    elif i > 0; then
+      show ${i}
+    else
+      show ${i}
+    fi
+
+Note that the Boolean expression must be ended by a semicolon. The 'elif' and
+'else' components are optional, and can be omitted. The body statements with
+each branch should carry an indent so that it does not interfere with the
+process of 'elif', 'else' and 'fi' lines. The 'fi' line would terminate this
+command.
+
+A compound Boolean statement is possible, in which case each individual
+Boolean statement is to be joint by the keyword "AND" and/or "OR".
+
+    if i > 10; AND j == 10; then
+      show ${i} ${j} 
+    fi
+
+    if i > 10; OR j == 10; then
+      show ${i} ${j} 
+    fi
+
+Note that each individual Boolean expression should still end with a semicolon
+regardless if it is to be joint by another Boolean expression down the road.
+
+There isn't a limit when it comes to how many Boolean expressions can be
+joint by AND/OR.
+
+    if i > 10; AND j == 10; OR k != 5; then
+      show ${i} ${j} ${k}
+    fi
+
+It should be pointed out that all joins are treated equally. This means that
+they will not be internally regrouped based on the order of operations of these
+joins, as might have been the case for some other languages. The result of a
+previous join becomes the input to the next join.
+
+In cases where there is a misspell, or the join simply does not exist, then the
+result of this Boolean expression simply overrides the one before it. For
+instance, the following 'if' command considers the expression true only if
+variable 'j' is set to 10, completely ignoring the state of variable 'i',
+because of the fact that there isn't a join thus the second expression
+always overrides the first.
+
+    if i > 10; j == 10; then
+      show ${i} ${j}
+    fi
+
+
+
 # The 'for' Command
 
 A 'for' command is provided by Diagram such that a number of commands
