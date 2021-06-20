@@ -2041,31 +2041,23 @@ letters of digits. Names such as 'a', 'b', 'a0', 'b0', 'aa0', 'a0a', 'a0a0' are
 all valid names. Names such as '0', '1', '0a', '0b', '00ab', etc., are not valid
 names.
 
-The path name could also be given special names such as '@A', '@B', '@X', or
-'@a', '@b', '@x', where it starts with the symbol '@', followed by a single
-letter that is A-Z or a-z. In this case the entire name will be renamed with a
-single letter that is A-Z or a-z, and the replacement letter
-depends entirely on the current value of the '@' variable and the letter after '@'.
-
-For example, if '@' is current set at 0, then '@A' will become 'A'; and if '@'
-is at 1, then '@A' will become 'B'. Similarly, if path name is given as '@B',
-and '@' is current set at 0, '@B' will become 'B'; and if '@' is at 1, '@B' will
-becomes '@C'. This feature allows the same 'path' command inside a for-loop to create path
-of different names because a for-loop would update or create a '@' variable depending
-on its current iteration.
+Aside from the path-destructuring syntax, such that each path symbol will be given
+just one of the points, there is also a path-desequencing, such that only one of the 
+symbols in the list will be picked to receive the entire path expression.
+This syntax is typically used in conjunction with a 'for' loop command.
+In the following example, the path 'A' will receive "(1,1)[h:2]",
+and path 'B' will receive "(3,3)[h:2]", and path 'C' will receive "(5,5)[h:2]".
 
     for i in [1, 3, 5]; do
-      path @A = (${i},${i]}) [h:2]
+      path @[A,B,C] = (${i},${i]}) [h:2]
     done
 
-In the previous example there will be three different path created, namely 'A',
-'B', and 'C' respectively during each iteration of the loop. 
-
-Note that care should be take in order to avoid running over the limit of
-available letters. Because the strict requirement in which a path name must
-conform, invalid path names are automatically rejected and path not created. For
-instance, a path name given as '@Z' would not be replaced by a valid path name
-if '@' happen to be set to 1 at that moment.
+This is done internally by looking up the current value of '@' scalar, which is
+internally maintained by Diagram and is always assigned an integer indicative
+of the iteration. If this scalar is 0, then the first symbol is selected. If
+the scalar is 1, the second scalar is selected. So on and so forth.  All symbol
+names listed must conform to the restriction of being a valid symbol name.  If
+the list runs out, then no symbol name is assumed.
 
 
 
