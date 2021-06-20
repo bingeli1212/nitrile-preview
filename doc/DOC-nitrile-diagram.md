@@ -1818,6 +1818,70 @@ This the 'arc' env-variable would have been assigned the value of 6.28.
 
 # The 'origin' command
 
+The 'lastpt' command sets the following parameters for the current
+drawing environment.
+
+- lastpt ^up:2
+- lastpt ^down:2
+- lastpt ^left:2
+- lastpt ^right:2
+- lastpt ^x:2
+- lastpt ^y:2
+- lastpt ^X:2
+- lastpt ^Y:2
+- lastpt ^at:a
+- lastpt ^pt:a
+- lastpt ^center
+- lastpt ^north
+- lastpt ^south
+- lastpt ^northwest
+- lastpt ^southwest
+- lastpt ^northeast
+- lastpt ^southeast
+- lastpt ^east
+- lastpt ^west
+
+If it starts with "left:<x>", "right:<x>", "up:<y>", 
+"down:<y>", where the distance expresses the number of grid units
+to move in that direction. 
+
+If it starts with "x:", then it expresses the distance from the left hand side
+of the viewport. 
+
+If it starts with "y:", then it expresses the distance from the bottom side
+of the viewport.
+
+If it starts with "X:", then what follows will be interpreted as 
+expressing a number that is "x" number of unit distances from the right hand side
+of the viewport.
+
+If it starts with "Y:", then what follows is to be interpreted as
+expressing a number that is "x" number of unit distances away from the top of the
+viewport.
+
+If it is "at:a" then the 'lastpt' will be set to a point coincides with the first
+point of that path.
+
+If it is "at:a_0" then the 'lastpt' will be set to a point coincides with the first
+point of that path.
+
+If it is "at:a_1" then the 'lastpt' will be set to a point coincides with the second
+point of that path.
+
+If it is "at:a_2" then the 'lastpt' will be set to a point coincides with the third
+point of that path.
+
+If it is "at:a_3" then the 'lastpt' will be set to a point coincides with the forth
+point of that path.
+
+If it is "pt:a" then it creates a new path variable named 'a' such that it
+contains a single point that coincides with the current position of 
+'lastpt'. 
+
+
+
+# The 'origin' command
+
 The 'origin' command sets the following parameters for the current
 drawing environment.
 
@@ -1872,19 +1936,19 @@ to be 2.5.
 If it is "s:2.5" then it sets the scaling factor in the horizontal and
 vertical direction to be 2.5. 
 
-If it is "at:a" then the offset will be set to a point coincides with the first
+If it is "at:a" then the 'origin' will be set to a point coincides with the first
 point of that path.
 
-If it is "at:a_0" then the offset will be set to a point coincides with the first
+If it is "at:a_0" then the 'origin' will be set to a point coincides with the first
 point of that path.
 
-If it is "at:a_1" then the offset will be set to a point coincides with the second
+If it is "at:a_1" then the 'origin' will be set to a point coincides with the second
 point of that path.
 
-If it is "at:a_2" then the offset will be set to a point coincides with the third
+If it is "at:a_2" then the 'origin' will be set to a point coincides with the third
 point of that path.
 
-If it is "at:a_3" then the offset will be set to a point coincides with the forth
+If it is "at:a_3" then the 'origin' will be set to a point coincides with the forth
 point of that path.
 
 If it is "pt:a" then it creates a new path variable named 'a' such that it
