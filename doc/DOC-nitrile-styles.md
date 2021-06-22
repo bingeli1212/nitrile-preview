@@ -447,16 +447,6 @@ Following are styles recognized by NITRILE:
   the 'trump' command, which would have asked that a text to be
   rotated, which would have required a different method.
   
-+ xstep:<length>
-
-  The xstep-option and ystep-option is used currently by the
-  'cartesian.grid' to set the separation of each grid line in the
-  x-direction. The option value is to be a number in grid unit.
-
-+ ystep:<length>
-
-  See xstep-opion. 
-
 + nodetype:<string>
 
   - CIRC
@@ -766,6 +756,41 @@ Following are styles recognized by NITRILE:
   When set to 1 this style asks that no caption text is to be shown. This option is currently
   utilized by figure, table, longtable, and listing blocks to specifically suppress the showing
   of caption text.
+
++ xgrid:<length>
+
+  The xgrid-option expresses the number of Cartesian grid unit for each viewport
+  grid unit in the horizontal direction. This option is currently used
+  exclusively by the "car" command.
+
++ ygrid:<length>
+
+  The ygrid-option expresses the number of Cartesian grid unit for each viewport
+  grid unit in the vertical direction. This option is currently used
+  exclusively by the "car" command.
+
++ xaxis:<float> <float> <arrowhead>
+
+  This option specifies how an xaxis is to be drawn. The first two numbers
+  expresses the lower bound and upper bound for the axis to be drawn, and last
+  number expresses how an arrowhead is to appear on either side of the axis.
+
++ yaxis:<float> <float> <arrowhead>
+
+  This option specifies how an yaxis is to be drawn. The first two numbers
+  expresses the lower bound and upper bound for the axis to be drawn, and last
+  number expresses how an arrowhead is to appear on either side of the axis.
+
++ xgrid:<float> <float> ...
+
+  This option specifies a list of floats that serves as the location where a
+  tick for a x-axis is to be drawn.
+
++ ygrid:<float> <float> ...
+
+  This option specifies a list of floats that serves as the location where a
+  tick for a y-axis is to be drawn.
+
 
 
 

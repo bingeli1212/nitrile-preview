@@ -981,6 +981,9 @@ relative to its current settings.
 - ^northeast
 - ^southwest
 - ^southeast
+- ^node:1
+- ^box:1
+- ^car:1
 
 The "^x", "^y", "^X" and "^Y" directive would each set the x or y direction directly. 
 The lowercase x/y would start from the origin. The uppercase X/Y would start from the other side
@@ -1001,6 +1004,12 @@ path 'a'.
 The '^center', '^north', '^south', '^east', '^west', '^northwest',
 '^northeast', '^southwest', and '^southeast' directives would set the origin
 relative to the current size of the viewport.
+
+The '^node:1', '^box:1' and '^car:1' are each used to setup the offset so that
+it aligns with the location of a node, a box and/or a Cartesian plane. For the
+node and box, only the x/y locations are altered. However, for a Cartesian
+plane, both the x/y locations and x/y scalings are alterd.
+
 
 
 
@@ -2435,136 +2444,79 @@ problems observed in some translation when 'drawtext' is used.
 
 
 
-# The 'cartesian' command
+# The 'car' command
 
-The 'cartesian' is a compound command that has different subcommands listed
-below.
+The 'car' is a compound command that sets up a Cartesian coordinate.
 
-- cartesian.1.setup xorigin yorigin gridrange
-- cartesian.1.grid xmin ymin xmax ymax
-- cartesian.1.xaxis xmin xmax
-- cartesian.1.yaxis ymin ymax
-- cartesian.1.ytick y1 y2 y3 ...
-- cartesian.1.xtick x1 x2 x3 ...
-- cartesian.1.yplot {f:P} x1 x2 x3 ...
-- cartesian.1.xplot {f:P} y1 y2 y3 ...
-- cartesian.1.dot x1 y1 x2 y2 x3 y3 ...
-- cartesian.1.line x1 y1 x2 y2 x3 y3 ...
-- cartesian.1.arrow x1 y1 x2 y2 x3 y3 ...
-- cartesian.1.text.rt x1 y1 x2 y2 x3 y3 ...
-- cartesian.1.ellipse x y Rx Ry Phi
-- cartesian.1.arc x y R startAngle stopAngle
+- car.1 (5,5)
+- car.1 {xgrid:0.5, ygrid:2}
+- car.1 {xgrid:0.5, ygrid:2, xaxis:-5 5 1, yaxis:-5 5 1}
+- car.1 {xgrid:0.5, ygrid:2, xaxis:-5 5 1, yaxis:-5 5 1, xtick:-4 -3 -2 -1 1 2 3, ytick:-4 -3 -2 -1 0 1 2 3 4}
 
-The ``cartesian`` command is used to draw plots, curves, axis, ticks
-that are related to a single Cartesian coordinate. It is a composite
-command that includes many sub-commands. All subcommands must follow
-the word 'cartesian' after a dot symbol. The subcommand itself can
-also have its own option, such as 'cartesian.label.rt'.
+Without any option, each path point would have expressed a new Cartesian
+coordinate that is centered at that location. For instance, the first example
+above would have setup a Cartesian coordinate plane such that its origin is
+located at (5,5).
 
-The cartesian command is a compound command. It has many subcommands. which
-must be listed after the dot. The first string after the dot serves
-as the ID of the cartesian, in cases where there might be multiple
-setups of a cartesian coordinates, in which case each cartesian coordinate
-is capable of its own setup.
+Additional configuration can be added to this plane, such as with instructions
+to draw the x/y axes, or to add tick marks to each axis. These configurations
+are done by specifying additional config parameters in the same command line of
+'car'.
 
-The ``cartesian.setup`` command would set up a Cartesian coordate to be used. The
-first two arguments defines the low left hand corner where the origin
-of the cartesian coordinates will appear inside the Diagram. It is
-specified in grid coordintes. For example, if they are passed as 2 and
-3, then the origin of the Cartesian coordinates will appear at the
-location of (2,3) of the Diagram.
+The command option is the Id of this Cartesian plane, which can be used later to
+identify this plane. This is similar to how an Id is used to identify a node, or
+a box. 
 
-    cartesian.1.setup 2 3 0.5
+The 'xgrid' and 'ygrid' option would scale a point on a Cartesian plane. The
+number assigned to the 'xgrid' expresses the length each viewport grid would
+mean for the grid of the Cartesian. Thus, "xgrid:0.5" would have meant that a
+viewport grid of 1 would have translated to a distance of 0.5 for this Cartesian
+grid, in the horizontal direction. Similarly, a "ygrid:2" would have mean that a
+single viewport grid would have translated to a distance of 2 unit grid in the
+Cartesian plane, in the vertical direction.
 
-The third argument can be omitted. If provided, it states the how to
-interpret the input range of the Cartesian coordinates. For example,
-when 0.5 is passed, it states that each grid unit of the Diagram is to
-be interpreted as expressing an input range of 0.5 for the Cartesian
-coordinates, or that 2 grid units will be used for each length of 1 of
-the input range of the Cartesian coordinates. This means that if we
-were to plot a point of (1,1) of the Cartesian coordinates the dot
-will appear at the location (2,3) + (2,2) = (4,5) inside the Diagram,
-where (2,3) is the location of the origin, and (2,2) is where the
-point is relative to the origin.
+The drawing of x/y axes are controlled by the appearnces of the "xaxis" and
+"yaxis" config options. Each option is to expected two or three numbers, where
+the first two denotes the range of values in that direction. For instance, an
+"xaxis:-5 5" would mean for a x-axis to be drawn that would cover a range of -5
+to 5 horizontally, in Cartesian grid unit. Similarly, "yaxis:-5 5" would have
+means for a y-axis to be drawn that covers a range of -5 to 5 vertically, in
+Cartesian grid unit.
 
-The ``cartesian.1.grid`` command asks to draw a grid with the lower-left
-corner at (xmin,ymin) and upper-right corner at (xmax,ymax). The increment
-is default at 1. The increment for x-direction can be set by the xstep-option
-and the increment for y-direction can be set by the ystep-option.
+By default, the axis is drawn as a line, with line size and color taken from the
+current config settings. However, we can instruct that the axis be drawn either
+as an arrow, or revarrow, or dblarrow by attaching an integer as the third
+number to the "xaxis" and/or "yaxis" config option. The number 1 means an
+arrowhead at the right hand side, and 2 means a arrowhead at the left hand side,
+and a number 3 means two arrow heads on both sides.
 
-    cartesian.1.grid -5 -5 5 5
-    cartesian.1.grid {xstep:0.5, ystep:0.5} -5 -5 5 5
+Drawing of ticks marks on either axes is to be done by adding the "xtick" and
+"ytick" options. Both of these options would include a set of number, expressing
+the location of the tick marks at that location of the axis. 
 
-The ``cartesian.1.xaxis`` command is to draw the x-axis. The only two
-parameters passed to it is the lower and upper range that this axis
-entails. Similarly, the ``cartesian.1.yaxis`` command draws the y-axis
-with similar parameter requirements.
+Once specified, we can draw a point on this Cartesian plane using a special notation
+of an absolute path point such as the following.
 
-    cartesian.1.xaxis -0.75 5.6
-    cartesian.1.yaxis -0.75 4.5
+    drawdot (#car.1,4,3)
 
-The ``cartesian.1.xtick`` is used to draw ticks as well as labels on the
-x-axis of the coordinate. The list of arguments passed to this command
-is a list of location of these ticks on the axis. For example, if
-passed as "1 2 3" then the ticks will appear where (1,0), (2,0), and
-(3,0) points are. For each tick, a label string will also appear
-unerneath that tick. Similarly, the ``cartesian.1.ytick`` command does the
-same thing except for that it is for the y-axis.
+This point means that a coordinate point of this Cartesian plane at (4,3). This
+point is then automatically converted to a viewport coordinate to be drawn by
+the 'drawdot' command. Similarly, a line can be drawn between any two points of this 
+Cartesian plane such as the following.
 
-    cartesian.1.xtick 1 2 3 4 5
-    cartesian.1.ytick 1 2 3 4
+    draw (#car.1,4.3)--(#car.1,5,10)
 
-The `cartesian dot` command shows one or more points as dots inside
-the coordinate. Every two numbers are interpreted as a pair of (x,y)
-coordinates.
+In addition, there is a "^car" path directive. For instance we can draw the previous two 
+points using the following 'draw' command and the result will be exactly the same.
 
-    cartesian.1.dot  -4 0 4 0 \
-                  -5 0 5 0
+    draw ^car:1 (4,3)--(5,10)
 
-The 'cartesian.1.line' and 'cartesian.1.arrow' commands are similar,
-except for that the first one will draw connecting lines between all
-points, and the second one also adds an arrowhead at the very end of
-the line.
+This is because the "^car:1" directive would have configured the current offset and offset scale
+to match those of the Cartesian plane #1. In particular, the offset center is set to the location
+the plane center has been set up to, and then the horizontal/vertical scale is then each set to match
+that of the xgrid/ygrid of that plane. Note that the "car" is to be followed by a colon instead of
+the period, and it only affects the current path expresison.
 
-    cartesian.1.line  -4 0 4 0 \
-                    -5 0 5 0
-
-The 'cartesian.1.yplot; is similar to 'cartesian.1.dot', in that it
-generates a series of dots. Only the x-coordinates of plotted points
-are provided, and the y-coordinates of each point is calculated by the
-supplied function, which must be provided by the "f" member of the
-option.
-
-    fn P(x) = pow(x,2)
-    cartesian.1.yplot {f:P} 1 2 3 4 5
-
-In the previous example, following points will be shown: (1,1), (2,4),
-(3,9), (4,16), and (5,25) as dots. The Range expression in this case
-can be useful, such as the following:
-
-    fn P(v) = pow(v,2)
-    cartesian.1.yplot {f:P} [1:5]
-
-The name of the function could be arbitrary. However, it must be
-specified by the "f" member of the option. The function must have been
-previously defined by a "fn" command, and must only accept one
-argument and return a single scalar.
-
-The 'cartesian.1.xplot' is similar except for that the input arguments
-expresses a range of values as the y-coordinates of the points, and
-the funtion generates the corresponding x-coordinates.
-
-    fn P(v) = sqrt(v)
-    cartesian.1.xplot {f:P} 1 4 9 25 16 25
-
-The ``cartesian.1.label`` command draws a text at the location of the
-cartesian coord. The text itself is expressed via the quotation marks
-that must proceed the any option and all scalar values. Following
-example draw texts at location (-5,0), (-5,1) and (-5,2) of the
-Cartesian coordinates, and at each point the text will be "P(0)",
-"P(1)", and "P(2)". The text is to appear at the bottom of each point.
-
-    cartesian.1.text.bot "P(0)\\P(1)\\P(2)" -5 0 -5 1 -5 2
 
 
 
