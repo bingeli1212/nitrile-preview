@@ -410,14 +410,14 @@ constructing a path "b".
 Following example shows how to access the second point of an array named "a" in a scalar
 expression. 
 
-    var @a = 1 2 3 4
+    var a[] = 1 2 3 4
     var b = a_1
 
 Following example shows how to access the entire content of the array "a" when building
 another array named "b".
 
-    var @a = 1 2 3 4
-    var @b = [@a]
+    var a[] = 1 2 3 4
+    var b[] = [@a]
 
 
 
@@ -1552,7 +1552,7 @@ when the variable is preceeded by an at-sign, in which case the variable
 is expected as an array that is to hold a list of numbers instead
 of holding a single one.
 
-    var @a = 0 1 2 (1+2) 
+    var a[] = 0 1 2 (1+2) 
 
 The same expression could be found elsewhere where a list of scalar is expected,
 such as for a 'cartesian' and 'argand' command.
@@ -1587,7 +1587,7 @@ points, with the first point being 0, and the last point being 10, and
 additional 20 points generated between 0 and 10 such that the distance between
 any two neighboring points is the same.
 
-    var @a = [0!20!10]
+    var a[] = [0!20!10]
 
 Within a list expression, it could be many different forms. The previous form is know
 as list-spread-form, which expresses a list of at two items, but could be more.
@@ -1601,11 +1601,11 @@ dynamically based on the distance of the first one and the second one. For
 instance, following example would have generated a list of numbers that are 1,
 2, 3, 4, 5, 6, 7, 8, 9, and 10.
 
-    var @a = [1:10]
+    var a[] = [1:10]
 
 The following would have generated a list composed numbers that are 1, 4, 7, 10.
 
-    var @a = [1:4:10]
+    var a[] = [1:4:10]
 
 Note that in the case of the having three columns the middle number serves as the 
 second number after the first one, and additional numbers are generated with the same
@@ -1617,14 +1617,14 @@ list-array-form. Following expression would pull the content of an existing aray
 named 'c' and a list is built off the content of this array, plus two additional
 items that is 4 and 5.
 
-    var @c = 1 2 3
-    var @a = [@c] 4 5
+    var c[] = 1 2 3
+    var a[] = [@c] 4 5
 
 If a list-expression does not fit the definitions of the previous three
 categories, then it would be treated as a list-comma-form. This form would look
 for comma separated items. Spaces between commas are optional.
 
-    var @a = [1, 2, 3, 4]
+    var a[] = [1, 2, 3, 4]
 
 Note that the spaces after each comma is optional. 
 
@@ -1632,15 +1632,15 @@ It should be pointed out that all the previous list forms can be mixed in anothe
 order, and the result of which is simply the concatenation of all list items 
 from these individual lists.
 
-    var @c = 10 11 12
-    var @a = 1 2 3 [4:10]
-    var @a = [1:2] [3:4] 5 6 7 [8:10]
-    var @a = [1,2,3,4] [5,6,7,8] 9 10 [@c]
+    var c[] = 10 11 12
+    var a[] = 1 2 3 [4:10]
+    var a[] = [1:2] [3:4] 5 6 7 [8:10]
+    var a[] = [1,2,3,4] [5,6,7,8] 9 10 [@c]
 
 Note that a list is automatically recognized and populated in a 'for' command
 as well.
 
-    var @a = 1 2 3
+    var a[] = 1 2 3
     for i in [@a]; do
       show ${i}
     done
@@ -1666,7 +1666,7 @@ Or,
 An entire array can be show by the dollar-expression as well. Ensure that the
 array variable is to appear by itself, and proceeded by '@'.
 
-    var @a = 1 2 3
+    var a[] = 1 2 3
     show ${@a}
 
 A directive is also to be recognized. A directive adds extra possibility to the
@@ -1674,12 +1674,12 @@ list of numbers. For the moment only the "fn" directive is supported. This
 directive allows for a function to be called such that the output of this
 function replaces the original scalar.
 
-    var @a = ^fn:sqrt 1 2 3 4 5 6
+    var a[] = ^fn:sqrt 1 2 3 4 5 6
     show ${@a}
 
 Following would be the output of these commands:
 
-    % <-- var @a = ^fn:sqrt 1 2 3 -->
+    % <-- var a[] = ^fn:sqrt 1 2 3 -->
     % <-- *** env @a = 1 1.4142135623730951 1.7320508075688772 -->
     % <-- show ${@a} -->
     % <-- *** show 1 1.4142135623730951 1.7320508075688772 -->
@@ -1688,7 +1688,7 @@ If two "fn" directives are encountered, the last "fn" is called first, and the o
 of which becomes the input to the first "fn". 
 
     fn add2(x) = x+2
-    var @a = ^fn:add2 ^fn:sqrt 1 2 3
+    var a[] = ^fn:add2 ^fn:sqrt 1 2 3
     show ${@a}
 
 In the previous example each scalar is to go
@@ -1696,7 +1696,7 @@ through the "sqrt" function first before being sent to the "add2" function.
 
     % <-- fn add2(x) = x+2 -->
     % <-- *** fn add2(x) = x+2 -->
-    % <-- var @a = ^fn:add2 ^fn:sqrt 1 2 3 -->
+    % <-- var a[] = ^fn:add2 ^fn:sqrt 1 2 3 -->
     % <-- *** env @a = 3 3.414213562373095 3.732050807568877 -->
     % <-- show ${@a} -->
     % <-- *** show 3 3.414213562373095 3.732050807568877 -->
@@ -1704,14 +1704,14 @@ through the "sqrt" function first before being sent to the "add2" function.
 It is also possible to refer to an array element. To do that simply use the variable
 followed by an underscore itself.
 
-    var @a = 1 2 3
-    var @b = a_1 a_2
+    var a[] = 1 2 3
+    var b[] = a_1 a_2
 
 Following would be the result of the translation.
 
-    % <-- var @a = 1 2 3 -->
+    % <-- var a[] = 1 2 3 -->
     % <-- *** env @a = 1 2 3 -->
-    % <-- var @b = a_1 a_2 -->
+    % <-- var b[] = a_1 a_2 -->
     % <-- *** env @b = 2 3 -->
 
 
@@ -1867,10 +1867,10 @@ This the 'arc' env-variable would have been assigned the value of 6.28.
 
 
 
-# The 'origin' command
+# The 'lastpt' command
 
-The 'lastpt' command sets the following parameters for the current
-drawing environment.
+The 'lastpt' command modifies the 'lastpt' state which 
+affects the next path contruction. 
 
 - lastpt ^up:2
 - lastpt ^down:2
@@ -3276,7 +3276,7 @@ used. The command line for this command expectes a list of complex numbers.
 As usual, an array variable is also to be recognized and the list of scalar
 associated with it are to be become part of the command line.
 
-    var @a = (1+2*I) (2+1*I) 
+    var a[] = (1+2*I) (2+1*I) 
     argand-dot @a
 
 A dot will be drawn in that location where the complex number is expected
@@ -3337,7 +3337,7 @@ The same 'var' command is also able to create an "array" variable, in which
 case a list of numbers, rather than a single number, is to be assigned to this
 symbol name, and later on be access in various places.
 
-    var @a = 1 2 3
+    var a[] = 1 2 3
     drawtext "${a_0}" "${a_1}" "${a_2}" (0,0) [h:1] [h:1]
 
 The previous example has created an array of three numbers, and was later
@@ -3390,14 +3390,14 @@ sign must be a formatting string, which must appear starting with an at-sign, an
 immediately followed by a set of quotation marks.
 
     var num = pow(2,1/12)
-    var s = "%.2f" num
+    var s = @"%.2f" num
 
 Note that is possible to have empty spaces inside the
 quotation marks. 
 
     var num1 = pow(2,1/12)
     var num2 = pow(2,2/12)
-    var s = "%.2f %.2f" num1 num2
+    var s = @"%.2f %.2f" num1 num2
 
 Each additional argument after the initial formatting string is to be treated as
 existing scalar variables. They each serve as an independent source that is to
@@ -3419,7 +3419,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 1.23456789
-  var s = "%0.2f%%" a
+  var s = @"%0.2f%%" a
   % s => '1.23%'
   ```
 
@@ -3431,7 +3431,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 1.23456789
-  var s = "%.2f" a
+  var s = @"%.2f" a
   % s => '1.23'
   ```
 
@@ -3441,7 +3441,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 0x10
-  var s = "%d" a
+  var s = @"%d" a
   % s => "16"
   ```
 
@@ -3455,9 +3455,9 @@ Following formatting groups are recognized.
 
   ```
   var a = 15
-  var s = "%x" a
+  var s = @"%x" a
   % s => "f"
-  var s = "%X" a
+  var s = @"%X" a
   % s => "F"
   ```
 
@@ -3471,7 +3471,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 5
-  var s = "%b" 5
+  var s = @"%b" 5
   % s => "101"
   ```
 
@@ -3481,7 +3481,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 0xF0
-  var s = "%o" a
+  var s = @"%o" a
   % a => "360"
   ```
 
@@ -3492,7 +3492,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 65
-  var s = "%c" a
+  var s = @"%c" a
   % a => "A"
   ```
 
@@ -3502,12 +3502,32 @@ Following formatting groups are recognized.
 
   ```
   var a = 1.23
-  var s = "%s" 
+  var s = @"%s" 
   % s => "1.23"
   ```
 
-Note that a string variable such as "s" above cannot be used in an
-arithmetic expression. 
+Note that for a variable such as "c" below holding a string, it might have
+trouble being recognized as a number if it were to appear inside a arithmetic
+expression such as the case for the 'var' command for 'd' below, in which case
+the arithmetic expression turns out to be a NaN.
+
+    var a = 1
+    var b = 23
+    var c = @"Hello"
+    % c => "Hello"
+    var d = c + 10
+    % d = NaN
+
+Currently, there are no operations for string operands. However, 
+if the entire expression is a variable prefixed by a '@', such as
+the 'var' command for 'd' below, the entire content of variable 'c'
+will be retrireved, regardless if it is a number or string.
+
+    var c = @"Hello"
+    % c => "Hello"
+    var d = @c
+    % d => "Hello"
+
 
   
 
