@@ -391,14 +391,34 @@ color that is the average of the half width and half height of the rectangle.
 
 # Valid symbol names
 
-Symbol names refer to the names used by a path, an environment variable,
-a user-defined scalar function, and an array.
+Symbol names includes those names referenced as a path, a scalar variable, 
+a scalar array, and a user-defined function. 
 
 A valid symbol name must start with an upper case letter
 or lower case letter, and followed by additional letters or numbers.
+Underscores are not part of a symbol names, and in some cases recognized
+as a way to express subindex to access individual elements.
+For instance, "a", "aa", "a0" are valid symbol names, 
+while "0", "0a", "0ab", "_ab", "ab_", are "a_b" are not valid symbol names.
 
-For instance, "a", "aa", "a0" are valid
-symbol names, while "0", "0a", "0ab" are not valid symbol names.
+Following example shows how to access the second path point of a path named "a" when
+constructing a path "b".
+
+    path a = (1,2)--(3,4)
+    path b = (&a_1)
+
+Following example shows how to access the second point of an array named "a" in a scalar
+expression. 
+
+    var @a = 1 2 3 4
+    var b = a_1
+
+Following example shows how to access the entire content of the array "a" when building
+another array named "b".
+
+    var @a = 1 2 3 4
+    var @b = [@a]
+
 
 
 
@@ -406,96 +426,124 @@ symbol names, while "0", "0a", "0ab" are not valid symbol names.
 
 ## Vector path
 
-In graphics design, a vector path composed of a series of smooth or straight (vector) lines 
-is to be drawn as an outline. Each vector path will always start with a M point,
-followed by additional L, C, Q, or A points. If this path is closed, then the last
-point is a z point.
+In graphics design, a vector path is defined as composed of a series of smooth or straight (vector) lines 
+connecting one another that is to be drawn as an outline. Each vector path should start with a M point,
+followed by additional L, C, Q, or A points. If this path is closed, the last point is
+a z point.
 
 + M
-  A "moveto" point.
+  The first point of a vector path.
 + L
-  A "lineto" point.
+  The previous point should connect to this point forming a straight line.
 + C
-  A cubic Bezier curve point.
+  The previous point should connect to this point forming a cubic Bezier curve.
 + Q
-  A quadratic Bezier curve point.
+  The previous point should connect to this point forming a quadratic Bezier curve.
 + A
-  A arc curve point
+  The previous point should connect to this point forming an arc.
 + z
-  A "closed" path point.
+  Expresses that the current vector path should be "closed", connecting the last point
+  to the first.
 
-The letter M expresses that the point is a "moveto" point, similar to the "M"
-point in a SVG path. A path is always started by the presence of this point.
-The "L" is a "lineto" point, which expresses that a straight line is to be
-drawn between the last point and this point. The "C" is a cubic Bezier curve,
-and "Q" is a quadratic Bezier curve. The "A" is an "arc" curve, and "z"
-represents that the current path should be closed, and a straight line is to be
-drawn between this point and the "M" point that started this path.
+The previous definitions of various points is closely relatived to the letter
+given to each point inside a SVG-path element.
 
-In Diagram, if multiple M points are detected, each of them will individually
-start a new vector path, and will be terminated whenever a new M point is
-detected. If a z point appears before a M point, then the path is considered
-closed at this point, such that any additional points that are not M will be
-silently ignored. The following example path 'a' would have had one vector path
-in it and path 'b' would have had two vector paths in it.
- 
+In Diagram, a single path expression is capable of describing multiple vector
+paths, where each vector path is an independent set of connected straight or
+curved lines.  In the following example the path "a" would have composed of one
+vector path and path "b" would have composed of two vector paths.
+
     path a = (0,0)--(1,1) 
     path b = (0,0)--(3,4) (2,2)--(5,6)
 
-## Path points and join
 
-A path is a collection of path points. In the following example path "a" 
-has four path points, and path "b" has four path points.
 
-    path a = (0,0)--(1,1)
+## Path points 
+
+Internally, a path expression is stored in memory as a array of path In the
+following example there are 2 path points for path "a", and four path points
+for path "b".
+
+    path a = (0,0)--(1,1) 
     path b = (0,0)--(3,4) (2,2)--(5,6)
 
-Each path point is specified by a set of parentheses with two numbers inside.
-The first numbers is the x-coordinate, and the second number is the
-y-coordinate.  The placement of "--" between path points is for expressing a
-"line join", such that the second point is to become a L point.  However, "~~"
-is another join called "abr join" that express that the second point is to join
-the previous point as a quadratic Bezier curve, thus becoming a Q point. 
+Each path point would contain information such as M, L, Q, C, A, and z, and
+additional information pertaining to the requirements of each specific point
+type. For intance, for a C point type the x/y coordinate of the control point
+is also relevant.
 
-The control point of this quadratic Bezier curve is computed by moving the
-midpoint of the straight line between the two points either towards the left
-hand side or right hand side of the straight line, and this movement is
-determined by the number following the "abr" directive.
+
+
+## Absolute and relative points
+
+In the following "a" and "b" would be exactly the same path.
+
+    path a = (0,3)--(10,3)
+    path b = (0,3) [h:7]
+
+In the path expression (0,3) and (10,3) are two absolute points. Each absolute
+point is composed of two numbers, the first of which is the grid location in
+the horizontal distance from the left edge of the viewport, and the second of
+which is the vertical distance from the bottom of the viewport.
+
+The symbol "--" in the first command is called a "line-join". It describes that
+the absolute point after it should be "joint" with the previous point to form a
+straight line, essentially making the point after it a L point.
+
+For the second command, the [h:7] is called a "relative point". A relative
+point contains all the information needed to connect with the previous point,
+as well as all other necessary information for making that connection.
+In additional, all positional informations in a relative point description
+are all given relative to the previous point.
+
+For intance, the relative point [h:7] instructs that a horizontal line should
+be drawn between the previous point and the current point, and the current
+point is located 7 grid distance to the right hand side of the last point.
+
+
+
+## The abr-join 
+
+Beside line-join, the abr-join is another join that would allow for a
+quadratic Bezier curve to be drawn between two neighboring points.
+In the following example a quadratic Bezier curve will be drawn
+between the first and the second point, essentially making the second
+point a Q point.
 
     path a = ^abr:30 (0,3)~~(10,3) 
 
-Here the "abr" directive will be followed by a number that expresses an angle
-in degrees that is to be rotated around the first point and second point away
-from the direction of the straight line. These two independent rotations would
-each produce a ray and the control point of the quadratic Bezier curve is where
-these two rays meet. A positive number would means for the first point to rotate clockwise
-and the second point to rotate counter-clockwise, and the absolute value of this number
-is the degree of the rotation. Likewise, a negative number would reverse the rotation
-for both points.
+The control point of this quadratic Bezier curve is controled by the settings
+of the "abr", which is a configuration parameter set by the use of the
+"abr-drective".  In the previous example the abr-parameter is set to 30.
 
-    path a = ^abr:-30 (0,3)~~(10,3)
-    path b = ^abr:30 (0,3)~~(10,3)
+The abr-parameter denotes a rotation angle in degrees that is used to determine
+where the control point is for a abr-join. In this case, a straight line is
+first formed between the two points.  The line going from the first point to
+the second point would rotate clockwise for
+30 degrees. The line going from the second point to the first point then rotate
+counter-clockwise for 30 degrees.  These two independent rotations would each
+produce a ray and the control point of the quadratic Bezier curve is where
+these two rays meet. 
 
-For the examples above, path "a" would have been a curved line that looks like
-a hill, and path "b" would have been a valley.
+A positive number would means for the first point to rotate clockwise and the
+second point to rotate counter-clockwise, and the absolute value of this number
+is the degree of the rotation. Likewise, a negative number would reverse the
+rotation for both points.
 
-Aside from the "abr join", there is also a "hobby join". This join is to affect
-a collection of points that are joint by the same "hobby join". The intent of
-this join is to produce a smooth curve that goes through all the points.
+
+
+## The hobby-join
+
+A hobby-join works with a collection of neighboring points with the intent to
+produce a smooth curve that goes through all the points.
 
     path a = (0,0)..(2,0)..(2,2)
 
-This join is recognized by the presence of "..".  In the previous example a
-smooth curve is to be created that goes through three points: (0,0), (2,0), and
-(2,2). The entire curve consists of two independent cubic Bezier curves, the
-first one connecting the first two points, and another one connecting the next
-two points.  The control points of both curves are automatically computed based
-on the location of the three points to ensure a "smooth" transition from the
-end of the first curve to the start of the second. 
-
-If another point were to be added to become the fourth point, some of the
-curves would be recalculated to ensure that the new curve would appear smooth
-with other curves before it.
+This join is to be identified as "..", which is then placed between these points.
+The result is that an independent cubic Bezier curve be generated between two neighboring
+points.  However, these Bezier points are automatically configured so that they
+look "smooth" when going from one to another. This also means that if there are additional
+points that are added some curves might be recalculated.
 
     path a = (0,0)..(2,0)..(2,2)..(2,4)
  
@@ -503,27 +551,9 @@ There is no limit to the total number of points that can be joint by "hobby
 join". However, it is required that at least there are three "non-colinear" points
 because otherwise the Bezier curve will appear to be straight.
 
-## Relative points
 
-The "join" type specified would have worked only between absolute points, which
-is to appear inside a pair of parentheses. However, it is possible to add
-additional path points by specifying distances that are relative to the last
-point. However, the exact location of the new point will be computed based on
-the absolute location of the last point and the relative position of the new
-point.
 
-All relative points share the same syntax pattern. They would all be surrounded
-by a pair of brackets, instead of a pair parentheses as was the case of an
-absolute point. Within the bracket it would start with a string         that
-describes the "type" of the relative point, followed by a colon, and then
-addtional numbers each of which separated by a comma.  For instance, following
-is how to construct a path that consists of two path points and the second one
-is a L point.
-
-    path a = (1,1) [l:2,3]
-
-The resulting path consists of two points: (1,1) and (3,4), and the second
-point is a L point. Following are additional relative points.
+## Other relative points
 
 - [l:dx,dy] 
 - [h:dx]
@@ -655,38 +685,58 @@ Otherwise, the last M point is updated and its new position is dx/dy away
 from its current position.
 
 
-## Anchor points of an object 
 
-It is possible to add a path point that is the location of an existing anchor
-point of an object. For instance, if a node with id "1" has been created prior,
-it is possible to construct a path that go throug the center of this node.
+## Absolute point of a object 
 
-    path (0,0)--(@node.1)
+When constructing an absolute point, it is possible to do it by describing it
+as the location of an existing anchor point of an object. For instance, if a
+node with id "1" has been created prior, it is possible to construct a path
+that go throug the center of this node.
 
-Following example is similar but instead of going through the center of the node,
-the second point of the path will go through the top of the node.
+    path (0,0)--(#node.1)
 
-    path (0,0)--(@node.1:o12)
+Following is a similar example but going through the top part of the node
+instead.
 
-Here, "o12" is considered an "anchor point" that is relative to node 1. For a
-node there are two anchor points, namely o1 to o12, with each point
-corresponding to the hour of an analog clock. For instance, anchor "o12" would
-denote a point on the border of the node that is located north of the center
-point, and "o3" is a point on the border of the node that is located east of
-center point.
+    path (0,0)--(#node.1:o12)
+
+Here, "o12" is a valid "anchor point" that is relative to node 1. For a node
+there are twelve anchor points, namely "o1" to "o12", with each point corresponding
+to the hour of an analog clock. For instance, anchor "o12" would denote a point
+that is the north border of the node. Similarly, "o3" describe a point that is
+the east border of the node.
 
 So far, there are two types of objects, a node and a box. Following is an example
 of drawing a line between anchor points of box 1 and box 2.
 
-    draw (@box.1:n)--(@box.2:n)
+    draw (#box.1:n)--(#box.2:n)
 
-For a box, the anchor points are "n", "w", "e", "w", "nw", "ne", "sw" and "se"
-. For both node and box, two additional numbers can appear after the anchor, each
-of which expresses an offset from that anchor. For instance, we express that instead
-of starting from the "n" anchor point of box 1, it starts from a point that is (-2,3)
-away from that anchor.
+For a box, the anchor points are "n", "w", "e", "w", "nw", "ne", "sw" and "se".
 
-    draw (@box.1:n,-2,3)--(@box.1:n)
+For both node and box, two additional numbers can appear after the anchor, each
+of which expresses an offset from that anchor. For instance, we express that
+instead of starting from the "n" anchor point of box 1, it starts from a point
+that is (-2,3) away from that anchor. Here, the first number describes a
+horizontal offset, and the second number describes a vertical offset. A
+negative horizontal offset moves left, and negative vertical offset moves
+downwards.
+
+    draw (#box.1:n,-2,3)--(#box.1:n)
+
+It is also possible for an absolute point to be described as a "cartesian
+point".  A "cartesian point" is a point described inside a "cartesian grid".
+A "cartesian grid" is identified by a Id that has previously been setup by a
+"cartesian" command.
+
+In the following example the "cartesian" command would setup a "cartesian grid"
+with Id 1 that is centered at (5,5), such that a "cartesian.1.point" of (3,4) would
+have been translated into an absolute point (8,9). Thus, the visual effect of the
+the following is a line drawn between (0,0) and (8,9).
+
+    cartesian.1.setup 5 5
+    draw (0,0)--(#cartesian.1,3,4)
+
+
 
 ## Fetch path point from another path
 
@@ -701,6 +751,10 @@ the second point of path "a".
     path a = (0,0)--(3,4)
     path b = (0,0)--(&a_1)
 
+
+
+## Pasting path points
+
 Notice that there are two different ways of referencing an existing path or
 path points: the one with parentheses, and the one without.  The second method
 allows an existing path or path points to be copied verbatim to the new path
@@ -710,99 +764,111 @@ without modification.
     path b = (2,2)[l:3,4]
     path c = &a &b
 
-In the previous example the path "c" would have composed of two vector paths, 
-one going from (0,0) to (3,4), and another going from (2,2) to (5,6).
+In the previous example, the path "a" and "b" would each have 
+described a single vector path, and the path "c" would have composed 
+of these two vector paths arranged so that one follows another.
 
-The last method is know as "pasting the path points", as it copies not only
-the position of the path point, but also how to connect to this path point
-from the one before it.  
+This is made possible because the expression of ``&a`` and ``&b`` without the
+parentheses around it instructs that all path points of "a" and "b"
+are copied without modification and pasted directly into "c". 
 
-There are pros and cons associated with each method. The first method would be
-benefical if we only want to "pull in" the position of an existing path point, 
-and want to control how we will connect this point to its previous sibling. 
-The second method would be useful if we want to merge multiple vector paths into
-a single "composite" path.
-
-The second method also allows for individual path points to be pasted directly
-into the current path.  For instance, the following example would paste the second
-point of path "a" to become the first of path "a".
+Depending on the situation, it could be dangrous and error prone when "pasting"
+path points directly from another path, instead of "building" it locally.  For
+instance, in the following example the second path point of "a" would become
+the first path point of "c" without modification. 
 
     path a = (0,0)[l:3,4] 
     path c = &a_1
 
-This could have become a problem because the second point of path "a" is a L
-point, and it has since become the first point of path "c" without being
-proceeded by a M point.  However, if we had constructed path "c" the
-following way, then this point would have become the M point for path "c".
+This would become a problem because the second point of path "a" is a L
+point, and it retains this type after being "pasted" to "c", making the
+first point of "c" a L point as well. This would have caused a problem
+when this path is to be drawn as an outline because there isn't a M point to 
+start a vector path.
+
+However, had we constructed path "c" the following way this same point would
+have become a M point instead.
 
     path a = (0,0)[l:3,4] 
     path e = (&a_1)
 
-## Closing a path
 
-To "close" a path is to ensure that when an outline is drawn tracing this path,
-the last point of the path should always be connected with the first of the
-path by a straight line.  This would have given the illusion of a "closed" area
-that is "inside the path", and thus making it possible to fill this area with a
-specific color a gradient. 
 
-The syntax for expressing a "closed" path is to add ``[z]`` to the end of the
-path expression. Internally, this would have translated to creating an internal
-"z" point, as opposed to other path points such as "M", "L", "Q", "C", and "A".
-This means that for the following example, there would be three internal path
-points for path "a":
+## Close a path
+
+When a vector path is closed it means when an outline is drawn for this path a
+straight line is always drawn connecting the last point with the first.  This
+would give the illusion of having a "closed" area that is "inside" the path,
+and thus making it possible to fill this area with a color and/or a gradient. 
+
+The syntax for expressing a "closed" vector path is to add ``[z]`` after the
+last point of a vector path.  This would translate to adding an internal "z"
+point.  For example below, there are three internal path points for path "a":
+M, L and z.
 
     path a = (0,0)[l:3,4][z]
 
 Care should be taken when pasting from a path with a "z" point, as this "z"
-point will be pasted as well.  For the following example, path "c"
-would have had a single internal path point that is of type "z".  
+point will be pasted without modification as well.
+For the following example, path "c" would have had a single z path point.
 
     path a = (0,0)[l:3,4][z]
     path c = &a_2
 
-For the following example the path "d" would have been empty because the
-position of a "z" point does not exist.
+In the example below path "c" would be empty. This is because the position
+information of a "z" point does not exist, and thus nothing is added to "c".
 
     path a = (0,0)[l:3,4][z]
-    path d = (&a_2)
+    path c = (&a_2)
+
+
 
 ## The 'lastpt'
 
-When constructing a path, each time an absolute point or a relative point is
-encountered, its position will be remembered. This position is internally known
-as the 'lastpt'. The 'lastpt' only remembers the location of the point, and
-does not care about how this point is connected with its previous sibling. This
-point is then used when a new relative point is specified in order to compute
-the absolute point of the new relative point, as was demonstrated by the
-following example.
+When constructing a path, the last position of a absolute point or a relative is 
+remembered, and it is known as the 'lastpt'.
+The position information of the 'lastpt' is critical for computing the absolute position
+of a relative point.
 
     path a = (0,1)[h:3][v:4]
 
-In addition, the same 'lastpt' will persist over different invocations of the
-command.  This means that if there is another 'path' command or other commands
-that is to construct a path, before the first path point is constructed, the
-'lastpt' is updated so that it is exactly where it was at the end of the last
-path construction.  This means that the path "b" in the following example would
-have had a single point that is (4,6) and the 'lastpt' during path "a" construction
-is set at (3,4).
+Note that the 'lastpt' only remembers the location of the absolute point
+involved, and does not contain other information such as control points of a
+Bezier curve.
 
-    path a = (0,1)[h:3][v:4]
+In addition, 'lastpt' is designed to persist over all invocations of a path construction.
+For instance, when building a path for 'b', the first point of 'b' is a L point
+with a position at (4,5) because the 'lastpt' at the time is (3,4).
+
+    path a = (0,0)[h:3][v:4]
     path b = [l:1,1]
 
 Note that the 'lastpt' is only updated when an absolute point or a relative
 point is encountered. It is not updated when an path point from anther path is
-"pasted", such as the one shown by the following example, which might not have
-created the path for "c" that is (1,1) and (4,5) as was expected.
+"pasted", or when a path function is invoked. 
+For intance, in the following example the second point of "c" will not likely
+be (3,4) as one would have expected. It is actually (4,5) because 
+when "pasting" the first point of path "a" at the start of the path construction
+for path "c" the 'lastpt' isn't updated, and remains to be at (1,1).
 
-    path a = (1,1)
-    path c = &a [l:3,4]
+    path a = (0,0)--(1,1)
+    path c = &a_0 [l:3,4]
 
-To ensure that the path created is indeed (1,1) and (4,5), it should be changed
-to the following.
+Any time during a path construction, it is possible to save the current
+location of the 'lastpt' to a path variable so that it can be retrieved laster.
+This is done via invoking the "^lastpt" directive.
 
-    path a = (1,1)
-    path c = (&a) [l:3,4]
+- ^lastpt:c
+
+The following example would save the positional information of 
+the second path point to a path named "c".
+
+    path a = (0,0) [l:3,4] ^lastpt:c [h:5]
+
+
+
+
+
 
 ## Path functions
 
@@ -830,9 +896,11 @@ the same circle path function could be invoked as follows.
 
 Note that 'lastpt' is not updated when a path function is encountered.
 
+
+
 ## The 'hint'
 
-There is an internal variable named 'hints' that holds the last hints
+There is an internal variable named 'hint' that holds the last hints
 designated by the user. To set this variable, use the "hint:" directive.
 
 - hint:linedashed
@@ -877,23 +945,23 @@ second and third vector path will not have the same hint as the first.
          (0,2)[l:-0.5,-0.5] \
          (0,2)[l:0.5,-0.5]
 
+
+
 ## Setting up the 'offset'
 
 During a path construction, each path point is subject to an internal "offset".
-The "offset" is nothing but a number in horizontal and vertical direction.
-When either the numbers are not zero, all future points of this path will be
-added this additional distance in the x or y direction. This allows for the
-same path construction description to be repeated over a number of commands
-each time at a possibly different "location".
+The "offset" is nothing but a pair of numbers each expressing an offset in the
+horizontal and/or vertical direction.  When one of the numbers is not zero, all
+future points of this path will be subject to having this offset be added to
+its x and/or y coordinate.  This design allows for the same path to appear
+in different locations.
 
     draw           (0,0)[h:2][v:2]
     draw ^x:2 ^y:3 (0,0)[h:2][v:2]
 
-In the previous example, the second 'draw' command is said to have established
-an offset that is (1,1), shifting all points of the subsequent path points
-horizontally to the right by 2, and vertically upwards by 3.  
-
-Following are directives for setting and moving offsets.
+The 'offset' can be set using quite a number of directive. Some of the
+direction would set the offset directly, while others allow it to "change"
+relative to its current settings.
 
 - ^x:2
 - ^y:2
@@ -933,18 +1001,6 @@ path 'a'.
 The '^center', '^north', '^south', '^east', '^west', '^northwest',
 '^northeast', '^southwest', and '^southeast' directives would set the origin
 relative to the current size of the viewport.
-
-## Saving 'lastpt'
-
-- ^lastpt:a
-
-Any time during a path construction, it is possible to save the current
-location of the 'lastpt' to a path variable so that it can be retrieved laster.
-The following example would create a new path named "b" containing a single M
-point that is at (4,5).
-
-    path a = (1,1) [l:3,4] ^lastpt:b [l:5,6]
-
 
 
 
@@ -1501,7 +1557,7 @@ of holding a single one.
 The same expression could be found elsewhere where a list of scalar is expected,
 such as for a 'cartesian' and 'argand' command.
 
-    cartesian-yplot {fn:f} 0 1 2 (1+2)
+    cartesian.1.yplot {fn:f} 0 1 2 (1+2)
     argand-dot 0 1 2 (1+2)
 
 It could also be found in a 'for' loop command
@@ -1521,23 +1577,29 @@ In addition, following four syntaxes are recognized.
 - Properties
 - Texts
 - List-expression 
-- Spread-expresson
-- Range-expression
 - A fn-directive
 
-The spread-expression will be recognized by the presence of an exclamation mark
-within the expression. The following example would have produced a total of 22
+A list-expression is recognized by the presence of a set of brackets
+around an item.
+
+The following example would have produced a total of 22
 points, with the first point being 0, and the last point being 10, and
 additional 20 points generated between 0 and 10 such that the distance between
 any two neighboring points is the same.
 
     var @a = [0!20!10]
 
-The range-expression comes with two flavors, the one with two colons, and the one with
-three colons. The only difference between the two is that the first one assumes a step
-of 1, and the second one is computed dynamically based on the distance of the first 
-one and the second one. For instance, following example would have generated a list
-of numbers that are 1, 2, 3, 4, 5, 6, 7, 8, 9, and 10.
+Within a list expression, it could be many different forms. The previous form is know
+as list-spread-form, which expresses a list of at two items, but could be more.
+The first and last item is the number at the either end, and the middle number
+expresses how many numbers will be generated in between.
+
+The list-range-form is another form. It comes with two flavors, the one with two
+colons, and the one with three colons. The only difference between the two is
+that the first one assumes a step of 1, and the second one is computed
+dynamically based on the distance of the first one and the second one. For
+instance, following example would have generated a list of numbers that are 1,
+2, 3, 4, 5, 6, 7, 8, 9, and 10.
 
     var @a = [1:10]
 
@@ -1550,56 +1612,76 @@ second number after the first one, and additional numbers are generated with the
 difference between the second and the first, and with the last number not exceeding
 the third one. 
 
-If none of the previous patterns were found to be true, then it is assumed to be
-a list-expression, where each number is to following the previous one and is separated
-by a comma.
+Another list-expression is to populate a list from an existing array, known as
+list-array-form. Following expression would pull the content of an existing aray
+named 'c' and a list is built off the content of this array, plus two additional
+items that is 4 and 5.
+
+    var @c = 1 2 3
+    var @a = [@c] 4 5
+
+If a list-expression does not fit the definitions of the previous three
+categories, then it would be treated as a list-comma-form. This form would look
+for comma separated items. Spaces between commas are optional.
 
     var @a = [1, 2, 3, 4]
-    var @a = [1,2,3,4]
 
-Note that the spaces after each comma is optional. In addition,
-the spread-expression and two range-expressions 
-can be freely mixed and appear in the same expression for describing
-a list of number. Following are all
-valid expression of genetating a list of integers from 1-10.
+Note that the spaces after each comma is optional. 
 
+It should be pointed out that all the previous list forms can be mixed in another
+order, and the result of which is simply the concatenation of all list items 
+from these individual lists.
+
+    var @c = 10 11 12
     var @a = 1 2 3 [4:10]
     var @a = [1:2] [3:4] 5 6 7 [8:10]
-    var @a = [1,2,3,4] [5,6,7,8] 9 10
+    var @a = [1,2,3,4] [5,6,7,8] 9 10 [@c]
 
-We can also copy an existing array when building a new array. For instance,
-when array "a" has been built like that in the previous example, we can copy its
-content when building a new array named "b" such as follows.
+Note that a list is automatically recognized and populated in a 'for' command
+as well.
 
-    var @b = @a 11 12 13
-
-The array "b" will be a list of integers from 1-13. The way of referencing an existing
-array using notation such as "@a" can even be found in a 'for' loop such as the following,
-in which case the variable "i" will iterate over all numbers held by array "@a".
-
-    for i in @a; do
+    var @a = 1 2 3
+    for i in [@a]; do
       show ${i}
     done
 
-An entire array can be show by the dollar-expression as well. Ensure that the array
-variable is to appear by itself, and there are no other arithmetic operations involved.
+Following is another way of iterating the same list.
+
+    for i in 1 2 3; do
+      show ${i}
+    done
+
+Or,
+
+    for i in [1,2,3]; do
+      show ${i}
+    done
+
+Or,
+
+    for i in [1:3]; do
+      show ${i}
+    done
+
+An entire array can be show by the dollar-expression as well. Ensure that the
+array variable is to appear by itself, and proceeded by '@'.
 
     var @a = 1 2 3
-    show ${a}
+    show ${@a}
 
-A directive is also to be recognized. A directive adds extra
-possibility to the list of numbers. For the moment only the "fn" directive is supported. This
-directive allows for a function to be called such that the output of this function
-replaces the original scalar.
+A directive is also to be recognized. A directive adds extra possibility to the
+list of numbers. For the moment only the "fn" directive is supported. This
+directive allows for a function to be called such that the output of this
+function replaces the original scalar.
 
     var @a = ^fn:sqrt 1 2 3 4 5 6
-    show ${a}
+    show ${@a}
 
 Following would be the output of these commands:
 
     % <-- var @a = ^fn:sqrt 1 2 3 -->
     % <-- *** env @a = 1 1.4142135623730951 1.7320508075688772 -->
-    % <-- show ${a} -->
+    % <-- show ${@a} -->
     % <-- *** show 1 1.4142135623730951 1.7320508075688772 -->
 
 If two "fn" directives are encountered, the last "fn" is called first, and the output 
@@ -1607,7 +1689,7 @@ of which becomes the input to the first "fn".
 
     fn add2(x) = x+2
     var @a = ^fn:add2 ^fn:sqrt 1 2 3
-    show ${a}
+    show ${@a}
 
 In the previous example each scalar is to go
 through the "sqrt" function first before being sent to the "add2" function.
@@ -1616,7 +1698,7 @@ through the "sqrt" function first before being sent to the "add2" function.
     % <-- *** fn add2(x) = x+2 -->
     % <-- var @a = ^fn:add2 ^fn:sqrt 1 2 3 -->
     % <-- *** env @a = 3 3.414213562373095 3.732050807568877 -->
-    % <-- show ${a} -->
+    % <-- show ${@a} -->
     % <-- *** show 3 3.414213562373095 3.732050807568877 -->
 
 It is also possible to refer to an array element. To do that simply use the variable
@@ -1631,8 +1713,6 @@ Following would be the result of the translation.
     % <-- *** env @a = 1 2 3 -->
     % <-- var @b = a_1 a_2 -->
     % <-- *** env @b = 2 3 -->
-    % <-- show ${b} -->
-    % <-- *** show 2 3 -->
 
 
 # Built-in scalar functions
@@ -2385,20 +2465,20 @@ and the increment for y-direction can be set by the ystep-option.
     cartesian.1.grid -5 -5 5 5
     cartesian.1.grid {xstep:0.5, ystep:0.5} -5 -5 5 5
 
-The ``cartesian-xaxis`` command is to draw the x-axis. The only two
+The ``cartesian.1.xaxis`` command is to draw the x-axis. The only two
 parameters passed to it is the lower and upper range that this axis
-entails. Similarly, the ``cartesian-yaxis`` command draws the y-axis
+entails. Similarly, the ``cartesian.1.yaxis`` command draws the y-axis
 with similar parameter requirements.
 
     cartesian.1.xaxis -0.75 5.6
     cartesian.1.yaxis -0.75 4.5
 
-The ``cartesian-xtick`` is used to draw ticks as well as labels on the
+The ``cartesian.1.xtick`` is used to draw ticks as well as labels on the
 x-axis of the coordinate. The list of arguments passed to this command
 is a list of location of these ticks on the axis. For example, if
 passed as "1 2 3" then the ticks will appear where (1,0), (2,0), and
 (3,0) points are. For each tick, a label string will also appear
-unerneath that tick. Similarly, the ``cartesian-ytick`` command does the
+unerneath that tick. Similarly, the ``cartesian.1.ytick`` command does the
 same thing except for that it is for the y-axis.
 
     cartesian.1.xtick 1 2 3 4 5
@@ -2411,7 +2491,7 @@ coordinates.
     cartesian.1.dot  -4 0 4 0 \
                   -5 0 5 0
 
-The 'cartesian-line' and 'cartesian-arrow' commands are similar,
+The 'cartesian.1.line' and 'cartesian.1.arrow' commands are similar,
 except for that the first one will draw connecting lines between all
 points, and the second one also adds an arrowhead at the very end of
 the line.
@@ -2419,7 +2499,7 @@ the line.
     cartesian.1.line  -4 0 4 0 \
                     -5 0 5 0
 
-The 'cartesian-yplot; is similar to 'cartesian-dot', in that it
+The 'cartesian.1.yplot; is similar to 'cartesian.1.dot', in that it
 generates a series of dots. Only the x-coordinates of plotted points
 are provided, and the y-coordinates of each point is calculated by the
 supplied function, which must be provided by the "f" member of the
@@ -2447,7 +2527,7 @@ the funtion generates the corresponding x-coordinates.
     fn P(v) = sqrt(v)
     cartesian.1.xplot {f:P} 1 4 9 25 16 25
 
-The ``cartesian-label`` command draws a text at the location of the
+The ``cartesian.1.label`` command draws a text at the location of the
 cartesian coord. The text itself is expressed via the quotation marks
 that must proceed the any option and all scalar values. Following
 example draw texts at location (-5,0), (-5,1) and (-5,2) of the
@@ -2704,32 +2784,12 @@ assigned a value of 3 at the end of that command.
 
 A function created by a "fn" command can be thought of as a user-defined
 function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
-'floor', 'ceil', 'pow', etc. Some commands, such as 'cartesian-yplot', allows
+'floor', 'ceil', 'pow', etc. Some commands, such as 'cartesian.1.yplot', allows
 a function name string to be passed in that will be used for plotting a group
 of x/y coordinates, such as the one shown by the following example.
 
     fn P(x) = pow(x,2)
-    cartesian-yplot {fn:P} 1 2 3
-
-
-
-# The range-expression Syntax
-
-When a Range-expression consists of two quantities separated by a single colon,
-such as "1:10", the first one denotes the ``base``, and the second one denotes
-the `limit`. The range of scalars this range-expression covers include all the
-numbers between the ``base`` and ``limit``, starting from the ``base``, with
-each additional number one greater than its predecessor, and with a final
-number not exceeding ``limit``. Thus, for the case of a range-expression
-"1:10", the scalars it entails are 1, 2, 3, 4, 5, 6, 7, 8, 9 and 10.
-
-If a Range-expression is given as a set of three quantities, separated by two
-colons, such as the case of "1:4:10", then the last quantity denotes the
-``limit``, and the middle quantity denotes the next number after the first
-number, and the difference between this number and the first will be used as
-the increment for each additional numbers after the second number until it went
-over the limit which is the third number.  Thus, in the case of "1:4:10", the
-scalars it entails are: 1, 4, 7, 10.
+    cartesian.1.yplot {fn:P} 1 2 3
 
 
 
@@ -2917,7 +2977,7 @@ possible to draw a line from (0,0) to the "o9" anchor point of node 1
 as is shown by the following example.
 
     node.1 (5,5)
-    draw (0,0) -- (@node.1:o9)
+    draw (0,0) -- (#node.1:o9)
 
 
 
@@ -2981,7 +3041,7 @@ the object-expression such as the following.
 
     box.1 "Hello\\World" (0,0)
     box.2 "Goodbye" (5,5)
-    draw (@box.1:e)--(@box.2:w)
+    draw (#box.1:e)--(#box.2:w)
 
 This would have drawn a straight line from the "e" anchor point of box 1
 to the "w" anchor point of box 2. The anchor points of a box is follows:
@@ -3009,7 +3069,7 @@ to a slightly different location other than the default one provided.
 
     box.1 "Hello\\World" (0,0)
     box.2 "Goodbye" (5,5)
-    draw (@box.1:e,0,0.1)--(@box.2:w,0,-0.1)
+    draw (#box.1:e,0,0.1)--(#box.2:w,0,-0.1)
 
 In the previous example, the "e" anchor point of box 1 will be moved up
 for 0.1 grid unit, and the "w" anchor point of box 2 will be moved down
@@ -3018,7 +3078,7 @@ the following, then the lower-left point of the box is assumed.
 
     box.1 "Hello\\World" (0,0)
     box.2 "Goodbye" (5,5)
-    draw (@box.1,0,0.1)--(@box.2,0,-0.1)
+    draw (#box.1,0,0.1)--(#box.2,0,-0.1)
 
 
 # The 'prodofprimesws' command
@@ -3216,8 +3276,8 @@ used. The command line for this command expectes a list of complex numbers.
 As usual, an array variable is also to be recognized and the list of scalar
 associated with it are to be become part of the command line.
 
-    var a[] = (1+2*I) (2+1*I) 
-    argand-dot a
+    var @a = (1+2*I) (2+1*I) 
+    argand-dot @a
 
 A dot will be drawn in that location where the complex number is expected
 to be within that plane. The size of the dot is controlled by the "dot:"
@@ -3268,7 +3328,7 @@ This string representation of the environment variable is also able to
 appear inside any command by the use of the "dollar-expression" such as
 the one shown below.
 
-    text "${a}" (0,0)
+    drawtext "${a}" (0,0)
 
 In this example the text shown at position (0,0) will be composed of the 
 the number that equals to the value of this variable.
@@ -3278,7 +3338,7 @@ case a list of numbers, rather than a single number, is to be assigned to this
 symbol name, and later on be access in various places.
 
     var @a = 1 2 3
-    text "${a_0}" "${a_1}" "${a_2}" (0,0) [h:1] [h:1]
+    drawtext "${a_0}" "${a_1}" "${a_2}" (0,0) [h:1] [h:1]
 
 The previous example has created an array of three numbers, and was later
 on used to generate text output on various locations, pulling the content of 
@@ -3330,14 +3390,14 @@ sign must be a formatting string, which must appear starting with an at-sign, an
 immediately followed by a set of quotation marks.
 
     var num = pow(2,1/12)
-    var s = @"%.2f" num
+    var s = "%.2f" num
 
 Note that is possible to have empty spaces inside the
 quotation marks. 
 
     var num1 = pow(2,1/12)
     var num2 = pow(2,2/12)
-    var s = @"%.2f %.2f" num1 num2
+    var s = "%.2f %.2f" num1 num2
 
 Each additional argument after the initial formatting string is to be treated as
 existing scalar variables. They each serve as an independent source that is to
@@ -3359,7 +3419,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 1.23456789
-  var s = @"%0.2f%%" a
+  var s = "%0.2f%%" a
   % s => '1.23%'
   ```
 
@@ -3371,7 +3431,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 1.23456789
-  var s = @"%.2f" a
+  var s = "%.2f" a
   % s => '1.23'
   ```
 
@@ -3381,7 +3441,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 0x10
-  var s = @"%d" a
+  var s = "%d" a
   % s => "16"
   ```
 
@@ -3395,9 +3455,9 @@ Following formatting groups are recognized.
 
   ```
   var a = 15
-  var s = @"%x" a
+  var s = "%x" a
   % s => "f"
-  var s = @"%X" a
+  var s = "%X" a
   % s => "F"
   ```
 
@@ -3411,7 +3471,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 5
-  var s = @"%b" 5
+  var s = "%b" 5
   % s => "101"
   ```
 
@@ -3421,7 +3481,7 @@ Following formatting groups are recognized.
 
   ```
   var a = 0xF0
-  var s = @"%o" a
+  var s = "%o" a
   % a => "360"
   ```
 
@@ -3432,22 +3492,22 @@ Following formatting groups are recognized.
 
   ```
   var a = 65
-  var s = @"%c" a
+  var s = "%c" a
   % a => "A"
   ```
 
 + %s
 
-  This formatting group is to treat the argument simply as a string
-  with no particular assumption.
+  This formatting group is to treat the argument as a string.
 
   ```
-  var a = @"hello"
-  var b = @"and"
-  var c = @"world"
-  var s = @"%s-%s-%s" a b c
-  % s => "hello-and-world"
+  var a = 1.23
+  var s = "%s" 
+  % s => "1.23"
   ```
+
+Note that a string variable such as "s" above cannot be used in an
+arithmetic expression. 
 
   
 
