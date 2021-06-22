@@ -3711,10 +3711,21 @@ and the use it to place it on the top of the hrule.
     ```
 
 
-# Define custom colors
+# Show external PNG image
 
-There are 10 custom colors, namely color1 to color10, that can
-be used. These colors are predefined and can be used.
+An external PNG file could be shown from within a Diagram. 
 
+    image "image-clock.png"
+
+The current implementation would always show the external image centered at the
+viewport, with the image enlarged or shrinked necessary to cover the entire
+viewport, while maintaining its original aspect ratio.
     
+The path points and config parameters are not needed for the 'image' command and
+are silently ignored if they are present. The name of the image file must appear
+as the text part of the argument.
+
+If two or more image files are detected they will all be shown. The order of
+these images as they are drawn is the same order as they appear in the command
+line. Each image will be shown in the same manner as was mentioned above.
 
