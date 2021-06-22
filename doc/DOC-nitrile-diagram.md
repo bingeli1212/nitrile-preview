@@ -2405,6 +2405,36 @@ possible for specifying both a monospace and an italic.
 
 
 
+# The 'drawlabel' command
+
+The 'drawlabel' command would have been the same as for the 'drawtext' except
+that it does not support drawing multiple line text as that of the 'drawtext'
+command. In addition, it might use a slightly technical approach for each
+translation that is different than that of 'drawtext', thus might address some
+problems observed in some translation when 'drawtext' is used.
+
+- For MF, when 'drawlabel' is called, it uses the 'label.urt' command to draw
+  the text, while when 'drawtext' is called, it first calls 'textext', which
+  will generate a picture, holding the entire drawing of the text, and then
+  "paste" this picture onto the main picture relative to anchor point based on
+  the alignment. The problem of using 'drawtext' has been seen that there isn't
+  any gaps between the anchor point and the start of text, while using
+  'drawlabel' ensure a reasonable amount of gap to exist. There is also a
+  problem of using the 'drawtext' approach when drawing individual digits and
+  period, and the period has been seen to not align with the bottom of the digit
+  vertically.
+
+- For TikZ there isn't any difference.
+
+- For SVG when 'drawlabel' is used an extra 2 pixel is added horizontally
+  between the anchor point and the start of the text. For 'drawtext' there isn't
+  this space, thus the text is right on top of the point.
+
+
+
+
+
+
 # The 'cartesian' command
 
 The 'cartesian' is a compound command that has different subcommands listed
