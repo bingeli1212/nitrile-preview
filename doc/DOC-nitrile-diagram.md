@@ -678,11 +678,11 @@ The new point would be added as a "L" point.
 - [sweep:cx,cy,angd] 
 
 This is to construct a new A point of a given radius.  The center of the arc is
-cx/cy away from the current point. The distance of the current point and
-(cx,cy) is the radius of the arc, in both x/y-direction.  The arc is expected
-to have covered a sweep of 'angd' degree.  A positive number expresses that the
-sweep should happen in a counter-clockwise direction, and a negative value
-expresses a clockwise sweep. 
+cx/cy away from the current point. The radius of the arc is automatically
+calculated to be the distance between the current point and the arc center.
+The 'angd' argument denotes the "arc measure" in degree,  where a positive
+number expresses that the sweep should happen in a counter-clockwise direction,
+and a negative value expresses a clockwise sweep. 
 
 - [protrude:dist] 
 
@@ -691,6 +691,14 @@ that is 'dist' away from the current point. The direcion of the new point
 follows the same direction going from the second last point to the last point.
 Thus, it is important that there are at least two path points prior to creating
 this path point.
+
+- [ellipse:dx,dy] 
+
+This is to create a new C point. This new point is located at a distance that
+is 'dx/dy' away from the current point. The cubic Bezier simulates a quarter of
+the arc on a full ellipse, and will always be drawn from the current point to
+the new point as a sweep that is counter-clockwise. If a clockwise sweep is
+desired, set the "^sweepflag:1" directive before this operation.
 
 - [m:dx,dy]
 
@@ -931,36 +939,15 @@ Note that 'lastpt' is not updated when a path function is encountered.
 There is an internal variable named 'hint' that holds the last hints
 designated by the user. To set this variable, use the "hint:" directive.
 
-- hint:linedashed
-- hint:linedashed|linesize2
-- hint:linedashed|linesize2|linesize4
-
-The value is one or more strings connected by a vertical bar. Following 
-is a list of such strings.
-
-+ linedashed     
-  make the line a dashed line
-+ linesizetwo      
-  change the line size to 2pt
-+ linesizefour      
-  change the line size to 4pt
-+ nostroke       
-  no stroke 
-+ nofill         
-  no fill even for a closed path
-+ lighter        
-  the fill color should be lighter version of the current fill color
-+ darker         
-  the fill color should be a darker version of the current fill color
-+ shadow         
-  this path segment is drawn as a drop shadow (and thus 
-  deserves some special treatment if possible)
+- ^hint:linedashed
+- ^hint:linedashed|linesize2
+- ^hint:linedashed|linesize2|linesize4
 
 Each of these strings is translated into a bit field that is then OR'ed together.
 For instance, if we were to construct a path to express the fact that the line should
 be drawn at size 2, we could do the following.
 
-    draw ^hint:linesizetwo (0,0)--(0,2) 
+    draw ^hint:linesize2 (0,0)--(0,2) 
 
 Note that the idea behind using a hint is to allow for a path to be constructed
 to have multiple independent vector paths and each individual vector could have its
@@ -969,9 +956,33 @@ valid for a vector path that immediately succeeds it, and will be cleared
 as soon as this path is terminated. For intance, in the following example the
 second and third vector path will not have the same hint as the first.
 
-    draw ^hint:linesizetwo (0,0)--(0,2) \
+    draw ^hint:linesize2 (0,0)--(0,2) \
          (0,2)[l:-0.5,-0.5] \
          (0,2)[l:0.5,-0.5]
+
+Following is a list of hints:
+
+    this.hint_linedashed = 1 << 0;
+    this.hint_linesize2  = 1 << 1;
+    this.hint_linesize4  = 1 << 2;
+    this.hint_nostroke   = 1 << 3;
+    this.hint_nofill     = 1 << 4;
+    this.hint_lighter    = 1 << 5;
+    this.hint_darker     = 1 << 6;
+    this.hint_shadow     = 1 << 7;
+    this.hint_fill0      = 1 << 8;
+    this.hint_fill1      = 1 << 9;
+    this.hint_fill2      = 1 << 10;
+    this.hint_fill3      = 1 << 11;
+    this.hint_fill4      = 1 << 12;
+    this.hint_fill5      = 1 << 13;
+    this.hint_fill6      = 1 << 14;
+    this.hint_fill7      = 1 << 15;
+    this.hint_fill8      = 1 << 16;
+    this.hint_fill9      = 1 << 17;
+    this.hint_stroke1    = 1 << 18;
+    this.hint_stroke2    = 1 << 19;
+    this.hint_stroke3    = 1 << 20;
 
 
 
@@ -1038,6 +1049,15 @@ it aligns with the location of a node, a box and/or a Cartesian plane. For the
 node and box, only the x/y locations are altered. However, for a Cartesian
 plane, both the x/y locations and x/y scalings are alterd.
 
+
+## The 'sweepflag'
+
+The 'sweepflag' is an internal flag of 0/1 that determines the sweep rotation of certain
+operation. The default value is 0, which denotes a counter-clockwise ratation. However,
+if set to 1 it would mean a clockwise rotation. It could be set by the directive of
+"^sweepflag:1".
+
+    draw ^sweepflag:1 (0,0) [ellipse:4,3]
 
 
 
@@ -2025,40 +2045,6 @@ If it starts with 'center', 'north', 'south', 'northwest', 'northeast', 'southwe
 corners of the viewport, or the middle of the four sides of it.
 
 
-# The 'id' command
-
-- id 0
-- id 1
-- id a
-- id A
-- id A0
-- id a12
-- id node0
-- id node12
-
-Set the "id" to a string. This string would be interpreted in constructing
-ID(s) for path, node, and other commands that would have required an ID.
-
-If set to a string then it must be either 'a' or 'A'. If set to 'a' then the
-next ID assigned will be 'a', after which the 'id' is changed to 'b'. It
-cycles through 'a' to 'z', and then go back to being 'a' again.  If set to
-'A', then it cycles through 'A' to 'Z' and then go back to being 'A' again.
-
-If set to an integer, then that integer will become the next assigned ID, and
-then the 'id' parameter will be incremented by 1. 
-
-It can also be set to a string such as 'A0', 'a12', 'node0', 'node12', with a
-pattern of one of more alpha letters followed by one of more digits. In this
-case this ID will be used as is for the next auto ID assignment, but then
-this ID will be changed such that the alpha letters remain the same but
-number incremented by 1.  For instance, if the current 'id' parameter is
-'A0', it will become 'A1' after 'A0' has been assigned. Similarly, 'a12' is
-to become 'a13', 'node0' to 'node1', and 'node12' to 'node13'. 
-
-If none of the previous pattern is detected, the first assigned ID
-will be 0, and then next one 1, etc.
-
-
 
 # The 'group' command
 
@@ -2858,57 +2844,21 @@ should've been provided.
     edge.A.B {arrowhead:3,abr:45}
 
 In order to be connected with lines, each node should have an ID assigned to
-it.  However, if a node is to be created inside a for-loop this
-operation could proven to be difficult to manage.
-In this case it can take advantage of the "auto ID" feature which will
-automatically assign an ID to the node depending on the current setting.
-In particular, in order to allow for a automatically chosen ID to be assigned
-to a node, the name of the node should appear as an underscore.
+it. If a node is to be created inside a for-loop this
+operation could proven to be difficult to manage, as the name was hard
+coded for each loop. Fortunately, the 'node' command allows for a flexibility
+when it comes to choosing an id for it. In particular, you can use the
+at-expression for expressing a list of Id where only one of them will be chosen.
+The chosen Id will be one of those in the list and its location depends on the
+current iterations of the loop, such that the first iteration will chose
+the first one, and the second iteration the second one, and so on.
 
-    node._ (0,0)
-    node._ (1,2)
-    node._ (3,4)
-
-By default, the name automatically assigned to the first node is '0', and the
-second one '1', the third one '2', etc. 
-
-However, there are four different ways user can influence how an ID
-will be constructed, the first of which is to instruct that the ID
-should cycle through a-z. The second one is to instruct that the ID
-should cycle through A-Z. The third method is to instruct that the ID
-should cycle through a positive integer through infinity. The forth
-way is to instruct that a name be constructed with a fixed prefix and
-a number afterwards.
-
-To achieve this, the 'set' command should be used with a key of 'id'
-and value to a starting ID. See the 'id' command for various ways
-of setting a starting ID. In the following example the starting ID is
-set to be 'node10', which is itself assigned to the next node upon
-request. After the first assignment, the starting ID will be changed
-to 'node11' and 'node12', which will become the ID that gets assigned
-for the second and third auto ID assignment.
-
-    id node10
-    node._ (5,6)
-    node._ (5,7)
-    node._ (7,8)
-    edge.node10.node11.node12
-
-For a 'node' command, if no coordinates are given in the command line, and at
-least one ID has been provided for the node, all nodes will be searched in the
-internal database to see if this particular node has already been created. If
-the answer is yes then the location information is retrieved and the node is
-redrawn at that location with the information provided at the command line.
-This feature allows for example, to repaint an existing node with a highlighted 
-color and/or label.
-
-    id 0
     origin ^center
     for theta in [0:60:359]; do
       var r = 2
       var x = cos(deg2rad(theta)) * r
       var y = sin(deg2rad(theta)) * r
-      node._ {r:0.5} (x,y)
+      node.@[1,2,3] {r:0.5} (x,y)
     done
     node.0.1.2 {fillcolor:red}
 
@@ -3400,11 +3350,28 @@ Following formatting groups are recognized.
 + %%
 
   This formatting group is to output the percent-sign itself
+  It does not consume any argument.
 
   ```
   var a = 1.23456789
   var s = @"%0.2f%%" a
   % s => '1.23%'
+  ```
+
++ %_
+
+  This formatting group is to output an integer that is current setting
+  of '_'. This variable is typically set by the for-loop to an integer
+  that is indicative of the current iteration. It does not consume any 
+  argument.
+
+  ```
+  for i in [11,23,56]; do
+    var s = @"%_" 
+  done
+  % s => '0'
+  % s => '1'
+  % s => '2'
   ```
 
 + %f
