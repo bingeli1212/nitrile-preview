@@ -2,7 +2,9 @@
 title: test-miscsymbols.md
 ---
 
-# Slide 1
+2600..26FF; Miscellaneous Symbols
+
+# U+2600 
 
   ```tabular{small,vrule:|||}
   U+2600      &utfchar{2600}      &utfdata{2600}
@@ -23,7 +25,7 @@ title: test-miscsymbols.md
   U+260F      &utfchar{260F}      &utfdata{260F}
   ```
 
-# Slide 2
+# U+2610 
 
   ```tabular{small,vrule:|||}
   U+2610      &utfchar{2610}      &utfdata{2610}
@@ -44,7 +46,7 @@ title: test-miscsymbols.md
   U+261F      &utfchar{261F}      &utfdata{261F}
   ```
 
-# Slide 3
+# U+2620 
 
   ```tabular{small,vrule:|||}
   U+2620      &utfchar{2620}      &utfdata{2620}
@@ -65,7 +67,7 @@ title: test-miscsymbols.md
   U+262F      &utfchar{262F}      &utfdata{262F}
   ```
 
-# Slide 4
+# U+2630  
 
   ```tabular{small,vrule:|||}
   U+2630      &utfchar{2630}      &utfdata{2630}
@@ -86,7 +88,7 @@ title: test-miscsymbols.md
   U+263F      &utfchar{263F}      &utfdata{263F}
   ```
 
-# Slide 5
+# U+2640  
 
   ```tabular{small,vrule:|||}
   U+2640      &utfchar{2640}      &utfdata{2640}
@@ -107,7 +109,7 @@ title: test-miscsymbols.md
   U+264F      &utfchar{264F}      &utfdata{264F}
   ```
 
-# Slide 6
+# U+2650  
 
   ```tabular{small,vrule:|||}
   U+2650      &utfchar{2650}      &utfdata{2650}
@@ -128,7 +130,7 @@ title: test-miscsymbols.md
   U+265F      &utfchar{265F}      &utfdata{265F}
   ```
 
-# Slide 7
+# U+2660  
 
   ```tabular{small,vrule:|||}
   U+2660      &utfchar{2660}      &utfdata{2660}
@@ -149,7 +151,7 @@ title: test-miscsymbols.md
   U+266F      &utfchar{266F}      &utfdata{266F}
   ```
 
-# Slide 8
+# U+2670  
 
   ```tabular{small,vrule:|||}
   U+2670      &utfchar{2670}      &utfdata{2670}
@@ -170,7 +172,7 @@ title: test-miscsymbols.md
   U+267F      &utfchar{267F}      &utfdata{267F}
   ```
 
-# Slide 9
+# U+2680  
 
   ```tabular{small,vrule:|||}
   U+2680      &utfchar{2680}      &utfdata{2680}
@@ -191,7 +193,7 @@ title: test-miscsymbols.md
   U+268F      &utfchar{268F}      &utfdata{268F}
   ```
 
-# Slide 10
+# U+2690  
 
   ```tabular{small,vrule:|||}
   U+2690      &utfchar{2690}      &utfdata{2690}
@@ -212,7 +214,7 @@ title: test-miscsymbols.md
   U+269F      &utfchar{269F}      &utfdata{269F}
   ```
 
-# Slide 11
+# U+26A0  
 
   ```tabular{small,vrule:|||}
   U+26A0      &utfchar{26A0}      &utfdata{26A0}
@@ -233,7 +235,7 @@ title: test-miscsymbols.md
   U+26AF      &utfchar{26AF}      &utfdata{26AF}
   ```
 
-# Slide 12
+# U+26B0  
 
   ```tabular{small,vrule:|||}
   U+26B0      &utfchar{26B0}      &utfdata{26B0}
@@ -254,7 +256,7 @@ title: test-miscsymbols.md
   U+26BF      &utfchar{26BF}      &utfdata{26BF}
   ```
 
-# Slide 13
+# U+26C0  
 
   ```tabular{small,vrule:|||}
   U+26C0      &utfchar{26C0}      &utfdata{26C0}
@@ -275,7 +277,7 @@ title: test-miscsymbols.md
   U+26CF      &utfchar{26CF}      &utfdata{26CF}
   ```
 
-# Slide 14
+# U+26D0  
 
   ```tabular{small,vrule:|||}
   U+26D0      &utfchar{26D0}      &utfdata{26D0}
@@ -296,7 +298,7 @@ title: test-miscsymbols.md
   U+26DF      &utfchar{26DF}      &utfdata{26DF}
   ```
 
-# Slide 15
+# U+26E0  
 
   ```tabular{small,vrule:|||}
   U+26E0      &utfchar{26E0}      &utfdata{26E0}
@@ -317,7 +319,7 @@ title: test-miscsymbols.md
   U+26EF      &utfchar{26EF}      &utfdata{26EF}
   ```
 
-# Slide 16
+# U+26F0  
 
   ```tabular{small,vrule:|||}
   U+26F0      &utfchar{26F0}      &utfdata{26F0}

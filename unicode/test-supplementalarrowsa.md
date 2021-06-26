@@ -2,7 +2,9 @@
 title: test-supplementalarrowsa.md
 ---
 
-# Slide 1
+27F0..27FF; Supplemental Arrows-A
+
+# U+27F0  
 
   ```tabular{small,vrule:|||}
   U+27F0      &utfchar{27F0}      &utfdata{27F0}
