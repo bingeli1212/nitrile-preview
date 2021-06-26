@@ -1,5 +1,6 @@
 ---
 title: test-mathematicaloperators.md
+doc: slide
 ---
 
 2200..22FF; Mathematical Operators

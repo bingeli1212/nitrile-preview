@@ -1,5 +1,6 @@
 ---
 title: test-supplementalarrowsa.md
+doc: slide
 ---
 
 27F0..27FF; Supplemental Arrows-A

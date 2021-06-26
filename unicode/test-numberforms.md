@@ -1,5 +1,6 @@
 ---
 title: test-numberforms.md
+doc: slide
 ---
 
 2150..218F; Number Forms

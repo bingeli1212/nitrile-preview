@@ -1,5 +1,6 @@
 ---
 title: test-letterlikesymbols.md
+doc: slide
 ---
 
 2100..214F; Letterlike Symbols

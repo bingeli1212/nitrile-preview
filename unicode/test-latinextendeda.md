@@ -1,5 +1,6 @@
 ---
 title: test-latinextendeda.md
+doc: slide
 ---
 
 0100..017F; Latin Extended-A

@@ -1,5 +1,6 @@
 ---
 title: test-geometricshapes.md
+doc: slide
 ---
 
 25A0..25FF; Geometric Shapes

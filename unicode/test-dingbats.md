@@ -1,5 +1,6 @@
 ---
 title: test-dingbats.md
+doc: slide
 ---
 
 # U+2700 

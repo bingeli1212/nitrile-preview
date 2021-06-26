@@ -1,5 +1,6 @@
 ---
 title: test-greekextended.md
+doc: slide
 ---
 
 1F00..1FFF; Greek Extended

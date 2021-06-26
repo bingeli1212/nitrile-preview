@@ -1,5 +1,6 @@
 ---
 title: test-latinextendedb.md
+doc: slide
 ---
 
 0180..024F; Latin Extended-B

@@ -1,5 +1,6 @@
 ---
 title: test-arrows.md
+doc: slide
 ---
 
 2190..21FF; Arrows

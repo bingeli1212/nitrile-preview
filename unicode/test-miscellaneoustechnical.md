@@ -1,5 +1,6 @@
 ---
 title: test-miscellaneoustechnical.md
+doc: slide
 ---
 
 2300..23FF; Miscellaneous Technical

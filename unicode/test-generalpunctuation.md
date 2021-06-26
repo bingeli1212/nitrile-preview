@@ -1,5 +1,6 @@
 ---
 title: test-generalpunctuation.md
+doc: slide
 ---
 
 2000..206F; General Punctuation

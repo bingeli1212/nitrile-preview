@@ -1,5 +1,6 @@
 ---
 title: test-greekandcoptic.md
+doc: slide
 ---
 
 0370..03FF; Greek and Coptic

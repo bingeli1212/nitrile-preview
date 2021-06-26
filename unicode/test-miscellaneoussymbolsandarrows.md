@@ -1,5 +1,6 @@
 ---
 title: test-miscellaneoussymbolsandarrows.md
+doc: slide
 ---
 
 2B00..2BFF; Miscellaneous Symbols and Arrows

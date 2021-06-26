@@ -1,5 +1,6 @@
 ---
 title: test-miscsymbols.md
+doc: slide
 ---
 
 2600..26FF; Miscellaneous Symbols
