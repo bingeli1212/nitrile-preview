@@ -63,9 +63,8 @@ property.
   two of which are the Div-elements, one anonymous element, 
   and one Span-element.
 
-  ```verbatim{frame,subtitle}
   HTML
-  ---
+  ```verbatim{frame,subtitle}
   <div style="display:flex">
     <div>block</div>
     <div style="float:left;">float</div>
@@ -78,9 +77,8 @@ property.
   </div>
   ```
   \\
-  ```diagram{frame,subtitle}
   Visual
-  ---
+  ```diagram{frame,subtitle,viewport:21 4}
   viewport 21 4
   config fillcolor orange
   config opacity 0.3
@@ -193,7 +191,7 @@ overflow the line.
   the line, and each subsequent flex item is placed flush with the preceding
   item.
 
-  ```diagram{frame}
+  ```diagram{frame,viewport:18 2}
   viewport 18 2
   config w 2
   config h 2
@@ -208,7 +206,7 @@ overflow the line.
   the last flex item is placed flush with the main-end edge of the line, and each
   preceding flex item is placed flush with the subsequent item.
 
-  ```diagram{frame}
+  ```diagram{frame,viewport:18 2}
   viewport 18 2
   config w 2
   config h 2
@@ -227,7 +225,7 @@ overflow the line.
   the line. (If the leftover free-space is negative, the flex items will overflow
   equally in both directions.)
 
-  ```diagram{frame}
+  ```diagram{frame,viewport:18 2}
   viewport 18 2
   config w 2
   config h 2
@@ -247,7 +245,7 @@ overflow the line.
   main-end edge of the line, and the remaining flex items on the line are
   distributed so that the spacing between any two adjacent items is the same.
 
-  ```diagram{frame}
+  ```diagram{frame,viewport:18 2}
   viewport 18 2
   config w 2
   config h 2
@@ -266,7 +264,7 @@ overflow the line.
   items and the flex container edges is half the size of the spacing between flex
   items.
 
-  ```diagram{frame}
+  ```diagram{frame,viewport:18 2}
   viewport 18 2
   config w 2
   config h 2
@@ -349,9 +347,8 @@ order within the DOM.
   assigned a order such that the item "article" appears
   in the middle rather than being at the beginning.
   
-  ```verbatim{frame,subtitle}
   HTML
-  ---
+  ```verbatim{frame,subtitle}
   <!DOCTYPE html>
   <header>...</header>
   <main>
@@ -361,9 +358,8 @@ order within the DOM.
   </main>
   <footer>...</footer> 
   ```  
-  ```diagram{frame,subtitle,width:8cm}
   Visual
-  ---
+  ```diagram{frame,subtitle,width:8cm,viewport:18 2}
   viewport 18 8
   config fillcolor orange
   config opacity 0.3
@@ -374,9 +370,8 @@ order within the DOM.
   box {w:4,h:4} "aside"    (14,2)
   ```
   \\
-  ```verbatim{frame,subtitle}
   CSS
-  ---
+  ```verbatim{frame,subtitle}
   main { display: flex; }
   main > article { order:2; min-width:12em; flex:1; }
   main > nav     { order:1; width: 200px; }
@@ -432,9 +427,8 @@ on the `flex-wrap` property:
   keyword appearing in its value), the flex container will create an additional
   line to contain the last item.
 
-  ```verbatim{frame,subtitle}
   CSS
-  ---
+  ```verbatim{frame,subtitle}
   #flex {
     display: flex;
     flex-flow: row wrap;
@@ -444,9 +438,8 @@ on the `flex-wrap` property:
     width: 80px;
   }
   ```
-  ```verbatim{frame,subtitle}
   HTML
-  ---
+  ```verbatim{frame,subtitle}
   <div id="flex">
     <div class="item">1</div>
     <div class="item">2</div>
@@ -455,9 +448,8 @@ on the `flex-wrap` property:
   </div>
   ```
   \\
-  ```diagram{frame,subtitle}
   Visual.
-  --- 
+  ```diagram{frame,subtitle,viewport:15 4}
   viewport 15 4 
   group my = {w:4,h:2,fillcolor:orange,opacity:0.3} 
   box {group:my} "1" (0,2) 
@@ -503,9 +495,8 @@ value it has been set to.
   the wrap keyword appearing in its value), the flex container will create an
   additional line to contain the last item.
 
-  ```verbatim{frame,subtitle}
   CSS
-  ---
+  ```verbatim{frame,subtitle}
   #flex {
     display: flex;
     flex-flow: row wrap;
@@ -516,9 +507,8 @@ value it has been set to.
     flex: auto;
   }
   ```
-  ```verbatim{frame,subtitle}
   HTML
-  ---
+  ```verbatim{frame,subtitle}
   <div id="flex">
     <div class="item">1</div>
     <div class="item">2</div>
@@ -527,9 +517,8 @@ value it has been set to.
   </div>
   ```
   \\
-  ```diagram{frame,subtitle}
   Visual
-  ---
+  ```diagram{frame,subtitle,viewport:15 4}
   viewport 15 4
   group my = {w:5,h:2,fillcolor:orange,opacity:0.3} 
   group my2 = {w:15,h:2,fillcolor:orange,opacity:0.3} 
@@ -613,7 +602,7 @@ In addition, it can be set to ``auto`` and/or ``content``.
     This size is typically equivalent to the max-content size, but it could
     be adjusted to
     handle aspect ratios, intrinsic sizing constraints, and orthogonal flows;
-    see details in §9 Flex Layout Algorithm.
+    see details in section &ref{Flex Layout Algorithm}.
 
     Note: This value was not present in the initial release of Flexible Box
     Layout, and thus some older implementations will not support it. The
@@ -673,9 +662,8 @@ there had been no free spaces to be managed with.
   it would've absorbed all the free spaces to its left,
   creating a visual gap between itself and the item before it.
 
-  ```verbatim{frame,subtitle}
   CSS
-  ---
+  ```verbatim{frame,subtitle}
   nav > ul {
     display: flex;
   }
@@ -683,9 +671,8 @@ there had been no free spaces to be managed with.
     margin-left: auto;
   }
   ```
-  ```verbatim{frame,subtitle}
   HTML
-  ---
+  ```verbatim{frame,subtitle}
   <nav>
     <ul>
       <li>About</li>
@@ -696,9 +683,8 @@ there had been no free spaces to be managed with.
   </nav>
   ```
   \\
-  ```diagram{frame,subtitle}
   Visual
-  ---
+  ```diagram{frame,subtitle,viewport:20 2}
   viewport 20 2
   config fillcolor orange
   config opacity 0.3
@@ -803,22 +789,18 @@ on the right-hand side figure are centered using align-self style.
   using align-self style are not limited by the availability of left margin and thus will always
   be centered regardless.
   
-  ```diagram{frame,subtitle}
   Using auto margins.
-  ---
-  viewport 11 10
+  ```diagram{frame,viewport:11 10}
   draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
   box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
   box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
   box {fillcolor:orange,opacity:0.3,w:8} "Hello World" (3,7)
   ```
-  ```diagram{frame,subtitle}
   Using ``align-self:center`` property.
-  ---
-  viewport 11 10
+  ```diagram{frame,viewport:11 10}
   draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
   box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
   box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
-  box {fillcolor:orange,opacity:0.3,w:8} "Hello World" left:1.5 (3,7)
+  box {fillcolor:orange,opacity:0.3,w:8} "Hello World" ^left:1.5 (3,7)
   ```
 
