@@ -9,17 +9,17 @@ doc: page
 Following is a grid layout that works for showing a list of "cards" laid horizontally
 across the page, with a caption at the top and a subtitle at the bottom for each image.
 
+.sample
+
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
       grid-gap: 20px;
     }
-    
     .card {
       display: grid;
       grid-template-rows: max-content 200px 1fr;
     }
-    
     .card img {
       object-fit: cover;
       width: 100%;
@@ -27,6 +27,8 @@ across the page, with a caption at the top and a subtitle at the bottom for each
     }
     
 An example HTML utilizing this layout is shown below.
+    
+.sample 
     
     <div class="cards">
       <article class="card">
@@ -50,39 +52,67 @@ An example HTML utilizing this layout is shown below.
       </article>              
     </div>
             
-This should look like the following:
+This should look like figure &ref{grid:gridlayout}.
 
-```diagram{frame,viewport: 21 12}
-box.1 {w:8,h:10} (2,1)  
-box.2 {w:8,h:10} (11,1)
-box "Balloon One" {w:8,h:2} (2,1) [m:0,8]
-box "Balloon Two" {w:8,h:2} (11,1) [m:0,8]
-box "balloon1.jpg" {w:8,h:5} (2,1) [m:0,3]
-box "balloon2.jpg" {w:8,h:5} (11,1) [m:0,3]
-box "Red." {w:8,h:3} (2,1) [m:0,0]
-box "White." {w:8,h:2} (11,1) [m:0,1]
-box "wonderful!" {w:8,h:1} (11,1)
-```
+.figure
+ &label{grid:gridlayout}
+ A div-element of two children, each of which is a 
+ article-element which itself arranges its children
+ in grids.
+
+  ```diagram{frame,viewport: 21 12}
+  box.1 {w:8,h:10} (2,1)  
+  box.2 {w:8,h:10} (11,1)
+  box "Balloon One" {w:8,h:2} (2,1) [m:0,8]
+  box "Balloon Two" {w:8,h:2} (11,1) [m:0,8]
+  box "balloon1.jpg" {w:8,h:5} (2,1) [m:0,3]
+  box "balloon2.jpg" {w:8,h:5} (11,1) [m:0,3]
+  box "Red." {w:8,h:3} (2,1) [m:0,0]
+  box "White." {w:8,h:2} (11,1) [m:0,1]
+  box "wonderful!" {w:8,h:1} (11,1)
+  ```
 
 
 # The "display" property
 
-The children of the parent set to "display:grid" automatically
+A element becomes a "grid container" when its
+"display:grid" property is set as
+such. 
+The children of a grid container automatically
 become "grid items". 
 
 
 
-# The columns, rows & gaps
+# The columns, rows & grid lines
 
-In the following example, the white blocks are grid items. They
-are arranged into rows and column. Thus we have three rows and
-three columns in the following example. The spaces between grid
-items are called "gap", which is colored blue in the following
-example.
+The grid container, depending on its configuration, would
+allocate spaces called "grids". All grids
+arrange themselves into rows and column. 
+For rows
+we would consider the top row to be the first row, 
+and last row as the one at the very bottom. 
+For columns the first column is the one
+all the way to the left, and the last column is the one 
+to the far right,
 
-.figure
-  
-  ```diagram{frame,viewport:10 10}
+The imaginary lines between two neighboring
+rows and/or neighboring columns are called "grid lines".
+The horizontal line on top of the first row and is named "1".
+The line that sits between the first row and second row is named
+"2", and so on.
+The vertical line that is located to the left of the 
+first column is named "1", and the line that sits between the first
+column and the second column is named "2", and so on.
+See figure &ref{grid:gridlines} for locations of grid lines.
+
+.figure{subfigure}
+  &label{grid:gridlines}
+  Columns, rows and grid lines.
+
+  Grid lines for columns.
+  ```diagram{frame,viewport:14 14}
+  origin ^x:1 ^y:1
+  box {w:10,h:10} (0,0)
   config fillcolor gray
   config opacity 0.2
   config w 2
@@ -90,7 +120,38 @@ example.
   box "grid" (1,7) [h:3] [h:3]
   box "grid" (1,4) [h:3] [h:3]
   box "grid" (1,1) [h:3] [h:3]
+  draw {linedashed} (0.5,0)[v:11] 
+  drawtext "1" &lastpt
+  draw {linedashed} (3.5,0)[v:11]
+  drawtext "2" &lastpt
+  draw {linedashed} (6.5,0)[v:11]
+  drawtext "3" &lastpt
+  draw {linedashed} (9.5,0)[v:11]
+  drawtext "4" &lastpt
   ```
+  Grid lines for rows.
+  ```diagram{frame,viewport:14 14}
+  origin ^x:1 ^y:1
+  box {w:10,h:10} (0,0)
+  config fillcolor gray
+  config opacity 0.2
+  config w 2
+  config h 2
+  box "grid" (1,7) [h:3] [h:3]
+  box "grid" (1,4) [h:3] [h:3]
+  box "grid" (1,1) [h:3] [h:3]
+  draw {linedashed} ^down:0.5 (0,10)[h:11]
+  drawtext "1" (&lastpt)
+  draw {linedashed} ^down:0.5 (0,7)[h:11]
+  drawtext "2" (&lastpt)
+  draw {linedashed} ^down:0.5 (0,4)[h:11]
+  drawtext "3" (&lastpt)
+  draw {linedashed} ^down:0.5 (0,1)[h:11]
+  drawtext "4" (&lastpt)
+  ```
+    
+
+# The "grid-gap" property
 
 You can adjust the gap size by using one of the following properties:
 
@@ -127,83 +188,47 @@ that has three "auto" entries, separated by white spaces.
     <div class="grid-item">9</div>  
   </div>
     
-It would appear as the following 
-picture.
+It would have the visual effect of figure &ref{grid:gridgap}.
 
 .figure
-  Three rows items where each row is exactly three items
-  because of the parent container has configured as so.
-  The gap between neighboring rows is always exactly 50px.
+  &label{grid:gridgap}
+  The "grid-row-gap:50px" property has been set for the container.
 
-  ```diagram{frame,viewport:18 8}
+  ```diagram{frame,viewport:18 5}
   config fillcolor gray
   config opacity 0.2
   config w 6
-  config h 2
+  config h 1
+  box "1" (0,4) "2" [h:6] "3" [h:6]
+  box "4" (0,2) "5" [h:6] "6" [h:6] 
   box "7" (0,0) "8" [h:6] "9" [h:6]
-  box "4" (0,3) "5" [h:6] "6" [h:6] 
-  box "1" (0,6) "2" [h:6] "3" [h:6]
   ```
   
 Similarly, the gap between columns are denoted by the 
 "grid-column-gap". It is also possible state both the row gap
 and column gap by the "grid-gap" property.
 
-- grid-gap: 50px 100px
+.sample 
 
+  .grid-container {
+    grid-column-gap: 50px;
+  }
 
-# Grid lines
- 
-The lines between rows and columns are called "grid lines".
-For row lines they are number from to bottom, and for column lines
-they are number from left to right.
-Each line represents part of a position that would have
-started a particular grid item.
+This should have a visual effect similar to figure &ref{grid:gridcolumngap}.
 
-.figure{subfigure}
-  Column lines and row lines.
+.figure
+  &label{grid:gridcolumngap}
+  The "grid-column-gap:50px" property has been set for the container.
 
-  column lines
-  ```diagram{frame,viewport:14 14}
-  box {w:10,h:10} (0,0)
+  ```diagram{frame,viewport:17 3}
   config fillcolor gray
   config opacity 0.2
-  config w 2
-  config h 2
-  box "grid" (1,7) [h:3] [h:3]
-  box "grid" (1,4) [h:3] [h:3]
-  box "grid" (1,1) [h:3] [h:3]
-  draw (0.5,0)[v:11] 
-  drawtext "col 1" &lastpt
-  draw (3.5,0)[v:11]
-  drawtext "col 2" &lastpt
-  draw (6.5,0)[v:11]
-  drawtext "col 3" &lastpt
-  draw (9.5,0)[v:11]
-  drawtext "col 4" &lastpt
+  config w 5
+  config h 1
+  box "1" (0,2) "2" [h:6] "3" [h:6]
+  box "4" (0,1) "5" [h:6] "6" [h:6] 
+  box "7" (0,0) "8" [h:6] "9" [h:6]
   ```
-  row lines
-  ```diagram{frame,viewport:14 14}
-  box {w:10,h:10} (0,0)
-  config fillcolor gray
-  config opacity 0.2
-  config w 2
-  config h 2
-  box "grid" (1,7) [h:3] [h:3]
-  box "grid" (1,4) [h:3] [h:3]
-  box "grid" (1,1) [h:3] [h:3]
-  draw ^down:0.5 (0,10)[h:11]
-  drawtext "row 1" (&lastpt)
-  draw ^down:0.5 (0,7)[h:11]
-  drawtext "row 2" (&lastpt)
-  draw ^down:0.5 (0,4)[h:11]
-  drawtext "row 3" (&lastpt)
-  draw ^down:0.5 (0,1)[h:11]
-  drawtext "row 4" (&lastpt)
-  ```
-    
-This conventions of number of grid lines allows for an item to 
-be moved to a specific grid. 
 
 
 
@@ -258,21 +283,26 @@ to grid layout.
 
 # The "grid-template-columns" and "grid-template-rows" properties
 
-These two properties are used to control the appearances of 
-the rows and columns of the grid, as well as stating the 
-total number of columns and rows in the grid.
+The "grid-template-columns" property is designed to
+control the widths of 
+each columns, as well as stating how many columns there are
+in the grid.
+The example above has been 
+setting this property
+as "grid-template-columns:auto auto auto". 
+This states that the three columns should take up 
+all the spaces of the content width of the grid container,
+and each should get the equal amount of space.
 
-The "grid-template-columns" has been used to set that there
-should've been three columns, and each column should be at 
-its maximum. However, it is also possible to specify that each 
-column has a fixed width of 150px.
+It is also possible to specifically state the width
+of each column individually. In the following example each
+column has been set to a width that is 150px.
 
 .sample
 
   <style>
   .grid-container {
     display: grid;
-    grid-row-gap: 50px;
     grid-template-columns: 150px 150px 150px;
   }
   .grid-item {
@@ -293,39 +323,51 @@ column has a fixed width of 150px.
 
 .figure
    The "grid-template-columns:150px 150px 150px" property 
-   is set for the container.
+   is set for the container. This forces each grid to get a 
+   maximum width of 150px, leaving some spaces unfilled within
+   the container after the last grid item of the row.
 
-  ```diagram{frame,viewport:18 8}
+  ```diagram{frame,viewport:18 3}
   config fillcolor gray
   config opacity 0.2
   config w 3
-  config h 2
+  config h 1
+  box "1" (0,2) "2" [h:3] "3" [h:3]
+  box "4" (0,1) "5" [h:3] "6" [h:3] 
   box "7" (0,0) "8" [h:3] "9" [h:3]
-  box "4" (0,3) "5" [h:3] "6" [h:3] 
-  box "1" (0,6) "2" [h:3] "3" [h:3]
   ```
   
-
-
-In particular, the first
-property states the total number of columns, 
-as well as the width of each column.  The second 
-property states the total number of rows, as well as the high
-of each row.
-
-The following is an example of using "grid-template-columns"
-property to state that there are a total of three columns,
-where the width of each column is set automatically based on the
-width of the item. On top of that the first row should have a height
-of 80px, and the next row should have a height of 200px.
+The "grid-template-rows" property is used to control the height
+of each row. 
+The following is an example that sets the "grid-template-rows"
+property so that the first row gets a height
+of 50px, and the second row a height of 50px. The third
+row and onwards are not specified and thus those rows are 
+back to their native height. This should have a visual
+effect of figure &ref{grid:rowheight}.
 
 .sample
 
   .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows: 80px 200px;
+    grid-template-rows: 50px 100px;
   }
+
+.figure
+  &label{grid:rowheight}
+  The property of "grid-template-rows:50px 100px" 
+  is set.
+  
+  ```diagram{frame,viewport:18 7}
+  config fillcolor gray
+  config opacity 0.2
+  config w 6
+  config h 1
+  box "1" {h:2} (0,5) "2" [h:6] "3" [h:6]
+  box "4" {h:4} (0,1) "5" [h:6] "6" [h:6] 
+  box "7" (0,0) "8" [h:6] "9" [h:6]
+  ```
 
 
 
@@ -343,7 +385,7 @@ amount of space would be given to spaces between, and around them:
   .grid-container {
     display: grid;
     justify-content: space-evenly;
-    grid-template-columns: 50px 50px 50px;
+    grid-template-columns: 100px 100px 100px;
   }
   .grid-container > div {
     text-align: center;
@@ -365,73 +407,73 @@ This would have generated the following appearance.
 .figure
   The "justify-content" property has been set to "space-evenly".
 
-  ```diagram{frame,viewport:18 4}
+  ```diagram{frame,viewport:18 2}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
+  config h 1
+  box "1" (3,1) "2" [h:5] "3" [h:5]
   box "4" (3,0) "5" [h:5] "6" [h:5]
-  box "1" (3,2) "2" [h:5] "3" [h:5]
   ```
 
 .figure
   The "justify-content" property has been set to "space-around".
   
-  ```diagram{frame,viewport:18 4}
+  ```diagram{frame,viewport:18 2}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
+  config h 1
+  box "1" (2,1) "2" [h:6] "3" [h:6]
   box "4" (2,0) "5" [h:6] "6" [h:6]
-  box "1" (2,2) "2" [h:6] "3" [h:6]
   ```
 
 .figure
   The "justify-content" property has been set to "space-between".
   
-  ```diagram{frame,viewport:18 4}
+  ```diagram{frame,viewport:18 2}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
+  config h 1
+  box "1" (0,1) "2" [h:8] "3" [h:8]
   box "4" (0,0) "5" [h:8] "6" [h:8]
-  box "1" (0,2) "2" [h:8] "3" [h:8]
   ```
   
 .figure
   The "justify-content" property has been set to "center".
   
-  ```diagram{frame,viewport:18 4}
+  ```diagram{frame,viewport:18 2}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
+  config h 1
+  box "1" (6,1) "2" [h:2] "3" [h:2]
   box "4" (6,0) "5" [h:2] "6" [h:2]
-  box "1" (6,2) "2" [h:2] "3" [h:2]
   ```
     
 .figure
   The "justify-content" property has been set to "start".
   
-  ```diagram{frame,viewport:18 4}
+  ```diagram{frame,viewport:18 2}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
+  config h 1
+  box "1" (0,1) "2" [h:2] "3" [h:2]
   box "4" (0,0) "5" [h:2] "6" [h:2]
-  box "1" (0,2) "2" [h:2] "3" [h:2]
   ```
    
 .figure
   The "justify-content" property has been set to "end".
   
-  ```diagram{frame,viewport:18 4}
+  ```diagram{frame,viewport:18 2}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
+  config h 1
+  box "1" (12,1) "2" [h:2] "3" [h:2]
   box "4" (12,0) "5" [h:2] "6" [h:2]
-  box "1" (12,2) "2" [h:2] "3" [h:2]
   ```
      
 
@@ -443,72 +485,72 @@ align the whole grid inside the container.
 .figure
   The "align-content" property has been set to "end".
   
-  ```diagram{frame,viewport:18 6}
+  ```diagram{frame,viewport:18 4}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
-  box "1" (12,2) "2" [h:2] "3" [h:2]
+  config h 1
+  box "1" (12,1) "2" [h:2] "3" [h:2]
   box "4" (12,0) "5" [h:2] "6" [h:2]
   ```
   
 .figure
   The "align-content" property has been set to "start".
   
-  ```diagram{frame,viewport:18 6}
+  ```diagram{frame,viewport:18 4}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
-  box "1" (12,4) "2" [h:2] "3" [h:2]
+  config h 1
+  box "1" (12,3) "2" [h:2] "3" [h:2]
   box "4" (12,2) "5" [h:2] "6" [h:2]
   ```  
   
 .figure
   The "align-content" property has been set to "center".
   
-  ```diagram{frame,viewport:18 6}
+  ```diagram{frame,viewport:18 4}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
-  box "1" (12,3) "2" [h:2] "3" [h:2]
+  config h 1
+  box "1" (12,2) "2" [h:2] "3" [h:2]
   box "4" (12,1) "5" [h:2] "6" [h:2]
   ```  
 
 .figure
   The "align-content" property has been set to "space-evenly".
   
-  ```diagram{frame,viewport:18 7}
+  ```diagram{frame,viewport:18 5}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
-  box "1" (12,4) "2" [h:2] "3" [h:2]
+  config h 1
+  box "1" (12,3) "2" [h:2] "3" [h:2]
   box "4" (12,1) "5" [h:2] "6" [h:2]
   ```  
   
 .figure
   The "align-content" property has been set to "space-around".
   
-  ```diagram{frame,viewport:18 8}
+  ```diagram{frame,viewport:18 6}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
-  box "1" (12,5) "2" [h:2] "3" [h:2]
+  config h 1
+  box "1" (12,4) "2" [h:2] "3" [h:2]
   box "4" (12,1) "5" [h:2] "6" [h:2]
   ```  
   
 .figure
   The "align-content" property has been set to "space-between".
   
-  ```diagram{frame,viewport:18 8}
+  ```diagram{frame,viewport:18 4}
   config fillcolor gray
   config opacity 0.2
   config w 2
-  config h 2
-  box "1" (12,6) "2" [h:2] "3" [h:2]
+  config h 1
+  box "1" (12,3) "2" [h:2] "3" [h:2]
   box "4" (12,0) "5" [h:2] "6" [h:2]
   ```  
   
@@ -535,14 +577,14 @@ changed the appearance to be figure &ref{grid:gridline1}.
   properties are set for
   item 1.
 
-  ```diagram{frame,viewport:18 8}
+  ```diagram{frame,viewport:18 4}
   config w 6
-  config h 2
+  config h 1
   config fillcolor gray
   config opacity 0.2
-  box "1" {w:12} (6,6)
-  box "2" (0,4) "3" [h:6] "4" [h:6]
-  box "5" (0,2) "6" [h:6] "7" [h:6]
+  box "1" {w:12} (6,3)
+  box "2" (0,2) "3" [h:6] "4" [h:6]
+  box "5" (0,1) "6" [h:6] "7" [h:6]
   box "8" (0,0) "9" [h:6] 
   ```
 
@@ -580,15 +622,15 @@ This would have had the following visual effect.
 .figure
  The "grid-row:1/4" property is set for item 1.
 
-  ```diagram{frame,viewport:18 8}
-  config w 6
-  config h 2
+  ```diagram{frame,viewport:18 4}
   config fillcolor gray
   config opacity 0.2
-  box "1" {w:6,h:6} (0,2)
-  box "2" (6,6) "3" [h:6]
-  box "4" (6,4) "5" [h:6]
-  box "6" (6,2) "7" [h:6]
+  config w 6
+  config h 1
+  box "1" {w:6,h:3} (0,1)
+  box "2" (6,3) "3" [h:6]
+  box "4" (6,2) "5" [h:6]
+  box "6" (6,1) "7" [h:6]
   box "8" (0,0) "9" [h:6] 
   ```    
 
@@ -608,16 +650,16 @@ This would have had the following visual effect.
 .figure
  Both "grid-row:1/4" and "grid-column:1/3" are set.
 
-  ```diagram{frame,viewport:18 10}
-  config w 6
-  config h 2
+  ```diagram{frame,viewport:18 5}
   config fillcolor gray
   config opacity 0.2
-  box "1" {w:12,h:6} (0,4)
-  box "2" (12,8)
-  box "3" (12,6)
-  box "4" (12,4)
-  box "5" (0,2) "6" [h:6] "7" [h:6]
+  config w 6
+  config h 1
+  box "1" {w:12,h:3} (0,2)
+  box "2" (12,4)
+  box "3" (12,3)
+  box "4" (12,2)
+  box "5" (0,1) "6" [h:6] "7" [h:6]
   box "8" (0,0) "9" [h:6] 
   ``` 
 
@@ -651,12 +693,18 @@ the following form.
     grid-area: 1 / 1 / span 3 / span 2;
   }
 
-However, the "grid-area" can take on additional responsibilities
-as is to be discussed here. In particular, the "grid-template-areas" 
-can be used similarly like "grid-template-columns", except that 
-it assign names to each grid of that column.
-For instance, the following definition of the grid container 
-would have assigned the first three grid to be named as "myArea".
+Instead of expressng the starting/stopping rows and column lines for a particular item,
+the same "grid-area" property can also be assigned a text string
+that would refer to an rectangle area area that might consist of one or more neighboring grids.
+Each of these grid would have had names assigned to by the virtual of the "grid-template-areas" property
+and they would all have the same name as that referred to by the "grid-area" property of the 
+grid item.
+
+Following is an example of a grid container where its "grid-template-areas"
+property assigns the name "myArea" to the first two grids of the first row, and
+the first two grids of the second row, such that if item 1 had set up its  
+"grid-area:myArea" property this way it would end up taking up the entire area of these   
+four grids. 
 
 .sample
 
@@ -667,30 +715,34 @@ would have assigned the first three grid to be named as "myArea".
     grid-area: myArea;
   }
   
-When this is done, when the "grid-area" property of item 1 is 
-assigned the string of "myArea", it would grab all neighboring
-grids whose names are "myArea", which in this case is the two
-neighboring grids on the first row, and two neighboring 
-grids on the second row, and then go ahead 
-and occupy the combined spaces.
+The previous example would have a visual effect similarly to the one shown
+by figure &ref{grid:myarea}.
 
 .figure
+  &label{grid:myarea}
   Using "myArea".
 
-  ```diagram{frame,viewport:24 6}
+  ```diagram{frame,viewport:24 3}
   config w 6
-  config h 2
+  config h 1
   config fillcolor gray
   config opacity 0.2
-  box "1" {w:12,h:4} (0,2)
-  box "2" (12,4) "3" [h:6]
-  box "4" (12,2) "5" [h:6]
+  box "1" {w:12,h:2} (0,1)
+  box "2" (12,2) "3" [h:6]
+  box "4" (12,1) "5" [h:6]
   box "6" (0,0) "7" [h:6] "8" [h:6] "9" [h:6]
   ``` 
 
-This basically allows for a complex grid layout to be
-made easy by naming neighboring grids and then
-define each item by that name.
+Note that the syntax for "grid-template-areas" is as follows:
+
+* Each row consists of a list of names and/or periods separated by spaces;
+* Anything that is not a period is to be assumed as the name assigned to the grid at that location of the row;
+* The text for describing the row must be surrounded by a set of apostrophies;
+* The second row would have to be expressed similarly, and the entire row is to appear after the first row following one or more spaces;
+* Each additional rows would be similarly expressed, and placed one after another in the same order as they appear within the container.
+
+The rules that has been discussed about named grid areas allows for a complex grid to be designed relative easyly, especially when each grid item tends to occupy different set of neighboring grids.
+The following example is designed to show case a complex grid layout where there are five grid items each of which has different requirements when it comes to occupying the neighboring grids.
 
 .sample
 
@@ -709,16 +761,16 @@ define each item by that name.
 .figure
   Using "header", "menu", "main", "right", and "footer" names.
 
-  ```diagram{frame,viewport:24 6}
+  ```diagram{frame,viewport:24 3}
   config w 4
-  config h 2
+  config h 1
   config fillcolor gray
   config opacity 0.2
-  box "header" {w:24,h:2} (0,4)
-  box "menu"   {w:4,h:4} (0,0)
-  box "main"   {w:12} (4,2)
-  box "right"  {w:8} (16,2)
-  box "footer" {w:20} (4,0)
+  box "header" {w:24,h:1} (0,2)
+  box "menu"   {w:4,h:2}  (0,0)
+  box "main"   {w:12}     (4,1)
+  box "right"  {w:8}      (16,1)
+  box "footer" {w:20}     (4,0)
   ``` 
   
   
@@ -748,13 +800,13 @@ appear within the grid.
   Items appear to have been "re-ordered" by the nature of having been 
   assigned different values of "grid-area" property.
   
-  ```diagram{frame,viewport:9 4}
+  ```diagram{frame,viewport:18 2}
   config fillcolor gray
   config opacity 0.2
-  config w 3
-  config h 2
-  box "3" (0,2) "4" [h:3] "1" [h:3]
-  box "5" (0,0) "6" [h:3] "2" [h:3]
+  config w 6
+  config h 1
+  box "3" (0,1) "4" [h:6] "1" [h:6]
+  box "5" (0,0) "6" [h:6] "2" [h:6]
   ```
   
   
