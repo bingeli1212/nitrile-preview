@@ -11,6 +11,7 @@ across the page, with a caption at the top and a subtitle at the bottom for each
 
 .sample
 
+    <style>
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -25,11 +26,7 @@ across the page, with a caption at the top and a subtitle at the bottom for each
       width: 100%;
       height: 100%;
     }
-    
-An example HTML utilizing this layout is shown below.
-    
-.sample 
-    
+    </style>
     <div class="cards">
       <article class="card">
         <header>
@@ -55,10 +52,10 @@ An example HTML utilizing this layout is shown below.
 This should look like figure &ref{grid:gridlayout}.
 
 .figure
- &label{grid:gridlayout}
- A div-element of two children, each of which is a 
- article-element which itself arranges its children
- in grids.
+&label{grid:gridlayout}
+A div-element of two children, each of which is a 
+article-element which itself arranges its children
+in grids.
 
   ```diagram{frame,viewport: 21 12}
   box.1 {w:8,h:10} (2,1)  
@@ -71,6 +68,9 @@ This should look like figure &ref{grid:gridlayout}.
   box "White." {w:8,h:2} (11,1) [m:0,1]
   box "wonderful!" {w:8,h:1} (11,1)
   ```
+
+
+
 
 
 # The "display" property
