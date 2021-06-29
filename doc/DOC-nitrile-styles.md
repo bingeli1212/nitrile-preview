@@ -791,6 +791,14 @@ Following are styles recognized by NITRILE:
   This option specifies a list of floats that serves as the location where a
   tick for a y-axis is to be drawn.
 
++ width:23
+
+  This option specifies the width in units of 'mm'.
+
++ height:23
+
+  This option specifies the height in units of 'mm'.
+
 
 
 

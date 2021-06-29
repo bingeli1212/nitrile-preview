@@ -160,3 +160,30 @@ be centered horizontally with visible margins on its left and right hand sides.
 
 
 
+# Units
+
+In SVG, the units of length is defined as:
+
+    1in = 96px
+    1in = 72pt
+    1in = 2.54cm
+
+    1cm = 37.8px
+    1cm = 28.3pt
+    1cm = 0.39in
+
+    1mm = 3.779px;
+    1mm = 2.835pt;
+
+    100px = 2.6cm
+    200px = 5.3cm
+    300px = 7.9cm
+    400px = 10.6cm
+
+    100pt = 3.5cm
+    200pt = 7.1cm
+    300pt = 10.6cm
+    400pt = 14.1cm
+
+    1pt = 1.3333px
+
