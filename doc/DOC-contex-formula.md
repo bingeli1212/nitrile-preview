@@ -1,5 +1,6 @@
 ---
 title: Formula
+doc: page
 ---
 
 # Typeset Formulas
