@@ -78,8 +78,8 @@ and one Span-element.
 
   ```diagram{frame,subtitle,viewport:21 4}
   viewport 21 4
-  config fillcolor orange
-  config opacity 0.3
+  config fillcolor gray
+  config opacity 0.2
   box {w:4,h:4} "block" (0,0)
   box {w:3,h:4} "float" (4,0)
   box {w:10,h:4} "anonymous" (7,0)
@@ -193,8 +193,8 @@ overflow the line.
   viewport 18 2
   config w 2
   config h 2
-  config fillcolor orange
-  config opacity 0.3
+  config fillcolor gray
+  config opacity 0.2
   box "1" (0,0) [h:2] [h:2]
   ```
 
@@ -209,8 +209,8 @@ overflow the line.
   config w 2
   config h 2
   origin right:12
-  config fillcolor orange
-  config opacity 0.3
+  config fillcolor gray
+  config opacity 0.2
   box "1" (0,0) [h:2] [h:2]
   ```
 
@@ -228,8 +228,8 @@ overflow the line.
   config w 2
   config h 2
   origin right:6
-  config fillcolor orange
-  config opacity 0.3
+  config fillcolor gray
+  config opacity 0.2
   box "1" (0,0) [h:2] [h:2]
   ```
 
@@ -247,8 +247,8 @@ overflow the line.
   viewport 18 2
   config w 2
   config h 2
-  config fillcolor orange
-  config opacity 0.3
+  config fillcolor gray
+  config opacity 0.2
   box "1" (0,0) [h:8] [h:8] 
   ```
 
@@ -266,8 +266,8 @@ overflow the line.
   viewport 18 2
   config w 2
   config h 2
-  config fillcolor orange
-  config opacity 0.3
+  config fillcolor gray
+  config opacity 0.2
   box "1" (3,0) [h:5] [h:5] 
   ```
 
@@ -362,10 +362,10 @@ A flex container with three items each of which
 assigned a order such that the item "article" appears
 in the middle rather than being at the beginning.
 
-  ```diagram{frame,subtitle,width:8cm,viewport:18 8}
+  ```diagram{frame,subtitle,width:80,viewport:18 8}
   viewport 18 8
-  config fillcolor orange
-  config opacity 0.3
+  config fillcolor gray
+  config opacity 0.2
   box {w:18,h:2} "footer" (0,0)
   box {w:18,h:2} "header" (0,6)
   box {w:4,h:4} "nav"      (0,2)
@@ -443,7 +443,7 @@ line to contain the last item.
 
   ```diagram{frame,subtitle,viewport:15 4}
   viewport 15 4 
-  group my = {w:4,h:2,fillcolor:orange,opacity:0.3} 
+  group my = {w:4,h:2,fillcolor:gray,opacity:0.2} 
   box {group:my} "1" (0,2) 
   box {group:my} "2" (4,2) 
   box {group:my} "3" (8,2) 
@@ -509,8 +509,8 @@ additional line to contain the last item.
 
   ```diagram{frame,subtitle,viewport:15 4}
   viewport 15 4
-  group my = {w:5,h:2,fillcolor:orange,opacity:0.3} 
-  group my2 = {w:15,h:2,fillcolor:orange,opacity:0.3} 
+  group my = {w:5,h:2,fillcolor:gray,opacity:0.2} 
+  group my2 = {w:15,h:2,fillcolor:gray,opacity:0.2} 
   box {group:my} "1" (0,2) 
   box {group:my} "2" (5,2) 
   box {group:my} "3" (10,2) 
@@ -672,8 +672,8 @@ creating a visual gap between itself and the item before it.
 
   ```diagram{frame,subtitle,viewport:20 2}
   viewport 20 2
-  config fillcolor orange
-  config opacity 0.3
+  config fillcolor gray
+  config opacity 0.2
   box {w:4,h:2} "About"    (0,0)
   box {w:4,h:2} "Projects" (4,0)
   box {w:4,h:2} "Interact" (8,0)
@@ -777,16 +777,16 @@ be centered regardless.
 
   Using auto margins.
   ```diagram{frame,viewport:11 10}
-  draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
-  box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
-  box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
-  box {fillcolor:orange,opacity:0.3,w:8} "Hello World" (3,7)
+  draw {fillcolor:gray,opacity:0.2} &rectangle{(3,0),5,10}
+  box  {fillcolor:gray,opacity:0.2,w:3} "Blog" (4,1)
+  box  {fillcolor:gray,opacity:0.2,w:4} "About" (3.5,4)
+  box  {fillcolor:gray,opacity:0.2,w:8} "Hello World" (3,7)
   ```
   Using ``align-self:center`` property.
   ```diagram{frame,viewport:11 10}
-  draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
-  box {fillcolor:orange,opacity:0.3,w:3} "Blog" (4,1)
-  box {fillcolor:orange,opacity:0.3,w:4} "About" (3.5,4)
-  box {fillcolor:orange,opacity:0.3,w:8} "Hello World" ^left:1.5 (3,7)
+  draw {fillcolor:gray,opacity:0.2} &rectangle{(3,0),5,10}
+  box  {fillcolor:gray,opacity:0.2,w:3} "Blog" (4,1)
+  box  {fillcolor:gray,opacity:0.2,w:4} "About" (3.5,4)
+  box  {fillcolor:gray,opacity:0.2,w:8} "Hello World" ^left:1.5 (3,7)
   ```
 
