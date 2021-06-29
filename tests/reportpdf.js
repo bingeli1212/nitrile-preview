@@ -4,7 +4,7 @@ const { NitrilePreviewReport } = require('../lib/nitrile-preview-report');
 var work = async (fname)=>{
   const parser = new NitrilePreviewParser();
   await parser.read_file_async(fname);
-  await parser.read_import_async();
+  await parser.read_chapters_async();
   const translator = new NitrilePreviewReport(parser,program);
   var tex = translator.to_document();
   return tex;

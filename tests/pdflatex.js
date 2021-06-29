@@ -5,7 +5,7 @@ const utils = require('../lib/nitrile-preview-utils');
 var work = async (fname)=>{
   const parser = new NitrilePreviewParser();
   await parser.read_file_async(fname);
-  await parser.read_import_async();
+  await parser.read_chapters_async();
   const translator = new NitrilePreviewPdflatex(parser);
   var tex = translator.to_document();
   return tex;
