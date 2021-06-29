@@ -57,14 +57,8 @@ space then this anonymous element is not rendered,
 which could be considered equivalent to being set the ``display:none``
 property.
 
-@ figure{subfigure}
-  &label{flex:container}
-  Following is a flex container with four flex items:
-  two of which are the Div-elements, one anonymous element, 
-  and one Span-element.
+.sample
 
-  HTML
-  ```verbatim{frame,subtitle}
   <div style="display:flex">
     <div>block</div>
     <div style="float:left;">float</div>
@@ -75,9 +69,13 @@ property.
       item 3
     </span>
   </div>
-  ```
-  \\
-  Visual
+
+.figure
+&label{flex:container}
+Following is a flex container with four flex items:
+two of which are the Div-elements, one anonymous element, 
+and one Span-element.
+
   ```diagram{frame,subtitle,viewport:21 4}
   viewport 21 4
   config fillcolor orange
@@ -341,14 +339,14 @@ the order of their appearances because
 the order is no longer constrained by their natural 
 order within the DOM.
 
-@ figure{subfigure}
-  &label{flex:order}
-  A flex container with three items each of which
-  assigned a order such that the item "article" appears
-  in the middle rather than being at the beginning.
-  
-  HTML
-  ```verbatim{frame,subtitle}
+.sample
+
+  <style>
+  main { display: flex; }
+  main > article { order:2; min-width:12em; flex:1; }
+  main > nav     { order:1; width: 200px; }
+  main > aside   { order:3; width: 200px; }
+  </style>
   <!DOCTYPE html>
   <header>...</header>
   <main>
@@ -357,9 +355,14 @@ order within the DOM.
      <aside>...</aside>
   </main>
   <footer>...</footer> 
-  ```  
-  Visual
-  ```diagram{frame,subtitle,width:8cm,viewport:18 2}
+
+.figure
+&label{flex:order}
+A flex container with three items each of which
+assigned a order such that the item "article" appears
+in the middle rather than being at the beginning.
+
+  ```diagram{frame,subtitle,width:8cm,viewport:18 8}
   viewport 18 8
   config fillcolor orange
   config opacity 0.3
@@ -368,14 +371,6 @@ order within the DOM.
   box {w:4,h:4} "nav"      (0,2)
   box {w:10,h:4} "article" (4,2)
   box {w:4,h:4} "aside"    (14,2)
-  ```
-  \\
-  CSS
-  ```verbatim{frame,subtitle}
-  main { display: flex; }
-  main > article { order:2; min-width:12em; flex:1; }
-  main > nav     { order:1; width: 200px; }
-  main > aside   { order:3; width: 200px; }
   ```
 
 See figure &ref{flex:order} for an example of setting the `order` property
@@ -417,18 +412,9 @@ on the `flex-wrap` property:
   line contains at least one flex item, unless the flex container itself is
   completely empty.
 
-@ figure{subfigure}
-  &label{flex:example-1} 
-  This example shows four buttons that do not fit side-by-side horizontally, and
-  therefore will wrap into multiple lines.
-  Since the container is 300px wide, only three of the items fit onto a single
-  line. They take up 240px, with 60px left over of remaining space.  Because the
-  flex-flow property specifies a multi-line flex container (due to the wrap
-  keyword appearing in its value), the flex container will create an additional
-  line to contain the last item.
+.sample
 
-  CSS
-  ```verbatim{frame,subtitle}
+  <style>
   #flex {
     display: flex;
     flex-flow: row wrap;
@@ -437,18 +423,24 @@ on the `flex-wrap` property:
   .item {
     width: 80px;
   }
-  ```
-  HTML
-  ```verbatim{frame,subtitle}
+  </style>
   <div id="flex">
     <div class="item">1</div>
     <div class="item">2</div>
     <div class="item">3</div>
     <div class="item">4</div>
   </div>
-  ```
-  \\
-  Visual.
+
+.figure{subfigure}
+&label{flex:example-1} 
+This example shows four buttons that do not fit side-by-side horizontally, and
+therefore will wrap into multiple lines.
+Since the container is 300px wide, only three of the items fit onto a single
+line. They take up 240px, with 60px left over of remaining space.  Because the
+flex-flow property specifies a multi-line flex container (due to the wrap
+keyword appearing in its value), the flex container will create an additional
+line to contain the last item.
+
   ```diagram{frame,subtitle,viewport:15 4}
   viewport 15 4 
   group my = {w:4,h:2,fillcolor:orange,opacity:0.3} 
@@ -482,21 +474,9 @@ flex line and its size is the same as the container,
 the `align-content` property would have no effect regardless of what
 value it has been set to. 
 
-@ figure{subfigure}
-  &label{flex:example-2}
-  Here’s the same example as the previous, except that the flex items have all
-  been given `flex:auto`. The first line has 60px of remaining space, and all of
-  the items have the same flexibility, so each of the three items on that line
-  will receive 20px of extra width, each ending up 100px wide. The remaining item
-  is on a line of its own and will stretch to the entire width of the line, i.e.
-  300px.  Since the container is 300px wide, only three of the items fit onto a
-  single line. They take up 240px, with 60px left over of remaining space.
-  Because the `flex-flow` property specifies a multi-line flex container (due to
-  the wrap keyword appearing in its value), the flex container will create an
-  additional line to contain the last item.
+.sample
 
-  CSS
-  ```verbatim{frame,subtitle}
+  <style>
   #flex {
     display: flex;
     flex-flow: row wrap;
@@ -506,18 +486,27 @@ value it has been set to.
     width: 80px;
     flex: auto;
   }
-  ```
-  HTML
-  ```verbatim{frame,subtitle}
+  </style>
   <div id="flex">
     <div class="item">1</div>
     <div class="item">2</div>
     <div class="item">3</div>
     <div class="item">4</div>
   </div>
-  ```
-  \\
-  Visual
+
+.figure{subfigure}
+&label{flex:example-2}
+Here’s the same example as the previous, except that the flex items have all
+been given `flex:auto`. The first line has 60px of remaining space, and all of
+the items have the same flexibility, so each of the three items on that line
+will receive 20px of extra width, each ending up 100px wide. The remaining item
+is on a line of its own and will stretch to the entire width of the line, i.e.
+300px.  Since the container is 300px wide, only three of the items fit onto a
+single line. They take up 240px, with 60px left over of remaining space.
+Because the `flex-flow` property specifies a multi-line flex container (due to
+the wrap keyword appearing in its value), the flex container will create an
+additional line to contain the last item.
+
   ```diagram{frame,subtitle,viewport:15 4}
   viewport 15 4
   group my = {w:5,h:2,fillcolor:orange,opacity:0.3} 
@@ -655,24 +644,16 @@ will have no effect in that dimension because the margins would have already
 absorbed all the free space. Thus from a the perspective of a container,
 there had been no free spaces to be managed with.
 
-@ figure{subfigure}
-  &label{flex:example-3}
-  The following example shows that by setting ``margin-left:auto``
-  property of a flex item, 
-  it would've absorbed all the free spaces to its left,
-  creating a visual gap between itself and the item before it.
+.sample
 
-  CSS
-  ```verbatim{frame,subtitle}
+  <style>
   nav > ul {
     display: flex;
   }
   nav > ul > #login {
     margin-left: auto;
   }
-  ```
-  HTML
-  ```verbatim{frame,subtitle}
+  </style>
   <nav>
     <ul>
       <li>About</li>
@@ -681,9 +662,14 @@ there had been no free spaces to be managed with.
       <li id="login">Login</li>
     </ul>
   </nav>
-  ```
-  \\
-  Visual
+
+.figure{subfigure}
+&label{flex:example-3}
+The following example shows that by setting ``margin-left:auto``
+property of a flex item, 
+it would've absorbed all the free spaces to its left,
+creating a visual gap between itself and the item before it.
+
   ```diagram{frame,subtitle,viewport:20 2}
   viewport 20 2
   config fillcolor orange
@@ -779,16 +765,16 @@ situations between using auto margins and using the alignment properties.
 All items on the left-hand side figure are centered using auto margins. All items
 on the right-hand side figure are centered using align-self style. 
 
-@ figure{subfigure}
-  &label{flex:example-4}
-  Items aligned using auto margins would have to be limited by the availability of
-  left margin, and would not go overboard past the left margin boundary 
-  had it already exhausted all left margin spaces.
-  Instead, the contents overflow past the margin on the right hand side. 
-  On the other hand, items aligned
-  using align-self style are not limited by the availability of left margin and thus will always
-  be centered regardless.
-  
+.figure{subfigure}
+&label{flex:example-4}
+Items aligned using auto margins would have to be limited by the availability of
+left margin, and would not go overboard past the left margin boundary 
+had it already exhausted all left margin spaces.
+Instead, the contents overflow past the margin on the right hand side. 
+On the other hand, items aligned
+using align-self style are not limited by the availability of left margin and thus will always
+be centered regardless.
+
   Using auto margins.
   ```diagram{frame,viewport:11 10}
   draw {fillcolor:gray,opacity:0.3} &rectangle{(3,0),5,10}
