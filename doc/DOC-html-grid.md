@@ -149,47 +149,6 @@ See figure &ref{grid:gridlines} for locations of grid lines.
   draw {linedashed} ^down:0.5 (0,1)[h:11]
   drawtext "4" (&lastpt)
   ```
-  \\  
-  Grid lines for columns.
-  ```diagram{frame,viewport:14 14}
-  origin ^x:1 ^y:1
-  box {w:10,h:10} (0,0)
-  config fillcolor gray
-  config opacity 0.2
-  config w 2
-  config h 2
-  box "grid" (1,7) [h:3] [h:3]
-  box "grid" (1,4) [h:3] [h:3]
-  box "grid" (1,1) [h:3] [h:3]
-  draw {linedashed} (0.5,0)[v:11] 
-  drawtext "1" &lastpt
-  draw {linedashed} (3.5,0)[v:11]
-  drawtext "2" &lastpt
-  draw {linedashed} (6.5,0)[v:11]
-  drawtext "3" &lastpt
-  draw {linedashed} (9.5,0)[v:11]
-  drawtext "4" &lastpt
-  ```
-  Grid lines for rows.
-  ```diagram{frame,viewport:14 14}
-  origin ^x:1 ^y:1
-  box {w:10,h:10} (0,0)
-  config fillcolor gray
-  config opacity 0.2
-  config w 2
-  config h 2
-  box "grid" (1,7) [h:3] [h:3]
-  box "grid" (1,4) [h:3] [h:3]
-  box "grid" (1,1) [h:3] [h:3]
-  draw {linedashed} ^down:0.5 (0,10)[h:11]
-  drawtext "1" (&lastpt)
-  draw {linedashed} ^down:0.5 (0,7)[h:11]
-  drawtext "2" (&lastpt)
-  draw {linedashed} ^down:0.5 (0,4)[h:11]
-  drawtext "3" (&lastpt)
-  draw {linedashed} ^down:0.5 (0,1)[h:11]
-  drawtext "4" (&lastpt)
-  ```
     
 
 # The "grid-gap" property
