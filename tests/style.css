@@ -1,0 +1,197 @@
+
+      table {
+        border-collapse: collapse;
+      }
+
+      .LISTING > .BODY {
+        line-height: 1;
+      }
+
+      .LISTING > .BODY > .LINE {
+        position: relative;
+        padding-left: 1.5em;
+      }
+
+      .LISTING > .BODY > .LINE::before {
+        counter-increment: line;
+        content: counter(line);
+        position: absolute;
+        left: -1.5rem;
+        top: 50%;
+        font-size: small;
+        transform: translate(0,-50%);
+        padding-left: 1.5rem;
+      }
+
+      .LISTING {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+        margin-left: 6.5mm;
+        margin-right:6.5mm;
+        text-align: left;
+        align-self: center;
+        counter-reset: line;
+      }
+
+      .LISTING > code {
+        position: relative;
+        padding-left: 1.5em;
+      }
+
+      .LISTING > code::before {
+        counter-increment: line;
+        content: counter(line);
+        position: absolute;
+        left: -1.5rem;
+        top: 50%;
+        font-size: small;
+        transform: translate(0,-50%);
+        padding-left: 1.5rem;
+      }
+
+      .FIGURE, .TABLE, .LONGTABLE, .LISTING {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+        margin-left: 6.5mm;
+        margin-right:6.5mm;
+        text-align: center;
+        align-self: center;
+        page-break-inside: avoid;
+      }
+
+      .ITEMIZE, .PARAGRAPH, .SAMPLE, .INDENT, .EQUATION, .TABBING {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+        margin-left: 6.5mm;
+        margin-right: 6.5mm;
+        align-self: center;
+      }
+
+      .PRIMARY {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+        align-left: center;
+      }
+
+      .PARAGRAPH, .INDENT {
+        text-align: justify;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+      }
+      
+      .INDENT {
+        padding-left: 0.55cm;
+      }
+
+      .COMBINATIONROW {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-row-gap: 0.5em;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .COMBINATION {
+        text-align: center;
+        overflow: visible;
+        white-space: nowrap;
+        width: 100%;
+        align-items: baseline;
+      }
+
+      .FIGCAPTION {
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1;
+        font-size: smaller;
+      }
+
+      .SUBFIGCAPTION {
+        line-height: 1;    
+        font-size: smaller;
+        white-space: normal;
+      }
+
+      .SUBFIGURE {
+        display: inline-block;
+        overflow: visible;
+        vertical-align: top;
+        text-align: center;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+      }
+
+      .WRAPLEFT {
+        float: left;
+        margin-right: 1em;
+      }
+
+      .WRAPRIGHT {
+        float: right;
+        margin-left: 1em;
+      }
+
+      .DISPLAYMATH {
+        text-align:center;
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+      }
+
+      .SAMPLE {
+        padding-left:0em;
+        padding-right:0em;
+      }
+
+      .PARA {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+      }
+
+      .PACK {
+        margin-top: 1.0pt;
+        margin-bottom: 1.0pt;
+      }
+
+      .PARA.DT.FIRST {
+        margin-bottom: 1.0pt;
+      }
+
+      .DL > .DD {
+        margin-left: 0;
+        padding-left: 1.15cm;
+      }
+
+      .HL {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .OL {
+        padding-left: 0.55cm;
+      }
+
+      .UL {
+        padding-left: 0.55cm;
+      }
+
+      .TH, TD {
+        padding: 0.15em 0.6em;
+      }
+
+      ruby {
+        line-height: 1;
+        ruby-position: over;
+        ruby-align: space-between;
+      }
+
+      rt {
+        display: inline-block;
+        font-size: 35%;
+        ruby-align: space-between;
+      }
+    
