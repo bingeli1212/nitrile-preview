@@ -3246,106 +3246,120 @@ would have drawn an arrow from the origin to "1+2j".
 # The 'var' command
 
 The 'var' command is to create an environment variable that
-is the result of an arithmetic expression. 
+is the result of an arithmetic expression, a text string,
+or an array.  Following is an example of a arithmetic expression.
 
     var a = pow(2,1/12)
     draw (0,0)--(a,a)
 
-The previous example has created an environment variable named 'a', 
-which has been assigned a numerical value that is equivalent to 
-the result computed by the arithmetic function of "pow(2,1/12)". 
-The symbol 'a' can later appear in many different places such as the
-one show above inside a 'draw' command to take place where a number
-is expected.
+Following is a example of creating a variable that holds an array.
 
-This string representation of the environment variable is also able to 
-appear inside any command by the use of the "dollar-expression" such as
-the one shown below.
+    var o[] = 1 2 3
+    for i in [@o]; do
+      dot (i,i)
+    done
 
-    drawtext "${a}" (0,0)
+Following is a example of a text string composition.
 
-In this example the text shown at position (0,0) will be composed of the 
-the number that equals to the value of this variable.
+    var s = @"%d-%d-%d" 301 444 5591
+    drawtext "${@a}" (0,0)
 
-The same 'var' command is also able to create an "array" variable, in which
-case a list of numbers, rather than a single number, is to be assigned to this
-symbol name, and later on be access in various places.
+The first example has created an environment variable named 'a', 
+that is assigned a numerical value that is equivalent to 
+evaluating the arithmetic function "pow(2,1/12)".  The result of
+an arithmetic expression is always a number, thus a number is stored
+internally with the symbol 'a'.
+
+The same symbol, once defined and assigned a number, can later be used in other
+arithmetic expression such as the following example which 'a' is used
+to compute a value that is 2 multiples of 'a' and the value of which
+is assigned to variable 'b'.
+
+    var b = a * 2;
+
+Note that the number is complex-number-ready, which means the number 
+is internally represented as a complex number. This allows the following
+expression to be constructed that would express a complex number that is "2+3i":
+
+    var c = 2 + 3i
+
+Note that the spaces around the plus-sign is optional. In fact the entire
+expression is just treated as a regular math operation of addition, with 
+the first number "2" treated as a number for a real component, and the 
+second number treated as a number for the imaginary component. It does it
+by noticing the 'i' or 'j' after a normal number, such as "2", "3", "2.123", etc.
+If it has found that a 'i' or 'j' is following such a number, then it treates
+the entire number as expressing the imaginary component and performs the math
+accordingly. 
+
+In addition to using 'i' or 'j', the math constant "I" can also be used.
+This is the same constant as other constants such as "PI" and "E", where the
+only difference is that "I" represents the unit of the imaginary component,
+and "PI" and "E" are fixed numbers only having a real component for itself.
+Thus, the following expression would have assigned the complex number "3i" 
+to variable 'd'.
+
+    var d = 3 * I
+
+Note that it is illegal to use a "i" or "j" by itself, such as the following
+which is illegal.
+
+    var d = 3 + i
+
+This is because a letter within an expression by itself is to be treated as a
+variable. Thus, the previous expression would have looked for a variable named
+"i", and by failing to find it, would have caused the entire expression to
+become NaN.
+
+When the expression after the equal sign starts with a at-sign, or '@', then
+the expression is assumed to return a string rather than a number.  There are
+two different situation in which a string can be formed. The first is that the
+at-sign is followed by a set of quotation marks, such as the following, in
+which case anything within the quation string is treated as a "template", such
+that it will be scanned for the appearances of "formattng groups", which is
+replaced by something that appears after it.  The following example would have
+created a variable named "s" that holds a string that is "301-444-5591".
+
+    var s = @"%d-%d-%d" 301 444 5591
+
+In the second situation is when the at-sign is followed by a variable, 
+in which case the value of that variable is pulled and its value is treated
+as a string. For instance, after the previous example has created the variable named 's',
+we can create another variable 's1' that hold the same value of 's'
+
+    var s = @s
+
+This allows us to construct a string an later used inside a command that expects
+such.
+
+    var s = @"%d-%d-%d" 301 444 5591
+    drawtext "${@s}" (0,0)
+
+The 'var' command is also able to create an "array" variable, in which
+case the variable is to hold a list of numbers, rather than a single number. 
+To reference this variable as an array, it must appear inside set of square
+brackets and prefixed by an at-sign. For instance, the following example
+has first created and assigned the variable 'a' an array that consists of 
+three items, and then reference this array by the name of 'a' inside a 
+for-command.
 
     var a[] = 1 2 3
-    drawtext "${a_0}" "${a_1}" "${a_2}" (0,0) [h:1] [h:1]
+    for i in [@a]; do
+      drawdot (i,i)
+    done
 
-The previous example has created an array of three numbers, and was later
+An array variable can also be referenced by its individual elements. The syntax
+is to start with the variable, followed by a underscore, and then one or more digits
+to express the position within the variable. For instance, "a_0" would have been
+recognized as a variable that references the first element of an array named "a",
+and "a_1" would have referenced the second element of array named "a".
+The following example has created an array of three numbers, and was later
 on used to generate text output on various locations, pulling the content of 
 each element of the array. 
 
-One of the key features of utilizing a scalar variable is its ability to hold a
-number that is capable of representing a complex number. For instance, following
-example will first create two complex numbers "1+1i" and "2+3i" and then add
-them together to get a number that equals to "3+4i".
+    drawtext "${a_0}" "${a_1}" "${a_2}" (0,0) [h:1] [h:1]
 
-    var a = 1+1i
-    var b = 2+3i
-    var c = a + b
-
-Note that there is a built-in constant that is "I", which represents the
-the imaginary unit of a complex number. Thus, it is possible to create a complex
-number such as follows.
-
-    var a = 1 + 1*I
-    var b = 2 + 3*I
-    var c = a + b
-
-However, the notation of "i" and "j" are special notations that must follow
-a valid number in order for a imaginary number to be recognized. Thus, following
-are all valid notation for a complex number with an imaginary component.
-
-    var a = 1 + 1j
-    var a = 1 + 2.22i
-    var a = 1j
-    var a = -10i
-
-However, following are illegal:
-
-    var a = i
-    var a = j
-    var a = -i
-    var a = -j
-
-This is because if a "i" and "j" were to appear by itself, it is to be recognized
-as a scalar variable much similar to the situation below, in which case the "i" in 
-the second line is to be treated as a variable holding a value of 10.
-
-    var i = 10
-    var b = i
-
-The 'var' command is also designed to create a variable that holds a literal
-string rather than a number. In this case, the first argument after the equal
-sign must be a formatting string, which must appear starting with an at-sign, and
-immediately followed by a set of quotation marks.
-
-    var num = pow(2,1/12)
-    var s = @"%.2f" num
-
-Note that is possible to have empty spaces inside the
-quotation marks. 
-
-    var num1 = pow(2,1/12)
-    var num2 = pow(2,2/12)
-    var s = @"%.2f %.2f" num1 num2
-
-Each additional argument after the initial formatting string is to be treated as
-existing scalar variables. They each serve as an independent source that is to
-supply the content of each "formatting group" that is to be found within the
-formatting string. Each "formatting group" is identified by the presence of the
-percent sign, which is followed by additional letters, numbers, period, etc.
-that serves to provide additional information as to how this argument is to be
-formatted in order to appear at that location. Each formatting group including
-the percent sign is to disappear and its place completely replaced by the
-content of the argument. After each formatting group has been found the argument
-to be replaced with, the resulting string is saved within the environment under
-the variable name in much the same mannor as with an arithmetic expression.
-
-Following formatting groups are recognized.
+Following are formatting groups that are recognized.
 
 + %%
 
@@ -3457,28 +3471,14 @@ Following formatting groups are recognized.
   % s => "1.23"
   ```
 
-Note that for a variable such as "c" below holding a string, it might have
-trouble being recognized as a number if it were to appear inside a arithmetic
-expression such as the case for the 'var' command for 'd' below, in which case
-the arithmetic expression turns out to be a NaN.
+Note that if a variable holds a string, and it appears inside an arithmetic expression,
+then the result would be undefined if the string cannot be recognized as a legal number.
+For instance, in the following example variable 'c' is holding a string that is "Hello",
+and when later it is used to perform an addition, the result becomes NaN.
 
-    var a = 1
-    var b = 23
     var c = @"Hello"
-    % c => "Hello"
     var d = c + 10
     % d = NaN
-
-Currently, there are no operations for string operands. However, 
-if the entire expression is a variable prefixed by a '@', such as
-the 'var' command for 'd' below, the entire content of variable 'c'
-will be retrireved, regardless if it is a number or string.
-
-    var c = @"Hello"
-    % c => "Hello"
-    var d = @c
-    % d => "Hello"
-
 
   
 
