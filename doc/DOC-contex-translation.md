@@ -3563,12 +3563,24 @@ only limitation of using a 'tabular' bundle this way is to ensure that the
 first vrule and last vrule do not appear. In addition, each vertical rule
 would look "broken" when it crisscrosses a horizontal rule. 
 
-Another important difference between a 'bTABLE' and 'startabulate' is that the
-first one has no way of creating a double horizontal line, while the second one
-is possible when two \HL commands are placed right next to each other.
+Another important difference between a 'bTABLE' and 'startabulate' is that 
+for a 'bTABLE' to have a double horizontal rule we have to create a empty
+row immediately below it with a fixed height such as 2.25pt, and with no content.
+For a 'starttabulate' to have a double horizontal rule we can place two consecutive
+\HL commands.
 
 For this reason, a 'bTABLE' is used in translation when a 'tabular' is to
 appear inside a 'figure', 'table', or 'longtable', while a 'starttabulate' is
 to appear when it is by itself.
+
+There is a serious bug in the latest releast of CONTEX, in that if a previous 'starttable'
+has a \VL (vertical rule) before the start of the first column, the subsequent 'starttable'
+will automatically have a vertical rule before the first column as well, even when
+the second 'starttable' didn't use \VL. The vertical rule before the first column
+of the second 'starttabulate' would disappear if a \VL is not placed before the first
+column within the first 'starttabulate'.
+
+
+
 
 
