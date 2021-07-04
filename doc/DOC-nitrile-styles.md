@@ -799,8 +799,30 @@ Following are styles recognized by NITRILE:
 
   This option specifies the height in units of 'mm'.
 
++ stretch:0.40
 
+  This option specifies whether a bundle should stretch its width
+  to a percentage of its parent. Currently, this option can be used
+  with a 'tabular' bundle such that when it is used inside a 'longtable'
+  it would be turned into a 'bTABLE' and its 'option=stretch' option
+  is set if this value is set to 1. Generally, the 'width' attribute
+  of a 'tabular' bundle is ignored because it is determined by the 
+  combined width of its columns. However, for some, such as the 'bTABLE'
+  of CONTEX and 'table' element of HTML, the total width of the table
+  can be set. But 'bTABLE' only has the option to set the total width
+  to be the maximum of its page width. The 'table' element can actually
+  allow it to be a percentage of its parent width. 
+  
+  However, for 
+  LATEX conversion this flag is current ignored for 'longtable' because
+  the 'xtabular' class it is currently using for typesetting a longtable
+  isn't equipped with any option that allows for the total width
+  of the table to be fixed to a length. 
 
+  It could also be used with a 'diagram' bundle or 'img' bundle to set it 
+  so that the image or diagram would have its width set to a percentage 
+  of its parent container, rather than the fixed width defined by 
+  the 'width' attribute. 
 
 
 
