@@ -110,12 +110,6 @@ camer.setupbodyfont: linux,11pt
   have been placed at the first row and the last one wrapped, where LATEX and SVG
   would each have wrapped the third one down to the next row.
 
-- DO NOT know how to make a double horizontal rule for a "tabular".  It has
-  been observed that for a "starttable" block, two consecutive "\HL" commands
-  does not turn it into a double horizontal line. It seems that these two "\HL
-  commands are placed very close to each other and the horizontal line just
-  appears to be a little thicker.
-
 - DO NOT KNOW how to change the entire font for the "startable" block such that
   the table will be less taller than before. It is been seen that if a font
   switch such as "\bfxsm" is placed before "\starttable", then it the fonts are
@@ -3538,4 +3532,43 @@ detailed description and examples of this command.
     \stoptext
 
 
+
+# The 'tabular' bundle
     
+It has been said in the document that 'starttable' is being deprecated. So
+there have become clear that there are two options to go with a 'tabular'
+translation: either turning into a 'bTABLE' bundle, or a 'starttabulate'
+bundle.
+
+The first bundle has been observed to be good in creating border lines, and
+have a "option=stretch" that allows for an entire table to be set to be the
+width of the current page, and has the capability to be split over several
+pages. It can be compared with 'startable'. The only different seems to be
+the inner padding within each cell, which is non-existance by default, and has 
+to be set to some like 4pt horizontal and 1pt vertical to be looking similar
+to those output produced by 'starttable'.  However, this bundle suffers the
+problem of not able to go with the flow of the text, such that if the entire
+'bTABLE' is placed inside a 'startitemize', it does not have a indent which
+is placed for regular text.
+
+The 'starttabulate' bundle is designed to go with the flow of the text, which
+solves the short coming of not having had an "indent" when needed. It also has
+a default non-zero padding added to each cell so that each column is separated
+by some whitespace. This white space is especially needed when vertical rules
+are added between columns. However, the horizontal spaces are not added before
+the first column and after the last column. Thus if a vertical rule is to
+appear in these two places it would look like the vertical rules will touch the
+edge of the text widthin the cell. There is current no easy fix for this so the
+only limitation of using a 'tabular' bundle this way is to ensure that the
+first vrule and last vrule do not appear. In addition, each vertical rule
+would look "broken" when it crisscrosses a horizontal rule. 
+
+Another important difference between a 'bTABLE' and 'startabulate' is that the
+first one has no way of creating a double horizontal line, while the second one
+is possible when two \HL commands are placed right next to each other.
+
+For this reason, a 'bTABLE' is used in translation when a 'tabular' is to
+appear inside a 'figure', 'table', or 'longtable', while a 'starttabulate' is
+to appear when it is by itself.
+
+
