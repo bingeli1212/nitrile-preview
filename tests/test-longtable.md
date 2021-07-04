@@ -13,192 +13,60 @@ culpa qui officia deserunt mollit anim id est laborum."
 &label{mytable}
 This is the caption for my long table.
 
-  ```tabular{halign:f33 f66,hrule:-}
-    | Name  | Desc
-    -----------------
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    -----------------
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    -----------------
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
-    | Hello | World
+  ```tabular{halign:f10 f33 f56,hrule: ,vrule:|||, stretch:1}
+  |     | Name  | Desc
+  ----------------------
+  | 1   | Hello | World
+  | 2   | {{\frac{1}{2}}} | World
+  | 3   | {{\frac{1}{2}}} | World
+  ----------------------
+  | 4   | Hello | World
+  | 5   | Hello | World
+  | 6   | Hello | World
+  | 7   | Hello | World
+  | 8   | Hello | World
+  | 9   | Hello | World
+  | 10  | Hello | World
+  | 11  | Hello | World
+  | 12  | Hello | World
+  | 13  | Hello | World
+  | 14  | Hello | World
+  | 15  | Hello | World
+  | 16  | Hello | World
+  | 17  | Hello | World
+  | 18  | Hello | World
+  | 19  | Hello | World
+  | 20  | Hello | World
+  | 21  | Hello | World
+  | 22  | Hello | World
+  | 23  | Hello | World
+  | 24  | Hello | World
+  | 25  | Hello | World
+  | 26  | Hello | World
+  | 27  | Hello | World
+  | 28  | Hello | World
+  | 29  | Hello | World
+  | 30  | Hello | World
+  | 31  | Hello | World
+  | 32  | Hello | World
+  | 33  | Hello | World
+  | 34  | Hello | World
+  | 35  | Hello | World
+  | 36  | Hello | World
+  | 37  | Hello | World
+  | 38  | Hello | World
+  | 39  | Hello | World
+  | 40  | Hello | World
+  | 41  | Hello | World
+  | 42  | Hello | World
+  | 43  | Hello | World
+  | 44  | Hello | World
+  | 45  | Hello | World
+  | 46  | Hello | World
+  | 47  | Hello | World
+  | 48  | Hello | World
+  | 49  | Hello | World
+  | 50  | Hello | World
   ```
 
 See the &ref{mytable}.
