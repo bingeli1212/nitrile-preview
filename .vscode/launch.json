@@ -95,7 +95,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/article.js",
       "args": [
-        "test-tabular.md"
+        "a.md"
       ]
     },
     {
