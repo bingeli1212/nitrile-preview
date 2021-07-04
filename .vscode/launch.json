@@ -4,6 +4,7 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+  
     
 
     {
@@ -87,12 +88,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch articlelualatex",
+      "name": "Launch article",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/articlelualatex.js",
+      "program": "${workspaceFolder}/tests/article.js",
       "args": [
         "a.md"
       ]
