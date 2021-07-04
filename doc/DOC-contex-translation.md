@@ -3580,6 +3580,14 @@ the second 'starttable' didn't use \VL. The vertical rule before the first colum
 of the second 'starttabulate' would disappear if a \VL is not placed before the first
 column within the first 'starttabulate'.
 
+The double-vertical rule is currently implemented for 'bTABLE' pack, by adding an extra column
+that is set to a fixed size of 2pt. However, it is not implemented for 'starttabulate' because
+'starttabulate' does not provide native support for double vertical rule, and but adding
+an empty column the second rule would cut into the left padding of the subsequent cell, making
+it touching the second vertical rule. 
+
+
+
 
 
 
