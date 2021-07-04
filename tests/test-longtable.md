@@ -13,7 +13,7 @@ culpa qui officia deserunt mollit anim id est laborum."
 &label{mytable}
 This is the caption for my long table.
 
-  ```tabular{fr:1 2,hrule:-}
+  ```tabular{halign:f33 f66,hrule:-}
     | Name  | Desc
     -----------------
     | Hello | World
