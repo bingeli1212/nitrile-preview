@@ -6,7 +6,7 @@ var work = async ()=>{
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewEpub(parser);
   await parser.read_file_async(fname);
-  await parser.read_chapters_async();
+  await parser.read_import_async();
   const data = await translator.to_document_async();
   return(data);
 };
