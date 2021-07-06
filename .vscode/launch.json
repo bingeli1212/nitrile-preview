@@ -101,69 +101,15 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch reportpdf",
+      "name": "Launch beamer",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/reportpdf.js",
-      "args": [
-        "a.md"
-      ]
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch beamerpdf",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/beamerpdf.js",
-      "args": [
-        "a.md"
-      ]
-    },
-
-
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch docsymbols",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/docsymbols.js",
-      "args": [
-      ]
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch contexsymboldoc",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/contexsymboldoc.js",
-      "args": [
-        "a.md"
-      ]
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch latexsymboldoc",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/latexsymboldoc.js",
+      "program": "${workspaceFolder}/tests/beamer.js",
       "args": [
         "a.md"
       ]
     }
-
   ]
 }
