@@ -29,5 +29,50 @@ the closing brackets of the key. Following is the fix.
 
 
 
+# Add "chapters" and "parts"
+
+Typically a single MD document would have only produced "sections",
+"subsections", and "subsubsections", where a single number-sign would produc a
+section, a double number-sign a subsection, and a triple number-sign a
+subsubsection. 
+
+It is also possible to manually inject a "chapter" or "part" to a 
+TEX document. This is done by using the at-sign section.
+
+    @part Introduction
+
+    @chapter Lesson One
+    &label{lessionone}
+
+    ...
+
+    @chapter Lesson Two
+    &label{lessiontwo}
+
+    @part Advanced
+
+    @chapter Lesson Three
+    &label{lessionthree}
+
+    ...
+
+    @chapter Lesson Four
+    &label{lessionfour}
+
+However, it is also possible to import sub-documents which would each become
+an entire chapter.
+
+    ---
+    title: My Document
+    ---
+    %^import [part]"Introduction"  
+    %^import [chapter](./lesson1.md)
+    %^import [chapter](./lesson2.md)
+    %^import [part]"Introduction"
+    %^import [chapter](./lesson3.md)
+    %^import [chapter](./lesson4.md)
+
+
+
 
 

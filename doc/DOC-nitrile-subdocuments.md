@@ -2,6 +2,8 @@
 title: Importing Sub-documents
 ---
 
+# Import sub-documents
+
 Typically a single MD file will be able to provide
 all the information needed for a translated document. 
 On LATEX, a single MD document is to usually to become
@@ -24,31 +26,31 @@ the "import" keyword.
     ---
     title: Data-Driven Documents
     ---
-    %^import [part]Basic Concept
-    %^import [chapter]./d3-intro.md
-    %^import [chapter]./d3-datajoin.md
-    %^import [chapter]./d3-csv.md
-    %^import [chapter]./d3-selection.md
-    %^import [chapter]./d3-transformation.md
-    %^import [chapter]./d3-color.md
-    %^import [chapter]./d3-statistics.md
-    %^import [part]Layout
-    %^import [chapter]./d3-stack-layout.md
-    %^import [chapter]./d3-pack-layout.md
-    %^import [chapter]./d3-pie-layout.md
-    %^import [chapter]./d3-histogram.md
-    %^import [part]Data Generator
-    %^import [chapter]./d3-arc-generator.md
-    %^import [chapter]./d3-area-generator.md
-    %^import [chapter]./d3-symbol-generator.md
-    %^import [chapter]./d3-force.md
-    %^import [chapter]./d3-collections.md
-    %^import [chapter]./d3-geo.md
-    %^import [chapter]./d3-geodata-paths.md
-    %^import [chapter]./d3-scales.md
-    %^import [chapter]./d3-hierarchy.md
-    %^import [part]References
-    %^import [chapter]./d3-quickreference.md
+    %^import [part]"Basic Concept"
+    %^import [chapter](./d3-intro.md)
+    %^import [chapter](./d3-datajoin.md)
+    %^import [chapter](./d3-csv.md)
+    %^import [chapter](./d3-selection.md)
+    %^import [chapter](./d3-transformation.md)
+    %^import [chapter](./d3-color.md)
+    %^import [chapter](./d3-statistics.md)
+    %^import [part]"Layout"
+    %^import [chapter](./d3-stack-layout.md)
+    %^import [chapter](./d3-pack-layout.md)
+    %^import [chapter](./d3-pie-layout.md)
+    %^import [chapter](./d3-histogram.md)
+    %^import [part]"Data Generator"
+    %^import [chapter](./d3-arc-generator.md)
+    %^import [chapter](./d3-area-generator.md)
+    %^import [chapter](./d3-symbol-generator.md)
+    %^import [chapter](./d3-force.md)
+    %^import [chapter](./d3-collections.md)
+    %^import [chapter](./d3-geo.md)
+    %^import [chapter](./d3-geodata-paths.md)
+    %^import [chapter](./d3-scales.md)
+    %^import [chapter](./d3-hierarchy.md)
+    %^import [part]"References"
+    %^import [chapter](./d3-quickreference.md)
 
 In the previous example, it has been stated that four "part" will be
 inserted into the document, between which there are other documents
@@ -76,12 +78,12 @@ acting as its two sections.
     ---
     title: Data-Driven Documents
     ---    
-    %^import [chapter]Introduction
-    %^import [section]./d3-intro.md
-    %^import [section]./d3-datajoin.md
-    %^import [chapter]Advanced
-    %^import [section]./d3-selection.md
-    %^import [section]./d3-transformation.md
+    %^import [chapter]"Introduction"
+    %^import [section](./d3-intro.md)
+    %^import [section](./d3-datajoin.md)
+    %^import [chapter]"Advanced"
+    %^import [section](./d3-selection.md)
+    %^import [section](./d3-transformation.md)
 
 
 
