@@ -59,8 +59,21 @@ TEX document. This is done by using the at-sign section.
     @chapter Lesson Four
     &label{lessionfour}
 
-However, it is also possible to import sub-documents which would each become
-an entire chapter.
+The introduction of "@part" would have inserted a new HDGS block into the list
+of blocks where its "name" attribute is set to "part", and the "partnum"
+corresponding to the number of total parts including this one, such that the
+first part being 1.
+
+The appearance of a "@chapter" will also reset the internal counters for 
+sections, subsections and subsubsections, such that the next appearance of
+the section will be considered the first section. This means that the "level" 
+attribute of the block will be re-numbered.
+
+
+# Importing sub-documents
+
+It is also possible to import sub-documents such as the following example
+shows.
 
     ---
     title: My Document
@@ -72,6 +85,14 @@ an entire chapter.
     %^import [chapter](./lesson3.md)
     %^import [chapter](./lesson4.md)
 
+
+# The "level" attribute of the block
+
+The "level" attribute of the block is constructed by the parser, that is assigned
+to each HDGS block such that it reflects the current hierarchies of the sections 
+within the chapter. For instance, the first chapter will have its "level" attribute
+set to "1". The first subsection of that section is "1.1". The first subsubsection
+of the first subsection of the first section is "1.1.1", etc.
 
 
 
