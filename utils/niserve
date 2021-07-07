@@ -1,6 +1,6 @@
 #!/bin/bash
 #echo $*
 #node -e "console.log($*)"
-node -e "const { NitrilePreviewServer } = require ('$HOME/Projects/nitrile/nitrile-preview-server'); new NitrilePreviewServer('$*').run()"
+/usr/local/bin/node -e "const { NitrilePreviewServer } = require ('$HOME/github/nitrile-preview/lib/nitrile-preview-server'); new NitrilePreviewServer('$*').run()"
 
 

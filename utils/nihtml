@@ -1,6 +1,15 @@
 #!/bin/bash
 echo $1
 #node -e "console.log($1)"
-/usr/local/bin/node -e "const { NitrilePreviewNode } = require ('/Users/james/github/nitrile-preview/lib/nitrile-preview-node'); new NitrilePreviewNode().to_html_document_async('$1').then(([fullname]) => { console.log(fullname); const viewer = require('child_process').spawn('open',[fullname]); }).catch(err => {console.log(err);process.exitCode=1;})"
+/usr/local/bin/node -e "const { NitrilePreviewNode } = require ('$HOME/github/nitrile-preview/lib/nitrile-preview-node'); \
+    var node = new NitrilePreviewNode(); \
+    node.to_html_doc_async('$1').then((data)=>{
+        console.log(data); \
+        var htmlfile = node.md_to_html_file('$1');    \
+        console.log(htmlfile); \
+        node.write_txt_file(htmlfile, data).then((txtfile) => { \
+        }); \
+    }) \
+    "
 
 

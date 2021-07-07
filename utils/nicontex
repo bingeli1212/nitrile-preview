@@ -3,14 +3,14 @@ echo $1
 #node -e "console.log($1)"
 /usr/local/bin/node -e "const { NitrilePreviewNode } = require ('$HOME/github/nitrile-preview/lib/nitrile-preview-node'); \
     var node = new NitrilePreviewNode(); \
-    node.to_latex_doc_async('$1').then((data)=>{
+    node.to_contex_doc_async('$1').then((data)=>{
         console.log(data); \
         var texfile = node.md_to_tex_file('$1');    \
         console.log(texfile); \
         node.write_txt_file(texfile, data).then((txtfile) => { \
-          const exe = require('child_process').spawn('pdflatex', ['--interaction=scrollmode', '-halt-on-error', txtfile]); \
+          const exe = require('child_process').spawn('context', ['--interaction=scrollmode', '-halt-on-error', txtfile]); \
           exe.stdout.on('data',(out) => process.stderr.write(out)); \
-          exe.on('close',(code) => { console.log('pdflatex finished') }); \
+          exe.on('close',(code) => { console.log('context finished') }); \
         }); \
     }) \
     "

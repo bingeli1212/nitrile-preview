@@ -1,0 +1,6 @@
+#!/bin/bash
+echo $1
+#node -e "console.log($1)"
+/usr/local/bin/node -e "const { NitrilePreviewNode } = require ('$HOME/github/nitrile-preview/lib/nitrile-preview-node'); new NitrilePreviewNode().to_creamer_document_async('$1','creamer')"
+
+
