@@ -3552,19 +3552,25 @@ is scanned, and see if it fits one of the following two patterns:
    be inserted into the current location of the source program. The
    name of the named buffer is the string expressed by the "word".
 
-Note that for a copy-buffer, it the limit of the buffer line only extends
-as far as the a comment line where the number of percent-signs agrees
-with the one that starts the buffer. For instance, if the line starts
-the copy-buffer is
+Note that for a copy-buffer, the copied lines are included for as long 
+as it does not conform the form of a percent sign followed by an equal,
+then optional question mark, and then zero or more word characters only
+or nothing else.
 
-    %=a
+Following example would have created a copy buffer named "a" and
+within it insert three lines.
+
+    %=?a
+    draw (0,0)--(4,4)
+    draw (0,0)--(5,5)
+    draw (0,0)--(6,6)
     %=
 
-Then the copy buffer will include all lines up till the line that is
-the percent sign followed by a single equal sign and nother else follows.
-If it so happens that the equal sign is followed by another name,
-then a new copy buffer is created in that name and the current buffer
-is terminated.
+Following is an example of inserting these three lines at the beginning,
+such that the diagram will have four "draw" commands total.
+
+    %=a
+    draw (0,0)--(7,7)
 
 Following is an example of repeating the same block of commands inside
 another Diagram. The first Diagram has defined three buffers,
@@ -3575,19 +3581,19 @@ the same thing except for asking for a different buffer to be
 retrieved.
 
     ```diagram
-    %=a
+    %=?a
     trump-diamond-J {scaleX:0.5,scaleY:0.5} 2  1
     trump-heart-Q   {scaleX:0.5,scaleY:0.5} 7  1
     trump-spade-K   {scaleX:0.5,scaleY:0.5} 12 1
     trump-club-A    {scaleX:0.5,scaleY:0.5} 17 1
     %=
-    %=b
+    %=?b
     trump-diamond-10 {scaleX:0.5,scaleY:0.5} 2  5
     trump-heart-9    {scaleX:0.5,scaleY:0.5} 7  5
     trump-spade-8    {scaleX:0.5,scaleY:0.5} 12 5
     trump-club-7     {scaleX:0.5,scaleY:0.5} 17 5
     %=
-    %=c
+    %=?c
     trump-diamond-6  {scaleX:0.5,scaleY:0.5} 2  9
     trump-heart-5    {scaleX:0.5,scaleY:0.5} 6  9
     trump-spade-4    {scaleX:0.5,scaleY:0.5} 10 9
@@ -3597,16 +3603,41 @@ retrieved.
     ```
 
     ```diagram
-    %?a
+    %=a
     ```
 
     ```diagram
-    %?b
+    %=b
     ```
 
     ```diagram
-    %?c
+    %=c
     ```
+
+Note that it is specifically designed such that the copied lines will NOT
+include any line that look like a "paste" command. When such a line is
+enountered, the copy buffer is interrupted. In the following example only the
+first "draw" command is copied. The other two lines are not copied.
+
+    %=?a
+    draw (0,0)--(4,4)
+    %=b
+    draw (0,0)--(5,5)
+    draw (0,0)--(6,6)
+    %=
+
+However, another "copy" command is encountered while there is an "active" copy
+buffer, then the previous copy buffer is interrupted and a new copy buffer is
+create to hold future lines.  In following example the first "draw" command is
+copied into to the "a" buffer, and last two "draw" commands are copied to
+buffer "b".
+
+    %=?a
+    draw (0,0)--(4,4)
+    %=?b
+    draw (0,0)--(5,5)
+    draw (0,0)--(6,6)
+    %=
 
 
 # Fill-out data
