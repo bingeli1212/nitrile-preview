@@ -1,61 +1,45 @@
 ---
-title:test-plst.md
-translator: page   
-program: pdflatex
+title: test-plst.md
 ---
 
-# HL Example
+The XMLHttpRequest object is used to exchange data with a
+server behind the scenes.  The `XMLHttpRequest` object is
+the developers dream. With this object, you can
 
-<> Apple
-
-   Example 1
-
-   <> Red Apple
-
-   <> Green Apple
-
-<> Pear
+- Update a web page without reloading the page
+- Request data from a server after the page has loaded
+- Receive data from a server after the page has loaded
+- Send data to a server in the background
 
 
-# DL Example
+# Properties
 
-+ Apple
++ onreadystatechange
+Stores a function (or the name of a function) to be
+called automatically each time the `readyState`
+property changes
 
-   Example 1
++ readyState
+Holds the status of the XML http request connection.
+This value is in the range from 0 to 4:
 
-   + Red Apple
+  *  0  - means request not initialized;
+  *  1  - means server connection established;
+  *  2  - means request received;
+  *  3  - means processing request;
+  *  4  - means request finished and response is ready.
 
-   + Green Apple
++ responseText
+Returns the response data as a string.
 
-+ Pear
++ responseXML
+Returns the response data as XML data.
 
++ status
+Returns the status-number (e.g. `404` for `Not Found` or `200` for `OK`)
 
-# OL Example
-
-* Apple
-
-   Example 1
-
-   * Red Apple
-
-   * Green Apple
-
-* Pear
-
-
-# UL Example
-
-- Apple
-
-   Example 1
-
-   - Red Apple
-
-   - Green Apple
-
-- Pear
-
-
++ statusText
+Returns the status-text (e.g. `Not Found` or `OK`)
 
 
 
