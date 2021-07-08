@@ -14,116 +14,209 @@
   // The styles below override/complement the GitHub.com styles
   // It's needed because some markup or global styles are different
 
-  table.FRNT {
-    margin: 1em 0;
-    width: 100%;
-    border: 1px solid;
-  }
+      table {
+        border-collapse: collapse;
+      }
 
-  h1 {
-    padding-bottom:6pt;
-    font-size:2.0em;
-    border-bottom:0.5px solid rgba(255,255,255,0.4);
-  }
+      .LISTING > .BODY {
+        line-height: 1;
+        text-align: left;
+      }
 
-  h2 {
-    padding-bottom:6pt;
-    font-size:1.8em;
-    border-bottom:0.5px solid rgba(255,255,255,0.4);
-  }
+      .LISTING > .BODY > .LINE {
+        position: relative;
+        padding-left: 1.5em;
+      }
 
-  h3,h4,h5,h6 {
-    padding-bottom:2pt;
-    font-size:1.4em;
-  }
+      .LISTING > .BODY > .LINE::before {
+        counter-increment: line;
+        content: counter(line);
+        position: absolute;
+        left: -1.5rem;
+        top: 50%;
+        font-size: small;
+        transform: translate(0,-50%);
+        padding-left: 1.5rem;
+      }
 
-  pre {
-    margin: 1em;
-    font-size:1em;
-  }
+      .LISTING {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+        margin-left: 6.5mm;
+        margin-right:6.5mm;
+        text-align: left;
+        align-self: center;
+        counter-reset: line;
+      }
 
-  a {
-    word-break: break-all;
-  }
+      .LISTING > code {
+        position: relative;
+        padding-left: 1.5em;
+      }
 
-  code{
-    font-size:1em;
-  }
+      .LISTING > code::before {
+        counter-increment: line;
+        content: counter(line);
+        position: absolute;
+        left: -1.5rem;
+        top: 50%;
+        font-size: small;
+        transform: translate(0,-50%);
+        padding-left: 1.5rem;
+      }
 
-  kbd{
-    font-size:1em;
-    font-weight:bolder;
-  }
+      .FIGURE, .TABLE, .LONGTABLE, .LISTING {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+        margin-left: 6.5mm;
+        margin-right:6.5mm;
+        text-align: center;
+        align-self: center;
+        page-break-inside: avoid;
+      }
 
-  ul.PLST {
-    padding-left: 28px;
-  }
-  ul.PLST > li {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-  ul.PLST > li > div {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-  ul.PLST > li > div > ul,ol {
-    padding-left: 20px;
-  }
+      .ITEMIZE, .PARAGRAPH, .SAMPLE, .INDENT, .EQUATION, .TABBING {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+        margin-left: 6.5mm;
+        margin-right: 6.5mm;
+        align-self: center;
+      }
 
-  ol.PLST {
-    padding-left: 28px;
-  }
-  ol.PLST > li {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-  ol.PLST > li > div {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-  ol.PLST > li > div > ul,ol {
-    padding-left: 20px;
-  }
+      .PRIMARY {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+        align-left: center;
+      }
 
-  dl.PLST > dt {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-  dl.PLST > dd {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: 1em;
-  }
+      .PARAGRAPH, .INDENT {
+        text-align: justify;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+      }
+      
+      .INDENT {
+        padding-left: 0.55cm;
+      }
 
-  div.TEXT {
-    margin: 0.5em 0;
-  }
-  div.TEXT.NSPACE {
-    margin-left: 1em;
-  }
-  div.TEXT > ul,ol {
-    padding-left: 20px;
-  }
+      .COMBINATIONROW {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-row-gap: 0.5em;
+        justify-content: center;
+        width: 100%;
+      }
 
-  div.PRIM {
-    margin: 0.5em 0;
-  }
+      .COMBINATION {
+        text-align: center;
+        overflow: visible;
+        white-space: nowrap;
+        width: 100%;
+        align-items: baseline;
+      }
 
-  div.SAMP {
-    margin: 0.5em 0;
-    font-size: smaller;
-    padding-left: 28px;
-  }
+      .FIGCAPTION {
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1;
+        font-size: smaller;
+      }
 
-  figure {
-    margin: 0.5em 0;
-    margin-left: 28px;
-  }
-  figure > figcaption {
-    margin-left: -28px;
-  }
-  figure.Listing > div {
-    font-size: smaller;
-  }
+      .SUBFIGCAPTION {
+        line-height: 1;    
+        font-size: smaller;
+        white-space: normal;
+      }
+
+      .SUBFIGURE {
+        display: inline-block;
+        overflow: visible;
+        vertical-align: top;
+        text-align: center;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+      }
+
+      .WRAPLEFT {
+        float: left;
+        margin-right: 1em;
+      }
+
+      .WRAPRIGHT {
+        float: right;
+        margin-left: 1em;
+      }
+
+      .DISPLAYMATH {
+        text-align:center;
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+      }
+
+      .SAMPLE {
+        padding-left:0em;
+        padding-right:0em;
+        line-height: 1;
+      }
+
+      .VERBATIM {
+        padding-left:0em;
+        padding-right:0em;
+        line-height: 1;
+      }
+
+      .PARA {
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+      }
+
+      .PACK {
+        margin-top: 1.0pt;
+        margin-bottom: 1.0pt;
+      }
+
+      .PARA.DT.FIRST {
+        margin-bottom: 1.0pt;
+      }
+
+      .DL > .DD {
+        margin-left: 0;
+        padding-left: 1.15cm;
+      }
+
+      .HL {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .OL {
+        padding-left: 0.55cm;
+      }
+
+      .UL {
+        padding-left: 0.55cm;
+      }
+
+      .TH, TD {
+        padding: 0.15em 0.6em;
+      }
+
+      ruby {
+        line-height: 1;
+        ruby-position: over;
+        ruby-align: space-between;
+      }
+
+      rt {
+        display: inline-block;
+        font-size: 35%;
+        ruby-align: space-between;
+      }
+    
 
 }
