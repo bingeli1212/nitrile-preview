@@ -95,5 +95,17 @@ set to "1". The first subsection of that section is "1.1". The first subsubsecti
 of the first subsection of the first section is "1.1.1", etc.
 
 
+# The proble of "drawslopedtext"
+
+Currently there are some issues when using "drawslopedtext", which is implemented
+in LATEX using TikZ. The position of the text is expressed using "above" as part
+of the option. However, this has been observed to have caused some problems when the 
+drawing of the lines goes from right to left, where the "above" should have translated
+into the text appearing below the line, but was not observed as so. Instead, the text
+appears at the top of the line.
+
+
+
+
 
 
