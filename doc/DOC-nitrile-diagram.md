@@ -2276,7 +2276,19 @@ placed at the bottom of the line if the ".bot" subcommand is supplied.
 
     drawslopedtext.bot "Hello" "World" (0,0) [h:4] [v:4]
 
+The "mar" option can be used to add a marker line that extends from the left/
+right boundaries of the line segment. 
 
+    drawslopedtext "{{5\sqrt{2}}}" (0,0)--(5,5)
+
+The "pen" option would have also added two vertical lines that marks the boundaries
+of the line segments. The number after the "pen" expresses the length of the arrow
+in grid unit.
+
+    drawslopedtext "{{\sqrt{2}}}" {mar:1,pen:0.25} (0,0)--(5,5)
+
+The number that comes after the "pen" expressed the half length of the line
+in grid unit.
 
 
 
