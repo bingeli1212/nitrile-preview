@@ -449,121 +449,152 @@ The previous definitions of various points is closely relatived to the letter
 given to each point inside a SVG-path element.
 
 
-# Path expression
+## Path expression
 
-If a vector path is allowed to be defined as to always start with a M point and end
-in an optional z point, then a path expression of Diagram would be considered 
-a container that holds one or more vector paths, with other information
-such as config options and text strings.
+If a vector path is allowed to be defined as to always start with a M point and
+end in an optional z point, then a path expression of Diagram would be
+considered a container that holds one or more vector paths, with other
+information such as config options and text strings.
 
-A path expression in Diagram would appear as part of many commands, such as 'path', 'draw', 'stroke', 'fill', 'drawdot', 'drawlabel', etc.
-In the following example the path "a" would have composed of a single vector path and path "b" would have composed of two vector paths.
+A path expression in Diagram would appear as part of many commands, such as
+'path', 'draw', 'stroke', 'fill', 'drawdot', 'drawlabel', etc. In the following
+example the path "a" would have composed of a single vector path and path "b"
+would have composed of two vector paths.
 
     path a = (0,0)--(1,1) 
     path b = (0,0)--(3,4) (2,2)--(5,6)
 
-A path expression in Diagram also include other information such as config options and text strings.
-In the following example a path expression has included two config options and two text strings.
+A path expression in Diagram also include other information such as config
+options and text strings. In the following example a path expression has
+included two config options and two text strings.
 
     draw (0,0)--(3,4) (2,2)--(5,6) {linesize:2,linecolor:red} "Hello" "World"
 
-Config options are recognized by a set of braces, and within it could be one or more options each of which a value for that option. 
-Text string are instead recognized by a pair of quotation marks. 
-All config options detected in the same path expression are merged to become a single map with each option an entry in this map.
-On the other hand all text strings are grouped into an array, and the order of each string follows the same order as they appear in the command.
-The two vector path becomes individual path points that are grouped into an array called a coords array.
+Config options are recognized by a set of braces, and within it could be one or
+more options each of which a value for that option. Text string are instead
+recognized by a pair of quotation marks. All config options detected in the same
+path expression are merged to become a single map with each option an entry in
+this map. On the other hand all text strings are grouped into an array, and the
+order of each string follows the same order as they appear in the command. The
+two vector path becomes individual path points that are grouped into an array
+called a coords array.
 
 
-# Coords array and coords points
+## Coords array and coords points
 
 A coords array is an array, and each element is called a coords point.  
-In following example there are 2 coords points for path "a", and four coords points
-for path "b".
+In following example there are 2 coords points for path "a", and four coords
+points for path "b".
 
     path a = (0,0)--(1,1) 
     path b = (0,0)--(3,4) (2,2)--(5,6)
 
-A vector path inside a coords array is considered to always started from a M point, progressing through other points until a z point or another M point is enountered, at which it ends. 
-A 'z' point becomes the last part of that vector path, and a 'M' point would become the first point of a subsequent vector path. 
-The coords points after a 'z' point and before a 'M' point is not considered part of a vector path.
-They will be ignored by commands such as 'draw',  'stroke', 'fill', 'arrow', 'revarrow', and 'dblarrow', each of which works with a vector path.
+A vector path inside a coords array is considered to always started from a M
+point, progressing through other points until a z point or another M point is
+enountered, at which it ends. A 'z' point becomes the last part of that vector
+path, and a 'M' point would become the first point of a subsequent vector path.
+The coords points after a 'z' point and before a 'M' point is not considered
+part of a vector path. They will be ignored by commands such as 'draw',
+'stroke', 'fill', 'arrow', 'revarrow', and 'dblarrow', each of which works with
+a vector path.
 
-Many commands do not work with vector paths, they work with coords points. 
-For instance, 'drawdot' works with coords points so that for each coords point with a positional information, a dot will be placed at that location. 
-All coords points have positional information except for 'z' points. 
+Many commands do not work with vector paths, they work with coords points. For
+instance, 'drawdot' works with coords points so that for each coords point with
+a positional information, a dot will be placed at that location. All coords
+points have positional information except for 'z' points.
 
-Some commands would also work with text strings found in a path expression. 
-For instance, 'drawtext' would draw each text strings of a path expression at a location identified by a coords point in the same order as they appear in the command line. 
-The 'drawanglearc' would treat each text strings as describing the angle and thus would draw them inside the angle if possible. 
+Some commands would also work with text strings found in a path expression. For
+instance, 'drawtext' would draw each text strings of a path expression at a
+location identified by a coords point in the same order as they appear in the
+command line. The 'drawanglearc' would treat each text strings as describing the
+angle and thus would draw them inside the angle if possible.
 
-The config options typically contains information such as line size, line color, font size, font color, fill color, shades, etc.
-These options serves to provide additional tuning for the ppearance of graphics exported by each command. 
-Each of the option has a default value if it is specified.
+The config options typically contains information such as line size, line color,
+font size, font color, fill color, shades, etc. These options serves to provide
+additional tuning for the ppearance of graphics exported by each command. Each
+of the option has a default value if it is specified.
 
 
 
 ## Absolute and relative points
 
-A coords point is considered an absolute point if they appear inside a pair of parentheses, or a relative point if they appear inside a pair of brackets.
+A coords point is considered an absolute point if they appear inside a pair of
+parentheses, or a relative point if they appear inside a pair of brackets.
 
     path a = (0,3)--(10,3)
     path b = (0,3) [h:7]
 
-In the previous example, (0,3), (10,3) are absolute points, and [h:7] is a relative point. 
-A absolute point only provides location information.
-By default each one of them is to become a 'M' point, unless there is a "join" that tells it otherwise.
+In the previous example, (0,3), (10,3) are absolute points, and [h:7] is a
+relative point. A absolute point only provides location information. By default
+each one of them is to become a 'M' point, unless there is a "join" that tells
+it otherwise.
 
-A "join" is a piece of text that tells how a subsequent absolute point is to join the previous point to beome something that is not a 'M' point.
-They are to be identified by the appearance of "--", "~~", or ".." inside a path expression. 
+A "join" is a piece of text that tells how a subsequent absolute point is to
+join the previous point to beome something that is not a 'M' point. They are to
+be identified by the appearance of "--", "~~", or ".." inside a path expression.
 
-The appearance of "--" is called a "line-join". 
-It turns the next absolute point into a 'L' point. 
-The "~~" is a "abr-join", and it turns the next absolute point into a 'Q' point. 
-The ".." is a "hobby-join", and it turns the next absolute point into a 'C' point.
+The appearance of "--" is called a "line-join". It turns the next absolute point
+into a 'L' point. The "~~" is a "abr-join", and it turns the next absolute point
+into a 'Q' point. The ".." is a "hobby-join", and it turns the next absolute
+point into a 'C' point.
 
-A relative point such as [h:7] contains both positional information as well as instructions as how this point is to be joint by the one before it.
-For instance, [h:7] would ask that the current point be turned into a 'L' point that is located 7 grid distances to the right.
-As a general pattern, all relative points start with an instruction, such as "h" in this case, followed by a colon, and then additional numbers each of which separated by a comma.
-In addition, all positional informations in a relative point will be expresses as "relative distances" from the point before it.
-For instance, the "7" after the "h" means a horizontal distance of 7 grid units to the right. 
-If "7" were to be replaced by "-7", then it would mean a horizontal distance of 7 grid units to the left instead.
+A relative point such as [h:7] contains both positional information as well as
+instructions as how this point is to be joint by the one before it. For
+instance, [h:7] would ask that the current point be turned into a 'L' point that
+is located 7 grid distances to the right. As a general pattern, all relative
+points start with an instruction, such as "h" in this case, followed by a colon,
+and then additional numbers each of which separated by a comma. In addition, all
+positional informations in a relative point will be expresses as "relative
+distances" from the point before it. For instance, the "7" after the "h" means a
+horizontal distance of 7 grid units to the right. If "7" were to be replaced by
+"-7", then it would mean a horizontal distance of 7 grid units to the left
+instead.
 
 
 
 ## The abr-join 
 
-An abr-join instructs that a curved line to be drawn between two points.
-This curved line is typically a quadratic Bezier curve, make the next point a Q point.
+An abr-join instructs that a curved line to be drawn between two points. This
+curved line is typically a quadratic Bezier curve, make the next point a Q
+point.
 
     path a = ^abr:30 (0,3)~~(10,3) 
 
-For a quadratic Bezier curve, it is important that a single control point be specified.
-In the case of a abr-join, the control point of this quadratic Bezier curve is controled by the settings of the "abr" variable, 
-which is a directive parameter set by "^abr:30".
+For a quadratic Bezier curve, it is important that a single control point be
+specified. In the case of a abr-join, the control point of this quadratic Bezier
+curve is controled by the settings of the "abr" variable, which is a directive
+parameter set by "^abr:30".
 
-This parameter is a number that denotes a rotation angle in degrees.
-Here are the steps.
-First, a straight line is to be formed first between the two points.  
-Then, this line is to be rotated around the first point in a clockwise rotation direction that equals the angle in dgrees, or 30 in this case.
-Then, another separate rotation is to be done with the same straight line but it would be rotated around the second point and in a counter-clockwise rotation for the same angle, 30 degrees.
-Each rotations would each have produced a ray and the control point of the quadratic Bezier curve is where these two rays meet. 
+This parameter is a number that denotes a rotation angle in degrees. Here are
+the steps. First, a straight line is to be formed first between the two points.  
+Then, this line is to be rotated around the first point in a clockwise rotation
+direction that equals the angle in dgrees, or 30 in this case. Then, another
+separate rotation is to be done with the same straight line but it would be
+rotated around the second point and in a counter-clockwise rotation for the same
+angle, 30 degrees. Each rotations would each have produced a ray and the control
+point of the quadratic Bezier curve is where these two rays meet.
 
-A positive number of the "abr" variable would means for the first point to rotate clockwise and the second point to rotate counter-clockwise.
-And a negative number would have meant for either one of them to do the other way.
+A positive number of the "abr" variable would means for the first point to
+rotate clockwise and the second point to rotate counter-clockwise. And a
+negative number would have meant for either one of them to do the other way.
 
 
 
 ## The hobby-join
 
-A hobby-join works with a collection of absolute points with the intent to produce a series of cubic Bezier that goes through all of them.
+A hobby-join works with a collection of absolute points with the intent to
+produce a series of cubic Bezier that goes through all of them.
 
     path a = (0,0)..(2,0)..(2,2)
 
-In the previous example there will be a cubic Bezier curve connecting between the first two points, as well as another one connecting the last two.
-These Bezier points are automatically calculated so that they look "smooth" when going from one to another. 
+In the previous example there will be a cubic Bezier curve connecting between
+the first two points, as well as another one connecting the last two. These
+Bezier points are automatically calculated so that they look "smooth" when going
+from one to another.
 
-There is no limit to the total number of points that can be joint by a hobby-join. 
-However, for a curved line there should be at least three points and they must not be "colinear".
+There is no limit to the total number of points that can be joint by a
+hobby-join. However, for a curved line there should be at least three points and
+they must not be "colinear".
 
 
 
@@ -575,26 +606,24 @@ Following are descriptions of other relative points.
 - [h:dx]
 - [v:dy] 
 
-These three relative points would each create a L path point, where the
-position of the new point is relative to the previous point by a horizontal
-distance of 'dx' and a vertical distance 'dy'.
+These three relative points would each create a L path point, where the position
+of the new point is relative to the previous point by a horizontal distance of
+'dx' and a vertical distance 'dy'.
 
 - [a:rx,ry,angle,bigarcflag,sweepflag,dx,dy] 
 
-This is to create a A point that is dx/dy away from the
-current point. The arc is assumed to trace alone an elliptical arc
-with x-axis and y-axis each of which having a radius of 'rx' and
-'ry'. The angle is in the unit of degrees, specifying the rotation
-of the ellipse if any, with a positive number denoting a
-counter-clockwise rotation. The 'bigarcflag' is set to 1 if the arc
-to be drawn are the longer of the two between the starting point and
-end point. Otherwise the shorter arc is to be drawn. The 'sweepflag'
-expresses whether the arc is to travel counterclockwise or clockwise
-from the current point to the new point; the value 0 is for a
-anti-clockwise rotation and the value 1 is for a clockwise rotation.
-Thus, to draw an arc from the last point to a new point that is on
-its right hand side of the last point, and if the sweepflag is set
-to 0, then the arc will always appear below both points.
+This is to create a A point that is dx/dy away from the current point. The arc
+is assumed to trace alone an elliptical arc with x-axis and y-axis each of which
+having a radius of 'rx' and 'ry'. The angle is in the unit of degrees,
+specifying the rotation of the ellipse if any, with a positive number denoting a
+counter-clockwise rotation. The 'bigarcflag' is set to 1 if the arc to be drawn
+are the longer of the two between the starting point and end point. Otherwise
+the shorter arc is to be drawn. The 'sweepflag' expresses whether the arc is to
+travel counterclockwise or clockwise from the current point to the new point;
+the value 0 is for a anti-clockwise rotation and the value 1 is for a clockwise
+rotation. Thus, to draw an arc from the last point to a new point that is on its
+right hand side of the last point, and if the sweepflag is set to 0, then the
+arc will always appear below both points.
 
 - [c:dx1,dy1,dx2,dy2,dx,dy] 
 
@@ -604,12 +633,12 @@ are relative distances from the previous point.
 
 - [s:dx2,dy2,dx,dy] 
 
-This is to create a Q point that is dx/dy away from the previous point. Only
-the second point of the current Bezier curve needs to be provided. The first
-control point is deduced from the second control point of the previous cubic
-Bezier curve operation. If the previous operation is not a cubic Bezier curve
-drawing, but a quadratic Bezier curve drawing, then the first control point of
-the quadratic curve is used to deduce the first control point of the current
+This is to create a Q point that is dx/dy away from the previous point. Only the
+second point of the current Bezier curve needs to be provided. The first control
+point is deduced from the second control point of the previous cubic Bezier
+curve operation. If the previous operation is not a cubic Bezier curve drawing,
+but a quadratic Bezier curve drawing, then the first control point of the
+quadratic curve is used to deduce the first control point of the current
 operation. If it is neither a cubic nor a quadrilatic, then the last point is
 assumed.
 
@@ -621,48 +650,47 @@ from the previous point.
 
 - [t:dx,dy] 
 
-This is to create a Q point that is dx/dy away from the previous point.  No
+This is to create a Q point that is dx/dy away from the previous point. No
 control points for this point is necessary. It will be deduced from a previous
-Bezier curve operation. If a previous operation is not a Bezier curve
-operation, then the last point is assumed to be control point, in which case
-the drawn curve will be straight line.
+Bezier curve operation. If a previous operation is not a Bezier curve operation,
+then the last point is assumed to be control point, in which case the drawn
+curve will be straight line.
 
 - [angledist:30,1] 
 - [angledist:30,1,2,2] 
 
-This is to create a new L point.  The [angledist:30,1] directive is to
-construct a new line segment from the current point to a new location that is 1
-unit distance away and 30 degrees counter-clockwise rotation from due east.
+This is to create a new L point. The [angledist:30,1] directive is to construct
+a new line segment from the current point to a new location that is 1 unit
+distance away and 30 degrees counter-clockwise rotation from due east.
 
-The [angledist:30,1,1,1] directive is similar to the one before except for
-the fact that the 30 degree rotation is now to start from a non-zero degree
-angle that is formed between the reference point (1,1) and the current point:
-if the current point is (0,0) then the reference angle is 45 degrees, such
-that the constructed line segment is to land at a point that is 75 degrees 
-rotation from due east.
+The [angledist:30,1,1,1] directive is similar to the one before except for the
+fact that the 30 degree rotation is now to start from a non-zero degree angle
+that is formed between the reference point (1,1) and the current point: if the
+current point is (0,0) then the reference angle is 45 degrees, such that the
+constructed line segment is to land at a point that is 75 degrees rotation from
+due east.
 
 - [turn:30,1] 
 
-This is to create a new L point that is equivalent to making a left hand turn
-of 30 degrees from the direction you have arrived at the current point, and
-then travel for one more unit length. If it is to make a right hand turn,
-then set the angle to a negative number.
+This is to create a new L point that is equivalent to making a left hand turn of
+30 degrees from the direction you have arrived at the current point, and then
+travel for one more unit length. If it is to make a right hand turn, then set
+the angle to a negative number.
 
 - [clock:30,1]
 - [clock:30,1,4,0]
 
 This is to create a new L point that is away from the current point in a
-direciton described by the angle, where angle 0 is straight north, and 90
-degree is to the right hand side, -90 to the left hand side, and 180 is due
-south. The first argument is the angle, and the second one is the distance
-away from the current point.
+direciton described by the angle, where angle 0 is straight north, and 90 degree
+is to the right hand side, -90 to the left hand side, and 180 is due south. The
+first argument is the angle, and the second one is the distance away from the
+current point.
 
-If there are a total of four arguments, then the last two arguments
-represents the x/y coordinates of a point from which the base angle is to be
-computed. The base angle is the angle formed between the due north line and
-the line between the current point and the new point. The clock angle is then
-being added on top of the base angle before used to figure out the new
-location.
+If there are a total of four arguments, then the last two arguments represents
+the x/y coordinates of a point from which the base angle is to be computed. The
+base angle is the angle formed between the due north line and the line between
+the current point and the new point. The clock angle is then being added on top
+of the base angle before used to figure out the new location.
 
 - [flip:1,3] 
 
@@ -672,64 +700,64 @@ current point. The exact location of the new location depends on the last two
 points traveled, the direction of which is treated as a mirror to which the new
 point will be reflected upon. The net result could be thought of as folding a
 paper along the line of the mirror with a point on one side of the line, and see
-where that point will land on the other side of the line after folding. 
-The new point would be added as a "L" point.
+where that point will land on the other side of the line after folding. The new
+point would be added as a "L" point.
 
 - [sweep:cx,cy,angd] 
 
-This is to construct a new A point of a given radius.  The center of the arc is
+This is to construct a new A point of a given radius. The center of the arc is
 cx/cy away from the current point. The radius of the arc is automatically
-calculated to be the distance between the current point and the arc center.
-The 'angd' argument denotes the "arc measure" in degree,  where a positive
-number expresses that the sweep should happen in a counter-clockwise direction,
-and a negative value expresses a clockwise sweep. 
+calculated to be the distance between the current point and the arc center. The
+'angd' argument denotes the "arc measure" in degree, where a positive number
+expresses that the sweep should happen in a counter-clockwise direction, and a
+negative value expresses a clockwise sweep.
 
 - [protrude:dist] 
 
-This is to create a new L point. This new point is located at a distance
-that is 'dist' away from the current point. The direcion of the new point
-follows the same direction going from the second last point to the last point.
-Thus, it is important that there are at least two path points prior to creating
-this path point.
+This is to create a new L point. This new point is located at a distance that is
+'dist' away from the current point. The direcion of the new point follows the
+same direction going from the second last point to the last point. Thus, it is
+important that there are at least two path points prior to creating this path
+point.
 
 - [ellipse:dx,dy] 
 
-This is to create a new C point. This new point is located at a distance that
-is 'dx/dy' away from the current point. The cubic Bezier simulates a quarter of
-the arc on a full ellipse, and will always be drawn from the current point to
-the new point as a sweep that is counter-clockwise. If a clockwise sweep is
-desired, set the "^sweepflag:1" directive before this operation.
+This is to create a new C point. This new point is located at a distance that is
+'dx/dy' away from the current point. The cubic Bezier simulates a quarter of the
+arc on a full ellipse, and will always be drawn from the current point to the
+new point as a sweep that is counter-clockwise. If a clockwise sweep is desired,
+set the "^sweepflag:1" directive before this operation.
 
 - [m:dx,dy]
 
-This is to create a new 'M' point or update an existing 'M' point.
-The new 'M" point will be moved dx/dy away from the current point.
-If the last point is not a M point, a new M point will be created.
-Otherwise, the last M point is updated and its new position is dx/dy away
-from its current position.
+This is to create a new 'M' point or update an existing 'M' point. The new 'M"
+point will be moved dx/dy away from the current point. If the last point is not
+a M point, a new M point will be created. Otherwise, the last M point is updated
+and its new position is dx/dy away from its current position.
 
 
 
 ## Other aboluste points
 
-Besizes the absolute points that are described by a pair of numbers, we can
-also describe an abolute point whose locations are those of an existing object, 
-such as a node.
-For instance, we can construct a path that goes from (0,0) to the center of an existing
-node of Id "1" as follows.
+Besizes the absolute points that are described by a pair of numbers, we can also
+describe an abolute point whose locations are those of an existing object, such
+as a node. For instance, we can construct a path that goes from (0,0) to the
+center of an existing node of Id "1" as follows.
 
     path (0,0)--(#node.1)
 
 Here, the absolute point inside a pair parentheses starts with a number-sign,
-followed by the word "node", followed by a period, and the Id of the node.
-This same pattern extends to describing the location of a box as well.
+followed by the word "node", followed by a period, and the Id of the node. This
+same pattern extends to describing the location of a box as well.
 
     path (0,0)--(#box.1)
 
-For a node its location is always the center, and for a box its location is always the left-left corner
-of the box. However, the previous notation also includes provision to allow us to express a different part of the shape.
-For instance, we can express that instead of drawing to the center of the node, we want to draw to a point that borders the northmost tip
-of the shape. This, is done by adding an "anchor-point" notation after the Id.
+For a node its location is always the center, and for a box its location is
+always the left-left corner of the box. However, the previous notation also
+includes provision to allow us to express a different part of the shape. For
+instance, we can express that instead of drawing to the center of the node, we
+want to draw to a point that borders the northmost tip of the shape. This, is
+done by adding an "anchor-point" notation after the Id.
 
     path (0,0)--(#node.1:o12)
 
@@ -739,19 +767,24 @@ letter "o" corresponds to the locations of hours of the long hand for an analog
 clock. For instance, anchor "o12" would denote a point that borders the north
 tip of the node, and "o3" the east.
 
-For a box, the anchor points are the following: "n", "w", "e", "w", "nw", "ne", "sw" and "se".
-Thus, to draw a line between the two northen tips of the boxes we would do the following:
+For a box, the anchor points are the following: "n", "w", "e", "w", "nw", "ne",
+"sw" and "se". Thus, to draw a line between the two northen tips of the boxes we
+would do the following:
 
     draw (#box.1:n)--(#box.2:n)
 
-If addition numbers are to be placed after, they will be interpreted as the "offset" from that anchor point.
+If addition numbers are to be placed after, they will be interpreted as the
+"offset" from that anchor point.
 
     draw (#box.1:n)--(#box.1:n,2,3)
 
-The previous example would draw line that starts out from the north tip of the box, to another point that is 2 grid unit to the right and 3 grid units upwards.
+The previous example would draw line that starts out from the north tip of the
+box, to another point that is 2 grid unit to the right and 3 grid units upwards.
 
-The lastest addition of the "car" command has also created a new notation for designating a point inside a Cartesian plane. 
-The following example would draw a line connecting two points of a Cartesian plane of Id "1" that is (3,4) and (4,5).
+The lastest addition of the "car" command has also created a new notation for
+designating a point inside a Cartesian plane. The following example would draw a
+line connecting two points of a Cartesian plane of Id "1" that is (3,4) and
+(4,5).
 
     car.1 (5,5)
     draw (#car:1,3,4)--(#car.1,4,5)
@@ -761,8 +794,9 @@ The following example would draw a line connecting two points of a Cartesian pla
 ## Coords point from another coords
 
 Note that a 'path' command allows a coords array to be saved under a given name.
-This also means that we can retrieve a point of a coords array that is currently saved and use it to build a new path.
-Following example would set it so that the second point of "b" is the same as the second point of "a".
+This also means that we can retrieve a point of a coords array that is currently
+saved and use it to build a new path. Following example would set it so that the
+second point of "b" is the same as the second point of "a".
 
     path a = (0,0)--(3,4)
     path b = (1,1)--(&a_1)
@@ -771,39 +805,39 @@ Following example would set it so that the second point of "b" is the same as th
 
 ## Pasting path points
 
-Notice that there are two different ways of referencing an existing path or
-path points: the one with parentheses, and the one without.  The second method
-allows an existing path or path points to be copied and pasted into a new path 
-without modification.
+Notice that there are two different ways of referencing an existing path or path
+points: the one with parentheses, and the one without. The second method allows
+an existing path or path points to be copied and pasted into a new path without
+modification.
 
     path a = (0,0)[l:3,4] 
     path b = (2,2)[l:3,4]
     path c = &a &b
 
-In the previous example, the path "a" and "b" would each have 
-described a single vector path of two points, and the path "c" would have had composed 
-of these two independent vector paths and a total of 4 points, with the first two coming from "a" and the last two coming from "b".
+In the previous example, the path "a" and "b" would each have described a single
+vector path of two points, and the path "c" would have had composed of these two
+independent vector paths and a total of 4 points, with the first two coming from
+"a" and the last two coming from "b".
 
 This is made possible because the expression of ``&a`` and ``&b`` without the
-parentheses around it instructs that all path points of "a" and "b"
-be copied without modification and pasted directly into "c". 
+parentheses around it instructs that all path points of "a" and "b" be copied
+without modification and pasted directly into "c".
 
 Depending on the situation, it could be dangrous and error prone when "pasting"
-path points directly from another path, instead of "building" it locally.  For
-instance, in the following example the second path point of "a" would become
-the first path point of "c" without modification. 
+path points directly from another path, instead of "building" it locally. For
+instance, in the following example the second path point of "a" would become the
+first path point of "c" without modification.
 
     path a = (0,0)--(3,4)--(4,5)
     path c = &a_1 &a_2
 
-This would become a problem because the second point of path "a" is a 'L'
-point, and it retains this type after being "pasted" to "c", making the
-first point of "c" a L point. This would have caused a problem
-when this path is to be scanned for a vector path as there isn't a 'M' point to 
-start a vector path.
+This would become a problem because the second point of path "a" is a 'L' point,
+and it retains this type after being "pasted" to "c", making the first point of
+"c" a L point. This would have caused a problem when this path is to be scanned
+for a vector path as there isn't a 'M' point to start a vector path.
 
-However, had we constructed path "c" the following way the second point of "a" would have 
-would have become a 'M' point in path "c".
+However, had we constructed path "c" the following way the second point of "a"
+would have would have become a 'M' point in path "c".
 
     path a = (0,0)--(3,4)--(4,5) 
     path c = (&a_1)--(&a_2)
@@ -872,11 +906,27 @@ isn't updated, and remains set at (3,4).
 
 It is possible to save the current location of the 'lastpt' to a path variable
 during a path construction so that it can be retrieved laster. This is done via
-invoking the "^lastpt" directive.
-The following example would save the positional information of 
-the second path point to a path named "c".
+invoking the "^pt" directive. The following example would save the positional
+information of the second path point to a path named "c".
 
-    path a = (0,0) [l:3,4] ^lastpt:c [h:5]
+    path a = (0,0) [l:3,4] ^pt:c [h:5]
+
+Having the notion of a 'lastpt' also allows us to terminate an existing path segment
+and start a new one from where it is left off. For instance, we want to construct
+a path with a two path segments: the first from (0,0) to (1,1), and the second one
+from (1,1) to (3,3), we can do it the following way:
+
+    path a = (0,0)--(1,1) ()--(3,3)
+
+The set of open and close parentheses by itself with nothing in it signals to 
+add an absolute point that is exactly the same position as the current position
+of the 'lastpt'. The previous example may seems to be a trivial change and the
+visual result might exactly the same as having one larger path segment, but the
+previous example allows us to style the second path segment such as to 
+draw it using a dashed line.
+
+    path = (0,0)--(1,1) ^hint:linedashed ()--(3,3)
+  
 
 
 
@@ -943,16 +993,16 @@ designated by the user. To set this variable, use the "hint:" directive.
 - ^hint:linedashed|linesize2
 - ^hint:linedashed|linesize2|linesize4
 
-Each of these strings is translated into a bit field that is then OR'ed together.
-For instance, if we were to construct a path to express the fact that the line should
-be drawn at size 2, we could do the following.
+Each of these strings is translated into a bit field that is then OR'ed
+together. For instance, if we were to construct a path to express the fact that
+the line should be drawn at size 2, we could do the following.
 
     draw ^hint:linesize2 (0,0)--(0,2) 
 
 Note that the idea behind using a hint is to allow for a path to be constructed
-to have multiple independent vector paths and each individual vector could have its
-own settings such as line size, and color, etc. For this reason, a hint is only 
-valid for a vector path that immediately succeeds it, and will be cleared 
+to have multiple independent vector paths and each individual vector could have
+its own settings such as line size, and color, etc. For this reason, a hint is
+only valid for a vector path that immediately succeeds it, and will be cleared
 as soon as this path is terminated. For intance, in the following example the
 second and third vector path will not have the same hint as the first.
 
