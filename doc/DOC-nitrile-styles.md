@@ -830,5 +830,9 @@ Following are styles recognized by NITRILE:
   the table visually, using dashes, equal signs and vertical bars for expressing
   horizontal lines, double horizontal lines, and table cells.
 
++ devicesize:600 12
+
+  This property expresses the width and height of the device in pt. It is currently
+  used to by the "ink" bundle set the initial size of the device. 
   
 
