@@ -5,8 +5,7 @@ title: test-trump.md
 
 # Slide 
 
-```diagram{outline,width:100%}
-viewport 24 16
+```diagram{outline,stretch:1,viewport:24 16}
 %%%
 trump-diamond-J {scaleX:0.5,scaleY:0.5} 2  1
 trump-heart-Q   {scaleX:0.5,scaleY:0.5} 7  1
