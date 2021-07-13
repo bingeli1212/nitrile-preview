@@ -824,5 +824,11 @@ Following are styles recognized by NITRILE:
   of its parent container, rather than the fixed width defined by 
   the 'width' attribute. 
 
++ visual:1
 
+  This flag is currently used by 'tabular' bundle to allow user to build
+  the table visually, using dashes, equal signs and vertical bars for expressing
+  horizontal lines, double horizontal lines, and table cells.
+
+  
 
