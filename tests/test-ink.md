@@ -12,7 +12,7 @@ culpa qui officia deserunt mollit anim id est laborum.
 
 .figure                      
 
-  ```ink
+  ```ink{stretch:1}
   This is a tale for a night of snow.
   It was lived in the north land long ago.
   And old man, nearing the end of life,
