@@ -2784,11 +2784,11 @@ of the outer loop.
       label.bot "t=${b}" (-3,-2)
     done
       
-Each 'for' command would have also added a new environment variable called '@'
-that will be assigned an integer equal to the current iteration. The first
-iteration this variable will be assigned the value 0, and the second iteration
-the value 1, and so on. Note that during the situation of a nested loop, the
-same '@' env variable will be overridden by the inner for loop.
+Each 'for' command would have also added a new environment variable called '_'
+that will be assigned an integer equal to the current iteration. Of the first
+iteration this variable is to be assigned the integer 0, and the second iteration
+that of 1, and so on. Note that during the situation of a nested loop, the
+same '_' env variable will be overridden by the inner loop and to start at 0.
 
 The syntax for each pairing is so far only supporting the "in" keyword,
 such that the loop variable is found to be followed by the word "in",
