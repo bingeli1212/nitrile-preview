@@ -3553,7 +3553,7 @@ any one of the four suits.
 To show a card of diamond-10 at coordinates (5,5), type the following
 command.
 
-    trump-diamond-10 5 5
+    \trump.diamond.10 (5,5)
 
 For a standard card, the size is fixed at 5 grid unit in width and 6
 grid distance in height. For the previous command, the lower-bottom
