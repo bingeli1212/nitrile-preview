@@ -7,7 +7,7 @@ The easiest way to express texts is to use the "visual" method,
 such that each table row is in its own line, and table data separated
 from each other by a vertical bar. 
 
-    ```tabular{visual}
+    ```tabular{visual:1}
     Names | Addr.        | Age
     ==========================
     James | 102 Sun Str. | 29
@@ -18,14 +18,24 @@ from each other by a vertical bar.
     ```
 
 In this case an appearance of a hyphen-minus three or more by itself would mean
-a horizontal line, and an equal sign by itself repeated three or more times would 
-be interpreted as expressing 
-a "double" horizontal line at that location.
+a horizontal line, and an equal sign by itself repeated three or more times
+would be interpreted as expressing a "double" horizontal line at that location.
 
-If a tabular is to built, without the "visual" method, then each line within the bundle
-is to be inspected for the appearance of a "command", which always starts with a backslash.
-For instance, following would have constructed the same table as the one shown above, 
-but is done without the "visual" method.
+If each table cell consists of text with no internal spaces, it can be
+expressed without using vertical bars and by setting the "visual" style
+attribute to "2". In the following example a tabular will be built such that it
+consists of three rows with 3 table data for each row.
+
+    ```tabular{visual:2}
+    Apple   Red     12  
+    Pear    White   13
+    Banana  Yellow  21
+    ```
+
+If a tabular is to built, without the "visual" method, then each line within
+the bundle is to be inspected for the appearance of a "command", which always
+starts with a backslash.  For instance, following would have constructed the
+same table as the one shown above, but is done without the "visual" method.
 
     ```tabular
     \row
