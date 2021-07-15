@@ -2,36 +2,7 @@
 title: The xelatex Translation
 ---
 
-# The Xelatex Translation
-
-Xelatex is a variant of LATEX. For each variant of LATEX most of the commands
-will continue to work, except for a few specialized packages that are designed
-for some specific variants of LATEX. For instance, the "beamer" class would
-have been able to work with both pdflatex, xelatex, and lualatex. 
-
-For this reason, the "xelatex" has been designed as a type of "prorgram", that
-can be specified in addition to the the "translator" option.  For instance, to
-generate a Beamer slides that is processed by xelatex, following front matter
-settings can be used.
-
-    ---
-    title: My Slides
-    translator: beamer
-    program: xelatex
-    ---
-
-Similarly, if the same beamer document is to be processed by pdflatex, the 
-the front matter settings should be designed as follows.
- 
-    ---
-    title: My Slides
-    translator: beamer
-    program: pdflatex
-    ---
-
-
-
-# CJK Fontification
+# CJK Font Files
 
 Note that due to the lack of a "unifont", where a font should have coverages
 for all glyphs of a Uniocode range, the main chosen often lacks the glyphs used
@@ -67,8 +38,6 @@ Following is a list of such font switches:
     \tw  - For Traditional Chinese character text
     \kr  - For Korean Chinese character text
 
-# Defining CJK Font Switches
-
 Note that the four CJK font switches for XELATEX are not defined by default.
 They would need to be manually defined.
 
@@ -80,18 +49,42 @@ commands must be for the "xelatex.post" key, which is designed to insert raw
 XeLatex commands into the translated TEX file. These command will appear after
 all other packages inclusion commands.
 
-    ---
-    program: xelatex
-    xelatex.post: \newfontfamily{\jp}[Scale=0.85]{Osaka}
-                  \newfontfamily{\cn}[Scale=0.85]{Yuanti SC}
-                  \newfontfamily{\tw}[Scale=0.85]{Yuanti TC}
-                  \newfontfamily{\kr}[Scale=0.85]{AppleGothic}
-                  \XeTeXlinebreaklocale "th_TH"
-                  \defaultfontfeatures{Mapping=tex-text}
-                  \setromanfont[Mapping=tex-text]{Hoefler Text}
-                  \setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
-                  \setmonofont[Scale=MatchLowercase]{Andale Mono}
-    ---
+    \newfontfamily{\jp}[Scale=0.85]{Osaka}
+    \newfontfamily{\cn}[Scale=0.85]{Yuanti SC}
+    \newfontfamily{\tw}[Scale=0.85]{Yuanti TC}
+    \newfontfamily{\kr}[Scale=0.85]{AppleGothic}
+    \XeTeXlinebreaklocale "th_TH"
+    \defaultfontfeatures{Mapping=tex-text}
+    \setromanfont[Mapping=tex-text]{Hoefler Text}
+    \setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
+    \setmonofont[Scale=MatchLowercase]{Andale Mono}
+
+The \setromanfont command would have set the default font to be applied to all
+texts within the document. The \setsansfont would set the font to be applied to
+those texts that are marked as \textss.  Similarly, the \setmonofont would have
+designated a font to be applied to those text that have been marked as \texttt. 
+
+The \XeTeXlinebreaklocale command would designate a line breaking algorithm to
+be applied. By setting it to "th_TH" it intends to setup a line breaking
+algorithm such that CJK characters are to be broken at any location. By default
+there are no white spaces inserted between two CJK characters. The traditional
+line breaking algorithm would not break the line between two CJK characters if
+there are not whitespaces. By calling this command with this setting, it allows
+XeLaTeX to generate line breaks between two CJK characters even if there are no
+white spaces between them.
+
+The \newfontfamily command is designed to create a new font switch such as \jp to 
+be used inside text enclosure to force the text to be shown by this font. 
+An example is shown below.
+
+    The Japanese text {\jp{}日本人} means Japanese People.
+
+Typically, characters inside the text enclosure would likely be those 
+that are supported by this particular font switch, and are typically
+to appear as such, as most text editors these days are able to show 
+unicode characters correctly, by switching automatically to the appropriate
+font files as necessary.
+
 
 # The "ruby" Command Anomalies
 
