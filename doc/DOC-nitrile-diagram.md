@@ -598,6 +598,19 @@ they must not be "colinear".
 
 
 
+## The q-join
+
+The q-join would join two absolute path points by the virtual of a quardratic 
+Bezier curve. The control point of the curve is to be expressed relative to
+the 'lastpt' location.
+
+    path a = (0,0)|q:4,-1|(5,5)
+
+The previous example would have joint two path points by a quardratic Bezier curve
+with control points at (4,-1), relative to the first point that is (0,0).
+
+
+
 ## Other relative points
 
 Following are descriptions of other relative points.
