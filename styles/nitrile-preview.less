@@ -21,61 +21,16 @@
       .LISTING > .BODY {
         line-height: 1;
         text-align: left;
+        width: 100%;
+        font-size: smaller;
       }
 
-      .LISTING > .BODY > .LINE {
-        position: relative;
-        padding-left: 1.5em;
-      }
-
-      .LISTING > .BODY > .LINE::before {
-        counter-increment: line;
-        content: counter(line);
-        position: absolute;
-        left: -1.5rem;
-        top: 50%;
-        font-size: small;
-        transform: translate(0,-50%);
-        padding-left: 1.5rem;
-      }
-
-      .LISTING {
-        margin-top: 1.0em;
-        margin-bottom: 1.0em;
-        margin-left: 6.5mm;
-        margin-right:6.5mm;
-        text-align: left;
-        align-self: center;
-        counter-reset: line;
-      }
-
-      .LISTING > code {
-        position: relative;
-        padding-left: 1.5em;
-      }
-
-      .LISTING > code::before {
-        counter-increment: line;
-        content: counter(line);
-        position: absolute;
-        left: -1.5rem;
-        top: 50%;
-        font-size: small;
-        transform: translate(0,-50%);
-        padding-left: 1.5rem;
-      }
-
-      .FIGURE, .TABLE, .LONGTABLE, .LISTING {
-        margin-top: 1.0em;
-        margin-bottom: 1.0em;
-        margin-left: 6.5mm;
-        margin-right:6.5mm;
+      .FIGURE, .TABLE, .LONGTABLE {
         text-align: center;
-        align-self: center;
         page-break-inside: avoid;
       }
 
-      .ITEMIZE, .PARAGRAPH, .SAMPLE, .INDENT, .EQUATION, .TABBING {
+      .ITEMIZE, .PARAGRAPH, .INDENT, .EQUATION, .TABBING, .FIGURE, .TABLE, .LONGTABLE, .LISTING {
         margin-top: 1.0em;
         margin-bottom: 1.0em;
         margin-left: 6.5mm;
@@ -86,7 +41,8 @@
       .PRIMARY {
         margin-top: 1.0em;
         margin-bottom: 1.0em;
-        align-left: center;
+        align-self: center;
+        clear: both;
       }
 
       .PARAGRAPH, .INDENT {
@@ -152,16 +108,22 @@
         margin-left: 1em;
       }
 
-      .DISPLAYMATH {
-        text-align:center;
+      .CENTER {
+        text-align: center;
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
+      }
+      
+      .FLUSHRIGHT {
+        text-align: right;
         margin-top: 1.0em;
         margin-bottom: 1.0em;
       }
 
-      .SAMPLE {
-        padding-left:0em;
-        padding-right:0em;
-        line-height: 1;
+      .DISPLAYMATH {
+        text-align: center;
+        margin-top: 1.0em;
+        margin-bottom: 1.0em;
       }
 
       .VERBATIM {
