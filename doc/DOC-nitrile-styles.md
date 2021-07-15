@@ -835,4 +835,9 @@ Following are styles recognized by NITRILE:
   This property expresses the width and height of the device in pt. It is currently
   used to by the "ink" bundle set the initial size of the device. 
   
++ skew:
 
+  This property is currently used by the 'lego' command to specify the skew factors
+  for the pieces.
+
+  
