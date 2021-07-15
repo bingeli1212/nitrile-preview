@@ -7,7 +7,7 @@ doc: slide
 
 # 25A0
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+25A0      &utfchar{25A0}      &utfdata{25A0}      
   U+25A1      &utfchar{25A1}      &utfdata{25A1}      
   U+25A2      &utfchar{25A2}      &utfdata{25A2}      
@@ -28,7 +28,7 @@ doc: slide
 
 # 25B0   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+25B0      &utfchar{25B0}      &utfdata{25B0}      
   U+25B1      &utfchar{25B1}      &utfdata{25B1}      
   U+25B2      &utfchar{25B2}      &utfdata{25B2}      
@@ -50,7 +50,7 @@ doc: slide
 
 # 25C0   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+25C0      &utfchar{25C0}      &utfdata{25C0}      
   U+25C1      &utfchar{25C1}      &utfdata{25C1}      
   U+25C2      &utfchar{25C2}      &utfdata{25C2}      
@@ -72,7 +72,7 @@ doc: slide
 
 # 25D0   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+25D0      &utfchar{25D0}      &utfdata{25D0}      
   U+25D1      &utfchar{25D1}      &utfdata{25D1}      
   U+25D2      &utfchar{25D2}      &utfdata{25D2}      
@@ -94,7 +94,7 @@ doc: slide
 
 # 25E0   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+25E0      &utfchar{25E0}      &utfdata{25E0}      
   U+25E1      &utfchar{25E1}      &utfdata{25E1}      
   U+25E2      &utfchar{25E2}      &utfdata{25E2}      
@@ -116,7 +116,7 @@ doc: slide
 
 # 25F0   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+25F0      &utfchar{25F0}      &utfdata{25F0}      
   U+25F1      &utfchar{25F1}      &utfdata{25F1}      
   U+25F2      &utfchar{25F2}      &utfdata{25F2}      

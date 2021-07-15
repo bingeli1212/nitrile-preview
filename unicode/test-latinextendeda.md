@@ -7,7 +7,7 @@ doc: slide
 
 # U+0100
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0100      &utfchar{0100}      &utfdata{0100}      
   U+0101      &utfchar{0101}      &utfdata{0101}      
   U+0102      &utfchar{0102}      &utfdata{0102}      
@@ -28,7 +28,7 @@ doc: slide
 
 # U+0110   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0110      &utfchar{0110}      &utfdata{0110}      
   U+0111      &utfchar{0111}      &utfdata{0111}      
   U+0112      &utfchar{0112}      &utfdata{0112}      
@@ -50,7 +50,7 @@ doc: slide
 
 # U+0120   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0120      &utfchar{0120}      &utfdata{0120}      
   U+0121      &utfchar{0121}      &utfdata{0121}      
   U+0122      &utfchar{0122}      &utfdata{0122}      
@@ -72,7 +72,7 @@ doc: slide
 
 # U+0130   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0130      &utfchar{0130}      &utfdata{0130}      
   U+0131      &utfchar{0131}      &utfdata{0131}      
   U+0132      &utfchar{0132}      &utfdata{0132}      
@@ -94,7 +94,7 @@ doc: slide
 
 # U+0140   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0140      &utfchar{0140}      &utfdata{0140}      
   U+0141      &utfchar{0141}      &utfdata{0141}      
   U+0142      &utfchar{0142}      &utfdata{0142}      
@@ -116,7 +116,7 @@ doc: slide
 
 # U+0150   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0150      &utfchar{0150}      &utfdata{0150}      
   U+0151      &utfchar{0151}      &utfdata{0151}      
   U+0152      &utfchar{0152}      &utfdata{0152}      
@@ -139,7 +139,7 @@ doc: slide
 
 # U+0160   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0160      &utfchar{0160}      &utfdata{0160}      
   U+0161      &utfchar{0161}      &utfdata{0161}      
   U+0162      &utfchar{0162}      &utfdata{0162}      
@@ -161,7 +161,7 @@ doc: slide
 
 # U+0170   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0170      &utfchar{0170}      &utfdata{0170}      
   U+0171      &utfchar{0171}      &utfdata{0171}      
   U+0172      &utfchar{0172}      &utfdata{0172}      

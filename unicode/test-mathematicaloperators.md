@@ -7,7 +7,7 @@ doc: slide
 
 # U+2200   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2200      &utfchar{2200}      &utfdata{2200}
   U+2201      &utfchar{2201}      &utfdata{2201}
   U+2202      &utfchar{2202}      &utfdata{2202}
@@ -28,7 +28,7 @@ doc: slide
 
 # U+2210   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2210      &utfchar{2210}      &utfdata{2210}
   U+2211      &utfchar{2211}      &utfdata{2211}
   U+2212      &utfchar{2212}      &utfdata{2212}
@@ -49,7 +49,7 @@ doc: slide
 
 # U+2220   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2220      &utfchar{2220}      &utfdata{2220}
   U+2221      &utfchar{2221}      &utfdata{2221}
   U+2222      &utfchar{2222}      &utfdata{2222}
@@ -70,7 +70,7 @@ doc: slide
 
 # U+2230   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2230      &utfchar{2230}      &utfdata{2230}
   U+2231      &utfchar{2231}      &utfdata{2231}
   U+2232      &utfchar{2232}      &utfdata{2232}
@@ -91,7 +91,7 @@ doc: slide
 
 # U+2240   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2240      &utfchar{2240}      &utfdata{2240}
   U+2241      &utfchar{2241}      &utfdata{2241}
   U+2242      &utfchar{2242}      &utfdata{2242}
@@ -112,7 +112,7 @@ doc: slide
 
 # U+2250   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2250      &utfchar{2250}      &utfdata{2250}
   U+2251      &utfchar{2251}      &utfdata{2251}
   U+2252      &utfchar{2252}      &utfdata{2252}
@@ -133,7 +133,7 @@ doc: slide
 
 # U+2260   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2260      &utfchar{2260}      &utfdata{2260}
   U+2261      &utfchar{2261}      &utfdata{2261}
   U+2262      &utfchar{2262}      &utfdata{2262}
@@ -154,7 +154,7 @@ doc: slide
 
 # U+2270   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2270      &utfchar{2270}      &utfdata{2270}
   U+2271      &utfchar{2271}      &utfdata{2271}
   U+2272      &utfchar{2272}      &utfdata{2272}
@@ -175,7 +175,7 @@ doc: slide
 
 # U+2280   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2280      &utfchar{2280}      &utfdata{2280}
   U+2281      &utfchar{2281}      &utfdata{2281}
   U+2282      &utfchar{2282}      &utfdata{2282}
@@ -196,7 +196,7 @@ doc: slide
 
 # U+2290    
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2290      &utfchar{2290}      &utfdata{2290}
   U+2291      &utfchar{2291}      &utfdata{2291}
   U+2292      &utfchar{2292}      &utfdata{2292}
@@ -217,7 +217,7 @@ doc: slide
 
 # U+22A0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+22A0      &utfchar{22A0}      &utfdata{22A0}
   U+22A1      &utfchar{22A1}      &utfdata{22A1}
   U+22A2      &utfchar{22A2}      &utfdata{22A2}
@@ -238,7 +238,7 @@ doc: slide
 
 # U+22B0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+22B0      &utfchar{22B0}      &utfdata{22B0}
   U+22B1      &utfchar{22B1}      &utfdata{22B1}
   U+22B2      &utfchar{22B2}      &utfdata{22B2}
@@ -259,7 +259,7 @@ doc: slide
 
 # U+22C0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+22C0      &utfchar{22C0}      &utfdata{22C0}
   U+22C1      &utfchar{22C1}      &utfdata{22C1}
   U+22C2      &utfchar{22C2}      &utfdata{22C2}
@@ -280,7 +280,7 @@ doc: slide
 
 # U+22D0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+22D0      &utfchar{22D0}      &utfdata{22D0}
   U+22D1      &utfchar{22D1}      &utfdata{22D1}
   U+22D2      &utfchar{22D2}      &utfdata{22D2}
@@ -301,7 +301,7 @@ doc: slide
 
 # U+22E0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+22E0      &utfchar{22E0}      &utfdata{22E0}
   U+22E1      &utfchar{22E1}      &utfdata{22E1}
   U+22E2      &utfchar{22E2}      &utfdata{22E2}
@@ -322,7 +322,7 @@ doc: slide
 
 # U+22F0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+22F0      &utfchar{22F0}      &utfdata{22F0}
   U+22F1      &utfchar{22F1}      &utfdata{22F1}
   U+22F2      &utfchar{22F2}      &utfdata{22F2}

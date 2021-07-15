@@ -7,7 +7,7 @@ doc: slide
 
 # U+0370   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0370      &utfchar{0370}      &utfdata{0370}
   U+0371      &utfchar{0371}      &utfdata{0371}
   U+0372      &utfchar{0372}      &utfdata{0372}
@@ -28,7 +28,7 @@ doc: slide
 
 # U+0380   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0380      &utfchar{0380}      &utfdata{0380}
   U+0381      &utfchar{0381}      &utfdata{0381}
   U+0382      &utfchar{0382}      &utfdata{0382}
@@ -49,7 +49,7 @@ doc: slide
 
 # U+0390    
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+0390      &utfchar{0390}      &utfdata{0390}
   U+0391      &utfchar{0391}      &utfdata{0391}
   U+0392      &utfchar{0392}      &utfdata{0392}
@@ -70,7 +70,7 @@ doc: slide
 
 # U+03A0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+03A0      &utfchar{03A0}      &utfdata{03A0}
   U+03A1      &utfchar{03A1}      &utfdata{03A1}
   U+03A2      &utfchar{03A2}      &utfdata{03A2}
@@ -91,7 +91,7 @@ doc: slide
 
 # U+03B0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+03B0      &utfchar{03B0}      &utfdata{03B0}
   U+03B1      &utfchar{03B1}      &utfdata{03B1}
   U+03B2      &utfchar{03B2}      &utfdata{03B2}
@@ -112,7 +112,7 @@ doc: slide
 
 # U+03C0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+03C0      &utfchar{03C0}      &utfdata{03C0}
   U+03C1      &utfchar{03C1}      &utfdata{03C1}
   U+03C2      &utfchar{03C2}      &utfdata{03C2}
@@ -133,7 +133,7 @@ doc: slide
 
 # U+03D0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+03D0      &utfchar{03D0}      &utfdata{03D0}
   U+03D1      &utfchar{03D1}      &utfdata{03D1}
   U+03D2      &utfchar{03D2}      &utfdata{03D2}
@@ -154,7 +154,7 @@ doc: slide
 
 # U+03E0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+03E0      &utfchar{03E0}      &utfdata{03E0}
   U+03E1      &utfchar{03E1}      &utfdata{03E1}
   U+03E2      &utfchar{03E2}      &utfdata{03E2}
@@ -175,7 +175,7 @@ doc: slide
 
 # U+03F0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+03F0      &utfchar{03F0}      &utfdata{03F0}
   U+03F1      &utfchar{03F1}      &utfdata{03F1}
   U+03F2      &utfchar{03F2}      &utfdata{03F2}

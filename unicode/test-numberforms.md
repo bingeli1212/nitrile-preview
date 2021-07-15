@@ -7,7 +7,7 @@ doc: slide
 
 # U+2150   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2150      &utfchar{2150}      &utfdata{2150}
   U+2151      &utfchar{2151}      &utfdata{2151}
   U+2152      &utfchar{2152}      &utfdata{2152}
@@ -28,7 +28,7 @@ doc: slide
 
 # U+2160   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2160      &utfchar{2160}      &utfdata{2160}
   U+2161      &utfchar{2161}      &utfdata{2161}
   U+2162      &utfchar{2162}      &utfdata{2162}
@@ -49,7 +49,7 @@ doc: slide
 
 # U+2170   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2170      &utfchar{2170}      &utfdata{2170}
   U+2171      &utfchar{2171}      &utfdata{2171}
   U+2172      &utfchar{2172}      &utfdata{2172}
@@ -70,7 +70,7 @@ doc: slide
 
 # U+2180   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2180      &utfchar{2180}      &utfdata{2180}
   U+2181      &utfchar{2181}      &utfdata{2181}
   U+2182      &utfchar{2182}      &utfdata{2182}

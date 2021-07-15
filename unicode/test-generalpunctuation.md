@@ -7,7 +7,7 @@ doc: slide
 
 # U+2000   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2000      &utfchar{2000}      &utfdata{2000}
   U+2001      &utfchar{2001}      &utfdata{2001}
   U+2002      &utfchar{2002}      &utfdata{2002}
@@ -28,7 +28,7 @@ doc: slide
 
 # U+2010   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2010      &utfchar{2010}      &utfdata{2010}
   U+2011      &utfchar{2011}      &utfdata{2011}
   U+2012      &utfchar{2012}      &utfdata{2012}
@@ -49,7 +49,7 @@ doc: slide
 
 # U+2020   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2020      &utfchar{2020}      &utfdata{2020}
   U+2021      &utfchar{2021}      &utfdata{2021}
   U+2022      &utfchar{2022}      &utfdata{2022}
@@ -70,7 +70,7 @@ doc: slide
 
 # U+2030   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2030      &utfchar{2030}      &utfdata{2030}
   U+2031      &utfchar{2031}      &utfdata{2031}
   U+2032      &utfchar{2032}      &utfdata{2032}
@@ -91,7 +91,7 @@ doc: slide
 
 # U+2040   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2040      &utfchar{2040}      &utfdata{2040}
   U+2041      &utfchar{2041}      &utfdata{2041}
   U+2042      &utfchar{2042}      &utfdata{2042}
@@ -112,7 +112,7 @@ doc: slide
 
 # U+2050   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2050      &utfchar{2050}      &utfdata{2050}
   U+2051      &utfchar{2051}      &utfdata{2051}
   U+2052      &utfchar{2052}      &utfdata{2052}
@@ -133,7 +133,7 @@ doc: slide
 
 # U+2060   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2060      &utfchar{2060}      &utfdata{2060}
   U+2061      &utfchar{2061}      &utfdata{2061}
   U+2062      &utfchar{2062}      &utfdata{2062}

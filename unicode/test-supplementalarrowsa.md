@@ -7,7 +7,7 @@ doc: slide
 
 # U+27F0  
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+27F0      &utfchar{27F0}      &utfdata{27F0}
   U+27F1      &utfchar{27F1}      &utfdata{27F1}
   U+27F2      &utfchar{27F2}      &utfdata{27F2}

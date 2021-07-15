@@ -7,7 +7,7 @@ doc: slide
 
 # U+2B00   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B00      &utfchar{2B00}      &utfdata{2B00}      
   U+2B01      &utfchar{2B01}      &utfdata{2B01}      
   U+2B02      &utfchar{2B02}      &utfdata{2B02}      
@@ -28,7 +28,7 @@ doc: slide
 
 # U+2B10   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B10      &utfchar{2B10}      &utfdata{2B10}      
   U+2B11      &utfchar{2B11}      &utfdata{2B11}      
   U+2B12      &utfchar{2B12}      &utfdata{2B12}      
@@ -49,7 +49,7 @@ doc: slide
 
 # U+2B20   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B20      &utfchar{2B20}      &utfdata{2B20}      
   U+2B21      &utfchar{2B21}      &utfdata{2B21}      
   U+2B22      &utfchar{2B22}      &utfdata{2B22}      
@@ -70,7 +70,7 @@ doc: slide
 
 # U+2B30   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B30      &utfchar{2B30}      &utfdata{2B30}      
   U+2B31      &utfchar{2B31}      &utfdata{2B31}      
   U+2B32      &utfchar{2B32}      &utfdata{2B32}      
@@ -91,7 +91,7 @@ doc: slide
 
 # U+2B40   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B40      &utfchar{2B40}      &utfdata{2B40}      
   U+2B41      &utfchar{2B41}      &utfdata{2B41}      
   U+2B42      &utfchar{2B42}      &utfdata{2B42}      
@@ -112,7 +112,7 @@ doc: slide
 
 # U+2B50   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B50      &utfchar{2B50}      &utfdata{2B50}      
   U+2B51      &utfchar{2B51}      &utfdata{2B51}      
   U+2B52      &utfchar{2B52}      &utfdata{2B52}      
@@ -133,7 +133,7 @@ doc: slide
 
 # U+2B60   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B60      &utfchar{2B60}      &utfdata{2B60}      
   U+2B61      &utfchar{2B61}      &utfdata{2B61}      
   U+2B62      &utfchar{2B62}      &utfdata{2B62}      
@@ -154,7 +154,7 @@ doc: slide
 
 # U+2B70   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B70      &utfchar{2B70}      &utfdata{2B70}      
   U+2B71      &utfchar{2B71}      &utfdata{2B71}      
   U+2B72      &utfchar{2B72}      &utfdata{2B72}      
@@ -175,7 +175,7 @@ doc: slide
 
 # U+2B80   
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B80      &utfchar{2B80}      &utfdata{2B80}      
   U+2B81      &utfchar{2B81}      &utfdata{2B81}      
   U+2B82      &utfchar{2B82}      &utfdata{2B82}      
@@ -196,7 +196,7 @@ doc: slide
 
 # U+2B90    
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2B90      &utfchar{2B90}      &utfdata{2B90}      
   U+2B91      &utfchar{2B91}      &utfdata{2B91}      
   U+2B92      &utfchar{2B92}      &utfdata{2B92}      
@@ -217,7 +217,7 @@ doc: slide
 
 # U+2BA0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2BA0      &utfchar{2BA0}      &utfdata{2BA0}      
   U+2BA1      &utfchar{2BA1}      &utfdata{2BA1}      
   U+2BA2      &utfchar{2BA2}      &utfdata{2BA2}      
@@ -238,7 +238,7 @@ doc: slide
 
 # U+2BB0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2BB0      &utfchar{2BB0}      &utfdata{2BB0}      
   U+2BB1      &utfchar{2BB1}      &utfdata{2BB1}      
   U+2BB2      &utfchar{2BB2}      &utfdata{2BB2}      
@@ -259,7 +259,7 @@ doc: slide
 
 # U+2BC0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2BC0      &utfchar{2BC0}      &utfdata{2BC0}      
   U+2BC1      &utfchar{2BC1}      &utfdata{2BC1}      
   U+2BC2      &utfchar{2BC2}      &utfdata{2BC2}      
@@ -280,7 +280,7 @@ doc: slide
 
 # U+2BD0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2BD0      &utfchar{2BD0}      &utfdata{2BD0}      
   U+2BD1      &utfchar{2BD1}      &utfdata{2BD1}      
   U+2BD2      &utfchar{2BD2}      &utfdata{2BD2}      
@@ -301,7 +301,7 @@ doc: slide
 
 # U+2BE0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2BE0      &utfchar{2BE0}      &utfdata{2BE0}      
   U+2BE1      &utfchar{2BE1}      &utfdata{2BE1}      
   U+2BE2      &utfchar{2BE2}      &utfdata{2BE2}      
@@ -322,7 +322,7 @@ doc: slide
 
 # U+2BF0     
 
-  ```tabular{small,vrule:|||}
+  ```tabular{visual:2,small,vrule:|||}
   U+2BF0      &utfchar{2BF0}      &utfdata{2BF0}      
   U+2BF1      &utfchar{2BF1}      &utfdata{2BF1}      
   U+2BF2      &utfchar{2BF2}      &utfdata{2BF2}      
