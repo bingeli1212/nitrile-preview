@@ -3150,27 +3150,23 @@ The lego-operation allows for drawing of placing Lego-like
 objects on top of each other in a three-dimensional space.
 
     ```diagram{viewport:8 8}
-    source a
-    config fillcolor white
-    config linesize 1.5
-    config linejoin round
-    lego-origin 0 0
-    lego-size 4 4 4
-    lego-add.z 0 1 2 3
-    lego-delete.xyz 0 0 2 
-    lego-delete.yz 0 3 
-    lego-delete.xyz 1 1 3 
-    lego-delete.xyz 2 1 3 
-    lego-delete.xyz 2 2 3 
-    lego-show
+    \config fillcolor white
+    \config linesize 1.5
+    \config linejoin round
+    \lego.size.4.4.4
+    \lego.add.z.0 
+    \lego.add.z.1
+    \lego.add.z.2 
+    \lego.add.z.3
+    \lego.del.xyz.0.0.2 
+    \lego.del.yz.0.3 
+    \lego.del.xyz.1.1.3 
+    \lego.del.xyz.2.1.3 
+    \lego.del.xyz.2.2.3 
+    \lego.show (0,0)
     ```
 
-The lego-setup operation expects four arguments, the first
-two of which are the x/y origin of the x/y/z-plane of the
-Lego coordinates.  The last two is the 'wx' and 'wy' length
-which is the extra space extended from beyond the edge the
-cube in the x/y directions.  The default values for 'wx' is
-0.36 and the default value for 'wy' is 0.30. 
+The lego-show operation would place the lego set at the location.
 
 The lego-size operation would set the size of the stacking.
 It expectes three integers, each representing the number of
@@ -3182,7 +3178,7 @@ The Lego pieces are first added and deleted, and then the
 lego-show operation is called to draw all the pieces in the
 Diagram.
 
-The lego-add.z operation would add a layer of pieces in the
+The lego-add-z operation would add a layer of pieces in the
 z coordinate specified.  The lego-delete.xyz operation would
 delete a specific piece with the given x/y/z coordinate.
 
@@ -3198,11 +3194,12 @@ going down and left, y-axis is going right and right, and
 z-axis is going straight up. 
 
 Each lego-show and lego-show2 carries its own set of
-arguments. Following shows the default set of arguments
+skew factors for the pieces, which can be set by the 
+'skew' option. Following shows the default set of arguments
 for each operation.
 
-    lego-show 0.36 0.30 1.00 0.90
-    lego-show2 0.80 0.45 0.70
+    lego.show {skew:0.36 0.30 1.00 0.90}
+    lego.show2 {skew:0.80 0.45 0.70}
 
 For lego-show operation, the first two arguments are the
 skewed values in x-direction and y-direction. The third and
