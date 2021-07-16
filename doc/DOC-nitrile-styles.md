@@ -90,13 +90,10 @@ Following are styles recognized by NITRILE:
   LATEX translation is in place and that the "longtabu" environment is
   being used.
 
-+ foot:1
++ side:1
 
-  The foot-option specifies the number of rows at the end of input
-  rows to be treated as the footer. Normally this will not have
-  any effect but for longtable-fence these rows will be extracted
-  and placed into a special section called "\endfoot" which is 
-  a feature of the "longtabu" environment of a LATEX package.
+  The side-style expresses that the first column of the tabular
+  be set aside as the "side" column.
 
 + bullet:sect
 + bullet:maltese

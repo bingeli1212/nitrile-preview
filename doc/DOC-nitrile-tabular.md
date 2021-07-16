@@ -124,19 +124,22 @@ Following are supported options for the rules-style:
 - "cols" The rules will be visible between the columns only.
 - "all" All rules will be visible.
 
-The alignment of each cell can be expressed by the "halign" style
-option. It expectes a list of alignment format groups, which 
-must be "l", "r", "c", and others. It can also start with "p" 
-and followed by one or more digits, such as "p10" to express that 
-it is a paragraph with a width fixed at 10mm. It can also start
-with the letter "f" such as "f25", which expresses a column 
-that is a paragraph and its width is 25% of the current page width.
+The alignment of each cell can be expressed by the "halign" style option. It
+expectes a list of alignment format groups, which must be "l", "r", "c", and
+others. It can also start with "p" and followed by one or more digits, such as
+"p10" to express that it is a paragraph with a width fixed at 10mm. It can also
+start with the letter "f" such as "f25", which expresses a column that is a
+paragraph and its width is 25% of the current page width.
 
-The "small" option would express that the table be set using
-a "smaller" font. The "head" option would treat the first row as
-expressing the "header" of the table, and is likely show using
-bold font typeface, how it might be different for each translation.
-For instance, the HTML translation might decorate a row header
-using TH element rather than TD element.
+The "small" option would express that the table be set using a "smaller" font.
+The "head" option would treat the first row as expressing the "header" of the
+table, and is likely that that is shown using bold font typeface. HTML
+translation might decorate it with the "th" element rather than the "td"
+element. For longtable when the "head" option is present then the first row will
+be repeated.
+
+The "side" option would set aside the first column of the tabular 
+as the "side" column. This would allow a vertical rule to be drawn between
+the first column and the second when the rules-style is set to "groups".
 
 
