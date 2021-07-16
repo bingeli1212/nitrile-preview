@@ -2318,11 +2318,28 @@ of an arc. However, a square can be forced if ".sq" option is given.
 # The 'drawcenteredtext' command
 
 The 'drawcenteredtext' command is to draw a piece of text
-in the center of a line segment found in the path.
+in the center of every line segment found in the path.
+In the following example the text "1", "2" and "3" are placed
+in the middle of three sides of the triangle shape.
 
     path tri = &triangle{(0,0),(4,0),(2,2)}
     stroke &tri
     drawcenteredtext "1" "2" "3" &tri
+
+Any connecting line segments are located, including those that are not
+necessarily straight lines, such as Bezier curves and arcs. For these,
+it is treated as if it is a line segment and the text will be drawn in
+the middle of that line segment. If the path is closed, then there would
+be assumed a line segment between the last point and the first point.
+
+If without option, it is assumed that the text will be drawn centered
+in the middle of that line segment. However, the command option such as
+"lft", "rt", "urt", "ulft", "llft", "lrt", "top" and "bot" can also
+be specified so that the text is shifted. In addition, the tx-style
+and ty-style can also be used to specify additional adjustment of text, 
+as well as the shift-style would also influence the position of the 
+text.
+
 
 
 # The 'drawslopedtext' command
