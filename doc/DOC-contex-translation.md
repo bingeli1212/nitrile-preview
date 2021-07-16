@@ -3573,26 +3573,45 @@ For this reason, a 'bTABLE' is used in translation when a 'tabular' is to
 appear inside a 'figure', 'table', or 'longtable', while a 'starttabulate' is
 to appear when it is by itself.
 
-There is a serious bug in the latest releast of CONTEX, in that if a previous 'starttable'
-has a \VL (vertical rule) before the start of the first column, the subsequent 'starttable'
-will automatically have a vertical rule before the first column as well, even when
-the second 'starttable' didn't use \VL. The vertical rule before the first column
-of the second 'starttabulate' would disappear if a \VL is not placed before the first
-column within the first 'starttabulate'.
+There is a serious bug in the latest releast of CONTEX, in that if a previous
+'starttable' has a \VL (vertical rule) before the start of the first column,
+the subsequent 'starttable' will automatically have a vertical rule before the
+first column as well, even when the second 'starttable' didn't use \VL. The
+vertical rule before the first column of the second 'starttabulate' would
+disappear if a \VL is not placed before the first column within the first
+'starttabulate'.
 
-The double-vertical rule is currently implemented for 'bTABLE' pack, by adding an extra column
-that is set to a fixed size of 2pt. However, it is not implemented for 'starttabulate' because
-'starttabulate' does not provide native support for double vertical rule, and but adding
-an empty column the second rule would cut into the left padding of the subsequent cell, making
-it touching the second vertical rule. 
+The double-vertical rule is currently implemented for 'bTABLE' pack, by adding
+an extra column that is set to a fixed size of 2pt. However, it is not
+implemented for 'starttabulate' because 'starttabulate' does not provide native
+support for double vertical rule, and but adding an empty column the second
+rule would cut into the left padding of the subsequent cell, making it touching
+the second vertical rule. 
 
 
 # Cell color for tabular and bTABLE
 
-The cell color for tabular and bTABLE is currently not implemented, and it is not clear
-how to implement them.
+The cell color for tabular and bTABLE is currently not implemented, and it is
+not clear how to implement them.
 
+# The "unifont"
 
+There is a distribution of free "unifont" that contains bitmap fonts. These
+fonts convers a wide range of Unicode glyphs, including dingbats,
+cjkunifiedideographs, miscsymbols, and other ranges. Current this "unifont" is
+being configured as the "fallback" font for these Unicode ranges, and is part
+of the export to the TEX file by the "camper" and "creamer" translation engine. 
+
+However, the "unifont" itself is not installed by default by a CONTEX
+distribution, whether it is a texlive or a default vanilla CONTEX distribution
+itself. This font has to be obtained and installed by the user.  The good news
+is that once it is installed the CONTEX will find it and assign it the name
+"unifont" that is currently harded coded to reference this font in the setup
+area of the TEX file. 
+
+The "fontforge" program which is a free download can be run to examine the
+coverage glyphs of this font file. This allows us to discover the Unicode
+block range(s) this font file is designed to cover.
 
 
 
