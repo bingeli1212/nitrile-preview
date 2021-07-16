@@ -112,40 +112,6 @@ Following are styles recognized by NITRILE:
     - Go to the bank
     ```
 
-+ hrule:-
-+ hrule:--
-+ hrule:---
-
-  The hrule-option decides where to insert horizontal rules for a tabular.
-  If it is set to "-", then a horizontal rule will inserted only between two
-  consecutive rows (there will not be a horizontal rule if there is only a single table row.)
-  If it is set to "--" then the only inserted horizontal rule will be at the very top
-  of the table and the very bottom. 
-  If it is set to "---" then horizontal rules will be at the very top and very bottom,
-  as well between rules.
-
-  Following example would have inserted two horizontal rules one between the
-  first two rows and another one between the second/third rows.
-
-    ```tabular[hrule:-]
-    | Names | Addr.
-    | James | 123 Sun Dr.
-    | John  | 124 Sun Dr.
-    ```
-
-  Note that the inserting of rules will not override the existing one provided
-  by the user. For example, in the following example the horizontal rules
-  between the first and second row will be not inserted because there is
-  already a double-rule being provided by the user.  Thus the only new
-  horizontal being inserted is between the second/third row.
-
-    ```tabular[hrule:-]
-    | Names | Addr.
-    ========================
-    | James | 123 Sun Dr.
-    | John  | 124 Sun Dr.
-    ```
-
 + rules:above
 + rules:below
 + rules:hsides
@@ -163,7 +129,7 @@ Following are styles recognized by NITRILE:
   cells of text "a" will be colored using color 'cyan'. All cells of text
   "b" will be color using color 'lime', and so on.
 
-    ```tabular{title:Cayley-1,vrule:|+||+|+|+|+|, hrule:-, cellcolor:a cyan b lime c pink e orange}
+    ```tabular{visual,cellcolor:a cyan b lime c pink e orange}
     -------------------------
     | &ast; | e | a | b | c
     =========================
