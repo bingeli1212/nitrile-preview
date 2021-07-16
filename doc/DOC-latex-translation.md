@@ -105,6 +105,11 @@ into the text appearing below the line, but was not observed as so. Instead, the
 appears at the top of the line.
 
 
+# The "verbatim" bundle
+
+The verbatim bundle is implemented using a "tabular", which by nature
+does not break across page boundaries. 
+
 
 
 

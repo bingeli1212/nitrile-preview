@@ -6,20 +6,20 @@ doc: page
 # Issues
 
 - For Radio Buttons and Check Boxes, the ideal solution would've been
-  to use Dingbats character U+274D for empty circles, and U+25CF for 
+  to use Dingbats character U+274D for empty circles, and U+25CF for
   filled radio buttons. But in practice there is a problem that
   U+25CF was being rendered as a very small black circle as opposed
   to a black circle that is the same size as that of U+274D. This
   would have made the list containing a mix of filled and unfilled
-  circles looking extremely uncomfortable. Thus the solution to 
+  circles looking extremely uncomfortable. Thus the solution to
   show a list of radio buttons and checkboxes is to use the input-element
-  of the HTML with its "type" attribute set to either "radiobutton" or 
+  of the HTML with its "type" attribute set to either "radiobutton" or
   "checkbox". This presents another problem that the "readonly" attribute
-  which is supposed to prevent its status from being changed by user, 
-  does not work for radio buttons and checkboxes. Thus in order to 
+  which is supposed to prevent its status from being changed by user,
+  does not work for radio buttons and checkboxes. Thus in order to
   disallow an accidental change of button status all unchecked radio buttons
-  and checkboxes are rendered as "disabled", which there is an attribute 
-  for, and works. 
+  and checkboxes are rendered as "disabled", which there is an attribute
+  for, and works.
 
 - For SVG Diagram, a dashed line is always drawn using dashed array of "3.0 3.0", and
   its stroke-linecap is always set to "butt". It has been observed that if it is set to
@@ -27,9 +27,9 @@ doc: page
   components.
 
 - For embedded SVG the "id" attribute of a defined element inside the <defs>..</defs>
-  element need to have a unique ID string for the entire HTML file. 
+  element need to have a unique ID string for the entire HTML file.
   It has been observed that if the same ID attribute were used even when these elements
-  are defined inside the <defs> element that are in different embedded SVG images, 
+  are defined inside the <defs> element that are in different embedded SVG images,
   the element that appears later will "overwrite" the element that appears earlier.
 
 
@@ -59,7 +59,7 @@ in pixels.
   HTML & XHTML <table> example using cellpadding and cellspacing.
 
   ```verbatim{frame}
-  <table cellpadding="20" cellspacing="20" 
+  <table cellpadding="20" cellspacing="20"
     border="1" summary="stock profits">
    <tr>
     <th colspan="3">Stock Tracker</th>
@@ -258,3 +258,78 @@ XHTML <colgroup> example using <col> tags to set the number of columns.
   </table>
   ```
 
+# Various styling elements
+
+Following are styling elements:
+
+<a> <abbr> <acronym> <b> <bdo> <big> <br> <button> <cite> <code>
+<del> <dfn> <em> <i> <iframe>1 <img> <input> <ins> <kbd> <label>
+<map> <object> <q> <s> <samp> <script> <select> <small> <span>
+<strike> <strong> <sub> <sup> <textarea> <tt> <u> <var>
+
+- <abbr>
+
+  The <abbr> tag allows the occurrence of an abbreviation to be
+  identified. The abbreviation is placed between the opening and
+  closing abbr tags. Use the title attribute to specify the full
+  text of that which is being abbreviated.
+
+  ```verbatim
+  <p>The 8th month of the year is <abbr title="August">Aug.</abbr></p>
+  ```
+
+- <acronym>
+
+  The <acronym> tag allows the occurrence of an acronym to be
+  identified. The acronym is placed between the opening and
+  closing acronym tags. Use the title attribute to specify the
+  full phrase, or series of words, that the acronym is formed
+  from.
+
+  ```verbatim
+  <p>The <acronym title="Internal Revenue Service">IRS</acronym> collects
+  tax revenue.</p>
+  ```
+
+- <var>
+
+  The <var> tag is used to mark a variable or program argument.
+  The text is placed between the opening and closing tags.
+
+  ```verbatim
+  <p>The user's name is held in the variable <var>$userName</var></p>
+  ```
+- <button>
+
+  The <button> tag is used to create a button that can contain
+  content. The <button> tag can be used with a <form> tag. The
+  <button> tag can also be used as a stand alone tag which can
+  use a scripting language, like JavaScript, to give it
+  functionality.
+
+  ```verbatim{}
+  <form action="example_input.php" method="post">
+  <p>
+   Text: <input type="text" name="texttest" title="test"><br>
+   <button type="submit">Send<br>Text</button>
+   <button type="reset"><img src="yel.gif" alt="reset"><br>Reset</button>
+  </p>
+  </form>
+  ```
+
+  ```verbatim{}
+  <form action="example_input.php" method="post">
+  <p>
+   Text: <input type="text" name="texttest" title="test"/><br/>
+   <button type="submit">Send<br />Text</button>
+   <button type="reset"><img src="img.png" alt="reset"/><br/>Reset</button>
+  </p>
+  </form>
+  ```
+
+  ```verbatim{}
+  <p>
+  <button type="button" onclick="window.location='http://www.web.com'">
+  Go To Little Web Hut</button>
+  </p>
+  ```
