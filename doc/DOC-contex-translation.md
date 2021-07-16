@@ -3587,6 +3587,11 @@ an empty column the second rule would cut into the left padding of the subsequen
 it touching the second vertical rule. 
 
 
+# Cell color for tabular and bTABLE
+
+The cell color for tabular and bTABLE is currently not implemented, and it is not clear
+how to implement them.
+
 
 
 
