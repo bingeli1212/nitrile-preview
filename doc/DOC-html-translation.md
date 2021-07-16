@@ -1,5 +1,6 @@
 ---
 title: HTML Translation
+doc: page
 ---
 
 # Issues
@@ -32,6 +33,228 @@ title: HTML Translation
   the element that appears later will "overwrite" the element that appears earlier.
 
 
+# The "table" element
+
+The <table> tag is used to create a table. A table is made up of individual
+cells which are organized into rows and columns. The individual cells are
+defined using the table header cell <th> and table data cell <td> tags. These
+tags are contained within a table row element which is defined using a <tr>
+tag.
+
+A basic table can be created using the <table>, <tr>, <th>, and <td> tags. The
+following is a list of additional table related tags: <caption>, <thead>,
+<tfoot>, <tbody>, <colgroup>, and <col>. All of the tags used in a table are
+contained between the opening and closing <table> tags.
+
+# The "cellpadding" and "cellspacing" attribute of a "table" element
+
+The "cellpadding" attribute specifies the space between the border of a cell
+and the contents of a cell. The value is in pixels.
+
+The "cellspacing" attribute specifies the space between individual cells. It
+also specifies the space between the outside border and the cells. The value is
+in pixels.
+
+.figure
+  HTML & XHTML <table> example using cellpadding and cellspacing.
+
+  ```verbatim{frame}
+  <table cellpadding="20" cellspacing="20" 
+    border="1" summary="stock profits">
+   <tr>
+    <th colspan="3">Stock Tracker</th>
+   </tr>
+   <tr>
+    <th>Stock Symbol</th>
+    <td>MSFT</td>
+    <td>GOOG</td>
+   </tr>
+   <tr>
+    <th>Profit</th>
+    <td>$723.48</td>
+    <td>$1254.58</td>
+   </tr>
+  </table>
+  ```
+
+# The "frame" of a "table" element
+
+The frame attribute specifies which sides of the table's outside border are
+visible. Possible values are shown in the following table.
+
+- "void"	The border is not visible.
+- "above"	The border is visible on the top side only.
+- "below"	The border is visible on the bottom side only.
+- "hsides"	The border is visible on the top and bottom sides only.
+- "vsides"	The border is visible on the left and right sides only.
+- "lhs"	The border is visible on the left hand side only.
+- "rhs"	The border is visible on the right hand side only.
+- "box"	The border is visible on all four sides.
+- 'border"	The border is visible on all four sides.
 
 
+.figure
+HTML & XHTML <table> example using the frame attribute.
+
+  ```verbatim{frame}
+  <table frame="hsides" border="3" summary="stock profits">
+   <tr>
+    <th colspan="3">Stock Tracker</th>
+   </tr>
+   <tr>
+    <th>Stock Symbol</th>
+    <td>MSFT</td>
+    <td>GOOG</td>
+   </tr>
+   <tr>
+    <th>Profit</th>
+    <td>$723.48</td>
+    <td>$1254.58</td>
+   </tr>
+  </table>
+  ```
+
+# The "rules" of a "table" element
+
+The rules attribute specifies which rules (borders between cells) are visible.
+Possible values are shown in the following table.
+
+- "none"	No rules are visible.
+- "groups"	The rules will only be visible between row groups (see <thead>, <tfoot>, and <tbody>) and column groups (see <colgroup> and <col>).
+- "rows"	The rules will be visible between the rows only.
+- "cols"	The rules will be visible between the columns only.
+- "all"	All rules will be visible.
+
+.figure
+HTML & XHTML <table> example using the rules attribute.
+
+  ```verbatim{frame}
+  <table rules="cols" border="1" summary="stock profits">
+   <tr>
+    <th colspan="3">Stock Tracker</th>
+   </tr>
+   <tr>
+    <th>Stock Symbol</th>
+    <td>MSFT</td>
+    <td>GOOG</td>
+   </tr>
+   <tr>
+    <th>Profit</th>
+    <td>$723.48</td>
+    <td>$1254.58</td>
+   </tr>
+  </table>
+  ```
+
+# The "width" attribute of a "table" element
+
+The width attribute is used to specify the width of the table. The value is in
+pixels, or percentage when followed by a percent sign (%). If the value is
+specified as a percentage, it refers to a percentage of the available space.
+
+.figure
+HTML & XHTML <table> example using the width attribute.
+
+  ```verbatim{frame}
+  <table width="50%" border="1" summary="stock profits">
+   <tr>
+    <th colspan="3">Stock Tracker</th>
+   </tr>
+   <tr>
+    <th>Stock Symbol</th>
+    <td>MSFT</td>
+    <td>GOOG</td>
+   </tr>
+   <tr>
+    <th>Profit</th>
+    <td>$723.48</td>
+    <td>$1254.58</td>
+   </tr>
+  </table>
+  ```
+
+# The <colgroup> element
+
+The <colgroup> tag allows structural divisions to be created within a table.
+The <colgroup> tag allows styles or HTML attributes to be applied to one or
+more columns, all at the same time. If used, place the <colgroup> tag before
+any <thead>, <tfoot>, <tbody>, or <tr> tags within the table. Also, if a
+<caption> tag is used, the <colgroup> tag should occur after it.
+
+A table may contain more than one <colgroup> tag. The number of columns in a
+colgroup is determined either by the use of the <colgroup> tag's span
+attribute, or by using <col> tags between the opening and closing <colgroup>
+tags.
+
+.figure
+HTML & XHTML <colgroup> example using the span attribute to set the number of columns.
+
+  ```verbatim{frame}
+  <table border="1" summary="Stock Performance">
+   <caption>Stock Tracker</caption>
+   <colgroup span="2" width="300"></colgroup>
+    <tr>
+     <th>Stock Symbol</th>
+     <th>Profit</th>
+    </tr>
+    <tr>
+     <td>MSFT</td>
+     <td>$723.48</td>
+    </tr>
+    <tr>
+     <td>GOOG</td>
+     <td>$1254.58</td>
+    </tr>
+  </table>
+  ```
+
+.figure
+HTML <colgroup> example using <col> tags to set the number of columns.
+
+  ```verbatim{frame}
+  <table border="1" summary="Stock Performance">
+   <caption>Stock Tracker</caption>
+   <colgroup>
+    <col width="200">
+    <col width="300">
+   </colgroup>
+    <tr>
+     <th>Stock Symbol</th>
+     <th>Profit</th>
+    </tr>
+    <tr>
+     <td>MSFT</td>
+     <td>$723.48</td>
+    </tr>
+    <tr>
+     <td>GOOG</td>
+     <td>$1254.58</td>
+    </tr>
+  </table>
+  ```
+
+.figure
+XHTML <colgroup> example using <col> tags to set the number of columns.
+
+  ```verbatim{frame}
+  <table border="1" summary="Stock Performance">
+   <caption>Stock Tracker</caption>
+   <colgroup>
+    <col width="200" />
+    <col width="300" />
+   </colgroup>
+    <tr>
+     <th>Stock Symbol</th>
+     <th>Profit</th>
+    </tr>
+    <tr>
+     <td>MSFT</td>
+     <td>$723.48</td>
+    </tr>
+    <tr>
+     <td>GOOG</td>
+     <td>$1254.58</td>
+    </tr>
+  </table>
+  ```
 

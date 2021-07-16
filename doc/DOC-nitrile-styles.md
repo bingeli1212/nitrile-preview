@@ -21,9 +21,29 @@ Following are styles recognized by NITRILE:
   a list of integers separated by spaces.
 
 + frame:1
++ frame:above
++ frame:below
++ frame:hsides
++ frame:vsides
++ frame:lhs
++ frame:rhs
++ frame:box
 
-  Set this option to 1 to allow an outline to be show for the bundle. This
-  would work for some bundles but might not work for all.
+  Set this option to 1 to allow an outline to be show for the bundle. 
+  For tabular bundle the same frame-style can be set to additional values
+  to fine tune the frame around the tabular.
+  Now all bundles support this options.                        
+  
++ rules:groups
++ rules:rows
++ rules:cols
++ rules:all
+
+  The rules-option expresses the inner border between cells.
+  When set to 'rows' only rules between rules are shown. When set to
+  'cols' only rules between columns are shown. When set to 'all'
+  both rules are shown. When set to 'groups' only the rules between
+  groups such as header and body are shown.
 
 + save:a
 + save:b
@@ -126,28 +146,15 @@ Following are styles recognized by NITRILE:
     | John  | 124 Sun Dr.
     ```
 
-+ vrule:|+|+|+|+|+
-+ vrule:|+|++|++|
-+ vrule:|+||+|+|+|+|
-+ vrule:|
-+ vrule:||
-+ vrule:|||
++ rules:above
++ rules:below
++ rules:hsides
++ rules:vsides
++ rules:lhs
++ rules:rhs
++ rules:box
 
-  The vrule-option is to allow for expressing that where vertical
-  rules should appear between columns. The value is a string where
-  each plus-sign denotes a physical column and a vertical-bar denoting
-  the appearance of a vertical rule at that location. It also allows
-  for expressing a double-vertical by the appearance of a
-  double-vertical-bar.
-
-  As a special rule, if the vrule-option is set to be "|||" with any
-  plus-signs, it instructs that it should have a single vertical rule to appear
-  between all columns as well as before the first column and after the last
-  column. On the other hand, if "||" is set, then it expresses that
-  vertical rules should appear at the left hand side of the first column,
-  as well as at the right hand side of the last column. If it is set to
-  "|" without any plus sign, it is to express that a vertical rule should
-  appear only between each columns.
+  The rules-option expresses the inner border between cells.
 
 + cellcolor:a cyan b lime c pink e orange
 

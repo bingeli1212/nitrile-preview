@@ -96,16 +96,33 @@ This allows the table to be constructed one column at a time.
     \data 44
     ```
 
-The tabular border lines can be specified by the vline-style
-and hrule-style options.
+The tabular border lines can be specified by the rules-style
+and frame-style options.
 
-    ```tabular{visual,vrule:|+|+|+|,hline:-}
+    ```tabular{visual,rules:all,frame:box}
     Names | Addr.        | Age
     ==========================
     James | 102 Sun Str. | 29
     Jane  | 202 Rain Rd. | 21
     John  | 330 Star Dr. | 44
     ```
+
+Following are supported options for the frame-style:
+
+- "above" The border is visible on the top side only
+- "below" The border is visible on the bottom side
+- "hsides" The border is visible on the top and bot
+- "vsides" The border is visible on the left and righ
+- "lhs" The border is visible on the left hand side o
+- "rhs" The border is visible on the right hand side
+- "box" The border is visible on all four sides.
+
+Following are supported options for the rules-style:
+
+- "groups" The rules will only be visible between row groups (<thead>, <tfoot>, <tbody>) and column groups (see <colgroup> and <col>).
+- "rows" The rules will be visible between the rows only.
+- "cols" The rules will be visible between the columns only.
+- "all" All rules will be visible.
 
 The alignment of each cell can be expressed by the "halign" style
 option. It expectes a list of alignment format groups, which 
