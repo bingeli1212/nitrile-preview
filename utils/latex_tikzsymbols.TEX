@@ -1,0 +1,221 @@
+%!TeX program=PdfLatex
+\documentclass[]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[overlap,CJK]{ruby}
+\renewcommand\rubysep{0.0ex}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{mathtools}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage{pifont}
+\usepackage{bbold}
+\usepackage{xfrac}
+\usepackage{textcomp}
+\usepackage{commath}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arsech}{arsech}
+\DeclareMathOperator{\arcsch}{arcsch}
+\DeclareMathOperator{\arcoth}{arcoth}
+\DeclareMathOperator{\median}{median}
+\DeclareMathSymbol{\Alpha}{\mathalpha}{operators}{"41}
+\DeclareMathSymbol{\Beta}{\mathalpha}{operators}{"42}
+\DeclareMathSymbol{\Epsilon}{\mathalpha}{operators}{"45}
+\DeclareMathSymbol{\Zeta}{\mathalpha}{operators}{"5A}
+\DeclareMathSymbol{\Eta}{\mathalpha}{operators}{"48}
+\DeclareMathSymbol{\Iota}{\mathalpha}{operators}{"49}
+\DeclareMathSymbol{\Kappa}{\mathalpha}{operators}{"4B}
+\DeclareMathSymbol{\Mu}{\mathalpha}{operators}{"4D}
+\DeclareMathSymbol{\Nu}{\mathalpha}{operators}{"4E}
+\DeclareMathSymbol{\Omicron}{\mathalpha}{operators}{"4F}
+\DeclareMathSymbol{\Rho}{\mathalpha}{operators}{"50}
+\DeclareMathSymbol{\Tau}{\mathalpha}{operators}{"54}
+\DeclareMathSymbol{\Chi}{\mathalpha}{operators}{"58}
+\DeclareMathSymbol{\omicron}{\mathord}{letters}{"6F}
+\usepackage{changepage}
+\usepackage{hang}
+\usepackage{listings}
+\usepackage{anyfontsize}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage[export]{adjustbox}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{hhline}
+\usepackage{array}
+\usepackage{xtab}
+\usepackage{multicol}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newsavebox\ltmcbox
+\newenvironment{fakelongtable} {\setbox\ltmcbox\vbox\bgroup \csname
+@twocolumnfalse\endcsname \csname col@number\endcsname\csname
+@ne\endcsname} {\unskip\unpenalty\unpenalty\egroup\unvbox\ltmcbox}
+\newcommand{\textzerosubscript}{\raisebox{-0.4ex}{\scriptsize 0}}
+\newcommand{\textonesubscript}{\raisebox{-0.4ex}{\scriptsize 1}}
+\newcommand{\texttwosubscript}{\raisebox{-0.4ex}{\scriptsize 2}}
+\newcommand{\textthreesubscript}{\raisebox{-0.4ex}{\scriptsize 3}}
+\newcommand{\textfoursubscript}{\raisebox{-0.4ex}{\scriptsize 4}}
+\newcommand{\textfivesubscript}{\raisebox{-0.4ex}{\scriptsize 5}}
+\newcommand{\textsixsubscript}{\raisebox{-0.4ex}{\scriptsize 6}}
+\newcommand{\textsevensubscript}{\raisebox{-0.4ex}{\scriptsize 7}}
+\newcommand{\texteightsubscript}{\raisebox{-0.4ex}{\scriptsize 8}}
+\newcommand{\textninesubscript}{\raisebox{-0.4ex}{\scriptsize 9}}
+\newenvironment{packed_enumerate}{
+  \begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+  }{\end{enumerate}}
+\newenvironment{packed_itemize}{
+  \begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+  }{\end{itemize}}
+\newenvironment{packed_description}{
+  \begin{description}
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+  }{\end{description}}
+\newenvironment{packed_hanginglist}{
+  \begin{hanginglist}
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+  }{\end{hanginglist}}
+\usepackage{parskip}
+\usepackage{tikzsymbols}
+\begin{document}
+\title{tikzsymbols}
+\author{}
+\maketitle
+
+
+\section{Cooking-symbols}
+
+\begin{flushleft}
+Kochtopf \Kochtopf \\
+pot \pot \\
+Bratpfanne \Bratpfanne \\
+fryingpan \fryingpan \\
+Schneebesen \Schneebesen \\
+eggbeater \eggbeater \\
+Sieb \Sieb \\
+sieve \sieve \\
+Purierstab \Purierstab \\
+blender \blender \\
+Dreizack \Dreizack \\
+trident \trident \\
+Backblech \Backblech \\
+bakingplate \bakingplate \\
+Ofen \Ofen \\
+oven \oven \\
+Pfanne \Pfanne \\
+pan \pan \\
+Herd \Herd \\
+cooker \cooker \\
+Saftpresse \Saftpresse \\
+squeezer \squeezer \\
+Schussel \Schussel \\
+bowl \bowl \\
+Schaler \Schaler \\
+peeler \peeler \\
+Reibe \Reibe \\
+grater \grater \\
+Flasche \Flasche \\
+bottle \bottle \\
+Nudelholz \Nudelholz \\
+rollingpin \rollingpin \\
+Knoblauchpresse \Knoblauchpresse \\
+garlicpress \garlicpress \\
+\end{flushleft}
+
+\section{Emoticons}
+
+\begin{flushleft}
+Smiley \Smiley \\
+Sadey \Sadey \\
+Neutrey \Neutrey \\
+Annoey \Annoey \\
+Laughey \Laughey \\
+Winkey \Winkey \\
+oldWinkey \oldWinkey \\
+Sey \Sey \\
+Xey \Xey \\
+Innocey \Innocey \\
+wInnocey \wInnocey \\
+Cooley \Cooley \\
+Tongey \Tongey \\
+Nursey \Nursey \\
+Vomey \Vomey \\
+Walley \Walley \\
+rWalley \rWalley \\
+Cat \Cat \\
+Ninja \Ninja \\
+Sleepey \Sleepey \\
+NiceReapey \NiceReapey \\
+\end{flushleft}
+
+
+\section{3D Emoticons}
+
+\begin{flushleft}
+dSmiley \dSmiley \\
+dSadey \dSadey \\
+dNeutrey \dNeutrey \\
+dAnnoey \dAnnoey \\
+dLaughey \dLaughey \\
+dWinkey \dWinkey \\
+dSey \dSey \\
+dXey \dXey \\
+dInnocey \dInnocey \\
+dCooley \dCooley \\
+dNinja \dNinja \\
+drWalley \drWalley \\
+dWalley \dWalley \\
+dVomey \dVomey \\
+dNursey \dNursey \\
+dTongey \dTongey \\
+dSleepey \dSleepey \\
+olddWinkey \olddWinkey \\
+\end{flushleft}
+
+
+\section{Other symbols}
+
+\begin{flushleft}
+Strichmaxerl \Strichmaxerl \\
+Candle \Candle \\
+Fire \Fire \\
+Coffeecup \Coffeecup \\
+Chair \Chair \\
+Bed \Bed \\
+Tribar \Tribar \\
+Moai \Moai \\
+\end{flushleft}
+
+
+\section{Trees}
+
+
+
+
+\end{document}
