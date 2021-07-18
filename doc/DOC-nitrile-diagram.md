@@ -742,13 +742,14 @@ same direction going from the second last point to the last point. Thus, it is
 important that there are at least two path points prior to creating this path
 point.
 
-- [ellipse:dx,dy] 
+- [ellipse:dx,dy,sweepflag] 
 
-This is to create a new C point. This new point is located at a distance that is
-'dx/dy' away from the current point. The cubic Bezier simulates a quarter of the
-arc on a full ellipse, and will always be drawn from the current point to the
-new point as a sweep that is counter-clockwise. If a clockwise sweep is desired,
-set the "^sweepflag:1" directive before this operation.
+This is to create a new C point. This new point is located at a distance that
+is 'dx/dy' away from the current point. The cubic Bezier simulates a quarter of
+the arc on a full ellipse, and will always be drawn from the current point to
+the new point as a sweep that is counter-clockwise. The "sweepflag" is to
+express the direction of the sweep. It should be set to 0 when a anti-clockwise
+sweep is desired.  If a clockwise sweep is desired, set the "sweepflag" to 1.
 
 - [m:dx,dy]
 
@@ -1120,16 +1121,6 @@ The '^node:1', '^box:1' and '^car:1' are each used to setup the offset so that
 it aligns with the location of a node, a box and/or a Cartesian plane. For the
 node and box, only the x/y locations are altered. However, for a Cartesian
 plane, both the x/y locations and x/y scalings are alterd.
-
-
-## The 'sweepflag'
-
-The 'sweepflag' is an internal flag of 0/1 that determines the sweep rotation of certain
-operation. The default value is 0, which denotes a counter-clockwise ratation. However,
-if set to 1 it would mean a clockwise rotation. It could be set by the directive of
-"^sweepflag:1".
-
-    draw ^sweepflag:1 (0,0) [ellipse:4,3]
 
 
 
