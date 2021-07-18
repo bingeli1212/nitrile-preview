@@ -3679,25 +3679,25 @@ the same thing except for asking for a different buffer to be
 retrieved.
 
     ```diagram
-    %=?a
-    trump-diamond-J {scaleX:0.5,scaleY:0.5} 2  1
-    trump-heart-Q   {scaleX:0.5,scaleY:0.5} 7  1
-    trump-spade-K   {scaleX:0.5,scaleY:0.5} 12 1
-    trump-club-A    {scaleX:0.5,scaleY:0.5} 17 1
-    %=
-    %=?b
-    trump-diamond-10 {scaleX:0.5,scaleY:0.5} 2  5
-    trump-heart-9    {scaleX:0.5,scaleY:0.5} 7  5
-    trump-spade-8    {scaleX:0.5,scaleY:0.5} 12 5
-    trump-club-7     {scaleX:0.5,scaleY:0.5} 17 5
-    %=
-    %=?c
-    trump-diamond-6  {scaleX:0.5,scaleY:0.5} 2  9
-    trump-heart-5    {scaleX:0.5,scaleY:0.5} 6  9
-    trump-spade-4    {scaleX:0.5,scaleY:0.5} 10 9
-    trump-club-3     {scaleX:0.5,scaleY:0.5} 14 9
-    trump-club-2     {scaleX:0.5,scaleY:0.5} 18 9
-    %=
+    %?a
+    trump.diamond.J {scaleX:0.5,scaleY:0.5} 2  1
+    trump.heart.Q   {scaleX:0.5,scaleY:0.5} 7  1
+    trump.spade.K   {scaleX:0.5,scaleY:0.5} 12 1
+    trump.club.A    {scaleX:0.5,scaleY:0.5} 17 1
+    %
+    %?b
+    trump.diamond.10 {scaleX:0.5,scaleY:0.5} 2  5
+    trump.heart.9    {scaleX:0.5,scaleY:0.5} 7  5
+    trump.spade.8    {scaleX:0.5,scaleY:0.5} 12 5
+    trump.club.7     {scaleX:0.5,scaleY:0.5} 17 5
+    %
+    %?c
+    trump.diamond.6  {scaleX:0.5,scaleY:0.5} 2  9
+    trump.heart.5    {scaleX:0.5,scaleY:0.5} 6  9
+    trump.spade.4    {scaleX:0.5,scaleY:0.5} 10 9
+    trump.club.3     {scaleX:0.5,scaleY:0.5} 14 9
+    trump.club.2     {scaleX:0.5,scaleY:0.5} 18 9
+    %
     ```
 
     ```diagram
@@ -3713,29 +3713,26 @@ retrieved.
     ```
 
 Note that it is specifically designed such that the copied lines will NOT
-include any line that look like a "paste" command. When such a line is
-enountered, the copy buffer is interrupted. In the following example only the
-first "draw" command is copied. The other two lines are not copied.
+include any line that is a "paste" command.  In the following example only the
+first "draw" command is copied to buffer "a".  The presence of the paste
+of "b" buffer interrupted the copy buffer.
 
-    %=?a
-    draw (0,0)--(4,4)
+    %?a
+    \draw (0,0)--(4,4)
     %=b
-    draw (0,0)--(5,5)
-    draw (0,0)--(6,6)
-    %=
+    \draw (0,0)--(5,5)
+    \draw (0,0)--(6,6)
+    %
 
-However, another "copy" command is encountered while there is an "active" copy
-buffer, then the previous copy buffer is interrupted and a new copy buffer is
-create to hold future lines.  In following example the first "draw" command is
-copied into to the "a" buffer, and last two "draw" commands are copied to
-buffer "b".
+In the example below the first "draw" command is copied to 
+the "a" buffer and the last two "draw" commands to the "b" buffer.
 
-    %=?a
-    draw (0,0)--(4,4)
-    %=?b
-    draw (0,0)--(5,5)
-    draw (0,0)--(6,6)
-    %=
+    %?a
+    \draw (0,0)--(4,4)
+    %?b
+    \draw (0,0)--(5,5)
+    \draw (0,0)--(6,6)
+    %
 
 
 # Fill-out data
@@ -3763,28 +3760,29 @@ each of the four hrule, and will then pull the math text from the style
 and the use it to place it on the top of the hrule.
     
     ```diagram{width:100%,save:ex3,viewport:22 12}
-    origin ^northwest
-    draw (0,0) -- [v:-14]
-    draw (3,0) -- [v:-14]
-    draw (6,0) -- [v:-14]
-    for y:=[0:2:12]:
-      draw (0,-${y}) [h:22]
-    % table
-    origin ^down:1
-    origin ^x:1.5
-    text.ctr "x"  "y"  ^down:0  (0,0) [h:3] 
-    text.ctr "1"  "2"  ^down:2  (0,0) [h:3] 
-    text.ctr "2"  "3"  ^down:4  (0,0) [h:3]
-    text.ctr "3"  "4"  ^down:6  (0,0) [h:3]
-    text.ctr "4"  "5"  ^down:8  (0,0) [h:3]
-    text.ctr "10" "11" ^down:10 (0,0) [h:3]
-    origin ^x:3.5
-    text.rt "{{f(x,y)=x^2+y+1}}"       ^down:0  (3,0)
-    text.rt "{{f(1,2)=4}}"             ^down:2  (3,0)
-    text.rt "{{f(2,3)=\hrule[A]{5}}}"     ^down:4  (3,0) 
-    text.rt "{{f(3,4)=\hrule[B]{5}}}"     ^down:6  (3,0) 
-    text.rt "{{f(4,5)=\hrule[C]{5}}}"     ^down:8  (3,0) 
-    text.rt "{{f(10,11)=\hrule[D]{5}}}"   ^down:10 (3,0) 
+    \origin ^northwest
+    \draw (0,0) -- [v:-14]
+    \draw (3,0) -- [v:-14]
+    \draw (6,0) -- [v:-14]
+    \for y=[0:2:12]; \do
+      \draw (0,-y) [h:22]
+    \done
+    -- table
+    \origin ^down:1
+    \origin ^x:1.5
+    \drawtext.ctr "x"  "y"  ^down:0  (0,0) [h:3] 
+    \drawtext.ctr "1"  "2"  ^down:2  (0,0) [h:3] 
+    \drawtext.ctr "2"  "3"  ^down:4  (0,0) [h:3]
+    \drawtext.ctr "3"  "4"  ^down:6  (0,0) [h:3]
+    \drawtext.ctr "4"  "5"  ^down:8  (0,0) [h:3]
+    \drawtext.ctr "10" "11" ^down:10 (0,0) [h:3]
+    \origin ^x:3.5
+    \drawtext.rt "{{f(x,y)=x^2+y+1}}"       ^down:0  (3,0)
+    \drawtext.rt "{{f(1,2)=4}}"             ^down:2  (3,0)
+    \drawtext.rt "{{f(2,3)=\hrule[A]{5}}}"     ^down:4  (3,0) 
+    \drawtext.rt "{{f(3,4)=\hrule[B]{5}}}"     ^down:6  (3,0) 
+    \drawtext.rt "{{f(4,5)=\hrule[C]{5}}}"     ^down:8  (3,0) 
+    \drawtext.rt "{{f(10,11)=\hrule[D]{5}}}"   ^down:10 (3,0) 
     ```
 
     ```diagram{width:100%,A:8,B:14,C:22,D:112,load:ex3}
@@ -3795,7 +3793,7 @@ and the use it to place it on the top of the hrule.
 
 An external PNG file could be shown from within a Diagram. 
 
-    image "image-clock.png"
+    \image "image-clock.png"
 
 The current implementation would always show the external image centered at the
 viewport, with the image enlarged or shrinked necessary to cover the entire
@@ -3805,7 +3803,13 @@ The path points and config parameters are not needed for the 'image' command and
 are silently ignored if they are present. The name of the image file must appear
 as the text part of the argument.
 
-If two or more image files are detected they will all be shown. The order of
-these images as they are drawn is the same order as they appear in the command
-line. Each image will be shown in the same manner as was mentioned above.
+If more than one images are expressed, then only one of the images will be chosen,
+and the algorithm as to which one is chosen depends on the specific platform. For instance,
+for HTML/EPUB translation a SVG file will be preferred over a PNG or PDF, and for LATEX/CONTEX
+a PDF file would be preferred over a PNG or SVG.
+
+    \image "image-clock.png" "image-clock.svg" "image-clock.pdf"
+
+
+
 
