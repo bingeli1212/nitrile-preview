@@ -552,33 +552,6 @@ instead.
 
 
 
-## The abr-join 
-
-An abr-join instructs that a curved line to be drawn between two points. This
-curved line is typically a quadratic Bezier curve, make the next point a Q
-point.
-
-    path a = ^abr:30 (0,3)~~(10,3) 
-
-For a quadratic Bezier curve, it is important that a single control point be
-specified. In the case of a abr-join, the control point of this quadratic Bezier
-curve is controled by the settings of the "abr" variable, which is a directive
-parameter set by "^abr:30".
-
-This parameter is a number that denotes a rotation angle in degrees. Here are
-the steps. First, a straight line is to be formed first between the two points.  
-Then, this line is to be rotated around the first point in a clockwise rotation
-direction that equals the angle in dgrees, or 30 in this case. Then, another
-separate rotation is to be done with the same straight line but it would be
-rotated around the second point and in a counter-clockwise rotation for the same
-angle, 30 degrees. Each rotations would each have produced a ray and the control
-point of the quadratic Bezier curve is where these two rays meet.
-
-A positive number of the "abr" variable would means for the first point to
-rotate clockwise and the second point to rotate counter-clockwise. And a
-negative number would have meant for either one of them to do the other way.
-
-
 
 ## The hobby-join
 
@@ -608,6 +581,29 @@ the 'lastpt' location.
 
 The previous example would have joint two path points by a quardratic Bezier curve
 with control points at (4,-1), relative to the first point that is (0,0).
+
+
+## The veer-join 
+
+An veer-join instructs that a curved line to be drawn between two points. This
+curved line is typically a quadratic Bezier curve, make the next point a Q
+point.
+
+    path a = (0,3)|veer:30|(10,3) 
+
+This parameter is a number that denotes a rotation angle in degrees. Here are
+the steps. First, a straight line is to be formed first between the two points.  
+Then, this line is to be rotated around the first point in a clockwise rotation
+direction that equals the angle in dgrees, or 30 in this case. Then, another
+separate rotation is to be done with the same straight line but it would be
+rotated around the second point and in a counter-clockwise rotation for the same
+angle, 30 degrees. Each rotations would each have produced a ray and the control
+point of the quadratic Bezier curve is where these two rays meet.
+
+A positive number would means for the first point to
+rotate clockwise and the second point to rotate counter-clockwise. And a
+negative number would have meant for either one of them to do the other way.
+
 
 
 

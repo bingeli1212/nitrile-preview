@@ -345,23 +345,25 @@ Following are styles recognized by NITRILE:
   draw a looped edge to go from the node to itself and this values determines
   how wide the looped edge should be separated.
 
-+ protrude:<length> 
-
-  The protrude-option specifies a length that goes beyond the surface. It is
-  currently being used by 'edge' operation when it needs to draw a looped edge
-  of a single node that connects to itself, in which case the protrude-option
-  is used to determine how far apart the loop will go beyond the surface of the
-  node.
-
-+ abr:<degrees>
++ abr:<degree> <degree> <dist>
  
-  The abr-option specifies the aberration from the norm.  It is a number that
+  The abr-style specifies the aberration from the norm.  The first number that
   expresses an angle in the unit of degrees.  It is currently being utilized by
   the 'edge' operation such that when this option is set it expresses that a
   Bezier curve should be drawn instead of a straight line that connects two
   different nodes. A negative value expresses that it should veer to the left
   hand side of the normal trajectory. A positive value expresses that it should
-  veer to the right hand side.
+  veer to the right hand side. 
+
+  The second and the third arguments are used when drawing a hoop around the same
+  node to express an edge that goes out from the node and comes back to the same
+  node. The second argument specifies the wide-view angle in degrees for the two
+  edges that comes out the node, and the third argument expresses how far away
+  the hoop is from the node. When not specified, the first argument is 0,
+  the second argument is 45, and the last argument is 2.
+
+  When drawing an edge that is a hoop, the first argument expresses the direction
+  where the center of the hoop is facing outward.
 
 + shift:<length>
 
