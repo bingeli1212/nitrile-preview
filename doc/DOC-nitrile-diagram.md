@@ -571,16 +571,29 @@ they must not be "colinear".
 
 
 
-## The q-join
+## The qbezier-join
 
-The q-join would join two absolute path points by the virtual of a quardratic 
+The qbezier-join would join two absolute path points by the virtual of a quardratic 
 Bezier curve. The control point of the curve is to be expressed relative to
 the 'lastpt' location.
 
-    path a = (0,0)|q:4,-1|(5,5)
+    path a = (0,0)|qbezier:4,-1|(5,5)
 
 The previous example would have joint two path points by a quardratic Bezier curve
-with control points at (4,-1), relative to the first point that is (0,0).
+with control point at (4,-1).
+
+
+## The cbezier-join
+
+The cbezier-join would join two absolute path points by the virtual of a cubic 
+Bezier curve. The first control point of the curve is to be expressed relative to
+the 'lastpt' location, and the second control point is to be expressed relative
+to the 'new' location.
+
+    path a = (0,0)|cbezier:4,-1,0,-5|(5,5)
+
+The previous example would have joint two path points by a cubic Bezier curve
+with first control point at (4,-1) and the second control point at (5,0).
 
 
 ## The veer-join 
