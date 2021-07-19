@@ -1636,6 +1636,21 @@ This would have been equivalent to the following command
 
 
 
+# The complex number
+
+The quantity within a 'var' and 'array' command is a complex number,
+which consists of the 'real' and 'imaginary' components. In many situations
+only the 'real' component is to be recognized and the 'imaginary' component
+ignored. However, the real and imaginary component can also be extracted 
+by the syntax of '$a.re' and '$a.im', assuming that 'a' is a variable
+holding a complex number.
+
+Following is an example that would draw a dot at the location of (1,2).
+
+    \var a = 1 + 2i
+    \drawdot ($a.re,$a.im)
+
+
 # Array of scalars
 
 A list of scalars is also an expression that denotes a list of scalars, 
