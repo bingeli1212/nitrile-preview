@@ -378,4 +378,39 @@ Following are other options.
   feature.
 
 
+# Subfigure
 
+Following is a minimum working version. Note that \newsubfloat command must
+be called at the preamble.
+
+    \documentclass{memoir}% http://ctan.org/pkg/memoir
+    \usepackage{graphicx}% http://ctan.org/pkg/graphicx
+    \newsubfloat{figure}% Allow subfloats in figure environment
+    \begin{document}
+    \begin{figure}
+      \centering
+      \subbottom[Increase]{%
+        \includegraphics[width=0.3\linewidth]{example-image-a}}
+      \subbottom[Increase]{%
+        \includegraphics[width=0.3\linewidth]{example-image-b}}
+      \subbottom[Increase]{%
+        \includegraphics[width=0.3\linewidth]{example-image-c}}
+      \caption{Round}
+    \end{figure}
+    \end{document}
+    \newsubfloat creates the appropriate interface and output-generating structure for a sub-float environment. \subbottom[<ToC>][<caption>]{<stuff>} sets a sub-float with a caption at the bottom (a counterpart to \subtop).
+
+
+# Longtable
+
+Following is a minimum working example:
+
+    \begin{longtable}{*{8}{c}}
+        \caption{Caption of the normal \texttt{table} environment.}
+        \label{table}\\
+      \endfirsthead
+    \multicolumn{8}{c}{\tablename~\thetable\enspace(continued)}\\
+      \endhead
+            1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+            1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
+    \end{longtable}
