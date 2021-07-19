@@ -2367,24 +2367,25 @@ place a label that run along the slope of the line.
 
     \drawslopedtext "Hello" "World" (0,0) [h:4] [v:4]
 
-By default, the text will be placed on top of the line. But it can be 
-placed at the bottom of the line if the ".bot" subcommand is supplied.
+By default, the text will be placed at the center of the line, following the
+slope of the slide.  However, this position can be changed by adding the option
+to the end of the command.  For instance, the ".bot" option would have asked that
+the text be placed at the bottom of the line.
 
     \drawslopedtext.bot "Hello" "World" (0,0) [h:4] [v:4]
 
-The "mar" option can be used to add a marker line that extends from the left/
-right boundaries of the line segment. 
+Note that the text will still be following the slope of the line. The same
+option can be replaced by others such as ".top", ".lft", ".rt", etc..
 
-    \drawslopedtext "{{5\sqrt{2}}}" (0,0)--(5,5)
+The mar-style if specified would ask that two arrows be added at either end of
+the text to connect to the two end points of the line segment.  The style
+option is an integer expressing the length of each arrow in grid units.
 
-The "pen" option would have also added two vertical lines that marks the boundaries
-of the line segments. The number after the "pen" expresses the length of the arrow
-in grid unit.
+The pen-style would have asked that two vertical lines be added at the two end points
+of the line segment. Each vertical line is perpendicular to the slope of the line segment.
+The style option value expresses the lengh of line in each direction.
 
-    \drawslopedtext "{{\sqrt{2}}}" {mar:1,pen:0.25} (0,0)--(5,5)
-
-The number that comes after the "pen" expressed the half length of the line
-in grid unit.
+    \drawslopedtext "\(\sqrt{2}\)" {mar:1,pen:0.25} (0,0)--(5,5)
 
 
 
@@ -2464,15 +2465,15 @@ text will be aligned in such a way that it appear on top of the
 path point and centered horizontally. Without the option,
 it defaults to 'urt'.
 
-    \drawtext.top   -  top
-    \drawtext.bot   -  bottom
-    \drawtext.lft   -  left
-    \drawtext.rt    -  right
-    \drawtext.ulft  -  upper left
-    \drawtext.llft  -  lower left
-    \drawtext.urt   -  upper right
-    \drawtext.lrt   -  lower right
-    \drawtext.ctr   -  centering the text
+-   \drawtext.top   -  top
+-   \drawtext.bot   -  bottom
+-   \drawtext.lft   -  left
+-   \drawtext.rt    -  right
+-   \drawtext.ulft  -  upper left
+-   \drawtext.llft  -  lower left
+-   \drawtext.urt   -  upper right
+-   \drawtext.lrt   -  lower right
+-   \drawtext.ctr   -  centering the text
 
 It is also possible to express the fact that each path point is to show a
 different piece of text, by placing double backslashes inside the text, such
@@ -2513,10 +2514,11 @@ possible for specifying both a monospace and an italic.
 # The 'drawlabel' command
 
 The 'drawlabel' command would have been the same as for the 'drawtext' except
-that it does not support drawing multiple line text as that of the 'drawtext'
-command. In addition, it might use a slightly technical approach for each
-translation that is different than that of 'drawtext', thus might address some
-problems observed in some translation when 'drawtext' is used.
+that it does not support drawing multiple line text as that was the case for
+the 'drawtext' command. In addition, the technical approach might be different
+for that used by the 'drawtext' command, and the exact differences varies
+depending on the translation. Following discusses some of the differences
+observed in some translation:
 
 - For MF, when 'drawlabel' is called, it uses the 'label.urt' command to draw
   the text, while when 'drawtext' is called, it first calls 'textext', which
@@ -2542,146 +2544,66 @@ problems observed in some translation when 'drawtext' is used.
 
 # The 'car' command
 
-The 'car' is a compound command that sets up a Cartesian coordinate.
+The car-command would setup and draw a Cartesian coordinate frame, with optional
+axes, grid lines/numbers, and others.
+Following are like cases where this command is involed,
 
 - car.1 (5,5)
 - car.1 {xgrid:0.5, ygrid:2}
 - car.1 {xgrid:0.5, ygrid:2, xaxis:-5 5 1, yaxis:-5 5 1}
 - car.1 {xgrid:0.5, ygrid:2, xaxis:-5 5 1, yaxis:-5 5 1, xtick:-4 -3 -2 -1 1 2 3, ytick:-4 -3 -2 -1 0 1 2 3 4}
 
-Without any option, each path point would have expressed a new Cartesian
-coordinate that is centered at that location. For instance, the first example
-above would have setup a Cartesian coordinate plane such that its origin is
-located at (5,5).
+This command is typically be supplied by a command option, which expresses the
+ID(s) of the Cartesian coordinate system. Each path point of the command line
+expresses the location where the origin of the Cartesian coordinate frame is to
+be located within the viewport.  For instance, the first example above
+expresses that the origin of the first Cartesian coordinate frame be located at
+(5,5).
 
-Additional configuration can be added to this plane, such as with instructions
-to draw the x/y axes, or to add tick marks to each axis. These configurations
-are done by specifying additional config parameters in the same command line of
-'car'.
+Additional style option can be added.  For instance, the xgrid-style and
+ygrid-style asks that the coordinates in the x-axis and/or y-axis direction be
+scaled. For instance, the "xgrid:0.5" would have meant that a viewport grid of 1 be
+translated to a x-axis distance of 0.5 for this Cartesian frame, effectively 
+having scaled the coordinate by 2.
 
-The command option is the Id of this Cartesian plane, which can be used later to
-identify this plane. This is similar to how an Id is used to identify a node, or
-a box. 
+The xaxis-style controls the appearance of the x-axis of the frame.  This
+option expects two or three numbers. The first two numbers express the
+minimum/maximum the axis would have to cover. For instance, an "xaxis:-5 5"
+would have meant for an x-axis to be drawn that covers the x-coordinates from
+-5 to 5. These numbers are in the unit of the Cartesian grid unit. Similarly,
+"yaxis:-5 5" would have means for a y-axis to be drawn to cover a range of -5
+to 5. Note that the actual length of the x-axis or y-axis also depends on 
+the current settings of the xgrid-style and ygrid-style.
 
-The 'xgrid' and 'ygrid' option would scale a point on a Cartesian plane. The
-number assigned to the 'xgrid' expresses the length each viewport grid would
-mean for the grid of the Cartesian. Thus, "xgrid:0.5" would have meant that a
-viewport grid of 1 would have translated to a distance of 0.5 for this Cartesian
-grid, in the horizontal direction. Similarly, a "ygrid:2" would have mean that a
-single viewport grid would have translated to a distance of 2 unit grid in the
-Cartesian plane, in the vertical direction.
+The third argument to the xaxis-style and yaxis style is a number that
+expresses whether an arrowhead is to appear. It is 0 if no arrowhead is to
+appear, 1 if arrowhead is to appear at the positive end, and 2 if arrowhead is
+to appear at the negative end, or 3 if arrowhead is to appear at both ends.
 
-The drawing of x/y axes are controlled by the appearnces of the "xaxis" and
-"yaxis" config options. Each option is to expected two or three numbers, where
-the first two denotes the range of values in that direction. For instance, an
-"xaxis:-5 5" would mean for a x-axis to be drawn that would cover a range of -5
-to 5 horizontally, in Cartesian grid unit. Similarly, "yaxis:-5 5" would have
-means for a y-axis to be drawn that covers a range of -5 to 5 vertically, in
-Cartesian grid unit.
+The xtick-style and ytick-style options controls the appearances of the ticks
+on x/y-axis.  The option value is a list of numbers for the ticks.
 
-By default, the axis is drawn as a line, with line size and color taken from the
-current config settings. However, we can instruct that the axis be drawn either
-as an arrow, or revarrow, or dblarrow by attaching an integer as the third
-number to the "xaxis" and/or "yaxis" config option. The number 1 means an
-arrowhead at the right hand side, and 2 means a arrowhead at the left hand side,
-and a number 3 means two arrow heads on both sides.
-
-Drawing of ticks marks on either axes is to be done by adding the "xtick" and
-"ytick" options. Both of these options would include a set of number, expressing
-the location of the tick marks at that location of the axis. 
-
-Once specified, we can draw a point on this Cartesian plane using a special notation
-of an absolute path point such as the following.
+After a Cartesian frame is created, it can be used to convert a point on this frame
+back to the point on the viewport. In the following example we are drawing
+a dot at the location that corresponds to the point of (4,3) within the cartesian
+frame.
 
     \drawdot (#car:1,4,3)
 
-This point means that a coordinate point of this Cartesian plane at (4,3). This
-point is then automatically converted to a viewport coordinate to be drawn by
-the 'drawdot' command. Similarly, a line can be drawn between any two points of this 
-Cartesian plane such as the following.
+Similarly, we can draw line segment can be drawn between Cartesian point (4,3) and (5,10)
+using the following command.
 
     \draw (#car:1,4.3)--(#car:1,5,10)
 
-In addition, there is a "^car" path directive. For instance we can draw the previous two 
-points using the following 'draw' command and the result will be exactly the same.
+In addition, there is a "^car" path directive such that when set, would have
+setup for the future path points to be constructed relative to this new origin
+and with scaling factors congruent to each of the scaling factors of the
+Coordiante frame. For instance we can draw the previous two points using the
+following 'draw' command and the result will be exactly the same.
 
     \draw ^car:1 (4,3)--(5,10)
 
-This is because the "^car:1" directive would have configured the current offset and offset scale
-to match those of the Cartesian plane #1. In particular, the offset center is set to the location
-the plane center has been set up to, and then the horizontal/vertical scale is then each set to match
-that of the xgrid/ygrid of that plane. Note that the "car" is to be followed by a colon instead of
-the period, and it only affects the current path expresison.
 
-
-
-
-# The 'barchart' command
-
-The 'barchart' is another compound command that is to be used
-with many subcommands. Following is a list of some
-of its subcommands.
-
-- barchart-setup xorigin yorigin xwidth ywidth xrange yrange
-- barchart-bbox
-- barchart-vbar
-- barchart-ytick
-- barchart-xtext
-
-The 'barchart-setup' command would setup the barchart and config it.
-The 'xorigin' and 'yorigin' are to state the grid coordinates where
-lower left hand corner is to appear in the Diagram. Note that this
-number is subject to current settings of 'refx', 'refy', 'refsx' and
-'refsy' settings.
-
-The 'xwidth' and 'ywidth' is to state the width and height of the bar
-chart measured in grid length. Thus, setting them to '10' and '15'
-would have a barchart of 10 grids wide and 15 grids tall.
-
-The 'xrange' and 'yrange' is to state the input range for the
-x-direction and y-direction axes. Specifically, if the bars are going
-to be drawn vertically, from bottom to top, then the 'yrange' should
-be stated as the highest number of the tallest bar,and 'xrange' should
-be stated as the total number of bars minus one. For example, if we
-were to show five bars, that is 0.1, 0.3, 0.2, 0.4, 0.2, then the
-'yrange' should be set to 0.4, and 'xrange' should be set to "5"
-Following example shows how to set up a barchart that is to be placed
-at (0,0), with a width of 10, and height of 15, and with the 'xrange'
-set to 5 and 'yrange' set to 0.4.
-
-    barchart-setup 0 0 10 15 5 0.4
-
-The 'barchart-bbox' is to draw a bounding box covering the entire
-barchart- It does not require any arguments.
-
-The 'barchart-vbar' is to draw vertical bars. The arguments are the
-y-values of the bar themselves. Thus, to draw the previous five bars,
-it will be
-
-    barchart-vbar 0.1 0.3 0.2 0.4 0.2
-
-The 'barchart-ytick' operation is to draw "ticks" along its y-axis on
-the left hand side, and also show the label for each axis to its left
-hand side. Its arguments are the location of ticks, and they should be
-stated in the same input range as those of the 'vbar'. For example, if
-ticks were to be placed at the location of '0.1', '0.2' and '0.3',
-then following command should be issued.
-
-    barchart-ytick 0.1 0.2 0.3
-
-The 'barchart-xtext' is to add information at the bottom of each bar
-as to express what these bars are intended for. The text must be
-provided by a set of quotation marks that must proceed all options and
-scalars. The scalars express the location of vertical bars on x-axis.
-Thus, if the input range has been set to 5, the first bar is to appear
-between 0-1, and second bar 1-2, and so on, thus, the center location
-for the first vertical bar is 0.5, and center location for the second
-bar is 1.5, etc.
-
-    barchart-xtext "P(0)\\P(1)\\P(2)" 0.5 1.5 2.5
-
-The text will always be centered at location, and placed directly
-below the bar.
 
 # The 'if' command
 
@@ -2726,17 +2648,16 @@ joint by AND/OR.
       \show ${i} ${j} ${k}
     \fi
 
-It should be pointed out that all joins are treated equally. This means that
-they will not be internally regrouped based on the order of operations of these
-joins, as might have been the case for some other languages. The result of a
-previous join becomes the input to the next join.
+It should be pointed out that all logical operators are treated equally. This
+means that they will not be internally regrouped based on the preferences of
+one operator over the others, which might have been the cases for some other
+programming languages.
 
-In cases where there is a misspell, or the join simply does not exist, then the
-result of this Boolean expression simply overrides the one before it. For
-instance, the following 'if' command considers the expression true only if
-variable 'j' is set to 10, completely ignoring the state of variable 'i',
-because of the fact that there isn't a join thus the second expression
-always overrides the first.
+If an invalid logical operator is specified, then Boolean expression simply
+overrides the one before it. For instance, the following 'if' command considers
+the expression true only if variable 'j' is set to 10, completely ignoring the
+state of variable 'i', because of the fact that there isn't a join thus the
+second expression always overrides the first.
 
     \if i > 10; j == 10; \then
       \show ${i} ${j}
@@ -2750,94 +2671,74 @@ A 'for' command is provided by Diagram such that a number of commands
 can be repetitively executed, and each iteration these commands would
 have been run under a different set of arguments. The basic syntax is
 
-    \for a in [1, 2, 3, 4]; \do
-      \draw (${a},${a})--(0,0)
+    \for a in 1 2 3; \do
+      \draw (a,a)--(0,0)
     \done
 
-In the example, the 'draw' command will be executed exactly four
-times, each of which looks like the following.
+Following would have produced the same result as the one above.
+
+    \for a in [1,2,3]; \do
+      \draw (a,a)--(0,0)
+    \done
+
+In eacho of the previous two examples, the 'draw' command would all have been
+executed three times, and can be considered equivalent to the following:     
 
     \draw (1,1)--(0,0)
     \draw (2,2)--(0,0)
     \draw (3,3)--(0,0)
-    \draw (4,4)--(0,0)
 
 The 'for' command starts with the keyword 'for', followed by a one or more
-pairing of a "loop variable" to a range of floats. 
-Each pairing must be terminated by a semicolon,
-and additional pairs are allowed. 
-The last part of the 'for' command must be the word "do".
+pairing of a "loop variable" to a range of floats.  Each pairing must be
+terminated by a semicolon, and additional pairs are allowed.  The last part of
+the 'for' command must be the word "do".
 
-The 'for' command is designed to repeat the execution of its "loop body",
-which consists of a list of command up until the line "done", but not including
-this line. The exact number of repetition depends on the total of floats
-being iterated over. The total number of repetitions is always equal to the longest
-number of floats in each pairing, and the variable without additional floats to iterate over will simply
-retain its last assigned value.
+The 'for' command is designed to repeat the execution of its "loop body", which
+consists of a list of command up until but not including the line of the
+"\done" command.
 
-During each iteration, each loop variable is to become an environment variable,
-which can be accessed via a dollar-expression, or be used in other places where
-an environment variable is expected.
-
+The exact number of repetitions depends on the longest of the lists.  If there
+are two or more lists to iterate over, and each list has a different length,
+the repetition is always to cover the longest list, and the variable that have
+run out of list items during certain iterations are simply left unchanges in
+which case each of them should have retained its last value.
 Following is an example of iterating over two loop variables: 'a' and 'b'.
 
-    \for a in [1,3]; b in [2,4]; \do
+    \for a in [1,3,5]; b in [2,4]; \do
       \draw (${a},${a})--(${b},${b})
     \done
 
-Following is the equivalent commands without using the for-loop.
+This should have been equilvalent to the following:
 
     \draw (1,1)--(2,2)
     \draw (3,3)--(4,4)
+    \draw (5,5)--(4,4)
+
+Each loop variable is to become an environment variable, which can be accessed
+via a dollar-expression, or be used in other places where an environment
+variable is expected.
 
 Note that it is recommanded that the lines of the loop body be indented
-with at least one space. This allows for the recognition of the line "done"
-which must be by itself for the entire line, and without indentation. 
-The loop body, once extracted, will undergo "trimming" such that all lines
-will be trimmed the same number of white spaces on the left hand side. 
-This design allows for writing of "nested for loop" possible, such that 
-inner loop will retain its independence during the extraction of loop body
-of the outer loop.
+with at least one space. This allows for "nested" for-command to work.
 
     \for a in [9,19,29]; b in [0.4,0.5,0.6]; \do
       \origin ^x:${a}
       \for c in [16,4]; \do
-        \origin ^y:${c}
-        \draw (0,0) [h:-6] [v:6]
-        \draw (0,0) [q:-6,0,-6,6]
-        \path P0 = (0,0)
-        \path P1 = (-6,0)
-        \path P2 = (-6,6)
-        \drawdot &P0 &P1 &P2
-        \drawlabel.lrt  "P₀" &P0
-        \drawlabel.llft "P₁" &P1
-        \drawlabel.ulft "P₂" &P2
-        \path line1 = (&P0) -- (&P1)
-        \path line2 = (&P1) -- (&P2)
-        \path m0 = &midpoint{&line1_0,&line1_1,${b} }
-        \path m1 = &midpoint{&line2_0,&line2_1,${b} }
-        \drawdot (&m0) (&m1)
-        \draw (&m0) -- (&m1)
-        \path line3 = (&m0) -- (&m1)
-        \path B = &midpoint{&line3_0,&line3_1,${b} }
-        \drawdot (&B)
-        \drawlabel.bot "m₀" &m0
-        \drawlabel.lft "m₁" {tx:-.1} &m1
-        \drawlabel.urt "B" &B
+        ...
       \done
-      \drawlabel.bot "t=${b}" (-3,-2)
     \done
       
-Each 'for' command would have also added a new environment variable called '_'
-that will be assigned an integer equal to the current iteration. Of the first
-iteration this variable is to be assigned the integer 0, and the second iteration
-that of 1, and so on. Note that during the situation of a nested loop, the
-same '_' env variable will be overridden by the inner loop and to start at 0.
+In addition, each invocation of a 'for' command would have created an implicit
+environment variable named '_'. This variable is to be assigned an integer
+congruent to the current iteration: of the first iteration it is assigned the
+integer of 0, and the second iteration that of 1, and so on. Note that if an
+innner for-command is encountered, the same environment variable will be
+overwritten and will restart at 0.
 
-The syntax for each pairing is so far only supporting the "in" keyword,
-such that the loop variable is found to be followed by the word "in",
-and then the list of floats. The list of floats would follow the same
-syntax found in other commands such as "cartesian".
+So far, the loop variable is always to be expected to be followed by the
+"in" keyword and then the list itself. The list is a list of numbers
+separated by spaces, or a range such as ``[1:10]``, ``[1!10!20]``, or
+``[1,2,3,4]``. See "array" command.
 
 
 
@@ -2863,35 +2764,33 @@ function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
 'floor', 'ceil', 'pow', etc. It can be used in places such as a directive in
 an array expression.
 
-    \fn P(x) = pow(x,2)
-    var v[] = ^fn:P 1 2 3 4 
+    \fn f(x) = 1 + log2(x)
+    \var v[] = ^fn:f 1 2 3 4 
 
 
 
 # The 'node' and 'edge' commands
 
-Nodes and edges are common constructions found in almost any
-literatures covering the topics in the fields of graph theory.
+The 'node' and 'edge' commands are designed for drawings nodes and edges, two
+common components in graph theories.  In particular, each ``node`` command is
+to draw a circle, with optional text in the middle.
 
-The 'node' and 'edge' commands are for supporting drawings of such
-nature. In particular, each ``node`` command is to draw one or more
-nodes, with each node shaped as a circle, with optional text in the
-middle.
+    \node.A "A" (1,1)
+    \node.B "B" (5,5)
 
-    \node.A  (1,1)
-    \node.B  (5,5)
+The previous two commands would have drawn two nodes, one named "A", and one
+named "B" at two locations where each aligns with the center of one of the
+nodes. Each node is to have a text placed in the middle.
 
-The previous two commands would have drawn two nodes, one named "A",
-and one named "B" at two locations where each aligns with the center
-of one of the nodes. The default radius of the node is 1, but it can
-be configured to another such as "2" by doing the following
+The default radius for the circle is 1, but it can be configured via the
+r-style.
 
-    \config r 2
+    \node.A {r:0.8} "A" (1,1)
 
-The option after the command such as ".A" and ".B" is used to assign a
-name to this node, so that it can be referred to later by a command
-such as ``edge``. In the following example the ``edge`` command is to
-draw an edge between nodes "A" and "B".
+The "edge" command draws edges between nodes. In order to do that, the ID(s) of
+the nodes must be specified, and be referenced by the "edge" command.  In the
+following example the ``edge`` command is to draw an edge between nodes "A" and
+"B".
 
     \edge.A.B
 
