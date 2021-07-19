@@ -98,6 +98,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch report",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/report.js",
+      "args": [
+        "/Users/james/github/tcl-notes/math/math-class-0000.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch beamer",
       "skipFiles": [
         "<node_internals>/**"
