@@ -2174,7 +2174,7 @@ assigned three different points of the same path that was drawn by the
 ``draw`` statement.
 
     \path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
-    \path [a,b,c] = &A
+    \path a/b/c = &A
 
 Each sub-variable must be separated from other sub-variables by one or
 more slash character. You can skip ahead and bypass certain points by
@@ -2183,13 +2183,13 @@ choose to assign the first point to variable 'a' and the third point
 to variable 'b' as follows.
 
     \path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
-    \path [a,,b] = &A
+    \path a//b = &A
 
 Following example will skip the first two points and assign
 the remaining two points to variable 'a'.
 
     \path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
-    \path [,,a] = &A
+    \path //a = &A
 
 Note that the name of the path, as well as that of a scalar variable, a scalar
 array, or a scalar function, must starts with a letter, followed by one or more
