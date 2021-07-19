@@ -50,8 +50,8 @@ floating point number between 0-1.  In addition, it does not have provision
 such that you can create a new color name with a customized RGB values in it,
 such as
 
-    \definecolor{ultramarine}{RGB}{0,32,96}
-    \definecolor{wrongultramarine}{rgb}{0.07, 0.04, 0.56}
+    definecolor{ultramarine}{RGB}{0,32,96}
+    definecolor{wrongultramarine}{rgb}{0.07, 0.04, 0.56}
 
 The \definecolor is a macro provided by xcolor package. This means if a color
 is specified as "rgb(200,100,25)" then a \definecolor command must first be
@@ -129,11 +129,11 @@ it is attached to, and is always shown as black.
 Following is an example of a diagram block.
 
     % variables
-    path a = (1,1) -- (5,5) -- (5,1) -- (1,1) 
-    path b = (1,1) .. (5,5) .. (5,1) .. (1,1) 
+    \path a = (1,1) -- (5,5) -- (5,1) -- (1,1) 
+    \path b = (1,1) .. (5,5) .. (5,1) .. (1,1) 
     % draw
-    draw  &a
-    draw  &b
+    \draw  &a
+    \draw  &b
 
 
 # Viewport
@@ -163,7 +163,7 @@ width and height and such that each grid is 6mm-by-6mm, do the following.
 
 
 
-# Action commands
+# Non-action commands
 
 Action command are those that would generate a translation such as those metafun
 commands, tikz commands, or SVG entries. Example action commands are 'draw',
@@ -172,16 +172,16 @@ commands, tikz commands, or SVG entries. Example action commands are 'draw',
 Non-action commands are those that is used to configure environments, create and
 update variables, function, and path, etc. Following are Non-action commands:
 
-- var
-- for
-- path
-- fn
-- config
-- exit
-- group
-- id
-- origin
-- show
+- \var
+- \for
+- \if
+- \path
+- \fn
+- \config
+- \exit
+- \group
+- \origin
+- \show
     
 
 
@@ -197,8 +197,8 @@ drawing commands, in order to maintain consistencies. Changing these
 configuration parameters in the middle of other drawing commands are
 not recommended and may result in distorted picture.
 
-    config linesize 1
-    config linecolor red
+    \config linesize 1
+    \config linecolor red
 
 
 # Specifying colors
@@ -212,9 +212,9 @@ such as "hwb(30|10%|20%)" or "rgb(255|0|0)".
     green
     #CCC
     #ABABAB
-    hwb(30|10%|20%)
-    rgb(255|0|0)
-    hsl(0|100%|50%)
+    @hwb(30|10%|20%)
+    @rgb(255|0|0)
+    @hsl(0|100%|50%)
 
 
 
@@ -404,20 +404,20 @@ while "0", "0a", "0ab", "_ab", "ab_", are "a_b" are not valid symbol names.
 Following example shows how to access the second path point of a path named "a" when
 constructing a path "b".
 
-    path a = (1,2)--(3,4)
-    path b = (&a_1)
+    \path a = (1,2)--(3,4)
+    \path b = (&a_1)
 
 Following example shows how to access the second point of an array named "a" in a scalar
 expression. 
 
-    var a[] = 1 2 3 4
-    var b = a_1
+    \var a[] = 1 2 3 4
+    \var b = a_1
 
 Following example shows how to access the entire content of the array "a" when building
 another array named "b".
 
-    var a[] = 1 2 3 4
-    var b[] = [@a]
+    \var a[] = 1 2 3 4
+    \var b[] = [@a]
 
 
 
@@ -461,14 +461,14 @@ A path expression in Diagram would appear as part of many commands, such as
 example the path "a" would have composed of a single vector path and path "b"
 would have composed of two vector paths.
 
-    path a = (0,0)--(1,1) 
-    path b = (0,0)--(3,4) (2,2)--(5,6)
+    \path a = (0,0)--(1,1) 
+    \path b = (0,0)--(3,4) (2,2)--(5,6)
 
 A path expression in Diagram also include other information such as config
 options and text strings. In the following example a path expression has
 included two config options and two text strings.
 
-    draw (0,0)--(3,4) (2,2)--(5,6) {linesize:2,linecolor:red} "Hello" "World"
+    \draw (0,0)--(3,4) (2,2)--(5,6) {linesize:2,linecolor:red} "Hello" "World"
 
 Config options are recognized by a set of braces, and within it could be one or
 more options each of which a value for that option. Text string are instead
@@ -486,8 +486,8 @@ A coords array is an array, and each element is called a coords point.
 In following example there are 2 coords points for path "a", and four coords
 points for path "b".
 
-    path a = (0,0)--(1,1) 
-    path b = (0,0)--(3,4) (2,2)--(5,6)
+    \path a = (0,0)--(1,1) 
+    \path b = (0,0)--(3,4) (2,2)--(5,6)
 
 A vector path inside a coords array is considered to always started from a M
 point, progressing through other points until a z point or another M point is
@@ -521,8 +521,8 @@ of the option has a default value if it is specified.
 A coords point is considered an absolute point if they appear inside a pair of
 parentheses, or a relative point if they appear inside a pair of brackets.
 
-    path a = (0,3)--(10,3)
-    path b = (0,3) [h:7]
+    \path a = (0,3)--(10,3)
+    \path b = (0,3) [h:7]
 
 In the previous example, (0,3), (10,3) are absolute points, and [h:7] is a
 relative point. A absolute point only provides location information. By default
@@ -558,7 +558,7 @@ instead.
 A hobby-join works with a collection of absolute points with the intent to
 produce a series of cubic Bezier that goes through all of them.
 
-    path a = (0,0)..(2,0)..(2,2)
+    \path a = (0,0)..(2,0)..(2,2)
 
 In the previous example there will be a cubic Bezier curve connecting between
 the first two points, as well as another one connecting the last two. These
@@ -577,7 +577,7 @@ The qbezier-join would join two absolute path points by the virtual of a quardra
 Bezier curve. The control point of the curve is to be expressed relative to
 the 'lastpt' location.
 
-    path a = (0,0)|qbezier:4,-1|(5,5)
+    \path a = (0,0)|qbezier:4,-1|(5,5)
 
 The previous example would have joint two path points by a quardratic Bezier curve
 with control point at (4,-1).
@@ -590,7 +590,7 @@ Bezier curve. The first control point of the curve is to be expressed relative t
 the 'lastpt' location, and the second control point is to be expressed relative
 to the 'new' location.
 
-    path a = (0,0)|cbezier:4,-1,0,-5|(5,5)
+    \path a = (0,0)|cbezier:4,-1,0,-5|(5,5)
 
 The previous example would have joint two path points by a cubic Bezier curve
 with first control point at (4,-1) and the second control point at (5,0).
@@ -602,7 +602,7 @@ An veer-join instructs that a curved line to be drawn between two points. This
 curved line is typically a quadratic Bezier curve, make the next point a Q
 point.
 
-    path a = (0,3)|veer:30|(10,3) 
+    \path a = (0,3)|veer:30|(10,3) 
 
 This parameter is a number that denotes a rotation angle in degrees. Here are
 the steps. First, a straight line is to be formed first between the two points.  
@@ -767,13 +767,13 @@ describe an abolute point whose locations are those of an existing object, such
 as a node. For instance, we can construct a path that goes from (0,0) to the
 center of an existing node of Id "1" as follows.
 
-    path (0,0)--(#node.1)
+    \path (0,0)--(#node:1)
 
 Here, the absolute point inside a pair parentheses starts with a number-sign,
 followed by the word "node", followed by a period, and the Id of the node. This
 same pattern extends to describing the location of a box as well.
 
-    path (0,0)--(#box.1)
+    \path (0,0)--(#box:1)
 
 For a node its location is always the center, and for a box its location is
 always the left-left corner of the box. However, the previous notation also
@@ -782,7 +782,7 @@ instance, we can express that instead of drawing to the center of the node, we
 want to draw to a point that borders the northmost tip of the shape. This, is
 done by adding an "anchor-point" notation after the Id.
 
-    path (0,0)--(#node.1:o12)
+    \path (0,0)--(#node:1:o12)
 
 Here, "o12" is a standard "anchor-point" that is defined for a node. For a node
 there are twelve anchor points, namely "o1" to "o12". Each number after the
@@ -794,12 +794,12 @@ For a box, the anchor points are the following: "n", "w", "e", "w", "nw", "ne",
 "sw" and "se". Thus, to draw a line between the two northen tips of the boxes we
 would do the following:
 
-    draw (#box.1:n)--(#box.2:n)
+    \draw (#box:1:n)--(#box:2:n)
 
 If addition numbers are to be placed after, they will be interpreted as the
 "offset" from that anchor point.
 
-    draw (#box.1:n)--(#box.1:n,2,3)
+    \draw (#box:1:n)--(#box:1:n,2,3)
 
 The previous example would draw line that starts out from the north tip of the
 box, to another point that is 2 grid unit to the right and 3 grid units upwards.
@@ -809,8 +809,8 @@ designating a point inside a Cartesian plane. The following example would draw a
 line connecting two points of a Cartesian plane of Id "1" that is (3,4) and
 (4,5).
 
-    car.1 (5,5)
-    draw (#car:1,3,4)--(#car.1,4,5)
+    \car.1 (5,5)
+    \draw (#car:1,3,4)--(#car:1,4,5)
 
 
 
@@ -821,8 +821,8 @@ This also means that we can retrieve a point of a coords array that is currently
 saved and use it to build a new path. Following example would set it so that the
 second point of "b" is the same as the second point of "a".
 
-    path a = (0,0)--(3,4)
-    path b = (1,1)--(&a_1)
+    \path a = (0,0)--(3,4)
+    \path b = (1,1)--(&a_1)
 
 
 
@@ -833,9 +833,9 @@ points: the one with parentheses, and the one without. The second method allows
 an existing path or path points to be copied and pasted into a new path without
 modification.
 
-    path a = (0,0)[l:3,4] 
-    path b = (2,2)[l:3,4]
-    path c = &a &b
+    \path a = (0,0)[l:3,4] 
+    \path b = (2,2)[l:3,4]
+    \path c = &a &b
 
 In the previous example, the path "a" and "b" would each have described a single
 vector path of two points, and the path "c" would have had composed of these two
@@ -851,8 +851,8 @@ path points directly from another path, instead of "building" it locally. For
 instance, in the following example the second path point of "a" would become the
 first path point of "c" without modification.
 
-    path a = (0,0)--(3,4)--(4,5)
-    path c = &a_1 &a_2
+    \path a = (0,0)--(3,4)--(4,5)
+    \path c = &a_1 &a_2
 
 This would become a problem because the second point of path "a" is a 'L' point,
 and it retains this type after being "pasted" to "c", making the first point of
@@ -862,8 +862,8 @@ for a vector path as there isn't a 'M' point to start a vector path.
 However, had we constructed path "c" the following way the second point of "a"
 would have would have become a 'M' point in path "c".
 
-    path a = (0,0)--(3,4)--(4,5) 
-    path c = (&a_1)--(&a_2)
+    \path a = (0,0)--(3,4)--(4,5) 
+    \path c = (&a_1)--(&a_2)
 
 
 
@@ -880,20 +880,20 @@ last point of a vector path.  This would translate to adding an internal "z"
 point.  For example below, there are three internal path points for path "a":
 M, L and z.
 
-    path a = (0,0)--(3,4)[z]
+    \path a = (0,0)--(3,4)[z]
 
 Care should be taken when pasting from a path with a "z" point, as this "z"
 point will be pasted without modification as well.
 For the following example, path "c" would have had a single z path point.
 
-    path a = (0,0)--(3,4)[z]
-    path c = &a_2
+    \path a = (0,0)--(3,4)[z]
+    \path c = &a_2
 
 In the example below path "c" would be empty. This is because the position
 information of a "z" point does not exist, and thus nothing is added to "c".
 
-    path a = (0,0)--(3,4)[z]
-    path c = (&a_2)
+    \path a = (0,0)--(3,4)[z]
+    \path c = (&a_2)
 
 
 
@@ -903,7 +903,7 @@ The last position of an absolute point or a relative is always remembered, and
 it is known as the 'lastpt'. The position information of the 'lastpt' is
 critical when figuring out the absolute position of a relative point.
 
-    path a = (0,1)[h:3][v:4]
+    \path a = (0,1)[h:3][v:4]
 
 Note that the 'lastpt' only contains the location information. It does not
 include information such as control points of a Bezier curve.
@@ -913,8 +913,8 @@ constructions, even aross different commands. For instance, when building a path
 for 'b', the first point of 'b' is a L point with a position at (4,5) because
 the 'lastpt' at the time is remembered to be at (3,4).
 
-    path a = (0,0)[h:3][v:4]
-    path b = [l:1,1]
+    \path a = (0,0)[h:3][v:4]
+    \path b = [l:1,1]
 
 It is worth pointing out that the 'lastpt' is updated when an absolute
 point or a relative point is encountered. It is not updated when an path point
@@ -924,22 +924,22 @@ would have expected. It is actually (4,5) because when "pasting" the first point
 of path "a" at the start of the path construction for path "c" the 'lastpt'
 isn't updated, and remains set at (3,4).
 
-    path a = (0,0)--(1,1)--(3,4)
-    path c = &a_1 [l:1,1]
+    \path a = (0,0)--(1,1)--(3,4)
+    \path c = &a_1 [l:1,1]
 
 It is possible to save the current location of the 'lastpt' to a path variable
 during a path construction so that it can be retrieved laster. This is done via
 invoking the "^pt" directive. The following example would save the positional
 information of the second path point to a path named "c".
 
-    path a = (0,0) [l:3,4] ^pt:c [h:5]
+    \path a = (0,0) [l:3,4] ^pt:c [h:5]
 
 Having the notion of a 'lastpt' also allows us to terminate an existing path segment
 and start a new one from where it is left off. For instance, we want to construct
 a path with a two path segments: the first from (0,0) to (1,1), and the second one
 from (1,1) to (3,3), we can do it the following way:
 
-    path a = (0,0)--(1,1) ()--(3,3)
+    \path a = (0,0)--(1,1) ()--(3,3)
 
 The set of open and close parentheses by itself with nothing in it signals to 
 add an absolute point that is exactly the same position as the current position
@@ -948,7 +948,7 @@ visual result might exactly the same as having one larger path segment, but the
 previous example allows us to style the second path segment such as to 
 draw it using a dashed line.
 
-    path = (0,0)--(1,1) ^hint:linedashed ()--(3,3)
+    \path = (0,0)--(1,1) ^hint:linedashed ()--(3,3)
   
 
 
@@ -960,7 +960,7 @@ dynamically generated based on its "arguments". For instance, in the following
 example the path function "circle" returns a coords array that describes a
 full circle centered at location (2,3) and with a radius of 4.
 
-    path a = &circle{(2,3),4}
+    \path a = &circle{(2,3),4}
 
 The returned coords array might be "closed" depending on the situation. For instance
 the previous "circle" path function would always return a "closed" path, whilst
@@ -975,21 +975,21 @@ For an argument that is of a path type, it would either expect a literal point
 notation, such as (2,3), or named path notation, such as ``&o``. For instance,
 the same circle path function could be invoked as follows.
 
-    path o = (2,3)
-    path a = &circle{&o,4}
-    path a = &circle{(2,3),4}
+    \path o = (2,3)
+    \path a = &circle{&o,4}
+    \path a = &circle{(2,3),4}
 
 It is also possible to pass an "array" as an argument.
 Some path functions such as 'points' would work with array arguments.
 An array argument is identified by the appearance of a set of brackets.
 
-    path a = &points{[1,2,3],[4,5,6]}
+    \path a = &points{[1,2,3],[4,5,6]}
 
 Or 
     
-    var xarr[] = [1,2,3]
-    var yarr[] = [4,5,6]
-    path a = &points{[@xarr],[@yarr]}
+    \var xarr[] = [1,2,3]
+    \var yarr[] = [4,5,6]
+    \path a = &points{[@xarr],[@yarr]}
 
 Internally, a scalar is considered the same type as that of an array and is
 stored as an array of a single value.
@@ -1020,7 +1020,7 @@ Each of these strings is translated into a bit field that is then OR'ed
 together. For instance, if we were to construct a path to express the fact that
 the line should be drawn at size 2, we could do the following.
 
-    draw ^hint:linesize2 (0,0)--(0,2) 
+    \draw ^hint:linesize2 (0,0)--(0,2) 
 
 Note that the idea behind using a hint is to allow for a path to be constructed
 to have multiple independent vector paths and each individual vector could have
@@ -1029,7 +1029,7 @@ only valid for a vector path that immediately succeeds it, and will be cleared
 as soon as this path is terminated. For intance, in the following example the
 second and third vector path will not have the same hint as the first.
 
-    draw ^hint:linesize2 (0,0)--(0,2) \
+    \draw ^hint:linesize2 (0,0)--(0,2) \
          (0,2)[l:-0.5,-0.5] \
          (0,2)[l:0.5,-0.5]
 
@@ -1068,8 +1068,8 @@ future points of this path will be subject to having this offset be added to
 its x and/or y coordinate.  This design allows for the same path to appear
 in different locations.
 
-    draw           (0,0)[h:2][v:2]
-    draw ^x:2 ^y:3 (0,0)[h:2][v:2]
+    \draw           (0,0)[h:2][v:2]
+    \draw ^x:2 ^y:3 (0,0)[h:2][v:2]
 
 The 'offset' can be set using quite a number of directive. Some of the
 direction would set the offset directly, while others allow it to "change"
@@ -1142,7 +1142,7 @@ returns a path with a single point: (1.5,2), which is the mid point
 of (1,1) and (2,3).
 
 ```          
-path b = &midpoint{(1,1),(2,3)}
+\path b = &midpoint{(1,1),(2,3)}
 ```
 
 Note that only the first two points of a path is used. The other
@@ -1158,7 +1158,7 @@ it should return the same path as that with a single argument. Thus,
 following example will return the same result as the one before.
 
 ```          
-path b = &midpoint{(1,1),(2,3),0.5}
+\path b = &midpoint{(1,1),(2,3),0.5}
 ```
 
 - scatterpoints 
@@ -1175,7 +1175,7 @@ In the following example two middle points will be created
 such that the path contains four points.
 
 ```
-path a = &scatterpoints{(1,0),(10,0),2}
+\path a = &scatterpoints{(1,0),(10,0),2}
 ```
 
 - linelineintersect 
@@ -1189,7 +1189,7 @@ which must have at least two points. Only the first two points of
 are ignored.
 
 ```
-path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
+\path b = &linelineintersect{(0,0),(10,0),(-1,5),(1,5)} 
 ```
 
 
@@ -1201,7 +1201,7 @@ following diagram the pts variable 'pts' will hold two points: (6,2)
 and (4,2).
 
 ```
-path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
+\path b = &linecircleintersect{(0,0),(10,0),(5,0),10}
 ```
 
 Note that the returned point is always arranged such that the first
@@ -1212,7 +1212,7 @@ point is on the left hand side of the second point.
 This method returns one or two points where two circles intersect.
 
 ```
-path b = &circlecircleintersect{(0,0),10,(5,0),10}
+\path b = &circlecircleintersect{(0,0),10,(5,0),10}
 ```
 
 - circlepoints 
@@ -1225,7 +1225,7 @@ The returned value is the coords of individual points at these
 angles.
 
 ```
-path b = &circlepoints{(0,0),2,30,60,90}
+\path b = &circlepoints{(0,0),2,30,60,90}
 ```
 
 - pie
@@ -1233,7 +1233,7 @@ path b = &circlepoints{(0,0),2,30,60,90}
 Returns a closed path expressing a pie. 
 
 ```
-path b = &pie(center,radius,angle,span)
+\path b = &pie(center,radius,angle,span)
 ```
 
 - circle 
@@ -1243,7 +1243,7 @@ Returns a path expressing the circle. It has a syntax of:
 point, and 'radius' a scalar.
 
 ```
-path b = &circle(center,radius)
+\path b = &circle(center,radius)
 ```
 
 - ellipse 
@@ -1253,8 +1253,8 @@ The fourth argument is the rotation in degrees, in counterclockwise
 rotation.
 
 ```
-path b = &ellipse(&center,xradius,yradius)
-path b = &ellipse(&center,xradius,yradius,rotation)
+\path b = &ellipse(&center,xradius,yradius)
+\path b = &ellipse(&center,xradius,yradius,rotation)
 ```
 
 - rectangle 
@@ -1267,9 +1267,9 @@ width and height of it. The third one construct a rectangle with
 just the width and height, assuming the anchor point to be at (0,0)
 
 ```
-path b = &rectangle{&point1,&point2}
-path b = &rectangle{&point,width,height}
-path b = &rectangle{width,height}
+\path b = &rectangle{&point1,&point2}
+\path b = &rectangle{&point,width,height}
+\path b = &rectangle{width,height}
 ```
 
 - triangle 
@@ -1277,7 +1277,7 @@ path b = &rectangle{width,height}
 This returns a path expressing a triangle of three points. The syntax is: 
 
 ```
-path b = &triangle(&point1,&point2,&point3)
+\path b = &triangle(&point1,&point2,&point3)
 ```
 
 - equilateraltriangle{(0,0),3}
@@ -1305,7 +1305,7 @@ side between the two angles.
 This returns a path expressing a polyline. The syntax is:
 
 ```
-path b = &polyline{&point1,&point2,&point3,...}
+\path b = &polyline{&point1,&point2,&point3,...}
 ```
 
 - polygon  
@@ -1313,7 +1313,7 @@ path b = &polyline{&point1,&point2,&point3,...}
 This returns a path expressing a polygon. The syntax is:
 
 ```
-path b = &polygon{&point1,&point2,&point3,...}
+\path b = &polygon{&point1,&point2,&point3,...}
 ```
 
 - cylinder 
@@ -1322,7 +1322,7 @@ This expresses a upright cylinder drawn with an ellipse at the
 bottom, with xradius/yradius, and a given height. The syntax is:
 
 ```
-path b = &cylinder{&center,xradius,yradius,height}
+\path b = &cylinder{&center,xradius,yradius,height}
 ```
 
 - ymirror 
@@ -1333,8 +1333,8 @@ that is a value on X-axis. The following example returns a new path
 that is a mirrored image of 'a' off the x-axis.
 
 ```
-path a = ...
-path b = &ymirror{&a,0}
+\path a = ...
+\path b = &ymirror{&a,0}
 ```
 
 - mirror 
@@ -1344,10 +1344,10 @@ image of the given point along a given line. In the following example
 the returned point 'a1' would have been set to (-5,0)
 
 ```
-path a = (5,0)
-path b = (0,0)
-path c = (0,10)
-path a1 = &mirror{&a,&b,&c}
+\path a = (5,0)
+\path b = (0,0)
+\path c = (0,10)
+\path a1 = &mirror{&a,&b,&c}
 ```
 
 - bbox 
@@ -1364,7 +1364,7 @@ The following example would have drawn a grid of 10-by-10, with grid
 line separation of 1 in both directions.
 
 ```
-path a = &grid{10,10,1,1}
+\path a = &grid{10,10,1,1}
 ```
 
 - rotatepoint
@@ -1377,7 +1377,7 @@ counter-clockwise angle and the finally adjust itself such that its
 distance from the center is exactly 2.
 
 ```
-path a = &droppoint{(0,0),(1,0),90,2}
+\path a = &droppoint{(0,0),(1,0),90,2}
 ```
 
 - droppoint
@@ -1387,7 +1387,7 @@ is a point on the line segment that is the first two points. The following
 example is to return the point that is (0.5,0)
 
 ```
-path a = &perpoint{(0,0),(2,0),(0.5,1)}
+\path a = &perpoint{(0,0),(2,0),(0.5,1)}
 ```
 
 - rotate{&A,90}
@@ -1478,17 +1478,17 @@ Following are built-in path that are readily available.
 If a coordinates is to be used directly then there are three commands that will
 draw a arrow, reverse arrow, and double arrow for each path segments.
 
-    arrow     (0,0)--(3,4)  (2,2)[h:4]
-    revarrow  (0,0)--(3,4)  (2,2)[h:4]
-    dblarrow  (0,0)--(3,4)  (2,2)[h:4]
+    \arrow     (0,0)--(3,4)  (2,2)[h:4]
+    \revarrow  (0,0)--(3,4)  (2,2)[h:4]
+    \dblarrow  (0,0)--(3,4)  (2,2)[h:4]
 
 However, for other operations such as 'drawanglearc', then
 the 'arrowhead' should be set for the style, which is an integer
 that is follows:
 
-    arrowhead:1   arrow
-    arrowhead:2   reverse arrow
-    arrowhead:3   double arrow
+    \arrowhead:1   arrow
+    \arrowhead:2   reverse arrow
+    \arrowhead:3   double arrow
 
 # Remarks and problems
 
@@ -1525,22 +1525,22 @@ that is follows:
 
 A "scalar expression" is an expression that evaluates to a number.  
 
-    var a = (2+2)*(3+3)
-    var a = cos(3+0.1415) + 12
-    var a = 3 + pow(3,2)*3 + 2
-    var a = 3 + E + 2
-    var a = 3 + PI + 2
-    var a = sign(-5)
-    var a = 2*PI
-    var a = 2*2e5
-    var a = deg2rad(180)
-    var a = 1/0
-    var a = ln(0)
+    \var a = (2+2)*(3+3)
+    \var a = cos(3+0.1415) + 12
+    \var a = 3 + pow(3,2)*3 + 2
+    \var a = 3 + E + 2
+    \var a = 3 + PI + 2
+    \var a = sign(-5)
+    \var a = 2*PI
+    \var a = 2*2e5
+    \var a = deg2rad(180)
+    \var a = 1/0
+    \var a = ln(0)
 
 The scalar expression is expected by a command such as 'var'. It is also
 expected inside a dollar-expression such as 
 
-    text "${x*2}" (0,0)
+    \drawtext "${x*2}" (0,0)
 
 The scalar expression has a syntax very much like those supported by the 'expr'
 command of a modern day Tcl interpreter. It recognizes the plus, minus,
@@ -1595,45 +1595,44 @@ the variable 'mx' will be assigned the sum of adding the "x"
 components of the first two points in path variable 'pts', which will
 be "1 + 3 = 4".
 
-    path a = (1,2)--(3,4)
-    var x = &a_0.x + &a_1.x
-    var y = &a_0.y + &a_1.y
-    show ${x}
-    show ${y}
+    \path a = (1,2)--(3,4)
+    \var x = &a_0.x + &a_1.x
+    \var y = &a_0.y + &a_1.y
+    \show ${x}
+    \show ${y}
 
 The dollor-expressin is designed to turn any expression into a string. For instance
 the expression of ``${x}`` would have replaced itself with the actual value of the
 variable ``x``. If ``x`` does not exist as a valid variable, "NaN" is returned. 
 
-    var x = 1
-    show ${x}
+    \var x = 1
+    \show ${x}
 
 This would have been equivalent to the following single command
   
-    show 1.000000
+    \show 1
 
 This is because by default, the precision is set to 6, which means any numerical
 value will automatically be shown as a floating-point number with 6 digits of
 decimal places. This precision can be changed by setting the "precision" option.
 
-    config precision 10
-    var x = 1
-    show ${x}
+    \var x = 1
+    \show ${x}
 
 The previous commands would be equivalent to the following single command:
 
-    show 1.0000000000
+    \show 1
 
 However, as a special exception, if the variable is by itself and it
 is recognized to be a string,
 then it is shown verbatim.
 
-    var x = @"Hello world"
-    show ${x}
+    \var x = @"Hello world"
+    \show ${@x}
 
 This would have been equivalent to the following command
 
-    show Hello world
+    \show Hello world
 
 
 
@@ -1646,19 +1645,21 @@ when the variable is preceeded by an at-sign, in which case the variable
 is expected as an array that is to hold a list of numbers instead
 of holding a single one.
 
-    var a[] = 0 1 2 (1+2) 
+    \var a[] = 0 1 2 (1+2) 
 
 The same expression could be found elsewhere where a list of scalar is expected,
-such as for a 'cartesian' and 'argand' command.
+such as a "for" loop command:
 
-    cartesian.1.yplot {fn:f} 0 1 2 (1+2)
-    argand-dot 0 1 2 (1+2)
-
-It could also be found in a 'for' loop command
-
-    for a in 0 1 2 (1+2); do
+    \for i in 0 1 2 (1+2); \do
       ...
-    done
+    \done
+
+If the array is to be represented by an existing array variable, then the previous
+command can be written as:
+
+    \for i in [@a]; \do
+      ...
+    \done
 
 The set of rules for denoting a list of scalars is different than that used for
 denoting a single scalar. The main difference is that, by default, each scalar
@@ -1681,7 +1682,7 @@ points, with the first point being 0, and the last point being 10, and
 additional 20 points generated between 0 and 10 such that the distance between
 any two neighboring points is the same.
 
-    var a[] = [0!20!10]
+    \var a[] = [0!20!10]
 
 Within a list expression, it could be many different forms. The previous form is know
 as list-spread-form, which expresses a list of at two items, but could be more.
@@ -1695,11 +1696,11 @@ dynamically based on the distance of the first one and the second one. For
 instance, following example would have generated a list of numbers that are 1,
 2, 3, 4, 5, 6, 7, 8, 9, and 10.
 
-    var a[] = [1:10]
+    \var a[] = [1:10]
 
 The following would have generated a list composed numbers that are 1, 4, 7, 10.
 
-    var a[] = [1:4:10]
+    \var a[] = [1:4:10]
 
 Note that in the case of the having three columns the middle number serves as the 
 second number after the first one, and additional numbers are generated with the same
@@ -1711,14 +1712,14 @@ list-array-form. Following expression would pull the content of an existing aray
 named 'c' and a list is built off the content of this array, plus two additional
 items that is 4 and 5.
 
-    var c[] = 1 2 3
-    var a[] = [@c] 4 5
+    \var c[] = 1 2 3
+    \var a[] = [@c] 4 5
 
 If a list-expression does not fit the definitions of the previous three
 categories, then it would be treated as a list-comma-form. This form would look
 for comma separated items. Spaces between commas are optional.
 
-    var a[] = [1, 2, 3, 4]
+    \var a[] = [1, 2, 3, 4]
 
 Note that the spaces after each comma is optional. 
 
@@ -1726,50 +1727,50 @@ It should be pointed out that all the previous list forms can be mixed in anothe
 order, and the result of which is simply the concatenation of all list items 
 from these individual lists.
 
-    var c[] = 10 11 12
-    var a[] = 1 2 3 [4:10]
-    var a[] = [1:2] [3:4] 5 6 7 [8:10]
-    var a[] = [1,2,3,4] [5,6,7,8] 9 10 [@c]
+    \var c[] = 10 11 12
+    \var a[] = 1 2 3 [4:10]
+    \var a[] = [1:2] [3:4] 5 6 7 [8:10]
+    \var a[] = [1,2,3,4] [5,6,7,8] 9 10 [@c]
 
 Note that a list is automatically recognized and populated in a 'for' command
 as well.
 
-    var a[] = 1 2 3
-    for i in [@a]; do
-      show ${i}
-    done
+    \var a[] = 1 2 3
+    \for i in [@a]; \do
+      \show ${i}
+    \done
 
 Following is another way of iterating the same list.
 
-    for i in 1 2 3; do
-      show ${i}
-    done
+    \for i in 1 2 3; \do
+      \show ${i}
+    \done
 
 Or,
 
-    for i in [1,2,3]; do
-      show ${i}
-    done
+    \for i in [1,2,3]; \do
+      \show ${i}
+    \done
 
 Or,
 
-    for i in [1:3]; do
-      show ${i}
-    done
+    \for i in [1:3]; \do
+      \show ${i}
+    \done
 
 An entire array can be show by the dollar-expression as well. Ensure that the
 array variable is to appear by itself, and proceeded by '@'.
 
-    var a[] = 1 2 3
-    show ${@a}
+    \var a[] = 1 2 3
+    \show ${@a}
 
 A directive is also to be recognized. A directive adds extra possibility to the
 list of numbers. For the moment only the "fn" directive is supported. This
 directive allows for a function to be called such that the output of this
 function replaces the original scalar.
 
-    var a[] = ^fn:sqrt 1 2 3 4 5 6
-    show ${@a}
+    \var a[] = ^fn:sqrt 1 2 3 4 5 6
+    \show ${@a}
 
 Following would be the output of these commands:
 
@@ -1781,9 +1782,9 @@ Following would be the output of these commands:
 If two "fn" directives are encountered, the last "fn" is called first, and the output 
 of which becomes the input to the first "fn". 
 
-    fn add2(x) = x+2
-    var a[] = ^fn:add2 ^fn:sqrt 1 2 3
-    show ${@a}
+    \fn add2(x) = x+2
+    \var a[] = ^fn:add2 ^fn:sqrt 1 2 3
+    \show ${@a}
 
 In the previous example each scalar is to go
 through the "sqrt" function first before being sent to the "add2" function.
@@ -1798,8 +1799,8 @@ through the "sqrt" function first before being sent to the "add2" function.
 It is also possible to refer to an array element. To do that simply use the variable
 followed by an underscore itself.
 
-    var a[] = 1 2 3
-    var b[] = a_1 a_2
+    \var a[] = 1 2 3
+    \var b[] = a_1 a_2
 
 Following would be the result of the translation.
 
@@ -1918,9 +1919,9 @@ Following are built-in functions provided by Diagram.
   that is 1.
 
   ```
-  fn f(x) = if(x>10,1,0)
-  var a = f(10)  
-  var b = f(11)  
+  \fn f(x) = if(x>10,1,0)
+  \var a = f(10)  
+  \var b = f(11)  
   ```
 
 + isfinite(x)
@@ -1940,8 +1941,8 @@ Following are built-in functions provided by Diagram.
 Following are built-in scalar constants, which can be used as if they
 are arguments. For instance, 
 
-    var arc = 2*PI
-    var mynum = 1 + 2*I
+    \var arc = 2*PI
+    \var mynum = 1 + 2*I
 
 This the 'arc' env-variable would have been assigned the value of 6.28.
 
@@ -1966,25 +1967,25 @@ This the 'arc' env-variable would have been assigned the value of 6.28.
 The 'lastpt' command modifies the 'lastpt' state which 
 affects the next path contruction. 
 
-- lastpt ^up:2
-- lastpt ^down:2
-- lastpt ^left:2
-- lastpt ^right:2
-- lastpt ^x:2
-- lastpt ^y:2
-- lastpt ^X:2
-- lastpt ^Y:2
-- lastpt ^at:a
-- lastpt ^pt:a
-- lastpt ^center
-- lastpt ^north
-- lastpt ^south
-- lastpt ^northwest
-- lastpt ^southwest
-- lastpt ^northeast
-- lastpt ^southeast
-- lastpt ^east
-- lastpt ^west
+- \lastpt ^up:2
+- \lastpt ^down:2
+- \lastpt ^left:2
+- \lastpt ^right:2
+- \lastpt ^x:2
+- \lastpt ^y:2
+- \lastpt ^X:2
+- \lastpt ^Y:2
+- \lastpt ^at:a
+- \lastpt ^pt:a
+- \lastpt ^center
+- \lastpt ^north
+- \lastpt ^south
+- \lastpt ^northwest
+- \lastpt ^southwest
+- \lastpt ^northeast
+- \lastpt ^southeast
+- \lastpt ^east
+- \lastpt ^west
 
 If it starts with "left:<x>", "right:<x>", "up:<y>", 
 "down:<y>", where the distance expresses the number of grid units
@@ -2030,29 +2031,29 @@ contains a single point that coincides with the current position of
 The 'origin' command sets the following parameters for the current
 drawing environment.
 
-- origin ^up:2
-- origin ^down:2
-- origin ^left:2
-- origin ^right:2
-- origin ^x:2
-- origin ^y:2
-- origin ^X:2
-- origin ^Y:2
-- origin ^sx:2.5
-- origin ^sy:2.5
-- origin ^s:2.5
-- origin ^at:a
-- origin ^pt:a
-- origin ^reset
-- origin ^center
-- origin ^north
-- origin ^south
-- origin ^northwest
-- origin ^southwest
-- origin ^northeast
-- origin ^southeast
-- origin ^east
-- origin ^west
+- \origin ^up:2
+- \origin ^down:2
+- \origin ^left:2
+- \origin ^right:2
+- \origin ^x:2
+- \origin ^y:2
+- \origin ^X:2
+- \origin ^Y:2
+- \origin ^sx:2.5
+- \origin ^sy:2.5
+- \origin ^s:2.5
+- \origin ^at:a
+- \origin ^pt:a
+- \origin ^reset
+- \origin ^center
+- \origin ^north
+- \origin ^south
+- \origin ^northwest
+- \origin ^southwest
+- \origin ^northeast
+- \origin ^southeast
+- \origin ^east
+- \origin ^west
 
 If it starts with "left:<x>", "right:<x>", "up:<y>", 
 "down:<y>", where the distance expresses the number of grid units
@@ -2117,9 +2118,9 @@ all at once. This allows, for instance, creating of many different
 boxes all of the same attributes. Changes made to a group affects all
 elements inheriting attributes from that group.
 
-    group mygroup {linesize:1,w:3,h:2}
-    box {group:mygroup} (0,0) (1,2) 
-    box {group:mygroup,linesize:2} (0,0) (1,2) 
+    \group mygroup {linesize:1,w:3,h:2}
+    \box {group:mygroup} (0,0) (1,2) 
+    \box {group:mygroup,linesize:2} (0,0) (1,2) 
 
 In the previous example the first box will be created with "linesize:1", "w:3",
 and "h:2" attributes. The second box will have the same set of attributes as
@@ -2135,7 +2136,7 @@ variable must start with a upper case or lower case letters, and
 followed by one or more upper case or lower case letters, or digits.
 Symbols and operators are not allowed.
 
-    path a = (1,1) -- (2,2) -- (3,4)
+    \path a = (1,1) -- (2,2) -- (3,4)
 
 The name of a path must conform a valid symbol name, which must start with an
 upper case or lower case letters, and followed by one or more letters and/or
@@ -2157,8 +2158,8 @@ instruction path variables 'a', 'b' and 'c' are each created and
 assigned three different points of the same path that was drawn by the
 ``draw`` statement.
 
-    path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
-    path [a,b,c] = &A
+    \path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
+    \path [a,b,c] = &A
 
 Each sub-variable must be separated from other sub-variables by one or
 more slash character. You can skip ahead and bypass certain points by
@@ -2166,14 +2167,14 @@ not including any variables in between slashes. For example, you can
 choose to assign the first point to variable 'a' and the third point
 to variable 'b' as follows.
 
-    path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
-    path [a,,b] = &A
+    \path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
+    \path [a,,b] = &A
 
 Following example will skip the first two points and assign
 the remaining two points to variable 'a'.
 
-    path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
-    path [,,a] = &A
+    \path A = (1,1) -- (2,2) -- (3,4) -- (4,5)
+    \path [,,a] = &A
 
 Note that the name of the path, as well as that of a scalar variable, a scalar
 array, or a scalar function, must starts with a letter, followed by one or more
@@ -2188,9 +2189,9 @@ This syntax is typically used in conjunction with a 'for' loop command.
 In the following example, the path 'A' will receive "(1,1)[h:2]",
 and path 'B' will receive "(3,3)[h:2]", and path 'C' will receive "(5,5)[h:2]".
 
-    for i in [1, 3, 5]; do
-      path @[A,B,C] = (${i},${i]}) [h:2]
-    done
+    \for i in [1, 3, 5]; \do
+      \path @[A,B,C] = (i,i) [h:2]
+    \done
 
 This is done internally by looking up the current value of '@' scalar, which is
 internally maintained by Diagram and is always assigned an integer indicative
@@ -2205,19 +2206,19 @@ the list runs out, then no symbol name is assumed.
 
 Following commands treats the input argument as path.
 
-- draw
-- fill
-- stroke
-- arrow
-- revarrow
-- dblarrow
+- \draw
+- \fill
+- \stroke
+- \arrow
+- \revarrow
+- \dblarrow
 
 The 'draw' command would draw connecting lines between path points.
 Typically it is straight lines, but Bezier curves are also supported.
 This includes quadratic and cubic curves. The SVG arc is also
 supported.
 
-    draw (0,0)--(1,1)--(2,2)
+    \draw (0,0)--(1,1)--(2,2)
 
 The 'fill' command is similar to 'draw', except that it fills the path
 with the default filled color, without drawing the the outline of the
@@ -2231,7 +2232,7 @@ typically expressed as absolute points, but relative points can also
 be expressed. They are all in the form of [...] where a set of
 brackets are present.
 
-    draw (0,0) [l:1,1] [l:1,1]
+    \draw (0,0) [l:1,1] [l:1,1]
 
 Here the second and third points are each expressed as a distance away from its
 previous point, which is to move right for one grid unit and then up for one
@@ -2243,12 +2244,12 @@ contains multiple disjoint segments. For example, we can express to draw two
 disjoint line in a single 'draw' command such that the first line segment goes
 from (0,0) to (2,3) and the second line segment goes from (4,5) to (6,7). 
 
-    draw (0,0)--(2,3) (4,5)--(6,7)
+    \draw (0,0)--(2,3) (4,5)--(6,7)
 
 For example, for the following 'draw' command, where
 there is a closed triangle and a line. 
 
-    draw (0,0)--(2,0)--(2,2)[z] (4,0)--(6,2)
+    \draw (0,0)--(2,0)--(2,2)[z] (4,0)--(6,2)
 
 For MetaPost output, each path segment requires a separate "draw" command. For
 SVG, a single PATH elements is sufficient; the SVG is implemented such that a
@@ -2279,7 +2280,7 @@ style) in the middle of the line. In the following example a short
 bar is to be drawn in the middle of the horizontal line and in the middle
 of the vertical line.
 
-    drawcongbar (0,0) [h:4] [v:4]
+    \drawcongbar (0,0) [h:4] [v:4]
 
 The length of the short bar is determined by the barlength-option,
 The bartype-option will also be checked
@@ -2307,12 +2308,12 @@ closed then the angle between the last point and the first point is
 also to be drawn. If any of the angle is found to be exact 90 degrees,
 a square is to be drawn instead of the arc.
 
-    drawanglearc "1" "2" (2,0)--(0,0)--(0,2)
+    \drawanglearc "1" "2" (2,0)--(0,0)--(0,2)
 
 If the angle is found to be around 90, then a square is drawn instead
 of an arc. However, a square can be forced if ".sq" option is given.
 
-    drawanglearc.sq "1" "2" (2,0)--(0,0)--(0,2)
+    \drawanglearc.sq "1" "2" (2,0)--(0,0)--(0,2)
 
 
 # The 'drawcenteredtext' command
@@ -2322,9 +2323,9 @@ in the center of every line segment found in the path.
 In the following example the text "1", "2" and "3" are placed
 in the middle of three sides of the triangle shape.
 
-    path tri = &triangle{(0,0),(4,0),(2,2)}
-    stroke &tri
-    drawcenteredtext "1" "2" "3" &tri
+    \path tri = &triangle{(0,0),(4,0),(2,2)}
+    \stroke &tri
+    \drawcenteredtext "1" "2" "3" &tri
 
 Any connecting line segments are located, including those that are not
 necessarily straight lines, such as Bezier curves and arcs. For these,
@@ -2349,23 +2350,23 @@ segment.  The command scans for the presence of all line
 segments in the coodinates provided, and for every line segment found,
 place a label that run along the slope of the line.
 
-    drawslopedtext "Hello" "World" (0,0) [h:4] [v:4]
+    \drawslopedtext "Hello" "World" (0,0) [h:4] [v:4]
 
 By default, the text will be placed on top of the line. But it can be 
 placed at the bottom of the line if the ".bot" subcommand is supplied.
 
-    drawslopedtext.bot "Hello" "World" (0,0) [h:4] [v:4]
+    \drawslopedtext.bot "Hello" "World" (0,0) [h:4] [v:4]
 
 The "mar" option can be used to add a marker line that extends from the left/
 right boundaries of the line segment. 
 
-    drawslopedtext "{{5\sqrt{2}}}" (0,0)--(5,5)
+    \drawslopedtext "{{5\sqrt{2}}}" (0,0)--(5,5)
 
 The "pen" option would have also added two vertical lines that marks the boundaries
 of the line segments. The number after the "pen" expresses the length of the arrow
 in grid unit.
 
-    drawslopedtext "{{\sqrt{2}}}" {mar:1,pen:0.25} (0,0)--(5,5)
+    \drawslopedtext "{{\sqrt{2}}}" {mar:1,pen:0.25} (0,0)--(5,5)
 
 The number that comes after the "pen" expressed the half length of the line
 in grid unit.
@@ -2379,33 +2380,33 @@ the primitive command, a single dot is to be repeated for all points
 on the given path. Thus, following command will draw three dots each
 at three different locations of the input path.
 
-    drawdot (1,1) (3,4) [l:2,1]
+    \drawdot (1,1) (3,4) [l:2,1]
 
 The 'drawdot' command provide several subcommands that allows for a
 different shape to be drawn instead of a circular dot.
 
-    drawdot.hbar (1,1) (3,4) [l:2,1]
-    drawdot.vbar (1,1) (3,4) [l:2,1]
+    \drawdot.hbar (1,1) (3,4) [l:2,1]
+    \drawdot.vbar (1,1) (3,4) [l:2,1]
 
 For 'drawdot' command, the color can be specified using the 'dotcolor'.
 
-    drawdot {dotcolor:orange} (1,1) (3,4) [l:2,1]
+    \drawdot {dotcolor:orange} (1,1) (3,4) [l:2,1]
 
 For 'hbar' and 'vbar' subcommands the 'linecolor' attribute would have
 expressed the color of the lines.
 
-    drawdot.hbar {linecolor:orange} (1,1) (3,4) [l:2,1]
-    drawdot.vbar {linecolor:orange} (1,1) (3,4) [l:2,1]
+    \drawdot.hbar {linecolor:orange} (1,1) (3,4) [l:2,1]
+    \drawdot.vbar {linecolor:orange} (1,1) (3,4) [l:2,1]
 
 The diameter of the dot can be set using the 'dotsize' attribute.
 
-    drawdot {dotcolor:orange, dotsize:10} (1,1) (3,4) [l:2,1]
+    \drawdot {dotcolor:orange, dotsize:10} (1,1) (3,4) [l:2,1]
 
 For 'hbar' and 'vbar' subcommands the 'linesize' attribute would hve
 expressed the width of the line.
 
-    drawdot.hbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
-    drawdot.vbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
+    \drawdot.hbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
+    \drawdot.vbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
 
 The 'dotsize' and 'linesize' are both expressed in terms of 'pt'. For
 'hbar' and 'vbar' commands, the length of the bar can be specified via
@@ -2414,8 +2415,8 @@ length in grid unit. If not specified, the default value is 0.25,
 which is one-quarter the length of a grid, and it can be changed to a
 different value by the 'set barlength' command.
 
-    drawot.hbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
-    drawdot.vbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
+    \drawdot.hbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
+    \drawdot.vbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
 
 Here, the length of each bar is going to be about half the length of
 the grid. Note that for 'vbar', it's lower end point aligns with the
@@ -2428,9 +2429,9 @@ The 'drawtext' command is designed to place a piece of text in one or more path
 points. For instance, each of the following 'drawtext' commands will place a piece
 of text at the given location.
 
-    drawtext.rt "A" (1,1)
-    drawtext.lft "B" (2,2)
-    drawtext.top "C" (3,4)
+    \drawtext.rt "A" (1,1)
+    \drawtext.lft "B" (2,2)
+    \drawtext.top "C" (3,4)
 
 The text must appear before any path points, and must enclosed within a set of
 quotation marks. 
@@ -2440,7 +2441,7 @@ be shown in the first path point encountered. However, if additional
 path points are specified, then the same text is to be repeated 
 across the other path points.
 
-    drawtext "A" (1,1) (2,2) (3,4)
+    \drawtext "A" (1,1) (2,2) (3,4)
 
 The option of this command specifies how the text is aligned relative
 to the path point. For instance, if the option is 'top' then the 
@@ -2448,15 +2449,15 @@ text will be aligned in such a way that it appear on top of the
 path point and centered horizontally. Without the option,
 it defaults to 'urt'.
 
-    drawtext.top   -  top
-    drawtext.bot   -  bottom
-    drawtext.lft   -  left
-    drawtext.rt    -  right
-    drawtext.ulft  -  upper left
-    drawtext.llft  -  lower left
-    drawtext.urt   -  upper right
-    drawtext.lrt   -  lower right
-    drawtext.ctr   -  centering the text
+    \drawtext.top   -  top
+    \drawtext.bot   -  bottom
+    \drawtext.lft   -  left
+    \drawtext.rt    -  right
+    \drawtext.ulft  -  upper left
+    \drawtext.llft  -  lower left
+    \drawtext.urt   -  upper right
+    \drawtext.lrt   -  lower right
+    \drawtext.ctr   -  centering the text
 
 It is also possible to express the fact that each path point is to show a
 different piece of text, by placing double backslashes inside the text, such
@@ -2466,30 +2467,30 @@ and in the same order. For instance, the following command would have placed
 letter "A" with the first point, letter "B" with the second point, and letter "C"
 with the third point.
 
-    drawtext "A" "B" "C" (1,1) (2,2) (3,4)
+    \drawtext "A" "B" "C" (1,1) (2,2) (3,4)
 
 It is also possible to express that a math expression instead of plain text.
-by setting is such that each text starts with "{{" and ends with "}}".
+by setting is such that each text starts with ``\(`` and ends with ``\)``.
 In the following example the first and the last text labels are 
 treated as math text while the middle one is treated as plain text.
 
-    drawtext {math:1} "{{A_0}}" "Hello" "{{A_2}}" (1,1) (2,2) (3,4)
+    \drawtext "\(A_0\)" "Hello" "\(A_2\)" (1,1) (2,2) (3,4)
 
 The text command also allows for each entry to be laid out such that it is
 multi-line paragraph. Note that this only works for plain text, and not
 for math.
 
-    drawtext.ulft {fontsize:7} "degree\\3" (-3,2)
-    drawtext.urt  {fontsize:7} "degree\\2" (3,2)
-    drawtext.llft {fontsize:7} "degree\\2" (-3,-2)
-    drawtext.lrt  {fontsize:7} "degree\\3" (3,-2)
+    \drawtext.ulft {fontsize:7} "degree\\3" (-3,2)
+    \drawtext.urt  {fontsize:7} "degree\\2" (3,2)
+    \drawtext.llft {fontsize:7} "degree\\2" (-3,-2)
+    \drawtext.lrt  {fontsize:7} "degree\\3" (3,-2)
 
 In addition, the 'drawtext' command has the capability to style the font using
 the "fontfamily" and "fontstyle" style options. Note that this might not 
 always work for something. For instance, for LATEX and CONTEX it is not
 possible for specifying both a monospace and an italic.
 
-    drawtext.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7} \
+    \drawtext.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7} \
           "degree\\3" (-3,2)
 
 
@@ -2577,19 +2578,19 @@ the location of the tick marks at that location of the axis.
 Once specified, we can draw a point on this Cartesian plane using a special notation
 of an absolute path point such as the following.
 
-    drawdot (#car.1,4,3)
+    \drawdot (#car:1,4,3)
 
 This point means that a coordinate point of this Cartesian plane at (4,3). This
 point is then automatically converted to a viewport coordinate to be drawn by
 the 'drawdot' command. Similarly, a line can be drawn between any two points of this 
 Cartesian plane such as the following.
 
-    draw (#car.1,4.3)--(#car.1,5,10)
+    \draw (#car:1,4.3)--(#car:1,5,10)
 
 In addition, there is a "^car" path directive. For instance we can draw the previous two 
 points using the following 'draw' command and the result will be exactly the same.
 
-    draw ^car:1 (4,3)--(5,10)
+    \draw ^car:1 (4,3)--(5,10)
 
 This is because the "^car:1" directive would have configured the current offset and offset scale
 to match those of the Cartesian plane #1. In particular, the offset center is set to the location
@@ -2673,15 +2674,15 @@ The 'if' command is used to conditionally execute some block of codes
 depending on the condition of an Boolean expression, such as 'i > 10',
 'i == 10', 'i >= 10', 'i < 10', 'i <= 10', and 'i != 10', etc.
 
-    if i > 10; then
+    \if i > 10; \then
       show ${i}
-    elif i > 5; then
+    \elif i > 5; \then
       show ${i}
-    elif i > 0; then
+    \elif i > 0; \then
       show ${i}
-    else
+    \else
       show ${i}
-    fi
+    \fi
 
 Note that the Boolean expression must be ended by a semicolon. The 'elif' and
 'else' components are optional, and can be omitted. The body statements with
@@ -2692,13 +2693,13 @@ command.
 A compound Boolean statement is possible, in which case each individual
 Boolean statement is to be joint by the keyword "AND" and/or "OR".
 
-    if i > 10; AND j == 10; then
-      show ${i} ${j} 
-    fi
+    \if i > 10; AND j == 10; \then
+      \show ${i} ${j} 
+    \fi
 
-    if i > 10; OR j == 10; then
-      show ${i} ${j} 
-    fi
+    \if i > 10; OR j == 10; \then
+      \show ${i} ${j} 
+    \fi
 
 Note that each individual Boolean expression should still end with a semicolon
 regardless if it is to be joint by another Boolean expression down the road.
@@ -2706,9 +2707,9 @@ regardless if it is to be joint by another Boolean expression down the road.
 There isn't a limit when it comes to how many Boolean expressions can be
 joint by AND/OR.
 
-    if i > 10; AND j == 10; OR k != 5; then
-      show ${i} ${j} ${k}
-    fi
+    \if i > 10; AND j == 10; OR k != 5; \then
+      \show ${i} ${j} ${k}
+    \fi
 
 It should be pointed out that all joins are treated equally. This means that
 they will not be internally regrouped based on the order of operations of these
@@ -2722,9 +2723,9 @@ variable 'j' is set to 10, completely ignoring the state of variable 'i',
 because of the fact that there isn't a join thus the second expression
 always overrides the first.
 
-    if i > 10; j == 10; then
-      show ${i} ${j}
-    fi
+    \if i > 10; j == 10; \then
+      \show ${i} ${j}
+    \fi
 
 
 
@@ -2734,17 +2735,17 @@ A 'for' command is provided by Diagram such that a number of commands
 can be repetitively executed, and each iteration these commands would
 have been run under a different set of arguments. The basic syntax is
 
-    for a in [1, 2, 3, 4]; do
-      draw (${a},${a})--(0,0)
-    done
+    \for a in [1, 2, 3, 4]; \do
+      \draw (${a},${a})--(0,0)
+    \done
 
 In the example, the 'draw' command will be executed exactly four
 times, each of which looks like the following.
 
-    draw (1,1)--(0,0)
-    draw (2,2)--(0,0)
-    draw (3,3)--(0,0)
-    draw (4,4)--(0,0)
+    \draw (1,1)--(0,0)
+    \draw (2,2)--(0,0)
+    \draw (3,3)--(0,0)
+    \draw (4,4)--(0,0)
 
 The 'for' command starts with the keyword 'for', followed by a one or more
 pairing of a "loop variable" to a range of floats. 
@@ -2765,16 +2766,14 @@ an environment variable is expected.
 
 Following is an example of iterating over two loop variables: 'a' and 'b'.
 
-    % Using for-loop
-    for a in [1,3]; b in [2,4]; do
-      draw (${a},${a})--(${b},${b})
-    done
+    \for a in [1,3]; b in [2,4]; \do
+      \draw (${a},${a})--(${b},${b})
+    \done
 
 Following is the equivalent commands without using the for-loop.
 
-    % Not using the for-loop
-    draw (1,1)--(2,2)
-    draw (3,3)--(4,4)
+    \draw (1,1)--(2,2)
+    \draw (3,3)--(4,4)
 
 Note that it is recommanded that the lines of the loop body be indented
 with at least one space. This allows for the recognition of the line "done"
@@ -2785,34 +2784,34 @@ This design allows for writing of "nested for loop" possible, such that
 inner loop will retain its independence during the extraction of loop body
 of the outer loop.
 
-    for a in [9,19,29]; b in [0.4,0.5,0.6]; do
-      origin x:${a}
-      for c in [16,4]; do
-        origin y:${c}
-        draw (0,0) [h:-6] [v:6]
-        draw (0,0) [q:-6,0,-6,6]
-        path P0 = (0,0)
-        path P1 = (-6,0)
-        path P2 = (-6,6)
-        dot &P0 &P1 &P2
-        label.lrt  "P₀" &P0
-        label.llft "P₁" &P1
-        label.ulft "P₂" &P2
-        path line1 = &P0 -- &P1
-        path line2 = &P1 -- &P2
-        path m0 = &midpoint{&line1,${b} }
-        path m1 = &midpoint{&line2,${b} }
-        dot &m0 &m1
-        draw &m0 -- &m1
-        path line3 = &m0 -- &m1
-        path B = &midpoint{line3,${b} }
-        dot &B
-        label.bot "m₀" &m0
-        label.lft "m₁" {dx:-.1} &m1
-        label.urt "B" &B
-      done
-      label.bot "t=${b}" (-3,-2)
-    done
+    \for a in [9,19,29]; b in [0.4,0.5,0.6]; \do
+      \origin ^x:${a}
+      \for c in [16,4]; \do
+        \origin ^y:${c}
+        \draw (0,0) [h:-6] [v:6]
+        \draw (0,0) [q:-6,0,-6,6]
+        \path P0 = (0,0)
+        \path P1 = (-6,0)
+        \path P2 = (-6,6)
+        \drawdot &P0 &P1 &P2
+        \drawlabel.lrt  "P₀" &P0
+        \drawlabel.llft "P₁" &P1
+        \drawlabel.ulft "P₂" &P2
+        \path line1 = (&P0) -- (&P1)
+        \path line2 = (&P1) -- (&P2)
+        \path m0 = &midpoint{&line1_0,&line1_1,${b} }
+        \path m1 = &midpoint{&line2_0,&line2_1,${b} }
+        \drawdot (&m0) (&m1)
+        \draw (&m0) -- (&m1)
+        \path line3 = (&m0) -- (&m1)
+        \path B = &midpoint{&line3_0,&line3_1,${b} }
+        \drawdot (&B)
+        \drawlabel.bot "m₀" &m0
+        \drawlabel.lft "m₁" {tx:-.1} &m1
+        \drawlabel.urt "B" &B
+      \done
+      \drawlabel.bot "t=${b}" (-3,-2)
+    \done
       
 Each 'for' command would have also added a new environment variable called '_'
 that will be assigned an integer equal to the current iteration. Of the first
@@ -2841,17 +2840,16 @@ arithmetic expression is equivalent to evaluating an expression that
 is "1 + log2(4)". In the following example, variable 'a' is being
 assigned a value of 3 at the end of that command.
 
-    fn f(x) = 1 + log2(x)
-    var a = f(4)
+    \fn f(x) = 1 + log2(x)
+    \var a = f(4)
 
 A function created by a "fn" command can be thought of as a user-defined
 function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
-'floor', 'ceil', 'pow', etc. Some commands, such as 'cartesian.1.yplot', allows
-a function name string to be passed in that will be used for plotting a group
-of x/y coordinates, such as the one shown by the following example.
+'floor', 'ceil', 'pow', etc. It can be used in places such as a directive in
+an array expression.
 
-    fn P(x) = pow(x,2)
-    cartesian.1.yplot {fn:P} 1 2 3
+    \fn P(x) = pow(x,2)
+    var v[] = ^fn:P 1 2 3 4 
 
 
 
@@ -2865,22 +2863,22 @@ nature. In particular, each ``node`` command is to draw one or more
 nodes, with each node shaped as a circle, with optional text in the
 middle.
 
-    node.A  (1,1)
-    node.B  (5,5)
+    \node.A  (1,1)
+    \node.B  (5,5)
 
 The previous two commands would have drawn two nodes, one named "A",
 and one named "B" at two locations where each aligns with the center
 of one of the nodes. The default radius of the node is 1, but it can
 be configured to another such as "2" by doing the following
 
-    config r 2
+    \config r 2
 
 The option after the command such as ".A" and ".B" is used to assign a
 name to this node, so that it can be referred to later by a command
 such as ``edge``. In the following example the ``edge`` command is to
 draw an edge between nodes "A" and "B".
 
-    edge.A.B
+    \edge.A.B
 
 The edge is by default a straight line. Each end point of this line
 starts from the outside of the node, touching the perimeter of the
@@ -2922,18 +2920,18 @@ out with an angle that is 45 degrees turned to the left hand side
 of the normal trajectory, placing the starting direction at a due north 
 direction. 
 
-    node.A  (1,1)
-    node.B  (5,5)
-    edge.A.B {abr:-45}
+    \node.A  (1,1)
+    \node.B  (5,5)
+    \edge.A.B {abr:-45}
 
 A positive "abr" option would have expressed that it should veer away 
 towards the right hand side of the normal trajectory.
 If the edge is going to include arrow heads, then the 'arrowhead' style option
 should've been provided.
 
-    edge.A.B {arrowhead:1,abr:45}
-    edge.A.B {arrowhead:2,abr:45}
-    edge.A.B {arrowhead:3,abr:45}
+    \edge.A.B {arrowhead:1,abr:45}
+    \edge.A.B {arrowhead:2,abr:45}
+    \edge.A.B {arrowhead:3,abr:45}
 
 In order to be connected with lines, each node should have an ID assigned to
 it. If a node is to be created inside a for-loop this
@@ -2945,14 +2943,14 @@ The chosen Id will be one of those in the list and its location depends on the
 current iterations of the loop, such that the first iteration will chose
 the first one, and the second iteration the second one, and so on.
 
-    origin ^center
-    for theta in [0:60:359]; do
-      var r = 2
-      var x = cos(deg2rad(theta)) * r
-      var y = sin(deg2rad(theta)) * r
-      node.@[1,2,3] {r:0.5} (x,y)
-    done
-    node.0.1.2 {fillcolor:red}
+    \origin ^center
+    \for theta in [0:60:359]; \do
+      \var r = 2
+      \var x = cos(deg2rad(theta)) * r
+      \var y = sin(deg2rad(theta)) * r
+      \node.@[1,2,3] {r:0.5} (x,y)
+    \done
+    \node.0.1.2 {fillcolor:red}
 
 For an 'edge' command, the 'shift' style option can be utilized to allow for
 a label to be shifted slightly away from its centered position so that
@@ -2972,8 +2970,8 @@ Aside from being a circle, a node can also have two additional shapes,
 namely RREC and RECT, which is controlled by the "nodetype" member
 of the config. 
 
-    node {nodetype:RREC} (0,0)
-    node {nodetype:RECT} (5,5)
+    \node {nodetype:RREC} (0,0)
+    \node {nodetype:RECT} (5,5)
 
 The first one would have created a rounded square, and the second a 
 plain square. The width and height of the square is 2 times the 'r'. 
@@ -3002,8 +3000,8 @@ the anchor that is due east, and "o9" an anchor point at due west. This makes it
 possible to draw a line from (0,0) to the "o9" anchor point of node 1 
 as is shown by the following example.
 
-    node.1 (5,5)
-    draw (0,0) -- (#node.1:o9)
+    \node.1 (5,5)
+    \draw (0,0) -- (#node:1:o9)
 
 
 
@@ -3014,11 +3012,11 @@ This command is to draw a box at the location expressed by each path points.
 The size of the box is to be controlled by the 'w' and 'h' members of style
 options. If absent, the 'w' is assumed to be 3 and 'h' 2.
   
-    box {w:3, h:2} (0,0) (1,2)  
+    \box {w:3, h:2} (0,0) (1,2)  
     
 It is also possible to place a label inside a box. 
 
-    box {w:3, h:2} "hello\\world" "Goodbye" (0,0) (1,2) 
+    \box {w:3, h:2} "hello\\world" "Goodbye" (0,0) (1,2) 
     
 The "boxtype" style holds the type of boxes to be drawn,
 other than the default rectangular shape.  Note that
@@ -3026,7 +3024,7 @@ regardless the choice of the boxtype, the geometry of the
 shape will always be confined to the width and height given
 by "w" and "h".
 
-    box {boxtype:RECT} "Hello\\World" (0,0)
+    \box {boxtype:RECT} "Hello\\World" (0,0)
 
 A box can come with an ID string, which must consists of all
 word characters. If it is provided, then the ID string is
@@ -3039,16 +3037,16 @@ redrawn with a different text because the location and
 the type of the box has already been saved with the given
 id "1".
 
-    box.1 {boxtype:RECT} "Hello\\World" (0,0)
-    box.1 "Goodbye" 
+    \box.1 {boxtype:RECT} "Hello\\World" (0,0)
+    \box.1 "Goodbye" 
 
 The previous example would have had two text being drawn on 
 top of each other. This might not be a desirable effect, but
 if a "fillcolor" is provided then previous text would have
 been erased first.
 
-    box.1 {boxtype:RECT} "Hello\\World" (0,0)
-    box.1 {fillcolor:brown} "Goodbye" 
+    \box.1 {boxtype:RECT} "Hello\\World" (0,0)
+    \box.1 {fillcolor:brown} "Goodbye" 
 
 If the id of the box is underscore, it will be assigned an Id in the same
 mannor as that of the 'node' command. 
@@ -3065,9 +3063,9 @@ However, if a path is to go through
 an anchor point of a box, such a point can be specified using
 the object-expression such as the following.
 
-    box.1 "Hello\\World" (0,0)
-    box.2 "Goodbye" (5,5)
-    draw (#box.1:e)--(#box.2:w)
+    \box.1 "Hello\\World" (0,0)
+    \box.2 "Goodbye" (5,5)
+    \draw (#box:1:e)--(#box:2:w)
 
 This would have drawn a straight line from the "e" anchor point of box 1
 to the "w" anchor point of box 2. The anchor points of a box is follows:
@@ -3093,18 +3091,18 @@ Note that an object-expression allows additional arguments that provides
 "offset" to the anchor point. This allows the anchor point to be "fine-tuned"
 to a slightly different location other than the default one provided.
 
-    box.1 "Hello\\World" (0,0)
-    box.2 "Goodbye" (5,5)
-    draw (#box.1:e,0,0.1)--(#box.2:w,0,-0.1)
+    \box.1 "Hello\\World" (0,0)
+    \box.2 "Goodbye" (5,5)
+    \draw (#box:1:e,0,0.1)--(#box:2:w,0,-0.1)
 
 In the previous example, the "e" anchor point of box 1 will be moved up
 for 0.1 grid unit, and the "w" anchor point of box 2 will be moved down
 for 0.1 grid unit. If for some reason the anchor point is missing, such as
 the following, then the lower-left point of the box is assumed.
 
-    box.1 "Hello\\World" (0,0)
-    box.2 "Goodbye" (5,5)
-    draw (#box.1,0,0.1)--(#box.2,0,-0.1)
+    \box.1 "Hello\\World" (0,0)
+    \box.2 "Goodbye" (5,5)
+    \draw (#box:1,0,0.1)--(#box:2,0,-0.1)
 
 
 # The 'prodofprimesws' command
@@ -3112,7 +3110,7 @@ the following, then the lower-left point of the box is assumed.
 This command is to show a sheet that demonstrates the progression
 of obtaining all prime factors of a given number. 
 
-    prodofprimesws "12 2 2 3" (5,5)
+    \prodofprimesws "12 2 2 3" (5,5)
 
 Note that the result is to show the original product with a list of primes
 that are to the left of that number. At this time all prime factors need to be
@@ -3130,7 +3128,7 @@ to be shown on the canvas. In the following example the workflow
 of a multiplication worksheet of 24 multiplied by 3 is to be
 shown at location (2,1).
 
-    multiws "24 3" {answer} (2,1) 
+    \multiws "24 3" {answer} (2,1) 
 
 By default "answer" is not set, in which case only
 the multiplier and the multiplicant are shown. However, when
@@ -3139,15 +3137,15 @@ leads to the solution is to be shown inside the canvas.
 The "answercolor" can be set which will be used to draw all lines, 
 dots, and texts with that color.
 
-    multiws "24 3" {answer,answercolor:orange} (2,1) 
+    \multiws "24 3" {answer,answercolor:orange} (2,1) 
 
 It is also possible to include a decimal number with one of the numbers
 or both numbers. If this the case, the correct decimal place
 will be shown both at multiplier and multiplicant
 and as well as at the product.
 
-    multiws {answer,answercolor:orange} "2.1 4" (0,0)
-    multiws {answer,answercolor:orange} "2.1 1.4" (0,0)
+    \multiws {answer,answercolor:orange} "2.1 4" (0,0)
+    \multiws {answer,answercolor:orange} "2.1 1.4" (0,0)
 
 
 
@@ -3158,14 +3156,14 @@ of a long division between two integers, with quotient and remainders.
 In the following example a long division workflow is to be shown 
 starting at the coordinate (2,1).
 
-    longdivws "11 4" {answer} (2,1)
+    \longdivws "11 4" {answer} (2,1)
 
 By default the "answer" is not set, in which case only the
 the dividend and divisor is to be shown. The "answercolor" can
 also be set which will be used to drawn everything that is 
 related to the answer, including lines and text.
 
-    longdivws "11 4" {answer,answercolor:orange} (2,1)
+    \longdivws "11 4" {answer,answercolor:orange} (2,1)
 
 Unlike the "multiws" operation, the "longdivws" operation does
 not scan the input for any appearances of decimal points---thus if
@@ -3228,19 +3226,19 @@ skew factors for the pieces, which can be set by the
 'skew' option. Following shows the default set of arguments
 for each operation.
 
-    lego.show {skew:0.36 0.30 1.00 0.90}
-    lego.show2 {skew:0.80 0.45 0.70}
+    \lego.show {skew:0.36 0.30 1.00 0.90}
+    \lego.show2 {skew:0.80 0.45 0.70}
 
-For lego-show operation, the first two arguments are the
+For lego.show operation, the first two arguments are the
 skewed values in x-direction and y-direction. The third and
 fouth arguments are the width and height of front facing 
 rectangle.
 
-For lego-show2 operation, the first and second arguments are 
+For lego.show2 operation, the first and second arguments are 
 the half width and half height of the diamond of the top
 face. The third argument is the height.
 
-Either lego-show and lego-show2 operation would have
+Either lego.show and lego.show2 operation would have
 generated Lego pieces that are shaded differently for two 
 of its faces for each piece. For lego-show the front facing
 face is shaded lighter, and the face facing to the right 
@@ -3338,20 +3336,20 @@ The 'var' command is to create an environment variable that
 is the result of an arithmetic expression, a text string,
 or an array.  Following is an example of a arithmetic expression.
 
-    var a = pow(2,1/12)
-    draw (0,0)--(a,a)
+    \var a = pow(2,1/12)
+    \draw (0,0)--(a,a)
 
 Following is a example of creating a variable that holds an array.
 
-    var o[] = 1 2 3
-    for i in [@o]; do
-      dot (i,i)
-    done
+    \var o[] = 1 2 3
+    \for i in [@o]; \do
+      \drawdot (i,i)
+    \done
 
 Following is a example of a text string composition.
 
-    var s = @"%d-%d-%d" 301 444 5591
-    drawtext "${@a}" (0,0)
+    \var s = @"%d-%d-%d" 301 444 5591
+    \drawtext "${@a}" (0,0)
 
 The first example has created an environment variable named 'a', 
 that is assigned a numerical value that is equivalent to 
@@ -3364,13 +3362,13 @@ arithmetic expression such as the following example which 'a' is used
 to compute a value that is 2 multiples of 'a' and the value of which
 is assigned to variable 'b'.
 
-    var b = a * 2;
+    \var b = a * 2;
 
 Note that the number is complex-number-ready, which means the number 
 is internally represented as a complex number. This allows the following
 expression to be constructed that would express a complex number that is "2+3i":
 
-    var c = 2 + 3i
+    \var c = 2 + 3i
 
 Note that the spaces around the plus-sign is optional. In fact the entire
 expression is just treated as a regular math operation of addition, with 
@@ -3388,12 +3386,12 @@ and "PI" and "E" are fixed numbers only having a real component for itself.
 Thus, the following expression would have assigned the complex number "3i" 
 to variable 'd'.
 
-    var d = 3 * I
+    \var d = 3 * I
 
 Note that it is illegal to use a "i" or "j" by itself, such as the following
 which is illegal.
 
-    var d = 3 + i
+    \var d = 3 + i
 
 This is because a letter within an expression by itself is to be treated as a
 variable. Thus, the previous expression would have looked for a variable named
@@ -3409,7 +3407,7 @@ that it will be scanned for the appearances of "formattng groups", which is
 replaced by something that appears after it.  The following example would have
 created a variable named "s" that holds a string that is "301-444-5591".
 
-    var s = @"%d-%d-%d" 301 444 5591
+    \var s = @"%d-%d-%d" 301 444 5591
 
 In the second situation is when the at-sign is followed by a variable, 
 in which case the value of that variable is pulled and its value is treated
@@ -3421,8 +3419,8 @@ we can create another variable 's1' that hold the same value of 's'
 This allows us to construct a string an later used inside a command that expects
 such.
 
-    var s = @"%d-%d-%d" 301 444 5591
-    drawtext "${@s}" (0,0)
+    \var s = @"%d-%d-%d" 301 444 5591
+    \drawtext "${@s}" (0,0)
 
 The 'var' command is also able to create an "array" variable, in which
 case the variable is to hold a list of numbers, rather than a single number. 
@@ -3432,10 +3430,10 @@ has first created and assigned the variable 'a' an array that consists of
 three items, and then reference this array by the name of 'a' inside a 
 for-command.
 
-    var a[] = 1 2 3
-    for i in [@a]; do
-      drawdot (i,i)
-    done
+    \var a[] = 1 2 3
+    \for i in [@a]; \do
+      \drawdot (i,i)
+    \done
 
 An array variable can also be referenced by its individual elements. The syntax
 is to start with the variable, followed by a underscore, and then one or more digits
@@ -3446,7 +3444,7 @@ The following example has created an array of three numbers, and was later
 on used to generate text output on various locations, pulling the content of 
 each element of the array. 
 
-    drawtext "${a_0}" "${a_1}" "${a_2}" (0,0) [h:1] [h:1]
+    \drawtext "${a_0}" "${a_1}" "${a_2}" (0,0) [h:1] [h:1]
 
 Following are formatting groups that are recognized.
 
@@ -3456,8 +3454,8 @@ Following are formatting groups that are recognized.
   It does not consume any argument.
 
   ```
-  var a = 1.23456789
-  var s = @"%0.2f%%" a
+  \var a = 1.23456789
+  \var s = @"%0.2f%%" a
   % s => '1.23%'
   ```
 
@@ -3469,9 +3467,9 @@ Following are formatting groups that are recognized.
   argument.
 
   ```
-  for i in [11,23,56]; do
-    var s = @"%_" 
-  done
+  \for i in [11,23,56]; \do
+    \var s = @"%_" 
+  \done
   % s => '0'
   % s => '1'
   % s => '2'
@@ -3484,8 +3482,8 @@ Following are formatting groups that are recognized.
   express the decimal places to be used for this number.
 
   ```
-  var a = 1.23456789
-  var s = @"%.2f" a
+  \var a = 1.23456789
+  \var s = @"%.2f" a
   % s => '1.23'
   ```
 
@@ -3494,8 +3492,8 @@ Following are formatting groups that are recognized.
   This formatting group would parse the argument as an integer.
 
   ```
-  var a = 0x10
-  var s = @"%d" a
+  \var a = 0x10
+  \var s = @"%d" a
   % s => "16"
   ```
 
@@ -3508,10 +3506,10 @@ Following are formatting groups that are recognized.
   number with all letters between A-Z in uppercases.
 
   ```
-  var a = 15
-  var s = @"%x" a
+  \var a = 15
+  \var s = @"%x" a
   % s => "f"
-  var s = @"%X" a
+  \var s = @"%X" a
   % s => "F"
   ```
 
@@ -3524,8 +3522,8 @@ Following are formatting groups that are recognized.
   This formatting group is to output a binary number with one's and zero's.
 
   ```
-  var a = 5
-  var s = @"%b" 5
+  \var a = 5
+  \var s = @"%b" 5
   % s => "101"
   ```
 
@@ -3534,8 +3532,8 @@ Following are formatting groups that are recognized.
   This formatting group is to output an octal number.
 
   ```
-  var a = 0xF0
-  var s = @"%o" a
+  \var a = 0xF0
+  \var s = @"%o" a
   % a => "360"
   ```
 
@@ -3545,8 +3543,8 @@ Following are formatting groups that are recognized.
   with that given code point.
 
   ```
-  var a = 65
-  var s = @"%c" a
+  \var a = 65
+  \var s = @"%c" a
   % a => "A"
   ```
 
@@ -3555,8 +3553,8 @@ Following are formatting groups that are recognized.
   This formatting group is to treat the argument as a string.
 
   ```
-  var a = 1.23
-  var s = @"%s" 
+  \var a = 1.23
+  \var s = @"%s" 
   % s => "1.23"
   ```
 
@@ -3565,8 +3563,8 @@ then the result would be undefined if the string cannot be recognized as a legal
 For instance, in the following example variable 'c' is holding a string that is "Hello",
 and when later it is used to perform an addition, the result becomes NaN.
 
-    var c = @"Hello"
-    var d = c + 10
+    \var c = @"Hello"
+    \var d = c + 10
     % d = NaN
 
   
@@ -3649,11 +3647,11 @@ or nothing else.
 Following example would have created a copy buffer named "a" and
 within it insert three lines.
 
-    %=?a
-    draw (0,0)--(4,4)
-    draw (0,0)--(5,5)
-    draw (0,0)--(6,6)
-    %=
+    %?a
+    \draw (0,0)--(4,4)
+    \draw (0,0)--(5,5)
+    \draw (0,0)--(6,6)
+    %
 
 Following is an example of inserting these three lines at the beginning,
 such that the diagram will have four "draw" commands total.
@@ -3671,23 +3669,23 @@ retrieved.
 
     ```diagram
     %?a
-    trump.diamond.J {scaleX:0.5,scaleY:0.5} 2  1
-    trump.heart.Q   {scaleX:0.5,scaleY:0.5} 7  1
-    trump.spade.K   {scaleX:0.5,scaleY:0.5} 12 1
-    trump.club.A    {scaleX:0.5,scaleY:0.5} 17 1
+    \trump.diamond.J {scaleX:0.5,scaleY:0.5} 2  1
+    \trump.heart.Q   {scaleX:0.5,scaleY:0.5} 7  1
+    \trump.spade.K   {scaleX:0.5,scaleY:0.5} 12 1
+    \trump.club.A    {scaleX:0.5,scaleY:0.5} 17 1
     %
     %?b
-    trump.diamond.10 {scaleX:0.5,scaleY:0.5} 2  5
-    trump.heart.9    {scaleX:0.5,scaleY:0.5} 7  5
-    trump.spade.8    {scaleX:0.5,scaleY:0.5} 12 5
-    trump.club.7     {scaleX:0.5,scaleY:0.5} 17 5
+    \trump.diamond.10 {scaleX:0.5,scaleY:0.5} 2  5
+    \trump.heart.9    {scaleX:0.5,scaleY:0.5} 7  5
+    \trump.spade.8    {scaleX:0.5,scaleY:0.5} 12 5
+    \trump.club.7     {scaleX:0.5,scaleY:0.5} 17 5
     %
     %?c
-    trump.diamond.6  {scaleX:0.5,scaleY:0.5} 2  9
-    trump.heart.5    {scaleX:0.5,scaleY:0.5} 6  9
-    trump.spade.4    {scaleX:0.5,scaleY:0.5} 10 9
-    trump.club.3     {scaleX:0.5,scaleY:0.5} 14 9
-    trump.club.2     {scaleX:0.5,scaleY:0.5} 18 9
+    \trump.diamond.6  {scaleX:0.5,scaleY:0.5} 2  9
+    \trump.heart.5    {scaleX:0.5,scaleY:0.5} 6  9
+    \trump.spade.4    {scaleX:0.5,scaleY:0.5} 10 9
+    \trump.club.3     {scaleX:0.5,scaleY:0.5} 14 9
+    \trump.club.2     {scaleX:0.5,scaleY:0.5} 18 9
     %
     ```
 
