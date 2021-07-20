@@ -333,3 +333,27 @@ Following are styling elements:
   Go To Little Web Hut</button>
   </p>
   ```
+
+
+
+# The currentColor 
+
+Following is the spec for the 'currentColor' keyword:
+
+  CSS1 and CSS2 defined the initial value of the ‘border-color’ property to be
+  the value of the ‘color’ property but did not define a corresponding keyword.
+  This omission was recognized by SVG, and thus SVG 1.0 introduced the
+  ‘currentColor’ value for the ‘fill’, ‘stroke’, ‘stop-color’, ‘flood-color’,
+  and ‘lighting-color’ properties. CSS3 extends the color value to include the
+  ‘currentColor’ keyword to allow its use with all properties that accept a
+  <color> value. This simplifies the definition of those properties in CSS3.
+
+  currentColor is defined as the value of the ‘color’ property. The used value
+  of the ‘currentColor’ keyword is the computed value of the ‘color’ property.
+  If the ‘currentColor’ keyword is set on the ‘color’ property itself, it is
+  treated as ‘color: inherit’.
+
+
+
+
+
