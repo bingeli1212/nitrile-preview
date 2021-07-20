@@ -415,8 +415,54 @@ Following is a minimum working example:
             1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
     \end{longtable}
 
-# The parskip package
+# Ignore packages
 
-The parskip package is being ignored by memoir even if it is included.
+Most packages work with the memoir class, the main exception being the hyperref
+package. This package modifies many of the internals of the standard classes but
+does not cater for all of the differences between memoir and the standard ones.
+If you use hyperref with memoir then the memhfixc package2 is automatically
+loaded by hyperref to provide some class specific alterations. The memoir class
+includes code either equivalent to, or extensions of, the following packages;
+that is, the set of commands and environments is at least the same as those in
+the packages:
+
+  abstract, appendix, booktabs, ccaption, chngcntr, chngpage, enumerate,
+  epigraph, framed, ifmtarg, index, makeidx, moreverb, needspace, newfile,
+  nextpage, parskip, patchcmd, setspace, shortvrb, showidx, titleref, titling,
+  tocbibind, tocloft, verbatim, verse.
+
+The class automatically ignores any \usepackage or \RequirePackage related to
+these. However, if you want to specifically use one of these packages rather
+than the integrated version then you can do so. For arguments sake, assuming you
+really want to use the titling package you can do this:
+ 
+    \documentclass[...]{memoir}
+    \DisemulatePackage{titling}
+    \usepackage{titling}
+
+
+The memoir class incorporates a version of the setspace package, albeit using
+different names for the macros. The package enables documents to be set double
+spaced but leaves some document elements, like captions for example, single
+spaced. To do this it has to make some assumptions about how the document class
+works. I felt that this kind of capability should be part of the class and not
+depend on assumptions. In the particular case of the setspace package, even with
+the standard classes, there can be some unexpected spacing around displayed
+material; this has not occured with memoir’s implementation. The class also
+provides functions similar to those provided by the following packages, although
+the commands are different:
+
+  crop, fancyhdr, geometry, sidecap, subfigure, titlesec.
+
+You can use these packages if you wish, or just use the capabilities of the
+memoir class. The class has built in support for the bidi package for
+bidirectional typesetting. 
+
+The following packages are automatically
+loaded by the class:
+
+  array, dcolumn, delarray, etex, iftex, tabularx, textcase (with overload
+  option)
+
 
 
