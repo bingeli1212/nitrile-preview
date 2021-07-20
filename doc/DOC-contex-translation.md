@@ -3613,6 +3613,10 @@ The "fontforge" program which is a free download can be run to examine the
 coverage glyphs of this font file. This allows us to discover the Unicode
 block range(s) this font file is designed to cover.
 
+# The hfill
+
+The \hfill command is still available in CONTEX.
+
 
 
 

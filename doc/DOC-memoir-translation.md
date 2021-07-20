@@ -414,3 +414,9 @@ Following is a minimum working example:
             1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
             1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
     \end{longtable}
+
+# The parskip package
+
+The parskip package is being ignored by memoir even if it is included.
+
+
