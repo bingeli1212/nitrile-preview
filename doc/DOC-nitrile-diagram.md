@@ -161,8 +161,19 @@ width and height and such that each grid is 6mm-by-6mm, do the following.
     ```diagram{viewport:20 10 6}
     ```
 
+By default the grid lines are drawn for each grid. Thus, a grid of 20 by 10
+would have seen a total of 21 vertical lines and 11 horizontal lines. However,
+it is also possible to skip drawing some grids lines, ie., to draw grid lines
+every other grids. In this case the fouth argument of the 'viewport' would be an
+integer expressing how many grids to cover for each grid line. By default it is
+set to 1 but it could be set to other numbers such as 2 which would asks that a
+grid line is drawn for every two grids, both in horizontal and vertical
+directions.
 
+    ```diagram{viewport:20 10 6 2}
+    ```
 
+    
 # Non-action commands
 
 Action command are those that would generate a translation such as those metafun
