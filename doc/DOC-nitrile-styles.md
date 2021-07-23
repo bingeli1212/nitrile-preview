@@ -812,4 +812,12 @@ Following are styles recognized by NITRILE:
   This property is currently used by the 'lego' command to specify the skew factors
   for the pieces.
 
++ inner:
+
+  This property sets the inner radius.
+
++ outer:
+ 
+  This property sets the outer radius.
+
   
