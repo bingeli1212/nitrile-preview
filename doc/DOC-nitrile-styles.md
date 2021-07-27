@@ -820,4 +820,8 @@ Following are styles recognized by NITRILE:
  
   This property sets the outer radius.
 
++ latex
+
+  This property hold abitrary values used for special settings that only apply
+  during a LATEX related translation.
   
