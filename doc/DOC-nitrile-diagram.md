@@ -3654,4 +3654,24 @@ a PDF file would be preferred over a PNG or SVG.
 
 
 
+# Specialized draw command
+
+Following are specialized draw commands that would draw shapes.
+
+- \drawline = this would draw a single line between any two neighboring
+  coordinate points, it requires two coordinate points to draw a single line,
+  and will draw two lines for three points
+- \drawrect = this would draw a single rectangle for each coordinate points,
+  the width and height of each rectangle is to come from the "w" and "h" property
+  of the style
+- \drawcircle = this will draw a circle for each coordinate points, the radius
+  of each circle is to come from the "r" style property
+- \drawpie = this will draw a pie for each coordinate points, the radius comes
+  from the "r" style, the start angle comes from "start", the span comes from "span".
+- \drawsector = this will draw a circular sector for each coordinate points, the
+  inner radius comes from the "inner" style, the outer radius comes from "outer"
+  style, the start angle comes from "start", the span comes from "span".
+- \drawellipse = this will draw an ellipse, the "rx" and "ry" are going to come
+  from the style attributes, and the coordinate points each serve as the center
+  point of an ellipse.
 
