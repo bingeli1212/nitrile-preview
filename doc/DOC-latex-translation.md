@@ -110,6 +110,36 @@ appears at the top of the line.
 The verbatim bundle is implemented using a "tabular", which by nature
 does not break across page boundaries. 
 
+# To add a frame around the entire content of a figure
+
+    \documentclass{article}
+    \usepackage{graphicx}
+    \usepackage{caption}
+    %
+    \graphicspath{ {./images/} }
+    %
+    \begin{document}
+    %
+    \fbox{
+    \parbox[c]{\textwidth}{
+    \centering
+    \includegraphics{example-image-duck}
+    \captionof{figure}{foo}
+    \label{fig:cow1}
+    %
+    \includegraphics{example-image-duck}
+    \captionof{figure}{bar}
+    \label{fig:cow2}
+    }}
+    %
+    \end{document}
+
+Following is for adding a frame to a figure/table float.
+
+    \usepackage{float,lipsum}
+    \floatstyle{boxed}
+    \restylefloat{table}
+    \restylefloat{figure}
 
 
 
