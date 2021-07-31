@@ -825,3 +825,14 @@ Following are styles recognized by NITRILE:
   This property hold abitrary values used for special settings that only apply
   during a LATEX related translation.
   
++ small
+
+  This style is used as a flag to express the fact that the content of a bundle
+  is to be shown in a reduced font size.
+
++ italic
+
+  This style is used as a flag to express the fact that the content of a bundle 
+  is to be shown in an italic style font.
+
+  
