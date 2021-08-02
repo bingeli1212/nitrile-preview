@@ -6,7 +6,6 @@ echo $1
     node.to_epub_doc_async('$1').then(([data,epubfname])=>{ \
         console.log(epubfname); \
         node.write_txt_file(epubfname, data).then((epubfname) => { \
-          console.log('saved'); 
         }); \
     }) \
     "
