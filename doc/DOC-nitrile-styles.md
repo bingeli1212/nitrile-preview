@@ -812,13 +812,11 @@ Following are styles recognized by NITRILE:
   This property is currently used by the 'lego' command to specify the skew factors
   for the pieces.
 
-+ inner:
-
-  This property sets the inner radius.
-
-+ outer:
++ ri:
  
-  This property sets the outer radius.
+  This property sets the inner radius when drawing a circular sector. It could
+  be set to 0, in which case the circular sector will cover part of the circle
+  without any hole in the middle.
 
 + latex
 
