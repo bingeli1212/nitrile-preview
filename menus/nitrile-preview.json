@@ -8,12 +8,12 @@
     ],
     "div.nitrile-preview": [
       {
-        "label": "Jump to Source Document",
-        "command": "nitrile-preview:jump-to-editor"
+        "label": "Scroll Preview",
+        "command": "nitrile-preview:show-highlight"
       },
       {
-        "label": "Scroll to Highlight",
-        "command": "nitrile-preview:show-highlight"
+        "label": "Scroll Editor",
+        "command": "nitrile-preview:jump-to-editor"
       },
       {
         "label": "Reload",
