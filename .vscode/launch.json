@@ -20,6 +20,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch flowerpot",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/flowerpot.js",
+      "args": [
+        "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch slide",
       "skipFiles": [
         "<node_internals>/**"
