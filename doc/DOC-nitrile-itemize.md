@@ -103,7 +103,72 @@ before the second item or any item after that. If any one of the items is
 unpacked then every item in the same list is unpacked.  Unpacked items will
 have visible vertical margins before/after it.
 
+# The UL keys
 
+For a UL item that is a single line, a search is conducted to look into the
+content of first line after the bullet,  to searched for the appearance of a
+"key".  Following are all items with valid keys:
+
+.sample
+
+    - Apple - This is a great apple.
+    - Pear - This is a great pear.
+    - Apple: This is a great apple.
+    - Pear: This is a great pear.
+    - margin-left - This is a great apple.
+    - margin-right - This is a great pear.
+    - margin-left: This is a great apple.
+    - margin-right: This is a great pear.
+    - url(): This is a great apple.
+    - url() - This is a great pear.
+    - cx.lineWidth: This is a great apple.
+    - cx.lineWidth - This is a great pear.
+    - cx.drawImage(): This is a great apple.
+    - cx.drawImage() - This is a great pear.
+
+In general, a key is recognized as a word with only the following characters:
+any alphanumerical letter such as capital or small letters, digits from 0-9, a
+period, a hyphen-minus, and left/right parenthesis. There cannot be any spaces
+allowed in a key. 
+
+The key is to be followed by a "separator" which must be a
+"space-hyphen-space", or "colon-space", and then additional texts.
+
+The key is typically typeset as italic, and the separator added, followed by 
+the normal text.
+
+# The DL term
+
+For a DL item it consists a "term" and "description". 
+The term is typically the first line and the description
+are all the rest of the lines.
+
+.sample
+
+    + Apple
+      This is a great apple.
+    + Pear
+      This is a great pear.
+
+However, if there is only a single line, then it is assumed that the line
+contains both the term and the description. A search is to be conducted
+to separate the term form the description. The pattern is to be recognized
+in the same manner as that for a UL item of a single line.
+
+    + Apple - This is a great apple.
+    + Pear - This is a great pear.
+    + Apple: This is a great apple.
+    + Pear: This is a great pear.
+    + margin-left - This is a great apple.
+    + margin-right - This is a great pear.
+    + margin-left: This is a great apple.
+    + margin-right: This is a great pear.
+    + url(): This is a great apple.
+    + url() - This is a great pear.
+    + cx.lineWidth: This is a great apple.
+    + cx.lineWidth - This is a great pear.
+    + cx.drawImage(): This is a great apple.
+    + cx.drawImage() - This is a great pear.
 
 
 
