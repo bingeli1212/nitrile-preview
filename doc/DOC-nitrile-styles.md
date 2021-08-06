@@ -703,8 +703,7 @@ Following are styles recognized by NITRILE:
 + n:2
 
   This option is used currently by the "columns" float to express the number
-  of columns. It is also used by "figure" float to express the maximum number
-  of columns for each subfigure row.
+  of columns. 
 
 + mar:1.23
 
@@ -833,4 +832,8 @@ Following are styles recognized by NITRILE:
   This style is used as a flag to express the fact that the content of a bundle 
   is to be shown in an italic style font.
 
-  
++ q
+
+  This style is primary used with a quote-bundle to ask that a quotation mark
+  to be placed before and after the entire bundle.
+
