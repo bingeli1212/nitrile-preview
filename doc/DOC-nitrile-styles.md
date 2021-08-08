@@ -837,3 +837,12 @@ Following are styles recognized by NITRILE:
   This style is primary used with a quote-bundle to ask that a quotation mark
   to be placed before and after the entire bundle.
 
++ fit 
+
+  This style is used within a Diagram to express the fact that when drawing an image
+  as a background then it should follow this rule to stretch/reduce image when
+  the viewport's aspect ratio does not agree with that of the image.
+
+
+
+
