@@ -50,6 +50,6 @@
   },
   "dependencies": {
     "fs": "*",
-    "jszip": "^3.2.1"
+    "jszip": "^3.7.0"
   }
 }
