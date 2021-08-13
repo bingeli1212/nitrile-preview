@@ -843,6 +843,12 @@ Following are styles recognized by NITRILE:
   as a background then it should follow this rule to stretch/reduce image when
   the viewport's aspect ratio does not agree with that of the image.
 
++ background
+
+  This style is used to establish the background of a img-bundle. 
+  If it is set to 'grid' then a grid equivalent to one used by dia-bundle
+  is to be placed underneath the image.
+
 
 
 
