@@ -3609,6 +3609,15 @@ is that once it is installed the CONTEX will find it and assign it the name
 "unifont" that is currently harded coded to reference this font in the setup
 area of the TEX file. 
 
+The recommended location for MaxOSX could be in the user's own font directory
+such as the following.
+
+    /Users/james/Library/Fonts/unifont-13.0.06.ttf
+
+For Windows10 the user could also place fonts in
+
+    C:\Users\james\AppData\Local\Microsoft\Windows\Fonts
+
 The "fontforge" program which is a free download can be run to examine the
 coverage glyphs of this font file. This allows us to discover the Unicode
 block range(s) this font file is designed to cover.
