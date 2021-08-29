@@ -3627,5 +3627,41 @@ block range(s) this font file is designed to cover.
 The \hfill command is still available in CONTEX.
 
 
+# The page background
+
+\setupbackgrounds is used to draw frames or backgrounds that cover specific
+areas of the page, under the text layer.
+
+The first parameter sets the main layout area; the optional second one
+specifies the linked subarea(s) of the prior. Not all main areas have such
+subareas.
+
+Because \showframe and \setupbackgrounds both draw frameboxes over parts of the
+page, the order in which they are invoked matters. In most cases,
+\setupbackgrounds should come last.
+
+Backgrounds are essential for working with Layers. You enable your defined
+layers like \setupbackgrounds[page][background=mylayer].
+
+The background key also takes a list, and if you include "foreground", you can
+also set something on top of your general content, e.g.
+
+    \setupbackgrounds[page][background={mybacklayer,foreground,mytoplayer}].
+
+Here we have setup the page background to use an overlay called
+"pagegraphics". 
+
+    \setupbackgrounds
+      [page]
+      [background=pagegraphics]
+
+    \definelayer
+      [pagegraphics]
+      [x=-2mm,
+       y=-2mm,
+       width=\paperwidth,
+       height=\paperheight]
+
+
 
 
