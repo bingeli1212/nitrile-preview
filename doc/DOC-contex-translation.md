@@ -2136,6 +2136,14 @@ Following are additional paper size recognized by ConTeXt.
     180
     270
 
+Following are the physical sizes of the papers:
+
+    A3	297 x 420 mm	11.7 x 16.5 inches
+    A4	210 x 297 mm	8.3 x 11.7 inches
+    A5	148.5 x 210 mm	5.8 x 8.3 inches
+    A6	105 x 148.5 mm	4.1 x 5.8 inches
+
+
 The ``\definepapersize`` command together with the ``\setuppapersize`` command can
 modify the paper size as the following example illustrates.
 
