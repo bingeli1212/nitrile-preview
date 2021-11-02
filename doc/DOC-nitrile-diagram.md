@@ -3654,6 +3654,27 @@ a PDF file would be preferred over a PNG or SVG.
 
 
 
+# Generate multiple frames
+
+It is possible to generate multiple frames from with a single DIA block. To 
+for force an output immediately, use the \output command:
+
+    \output
+
+This command would have generated an output with the contents of all
+previously executed commands. The \clear command can be used optionally
+to purge all internally generated commands such that the next \output 
+would have only contained outputs from recent action commands.
+
+    \clear
+
+By default, if at the end of a DIA bundle there is no output frame being generated,
+then at least one frame will be generated that would have contained all outputs
+at that moment.
+
+
+
+
 # Specialized draw command
 
 Following are specialized draw commands that would draw shapes.
@@ -3677,4 +3698,8 @@ Following are specialized draw commands that would draw shapes.
 - \drawellipse = this will draw an ellipse for each coordinate points, which is
   to be the center of the ellipse, the "rx" and "ry" are going to come from the
   style attributes.
+- \drawqbezier = draw quadratic bezier curve, it requires at least three points
+- \drawbezier = draw cubic bezier curve, it requires at least four points
+
+
 

@@ -600,20 +600,6 @@ Following are styles recognized by NITRILE:
 
   If this flags has been set then the text will be rubified.
 
-+ animate:x/1/10 y/2/20 z/3/30
-
-  This value holds a list of environment variables and the start/end
-  values for each one of them. This value is currently utilized by the
-  'diagram' bundle, such that if this property is set, then the diagram
-  will generate a number of animated diagrams each of which is made by
-  altering the set of environment variables to something between its start
-  and end values.
-  
-+ count:12
-
-  This value holds the count for certain operation. This value is currently utilized
-  by the 'diagrams' bundle to express the total number of animated diagrams to be made.
-
 + fillonly:1
 
   This value expresses whether certain operation is going to be treated
