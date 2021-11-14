@@ -252,373 +252,372 @@ Following are the key points about the symbols:
 
 # GREEK CAPITAL AND SMALL LETTERS
 
-```tabular{border:2;n:2}
- | Symbol                                  | Command
- ------------------------------------------------------------------------------
- | &Alpha; and &alpha;                     |  `&Alpha;` and `&alpha;`
- | &Beta;  and &beta;                      |  `&Beta;`  and `&beta;`
- | &Gamma; and &gamma;                     |  `&Gamma;` and `&gamma;`
- | &Delta; and &delta;                     |  `&Delta;` and `&delta;`
- | &Epsilon;, &epsilon; and &varepsilon;   |  `&Epsilon;`, `&epsilon;` and `&varepsilon;`
- | &Zeta; and &zeta;                       |  `&Zeta;` and `&zeta;`
- | &Eta; and &eta;                         |  `&Eta;` and `&eta;`
- | &Theta;, &theta; and &vartheta;         |  `&Theta;`, `&theta;` and `&vartheta;`
- | &Iota; and &iota;                       |  `&Iota;` and `&iota;`
- | &Kappa;, &kappa; and &varkappa;         |  `&Kappa;`, `&kappa;` and `&varkappa;`
- | &Lambda; and &lambda;                   |  `&Lambda;` and `&lambda;`
- | &Mu; and &mu;                           |  `&Mu;` and `&mu;`
- | &Nu; and &nu;                           |  `&Nu;` and `&nu;`
- | &Xi; and &xi;                           |  `&Xi;` and `&xi;`
- | &Omicron; and &omicron;                 |  `&Omicron;` and `&omicron;`
- | &Pi;, &pi; and &varpi;                  |  `&Pi;`, `&pi;` and `&varpi;`
- | &Rho;, &rho; and &varrho;               |  `&Rho;`, `&rho;` and `&varrho;`
- | &Sigma;, &sigma; and &varsigma;         |  `&Sigma;`, `&sigma;` and `&varsigma;`
- | &Tau; and &tau;                         |  `&Tau;` and `&tau;`
- | &Upsilon; and &upsilon;                 |  `&Upsilon;` and `&upsilon;`
- | &Phi;, &phi; and &varphi;               |  `&Phi;`, `&phi;` and `&varphi;`
- | &Chi; and &chi;                         |  `&Chi;` and `&chi;`
- | &Psi; and &psi;                         |  `&Psi;` and `&psi;`
- | &Omega; and &omega;                     |  `&Omega;` and `&omega;`
- | &Digamma; and &digamma;                 |  `&Digamma;` and `&digamma;`
+```tabular{visual,frame,rules:all}
+Symbol                                  | Command
+-----------------------------------------------------------------------------
+&Alpha; and &alpha;                     |  `&Alpha;` and `&alpha;`
+&Beta;  and &beta;                      |  `&Beta;`  and `&beta;`
+&Gamma; and &gamma;                     |  `&Gamma;` and `&gamma;`
+&Delta; and &delta;                     |  `&Delta;` and `&delta;`
+&Epsilon;, &epsilon; and &varepsilon;   |  `&Epsilon;`, `&epsilon;` and `&varepsilon;`
+&Zeta; and &zeta;                       |  `&Zeta;` and `&zeta;`
+&Eta; and &eta;                         |  `&Eta;` and `&eta;`
+&Theta;, &theta; and &vartheta;         |  `&Theta;`, `&theta;` and `&vartheta;`
+&Iota; and &iota;                       |  `&Iota;` and `&iota;`
+&Kappa;, &kappa; and &varkappa;         |  `&Kappa;`, `&kappa;` and `&varkappa;`
+&Lambda; and &lambda;                   |  `&Lambda;` and `&lambda;`
+&Mu; and &mu;                           |  `&Mu;` and `&mu;`
+&Nu; and &nu;                           |  `&Nu;` and `&nu;`
+&Xi; and &xi;                           |  `&Xi;` and `&xi;`
+&Omicron; and &omicron;                 |  `&Omicron;` and `&omicron;`
+&Pi;, &pi; and &varpi;                  |  `&Pi;`, `&pi;` and `&varpi;`
+&Rho;, &rho; and &varrho;               |  `&Rho;`, `&rho;` and `&varrho;`
+&Sigma;, &sigma; and &varsigma;         |  `&Sigma;`, `&sigma;` and `&varsigma;`
+&Tau; and &tau;                         |  `&Tau;` and `&tau;`
+&Upsilon; and &upsilon;                 |  `&Upsilon;` and `&upsilon;`
+&Phi;, &phi; and &varphi;               |  `&Phi;`, `&phi;` and `&varphi;`
+&Chi; and &chi;                         |  `&Chi;` and `&chi;`
+&Psi; and &psi;                         |  `&Psi;` and `&psi;`
+&Omega; and &omega;                     |  `&Omega;` and `&omega;`
+&Digamma; and &digamma;                 |  `&Digamma;` and `&digamma;`
 ```
 
 # ASCII OPERATORS
 
-```tabular{border:2;n:2}
-| Symbol              | Command               
-----------------------------------------------
-| &grave;             | grave                 
-| &amp;               | amp                   
-| &quot;              | quot                  
-| &apos;              | apos                  
-| &dollar;            | dollar                
-| &verticalbar;       | verticalbar           
-| &vert;              | vert                  
-| &quotedbl;          | quotedbl              
-| &numbersign;        | numbersign    
-| &percent;           | percent        
-| &ampersand;         | ampersand
-| &quotesingle;       | quotesingle
-| &comma;             | comma
-| &hyphen;            | hyphen
-| &slash;             | slash
-| &greater;           | greater
-| &less;              | less
-| &at;                | at
-| &backslash;         | backslash
-| &asciicircm;        | asciicircm
-| &underscore;        | underscore
-| &braceleft;         | braceleft
-| &braceright;        | braceright
-| &asciitilde;        | asciitilde
+```tabular{visual,frame,rules:all}
+Symbol              | Command               
+---------------------------------------------
+&grave;             | grave                 
+&amp;               | amp                   
+&quot;              | quot                  
+&apos;              | apos                  
+&dollar;            | dollar                
+&verticalbar;       | verticalbar           
+&vert;              | vert                  
+&quotedbl;          | quotedbl              
+&numbersign;        | numbersign    
+&percent;           | percent        
+&ampersand;         | ampersand
+&quotesingle;       | quotesingle
+&comma;             | comma
+&hyphen;            | hyphen
+&slash;             | slash
+&greater;           | greater
+&less;              | less
+&at;                | at
+&backslash;         | backslash
+&asciicircm;        | asciicircm
+&underscore;        | underscore
+&braceleft;         | braceleft
+&braceright;        | braceright
+&asciitilde;        | asciitilde
 ```
 
 
 # RELATIONAL OPERATORS I
 
-```tabular{border:2;n:2}
-| Symbol              |  Command               
------------------------------------------------
-| &nless;             |  nless                 
-| &leq;               |  leq                   
-| &leqslant;          |  leqslant              
-| &nleq;              |  nleq                  
-| &nleqslant;         |  nleqslant             
-| &prec;              |  prec                  
-| &nprec;             |  nprec                 
-| &preceq;            |  preceq                
-| &npreceq;           |  npreceq               
-| &ll;                |  ll                    
-| &lll;               |  lll                   
-| &ngtr;              |  ngtr                  
-| &geq;               |  geq                   
-| &geqslant;          |  geqslant              
-| &ngeq;              |  ngeq                  
-| &ngeqslant;         |  ngeqslant             
-| &succ;              |  succ                  
-| &nsucc;             |  nsucc                 
-| &succeq;            |  succeq                
-| &nsucceq;           |  nsucceq               
-| &gg;                |  gg                    
-| &ggg;               |  ggg                   
-| &doteq;             |  doteq                 
-| &equiv;             |  equiv                 
+```tabular{visual,frame,rules:all}
+Symbol              |  Command               
+----------------------------------------------
+&nless;             |  nless                 
+&leq;               |  leq                   
+&leqslant;          |  leqslant              
+&nleq;              |  nleq                  
+&nleqslant;         |  nleqslant             
+&prec;              |  prec                  
+&nprec;             |  nprec                 
+&preceq;            |  preceq                
+&npreceq;           |  npreceq               
+&ll;                |  ll                    
+&lll;               |  lll                   
+&ngtr;              |  ngtr                  
+&geq;               |  geq                   
+&geqslant;          |  geqslant              
+&ngeq;              |  ngeq                  
+&ngeqslant;         |  ngeqslant             
+&succ;              |  succ                  
+&nsucc;             |  nsucc                 
+&succeq;            |  succeq                
+&nsucceq;           |  nsucceq               
+&gg;                |  gg                    
+&ggg;               |  ggg                   
+&doteq;             |  doteq                 
+&equiv;             |  equiv                 
 ```
 
 # RELATIONAL OPERATORS II
 
-```tabular{border:2;n:2}
-| &approx;            |  approx                | [!approx!]
-| &cong;              |  cong                  | [!cong!]
-| &simeq;             |  simeq                 | [!simeq!]
-| &sim;               |  sim                   | [!sim!]
-| &propto;            |  propto                | [!propto!]
-| &ne;                |  ne                    | [!ne!]
-| &parallel;          |  parallel              | [!parallel!]
-| &nparallel;         |  nparallel             | [!nparallel!]
-| &asymp;             |  asymp                 | [!asymp!]
-| &vdash;             |  vdash                 | [!vdash!]
-| &smile;             |  smile                 | [!smile!]
-| &models;            |  models                | [!models!]
-| &perp;              |  perp                  | [!perp!]
-| &bowtie;            |  bowtie                | [!bowtie!]
-| &dashv;             |  dashv                 | [!dashv!]
-| &frown;             |  frown                 | [!frown!]
-| &in;                |  in                    | [!in!]
-| &notin;             |  notin                 | [!notin!]
-| &ReverseElement;    |  ReverseElement        | [!ReverseElement!]
-| &NotReverseElement; |  NotReverseElement     | [!NotReverseElement!]
-| &mid;               |  mid                   | [!mid!]
-| &nmid;              |  nmid                  | [!nmid!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Command               
+----------------------------------------------
+&approx;            |  approx               
+&cong;              |  cong                 
+&simeq;             |  simeq                
+&sim;               |  sim                  
+&propto;            |  propto               
+&ne;                |  ne                   
+&parallel;          |  parallel             
+&nparallel;         |  nparallel            
+&asymp;             |  asymp                
+&vdash;             |  vdash                
+&smile;             |  smile                
+&models;            |  models               
+&perp;              |  perp                 
+&bowtie;            |  bowtie               
+&dashv;             |  dashv                
+&frown;             |  frown                
+&in;                |  in                   
+&notin;             |  notin                
+&ReverseElement;    |  ReverseElement       
+&NotReverseElement; |  NotReverseElement    
+&mid;               |  mid                  
+&nmid;              |  nmid                 
 ```
 
 # BINARY OPERATORS
 
 
-```tabular{border:2;n:2}
-| Symbol              |  Command             | Comment
----------------------------------------------------------------
-| &pm;                |  pm                  | [!pm!]
-| &mp;                |  mp                  | [!mp!]
-| &times;             |  times               | [!times!]
-| &Cross;             |  Cross               | [!Cross!]
-| &div;               |  div                 | [!div!]
-| &ast;               |  ast                 | [!ast!]
-| &uplus;             |  uplus               | [!uplus!]
-| &sqcap;             |  sqcap               | [!sqcap!]
-| &sqcup;             |  sqcup               | [!sqcup!]
-| &vee;               |  vee                 | [!vee!]
-| &wedge;             |  wedge               | [!wedge!]
-| &CircleDot;         |  CircleDot           | [!CircleDot!]
-| &diamond;           |  diamond             | [!diamond!]
-| &bullet;            |  bullet              | [!bullet!]
-| &wreath;            |  wreath              | [!wreath!]
-| &oplus;             |  oplus               | [!oplus!]
-| &ominus;            |  ominus              | [!ominus!]
-| &otimes;            |  otimes              | [!otimes!]
-| &oslash;            |  oslash              | [!oslash!]
-| &CircleDot;         |  CircleDot           | [!CircleDot!]
-| &SmallCircle;       |  SmallCircle         | [!SmallCircle!]
-| &prod;              |  prod                | [!prod!]
-| &coprod;            |  coprod              | [!coprod!]
-| &sum;               |  sum                 | [!sum!]
-| &increment;         |  increment           | [!increment!]
-| &nabla;             |  nabla               | [!nabla!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Command            
+------------------------------------------
+&pm;                |  pm                 
+&mp;                |  mp                 
+&times;             |  times              
+&Cross;             |  Cross              
+&div;               |  div                
+&ast;               |  ast                
+&uplus;             |  uplus              
+&sqcap;             |  sqcap              
+&sqcup;             |  sqcup              
+&vee;               |  vee                
+&wedge;             |  wedge              
+&CircleDot;         |  CircleDot          
+&diamond;           |  diamond            
+&bullet;            |  bullet             
+&wreath;            |  wreath             
+&oplus;             |  oplus              
+&ominus;            |  ominus             
+&otimes;            |  otimes             
+&oslash;            |  oslash             
+&circledast;        |  circledast          
+&SmallCircle;       |  SmallCircle        
+&prod;              |  prod               
+&coprod;            |  coprod             
+&sum;               |  sum                
+&increment;         |  increment          
+&nabla;             |  nabla              
 ```
 
 # SET SYMBOLS
 
-```tabular{border:2;n:2;fr:1 2 4}
-| Symbol              |  Command             | Comment
-----------------------------------------------------------------
-| &emptyset;          | `&emptyset;`         | [!emptyset!]
-| &naturals;          | `&naturals;`         | [!naturals!]
-| &integers;          | `&integers;`         | [!integers!]
-| &rationals;         | `&rationals;`        | [!rationals!]
-| &algebraics;        | `&algebraics;`       | [!algebraics!]
-| &reals;             | `&reals;`            | [!reals!]
-| &primes;            | `&primes;`           | [!primes!]
-| &complexes;         | `&complexes`         | [!complexes!]
-| &quaternions;       | `&quaternions;`      | [!quaternions!]
-| &octonions;         | `&octonions;`        | [!octonions!]
-| &sedenions;         | `&sedenions;`        | [!sedenions!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Command            
+------------------------------------------
+&emptyset;          | `&emptyset;`        
+&naturals;          | `&naturals;`        
+&integers;          | `&integers;`        
+&rationals;         | `&rationals;`       
+&algebraics;        | `&algebraics;`      
+&reals;             | `&reals;`           
+&primes;            | `&primes;`          
+&complexes;         | `&complexes`        
+&quaternions;       | `&quaternions;`     
+&octonions;         | `&octonions;`       
+&sedenions;         | `&sedenions;`       
 ```
 
 
 # LOGICAL SYMBOLS
 
-```tabular{border:2;n:2;fr:1 2 4}
-| Symbol              |  Commands            | Comment
-----------------------------------------------------------------
-| &exist;             |  exist               | [!exist!]
-| &nexist;            |  nexist              | [!nexist!]
-| &forall;            |  forall              | [!forall!]
-| &neg;               |  neg                 | [!neg!]
-| &xvee;              |  xvee                | [!xvee!]
-| &xwedge;            |  xwedge              | [!xwedge!]
-| &top;               |  top                 | [!top!]
-| &bot;               |  bot                 | [!bot!]
-| &subset;            |  subset              | [!subset!]
-| &nsubset;           |  nsubset             | [!nsubset!]
-| &subseteq;          |  subseteq            | [!subseteq!]
-| &nsubseteq;         |  nsubseteq           | [!nsubseteq!]
-| &sqsubset;          |  sqsubset            | [!sqsubset!]
-| &sqsubseteq;        |  sqsubseteq          | [!sqsubseteq!]
-| &supset;            |  supset              | [!supset!]
-| &nsupset;           |  nsupset             | [!nsupset!]
-| &supseteq;          |  supseteq            | [!supseteq!]
-| &nsupseteq;         |  nsupseteq           | [!nsupseteq!]
-| &sqsupset;          |  sqsupset            | [!sqsupset!]
-| &sqsupseteq;        |  sqsupseteq          | [!sqsupseteq!]
-| &cap;               |  cap                 | [!cap!]
-| &cup;               |  cup                 | [!cup!]
-| &setminus;          |  setminus            | [!setminus!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Commands           
+------------------------------------------
+&exist;             |  exist              
+&nexist;            |  nexist             
+&forall;            |  forall             
+&neg;               |  neg                
+&xvee;              |  xvee               
+&xwedge;            |  xwedge             
+&top;               |  top                
+&bot;               |  bot                
+&subset;            |  subset             
+&nsubset;           |  nsubset            
+&subseteq;          |  subseteq           
+&nsubseteq;         |  nsubseteq          
+&sqsubset;          |  sqsubset           
+&sqsubseteq;        |  sqsubseteq         
+&supset;            |  supset             
+&nsupset;           |  nsupset            
+&supseteq;          |  supseteq           
+&nsupseteq;         |  nsupseteq          
+&sqsupset;          |  sqsupset           
+&sqsupseteq;        |  sqsupseteq         
+&cap;               |  cap                
+&cup;               |  cup                
+&setminus;          |  setminus           
 ```
 
 -- \(a > b \hArr b < a\)
 
 # GROUP THEORY SYMBOLS
 
-```tabular{border:2;n:2;fr:1 2 4}
-| Symbol              |  Commands            | Comment
-----------------------------------------------------------------
-| &vltri;             |  vltri               | [!vltri!]
-| &vrtri;             |  vrtri               | [!vrtri!]
-| &vltrie;            |  vltrie              | [!vltrie!]
-| &vrtrie;            |  vrtrie              | [!vrtrie!]
-| &nltri;             |  nltri               | [!nltri!]
-| &nrtri;             |  nrtri               | [!nrtri!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Commands           
+------------------------------------------
+&vltri;             |  vltri              
+&vrtri;             |  vrtri              
+&vltrie;            |  vltrie             
+&vrtrie;            |  vrtrie             
+&nltri;             |  nltri              
+&nrtri;             |  nrtri              
 ```
 
--- \(F \vltri G\)
--- \(F \nltri G\)
--- \(G \vrtri F\)
--- \(G \nrtri F\)
+- \(F \vltri G\)
+- \(F \nltri G\)
+- \(G \vrtri F\)
+- \(G \nrtri F\)
 
 
 
 # DOTS
 
-```tabular{border:2;n:2}
-| Symbol              |  Commands            | Comment
-----------------------------------------------------------------
-| &sdot;              |  sdot                | [!sdot!]
-| &vellip;            |  vellip              | [!vellip!]
-| &hellip;            |  hellip              | [!hellip!]
-| &ctdot;             |  ctdot               | [!ctdot!]
-| &dtdot;             |  dtdot               | [!dtdot!]
-| &utdot;             |  utdot               | [!utdot!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Commands           
+------------------------------------------
+&sdot;              |  sdot               
+&vellip;            |  vellip             
+&hellip;            |  hellip             
+&ctdot;             |  ctdot              
+&dtdot;             |  dtdot              
+&utdot;             |  utdot              
 ```
 
 
 # DELIMETERS
 
-```tabular{border:2;n:2;fr:1 2 4}
-| Symbol              |  Commands            | Comment
-----------------------------------------------------------------
-| &lceil;             |  lceil               | [!lceil!]
-| &rceil;             |  rceil               | [!rceil!]
-| &ulcorner;          |  ulcorner            | [!ulcorner!]
-| &urcorner;          |  urcorner            | [!urcorner!]
-| &lfloor;            |  lfloor              | [!lfloor!]
-| &rfloor;            |  rfloor              | [!rfloor!]
-| &llcorner;          |  llcorner            | [!llcorner!]
-| &lrcorner;          |  lrcorner            | [!lrcorner!]
-| &lang;              |  lang                | [!lang!]
-| &rang;              |  rang                | [!rang!]
-| &vert;              |  vert                | [!vert!]
-| &Vert;              |  Vert                | [!Vert!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Commands           
+------------------------------------------
+&lceil;             |  lceil              
+&rceil;             |  rceil              
+&ulcorner;          |  ulcorner           
+&urcorner;          |  urcorner           
+&lfloor;            |  lfloor             
+&rfloor;            |  rfloor             
+&llcorner;          |  llcorner           
+&lrcorner;          |  lrcorner           
+&lang;              |  lang               
+&rang;              |  rang               
+&vert;              |  vert               
+&Vert;              |  Vert               
 ```
 
 # LEFT AND RIGHT POINTNG ARROWS
 
-```tabular{border:2;n:2;fr:1 2 4}
-| Symbol              |  Commands            | Comment
-----------------------------------------------------------------
-| &mapsto;            |  mapsto              | [!mapsto!]
-| &xmapsto;           |  xmapsto             | [!xmapsto!]
-----------------------------------------------------------------
-| &rarr;              |  rarr                | [!rarr!]
-| &rArr;              |  rArr                | [!rArr!]
-| &xrarr;             |  xrarr               | [!xrarr!]
-| &xrArr;             |  xrArr               | [!xrArr!]
-----------------------------------------------------------------
-| &larr;              |  larr                | [!larr!]
-| &lArr;              |  lArr                | [!lArr!]       
-| &xlarr;             |  xlarr               | [!xlarr!]
-| &xlArr;             |  xlArr               | [!xlArr!]
----------------------------------------------------------------
-| &harr;              |  harr                | [!harr!]
-| &xharr;             |  xharr               | [!xharr!]
-| &hArr;              |  hArr                | [!hArr!]
-| &xhArr;             |  xhArr               | [!xhArr!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Commands           
+------------------------------------------
+&mapsto;            |  mapsto             
+&xmapsto;           |  xmapsto            
+&rarr;              |  rarr               
+&rArr;              |  rArr               
+&xrarr;             |  xrarr              
+&xrArr;             |  xrArr              
+&larr;              |  larr               
+&lArr;              |  lArr               
+&xlarr;             |  xlarr              
+&xlArr;             |  xlArr              
+&harr;              |  harr               
+&xharr;             |  xharr              
+&hArr;              |  hArr               
+&xhArr;             |  xhArr              
 ```
 
 
 # UP AND DOWN POINTING ARROWS
 
-```tabular{border:2;n:2;fr:1 2 4}
-| Symbol              |  Commands            | Comment
-----------------------------------------------------------------
-| &uarr;              |  uarr                | [!uarr!]
-| &uArr;              |  uArr                | [!uArr!]
-| &darr;              |  darr                | [!darr!]
-| &dArr;              |  dArr                | [!dArr!]
-| &varr;              |  varr                | [!varr!]
-| &vArr;              |  vArr                | [!vArr!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Commands           
+------------------------------------------
+&uarr;              |  uarr               
+&uArr;              |  uArr               
+&darr;              |  darr               
+&dArr;              |  dArr               
+&varr;              |  varr               
+&vArr;              |  vArr               
 ```
 
 
 # HEBREW LETTER LIKE SYMBOLS
 
-```tabular{border:2;n:2;fr:1 2 4}
-| Symbol              |  Commands            | Comment
-----------------------------------------------------------------
-| &aleph;             |  aleph               | [!aleph!]
-| &beth;              |  beth                | [!beth!]
-| &gimel;             |  gimel               | [!gimel!]
-| &daleth;            |  daleth              | [!daleth!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Commands          
+-----------------------------------------
+&aleph;             |  aleph             
+&beth;              |  beth              
+&gimel;             |  gimel             
+&daleth;            |  daleth            
 ```
 
 # Fraction symbols
 
-```tabular{border:2,n:2,fr:1 2 4}
-| Symbol              |  Commands            | Comment
-----------------------------------------------------------------
-| &onehalf;           |  onehalf             | [!frac12!]
-| &onethird;          |  onethird            | [!frac13!]
-| &twothirds;         |  twothirds           | [!frac23!]
-| &onequarter;        |  onequarter          | [!frac14!]
-| &threequarters;     |  threequarters       | [!frac34!]
-| &onefifth;          |  onefifth            | [!frac15!]
-| &twofifths;         |  twofifths           | [!frac25!]
-| &threefifths;       |  threefifths         | [!frac35!]
-| &fourfifths;        |  fourfifths          | [!frac45!]
-| &onesixth;          |  onesixth            | [!frac16!]
-| &fivesixths;        |  fivesixths          | [!frac56!]
-| &oneseventh;        |  oneseventh          | [!frac17!]
-| &oneeighth;         |  oneeighth           | [!frac18!]
-| &threeeighths;      |  threeeighths        | [!frac38!]
-| &fiveeighths;       |  fiveeighths         | [!frac58!]
-| &seveneighths;      |  seveneighths        | [!frac78!]
-| &oneninth;          |  oneninth            | [!frac19!]
-| &onetenth;          |  onetenth            | [!frac110!]
-| &zerothird;         |  zerothird           | [!frac03!]
+```tabular{visual,frame,rules:all}
+Symbol              |  Commands           
+------------------------------------------
+&onehalf;           |  onehalf            
+&onethird;          |  onethird           
+&twothirds;         |  twothirds          
+&onequarter;        |  onequarter         
+&threequarters;     |  threequarters      
+&onefifth;          |  onefifth           
+&twofifths;         |  twofifths          
+&threefifths;       |  threefifths        
+&fourfifths;        |  fourfifths         
+&onesixth;          |  onesixth           
+&fivesixths;        |  fivesixths         
+&oneseventh;        |  oneseventh         
+&oneeighth;         |  oneeighth          
+&threeeighths;      |  threeeighths       
+&fiveeighths;       |  fiveeighths        
+&seveneighths;      |  seveneighths       
+&oneninth;          |  oneninth           
+&onetenth;          |  onetenth           
+&zerothird;         |  zerothird          
 ```
 
-```tabular{border:2;n:2}
-| Symbol             | Command                | Comment
-------------------------------------------------------------------
-| &coloneq;          | coloneq                | [!coloneq!]
-| &eqcolon;          | eqcolon                | [!eqcolon!]
+```tabular{visual,frame,rules:all}
+Symbol             | Command              
+------------------------------------------
+&coloneq;          | coloneq              
+&eqcolon;          | eqcolon              
 ```
 
 
 # OTHER SYMBOLS
 
-```tabular{border:2;n:2}
-| Symbol              | Command                | Comment
-------------------------------------------------------------------
-| &deg;               | deg                    | [!deg!], "&deg;C", "&deg;F"
+```tabular{visual,frame,rules:all}
+Symbol              | Command      
+-----------------------------------
+&deg;               | deg          
 ```
 
 # LETTER-LIKE SYMBOLS
 
-```tabular{border:2;n:2}
-| Symbol              | Command                | Comment
-------------------------------------------------------------------
-| &complement;        | complement             | [!complement!]
-| &hbar;              | hbar                   | [!hbar!]
-| &eth;               | eth                    | [!eth!]
-| &imath;             | imath                  | [!imath!]
-| &jmath;             | jmath                  | [!jmath!]
-| &ell;               | ell                    | [!ell!]
-| &partial;           | partial                | [!partial!]
-| &wp;                | wp                     | [!wp!]
-| &Im;                | Im                     | [!Im!]
-| &Re;                | Re                     | [!Re!]
-| &infty;             | infty                  | [!infty!]
-| &questiondown;      | questiondown           | [!questiondown!]
+```tabular{visual,frame,rules:all}
+Symbol              | Command                
+---------------------------------------------
+&complement;        | complement             
+&hbar;              | hbar                   
+&eth;               | eth                    
+&imath;             | imath                  
+&jmath;             | jmath                  
+&ell;               | ell                    
+&partial;           | partial                
+&wp;                | wp                     
+&Im;                | Im                     
+&Re;                | Re                     
+&infty;             | infty                  
+&questiondown;      | questiondown           
 ```
 
 
@@ -626,109 +625,109 @@ Following are the key points about the symbols:
 
 # CURRENCY SYMBOLS
 
-```tabular{border:2;n:2}
-|  Symbol         | Command          | Comment
--------------------------------------------------------------------
-|  &baht;         | baht             | [!baht!]
-|  &cent;         | cent             | [!cent!]
-|  &currency;     | currency         | [!currency!]
-|  &dollar;       | dollar           | [!dollar!]
-|  &dong;         | dong             | [!dong!]
-|  &euro;         | euro             | [!euro!]
-|  &florin;       | florin           | [!florin!]
-|  &guarani;      | guarani          | [!guarani!]
-|  &lira;         | lira             | [!lira!]
-|  &naira;        | naira            | [!naira!]
-|  &peso;         | peso             | [!peso!]
-|  &pound;        | pound            | [!pound!]
-|  &won;          | won              | [!won!]
-|  &yen;          | yen              | [!yen!]
+```tabular{visual,frame,rules:all}
+Symbol         | Command        
+----------------------------------
+&baht;         | baht           
+&cent;         | cent           
+&currency;     | currency       
+&dollar;       | dollar         
+&dong;         | dong           
+&euro;         | euro           
+&florin;       | florin         
+&guarani;      | guarani        
+&lira;         | lira           
+&naira;        | naira          
+&peso;         | peso           
+&pound;        | pound          
+&won;          | won            
+&yen;          | yen            
 ```
 
 
 # LATIN LETTERS
 
-```tabular{border:2;n:2}
-| Symbol      | Command         | Comment
-------------------------------------------------------------------
-| &aring;     | aring           | [!aring!]
-| &Aring;     | aring           | [!Aring!]
-| &AElig;     | AElig           | [!AElig!]
-| &aelig;     | aelig           | [!aelig!]
-| &eth;       | eth             | [!eth!]
-| &ETH;       | ETH             | [!ETH!]
-| &Dstrok;    | Dstrok          | [!Dstrok!]
-| &dstrok;    | dstrok          | [!dstrok!]
-| &IJlig;     | IJlig           | [!IJlig!]
-| &ijlig;     | ijlig           | [!ijlig!]
-| &Lstrok;    | Lstrok          | [!Lstrok!]
-| &lstrok;    | lstrok          | [!lstrok!]
-| &ENG;       | ENG             | [!ENG!]
-| &eng;       | eng             | [!eng!]
-| &Oslash;    | Oslash          | [!Oslash!]
-| &oslash;    | oslash          | [!oslash!]
-| &oelig;     | oelig           | [!oelig!]
-| &OElig;     | OElig           | [!OElig!]
-| &thorn;     | thorn           | [!thorn!]
-| &THORN;     | THORN           | [!THORN!]
-| &mho;       | mho             | [!mho!]
-| &hstrok;    | hstrok          | [!hstrok!]
+```tabular{visual,frame,rules:all}
+Symbol      | Command       
+----------------------------
+&aring;     | aring         
+&Aring;     | aring         
+&AElig;     | AElig         
+&aelig;     | aelig         
+&eth;       | eth           
+&ETH;       | ETH           
+&Dstrok;    | Dstrok        
+&dstrok;    | dstrok        
+&IJlig;     | IJlig         
+&ijlig;     | ijlig         
+&Lstrok;    | Lstrok        
+&lstrok;    | lstrok        
+&ENG;       | ENG           
+&eng;       | eng           
+&Oslash;    | Oslash        
+&oslash;    | oslash        
+&oelig;     | oelig         
+&OElig;     | OElig         
+&thorn;     | thorn         
+&THORN;     | THORN         
+&mho;       | mho           
+&hstrok;    | hstrok        
 ```
 
 
 # Letterlike Symbols, U+2100 - U+214F
 
-```tabular{border:2;n:2}
-| Symbol              |  Command                
-------------------------------------------------
-| &SM;                |  SM                     
-| &trade;             |  trade                  
-| &dagger;            |  dagger                 
-| &Dagger;            |  Dagger                 
-| &para;              |  para                   
-| &sect;              |  sect                   
+```tabular{visual,frame,rules:all}
+Symbol              |  Command                
+----------------------------------------------
+&SM;                |  SM                     
+&trade;             |  trade                  
+&dagger;            |  dagger                 
+&Dagger;            |  Dagger                 
+&para;              |  para                   
+&sect;              |  sect                   
 ```
 
 
 # DINGBATS
 
-```tabular{border:2;n:2}
-| Symbol              |  Command                
-------------------------------------------------
-| &star;              |  star                   
-| &checkmark;         |  checkmark              
-| &maltese;           |  maltese                
-| &cross;             |  cross                  
+```tabular{visual,frame,rules:all}
+Symbol              |  Command                
+----------------------------------------------
+&star;              |  star                   
+&checkmark;         |  checkmark              
+&maltese;           |  maltese                
+&cross;             |  cross                  
 ```
 
 
 # MATH OPERATORS U+2200 - U+22FF
 
-```tabular{border:2;n:2}
-| Symbol              |  Command                
-------------------------------------------------
-| &ang;               |  ang                    
-| &angmsd;            |  angmsd                 
-| &angsph;            |  angsph                 
+```tabular{visual,frame,rules:all}
+Symbol              |  Command                
+----------------------------------------------
+&ang;               |  ang                    
+&angmsd;            |  angmsd                 
+&angsph;            |  angsph                 
 ```
 
 
 # GEOMETRIC SHAPES
 
-```tabular{border:2;n:2}
-| Symbol              |  Command                
-------------------------------------------------
-| &bigcirc;           |  bigcirc                
-| &bigtriangleup;     |  bigtriangleup          
-| &bigtriangledown;   |  bigtriangledown        
-| &xutri;             |  xutri                  
-| &xdtri;             |  xdtri                  
-| &utri;              |  utri                   
-| &rtri;              |  rtri                   
-| &dtri;              |  dtri                   
-| &ltri;              |  ltri                   
-| &square;            |  square                 
-| &blacksquare;       |  blacksquare            
-| &cir;               |  cir                    
+```tabular{visual,frame,rules:all}
+Symbol              |  Command                
+----------------------------------------------
+&bigcirc;           |  bigcirc                
+&bigtriangleup;     |  bigtriangleup          
+&bigtriangledown;   |  bigtriangledown        
+&xutri;             |  xutri                  
+&xdtri;             |  xdtri                  
+&utri;              |  utri                   
+&rtri;              |  rtri                   
+&dtri;              |  dtri                   
+&ltri;              |  ltri                   
+&square;            |  square                 
+&blacksquare;       |  blacksquare            
+&cir;               |  cir                    
 ```
 
