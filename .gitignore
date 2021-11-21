@@ -43,3 +43,4 @@ c.md
 *.dvi
 *.ps
 temp
+*.code-workspace
