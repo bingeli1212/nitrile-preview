@@ -19,6 +19,9 @@ program: context
 - &colorbutton{BlueViolet}    "BlueViolet"
 - &colorbutton{Brown}    "Brown"
 - &colorbutton{BurlyWood}    "BurlyWood"
+
+# 140 Web Color Names
+
 - &colorbutton{CadetBlue}    "CadetBlue"
 - &colorbutton{Chartreuse}    "Chartreuse"
 - &colorbutton{Chocolate}    "Chocolate"
@@ -32,6 +35,9 @@ program: context
 - &colorbutton{DarkGoldenRod}    "DarkGoldenRod"
 - &colorbutton{DarkGray}    "DarkGray"
 - &colorbutton{DarkGrey}    "DarkGrey"
+
+# 140 Web Color Names
+
 - &colorbutton{DarkGreen}    "DarkGreen"
 - &colorbutton{DarkKhaki}    "DarkKhaki"
 - &colorbutton{DarkMagenta}    "DarkMagenta"
@@ -45,6 +51,9 @@ program: context
 - &colorbutton{DarkSlateGray}    "DarkSlateGray"
 - &colorbutton{DarkSlateGrey}    "DarkSlateGrey"
 - &colorbutton{DarkTurquoise}    "DarkTurquoise"
+
+# 140 Web Color Names
+
 - &colorbutton{DarkViolet}    "DarkViolet"
 - &colorbutton{DeepPink}    "DeepPink"
 - &colorbutton{DeepSkyBlue}    "DeepSkyBlue"
@@ -58,6 +67,9 @@ program: context
 - &colorbutton{Gainsboro}    "Gainsboro"
 - &colorbutton{GhostWhite}    "GhostWhite"
 - &colorbutton{Gold}    "Gold"
+
+# 140 Web Color Names
+
 - &colorbutton{GoldenRod}    "GoldenRod"
 - &colorbutton{Gray}    "Gray"
 - &colorbutton{Grey}    "Grey"
@@ -71,6 +83,9 @@ program: context
 - &colorbutton{Khaki}    "Khaki"
 - &colorbutton{Lavender}    "Lavender"
 - &colorbutton{LavenderBlush}    "LavenderBlush"
+
+# 140 Web Color Names
+
 - &colorbutton{LawnGreen}    "LawnGreen"
 - &colorbutton{LemonChiffon}    "LemonChiffon"
 - &colorbutton{LightBlue}    "LightBlue"
@@ -84,6 +99,9 @@ program: context
 - &colorbutton{LightSalmon}    "LightSalmon"
 - &colorbutton{LightSeaGreen}    "LightSeaGreen"
 - &colorbutton{LightSkyBlue}    "LightSkyBlue"
+
+# 140 Web Color Names
+
 - &colorbutton{LightSlateGray}    "LightSlateGray"
 - &colorbutton{LightSlateGrey}    "LightSlateGrey"
 - &colorbutton{LightSteelBlue}    "LightSteelBlue"
@@ -97,6 +115,9 @@ program: context
 - &colorbutton{MediumBlue}    "MediumBlue"
 - &colorbutton{MediumOrchid}    "MediumOrchid"
 - &colorbutton{MediumPurple}    "MediumPurple"
+
+# 140 Web Color Names
+
 - &colorbutton{MediumSeaGreen}    "MediumSeaGreen"
 - &colorbutton{MediumSlateBlue}    "MediumSlateBlue"
 - &colorbutton{MediumSpringGreen}    "MediumSpringGreen"
@@ -110,6 +131,9 @@ program: context
 - &colorbutton{Navy}    "Navy"
 - &colorbutton{OldLace}    "OldLace"
 - &colorbutton{Olive}    "Olive"
+
+# 140 Web Color Names
+
 - &colorbutton{OliveDrab}    "OliveDrab"
 - &colorbutton{Orange}    "Orange"
 - &colorbutton{OrangeRed}    "OrangeRed"
@@ -123,6 +147,9 @@ program: context
 - &colorbutton{Peru}    "Peru"
 - &colorbutton{Pink}    "Pink"
 - &colorbutton{Plum}    "Plum"
+
+# 140 Web Color Names
+
 - &colorbutton{PowderBlue}    "PowderBlue"
 - &colorbutton{Purple}    "Purple"
 - &colorbutton{RebeccaPurple}    "RebeccaPurple"
@@ -136,6 +163,9 @@ program: context
 - &colorbutton{SeaShell}    "SeaShell"
 - &colorbutton{Sienna}    "Sienna"
 - &colorbutton{Silver}    "Silver"
+
+# 140 Web Color Names
+
 - &colorbutton{SkyBlue}    "SkyBlue"
 - &colorbutton{SlateBlue}    "SlateBlue"
 - &colorbutton{SlateGray}    "SlateGray"
@@ -149,6 +179,9 @@ program: context
 - &colorbutton{Tomato}    "Tomato"
 - &colorbutton{Turquoise}    "Turquoise"
 - &colorbutton{Violet}    "Violet"
+
+# 140 Web Color Names
+
 - &colorbutton{Wheat}    "Wheat"
 - &colorbutton{White}    "White"
 - &colorbutton{WhiteSmoke}    "WhiteSmoke"
