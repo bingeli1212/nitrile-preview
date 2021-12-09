@@ -51,9 +51,57 @@ Following phrases are used to style a part of the inline text.
 - em-phrase - emphasized text
 - it-phrase - italic text
 - u-phrase - underlined text
-- ss-phrase - text with shown by the current choice of sans-serif text font
-- tt-phrase - text with shown by the current choice of monospaced text font
-- overstrike-phrase - text with shown by an accompanying overstrike line in the middle of the text
+- ss-phrase - text shown by the current choice of sans-serif text font
+- tt-phrase - text shown by the current choice of monospaced text font
+- overstrike-phrase - text shown by an accompanying overstrike line in the middle of the text
+- q-phrase - text shown by an accompanying left/right double quotation marks             
+- g-phrase - text shown by an accompanying left/right guillemot marks                      
+- low-phrase - text shown as a subscript 
+- high-phrase - text shown as a superscript
+- small-phrase - text shown with reduced font size than surrounding text             
+
+# Inserting horizontal spaces
+
+Following two phrases will insert horizontal spaces with predefined length.
+
+- quad-phrase - this is half the length of the current font size
+- qquad-phrase - this is the full length of the current font size
+
+Note that the content of the phrase is ignored. See the examples below.
+
+    This will insert &quad{} and &qquad{} and then texts.
+
+# Inserting references to other blocks
+
+The ref-phrases inserts a text that references a particular figure, 
+table or other blocks. The content of this phrase is a string
+that is the label of that block.
+
+# Inserting a URL
+
+The link-phrase would insert a URL into the surrounding text.   
+The content of the phrase is a string that represents the URL
+
+# Inserting a line break
+
+The br-phrase would insert a line break that will force a line break
+at that point. The content of this phrase is ignored.
+
+# Insert a Unicode character 
+
+The utfchar-phrase would insert a new Unicode character whose code point
+is what's been given as the content of this phrase.  The following
+example would insert a Unicode character that is U+2212.
+
+    The Unicode character of U+2212 looks like &utfchar{2212}.
+
+# Insert a string describing a Unicode character
+
+The utfdata-phrase inserts a string that is the content of a 
+Unicode character of the given code point.
+
+    The Unicode character of U+2212 is described as:  
+    &utfchar{2212}.
 
 # The colorbutton-phrase
 
@@ -70,16 +118,19 @@ button that is of color Red.
 
 # The framebox-phrase
 
-The framebox-phrase is designed to display a rectangular box as part of a inline text
-to simulate a fill-in box that often accompanies a form. 
+The framebox-phrase is designed to display a rectangular box as part of a
+inline text to simulate a fill-in box that often accompanies a form. 
 
-The box to be shown is to have a surrounding border. It should have a height that is the same as that 
-of the surrounding text.
+The box to be shown is to have a surrounding border. It should have a height
+that is the same as that of the surrounding text.
 
-The width of the box is configurable and is conveyed by the content of this phrase. It should be
-an integer expressing the total number of millimeters that is the width of this box. If the content
-is empty, the box will default to a width that is 10 millimeters.
+The width of the box is configurable and is conveyed by the content of this
+phrase. It should be an integer expressing the total number of millimeters that
+is the width of this box. If the content is empty, the box will default to a
+width that is 10 millimeters. Following example inserts a frame box that
+has a length of 35 millimeters.
 
+    The framebox is &framebox{35}.
 
 
 
