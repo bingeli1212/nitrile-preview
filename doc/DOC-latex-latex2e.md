@@ -389,6 +389,15 @@ contents of the box. If no such "rubber length" is present, an
 As for the box commands above, \height, \width, etc. may be used in
 the [<height>] argument to denote the natural dimensions of the box.
 
+For \framebox,
+the height could be quite small if no
+text is specified. However to force a box with a minimum height
+of that of a font, the \strut can be used. In the following
+example an empty framebox is created such that its width 
+is 2cm and the height is the same as that of a font.
+
+    \framebox[2cm]{\strut}
+
 The <inner-pos> argument is new in LaTeX2e. It is the vertical
 equivalent to the <pos> argument for \makebox, etc, determining the
 position of <text> within the box. The <inner-pos> may be any one of
