@@ -829,6 +829,11 @@ Following are styles recognized by NITRILE:
   If it is set to 'grid' then a grid equivalent to one used by dia-bundle
   is to be placed underneath the image.
 
++ location:left
++ location:right
 
+  This style tells where the bundle inside of a wrapfig-block should go.
+  
+  
 
 
