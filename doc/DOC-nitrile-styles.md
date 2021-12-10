@@ -660,12 +660,6 @@ Following are styles recognized by NITRILE:
   Set the ID. This is currently utilized by the SAMP block to set the default
   ID if it is not specifically set.
 
-+ wrap:left
-+ wrap:right
-
-  Set it so that the image, diagram, or a table should be placed inside a wrap figure
-  such that the text should flow around it.
-
 + subfigure:1
 
   This option is used exclusively by "figure" float, although it might extend to 
@@ -834,6 +828,15 @@ Following are styles recognized by NITRILE:
 
   This style tells where the bundle inside of a wrapfig-block should go.
   
-  
++ wrap:1
+
+  Set this flag to 1 to indicate that subfigures in a figure should be wrapped
+  around in accordance to the width of the figure. Without this flag set 
+  all figures will not be wrapped automatically be only in accordance to the
+  presence of the double-backslash which manually breaks the items into
+  rows.
+
+
+
 
 
