@@ -836,7 +836,14 @@ Following are styles recognized by NITRILE:
   presence of the double-backslash which manually breaks the items into
   rows.
 
++ type
 
+  This field tends to be generic. The current implementation has the wrapfig-block
+  detecting the setting to decide if the figure should be pushed to the left or right
+  hand side of the page, by detecting if this attribute has been set to "left".
+
+
+  
 
 
 
