@@ -3672,4 +3672,66 @@ Here we have setup the page background to use an overlay called
 
 
 
+# Alignment of figures 
+
+The figures and tables are floats. Each of them acts as a sub-environment where
+texts are grouped; however, the entire content is considered a single unit that
+will always appear together and will not be broken into separate components
+that are to appear in two different page locations. 
+
+Following is a typical setup for starting a figure.
+
+      \placefigure
+      [here]
+      [mypic]                    
+      {My trip last year.}
+      {...
+      }                          
+
+It consists of four components, two within the square brackets, and two 
+within the braces. The first componenent within the square bracket is some
+keywords that are separated by commas, such as "here", "none". Each
+keyword is used to configure the figure block. 
+In particular, the "here" keyword instructs that the figure should be placed
+at the current location if it is possible given the space constraints. 
+Other keywords such as "top" would have instructed that the figure should
+always be placed at the top of the page. The "none" keyword instructs that
+Contex should not place a bolded text such as "Figure 1.1" before the caption text.
+Without it each caption would be proceeded by this text.
+
+The second componenet is a string that is to be recognized as the label
+to the figure block, such that the same label string can be used inside
+a command such as \ref to generate a number that is the same number given
+to this figure.
+
+The third component is the caption text of the figure, and the fourth componenet
+is the content of the figure, which could include pure text, or other 
+Contex constructs such as \externalfigure.
+
+To specify that all contents should be centered, add the \startalignment[center]
+to the content.
+
+      \placefigure
+      [here]
+      [mypic]                    
+      {My trip last year.}
+      {\startalignment[center]%
+       ...
+      \stopalignment}                          
+
+To specify that all contents should be left-alignment, add the \startalignment[flushleft]
+to the content.
+
+      \placefigure
+      [here]
+      [mypic]                    
+      {My trip last year.}
+      {\startalignment[flushleft]%
+       ...
+      \stopalignment}                          
+
+
+
+
+
 
