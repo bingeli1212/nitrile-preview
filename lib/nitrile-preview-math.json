@@ -98,7 +98,7 @@
     { "kbd": "\\inttop"        ,    "unicode": "&#x2320;"       ,  "id": "myINTTOP",      "dx":"0"                      ,"op": 3    ,"width": 5    },
     { "kbd": "\\intbot"        ,    "unicode": "&#x2321;"       ,  "id": "myINTBOT",      "dx":"0"                      ,"op": 3    ,"width": 5    },
 
-    { "kbd": "\\simtop"        ,    "unicode": "&#x23B2;"       ,  "id": "mySUMTOP",      "dx":"0"                      ,"op": 3    ,"width": 12    },
+    { "kbd": "\\sumtop"        ,    "unicode": "&#x23B2;"       ,  "id": "mySUMTOP",      "dx":"0"                      ,"op": 3    ,"width": 12    },
     { "kbd": "\\sumbot"        ,    "unicode": "&#x23B3;"       ,  "id": "mySUMBOT",      "dx":"0"                      ,"op": 3    ,"width": 12    },
     
     { "kbd": "\\lmoustache"    ,    "unicode": "&#x23B0;"       ,  "id": "myLMOUSTACHE",  "dx":"0"                      ,"op": 3    ,"width": 10    },
