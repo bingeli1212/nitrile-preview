@@ -2098,6 +2098,10 @@ the effect of clipping:
     \subfigure[\small {Three}]{\includegraphics[keepaspectratio,width=3.000cm]{image-gimp.jpg}}
     \end{figure}
 
+Note that the ``\centering`` switch is typically used inside a sub-environment
+where a ``\par`` is provided, such that after which the extent of the influence by
+this switch will end. Other similar switches are ``\raggedright`` and ``\raggedleft``.
+
 # Playing-card Suites
 
 LATEX-2e offers commands to support the symbols that shows up in the
