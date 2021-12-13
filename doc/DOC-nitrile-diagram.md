@@ -1721,7 +1721,7 @@ second number after the first one, and additional numbers are generated with the
 difference between the second and the first, and with the last number not exceeding
 the third one. 
 
-However, if the middle number is followed by a exclamation mark, then
+However, if the middle number is surrounded by a beginning and ending exclamation mark, then
 this number is interpreted as expressing how many intermediate points are 
 to existing between the two end points which is the first and last number.
 The following example would have produced a total of 22
@@ -1729,7 +1729,7 @@ points, with the first point being 0, and the last point being 10, and
 additional 20 points generated between 0 and 10 such that the distance between
 any two neighboring points is the same.
 
-    \var a[] = [0:20!:10]
+    \var a[] = [0:!20!:10]
 
 Another list-expression is to populate a list from an existing array, known as
 list-array-form. Following expression would pull the content of an existing aray
