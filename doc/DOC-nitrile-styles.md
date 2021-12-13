@@ -842,9 +842,9 @@ Following are styles recognized by NITRILE:
   detecting the setting to decide if the figure should be pushed to the left or right
   hand side of the page, by detecting if this attribute has been set to "left".
 
-+ figalign:c
-+ figalign:l
-+ figalign:r
++ salign:c
++ salign:l
++ salign:r
 
   This field specifies how the contents of a figure should be aligned. The "c" option
   would force all contents to be center-aligned, where "l" is left-aligned, and "r" 
