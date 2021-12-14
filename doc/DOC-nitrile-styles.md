@@ -660,20 +660,6 @@ Following are styles recognized by NITRILE:
   Set the ID. This is currently utilized by the SAMP block to set the default
   ID if it is not specifically set.
 
-+ subfigure:1
-
-  This option is used exclusively by "figure" float, although it might extend to 
-  other floats in the figure.
-
-  Without it, a figure would treat each image as itself without any
-  subcaptions.  Thus each image will be arranged such that they each "floats"
-  from left to right, and then wrap to the next line. When there isn't space
-  around it anymore. 
-
-  When this option is set to 1 the figure environment would treat each images
-  as a "subfigure", such that they each would have a sub-caption, that goes
-  underneath each image.
-
 + n:2
 
   This option is used currently by the "columns" float to express the number
@@ -850,6 +836,21 @@ Following are styles recognized by NITRILE:
   would force all contents to be center-aligned, where "l" is left-aligned, and "r" 
   is right-aligned.
 
++ senum:a
++ senum:A
++ senum:i
++ senum:I
++ senum:1
+
+  This option is used to add enumeration to the subtitle of each subfigure.      
+  Without it the subtitle of each subfigure is shown as is. With this option
+  set an enumeration with parenthesis surrounding it will be inserted before
+  each subtitle. The actional enumeration text is termined by the actual
+  the option value, such 'a' would have generated enumeration that is 'a', 'b',
+  'c', 'd', etc., for each subfigure, where 'A' would have generated 'A', 'B',
+  'C', and 'D', and 'i' would have generated 'i', 'ii', 'iii', 'iv', etc.,
+  and 'I' would have generated 'I', 'II', 'III', 'IV', etc. A number of 1
+  would have generated '1', '2', '3', and '4', etc.
 
 
   
