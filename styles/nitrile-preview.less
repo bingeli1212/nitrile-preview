@@ -21,5 +21,17 @@
     outline: 1px solid black;
     background-color: white;
   }
-
+  .DD {
+    padding-left: 1em;
+  }
+  .PARAGRAPH, .ITEMIZE, .EQUATION, .TABBING, .FIGURE, .TABLE, .LONGTABLE, .LISTING, .COLUMNS, .SAMPLE {
+    text-indent: initial;
+    margin-top: 0pt;   
+    margin-bottom: 6pt;   
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .SUBCAPTION::before {
+    content: var(--num) " ";
+  }     
 }
