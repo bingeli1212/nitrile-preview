@@ -34,24 +34,23 @@
         "type": "separator"
       },
       {
-        "label": "Export as Report As\u2026",
-        "command": "nitrile-preview:to-report"
+        "label": "Zoom in",
+        "command": "nitrile-preview:to-zoomin"
+      },
+      {
+        "label": "Zoom out",
+        "command": "nitrile-preview:to-zoomout"
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "label": "Export as Creamer As\u2026",
+        "command": "nitrile-preview:to-creamer"
       },
       {
         "label": "Export as Beamer As\u2026",
         "command": "nitrile-preview:to-beamer"
-      },
-      {
-        "label": "Export as Page As\u2026",
-        "command": "nitrile-preview:to-page"
-      },
-      {
-        "label": "Export as Slide As\u2026",
-        "command": "nitrile-preview:to-slide"
-      },
-      {
-        "label": "Export as Context As\u2026",
-        "command": "nitrile-preview:to-context"
       },
       {
         "type": "separator"
