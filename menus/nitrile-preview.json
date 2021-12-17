@@ -45,12 +45,16 @@
         "type": "separator"
       },
       {
-        "label": "Export as Creamer As\u2026",
+        "label": "Export as Creamer \u2026",
         "command": "nitrile-preview:to-creamer"
       },
       {
-        "label": "Export as Beamer As\u2026",
+        "label": "Export as Beamer \u2026",
         "command": "nitrile-preview:to-beamer"
+      },
+      {
+        "label": "Export as Slide \u2026",
+        "command": "nitrile-preview:to-slide"
       },
       {
         "type": "separator"
