@@ -14,7 +14,12 @@
     "liveRefresh": {
       "type": "boolean",
       "default": false,
-      "description": "Set it to true if you want the preview to be refreshed whenever source editor editor has been modified. Set to false if you only want the preview to be updated when the content is saved."
+      "description": "Set it to true if you want the preview window to be update itself whenever source editor has been modified. Default is false."
+    },
+    "autoScroll": {
+      "type": "boolean",
+      "default": false,
+      "description": "Set it to true if you want the preview window to scroll with the editor. Default is false."
     },
     "defaultZoomLevel": {
       "type": "number",
