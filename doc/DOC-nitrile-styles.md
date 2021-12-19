@@ -752,17 +752,19 @@ Following are styles recognized by NITRILE:
   of its parent container, rather than the fixed width defined by 
   the 'width' attribute. 
 
++ direction:row    
 + direction:column
 
   This flag is currently used by 'tabular' bundle to allow user to build
-  the table visually so that data in a table can be built in a column-by-column
-  basis.
+  the table either row-by-row or column-by-column.
 
-+ devicesize:600 12
++ vborder:0 2 4  
 
-  This property expresses the width and height of the device in pt. It is currently
-  used to by the "ink" bundle set the initial size of the device. 
-  
+  This flag is currently used by 'tabluar' bundle to visually show a vertical
+  border along certain columns: 0 is the leftmost border of the table,
+  1 is the right-hand side vertical border for the first column, etc.
+  All numbers must be integer and separated by spaces.
+
 + skew:
 
   This property is currently used by the 'lego' command to specify the skew factors
