@@ -126,15 +126,12 @@ Following are styles recognized by NITRILE:
   cells of text "a" will be colored using color 'cyan'. All cells of text
   "b" will be color using color 'lime', and so on.
 
-    ```tabular{visual,cellcolor:a cyan b lime c pink e orange}
-    -------------------------
-    | &ast; | e | a | b | c
-    =========================
-    | e     | e | a | b | c
-    | a     | a | b | c | e
-    | b     | b | c | e | a
-    | c     | c | e | a | b
-    -------------------------
+    ```tabular{cellcolor:a cyan b lime c pink e orange}
+    &ast; \\ e \\ a \\ b \\ c
+    e     \\ e \\ a \\ b \\ c
+    a     \\ a \\ b \\ c \\ e
+    b     \\ b \\ c \\ e \\ a
+    c     \\ c \\ e \\ a \\ b
     ```
 
 + title:<string> 
@@ -755,11 +752,11 @@ Following are styles recognized by NITRILE:
   of its parent container, rather than the fixed width defined by 
   the 'width' attribute. 
 
-+ visual:1
++ direction:column
 
   This flag is currently used by 'tabular' bundle to allow user to build
-  the table visually, using dashes, equal signs and vertical bars for expressing
-  horizontal lines, double horizontal lines, and table cells.
+  the table visually so that data in a table can be built in a column-by-column
+  basis.
 
 + devicesize:600 12
 
