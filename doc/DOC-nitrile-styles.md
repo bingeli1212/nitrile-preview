@@ -155,14 +155,13 @@ Following are styles recognized by NITRILE:
   - Arrow head at both start and end: 0x1 + 0x2 = 0x3
   ```
 
-+ gridcolor:red
-+ gridcolor:green
-+ gridcolor:blue
++ gridopacity:0.5
++ gridopacity:0.1
++ gridopacity:1.0
 
-  This value is to hold a string that describes the color for each grid line
-  drawn inside the viewport if the 'gridlines' is not set to 'none'.
-  This value is current used by diagram-bundle to draw background grids.
-  If absent, the diagram-bundle has its own default value.
+  This value is to hold a float between 0-1 to express the opacity 
+  for drawing grid lines. By default grid lines are drawn at an opacity
+  of (0.2).
 
 + barlength:<length>
 

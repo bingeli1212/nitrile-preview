@@ -2495,11 +2495,11 @@ with the third point.
     \drawtext "A" "B" "C" (1,1) (2,2) (3,4)
 
 It is also possible to express that a math expression instead of plain text.
-by setting is such that each text starts with ``\(`` and ends with ``\)``.
+by setting the "math" style flag to 1.
 In the following example the first and the last text labels are 
 treated as math text while the middle one is treated as plain text.
 
-    \drawtext "\(A_0\)" "Hello" "\(A_2\)" (1,1) (2,2) (3,4)
+    \drawtext {math:1} "A_0" "A_2" (1,1) (3.4)
 
 The text command also allows for each entry to be laid out such that it is
 multi-line paragraph. Note that this only works for plain text, and not
