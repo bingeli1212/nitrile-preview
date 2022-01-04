@@ -46,6 +46,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch folio",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/folio.js",
+      "args": [
+        "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch pango",
       "skipFiles": [
         "<node_internals>/**"
