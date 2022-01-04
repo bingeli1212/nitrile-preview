@@ -654,7 +654,9 @@ Following are styles recognized by NITRILE:
 + id:lines
 
   Set the ID. This is currently utilized by the SAMP block to set the default
-  ID if it is not specifically set.
+  ID if it is not specifically set. It is also used by other bundles to pull
+  any subcaption text out of the main caption text by looking to see if any
+  subcaption is specified for their own ID.
 
 + n:2
 
