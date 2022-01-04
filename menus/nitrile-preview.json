@@ -57,6 +57,10 @@
         "command": "nitrile-preview:to-slide"
       },
       {
+        "label": "Export as Folio \u2026",
+        "command": "nitrile-preview:to-folio"
+      },
+      {
         "type": "separator"
       }
     ]
