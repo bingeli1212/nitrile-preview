@@ -28,24 +28,29 @@
       text-indent: initial;
       padding-left: 1.5em;
     }
-    .PARAGRAPH, .ITEMIZE, .EQUATION, .FIGURE, .TABLE, .LISTING, .COLUMNS, .LONGTABU {
+    .PARAGRAPH {
       text-indent: initial;
       margin-top: 6pt;   
       margin-bottom: 6pt;   
       margin-left:  8mm;
       margin-right: 8mm;
     }
-    .SAMPLEBODY {
-      text-indent: initial;
-      text-align: left;
-      line-height: 1;
-    }
-    .LISTINGBODY {
+    .LISTING .BODY {
       line-height: 1; 
       text-align: left; 
       width: 100%; 
+      padding-left: 1.5em;
+      position: relative;
     }
-    .FIGURE, .TABLE, .LONGTABLE {
+    .LISTING .BODY .LINE {
+      position: relative;
+    }
+    .LISTING .BODY .LINE::before {
+      content: var(--lineno);
+      position: absolute;
+      left: -1.5em;
+    }
+    .FIGURE {
       page-break-inside: avoid;
     }
     .FIGCAPTION {
@@ -243,24 +248,29 @@
       text-indent: initial;
       padding-left: 1.5em;
     }
-    .PARAGRAPH, .ITEMIZE, .EQUATION, .FIGURE, .TABLE, .LISTING, .COLUMNS, .LONGTABU {
+    .PARAGRAPH {
       text-indent: initial;
       margin-top: 6pt;   
       margin-bottom: 6pt;   
       margin-left:  0;
       margin-right: 0;
     }
-    .SAMPLEBODY {
-      text-indent: initial;
-      text-align: left;
-      line-height: 1;
-    }
-    .LISTINGBODY {
+    .LISTING .BODY {
       line-height: 1; 
       text-align: left; 
       width: 100%; 
+      padding-left: 1.5em;
+      position: relative;
     }
-    .FIGURE, .TABLE, .LONGTABLE {
+    .LISTING .BODY .LINE {
+      position: relative;
+    }
+    .LISTING .BODY .LINE::before {
+      content: var(--lineno);
+      position: absolute;
+      left: -1.5em;
+    }
+    .FIGURE {
       page-break-inside: avoid;
     }
     .FIGCAPTION {
@@ -433,24 +443,29 @@
       text-indent: initial;
       padding-left: 1.5em;
     }
-    .PARAGRAPH, .ITEMIZE, .EQUATION, .FIGURE, .TABLE, .LISTING, .COLUMNS, .LONGTABU {
+    .PARAGRAPH {
       text-indent: initial;
       margin-top: 6pt;   
       margin-bottom: 6pt;   
       margin-left:  0;
       margin-right: 0;
     }
-    .SAMPLEBODY {
-      text-indent: initial;
-      text-align: left;
-      line-height: 1;
-    }
-    .LISTINGBODY {
+    .LISTING .BODY {
       line-height: 1; 
       text-align: left; 
       width: 100%; 
+      padding-left: 1.5em;
+      position: relative;
     }
-    .FIGURE, .TABLE, .LONGTABLE {
+    .LISTING .BODY .LINE {
+      position: relative;
+    }
+    .LISTING .BODY .LINE::before {
+      content: var(--lineno);
+      position: absolute;
+      left: -1.5em;
+    }
+    .FIGURE {
       page-break-inside: avoid;
     }
     .FIGCAPTION {
