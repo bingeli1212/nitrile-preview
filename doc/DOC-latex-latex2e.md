@@ -2179,4 +2179,23 @@ at (10mm,10mm) such that the image width is exactly 10mm wide.
 
 
 
+# Add vertical row padding for 'tabular'
+
+Increasing the array stretch factor using
+
+    \renewcommand{\arraystretch}{<factor>} 
+
+where <factor> is a numeric value:
+
+    \documentclass{article}
+    \begin{document}
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{c c}
+      $f^{(n)}(x)$ & $f^{(n)}(0)$ \\\hline
+      $-2xe^{-x^{x^{x^2}}}$ & 0
+    \end{tabular}
+    \end{document}
+
+
+
 
