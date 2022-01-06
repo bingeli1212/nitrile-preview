@@ -27,3 +27,14 @@ a top and bottom rules of 0.09em while booktabs sets it to 0.08em).
     \stoptable
 
 
+    \setuptables[rulethickness=0.03em]
+    \starttable[s1|c|p(20mm)|p(30mm)|]
+      \NC Animal    \VL Description  \NC Price (\$) \NC \AR
+      \HL    
+      \NC Gnat      \VL per gram     \NC 13.65      \NC \AR
+      \NC           \VL each         \NC  0.01      \NC \AR
+      \NC Gnu       \VL stuffed      \NC 92.50      \NC \AR
+      \NC Emu       \VL stuffed      \NC 33.33      \NC \AR
+      \NC Armadillo \VL frozen       \NC  8.99      \NC \AR
+      \HL[3]
+    \stoptable
