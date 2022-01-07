@@ -435,20 +435,71 @@
     font-size: 10pt;
     line-height: 1.25;
         
+    .PARAGRAPH {
+      text-indent: initial;
+      margin-left:  0;
+      margin-right: 0;
+    }
     .PARAGRAPH.PRIMARY {
       text-indent: initial;
       margin-top: 1.0em;
     }
+    .PARAGRAPH.SAMPLE {
+      text-indent: initial;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
+      line-height: 1;
+    }
+    .PARAGRAPH.ITEMIZE {
+      text-indent: initial;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
+    }
     .PARAGRAPH.INDENTING {
       text-indent: initial;
       padding-left: 1.5em;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
     }
-    .PARAGRAPH {
+    .PARAGRAPH.MATH {
       text-indent: initial;
-      margin-top: 6pt;   
-      margin-bottom: 6pt;   
-      margin-left:  0;
-      margin-right: 0;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
+    }
+    .PARAGRAPH.EQUATION {
+      text-indent: initial;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
+    }
+    .PARAGRAPH.FIGURE {
+      text-indent: initial;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
+    }
+    .PARAGRAPH.LONGTABU {
+      text-indent: initial;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
+    }
+    .PARAGRAPH.COLUMNS {
+      text-indent: initial;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
+    }
+    .PARAGRAPH.NORMAL {
+      text-indent: 1.5em;
+    }
+    .CHAPTER + .PARAGRAPH.NORMAL {
+      text-indent: initial;
+    }
+    .SECTION + .PARAGRAPH.NORMAL {
+      text-indent: initial;
+    }
+    .SUBSECTION + .PARAGRAPH.NORMAL {
+      text-indent: initial;
+    }
+    .SUBSUBSECTION + .PARAGRAPH.NORMAL {
+      text-indent: initial;
     }
     .LISTING .BODY {
       line-height: 1; 
@@ -470,13 +521,17 @@
     }
     .FIGCAPTION {
       text-indent: initial;
+      text-align: left;
       margin-top: 0;
       margin-bottom: 0.5em;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
       line-height: 1;
       white-space: normal;
+      font-size: smaller;
     }
     .SUBCAPTION {
-      padding: 0;
       text-indent: initial;
       white-space: normal; 
       font-size: smaller;
@@ -490,31 +545,45 @@
       flex-direction: row;
       align-items: baseline;
     }
+    .FLOATLEFT {
+      text-indent: initial;
+      float: left;
+      margin-right: 1em; 
+    }
+    .FLOATRIGHT {
+      text-indent: initial;
+      float: right;
+      margin-left: 1em; 
+    }
     .CENTER {
       text-indent: initial;
       text-align:center;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
     }
     .FLUSHRIGHT {
       text-indent: initial;
       text-align:right;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
     }
     .FLUSHLEFT {
       text-indent: initial;
       text-align:left;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
     }
     .QUOTE {
       text-indent: initial;
       text-align:left;
-      padding-left: 12pt; 
-      padding-right: 12pt;  
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
     }
     .DISPLAYMATH {
       text-indent: initial;
       text-align:center;
-    }
-    .MATH {
-      text-indent: initial;
-      text-align:left;
+      margin-top: 1.0em;
+      margin-bottom: 1.0em;
     }
     .VERBATIM {
       text-indent: initial;
@@ -528,6 +597,7 @@
     }
     .PARBOX {
       text-indent: initial;
+      text-align: left;
     }
     .TABULAR {
       text-indent: initial;
@@ -554,9 +624,6 @@
       position: absolute;
       content: var(--bull);
       left: var(--pad);
-    }
-    .TH, .TD {
-      padding: 0.1em 0.6em;
     }
     .PART, .CHAPTER, .SECTION, .SUBSECTION, .SUBSUBSECTION, .PRIMARY {
       clear: both;
