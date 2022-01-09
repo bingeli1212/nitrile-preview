@@ -233,8 +233,8 @@
     min-height:210mm;
     max-height:210mm;
     font-family: Verdana, sans-serif;
-    font-size: 10pt;
-    line-height: 1.25;
+    font-size: 16px;
+    line-height: 19px;
     box-sizing: border-box;
     overflow: hidden;
     padding: 10mm 10mm;
@@ -254,6 +254,22 @@
       margin-bottom: 6pt;   
       margin-left:  0;
       margin-right: 0;
+    }
+    .CHAPTER {
+      text-indent: initial;
+      margin-top: 6pt;   
+      margin-bottom: 6pt;   
+      margin-left:  0;
+      margin-right: 0;
+      font-weight: 700;  
+    }
+    .SECTION, .SUBSECTION, .SUBSUBSECTION {
+      text-indent: initial;
+      margin-top: 6pt;   
+      margin-bottom: 6pt;   
+      margin-left:  0;
+      margin-right: 0;
+      font-weight: 700;  
     }
     .LISTING .BODY {
       line-height: 1; 
@@ -284,7 +300,7 @@
       padding: 0;
       text-indent: initial;
       white-space: normal; 
-      font-size: smaller;
+      font-size: 0.8em;
       line-height: 1;
     }
     .SUBCAPTION::before {
@@ -411,22 +427,6 @@
       font-size: 1.1em;
       text-align: center;
       align-self: center;
-    }
-    .EDITIMG {
-      visibility: hidden;
-      position: absolute;
-      top: 0px;
-      left: 0px;
-    }
-    .EDITBOARD {
-      position: absolute;
-      visibility: visible;
-      top: 0px;
-      left: 0px;
-      bottom: 0px;
-      right: 0px;
-      background-position: 0px 0px;
-      background-repeat: no-repeat;
     }
   }
 
