@@ -822,11 +822,14 @@ Following are styles recognized by NITRILE:
   presence of the double-backslash which manually breaks the items into
   rows.
 
-+ type
++ type:left
++ type:right
++ type:table
++ type:figure
 
-  This field tends to be generic. The current implementation has the wrapfig-block
-  detecting the setting to decide if the figure should be pushed to the left or right
-  hand side of the page, by detecting if this attribute has been set to "left".
+  This field tends to be generic. It is currently used by FIGURE to decide
+  if this is a "wrapfig" that is pushed to the "left" or "right", or a "table"
+  instead of a "figure".
 
 + salign:c
 + salign:l
