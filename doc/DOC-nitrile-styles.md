@@ -814,7 +814,7 @@ Following are styles recognized by NITRILE:
 
   This style tells where the bundle inside of a wrapfig-block should go.
   
-+ wrap:1
++ swrap:1
 
   Set this flag to 1 to indicate that subfigures in a figure should be wrapped
   around in accordance to the width of the figure. Without this flag set 
