@@ -3732,6 +3732,54 @@ to the content.
 
 
 
+# Adding a small triangle before text
 
+    \blank
+    \startnarrower[1*left,0*right]
+    \startHL{}
+    \noindent
+    {\small $\blacktriangleright$}
+    Apple \\
+    Pear \\
+    Banana 
+    \stopHL
+    \stopnarrower
+
+It can also be done by using a starttabulate
+
+    \blank
+    \startnarrower[1*left,0*right]
+    \startHL{}
+    \noindent
+    {\small $\blacktriangleright$}
+    \framed[frame=off,location=top]{\starttabulate[|l|]
+    \NC Apple \NC\NR
+    \NC Pear \NC\NR
+    \NC Banana \NC\NR
+    \stoptabulate}
+    \stopHL
+    \stopnarrower
+
+Following is a similar method to create a starttable and place
+a small triangle before it.
+
+    \blank
+    \startnarrower[1*left,0*right]
+    \startHL{}
+    \noindent
+    {\small $\blacktriangleright$}
+    \framed[frame=off,location=top]{\starttable[s2|l|l|]
+    \HL
+    \VL A 
+    \VL B 
+    \VL\FR
+    \HL
+    \VL C 
+    \VL D 
+    \VL\FR
+    \HL
+    \stoptable}
+    \stopHL
+    \stopnarrower
 
 
