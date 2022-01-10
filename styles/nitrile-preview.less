@@ -257,6 +257,10 @@
       text-indent: initial;
       margin-top: 1.0em;
     }
+    .PARAGRAPH.SAMPLE {
+      text-indent: initial;
+      line-height: 1em;
+    }
     .CHAPTER {
       text-indent: initial;
       margin-top: 6pt;   
@@ -279,9 +283,11 @@
       width: 100%; 
       padding-left: 1.5em;
       position: relative;
+      display: block;
     }
     .LISTING .BODY .LINE {
       position: relative;
+      display: block;
     }
     .LISTING .BODY .LINE::before {
       content: var(--lineno);
