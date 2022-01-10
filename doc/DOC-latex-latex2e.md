@@ -2198,4 +2198,22 @@ where <factor> is a numeric value:
 
 
 
+# Add small triangle
+
+Following is how to add a small triangle in front 
+of a tabular.
+
+    \begin{list}{}{\setlength\itemsep{0pt}\setlength\parsep{0pt}}
+    \item {$\triangleright$}~
+    \begingroup
+    \renewcommand{\arraystretch}{1.00}
+    \begin{tabular}{p{\linewidth}}
+    {\ttfamily{}{\#}include{\textless}stdio{\textgreater}}\tabularnewline
+    {\ttfamily{}int~main()}\tabularnewline
+    {\ttfamily{}~~return~0;}\tabularnewline
+    {\ttfamily{}~}\tabularnewline
+    \end{tabular}
+    \endgroup
+    \end{list}
+
 
