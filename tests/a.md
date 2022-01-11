@@ -8,6 +8,8 @@ title: a.md
 
 # Dia subtitle
 
+This &dia{viewport:5 5;;\drawline{linecolor:red}(0,0)(5,5);;}
+
 The word is &em{important},
 &dia{viewport:5 5,load:a}
 
