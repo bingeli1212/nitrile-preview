@@ -8,8 +8,36 @@ title: a.md
 
 # Dia subtitle
 
-This &dia{viewport:5 5;;\drawline{linecolor:red}(0,0)(5,5);;}
+Hello world! 
+Hello world! 
+Hello world! 
+Hello world! 
 
-The word is &em{important},
-&dia{viewport:5 5,load:a}
+.figure{swrap,salign:c}
+\\
+```dia{viewport:5 5,frame}
+\drawline(0,0)(5,5)
+```
+```dia{viewport:5 5,frame}
+\drawline(0,0)(5,5)
+```
+```dia{viewport:5 5,frame}
+\drawline(0,0)(5,5)
+```
+```dia{viewport:5 5,frame}
+\drawline(0,0)(5,5)
+```
+```dia{viewport:5 5,frame}
+\drawline(0,0)(5,5)
+```
+```dia{viewport:5 5,frame}
+\drawline(0,0)(5,5)
+```
+
+Hello world! 
+Hello world! 
+Hello world! 
+Hello world! 
+
+
 
