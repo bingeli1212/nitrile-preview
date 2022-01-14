@@ -4,6 +4,7 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+
     {
       "type": "node",
       "request": "launch",
@@ -158,6 +159,19 @@
       "program": "${workspaceFolder}/tests/memoir.js",
       "args": [
         "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch nimake",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nimake.js",
+      "args": [
+        "a.pdf"
       ]
     }
   ]
