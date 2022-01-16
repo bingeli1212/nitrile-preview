@@ -3821,3 +3821,14 @@ would have made it about seventy-five percent smaller
 than its "\dfrac" version.
 
     \(\frac{3}{10}\) and \(\dfrac{3}{10}\)
+
+
+# The "\startsubstack"
+
+The "\startsubstack" command is designed to stack to math expressions
+one on top of another; this allows for the possibility
+of creating a visual effect such as having a horizontal rule
+appear under a math expression possible.
+
+    {\startsubstack 0 . 3 0 \NR \hl[5.00] \NR \stopsubstack}}
+
