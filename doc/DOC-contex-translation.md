@@ -3783,3 +3783,28 @@ a small triangle before it.
     \stopnarrower
 
 
+# The "startMPcode" sandwich
+
+The \startMPcode ... \stopMPcode sandwich for holding a list of MetaFun graphic
+commands is useful; and the result of this sandwich is typically that of a
+picture. However, if the entire sandwich is to appear directly inside a
+"starttable" as the content of a table data item, sometimes the graph appears
+to be shifted too much towards the top of the bounding box of that table item,
+erasing part of the top border line. Sometimes the table data item bounding
+box would appear to be too tall than necessary.
+
+It seems that placing a \framed{} command around the entire "startMPcode" sandwich
+fixes the problem and makes the "starttable" table data item bounding box
+appears more stable.
+
+    \framed[frame=off,strut=off,location=top]{\startMPcode
+    numeric u; u := 5mm;
+    numeric vw; vw := 2*u;
+    numeric vh; vh := 3*u;
+    draw unitsquare sized(vw,vh) withcolor white ;
+    draw image ( draw ((1.00,2.50)--(0.20,0.50)--(1.80,0.50)--cycle) scaled(u) ; ) xscaled(1) yscaled(1) shifted(0*u,0*u) ;
+    clip currentpicture to unitsquare sized(vw,vh) ;
+    \stopMPcode}}
+
+
+
