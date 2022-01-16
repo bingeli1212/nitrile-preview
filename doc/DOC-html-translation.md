@@ -356,4 +356,11 @@ Following is the spec for the 'currentColor' keyword:
 
 
 
+# The "Microsoft Edge"
+
+The Edge browser is able to preserve the "anchor" in a PDF file that is generated
+by its "print" function when the HTML has a internal anchor that points
+to another part of the same document. However, it seems that it does not generate
+PDF bookmarks. 
+
 

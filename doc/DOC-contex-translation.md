@@ -3855,3 +3855,11 @@ However, for CONTEX the top argument is not observed to have
 become smaller; rather it is the same size as the normal
 math text.
 
+
+
+# The "Figure" 
+
+The "Figure" caption does not seem to be able to be shifted to a Left or Right
+position other than the Center position. 
+
+

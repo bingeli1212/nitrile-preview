@@ -26,6 +26,8 @@ doc: slide
   U+2B0F      &utfchar{2B0F}      &utfdata{2B0F}
   ```
 
+.page
+
 # U+2B10   
 
   ```tabular{visual:2,small,vrule:|||}
@@ -46,6 +48,8 @@ doc: slide
   U+2B1E      &utfchar{2B1E}      &utfdata{2B1E}
   U+2B1F      &utfchar{2B1F}      &utfdata{2B1F}
   ```
+
+.page
 
 # U+2B20   
 
@@ -68,6 +72,8 @@ doc: slide
   U+2B2F      &utfchar{2B2F}      &utfdata{2B2F}
   ```
 
+.page
+
 # U+2B30   
 
   ```tabular{visual:2,small,vrule:|||}
@@ -88,6 +94,8 @@ doc: slide
   U+2B3E      &utfchar{2B3E}      &utfdata{2B3E}
   U+2B3F      &utfchar{2B3F}      &utfdata{2B3F}
   ```
+
+.page
 
 # U+2B40   
 
@@ -110,6 +118,8 @@ doc: slide
   U+2B4F      &utfchar{2B4F}      &utfdata{2B4F}
   ```
 
+.page
+
 # U+2B50   
 
   ```tabular{visual:2,small,vrule:|||}
@@ -130,6 +140,8 @@ doc: slide
   U+2B5E      &utfchar{2B5E}      &utfdata{2B5E}
   U+2B5F      &utfchar{2B5F}      &utfdata{2B5F}
   ```
+
+.page
 
 # U+2B60   
 
@@ -152,6 +164,8 @@ doc: slide
   U+2B6F      &utfchar{2B6F}      &utfdata{2B6F}
   ```
 
+.page
+
 # U+2B70   
 
   ```tabular{visual:2,small,vrule:|||}
@@ -172,6 +186,8 @@ doc: slide
   U+2B7E      &utfchar{2B7E}      &utfdata{2B7E}
   U+2B7F      &utfchar{2B7F}      &utfdata{2B7F}
   ```
+
+.page
 
 # U+2B80   
 
@@ -194,6 +210,8 @@ doc: slide
   U+2B8F      &utfchar{2B8F}      &utfdata{2B8F}
   ```
 
+.page
+
 # U+2B90    
 
   ```tabular{visual:2,small,vrule:|||}
@@ -214,6 +232,8 @@ doc: slide
   U+2B9E      &utfchar{2B9E}      &utfdata{2B9E}
   U+2B9F      &utfchar{2B9F}      &utfdata{2B9F}
   ```
+
+.page
 
 # U+2BA0     
 
@@ -236,6 +256,8 @@ doc: slide
   U+2BAF      &utfchar{2BAF}      &utfdata{2BAF}
   ```
 
+.page
+
 # U+2BB0     
 
   ```tabular{visual:2,small,vrule:|||}
@@ -256,6 +278,8 @@ doc: slide
   U+2BBE      &utfchar{2BBE}      &utfdata{2BBE}
   U+2BBF      &utfchar{2BBF}      &utfdata{2BBF}
   ```
+
+.page
 
 # U+2BC0     
 
@@ -278,6 +302,8 @@ doc: slide
   U+2BCF      &utfchar{2BCF}      &utfdata{2BCF}
   ```
 
+.page
+
 # U+2BD0     
 
   ```tabular{visual:2,small,vrule:|||}
@@ -299,6 +325,8 @@ doc: slide
   U+2BDF      &utfchar{2BDF}      &utfdata{2BDF}
   ```
 
+.page
+
 # U+2BE0     
 
   ```tabular{visual:2,small,vrule:|||}
@@ -319,6 +347,8 @@ doc: slide
   U+2BEE      &utfchar{2BEE}      &utfdata{2BEE}
   U+2BEF      &utfchar{2BEF}      &utfdata{2BEF}
   ```
+
+.page
 
 # U+2BF0     
 

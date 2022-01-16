@@ -245,3 +245,10 @@ letter as a separate math symbol.
 The \boldmath declaration causes everything (including symbols) in a formula to
 be in a bold font. Note that this differs somewhat from the same declaration in
 2.09 which did not affect some symbols.
+
+
+# The "Figure" 
+
+The "Figure" caption does not seem to be able to be shifted to a Left or Right
+position other than the Center position. 
+
