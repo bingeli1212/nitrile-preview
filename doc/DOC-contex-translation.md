@@ -3808,3 +3808,16 @@ appears more stable.
 
 
 
+# The "\frac"
+
+The "\frac" in math mode such as the following only makes the 
+font tiny bit smaller than its "\dfrac" counterpart, probably
+only ninty-five percent in size than the "\dfrac" version.
+
+    \math{\frac{3}{10}} and \math{\dfrac{3}{10}}
+
+Comparing it to the same math command in LATEX the LATEX
+would have made it about seventy-five percent smaller
+than its "\dfrac" version.
+
+    \(\frac{3}{10}\) and \(\dfrac{3}{10}\)
