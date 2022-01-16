@@ -3837,3 +3837,21 @@ size for the two expressions as would have otherwise observed
 on a LATEX counterpart for a similar command that is "\atop"
 or "\substack".
 
+For typesetting the "\hrule" nitrile math command the "\overset"
+seems to work better comparing to "\startsubstack", as the later
+one simply has placed too much vertical space between the top
+and bottom elements. The "\overset" command should be used 
+as follows. 
+
+    { \overset #1 #2}
+
+It is designed to place some smaller symbols above another, for example below,
+the question mark is designed to appear on top of the equal sign and 
+it should have appeared smaller.
+
+    a\,\overset{?}{=}\,b
+
+However, for CONTEX the top argument is not observed to have
+become smaller; rather it is the same size as the normal
+math text.
+
