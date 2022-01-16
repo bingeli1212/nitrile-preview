@@ -142,5 +142,106 @@ Following is for adding a frame to a figure/table float.
     \restylefloat{figure}
 
 
+# The "\atop" and "\substack"
+
+The "\atop" is a native TEX command which can be used to stack to math elements
+on top of each other, similar to a "\frac" will do but without the middle line.
+
+    {\sqrt{2} \atop \hrule{7.00em}{0.4pt}}
+
+It is better to surround the entire expression with braces so that the "\atop"
+does not affect expressions down the road. It should be pointed that the font
+size for both upper and lower math expression would be reduced, similar to the
+effect one would have observed out of a "\frac{}{}" command.
+
+Similar to "\atop" is "\above", which must be followed by a argument immediately
+after it a length expressing the additional vertical distance.
+
+    {a \above 0pt b}
+
+Maybe "\atop" can be compared to similar commands "\over" which does creates a
+fraction line.
+
+The AMS package also provides a similar commands called "\substack" that works
+similarly, but has the advantage of allowing two or more lines.
+
+    \\substack{\sqrt{2} \\ \hrule{7.00em}{0.4pt}}
+
+The "\substack" command is specifically designed for a subscript consisting of
+multiple lines such as the following examle for a "\sum", where sometimes its
+subscript contains multiple lines each of which needs to be in its own.
+
+    \sum_{
+    \substack{
+    1\lt i\lt 3 \\
+    1\le j\lt 5
+    }}
+    a_{ij}
+
+The \overset{above}{main} and \stackrel{a}{b} would also work. They seems to
+work the best when the bottom one is a "\hrule", where the "\atop" and "\above"
+would have placed too much vertical spaces between them.
 
 
+# The Math styles
+
+The following applies to both LaTeX 2.09 and LaTeX2e.
+
+There are four styles used in typesetting math formulas which affect the size
+and certain formatting parameters (notably the placement of sub and superscripts
+on variable size symbols).
+
+- \textstyle - default in the running text and in array environment
+- \displaystyle - default for displayed equations
+- \scriptstyle - default for first-level sub and superscripts
+- \scriptscriptstyle - default for higher-level sub and superscripts
+
+All four of these may be used in math mode as declarations to force the type
+size and formatting to a style other than what would normally be used.
+
+For example, to get a superscript that is the same size as the running text:
+
+    $e^{\textstyle -E/kT}$   
+
+As another example, the limits on a summation symbol are normally placed below
+and above the symbol in display style and in normal sub and superscript position
+in textstyle. One could force the below/above placement in running text by
+using:
+
+    \displaystyle $\sum_{n=0}^\infty x_n$
+
+although it should be noted that this might cause LaTeX to leave extra space
+between the text lines which might not be desirable.
+
+
+# LaTeX 2.09 fonts
+
+The regular type style declarations can be used in math mode. They affect only
+letters (including upper case Greek letters) but not symbols (or lower case
+Greek letters). Two additional style declarations which can be used only in math
+mode are
+
+- \mit
+- \cal
+
+The former is math italic style; it spaces letters as if they were words,
+however, not as if they were each separate math symbols. The latter produces
+upper case calligraphic letters.
+
+# LaTeX2e math fonts
+
+The following commands change the style only of letters, numbers, and uppercase Greek.
+
+- \mathit - same as \mit in 2.09 (see above)
+- \mathrm - Roman
+- \mathbf - Bold face
+- \mathsf - San Serif
+- \mathtt - Typewriter style
+- \mathcal - Calligraphic
+
+All of these produce spacing appropriate for text; they do not interpret each
+letter as a separate math symbol.
+
+The \boldmath declaration causes everything (including symbols) in a formula to
+be in a bold font. Note that this differs somewhat from the same declaration in
+2.09 which did not affect some symbols.

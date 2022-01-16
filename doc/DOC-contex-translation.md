@@ -3832,3 +3832,8 @@ appear under a math expression possible.
 
     {\startsubstack 0 . 3 0 \NR \hl[5.00] \NR \stopsubstack}}
 
+It should be noted that "\startsubstack" does not reduce the font
+size for the two expressions as would have otherwise observed
+on a LATEX counterpart for a similar command that is "\atop"
+or "\substack".
+
