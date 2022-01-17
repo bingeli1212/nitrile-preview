@@ -5,6 +5,55 @@ title: a.md
 \drawline (0,0)(5,5)
 \drawtext {math} "a+b" (0,0)
 %
+%?POINT
+\drawdot (3,1.5)
+\drawtext.ctr {tx:0.7} (3,1.5) "P"
+%
+%?LINE
+\dblarrow (1,1.5)--(7,1.5)
+\drawdot (3,1.5) (5,1.5)
+\drawtext.ctr {ty:-0.7} (3,1.5) (5,1.5) "A" "B"
+%
+%?LINESEG
+\stroke (1,1.5)--(7,1.5)
+\drawdot (1,1.5) (7,1.5)
+\drawtext.ctr {ty:-0.7} (1,1.5) (7,1.5) "X" "Y"
+%
+%?RAY
+\arrow (1,1.5)--(7,1.5)
+\drawdot (1,1.5) (4.5,1.5)
+\drawtext.ctr {ty:-0.7} (1,1.5) (4.5,1.5) "P" "Q"
+%
+%?PLANE
+\drawpolygon (1,0.5) (6,0.5) (7,2.5) (2,2.5)
+\path E = (3.5,2)
+\path F = (2.9,1.1)
+\path G = (4.9,1.5)
+\drawdot (&E) (&F) (&G)
+\drawtext.ctr "E" {tx:0.5} (&E)
+\drawtext.ctr "F" {tx:0.5} (&F)
+\drawtext.ctr "G" {tx:0.5} (&G)
+%
+%?HATCH
+\drawpolygon (2,0.5) (6,0.5) (7,2.5) (3,2.5)
+\config linecap round
+\path E = (3.5,2)
+\path F = (2.9,1.1)
+\path G = (4.9,1.5)
+\drawcongbar (2,0.5)--(6,0.5) (7,2.5)--(3,2.5)
+\drawcongbar {bartype:double} (6,0.5)--(7,2.5)  (3,2.5)--(2,0.5)
+%
+%?HATCHANG
+\config linecap round
+\path A/B/C = (2,2.5) (1,0.5) (3,0.5)
+\drawpolygon (&A)(&B)(&C)
+\drawanglemark {r:0.5,bartype:double} (&B)--(&A)--(&C)
+\drawanglemark {r:0.5,bartype:single} (&C)--(&B)--(&A)
+\path A/B/C = (5,2.5) (4,0.5) (6,0.5)
+\drawpolygon (&A)(&B)(&C)
+\drawanglemark {r:0.5,bartype:double} (&B)--(&A)--(&C)
+\drawanglemark {r:0.5,bartype:single} (&C)--(&B)--(&A)
+%
 
 # Display math
 
