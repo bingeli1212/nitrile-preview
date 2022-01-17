@@ -6,10 +6,10 @@ title: Styles
 
 Following are styles recognized by NITRILE:
 
-+ halign:p(1cm) c c c c
-+ halign:l l c r r
++ align:p10 c c c c
++ align:l l c r r
 
-  The halign-option is designed to express alignment options for table columns,
+  The "align" is designed to express alignment options for table columns,
   which is a list of letter l/r/c, or a string such as "p(1cm)" for paragraph
   with a fixed width.
 
@@ -830,14 +830,6 @@ Following are styles recognized by NITRILE:
   This field tends to be generic. It is currently used by FIGURE to decide
   if this is a "wrapfig" that is pushed to the "left" or "right", or a "table"
   instead of a "figure".
-
-+ salign:c
-+ salign:l
-+ salign:r
-
-  This field specifies how the contents of a figure should be aligned. The "c" option
-  would force all contents to be center-aligned, where "l" is left-aligned, and "r" 
-  is right-aligned.
 
 + senum:a
 + senum:A
