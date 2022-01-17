@@ -252,3 +252,17 @@ be in a bold font. Note that this differs somewhat from the same declaration in
 The "Figure" caption does not seem to be able to be shifted to a Left or Right
 position other than the Center position. 
 
+
+# The Tikzpicture
+
+When a Tikzpiture is placed in a "tabular", for example the second column and the first
+row, it will try to align with the text that is the first column and first row, such that
+the bottom of that picture aligns with the baseline text in the first row. This will
+create an effect such that the picture will "rise" above the text in the first column
+if it has a significant height. To solve this problem is to wrap the Tikzpicture inside
+an inner "tabular". 
+
+
+
+
+
