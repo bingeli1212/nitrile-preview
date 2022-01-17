@@ -6,6 +6,18 @@ title: a.md
 \drawtext {math} "a+b" (0,0)
 %
 
+# Display math
+
+Hello world!
+
+```displaymath
+   \hypotenuse = \sqrt{\text{leg}_1^2 + \text{leg}_2^2}
+```
+
+Hello world!
+
+
+
 # Phrase to escape
 
 ```parbox
