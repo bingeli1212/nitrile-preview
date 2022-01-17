@@ -35,7 +35,7 @@ The \backspace and \backquote phrases
 Point    \\ A geometric element that has zero dimension \\ &dia{load:POINT,fontsize:10,viewport:8 3,width:30} \\ P or Point P
 Line     \\ A line that is a collection of points along a straight path with no end points. \\ &dia{load:LINE,fontsize:10,viewport:8 3,width:30} \\ \(\overline{AB}\) or \(\overline{BA}\)
 Line segment \\ A line segment is a part of a line that contains every point on the line between its end points. \\ &dia{load:LINESEG,fontsize:10,viewport:8 3,width:30} \\ \(\overline{XY}\) or \(\overline{YX}\)
-Ray      \\ A ray is a line with a single end point that goes on and on in one direction. \\ &dia{load:RAY,fontsize:10,viewport:8 3,width:30} \\ \(\overrightarrow{PQ}
+Ray      \\ A ray is a line with a single end point that goes on and on in one direction. \\ &dia{load:RAY,fontsize:10,viewport:8 3,width:30} \\ \(\overrightarrow{PQ}\)
 Plane    \\ A plane is a flat surface that extends to infinity. \\ &dia{load:PLANE,fontsize:10,viewport:8 3,width:30} \\ Plane EFG
 ```
 
@@ -108,14 +108,20 @@ Hello world!
 Hello world! 
 
 .figure{swrap,salign:c}
+My figure collections.
+---
+a First
+b Second
+c Third
+---
 \\
-```dia{viewport:5 5,frame}
+```dia{viewport:5 5,frame,id:a}
 \drawline(0,0)(5,5)
 ```
-```dia{viewport:5 5,frame}
+```dia{viewport:5 5,frame,id:b}
 \drawline(0,0)(5,5)
 ```
-```dia{viewport:5 5,frame}
+```dia{viewport:5 5,frame,id:c}
 \drawline(0,0)(5,5)
 ```
 ```dia{viewport:5 5,frame}
