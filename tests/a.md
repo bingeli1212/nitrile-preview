@@ -66,6 +66,7 @@ Hello world!
 Hello world!
 
 
+.page
 
 # Phrase to escape
 
@@ -76,6 +77,7 @@ Hello world
 
 The \backspace and \backquote phrases
 
+.page
 
 # Tabular
 
@@ -88,6 +90,8 @@ Ray      \\ A ray is a line with a single end point that goes on and on in one d
 Plane    \\ A plane is a flat surface that extends to infinity. \\ &dia{load:PLANE,fontsize:10,viewport:8 3,width:30} \\ Plane EFG
 ```
 
+.page
+
 # Cove
 
 Hello world! 
@@ -99,6 +103,7 @@ Hello world!
   James Yu
   James Yu
 
+.page
 
 # Displaymath   
 
@@ -109,6 +114,8 @@ Hello world!
                       &= \frac{n+1}{2}(n+2)\cr
                       &= \frac{n+1}{2}((n+1)+1)
 ```
+
+.page
 
 # Dia subtitle
 
@@ -133,6 +140,8 @@ Hello world!
   }
   ```
 
+.page
+
 # Parbox   
 
 ```parbox
@@ -149,6 +158,8 @@ Hello world!
 \(a + b = c\)
 ```
 
+.page
+
 # Figures
 
 Hello world! 
@@ -156,7 +167,10 @@ Hello world!
 Hello world! 
 Hello world! 
 
+See figure &ref{fig1}.
+
 .figure{swrap,salign:c}
+&label{fig1}
 My figure collections.
 ---
 a First
