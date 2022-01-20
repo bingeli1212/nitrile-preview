@@ -78,6 +78,17 @@ Hello world
 
 .page
 
+# Inline-math and Inline-dmath
+
+Hello world, the formular is \(a^2 + b^2 = c^2\), 
+and we can see why it is so.
+
+Hello world, the formular is \[a^2 + b^2 = c^2\],
+and we can see why it is so.
+
+
+.page
+
 # Backslashed text         
 
 The \backspace and \backquote phrases
