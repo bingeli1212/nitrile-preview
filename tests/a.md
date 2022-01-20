@@ -81,7 +81,7 @@ The \backspace and \backquote phrases
 
 # Tabular
 
-```tabular{head,fontsize:small,frame,rules:all,halign:p15 p45 p35 p20}
+```tabular{head,fontsize:small,frame,rules:all,align:p15 p40 p35 p20}
 \\ Description \\ Figure \\ Symbol
 Point    \\ A geometric element that has zero dimension \\ &dia{load:POINT,fontsize:10,viewport:8 3,width:30} \\ P or Point P
 Line     \\ A line that is a collection of points along a straight path with no end points. \\ &dia{load:LINE,fontsize:10,viewport:8 3,width:30} \\ \(\overline{AB}\) or \(\overline{BA}\)
@@ -176,6 +176,7 @@ My figure collections.
 a First
 b Second
 c Third
+d Fourth
 ---
 \\
 ```dia{viewport:5 5,frame,id:a}
@@ -187,7 +188,7 @@ c Third
 ```dia{viewport:5 5,frame,id:c}
 \drawline(0,0)(5,5)
 ```
-```dia{viewport:5 5,frame}
+```dia{viewport:5 5,frame,id:d}
 \drawline(0,0)(5,5)
 ```
 ```dia{viewport:5 5,frame}
@@ -233,9 +234,7 @@ console.log(fname);
 if(fname){
   work().then(x => console.log(x));
   setTimeout(function(){},1000);
-} else {
-  console.log("empty file name")
-}
+} 
 ```
 
 
@@ -248,12 +247,12 @@ Hello world!
 
 See figure &ref{fig1}.
 
-.figure{}
+.figure{senum:a}
 &label{fig2}
 My figure collections.
 ---
 a First
-b Second
+b Second is the source code for the picture
 c Third
 ---
 \\
