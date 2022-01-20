@@ -278,4 +278,22 @@ Hello world!
 Hello world! 
 
 
+# Equation
+
+Hello world! 
+Hello world! 
+Hello world! 
+Hello world! 
+
+.equation
+&label(eq1}
+\\
+```math
+a + b = c
+```
+
+Hello world! 
+Hello world! 
+Hello world! 
+Hello world! 
 
