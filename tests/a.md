@@ -297,3 +297,14 @@ Hello world!
 Hello world! 
 Hello world! 
 
+
+# Cave
+
+The &b{set complement} operation of a set
+retrieves all elements in the universal set that are not present in the original set.
+The notation "\(A^c\)" reads as "the set complement of A."
+
+$ A = {1, 2, 3, 10}
+  U = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+  \(A^c\) = {4, 5, 6, 7, 8, 9}
+
