@@ -111,6 +111,9 @@ f(0)=0
 f'(0)=1
 \]
 for the hyperbolic sine.
+\[
+\lim_{x\rarr \infty} \frac{1}{x} = 0
+\]
 
 .page
 
