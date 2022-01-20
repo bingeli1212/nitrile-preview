@@ -218,9 +218,6 @@ See listing &ref{lst1}.
 My code.
 \\
 ```
-const { NitrilePreviewParser } = require('../lib/nitrile-preview-parser');
-const { NitrilePreviewSlide } = require('../lib/nitrile-preview-slide');
-///
 var work = async ()=>{
   const parser = new NitrilePreviewParser();
   const translator = new NitrilePreviewSlide(parser);
@@ -240,5 +237,46 @@ if(fname){
   console.log("empty file name")
 }
 ```
+
+
+# Figures with subcaptions
+
+Hello world! 
+Hello world! 
+Hello world! 
+Hello world! 
+
+See figure &ref{fig1}.
+
+.figure{}
+&label{fig2}
+My figure collections.
+---
+a First
+b Second
+c Third
+---
+\\
+```dia{viewport:20 10,frame,width:40,id:a}
+\image "image-clock.png"
+```
+```ink{viewport:20 20,width:40,frame,id:b}
+<svg width="500" height="250"
+  viewBox="0 0 500 500"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <circle cx="250" cy="250" r="250"
+    fill="orange"
+    stroke="none"/>
+</svg>
+```
+
+
+Hello world! 
+Hello world! 
+Hello world! 
+Hello world! 
+
 
 
