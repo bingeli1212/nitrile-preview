@@ -55,25 +55,30 @@ title: a.md
 \drawanglemark {r:0.5,bartype:single} (&C)--(&B)--(&A)
 %
 
-# Display math
+# Math
 
-Hello world!
+Hello world
 
 ```math
    \hypotenuse = \sqrt{\text{leg}_1^2 + \text{leg}_2^2}
 ```
 
-Hello world!
+Hello world
+
+```math
+  1 + 2 + \ctdot + n + (n+1) &= \frac{n}{2}(n+1) + (n+1) \cr
+                      &= \frac{n}{2}(n+1) + \frac{2}{2}(n+1) \cr
+                      &= (n+1)(\frac{n}{2} + \frac{2}{2}) \cr
+                      &= \frac{n+1}{2}(n+2)\cr
+                      &= \frac{n+1}{2}((n+1)+1)
+```
+
+Hello world
 
 
 .page
 
-# Phrase to escape
-
-```parbox
-Hello world \\
-Hello world
-```
+# Backslashed text         
 
 The \backspace and \backquote phrases
 
@@ -105,17 +110,6 @@ Hello world!
 
 .page
 
-# Displaymath   
-
-```math
-  1 + 2 + \ctdot + n + (n+1) &= \frac{n}{2}(n+1) + (n+1) \cr
-                      &= \frac{n}{2}(n+1) + \frac{2}{2}(n+1) \cr
-                      &= (n+1)(\frac{n}{2} + \frac{2}{2}) \cr
-                      &= \frac{n+1}{2}(n+2)\cr
-                      &= \frac{n+1}{2}((n+1)+1)
-```
-
-.page
 
 # Dia subtitle
 
@@ -142,7 +136,7 @@ Hello world!
 
 .page
 
-# Parbox   
+# Parboxes
 
 ```parbox
 Hello world!  \\
@@ -309,26 +303,40 @@ $ A = {1, 2, 3, 10}
   \(A^c\) = {4, 5, 6, 7, 8, 9}
 
 
-# Two tables
+# Two tables in a figure
 
 .figure{frame,rules:all}
 ---
 a First
 b Second
-c Third   
 ---
 \\
-```tabular{id:a}
+```tabular{id:a,align:p15p15p15}
 Hello \\ World \\ Too
 Hello \\ World \\ Too
-Hello \\ World \\ Too
-```
-```tabular{id:b}
 Hello \\ World \\ Too
 Hello \\ World \\ Too
 Hello \\ World \\ Too
 ```
-```tabular{id:c}
+```tabular{id:b,align:p15p15p15}
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+```
+
+
+# Two tables without a figure
+
+```tabular{frame,rules:all,id:a,align:p15p15p15}
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+```
+
+```tabular{frame,rules:all,id:b,align:p15p15p15}
+Hello \\ World \\ Too
 Hello \\ World \\ Too
 Hello \\ World \\ Too
 ```
@@ -362,5 +370,28 @@ Hello world!
 Hello world! 
 Hello world! 
 Hello world! 
+
+
+# PLST      
+
+- Beverages
+  - Coffee
+  - Tea
+  - Milk
+- Solid food
+  - Sandwich
+  - Fries
+  - Yogurt
+- Fruits     
+  - Apple    
+    - Red delicious
+    - Gala green   
+  - Pear  
+    - Asian sweet  
+    - Desert green   
+  - Banana
+
+
+
 
 
