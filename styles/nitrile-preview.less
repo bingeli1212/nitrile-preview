@@ -19,30 +19,11 @@
     font-family: Verdana, sans-serif;
     letter-spacing: -0.03em;
     font-size: 10pt;
-    line-height: 1.25em;
+    line-height: 1.25;
     box-sizing: border-box;
     overflow: hidden;
     padding: 1px 9mm;
     outline: 1px solid;
-    
-    .LISTING .BODY {
-      line-height: 1; 
-      text-align: left; 
-      width: 100%; 
-      padding-left: 1.5em;
-      position: relative;
-    }
-    .LISTING .BODY .LINE {
-      position: relative;
-    }
-    .LISTING .BODY .LINE::before {
-      content: var(--lineno);
-      position: absolute;
-      left: -1.5em;
-    }
-    .SUBCAPTION::before {
-      content: var(--num) " ";
-    }
   }
 
   .FOLIO {
@@ -54,69 +35,17 @@
     font-family: Verdana, sans-serif;
     letter-spacing: -0.03em;
     font-size: 10pt;
-    line-height: 1.25em;
+    line-height: 1.25;
     box-sizing: border-box;
     overflow: hidden;
     padding: 10mm 10mm;
     outline: 1px solid;
-    
-    .LISTING .BODY {
-      line-height: 1em; 
-      text-align: left; 
-      width: 100%; 
-      padding-left: 1.5em;
-      position: relative;
-      display: block;
-    }
-    .LISTING .BODY .LINE {
-      position: relative;
-      display: block;
-    }
-    .LISTING .BODY .LINE::before {
-      content: var(--lineno);
-      position: absolute;
-      left: -1.5em;
-    }
-    .SUBCAPTION::before {
-      content: var(--num) " ";
-    }
   }
 
   .PAGE {
     font-family: Verdana, sans-serif;
     letter-spacing: -0.03em;
     font-size: 10pt;
-    line-height: 1.25em;
-        
-    .CHAPTER + .PARAGRAPH.NORMAL {
-      text-indent: initial;
-    }
-    .SECTION + .PARAGRAPH.NORMAL {
-      text-indent: initial;
-    }
-    .SUBSECTION + .PARAGRAPH.NORMAL {
-      text-indent: initial;
-    }
-    .SUBSUBSECTION + .PARAGRAPH.NORMAL {
-      text-indent: initial;
-    }
-    .LISTING .BODY {
-      line-height: 1em; 
-      text-align: left; 
-      width: 100%; 
-      padding-left: 1.5em;
-      position: relative;
-    }
-    .LISTING .BODY .LINE {
-      position: relative;
-    }
-    .LISTING .BODY .LINE::before {
-      content: var(--lineno);
-      position: absolute;
-      left: -1.5em;
-    }
-    .SUBCAPTION::before {
-      content: var(--num) " ";
-    }
+    line-height: 1.25;
   }
 }
