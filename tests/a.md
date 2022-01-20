@@ -59,7 +59,7 @@ title: a.md
 
 Hello world!
 
-```displaymath
+```math
    \hypotenuse = \sqrt{\text{leg}_1^2 + \text{leg}_2^2}
 ```
 
@@ -107,7 +107,7 @@ Hello world!
 
 # Displaymath   
 
-```displaymath
+```math
   1 + 2 + \ctdot + n + (n+1) &= \frac{n}{2}(n+1) + (n+1) \cr
                       &= \frac{n}{2}(n+1) + \frac{2}{2}(n+1) \cr
                       &= (n+1)(\frac{n}{2} + \frac{2}{2}) \cr
@@ -124,7 +124,7 @@ Hello world!
 Hello world! 
 Hello world! 
 
-> ```displaymath
+> ```math
   a + b = c      
   ```
 
@@ -315,6 +315,7 @@ $ A = {1, 2, 3, 10}
 ---
 a First
 b Second
+c Third   
 ---
 \\
 ```tabular{id:a}
@@ -327,7 +328,7 @@ Hello \\ World \\ Too
 Hello \\ World \\ Too
 Hello \\ World \\ Too
 ```
-```tabular{id:b}
+```tabular{id:c}
 Hello \\ World \\ Too
 Hello \\ World \\ Too
 ```
