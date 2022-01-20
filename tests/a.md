@@ -308,3 +308,27 @@ $ A = {1, 2, 3, 10}
   U = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
   \(A^c\) = {4, 5, 6, 7, 8, 9}
 
+
+# Two tables
+
+.figure{frame,rules:all}
+---
+a First
+b Second
+---
+\\
+```tabular{id:a}
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+```
+```tabular{id:b}
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+```
+```tabular{id:b}
+Hello \\ World \\ Too
+Hello \\ World \\ Too
+```
+
