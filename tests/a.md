@@ -55,7 +55,7 @@ title: a.md
 \drawanglemark {r:0.5,bartype:single} (&C)--(&B)--(&A)
 %
 
-# Math
+# Math Bundle
 
 Hello world
 
@@ -78,7 +78,7 @@ Hello world
 
 .page
 
-# Inline-math and Inline-dmath
+# Inline-math 
 
 Hello world, the formular is \(a^2 + b^2 = c^2\), 
 and we can see why it is so.
@@ -86,6 +86,31 @@ and we can see why it is so.
 Hello world, the formular is \[a^2 + b^2 = c^2\],
 and we can see why it is so.
 
+
+.page
+
+
+# Inline-dmath
+
+The sinh(x) and cosh(x) are also the unique solution of the equation
+\[
+f''(x) = f(x)
+\]
+such that
+\[
+f(0)=1
+\]
+\[
+f'(0)=0
+\]
+for the hyperbolic cosine, and
+\[
+f(0)=0
+\]
+\[
+f'(0)=1
+\]
+for the hyperbolic sine.
 
 .page
 
