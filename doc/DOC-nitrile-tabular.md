@@ -2,144 +2,152 @@
 title: tabular-bundle 
 ---
 
+# Contents
+
 A tabular-bundle shows text in a tabular form arrangement.
 The easiest way to express texts is to use the "visual" method,
 such that each table row is in its own line, and table data separated
 from each other by a vertical bar. 
 
-    ```tabular{visual:1}
-    Names | Addr.        | Age
-    ==========================
-    James | 102 Sun Str. | 29
-    --------------------------
-    Jane  | 202 Rain Rd. | 21
-    --------------------------
-    John  | 330 Star Dr. | 44
+    ```tabular{}
+    Names \\ Addr.        \\ Age
+    James \\ 102 Sun Str. \\ 29
+    Jane  \\ 202 Rain Rd. \\ 21
+    John  \\ 330 Star Dr. \\ 44
     ```
 
-In this case an appearance of a hyphen-minus three or more by itself would mean
-a horizontal line, and an equal sign by itself repeated three or more times
-would be interpreted as expressing a "double" horizontal line at that location.
+The content of a tabular-bundle can also be built one table data at a 
+time. Following is a method to build the content of a tabular-bundle
+one data row at a time.
 
-If each table cell consists of text with no internal spaces, it can be
-expressed without using vertical bars and by setting the "visual" style
-attribute to "2". In the following example a tabular will be built such that it
-consists of three rows with 3 table data for each row.
-
-    ```tabular{visual:2}
-    Apple   Red     12  
-    Pear    White   13
-    Banana  Yellow  21
+    ```tabular{direction:row}
+    \\
+    & Names 
+    & Addr.        
+    & Age
+    \\
+    & James 
+    & 102 Sun Str. 
+    & 29
+    \\
+    & Jane  
+    & 202 Rain Rd. 
+    & 21
+    \\
+    & John
+    & 330 Star Dr. 
+    & 44
     ```
 
-If a tabular is to built, without the "visual" method, then each line within
-the bundle is to be inspected for the appearance of a "command", which always
-starts with a backslash.  For instance, following would have constructed the
-same table as the one shown above, but is done without the "visual" method.
+In particular, each appearance of double-backslash by itself in a line is to start
+a new row, and the appearance of a single '&' either by itself, or followed by a space
+and then additional contents is to add a new table data to that row.
+Following is a method so that contents are built one column at a time.
 
-    ```tabular
-    \row
-    \data Names 
-    \data Addr.        
-    \data Age
-    \hhline
-    \row
-    \data James 
-    \data 102 Sun Str. 
-    \data 29
-    \hline
-    \row
-    \data Jane  
-    \data 202 Rain Rd. 
-    \data 21
-    \hline
-    \row
-    \data John
-    \data 330 Star Dr. 
-    \data 44
+    ```tabular{direction:column}
+    \\ 
+    & Names
+    & James
+    & Jane
+    & John
+    \\
+    & Addr.
+    & 102 Sun Str.
+    & 202 Rain Rd.
+    & 330 Star Dr.
+    \\
+    & Age
+    & 29
+    & 21
+    & 44
     ```
 
-In this case, the \hhline, \hline, \row, and \data are considered "commands"  
-each providing an instruction to construct the table step by step.
-In particular, the \row command would start a new row, and \data would 
-add a new table data at the end of the current row.
-The \hhline would insert a new "double" horizontal line, and \hline would insert
-a new "single" horizontal line.
+# Styling options
 
-There is also a \col command that would all for constructing a tabular in a "col" mode.
-This allows the table to be constructed one column at a time.
+The frame-style is to place a border around the entire table.
 
-    ```tabular
-    \col
-    \data Names
-    \hhline
-    \data James
-    \hline
-    \data Jane
-    \hline
-    \data John
-    \col
-    \data Addr.
-    \hhline 
-    \data 102 Sun Str. 
-    \hline
-    \data 202 Rain Rd. 
-    \hline
-    \data 330 Star Dr. 
-    \col
-    \data Age
-    \hhline
-    \data 29
-    \hline
-    \data 21
-    \hline
-    \data 44
-    ```
+The rules-style is to insert rules between rows and columns.
+Following are its possible values.
 
-The tabular border lines can be specified by the rules-style
-and frame-style options.
-
-    ```tabular{visual,rules:all,frame:box}
-    Names | Addr.        | Age
-    ==========================
-    James | 102 Sun Str. | 29
-    Jane  | 202 Rain Rd. | 21
-    John  | 330 Star Dr. | 44
-    ```
-
-Following are supported options for the frame-style:
-
-- "above" The border is visible on the top side only
-- "below" The border is visible on the bottom side
-- "hsides" The border is visible on the top and bot
-- "vsides" The border is visible on the left and righ
-- "lhs" The border is visible on the left hand side o
-- "rhs" The border is visible on the right hand side
-- "box" The border is visible on all four sides.
-
-Following are supported options for the rules-style:
-
-- "groups" The rules will only be visible between row groups (<thead>, <tfoot>, <tbody>) and column groups (see <colgroup> and <col>).
+- "groups" The rules will only be visible between row groups and column groups.
 - "rows" The rules will be visible between the rows only.
 - "cols" The rules will be visible between the columns only.
 - "all" All rules will be visible.
 
-The alignment of each cell can be expressed by the "halign" style option. It
+Usually there is only one row group; however if the head-style is set to
+1, then there are two row groups: the first row which is the head, and the other
+rows that are the body.
+
+Usually there is only one column group; however if the side-style is set
+to 1, then there are two column groups: the first column group is the first column,
+and the second group includes all other columns.
+
+The alignment of each cell can be expressed by the align-style option. It
 expectes a list of alignment format groups, which must be "l", "r", "c", and
 others. It can also start with "p" and followed by one or more digits, such as
-"p10" to express that it is a paragraph with a width fixed at 10mm. It can also
-start with the letter "f" such as "f25", which expresses a column that is a
-paragraph and its width is 25% of the current page width.
-
-The "small" option would express that the table be set using a "smaller" font.
-The "head" option would treat the first row as expressing the "header" of the
-table, and is likely that that is shown using bold font typeface. HTML
-translation might decorate it with the "th" element rather than the "td"
-element. For longtable when the "head" option is present then the first row will
-be repeated.
-
-The "side" option would set aside the first column of the tabular 
-as the "side" column. This would allow a vertical rule to be drawn between
-the first column and the second when the rules-style is set to "groups".
+"p10" to express that it is a paragraph with a width 10mm. 
 
 
+# Translations 
+
+The translation of this bundle is to present a table. On HTML it is to become a
+"table" element. The table column will be set to fixed with when the align-style
+contains a "p" alignment letter and the number following that letter is
+converted to a pixel value that is "3.7795296" pixels for each mm. For align
+letters such as "l", "c" and "r" the width of the column isn't set, and by
+default browser is to automatically adjust the width of the column to the larget
+content width of the column.
+
+The total width of the table is always the sum of all columns.
+
+The translation for LATEX is the "\begin{tabular}\end{tabular}" environment.
+This environment allows for the columns to be specified an alignment letter such
+as "l", "r", "c", and a "p" letter such as "p{12mm}" for a column of fixed
+width. It has been observed that for a column that is the alignment letter "p", 
+the total width of that column is 2mm larger than the width provided by that letter.
+For this reason, the width is manually reduced by 4mm.
+
+For CONTEX translation the "\starttable\stoptable" environment is used. It also
+comes within a set of available alignment letters such as "l", "r", "c" and "p"
+such as "p(12mm)" to set the widths of each column. It also has a configuration
+such as "s2" that can be placed in front of the first vertical-bar character to
+set the inter-column spaces. It has been observed that if "s2" is used then for
+a column such as "p(12mm)" the total width of that column is 15mm in the
+generated PDF; thus a -3mm is applied to the width for each "p" column.
+
+One of the challengies is to allow for all tables in the target translation to
+be consistent, not only for the width of each columns, but also for the total
+height of the table. The reality is that, the row height of a table generated by
+a "\starttable\stoptable" in CONTEX cannot be changed; however, those tables
+from HTML and LATEX can in certain degree by adjusted. In particular, the CSS
+"padding" can be styled to each TD-element to increase/reduce the row height,
+and for a table on LATEX the "\arrowstretch" variable can be set to
+increase/reduce the height of a row. Following value has been used to manually
+increase the row height of a row for a "tabular".
+
+    \renewcommand{\arraystretch}{1.33}
+
+For CONTEX there is also a problem. It has to do with the "interlinespace"
+setting which controls the inter line space between lines of a single paragraph.
+For some reason there isn't a way to set the inter line space as a "factor" of
+the font size. This means that the inter line space has to be set to a "fixed"
+value. For instance, for a font size that is "10pt", the inter line space is
+currently set to "12pt". It is not certain how this value is to be applied in
+reality when the font is also being reduced by a "rscale" value of "0.92".
+However, this inconvenience also creates another problem, which is when the font
+size is manually reduced to be a "\small", which is a CONTEX font switch; in
+which case the inter line space is not reduced by this switch, resulting a
+bigger than normal gap between lines of a paragraph.
+
+The solution to the previous problem is to manually inserting the
+"\setupinterlinespace" command in places where a "\small" is also inserted, and
+a "fixed" vertical space is supplied that accompany this font change. Following
+are default CONTEX configuration parameters that can be changed by each
+translation class.
+
+    this.contex_interlinespace = 'line=12.0pt';
+    this.contex_interlinespace_small = 'line=10pt';
+    this.contex_interlinespace_small_verbatim = 'line=9pt';
+
+
+    
