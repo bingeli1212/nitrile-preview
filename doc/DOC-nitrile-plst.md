@@ -2,12 +2,11 @@
 title: The "plst" BODY paragraph
 ---
 
-# The ITEMIZE block
+# The "plst" BODY block
 
-An ITEMIZE block is considered the start of a text
-such that its first character of its first line is
-a plus-sign/hyphen-minius/asterisk, followed
-by a space or more, and then additional texts.
+The "plst" BODY block is recognized to contain tightly packed
+list; each list item might also contain additional child 
+list.
 
 If the start of this block is recognized, the rest of the text
 of the paragraph until a blank line is considered to have

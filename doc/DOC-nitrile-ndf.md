@@ -155,6 +155,10 @@ that paragraph, and the entire paragraph is shifted to the right including the
 right-pointing triangle with visible amount of left margin spaces. The exact
 details of this paragraph varies depending on whether a bundle is to follow it.
 
+If a bundle is followed by it, then all lines of the bundle must be proceeded
+by the same number of white space. For instance, in the following example 
+all lines of the two bundles must starts with two spaces except for the first
+line of each bundle. 
 
     > ```formula
       a + b = c      
@@ -167,13 +171,20 @@ details of this paragraph varies depending on whether a bundle is to follow it.
       }
       ```
 
+However, if a bundle is not to follow it then all lines after the first line must
+also start with the same number of white spaces. In this case each line is to start
+as a new line; and it is possible for a long to be wrapped when it appears at the
+target translation.
+
     > 優しい日本語は優しいです
       Beautifully spoken Japanese language is beautiful.
       
-
 If the first line of the paragraph is to start with a dollar-sign character,
 followed by a space, then this paragraph is to become a "cave" paragraph. A
-"cave" paragraph is to center its contents. 
+"cave" paragraph is to center its contents. If a bundle is to appear after 
+the dollar sign, the bundle will be centered. Otherwise, each line 
+of the source block will be centered on its own; and it is possible for one
+of the lines to appear wrapped when it appears in the target translation.
 
     $ ```formula
       a + b = c      
@@ -190,6 +201,10 @@ followed by a space, then this paragraph is to become a "cave" paragraph. A
       Beautifully spoken Japanese language is beautiful.
 
 If the first line of the paragraph is indented four spaces to the right, then
-the entire paragraph will be treated as a "samp" paragraph. Otherwise, it is 
-treated as a "body" paragraph. 
+the entire paragraph will be treated as a "samp" paragraph. In this case, all lines
+will be shown in fixed-width fonts, and line breaks and space between characters will
+be preserved. 
+
+If the paragraph does not fit one of the descriptions aboove, it is 
+treated as a "body" paragraph, which is normal paragraph.
 
