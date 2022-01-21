@@ -59,13 +59,13 @@ title: a.md
 
 Hello world
 
-```math
+```formula
    \hypotenuse = \sqrt{\text{leg}_1^2 + \text{leg}_2^2}
 ```
 
 Hello world
 
-```math
+```formula
   1 + 2 + \ctdot + n + (n+1) &= \frac{n}{2}(n+1) + (n+1) \cr
                       &= \frac{n}{2}(n+1) + \frac{2}{2}(n+1) \cr
                       &= (n+1)(\frac{n}{2} + \frac{2}{2}) \cr
@@ -157,7 +157,7 @@ Hello world!
 Hello world! 
 Hello world! 
 
-> ```math
+> ```formula
   a + b = c      
   ```
 
@@ -321,7 +321,7 @@ Hello world!
 .equation
 &label(eq1}
 \\
-```math
+```formula
 a + b = c
 ```
 
@@ -383,14 +383,11 @@ Hello \\ World \\ Too
 
 # Samples   
 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
 
     Hello world! 
     Hello world! 
@@ -400,16 +397,14 @@ Hello world!
     Hello world! 
     Hello world! 
     Hello world! 
+    Hello world! 
+    Hello world! 
 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
-Hello world! 
-
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world!  Hello world! 
 
 # PLST      
 
