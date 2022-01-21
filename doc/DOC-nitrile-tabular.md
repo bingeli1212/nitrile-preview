@@ -146,8 +146,21 @@ are default CONTEX configuration parameters that can be changed by each
 translation class.
 
     this.contex_interlinespace = 'line=12.0pt';
+    this.contex_interlinespace_verbatim = 'line=10pt';
     this.contex_interlinespace_small = 'line=10pt';
     this.contex_interlinespace_small_verbatim = 'line=9pt';
 
-
+Another important thing to point out is that both HTML and LATEX has a notion of
+a "baseline", which originally refers to a line of text in a paragraph, such
+that if an image is to be inserted and become part of that line, with
+neighboring characters, then the image is to be vertically adjusted so that the
+"baseline" of the image stays level with the "baseline" of the neighboring text.
     
+This concept has been extended into constructing contents of a "tabular", such
+that if a table has two columns, then the text of two neighboring columns would
+line up so that their baselines are the same, even if they belong to different
+table columns. On top of that, the entire table would have a "baseline", which
+is the baseline of the first line of its first row, such that when two such
+tables are placed side-by-side, the "baseline" of the two tables will also line
+up.
+

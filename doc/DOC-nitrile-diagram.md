@@ -3701,3 +3701,23 @@ Following are specialized draw commands that would draw shapes.
 
 
 
+# Translations
+
+For LATEX translation, each DIA is placed inside a "tabular" as a single
+table data in a single table row where the data is style by a letter that is "l".
+This "tabular" is then placed inside a "threeparttable"; this setup is to allow
+for a subcaption to be at the bottom of that "tabular", which is to become
+an integral part of the "threeparttable" itself. The benefit of using a "threeparttable" is that
+if two "threeparttable" are placed side by side, then the "baseline" between them 
+is the line between the top "tabular" and the bottom "subcaption", such that 
+they if one table is to have a multi-line subcaption and the other is a single-line,
+they still line up nicely.
+
+The frame is done by inserting a "\hline" at the top and bottom of a "tabular",
+and also setup so that the left and right part of the table both has a vertical line.
+
+However, one of the anomaly is that there is a visible vertical gap between
+the bottom of the picture and the bottom border of the "tabular".
+
+
+
