@@ -291,6 +291,7 @@ c Third
 \\
 ```dia{viewport:20 10,frame,width:40,id:a}
 \image "image-clock.png"
+\drawrect {w:20,h:10} (0,0)
 ```
 ```ink{viewport:20 20,width:40,frame,id:b}
 <svg width="500" height="250"
@@ -417,14 +418,18 @@ Hello world!  Hello world!  Hello world!  Hello world!  Hello world!
   - Fries
   - Yogurt
 - Fruits     
-  - Apple    
+  * Apple    
     - Red delicious
     - Gala green   
-  - Pear  
+  * Pear  
     - Asian sweet  
     - Desert green   
-  - Banana
+  * Banana
 
++ Laptop
+  A computer on top of a lap.
++ Desktop
+  A computer on top of a desk.
 
 
 
