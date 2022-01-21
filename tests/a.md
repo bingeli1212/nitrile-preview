@@ -413,10 +413,6 @@ Hello world!  Hello world!  Hello world!  Hello world!  Hello world!
   - Coffee
   - Tea
   - Milk
-- Solid food
-  - Sandwich
-  - Fries
-  - Yogurt
 - Fruits     
   * Apple    
     - Red delicious
