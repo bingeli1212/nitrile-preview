@@ -658,10 +658,16 @@ Following are styles recognized by NITRILE:
   any subcaption text out of the main caption text by looking to see if any
   subcaption is specified for their own ID.
 
-+ n:2
++ partition:4
 
-  This option is used currently by the "columns" float to express the number
-  of columns. 
+  This option is used currently by "figure" float to subdivide subfigure so that it
+  can only take up 4 subfigures in a single row if the divider isn't observed. 
+
++ hew:2
+
+  This option is used by 'tabular' bundle so that all its rows are split into equal
+  portions with a total number of portions equal to 2. If the table has a head
+  row then the head row is repeated at the top.
 
 + mar:1.23
 
