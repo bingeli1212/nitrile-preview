@@ -41,7 +41,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/slide.js",
       "args": [
-        "a.md"
+        "test.md"
       ]
     },
     {
@@ -106,7 +106,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/creamer.js",
       "args": [
-        "a.md"
+        "test.md"
       ]
     },
     {
