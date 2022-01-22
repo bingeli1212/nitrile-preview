@@ -6,14 +6,11 @@ title: c.md
 
 .figure
 \\
-```parbox{width:40}
-Hello world!  Hello world!  Hello world!  Hello world! 
-Hello world!  Hello world!  Hello world!  Hello world! 
-Hello world!  Hello world!  Hello world!  Hello world! 
-Hello world!  Hello world!  Hello world!  Hello world! 
+```tabular{align:p5p20p20,frame,rules:groups,head,side,hew:2}
+id \\    Name.        \\ Age.        
+01 \\    James        \\ 29       
+02 \\    Jane         \\ 34
+03 \\    Jack         \\ 21           
+04 \\    Jeff         \\ 18
+05 \\    John         \\ 17
 ```
-```parbox{width:40}
-Hello world!  Hello world!  Hello world!  Hello world! 
-Hello world!  Hello world!  Hello world!  Hello world! 
-```
-
