@@ -123,15 +123,39 @@ The \backspace and \backquote phrases
 
 .page
 
-# Tabular
+# TABULAR
 
 ```tabular{head,fontsize:small,frame,rules:all,align:p15 p40 p35 p20}
-\\ Description \\ Figure \\ Symbol
-Point    \\ A geometric element that has zero dimension \\ &dia{load:POINT,fontsize:10,viewport:8 3,width:30} \\ P or Point P
-Line     \\ A line that is a collection of points along a straight path with no end points. \\ &dia{load:LINE,fontsize:10,viewport:8 3,width:30} \\ \(\overline{AB}\) or \(\overline{BA}\)
-Line segment \\ A line segment is a part of a line that contains every point on the line between its end points. \\ &dia{load:LINESEG,fontsize:10,viewport:8 3,width:30} \\ \(\overline{XY}\) or \(\overline{YX}\)
-Ray      \\ A ray is a line with a single end point that goes on and on in one direction. \\ &dia{load:RAY,fontsize:10,viewport:8 3,width:30} \\ \(\overrightarrow{PQ}\)
-Plane    \\ A plane is a flat surface that extends to infinity. \\ &dia{load:PLANE,fontsize:10,viewport:8 3,width:30} \\ Plane EFG
+\\
+& Type
+& Description 
+& Figure 
+& Symbol
+\\
+& Point    
+& A geometric element that has zero dimension 
+& &dia{fontsize:10,viewport:8 3,width:30;;%=POINT} 
+& P or Point P
+\\
+& Line     
+& A line that is a collection of points along a straight path with no end points. 
+& &dia{load:LINE,fontsize:10,viewport:8 3,width:30} 
+& \(\overline{AB}\) or \(\overline{BA}\)
+\\
+& Line segment 
+& A line segment is a part of a line that contains every point on the line between its end points. 
+& &dia{load:LINESEG,fontsize:10,viewport:8 3,width:30} 
+& \(\overline{XY}\) or \(\overline{YX}\)
+\\
+& Ray      
+& A ray is a line with a single end point that goes on and on in one direction. 
+& &dia{load:RAY,fontsize:10,viewport:8 3,width:30} 
+& \(\overrightarrow{PQ}\)
+\\
+& Plane    
+& A plane is a flat surface that extends to infinity. 
+& &dia{load:PLANE,fontsize:10,viewport:8 3,width:30} 
+& Plane EFG
 ```
 
 .page
@@ -175,16 +199,16 @@ Hello world!
 
 .page
 
-# Parboxes
+# PARBOX    
 
-```parbox
-Hello world!  \\
-Hello world!  \\
-Hello world!  \\
-Hello world! 
+```parbox{frame}
+Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world! 
 ```
 
-```parbox
+```parbox{frame,width:40}
 \(a + b = c\) \\
 \(a + b = c\) \\
 \(a + b = c\) \\
@@ -193,7 +217,7 @@ Hello world!
 
 .page
 
-# Figures
+# Figures, I
 
 Hello world! 
 Hello world! 
@@ -236,6 +260,30 @@ Hello world!
 Hello world! 
 Hello world! 
 
+
+
+# Figures, II
+
+.figure{}
+---
+a tabular
+b parbox
+c dia   
+---
+\\
+```tabular{frame,rules:all,id:a,align:p15p15}
+Hello \\ World 
+Hello \\ World 
+Hello \\ World 
+```
+```parbox{frame,id:b,width:30}
+Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world! 
+```
+```dia{frame,id:c,width:30,viewport:5 5}
+\drawline(0,0)(5,5)
+```
 
 
 # Listings  

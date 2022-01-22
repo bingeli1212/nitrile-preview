@@ -4,4 +4,16 @@ title: c.md
 
 # Slide
 
-" # $ % & ' , _ . / > < @ \ ^ _ ` { | } ~ * [ ] “ ”
+.figure
+\\
+```parbox{width:40}
+Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world! 
+```
+```parbox{width:40}
+Hello world!  Hello world!  Hello world!  Hello world! 
+Hello world!  Hello world!  Hello world!  Hello world! 
+```
+
