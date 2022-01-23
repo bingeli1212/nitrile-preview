@@ -712,7 +712,7 @@ Following are styles recognized by NITRILE:
 
   This style tells where the bundle inside of a wrapfig-block should go.
   
-+ wraparound:1
++ wrap:1
 
   Set this flag to 1 to indicate that all subfigures in a figure should be
   wrapped around if arranged in row where its combined width within a row

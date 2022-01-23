@@ -230,3 +230,39 @@ a CAPT block, including 'fontsize', 'fontfamily', 'fontstyle', 'fontcolor',
 
 
 
+# The "figure" CAPT block
+
+The "figure" CAPT block is to typeset a FIGURE.
+
+One of the challengies is to allow for subfigures to be forced to form a row
+without being wrapped around if it its combined width is longer than the total
+width of its parent container. The style option to control this behavior is
+"wrap". 
+
+In addition, the "partition" style optino can be set to a number other than
+"0" to allow for only a maximum number of items to be placed into that row,
+without which there is no limit to the total number of items that can fit inside
+a row.
+
+Fortunately this object is achieved in all three
+translations. 
+
+For HTML translation, a subcontainer is used, which is a "span" element with its
+"display:flex" set, and this "flex-direction:row" and "justify-content:center"
+properties are set, which forces all items to grow left-to-right, and will not
+be wrapped even if its combined content is wider than its parent, in which case
+it will be hidden. The figure caption and subtitles of each subfigure is set
+by a font size that is "80%".
+
+For CONTEX translation a "\startcombination\stopcombination" command is used,
+which can be set a number such as ``3*1`` to mean a grid of 3 items in a row and
+a single row. The figure caption and subtitles of each subfigure is set
+by a font size that is "\small".
+
+For LATEX translation a "\begin{minipage}\end{minipage}" is used, and is set to
+the width of its content. To force nowrap behavior, a '%' is placed at the end
+of line to force a line-break to be absorbed, thus disallowing new items to be
+wrapped around. However, if items ARE to be wrapped around then this '%' is not 
+added. The figure caption text and subtitles of each subfigure is set by a font
+size that is "\footnotesize".
+
