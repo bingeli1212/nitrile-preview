@@ -8,26 +8,14 @@ Following are styles recognized by NITRILE:
 
 + align:p10 c c c c
 + align:l l c r r
++ align:p10cccc
++ align:llcrr
 
   The "align" is designed to express alignment options for table columns,
   which is a list of letter l/r/c, or a string such as "p(1cm)" for paragraph
   with a fixed width.
 
-+ fr:1 1 1
-+ fr:1 2 1
-+ fr:1 2 1 3 3
-
-  The fr-option is designed to express relative column widthes, which is
-  a list of integers separated by spaces.
-
 + frame:1
-+ frame:above
-+ frame:below
-+ frame:hsides
-+ frame:vsides
-+ frame:lhs
-+ frame:rhs
-+ frame:box
 
   Set this option to 1 to allow an outline to be show for the bundle. 
   For tabular bundle the same frame-style can be set to additional values
@@ -45,79 +33,45 @@ Following are styles recognized by NITRILE:
   both rules are shown. When set to 'groups' only the rules between
   groups such as header and body are shown.
 
-+ save:a
-+ save:b
++ save:1
 
-  The save-option specifies a named buffer such that the content of that
-  fenced bundle is to be saved under.
+  When this flag is set to 1 it expresses the fact that the content of the current
+  bundle should be save to an internal buffer. By default the name of the buffer
+  is "_", but if the 'id' of bundle is set then the ID string is added
+  to the end. For instance, when 'id' is set to "my" then the name of the
+  buffer is "_my".
 
-+ load:a
-+ load:b
++ load:1
++ load:3
 
   The load-option instructs that the content of a fenced bundle is to be
-  loaded from a named buffer.
+  loaded from a previously saved buffer. By default the buffer name is "_", but
+  it could be "_my" if the 'id' of the bundle is set to "my". By default 
+  the integer is set 1, which expresses the fact that all source lines in the
+  buffer is to be inserted starting at the first time, pushing all existing
+  lines down. However, this can be changed by setting 'load' to a different
+  integer such as '3', in which case the first two lines are left at its origina
+  position where lines 3 and below are moved downwards to make room for
+  the newly inserted lines.
 
 + fontsize:12
 + fontsize:11.5
 + fontsize:10
-+ fontsize:footnotesize
-+ fontsize:large
 
   The fontsize-option instructs that the current fenced bundle be shown
   with a different font size. The font size is either a number, such
   as 12, 11.5, 10, etc., or a string such as "footnotesize", "large",
   which must be a valid font size name.
 
-+ leftmargin:12
-+ leftmargin:20
++ head:1
 
-  The leftmargin-option specifies a non-zero left margin for the fenced
-  bundle. Note that this option might only be recognized for certain
-  fenced-bundle and might not have an effect on some. The option name
-  is a number expressing a distance in the number of "mm".
-
-+ head:3
-
-  The head-option specifies the number of rows at the beginning of
-  input rows to be treated as the header. The input rows refer to the
-  rows that user has specified in the source MD file, where some of
-  the rows are data rows and others expressing a hline or dhline.
-  When being treated as header certain things might happen, which 
-  includes but are not limited to setting the font style to bold.
-  
-  For longtable-fence this option is also used to separate these rows and
-  place them into a special section called "\endhead", especially when
-  LATEX translation is in place and that the "longtabu" environment is
-  being used.
+  When this flag is set it expresses that the first row is a header row.
+  It is currently used by 'tabular' bundle.
 
 + side:1
 
   The side-style expresses that the first column of the tabular
   be set aside as the "side" column.
-
-+ bullet:sect
-+ bullet:maltese
-+ bullet:cross
-+ bullet:checkmark
-
-  The bullet-option specifies a new symbol that will be used to replace
-  the normal bullet character for a unordered list. 
-
-    ```list[bullet:checkmark]
-    - Mail Letter
-    - Buy Milk
-    - Go to the bank
-    ```
-
-+ rules:above
-+ rules:below
-+ rules:hsides
-+ rules:vsides
-+ rules:lhs
-+ rules:rhs
-+ rules:box
-
-  The rules-option expresses the inner border between cells.
 
 + cellcolor:a cyan b lime c pink e orange
 
@@ -134,10 +88,10 @@ Following are styles recognized by NITRILE:
     c     \\ c \\ e \\ a \\ b
     ```
 
-+ title:<string> 
++ subtitle:<string> 
 
-  The title-option is used to specify the title of a bundle. It is currently recognized only 
-  by the tabular-bundle such that it will create "merged" row to contain this text. 
+  The subtitle-option is used to specify the subtitle of a bundle. The subtitle
+  of a bundle is only used when they are part of a figure.
   
 + arrowhead:1
 + arrowhead:2
@@ -487,36 +441,6 @@ Following are styles recognized by NITRILE:
   label {replace:a/1 b/3 c/4} "a/b/c" (0,0) (1,1) (2,2)
   ```
 
-+ check:a b c
-
-  Set this option to allow for certain entries to be shown as
-  a checked checkbox or selected ratio button. This option is currently
-  being utilized by the list-bundle so that it will check to see if 
-  one of the items in the list is being checked. 
-
-  This option needs to be set to the leaing word that starts an entry. For instance,
-  the leading words for the following four entries are "A", "B", "C", and "D"; thus,
-  to mark that the second entry be "checked" the "check" option must be set to "B". 
-
-  ```list{check:B}
-  ( ) A. Apple
-  ( ) B. Pear
-  ( ) C. Strawberry
-  ( ) D. Banana
-  ```
-
-  Note that is also possible to mark that multiple checkboxes are to e checked
-  by listing additional letters after the "check" option; they must be separated
-  by one or more space.
-
-  ```list{check:B D}
-  [ ] A. Apple
-  [ ] B. Pear
-  [ ] C. Strawberry
-  [ ] D. Banana
-  ```
-
-
 + fontfamily:<string>
 
   This option holds the font family that is for the bundle. 
@@ -686,12 +610,6 @@ Following are styles recognized by NITRILE:
   end of the line. A value larger than 0.5 will move the text towards the end point
   of the line. The value of 't' must be between 0 and 1.
 
-+ nocaption:1
-
-  When set to 1 this style asks that no caption text is to be shown. This option is currently
-  utilized by figure, table, longtable, and listing blocks to specifically suppress the showing
-  of caption text.
-
 + xgrid:<length>
 
   The xgrid-option expresses the number of Cartesian grid unit for each viewport
@@ -734,30 +652,11 @@ Following are styles recognized by NITRILE:
 
   This option specifies the height in units of 'mm'.
 
-+ stretch:0.40
++ stretch:1
 
-  This option specifies whether a bundle should stretch its width
-  to a percentage of its parent. Currently, this option can be used
-  with a 'tabular' bundle such that when it is used inside a 'longtable'
-  it would be turned into a 'bTABLE' and its 'option=stretch' option
-  is set if this value is set to 1. Generally, the 'width' attribute
-  of a 'tabular' bundle is ignored because it is determined by the 
-  combined width of its columns. However, for some, such as the 'bTABLE'
-  of CONTEX and 'table' element of HTML, the total width of the table
-  can be set. But 'bTABLE' only has the option to set the total width
-  to be the maximum of its page width. The 'table' element can actually
-  allow it to be a percentage of its parent width. 
-  
-  However, for 
-  LATEX conversion this flag is current ignored for 'longtable' because
-  the 'xtabular' class it is currently using for typesetting a longtable
-  isn't equipped with any option that allows for the total width
-  of the table to be fixed to a length. 
-
-  It could also be used with a 'diagram' bundle or 'img' bundle to set it 
-  so that the image or diagram would have its width set to a percentage 
-  of its parent container, rather than the fixed width defined by 
-  the 'width' attribute. 
+  When this flag is set to 1 that it stress that the bundle should be 
+  resize to the maximum size of its parent container. It is currently only
+  used by the 'dia' and 'ink' container.
 
 + direction:row    
 + direction:column
@@ -791,17 +690,13 @@ Following are styles recognized by NITRILE:
   be set to 0, in which case the circular sector will cover part of the circle
   without any hole in the middle.
   
-+ fontstyle:italic
-
-  This style is used as a flag to express the fact that the content of a bundle 
-  is to be shown in an italic style font.
-
 + q
 
   This style is primary used with a quote-bundle to ask that a quotation mark
   to be placed before and after the entire bundle.
 
-+ fit 
++ fit:contain
++ fit:cover
 
   This style is used within a Diagram to express the fact that when drawing an image
   as a background then it should follow this rule to stretch/reduce image when
