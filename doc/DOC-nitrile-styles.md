@@ -765,12 +765,20 @@ Following are styles recognized by NITRILE:
   This flag is currently used by 'tabular' bundle to allow user to build
   the table either row-by-row or column-by-column.
 
-+ vborder:0 2 4  
++ hrules:1 2 3
 
-  This flag is currently used by 'tabluar' bundle to visually show a vertical
-  border along certain columns: 0 is the leftmost border of the table,
-  1 is the right-hand side vertical border for the first column, etc.
-  All numbers must be integer and separated by spaces.
+  This flag is currently used by 'tabular' bundle to manually insert 
+  horizontal rules at places when 'rules' style is not in effect. 
+  It must be a positive integer where 1 is the vertical rule between 
+  the first row and the second row, where the first row might be the
+  head row if 'head' style is setup, and so on.
+
++ vrules:1 2 3
+  This flag is currently used by 'tabular' bundle to manually insert
+  vertical rules at places when 'rules' style is not in effect.
+  It must be a list of integers where 1 represent the vertical rules
+  between the first and second column; the first column might be the 'side' 
+  column, and so on.
 
 + skew:
 
@@ -782,18 +790,8 @@ Following are styles recognized by NITRILE:
   This property sets the inner radius when drawing a circular sector. It could
   be set to 0, in which case the circular sector will cover part of the circle
   without any hole in the middle.
-
-+ latex
-
-  This property hold abitrary values used for special settings that only apply
-  during a LATEX related translation.
   
-+ small
-
-  This style is used as a flag to express the fact that the content of a bundle
-  is to be shown in a reduced font size.
-
-+ italic
++ fontstyle:italic
 
   This style is used as a flag to express the fact that the content of a bundle 
   is to be shown in an italic style font.
@@ -809,7 +807,7 @@ Following are styles recognized by NITRILE:
   as a background then it should follow this rule to stretch/reduce image when
   the viewport's aspect ratio does not agree with that of the image.
 
-+ background
++ background:grid
 
   This style is used to establish the background of a img-bundle. 
   If it is set to 'grid' then a grid equivalent to one used by dia-bundle
@@ -820,13 +818,14 @@ Following are styles recognized by NITRILE:
 
   This style tells where the bundle inside of a wrapfig-block should go.
   
-+ swrap:1
++ wraparound:1
 
-  Set this flag to 1 to indicate that subfigures in a figure should be wrapped
-  around in accordance to the width of the figure. Without this flag set 
-  all figures will not be wrapped automatically be only in accordance to the
-  presence of the double-backslash which manually breaks the items into
-  rows.
+  Set this flag to 1 to indicate that all subfigures in a figure should be
+  wrapped around if arranged in row where its combined width within a row
+  exceeds that of the available space of the figure container. Without this
+  flag all subfigures will be arranged inside a single row until a
+  double-backslash is encountered, in which case a new row is established
+  to hold subsequent subfigures until another double-backslash is encountered.
 
 + type:left
 + type:right
@@ -837,24 +836,6 @@ Following are styles recognized by NITRILE:
   if this is a "wrapfig" that is pushed to the "left" or "right", or a "table"
   instead of a "figure".
 
-+ senum:a
-+ senum:A
-+ senum:i
-+ senum:I
-+ senum:1
-
-  This option is used to add enumeration to the subtitle of each subfigure.      
-  Without it the subtitle of each subfigure is shown as is. With this option
-  set an enumeration with parenthesis surrounding it will be inserted before
-  each subtitle. The actional enumeration text is termined by the actual
-  the option value, such 'a' would have generated enumeration that is 'a', 'b',
-  'c', 'd', etc., for each subfigure, where 'A' would have generated 'A', 'B',
-  'C', and 'D', and 'i' would have generated 'i', 'ii', 'iii', 'iv', etc.,
-  and 'I' would have generated 'I', 'II', 'III', 'IV', etc. A number of 1
-  would have generated '1', '2', '3', and '4', etc.
-
-
-  
 
 
 
