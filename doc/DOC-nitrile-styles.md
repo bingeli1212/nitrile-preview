@@ -669,15 +669,14 @@ Following are styles recognized by NITRILE:
   This flag is currently used by 'tabular' bundle to manually insert 
   horizontal rules at places when 'rules' style is not in effect. 
   It must be a positive integer where 1 is the vertical rule between 
-  the first row and the second row, where the first row might be the
-  head row if 'head' style is setup, and so on.
+  the first row and the second row, where the first row are body rows
+  excluding the 'head' row.
 
 + vrules:1 2 3
   This flag is currently used by 'tabular' bundle to manually insert
   vertical rules at places when 'rules' style is not in effect.
   It must be a list of integers where 1 represent the vertical rules
-  between the first and second column; the first column might be the 'side' 
-  column, and so on.
+  between the first and second column including 'side' column.
 
 + skew:
 
