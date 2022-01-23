@@ -652,12 +652,6 @@ Following are styles recognized by NITRILE:
 
   This option specifies the height in units of 'mm'.
 
-+ stretch:1
-
-  When this flag is set to 1 that it stress that the bundle should be 
-  resize to the maximum size of its parent container. It is currently only
-  used by the 'dia' and 'ink' container.
-
 + direction:row    
 + direction:column
 
