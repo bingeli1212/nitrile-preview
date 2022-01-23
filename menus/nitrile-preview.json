@@ -61,6 +61,10 @@
         "command": "nitrile-preview:to-folio"
       },
       {
+        "label": "Export as Camper \u2026",
+        "command": "nitrile-preview:to-camper"
+      },
+      {
         "type": "separator"
       }
     ]
