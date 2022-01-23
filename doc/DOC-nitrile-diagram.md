@@ -1094,6 +1094,7 @@ relative to its current settings.
 - ^right:2
 - ^up:2
 - ^down:2
+- ^pt:a
 - ^at:a
 - ^center
 - ^north
@@ -1104,6 +1105,8 @@ relative to its current settings.
 - ^northeast
 - ^southwest
 - ^southeast
+- ^xmax
+- ^ymax
 - ^node:1
 - ^box:1
 - ^car:1
@@ -1119,6 +1122,7 @@ grid units.  Note also that these operations are accumulative such that
 incurring two "up:1" equals a single "up:2". Using of negative numbers is 
 also allowed.
 
+The '^pt:a' directive is to save the current offset to a path named 'a'.
 The '^at:a' directive is to set the current offset so that it coincides with the first
 point of a path named "a". The value after the colon is expected to be the name
 of an existing path, such as 'a', or 'a_1' for expressing the second point of
@@ -1127,6 +1131,9 @@ path 'a'.
 The '^center', '^north', '^south', '^east', '^west', '^northwest',
 '^northeast', '^southwest', and '^southeast' directives would set the origin
 relative to the current size of the viewport.
+
+The '^xmax' sets the x of the current origin to a value that equals to the viewport width.
+The '^ymax' sets the y of the current origin to a value that equals to the viewport height.
 
 The '^node:1', '^box:1' and '^car:1' are each used to setup the offset so that
 it aligns with the location of a node, a box and/or a Cartesian plane. For the
@@ -2061,8 +2068,6 @@ drawing environment.
 - \origin ^right:2
 - \origin ^x:2
 - \origin ^y:2
-- \origin ^X:2
-- \origin ^Y:2
 - \origin ^sx:2.5
 - \origin ^sy:2.5
 - \origin ^s:2.5
@@ -2072,12 +2077,14 @@ drawing environment.
 - \origin ^center
 - \origin ^north
 - \origin ^south
+- \origin ^east
+- \origin ^west
 - \origin ^northwest
 - \origin ^southwest
 - \origin ^northeast
 - \origin ^southeast
-- \origin ^east
-- \origin ^west
+- \origin ^xmax
+- \origin ^ymax
 
 If it starts with "left:<x>", "right:<x>", "up:<y>", 
 "down:<y>", where the distance expresses the number of grid units
@@ -2088,14 +2095,6 @@ of the viewport.
 
 If it starts with "y:", then it expresses the distance from the bottom side
 of the viewport.
-
-If it starts with "X:", then what follows will be interpreted as 
-expressing a number that is "x" number of unit distances from the right hand side
-of the viewport.
-
-If it starts with "Y:", then what follows is to be interpreted as
-expressing a number that is "x" number of unit distances away from the top of the
-viewport.
 
 If it is "sx:2.5" then it sets the scaling factor in the horizontal direction 
 to be 2.5. 
@@ -2132,6 +2131,9 @@ If it starts with 'center', 'north', 'south', 'northwest', 'northeast', 'southwe
 'southeast', 'east' and 'west', then it sets the origin to the center,  the four  
 corners of the viewport, or the middle of the four sides of it.
 
+If it starts with 'ymax' the origin is moved so that its y-position is at a
+position same as the viewport height. If it starts with 'xmax' the origin
+is moved so that its x-position is at a position same as the viewport width.
 
 
 # The 'group' command
