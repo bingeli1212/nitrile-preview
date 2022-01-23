@@ -208,3 +208,25 @@ be preserved.
 If the paragraph does not fit one of the descriptions aboove, it is 
 treated as a "body" paragraph, which is normal paragraph.
 
+
+# The CAPT blocks
+
+The CAPT blocks are for setting up a figure with figure number, a longtabu with
+table number, an equation with equation numbering, a listing with lisiting
+numbering, and multi-column without any numbering, etc. The style names that can be
+applied to them are the following:
+
+- wrap - for expressing if sub-figures are to be wrapped
+- partition - for expressing the maximum subfigure are to be placed inside a single figure row
+
+Currently by default the figure captions and subtitles are to be shown by a font size that
+is smaller than normal. The exact number of reduced font size is implementation specific.
+
+Note that the previous styles are only effecting layouts of the CAPT, and they
+are not to be utilized in anyway by a bundle. On the other hand, all style
+options to be utilized by a bundle are never to be one of those used for layout
+a CAPT block, including 'fontsize', 'fontfamily', 'fontstyle', 'fontcolor',
+'linesize', etc.
+
+
+
