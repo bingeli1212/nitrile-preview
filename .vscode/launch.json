@@ -173,6 +173,19 @@
       "args": [
         "a.pdf"
       ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch nigrep",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nigrep.js",
+      "args": [
+        "a*.md"
+      ]
     }
   ]
 }
