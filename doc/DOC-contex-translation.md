@@ -423,6 +423,18 @@ similar names but not sure what they are about.
     linuxlibertineo           semibold   normal   normal   normal    linlibertineoz         LinLibertine_RZ.otf
     linuxlibertineo           semibold   italic   normal   normal    linlibertineozi        LinLibertine_RZI.otf
 
+To install linuxlibertine font, download it from https://github.com/alerque/libertines/releases/libertines-7.040.zip, unpack it,
+and save it to the Fonts folder for the current OS, and then run the following command:
+
+    $ mtxrun -script fonts --reload
+
+After this command has completed, CONTEX should have recognized the existance of this font and where it is installed, 
+and the following command should show many names related to this font group.   
+
+    $ mtxrun -script fonts --list --all
+
+
+
 # Cons
 
 - Does not support \lstlisting, making code listing hard
