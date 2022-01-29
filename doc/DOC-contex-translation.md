@@ -423,15 +423,45 @@ similar names but not sure what they are about.
     linuxlibertineo           semibold   normal   normal   normal    linlibertineoz         LinLibertine_RZ.otf
     linuxlibertineo           semibold   italic   normal   normal    linlibertineozi        LinLibertine_RZI.otf
 
-To install linuxlibertine font, download it from https://github.com/alerque/libertines/releases/libertines-7.040.zip, unpack it,
-and save it to the Fonts folder for the current OS, and then run the following command:
+To install linuxlibertine font on Windows 10, download it from
+https://github.com/alerque/libertines/releases/libertines-7.040.zip, unpack it,
+and save it to the Fonts folder for the current OS. For windows, installing
+fonts is done by opening the "Settings" window, naviagate to "Personalization",
+then select "Fonts". Here, the window should have a section near the top that
+says "Drag Font Files Here to Install".  Now drag and drag all font files from
+a Folder to the Setting window and drop on top of the "Drag Font Files Here to
+Install" box.
 
-    $ mtxrun -script fonts --reload
+To install linuxlibertine font on MaxOSX, download it from the same location,
+and then copy all files so they resides as ``$HOME/Library/Fonts/OTF/*.otf``.
 
-After this command has completed, CONTEX should have recognized the existance of this font and where it is installed, 
-and the following command should show many names related to this font group.   
+For LINUX, copy all font files and let them reside as ``$HOME/.fonts/OTF/*.otf``.
 
-    $ mtxrun -script fonts --list --all
+Run the following command:
+
+For WINDOWS:
+
+    $ set OSFONTDIR=c:/windows/fonts
+    $ mtxrun --regenerate
+    $ mtxrun -script font --reload
+
+For MAC:     
+
+    $ export OSFONTDIR=/Library/Fonts/:/System/Library/Fonts:$HOME/Library/Fonts
+    $ mtxrun --regenerate
+    $ mtxrun -script font --reload
+
+For GNU/LINUX:
+
+    $ export OSFONTDIR=$HOME/.fonts:/usr/share/fonts
+    $ mtxrun --regenerate
+    $ mtxrun -script font --reload
+
+After this command has completed, CONTEX should have recognized the existance
+of this font and where it is installed, and the following command should show
+font names recognized by CONTEX by this pattern.         
+
+    $ mtxrun -script fonts --list --all --pattern=*liber*
 
 
 
