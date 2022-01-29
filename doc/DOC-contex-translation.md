@@ -3936,3 +3936,11 @@ for the "\starttable", and the "\FR" all have to play together
 in order to achieve the desired table width and height that is to be
 consistant across HTML, LATEX and CONTEX.
 
+
+# The COVE block
+
+The COVE block translation has problem currently: the triangle appears at the bottom
+rather than at the top.
+
+
+
