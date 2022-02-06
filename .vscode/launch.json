@@ -99,6 +99,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch lamper",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/tests/lamper.js",
+      "args": [
+        "test.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch creamer",
       "skipFiles": [
         "<node_internals>/**"

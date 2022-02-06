@@ -41,3 +41,4 @@ test.md
 *.ps
 temp
 *.code-workspace
+*.fontspec
