@@ -54,7 +54,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/folio.js",
       "args": [
-        "a.md"
+        "test.md"
       ]
     },
     {
