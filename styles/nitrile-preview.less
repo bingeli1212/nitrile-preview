@@ -9,6 +9,10 @@
   p {
     line-height: inherit;
   }
+  pre {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 
   .SLIDE {
     margin: auto auto;
@@ -17,7 +21,6 @@
     min-height:96mm;
     max-height:96mm;
     font-family: Verdana, sans-serif;
-    letter-spacing: -0.03em;
     font-size: 10pt;
     line-height: 1.25;
     box-sizing: border-box;
@@ -32,19 +35,110 @@
     max-width:148mm;
     min-height:210mm;
     max-height:210mm;
-    font-family: Verdana, sans-serif;
-    letter-spacing: -0.03em;
     font-size: 10pt;
-    line-height: 1.25;
+    line-height: 1.05;
     box-sizing: border-box;
     overflow: hidden;
-    padding: 10mm 10mm;
-    outline: 1px solid;
+    padding:8mm 10mm 0mm 15mm;
+    outline:1px solid;
+    .PARAGRAPH.BODY{
+      text-indent: 12pt;
+      margin-top: 0pt;
+      margin-bottom: 0pt;
+    }
+    .SECTION + .PARAGRAPH.BODY{
+      text-indent:0pt;
+    }
+    .SECTION{
+      margin-top: 13pt;
+      margin-bottom: 8pt;
+    }
+    .SUBSECTION{
+      margin-top: 10pt;
+      margin-bottom: 8pt;
+    }
+    .SUBSUBSECTION{
+      margin-top: 8pt;
+      margin-bottom: 8pt;
+    }
+    .PRIMARY{
+      margin-top: 11pt;
+      margin-bottom: 0pt;
+    }
+    .PARAGRAPH{
+      margin-top: 6pt;
+      margin-bottom: 6pt;
+    }
+    .EQUATION{
+      margin-top: 6pt;
+      margin-bottom: 6pt;
+    }
+    .FIGURE{
+      margin-top: 10pt;
+      margin-bottom: 6pt;
+    }
+    .LISTING{
+      margin-top: 10pt;
+      margin-bottom: 6pt;
+    }
+    .LONGTABU{
+      margin-top: 10pt;
+      margin-bottom: 6pt;
+    }
+    .COLUMN{
+      margin-top: 6pt;
+      margin-bottom: 6pt;
+    }
+    .FRONTMATTERTITLE{
+      margin-left: 6.5mm;
+      margin-right: 6.5mm;
+      margin-top: 2.5cm;
+      margin-bottom: 0;
+      font-size: 1.8em;
+      color: var(--titlecolor);
+      text-align: center;
+      align-self: center;
+    }
+    .FRONTMATTERSUBTITLE{
+      margin-left: 6.5mm;
+      margin-right: 6.5mm;
+      margin-top: 0.8cm;
+      margin-bottom: 0;
+      font-size: 1.1em;
+      text-align: center;
+      align-self: center;
+    }
+    .FRONTMATTERINSTITUTE{
+      margin-left: 6.5mm;
+      margin-right: 6.5mm;
+      margin-top: 0.2cm;
+      margin-bottom: 0;
+      font-size: 1.1em;
+      text-align: center;
+      align-self: center;
+    }
+    .FRONTMATTERAUTHOR{
+      margin-left: 6.5mm;
+      margin-right: 6.5mm;
+      margin-top: 0.2cm;
+      margin-bottom: 0;
+      font-size: 1.1em;
+      text-align: center;
+      align-self: center;
+    }
+    .FRONTMATTERDATE{
+      margin-left: 6.5mm;
+      margin-right: 6.5mm;
+      margin-top: 0.2cm;
+      margin-bottom: 0;
+      font-size: 1.1em;
+      text-align: center;
+      align-self: center;
+    }
   }
 
   .PAGE {
     font-family: Verdana, sans-serif;
-    letter-spacing: -0.03em;
     font-size: 10pt;
     line-height: 1.25;
   }
