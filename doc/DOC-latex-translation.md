@@ -263,6 +263,17 @@ if it has a significant height. To solve this problem is to wrap the Tikzpicture
 an inner "tabular". 
 
 
+# The courier font package
+
+The package "courier" would change all fixed-width font to "courier"
+
+    \usepackage{courier}
+
+The "boookman" and "times" packaegs both seems to also load the "courier"
+package. But they are intended to change the proportional font.
+
+
+
 
 
 
