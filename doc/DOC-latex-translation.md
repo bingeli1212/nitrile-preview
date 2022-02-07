@@ -307,5 +307,21 @@ option.
     \end{document}
 
 
+# Stroke-through
+
+Following is the way for styling a strike-through for a piece of text.
+  
+    \usepackage[normalem]{ulem}
+    \sout{Hello World}
 
 
+# Underline text
+
+Following is the way for styling an underline text.
+
+    \usepackage[normalem]{ulem}
+    \underline{Hello World}
+
+
+
+    
