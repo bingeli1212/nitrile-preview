@@ -273,6 +273,38 @@ The "boookman" and "times" packaegs both seems to also load the "courier"
 package. But they are intended to change the proportional font.
 
 
+# Assign equation number manually
+
+Following is an example of assigning equation number manually, using \tag,
+to assign the equation to a number that is "5.23".
+
+    \documentclass{article}
+    \usepackage{amsmath}      % for \tag and \eqref macros
+    \setlength\textwidth{7cm} % just for this example
+    \begin{document}
+    \[
+    1+1=2 \tag{5.23} \label{eq:special}
+    \]
+    A cross-reference to equation \eqref{eq:special}.
+    \end{document}
+
+
+# Assign listing number manually
+
+Following is an example of assigning listing number manually, using "title"
+option.
+
+    \documentclass{article}
+    \documentclass{listings}
+    \begin{document}
+    \begin{lstlisting}[title=My Code]
+    #include<stdio>
+    int main(){
+      printf("hello world!\n");
+      return 0;
+    }
+    \end{lstlisting}
+    \end{document}
 
 
 
