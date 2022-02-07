@@ -86,7 +86,7 @@
     { "start":"0x2580", "stop":"0x259F", "cjk":0, "unifont":0, "comment": "Block Elements" },
     { "start":"0x25A0", "stop":"0x25FF", "cjk":0, "unifont":0, "comment": "Geometric Shapes" },
     { "start":"0x2600", "stop":"0x26FF", "cjk":0, "unifont":1, "comment": "Miscellaneous Symbols" },
-    { "start":"0x2700", "stop":"0x27BF", "cjk":0, "unifont":0, "comment": "Dingbats" },
+    { "start":"0x2700", "stop":"0x27BF", "cjk":0, "unifont":1, "comment": "Dingbats" },
     { "start":"0x27C0", "stop":"0x27EF", "cjk":0, "unifont":0, "comment": "Miscellaneous Mathematical Symbols-A" },
     { "start":"0x27F0", "stop":"0x27FF", "cjk":0, "unifont":0, "comment": "Supplemental Arrows-A" },
     { "start":"0x2800", "stop":"0x28FF", "cjk":0, "unifont":0, "comment": "Braille Patterns" },
