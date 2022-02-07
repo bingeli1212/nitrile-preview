@@ -108,5 +108,40 @@ not have them be included with a TEX file.
     \fontspec
 
 
+# The fontspec file
+
+Following are the fontspec files used on Mac OS X
+
+For "cn.fontspec"
+
+    \defaultfontfeatures[cn]
+    {
+      UprightFont=STSong                
+    }
+
+For "jp.fontspec"
+
+    \defaultfontfeatures[jp]
+    {
+      UprightFont=Hiragino Mincho ProN
+    }
+
+For "kr.fontspec"
+
+    \defaultfontfeatures[kr]
+    {
+      UprightFont=AppleGothic              
+    }
+
+For "tw.fontspec"
+
+    \defaultfontfeatures[tw]
+    {
+      UprightFont=Songti TC                
+    }
+
+
+
+
 
 
