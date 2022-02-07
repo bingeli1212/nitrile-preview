@@ -10,7 +10,7 @@ Hello world!
 Hello world!
 Hello world!
 
-> include<stdio>
+> #include<stdio>
   int main(){
     return 0;
   }
