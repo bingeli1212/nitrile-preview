@@ -3944,3 +3944,33 @@ rather than at the top.
 
 
 
+# Stroke-through text
+
+Underlined, struck, and overlined text can be achieved with \overbar ,
+\overbars, \overstrike, \overstrikes, \underbar, and \underbars. The canonical
+way is \overstrike{text}. However, it you're using mycrotypography with \setupalign[hz,hanging]
+expect the rule to be placed over the character (with the Latin Modern fonts you
+should not have this problem, experienced with Linux Libertine and mkiv). This
+is not what is expected. The workaround is to put the overstriked text in a \inframed[frame=off]{}.
+
+    bla bla bla \inframed[frame=off]{\overstrike{striked}} bla bla
+
+
+# Use abitrary formula number
+
+    \starttext
+    \def\mytagforformulaA#1{1.1}
+    \defineconversion[dummyA][\mytagforformulaA]
+    \setupformulae[numberconversion=dummyA]
+    \placeformula
+    \startformula
+    \NC \frac {1} {2} + 2 = 3 \NC\NR
+    \stopformula
+    \def\mytagforformulaA#1{1.2}
+    \defineconversion[dummyA][\mytagforformulaA]
+    \setupformulae[numberconversion=dummyA]
+    \placeformula
+    \startformula
+    \NC 1 + 2 < 4 \NC\NR
+    \stopformula
+    \stoptext
