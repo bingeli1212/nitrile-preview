@@ -158,7 +158,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/tests/beamer.js",
       "args": [
-        "a.md"
+        "test.md"
       ]
     },
     {
