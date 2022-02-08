@@ -323,5 +323,18 @@ Following is the way for styling an underline text.
     \underline{Hello World}
 
 
+# The baselineskip and baselinestretch
 
+\baselineskip is a length command which specifies the minimum space between the
+botton of two successive lines in a paragraph. Its value may be automatically
+reset by LaTeX, for example, by font changes in the text. The value used for an
+entire paragraph is the value in effect at the blank line or command which ends
+the paragraph unit.  \baselinestretch scales the value of \baselineskip. Its
+default value is 1.0 but it may be reset with a \renewcommand command. If one
+wants to change the spacing in a document one should reset \baselinestretch and
+not \baselineskip as the latter may be reset automatically by LaTeX to account
+for local variations in the text, but it is always scaled by the former. In
+principle, "double spacing" can be obtained by
+
+    \renewcommand{\baselinestretch}{2}.
     
