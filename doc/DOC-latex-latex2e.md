@@ -19,7 +19,7 @@ pdflatex, lualatex, or xelatex.
 At this point in time the plan is to evolve LaTeX incrementally rather
 than trying to switch to a new code base all at once. See the talk by
 Frank Mittelbach:
-&uri{https://www.youtube.com/watch?v=zNci4lcb8Vo&feature=youtu.be}
+&url{https://www.youtube.com/watch?v=zNci4lcb8Vo&feature=youtu.be}
 
 So while the goals of the LaTeX3 project are coming to fruition, there
 are no plans currently for changing the name from LaTeX2e to LaTeX3.
@@ -2215,5 +2215,195 @@ of a tabular.
     \end{tabular}
     \endgroup
     \end{list}
+
+
+
+# List
+
+List is
+an environment for constructing lists.
+
+Synopsis:
+
+    \begin{list}{labeling}{spacing}
+      \item[optional label of first item] text of first item
+      \item[optional label of second item] text of second item
+      ...
+    \end{list}
+
+
+Note that this environment does not typically appear in the document body. Most
+lists created by LaTeX authors are the ones that come standard: the
+description, enumerate, and itemize environments (see description, enumerate,
+and itemize).
+
+Instead, the list environment is most often used in macros. For example, many
+standard LaTeX environments that do not immediately appear to be lists are in
+fact constructed using list, including quotation, quote, and center (see
+quotation & quote, see center).
+
+This uses the list environment to define a new custom environment.
+
+    \newcounter{namedlistcounter}  % number the items
+    \newenvironment{named}
+      {\begin{list}
+         {Item~\Roman{namedlistcounter}.} % labeling 
+         {\usecounter{namedlistcounter}   % set counter
+          \setlength{\leftmargin}{3.5em}} % set spacing 
+      }
+      {\end{list}}
+    %%% 
+    %%% body 
+    %%%
+    \begin{named}
+      \item Shows as ``Item~I.''
+      \item[Special label.] Shows as ``Special label.''
+      \item Shows as ``Item~II.''
+    \end{named}
+
+The mandatory first argument labeling specifies the default labeling of list
+items. It can contain text and LaTeX commands, as above where it contains both
+‘Item’ and ‘\Roman{…}’. LaTeX forms the label by putting the labeling argument
+in a box of width \labelwidth. If the label is wider than that, the additional
+material extends to the right. When making an instance of a list you can
+override the default labeling by giving \item an optional argument by including
+square braces and the text, as in the above \item[Special label.]; see \item:
+An entry in a list.
+
+The mandatory second argument spacing has a list of commands. This list can be
+empty. A command that can go in here is \usecounter{countername} (see
+\usecounter). Use this to tell LaTeX to number the items using the given
+counter. The counter will be reset to zero each time LaTeX enters the
+environment, and the counter is incremented by one each time LaTeX encounters
+an \item that does not have an optional argument.
+
+Another command that can go in spacing is \makelabel, which constructs the
+label box. By default it puts the contents flush right. Its only argument is
+the label, which it typesets in LR mode (see Modes). One example of changing
+its definition is that to the above named example, before the definition of the
+environment add \newcommand{\namedmakelabel}[1]{\textsc{#1}}, and between the
+\setlength command and the parenthesis that closes the spacing argument also
+add \let\makelabel\namedmakelabel. Then the labels will be typeset in small
+caps. Similarly, changing the second code line to \let\makelabel\fbox puts the
+labels inside a framed box. Another example of the \makelabel command is below,
+in the definition of the redlabel environment.
+
+Also often in spacing are commands to redefine the spacing for the list. Below
+are the spacing parameters with their default values. (Default values for
+derived environments such as itemize can be different than the values shown
+here.) See also the figure that follows the list. Each is a length (see
+Lengths). The vertical spaces are normally rubber lengths, with plus and minus
+components, to give TeX flexibility in setting the page. Change each with a
+command such as \setlength{itemsep}{2pt plus1pt minus1pt}. For some effects
+these lengths should be zero or negative.
+
++ \itemindent
+  Extra horizontal space indentation, beyond leftmargin, of the first line each
+  item. Its default value is 0pt.
+
++ \itemsep
+  Vertical space between items, beyond the \parsep. The defaults for the first
+  three levels in LaTeX’s ‘article’, ‘book’, and ‘report’ classes at 10 point
+  size are: 4pt plus2pt minus1pt, \parsep (that is, 2pt plus1pt minus1pt), and
+  \topsep (that is, 2pt plus1pt minus1pt). The defaults at 11 point are: 4.5pt
+  plus2pt minus1pt, \parsep (that is, 2pt plus1pt minus1pt), and \topsep (that
+  is, 2pt plus1pt minus1pt). The defaults at 12 point are: 5pt plus2.5pt
+  minus1pt, \parsep (that is, 2.5pt plus1pt minus1pt), and \topsep (that is,
+  2.5pt plus1pt minus1pt).
+
++ \labelsep
+  Horizontal space between the label and text of an item. The default for
+  LaTeX’s ‘article’, ‘book’, and ‘report’ classes is 0.5em.
+
++ \labelwidth
+  Horizontal width. The box containing the label is nominally this wide. If
+  \makelabel returns text that is wider than this then the first line of the item
+  will be indented to make room for this extra material. If \makelabel returns
+  text of width less than or equal to \labelwidth then LaTeX’s default is that
+  the label is typeset flush right in a box of this width.
+  The left edge of the label box is \leftmargin+\itemindent-\labelsep-\labelwidth 
+  from the left margin of the enclosing environment.
+  The default for LaTeX’s ‘article’, ‘book’, and ‘report’ classes at the top level 
+  is \leftmargini-\labelsep, (which is 2em in one column mode and 1.5em in two 
+  column mode). At the second level it is \leftmarginii-\labelsep, and at the 
+  third level it is \leftmarginiii-\labelsep. These definitions make the label’s 
+  left edge coincide with the left margin of the enclosing environment.
+
++ \leftmargin
+  Horizontal space between the left margin of the enclosing environment (or the
+  left margin of the page if this is a top-level list), and the left margin of
+  this list. It must be non-negative.
+  In the standard LaTeX document classes, a top-level list has this set to the
+  value of \leftmargini, while a list that is nested inside a top-level list has
+  this margin set to \leftmarginii. More deeply nested lists get the values of
+  \leftmarginiii through \leftmarginvi. (Nesting greater than level five
+  generates the error message ‘Too deeply nested’.)
+  The defaults for the first three levels in LaTeX’s ‘article’, ‘book’, and
+  ‘report’ classes are: \leftmargini is 2.5em (in two column mode, 2em),
+  \leftmarginii is 2.2em, and \leftmarginiii is 1.87em.
+
++ \listparindent
+  Horizontal space of additional line indentation, beyond \leftmargin, for second
+  and subsequent paragraphs within a list item. A negative value makes this an
+  “outdent”. Its default value is 0pt.
+
++ \parsep
+  Vertical space between paragraphs within an item. The defaults for the first
+  three levels in LaTeX’s ‘article’, ‘book’, and ‘report’ classes at 10 point
+  size are: 4pt plus2pt minus1pt, 2pt plus1pt minus1pt, and 0pt. The defaults at
+  11 point size are: 4.5pt plus2pt minus1pt, 2pt plus1pt minus1pt, and 0pt. The
+  defaults at 12 point size are: 5pt plus2.5pt minus1pt, 2.5pt plus1pt minus1pt,
+  and 0pt.
+
++ \partopsep
+  Vertical space added, beyond \topsep+\parskip, to the top and bottom of the
+  entire environment if the list instance is preceded by a blank line. (A blank
+  line in the LaTeX source before the list changes spacing at both the top and
+  bottom of the list; whether the line following the list is blank does not
+  matter.)
+  The defaults for the first three levels in LaTeX’s ‘article’, ‘book’, and
+  ‘report’ classes at 10 point size are: 2pt plus1 minus1pt, 2pt plus1pt
+  minus1pt, and 1pt plus0pt minus1pt. The defaults at 11 point are: 3pt plus1pt
+  minus1pt, 3pt plus1pt minus1pt, and 1pt plus0pt minus1pt). The defaults at 12
+  point are: 3pt plus2pt minus3pt, 3pt plus2pt minus2pt, and 1pt plus0pt
+  minus1pt.
+
++ \rightmargin
+  Horizontal space between the right margin of the list and the right margin of
+  the enclosing environment. Its default value is 0pt. It must be non-negative.
+
++ \topsep
+  Vertical space added to both the top and bottom of the list, in addition to
+  \parskip (see \parindent & \parskip). The defaults for the first three levels
+  in LaTeX’s ‘article’, ‘book’, and ‘report’ classes at 10 point size are: 8pt
+  plus2pt minus4pt, 4pt plus2pt minus1pt, and 2pt plus1pt minus1pt. The defaults
+  at 11 point are: 9pt plus3pt minus5pt, 4.5pt plus2pt minus1pt, and 2pt plus1pt
+  minus1pt. The defaults at 12 point are: 10pt plus4pt minus6pt, 5pt plus2.5pt
+  minus1pt, and 2.5pt plus1pt minus1pt.
+
+The package enumitem is useful for customizing lists.
+
+This example has the labels in red. They are numbered, and the left edge of the
+label lines up with the left edge of the item text. See \usecounter.
+
+    \usepackage{color}
+    \newcounter{cnt}  
+    \newcommand{\makeredlabel}[1]{\textcolor{red}{#1.}}
+    \newenvironment{redlabel}
+      {\begin{list}
+        {\arabic{cnt}}
+        {\usecounter{cnt}
+         \setlength{\labelwidth}{0em}
+         \setlength{\labelsep}{0.5em}
+         \setlength{\leftmargin}{1.5em}
+         \setlength{\itemindent}{0.5em} % equals \labelwidth+\labelsep
+         \let\makelabel=\makeredlabel
+        }
+      }
+    {\end{list}}
+
+
+
+
 
 
