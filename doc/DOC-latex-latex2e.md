@@ -733,11 +733,9 @@ still be able to access an em dash by typing \textemdash.
   These commands allow access to characters which were previously only
   available in math mode:
 
-  ```verbatim
-  Math           Text Command
-  \bullet        \textbullet
-  \cdot          \textperiodcentered
-  ```
+    Math           Text Command
+    \bullet        \textbullet
+    \cdot          \textperiodcentered
 
 + \textbackslash 
 + \textbar 
@@ -747,13 +745,11 @@ still be able to access an em dash by typing \textemdash.
   These commands allow access to ASCII characters which were only
   available in verbatim or math mode:
 
-  ```verbatim
-  Math           Text Command
-  \blackslash    \textbackslash
-  \mid           \textbar
-  <              \textless
-  >              \textgreater
-  ```
+    Math           Text Command
+    \blackslash    \textbackslash
+    \mid           \textbar
+    <              \textless
+    >              \textgreater
 
 + \textasciicircum 
 + \textasciitilde
@@ -761,11 +757,9 @@ still be able to access an em dash by typing \textemdash.
   These commands allow access to ASCII characters which were
   previously only available in verbatim:
 
-  ```verbatim
-  Math           Text Command
-  ^              \textasciicircum
-  ~              \textasciitilde
-  ```
+    Math           Text Command
+    ^              \textasciicircum
+    ~              \textasciitilde
 
 + \textregistered 
 + \texttrademark
