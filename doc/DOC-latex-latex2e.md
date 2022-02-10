@@ -552,9 +552,7 @@ commands should be used only before \begin{document}.
   For example, to specify a two-column article, using a version of
   article.cls released after June 1994, you specify:
 
-  ```
-  \documentclass[twocolumn]{article}[1994/06/01]
-  ```
+    \documentclass[twocolumn]{article}[1994/06/01]
 
 + \documentstyle [<option-list>] {<class-name>}
 
@@ -584,9 +582,7 @@ commands should be used only before \begin{document}.
   For example, to load the graphics package for the dvips driver,
   using a version of graphics.sty released after June 1994, you write:
 
-  ```
-  \usepackage[dvips]{graphics}[1994/06/01]
-  ```
+    \usepackage[dvips]{graphics}[1994/06/01]
 
   Each package is loaded only once. If the same package is requested
   more than once, nothing happens in the second or following attempt
