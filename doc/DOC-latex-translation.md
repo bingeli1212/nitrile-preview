@@ -338,3 +338,40 @@ principle, "double spacing" can be obtained by
 
     \renewcommand{\baselinestretch}{2}.
     
+
+# Multi-line in display math expression
+
+Use an array environment if a display math expression is to have multiple linse.
+
+    \[
+    \begin{array}{c}
+    a + b = c\\
+    a + b = c
+    \end{array}
+    \]
+
+
+# Assign label for display math expression
+
+    \[
+    a + b = c
+    \tag{1}
+    \]
+    \[
+    a + b = c
+    \tag{2}
+    \]
+
+It is also possible for assigning a label for multi-line equation.
+
+    \[
+    \begin{array}{c}
+    a + b = c\cr
+    a + b = c
+    \end{array}
+    \tag{1}
+    \]
+
+
+
+
