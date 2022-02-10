@@ -2,6 +2,39 @@
 title: NITRILE Translation
 ---
 
+
+# The .page directive
+
+This directive is intended to provide a way for a translation
+backend to insert a page brreak.
+
+
+# The .figure directive
+
+This directive is intended to provide a way for a translation
+backend to insert a figure.
+
+
+# The .longtabu directive
+
+This directive is intended to provide a way for a translation
+backend to insert a long table.
+
+
+# The .column directive
+
+This directive is intended to provide a way for a
+translation backend to insert a multiple column paragraph.
+
+
+# The .equation directive
+
+This directive is intended to provide a way for a translation
+backend to insert an equation section which may include one or more
+equations each with a unique equation number.
+
+
+
 # CJK and other fonts
 
 The document may contain Unicode characters that are greater
