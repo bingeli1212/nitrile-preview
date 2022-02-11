@@ -374,4 +374,37 @@ It is also possible for assigning a label for multi-line equation.
 
 
 
+# Producing line
+
+Synopsis, one of:
+
+    \rule{width}{thickness}
+    \rule[raise]{width}{thickness}
+
+Produce a rule, a filled-in rectangle.
+
+This produces a rectangular blob, sometimes called a Halmos symbol, often used
+to mark the end of a proof.
+
+    \newcommand{\qedsymbol}{\rule{0.4em}{2ex}}
+
+The amsthm package includes this command, with a somewhat different-looking symbol.
+
+The mandatory arguments give the horizontal width and vertical thickness of the
+rectangle. They are rigid lengths (see Lengths). The optional argument raise is
+also a rigid length, and tells LaTeX how much to raise the rule above the
+baseline, or lower it if the length is negative.
+
+This produces a line, a rectangle that is wide but not tall.
+
+    \noindent\rule{\textwidth}{0.4pt}
+
+The line is the width of the page and 0.4 points tall. This line thickness is
+common in LaTeX.
+
+A rule that has zero width, or zero thickness, will not show up in the output,
+but can cause LaTeX to change the output around it. See \strut for examples.
+
+
+
 
