@@ -191,10 +191,49 @@ These package defines the following commands.
     \begin{CJK}{UTF8}{mj}....\end{CJK}  % For KR
 
 
+# Specify addition fonts
 
+For CONTEX/XELATEX translation there could be many Unicode charactesr
+to be included with a document that do not necessarily have a corresponding
+glyphs in the main font. Thus, these character needs to be specially
+demarcated with the font with which it is suitable to be used to show
+the glyph. 
 
+For CONTEX it is 
 
+    \switchtobodyfont[unifont]{...}
 
+For XELATEX it is
+
+    {\fontspec{unifont}...}
+
+And "unifont" is assumed to be the name of the font.
+
+The configuration for a MD document is the following.
+
+    ---
+    title: My Doc
+    fonts: font0/unifont/0x2700
+           font1/unifont/0x25A0
+    ---
+
+Previous syntax allows for two Unicode blocks to be configured
+so that all characters within that block are to be shown
+with the glyph provided by font "unifont".  The first element
+is a keyword that should be one of the following between
+font0-font9. The second one is the font name to be set for all
+the text of it. The third one is the start range of the unicode block.
+
+Thus, the text that is the following
+
+    日本語Hello: ✍✎□▢
+
+Would have been translated into CONTEX as
+
+    {\switchtobodyfont[jp]日本語}Hello: {\switchtobodyfont[unifont]✍✎}{\switchtobodyfont[unifont]□▢}
+
+Note that CJK characters are automatically recognized for their fonts
+without need for any setup.
 
 
     
