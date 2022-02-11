@@ -3974,3 +3974,16 @@ is not what is expected. The workaround is to put the overstriked text in a \inf
     \NC 1 + 2 < 4 \NC\NR
     \stopformula
     \stoptext
+
+
+# Ruled frame
+
+It is possible to use the \framed command to allow for only certain rule to appear 
+on the sides.
+
+    \framed[frame=off,topframe=on,leftframe=on]{A fancy title}
+
+
+
+
+
