@@ -3984,6 +3984,16 @@ on the sides.
     \framed[frame=off,topframe=on,leftframe=on]{A fancy title}
 
 
+# Horizontal rule
+
+It is possible to use the \hl command to draw a horizontal rule as well.       
+The optional value expresses the number of 1em.
+
+    \hr
+    \hr[5]
+
+
+
 
 
 
