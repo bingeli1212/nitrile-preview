@@ -6,7 +6,10 @@ title: NITRILE Translation
 # The .page directive
 
 This directive is intended to provide a way for a translation
-backend to insert a page brreak.
+backend to insert a page brreak. It should not need to be followed
+by anything.
+
+    .page
 
 
 # The .figure directive
@@ -33,6 +36,22 @@ This directive is intended to provide a way for a translation
 backend to insert an equation section which may include one or more
 equations each with a unique equation number.
 
+# The .vspace directive
+
+This directive is intended to add a vertical space between
+paragraphs.  The text following this diretive ID should
+be a number expressing the total number of lines. Following
+is to insert a vertical space equilvalent to 10em.
+
+    .vspace
+    10
+
+
+# The phrases
+
+- fbox{100} : creating a frame box of width equal to 100mm.
+- hrule{5} : creating a hrule of width equial to 5em.
+- colorbutton{red} : creating a color button colored by color "red".
 
 
 # CJK and other fonts
