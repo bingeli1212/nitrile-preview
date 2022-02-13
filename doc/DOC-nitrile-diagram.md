@@ -952,14 +952,14 @@ from (1,1) to (3,3), we can do it the following way:
 
     \path a = (0,0)--(1,1) ()--(3,3)
 
-The set of open and close parentheses by itself with nothing in it signals to 
+The set of open and close parentheses by itself with an asterisk in it signals to 
 add an absolute point that is exactly the same position as the current position
 of the 'lastpt'. The previous example may seems to be a trivial change and the
 visual result might exactly the same as having one larger path segment, but the
 previous example allows us to style the second path segment such as to 
 draw it using a dashed line.
 
-    \path = (0,0)--(1,1) ^hint:linedashed ()--(3,3)
+    \path = (0,0)--(1,1) ^hint:linedashed (*)--(3,3)
   
 
 
@@ -1484,10 +1484,6 @@ Following are built-in path that are readily available.
   This would have returned a point that coincides with the center of the
   viewport.
 
-+ lastpt
-
-  This would have returned a point that coincides with the latest path point
-  that was used to construct a path.
 
 
 
@@ -1990,70 +1986,6 @@ This the 'arc' env-variable would have been assigned the value of 6.28.
   The imaginary unit. This allows a complex number to be construct such as
   "1+2*I", for a complex number that is "1+2i".
 
-
-
-
-# The 'lastpt' command
-
-The 'lastpt' command modifies the 'lastpt' state which 
-affects the next path contruction. 
-
-- \lastpt ^up:2
-- \lastpt ^down:2
-- \lastpt ^left:2
-- \lastpt ^right:2
-- \lastpt ^x:2
-- \lastpt ^y:2
-- \lastpt ^X:2
-- \lastpt ^Y:2
-- \lastpt ^at:a
-- \lastpt ^pt:a
-- \lastpt ^center
-- \lastpt ^north
-- \lastpt ^south
-- \lastpt ^northwest
-- \lastpt ^southwest
-- \lastpt ^northeast
-- \lastpt ^southeast
-- \lastpt ^east
-- \lastpt ^west
-
-If it starts with "left:<x>", "right:<x>", "up:<y>", 
-"down:<y>", where the distance expresses the number of grid units
-to move in that direction. 
-
-If it starts with "x:", then it expresses the distance from the left hand side
-of the viewport. 
-
-If it starts with "y:", then it expresses the distance from the bottom side
-of the viewport.
-
-If it starts with "X:", then what follows will be interpreted as 
-expressing a number that is "x" number of unit distances from the right hand side
-of the viewport.
-
-If it starts with "Y:", then what follows is to be interpreted as
-expressing a number that is "x" number of unit distances away from the top of the
-viewport.
-
-If it is "at:a" then the 'lastpt' will be set to a point coincides with the first
-point of that path.
-
-If it is "at:a_0" then the 'lastpt' will be set to a point coincides with the first
-point of that path.
-
-If it is "at:a_1" then the 'lastpt' will be set to a point coincides with the second
-point of that path.
-
-If it is "at:a_2" then the 'lastpt' will be set to a point coincides with the third
-point of that path.
-
-If it is "at:a_3" then the 'lastpt' will be set to a point coincides with the forth
-point of that path.
-
-If it is "pt:a" then it creates a new path variable named 'a' such that it
-contains a single point that coincides with the current position of 
-'lastpt'. 
 
 
 
