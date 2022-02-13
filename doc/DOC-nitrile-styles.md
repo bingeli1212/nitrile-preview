@@ -192,6 +192,11 @@ Following are styles recognized by NITRILE:
   opacity:0.5
   ```
 
++ linealpha:<number>
+
+  This sets the alpha channel value for all colors that are to be used
+  for drawing lines. By default it is "1.0".
+
 + r:<length>
 
   This option denotes a length that is related to a radius. It is used by a
