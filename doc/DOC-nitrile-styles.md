@@ -6,10 +6,10 @@ title: Styles
 
 Following are styles recognized by NITRILE:
 
-+ align:p10 c c c c
-+ align:l l c r r
-+ align:p10cccc
-+ align:llcrr
++ textalign:p10 c c c c
++ textalign:l l c r r
++ textalign:p10cccc
++ textalign:llcrr
 
   The "align" is designed to express alignment options for table columns,
   which is a list of letter l/r/c, or a string such as "p(1cm)" for paragraph
