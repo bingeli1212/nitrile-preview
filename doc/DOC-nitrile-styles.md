@@ -585,8 +585,8 @@ Following are styles recognized by NITRILE:
 
 + partition:4
 
-  This option is used currently by "figure" float to subdivide subfigure so that it
-  can only take up 4 subfigures in a single row if the divider isn't observed. 
+  This option is used currently by FIGURE to partition subfigure so that it
+  can only take atmost 4 subfigures in a single row.
 
 + hew:2
 
@@ -707,23 +707,11 @@ Following are styles recognized by NITRILE:
 
   This style tells where the bundle inside of a wrapfig-block should go.
   
-+ wrap:1
++ wrapfig:left
++ wrapfig:right
 
-  Set this flag to 1 to indicate that all subfigures in a figure should be
-  wrapped around if arranged in row where its combined width within a row
-  exceeds that of the available space of the figure container. Without this
-  flag all subfigures will be arranged inside a single row until a
-  double-backslash is encountered, in which case a new row is established
-  to hold subsequent subfigures until another double-backslash is encountered.
-
-+ type:left
-+ type:right
-+ type:table
-+ type:figure
-
-  This field tends to be generic. It is currently used by FIGURE to decide
-  if this is a "wrapfig" that is pushed to the "left" or "right", or a "table"
-  instead of a "figure".
+  It is currently used by FIGURE to decide
+  if this is a "wrapfig" that is pushed to the "left" or "right".
 
 
 
