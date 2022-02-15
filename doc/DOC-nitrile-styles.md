@@ -109,9 +109,8 @@ Following are styles recognized by NITRILE:
   - Arrow head at both start and end: 0x1 + 0x2 = 0x3
   ```
 
-+ gridopacity:0.5
-+ gridopacity:0.1
-+ gridopacity:1.0
++ gridalpha:0.2
++ gridalpha:0.5
 
   This value is to hold a float between 0-1 to express the opacity 
   for drawing grid lines. By default grid lines are drawn at an opacity
@@ -683,11 +682,6 @@ Following are styles recognized by NITRILE:
   This property sets the inner radius when drawing a circular sector. It could
   be set to 0, in which case the circular sector will cover part of the circle
   without any hole in the middle.
-  
-+ q
-
-  This style is primary used with a quote-bundle to ask that a quotation mark
-  to be placed before and after the entire bundle.
 
 + fit:contain
 + fit:cover
@@ -701,11 +695,6 @@ Following are styles recognized by NITRILE:
   This style is used to establish the background of a img-bundle. 
   If it is set to 'grid' then a grid equivalent to one used by dia-bundle
   is to be placed underneath the image.
-
-+ location:left
-+ location:right
-
-  This style tells where the bundle inside of a wrapfig-block should go.
   
 + wrapfig:left
 + wrapfig:right
