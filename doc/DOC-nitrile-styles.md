@@ -180,19 +180,15 @@ Following are styles recognized by NITRILE:
   would be used for the font. If this option is not set the color of the text
   is not specified, in which case the text will be shown in its default color.
 
-+ opacity:<number>
++ fillalpha:0.1
++ fillalpha:0.5
 
   This sets the opacity of the filled color. The number must be
   between 0 and 1, where 1 is the full opacity and 0 is the full
   transparency. When not set it assumes that the opacity is at 1.
 
-  ```
-  opacity:0.1
-  opacity:0.3
-  opacity:0.5
-  ```
-
-+ linealpha:<number>
++ linealpha:0.1
++ linealpha:0.5
 
   This sets the alpha channel value for all colors that are to be used
   for drawing lines. By default it is "1.0".
