@@ -47,6 +47,34 @@ is to insert a vertical space equilvalent to 10em.
     10
 
 
+# The "img" bundle
+
+The "img" bundle allows for an raster image to be shown. 
+In addition, for HTML translation it is also possible to allow
+for a Canvas element to be created such that the image
+can be edited manually.
+
+    ```img{viewport:10 10,width:30}
+    \image "flog.png"
+    \edit
+    \color #476fc7
+    \color #ae241c
+    ````
+
+The \edit command allows for the image to be edited when translation
+backend is HTML. This would have created an Canvas element such that
+it is used to show the raster image and allow for user to draw lines
+and apply eraser to it--sort like a whiteboard.
+
+The \color command expresses a list of predefined colors to be accompanying
+an INPUT element that is to show a color-chooser dialog.  
+
+Note that the edited image can be sent to the server to be saved.  So far the
+"niserver" has to be running as the HTTP server. It processes the "/post" URL
+that is sent after user has "submitted" the edited image.
+
+
+
 # The phrases
 
 - fbox{100} : creating a frame box of width equal to 100mm.
