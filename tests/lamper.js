@@ -1,5 +1,5 @@
 const { NitrilePreviewParser } = require('../lib/nitrile-preview-parser');
-const { NitrilePreviewLamper } = require('../lib/nitrile-preview-lamper');
+const { NitrilePreviewLamper } = require('../lib/nitrile-preview-nilamper');
 
 var work = async (fname)=>{
   const parser = new NitrilePreviewParser();

@@ -1,5 +1,5 @@
 const { NitrilePreviewParser } = require('../lib/nitrile-preview-parser');
-const { NitrilePreviewPrint } = require('../lib/nitrile-preview-print');
+const { NitrilePreviewPrint } = require('../lib/nitrile-preview-niprint');
 const utils = require('../lib/nitrile-preview-utils');
 
 
