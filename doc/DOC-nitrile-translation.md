@@ -107,7 +107,7 @@ can be edited manually.
     \edit
     \color #476fc7
     \color #ae241c
-    ````
+    ```
 
 The \edit command allows for the image to be edited when translation
 backend is HTML. This would have created an Canvas element such that
@@ -130,10 +130,24 @@ is able to have its own text alignment, font size, and font style.
 
 The paragraph is going to have visible top and bottom margins.
 
-When style.width is not specified, texts are arranged in lines
-separated by the presence of double-backslashes. If style.width
-is specified, double-backslashes are ignored and all texts are 
-expected to form a continuous paragraph.
+Usually, when "width" is not present, texts are arranged in lines
+separated by the presence of double-backslashes. 
+
+    ```par
+    Hello world!\\
+    Hello universe!\\
+    Hello people!
+    ```
+
+If "width" style is provided,
+double-backslashes are ignored and all texts are 
+to form a single continuous paragraph.
+
+    ```par{width:50}
+    Hello world!
+    Hello universe!
+    Hello people!
+    ```
 
 
 # The phrases
