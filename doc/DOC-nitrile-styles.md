@@ -37,22 +37,16 @@ Following are styles recognized by NITRILE:
 
   When this flag is set to 1 it expresses the fact that the content of the current
   bundle should be save to an internal buffer. By default the name of the buffer
-  is "_", but if the 'id' of bundle is set then the ID string is added
-  to the end. For instance, when 'id' is set to "my" then the name of the
-  buffer is "_my".
+  is the underscore, but if style.id is set then it is saved in accordance to this ID.
+  This allows for another bundle to be restored to its content if it sets the same ID.
 
-+ load:1
-+ load:3
++ restore:1
++ restore:3
 
-  The load-option instructs that the content of a fenced bundle is to be
-  loaded from a previously saved buffer. By default the buffer name is "_", but
-  it could be "_my" if the 'id' of the bundle is set to "my". By default 
-  the integer is set 1, which expresses the fact that all source lines in the
-  buffer is to be inserted starting at the first time, pushing all existing
-  lines down. However, this can be changed by setting 'load' to a different
-  integer such as '3', in which case the first two lines are left at its origina
-  position where lines 3 and below are moved downwards to make room for
-  the newly inserted lines.
+  This option instructs that a previously saved content of a bundle should be inserted
+  into the new bundle. The value expressed by this option denotes the starting line
+  number into which the saved content is to be inserted into the existing content. 
+  By default it is set to 1, which means all contents will be inserted at line 1.
 
 + fontsize:12
 + fontsize:11.5
@@ -441,27 +435,11 @@ Following are styles recognized by NITRILE:
   label {replace:a/1 b/3 c/4} "a/b/c" (0,0) (1,1) (2,2)
   ```
 
-+ fontfamily:<string>
-
-  This option holds the font family that is for the bundle. 
-  It is currently utilized by the diagram-bundle such that all
-  label texts will have been set to this font family.
-  So far the only valid value is "monospace".
-
-+ fontstyle:<string>
-
-  This option holds the font family that is for the bundle. 
-  It is currently utilized by the diagram-bundle such that all
-  label texts will have been set to this font style. 
-  So far the only valid options are: "normal", "italic" and "oblique".
-
-+ strut 
-
-  This option contains an integer that describes the number
-  of pt(s) for the height of each row. Setting this to an
-  integer to allow for each row to have a fixed row height.
-  For instance: "strut:20" would have instructed that each
-  row has a height of 20pt.
++ fontstyle:B I R S T M
+  Each letter represents a font style. 
+  Multiple letters can be specified which is to represent
+  one for each column of the text, typically used inside a tabular:
+  B(bold), I(italic), R(roman), S(slated), T(teletype), M(math).
 
 + shear:0.1
 + shear:0.2
