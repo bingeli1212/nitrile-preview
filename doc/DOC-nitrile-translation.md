@@ -74,6 +74,19 @@ Note that the edited image can be sent to the server to be saved.  So far the
 that is sent after user has "submitted" the edited image.
 
 
+# The "par" bundle
+
+This bundle is designed to create a text box that contains a single
+paragraph. It allows for the possibility such that this paragraph
+is able to have its own text alignment, font size, and font style.
+
+The paragraph is going to have visible top and bottom margins.
+
+When style.width is not specified, texts are arranged in lines
+separated by the presence of double-backslashes. If style.width
+is specified, double-backslashes are ignored and all texts are 
+expected to form a continuous paragraph.
+
 
 # The phrases
 
