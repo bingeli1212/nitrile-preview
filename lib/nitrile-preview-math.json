@@ -134,6 +134,7 @@
     { "kbd": "\\;"             ,    "unicode": "&#x2004;"       ,  "id": "myBIGSP"       ,"dx":"0"                      ,"op": 0    ,"width": 5  },
     { "kbd": "\\:"             ,    "unicode": "&#x2005;"       ,  "id": "myMEDSP"       ,"dx":"0"                      ,"op": 0    ,"width": 3  },
     { "kbd": "\\,"             ,    "unicode": "&#x2006;"       ,  "id": "mySMALLSP"     ,"dx":"0"                      ,"op": 0    ,"width": 2  },
+    { "kbd": "\\."             ,    "unicode": "&#x2006;"       ,  "id": "myTAILSP"      ,"dx":"0"                      ,"op": 0    ,"width": 2  },
     
     { "kbd": "&#x2594;"        ,    "unicode": "&#x2594;"       ,  "id": "myx2594"       ,"dx":"0"                      ,"op": 0    ,"width": 0  },
     { "kbd": "&#x203E;"        ,    "unicode": "&#x203E;"       ,  "id": "myx203E"       ,"dx":"0"                      ,"op": 0    ,"width": 0  },
