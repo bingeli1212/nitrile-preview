@@ -24,28 +24,76 @@ This directive is intended to provide a way for a translation
 backend to insert a long table.
 
 
-# The .column directive
+# The "column" directive
 
 This directive is intended to provide a way for a
 translation backend to insert a multiple column paragraph.
 
+    .column
+    \\
+    ```par{width:50}
+    A frog is any member of a diverse and largely 
+    carnivorous group of short-bodied, tailless 
+    amphibians composing the order Anura 
+    (literally without tail in Ancient Greek). 
+    ```
+    ```dia{width:50}
+    \image "frog.img"
+    ```
 
-# The .equation directive
+
+# The "equation" directive
 
 This directive is intended to provide a way for a translation
 backend to insert an equation section which may include one or more
 equations each with a unique equation number.
 
-# The .vspace directive
+    .equation{n:2}
+    &label{a b}
+    \\
+    ```
+    a + b = c
+    ```
+    ```
+    a^2 + b^2 = c^c
+    ```
+
+Typically each bundle in the equation is assumed to hold an equation
+and will be assigned a number. However, if there are multiple equations
+the "n" style must be set to point a number that equals to the number
+of equations; and the "label" phrase should contain a list of labels
+matching that number.
+
+
+
+# The "vspace" directive
 
 This directive is intended to add a vertical space between
-paragraphs.  The text following this diretive ID should
-be a number expressing the total number of lines. Following
-is to insert a vertical space equilvalent to 10em.
+paragraphs.  By default the vertical space is equal to 
+1em. However the "vspace" style can be set to a number to 
+express a different value. Following example adds a vertical
+space equal to "10em".
 
-    .vspace
-    10
+    .vspace{vspace:10}
 
+# The "alignment" directive
+
+The "alignment" directive is to present a paragraph with special
+alignment needs. This paragraph is to have a visible top and bottom
+margin, and will be set up so that it has the desired alignment
+set by the "textalign" style. The "fontsize", "fontstyle" can also
+be setup to fine tune its appearance.
+
+    .alignment{textalign:r,fontsize:small,fontstyle:i}
+    \\
+    ```
+    A frog is any member of a diverse and largely 
+    carnivorous group of short-bodied, tailless 
+    amphibians composing the order Anura 
+    (literally without tail in Ancient Greek). 
+    ```
+
+    
 
 # The "img" bundle
 
