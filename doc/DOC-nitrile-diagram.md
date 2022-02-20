@@ -188,7 +188,7 @@ update variables, function, and path, etc. Following are Non-action commands:
 - \if
 - \path
 - \fn
-- \config
+- \set
 - \exit
 - \group
 - \origin
@@ -196,20 +196,25 @@ update variables, function, and path, etc. Following are Non-action commands:
     
 
 
-# The 'config' command
+# The 'set' command
 
-The config command can be used to control the configuration parameters
-for the entire Diagram. This set includes the previous discussed
-viewport width and height, and the unit.
+The set command can be used to control the configuration parameters
+for the entire Diagram. The change becomes new default
+for all future commands.
 
-However, there are additional configuration parameters. These
-parameters should be set at the beginning of the Diagram, before any
-drawing commands, in order to maintain consistencies. Changing these
-configuration parameters in the middle of other drawing commands are
-not recommended and may result in distorted picture.
+    \set linesize : 1
+    \set linecolor : red
 
-    \config linesize 1
-    \config linecolor red
+In addition, it can be set to an integer or float 
+if an equal-sign is used.
+
+    \set linesize = 1
+
+The expression following the equal sign is the same as that
+of the \var command. In the following example the "linecolor" 
+config param is set to "fill3".
+
+    \set linecolor = @"fill" 3
 
 
 # Specifying colors
@@ -3035,9 +3040,9 @@ The lego-operation allows for drawing of placing Lego-like
 objects on top of each other in a three-dimensional space.
 
     ```diagram{viewport:8 8}
-    \config fillcolor white
-    \config linesize 1.5
-    \config linejoin round
+    \set fillcolor : white
+    \set linesize : 1.5
+    \set linejoin : round
     \lego.size.4.4.4
     \lego.add.z.0 
     \lego.add.z.1
