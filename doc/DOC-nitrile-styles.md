@@ -680,6 +680,10 @@ Following are styles recognized by NITRILE:
   It is currently used by FIGURE to decide
   if this is a "wrapfig" that is pushed to the "left" or "right".
 
++ var:x/1 y/2
+
+  This one is used to initialize each given variable to a initial
+  values.
 
 
 
