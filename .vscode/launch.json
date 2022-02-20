@@ -34,12 +34,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch slide",
+      "name": "Launch nislide",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/slide.js",
+      "program":  "${workspaceFolder}/lib/nitrile-preview-nislide.js",
       "args": [
         "test.md"
       ]
