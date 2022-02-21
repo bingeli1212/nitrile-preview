@@ -407,33 +407,11 @@ Following are styles recognized by NITRILE:
   default value, and each operation would determine its own default if it is
   not set.
   
-+ verbose:1
-
-  Set it to 1 to enable verbose reporting. The verbose reporting is to increase
-  the amount of output sent to the console. For Diagram this will result in every
-  comment, input line, and result to be sent to the console.
-
 + math:1
 
   Set it to 1 to enable the math text to be recognized. By default 
   text passed to label is of normal text nature, but it would be 
   recognized as inline math if the style option is set.
-
-+ replace:a/1 b/3 c/4
-
-  Set this option to allow for labels text to be swapped for new
-  contents. This option is useful if part of the diagram is reused
-  but the only wishes is to replace part of label text with new
-  contents. This option specifies multiple occurances of the same
-  label text to be swapped for new contents, such as to replace
-  all label string "a" with "1", all "b" with "3", and all "c" 
-  with "4". Note that the entire label text has to match the
-  given search string.
-  
-  ```verbatim
-  viewport 10 10
-  label {replace:a/1 b/3 c/4} "a/b/c" (0,0) (1,1) (2,2)
-  ```
 
 + fontstyle:B I R S T M
   Each letter represents a font style. 
@@ -450,15 +428,6 @@ Following are styles recognized by NITRILE:
   by Diagram. The Diagram assumes a default value of 0.1 if
   it is not set.
   
-+ group:<string>
-
-  This attribute holds a string that is the name of an existing group that have
-  been previously defined.  Setting this attribute allows for this element to
-  inherit all properties associated with that group. If the group ID specified
-  isn't an existing group then this attribute value is ignored.
-  
-  The Diagram bundle define a group by the "group" command.
-
 + rdx:3.5
 + rdx:20%
 
@@ -481,31 +450,10 @@ Following are styles recognized by NITRILE:
   grid unit. However, it can also appear in a form of a percentage such as
   "10%" which will be interpreted as the percentage of the height of the box.
 
-+ parsep:<number>
-
-  This value holds the additional spacing that serves as the separation between
-  two adjacent paragraphs. This value is a multiple of pt. This value is
-  currently only utilized by the list-bundle to place extra spacing between two
-  consecutive list items.
-
-+ leftmargin:<number>
-
-  This value holds the left margin in multiple of mm. It is currently only utilized
-  by the list-bundle, blockquote-bundle, and verbatim-bundle to set their 
-  left margin.
-
-+ rubify:1
-
-  If this flags has been set then the text will be rubified.
-
 + fillonly:1
 
   This value expresses whether certain operation is going to be treated
   as a "fillonly" operation, as a way of deviating its "default" operation.
-  
-+ fn:f
-
-  This value expresses the name of a function.
 
 + plottype:dot  
 + plottype:line
@@ -680,10 +628,6 @@ Following are styles recognized by NITRILE:
   It is currently used by FIGURE to decide
   if this is a "wrapfig" that is pushed to the "left" or "right".
 
-+ var:x/1 y/2
-
-  This one is used to initialize each given variable to a initial
-  values.
 
 
 
