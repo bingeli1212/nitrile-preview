@@ -176,6 +176,9 @@ camer.setupbodyfont: linux,11pt
 - The 'startlines' command would fail to produce a line-by-line paragraph when it appears
   inside a 'startsection' command.
 
+- The manual equation number which was working previously stopped working, need to find
+  out why.
+  
 
 # The CJK font problem
 

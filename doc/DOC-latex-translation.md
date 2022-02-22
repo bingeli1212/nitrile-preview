@@ -407,4 +407,8 @@ but can cause LaTeX to change the output around it. See \strut for examples.
 
 
 
+# Problems
 
+* The INK bundle do not currently clip contents if the list is too long or too
+   wide, although the bounding box is the right size.
+* 
