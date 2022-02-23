@@ -476,30 +476,6 @@ Following are styles recognized by NITRILE:
   recognized to be formed by a pair of line segments where the starting line
   segment appears after the ending line segment.
 
-+ shadowcolor:<color>
-
-  When set to a color this property describes the color used for filling a drop
-  shadow. When not set it defaults to 'black'.
-
-+ shadowopacity:<number>
-
-  When set to a number this property describes the opacity used for filling a drop
-  shadow. When not set it defaults to '0.50'.
-
-+ shadow:1
-
-  When set to 1 it instructs that a drop shadow effect is to be added.
-  Currently the only one that react this this option is the 'node', 'box'
-  and 'trump' commands.  
-  
-  A drop shadow will be drawn shifted to the right and down for 0.5mm in both
-  directions.  The color of the drop shadow and opacity can be controlled by 
-  setting the 'shadowcolor' and 'shadowopacity' property to a different value.
-  
-  However, the same 'shadow' key can be set to '2', '3' or more to increase the 
-  distance of the shadow. The distance of the shadow is computed as 0.5mm multipled
-  by the integer.
-
 + id:1
 + id:lines
 
