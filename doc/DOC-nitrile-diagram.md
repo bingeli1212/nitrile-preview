@@ -2488,6 +2488,41 @@ observed in some translation:
 
 
 
+# The '\chart' command
+
+The '\chart' command is designed to show a scatterplot chart. It 
+draws a rectangle around a chart. The width and height of the chart
+are set by the presence of the "w" and "h" style attributes.  The lower-left
+corner of the chart is located at the coordinates given.
+The following example creates a chart of width 5 and height 4 and its lower-left
+corner is at (2,2).
+
+    \chart.1 {w:5,h:4} (2,2)
+
+The chart chart's xticks and yticks can be drawn by setting the 'xtick' and 'ytick'
+style attributes. The 'xaxis' and 'yaxis' defines the minimum/maximum values for each
+each axis. The following example sets up so that the minimum/maximum values for
+x-axis is between 0-10 and the same for the y-axis. The x-axis ticks drawn for
+x-axis is "0", "5", and "10" and the same for y-axis ticks.
+
+    \chart.1 {w:5,h:4,xaxis:0 10,yaxis:0 10,xtick:0 5 10,ytick:0 5 10} (2,2)
+
+The fontsize of the tick text can be controlled via setting the "fontsize" style
+attribute.
+
+    \chart.1 {fontsize:10,w:5,h:4,xaxis:0 10,yaxis:0 10,xtick:0 5 10,ytick:0 5 10} (2,2)
+
+To draw dots inside this chart, use the "\drawdot" command with "^chart:1"
+redirective. The "1" part of this redirective corresponds to the ID of the
+chart that must have been created prior. 
+
+    \drawdot ^chart:1 (0,0) (5,4) (3,4) (7,8) (9,10)
+
+As usually, the dot size can be controlled by setting up the 'dotsize' style
+attribute. Note that this style attribute corresponds to the diameter of the dot
+in the unit of "pt".
+
+    \drawdot {dotsize:3} ^chart:1 (0,0) (5,4) (3,4) (7,8) (9,10)
 
 
 # The 'car' command
