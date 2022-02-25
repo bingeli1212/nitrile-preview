@@ -178,22 +178,19 @@ directions.
 
 Action command are those that would generate a translation such as those metafun
 commands, tikz commands, or SVG entries. Example action commands are 'draw',
-'drawtext', 'drawdot', etc.
+'drawlabel', 'drawdot', etc.
 
 Non-action commands are those that is used to configure environments, create and
 update variables, function, and path, etc. Following are Non-action commands:
 
-- \var
 - \for
 - \if
 - \path
 - \fn
 - \set
 - \exit
-- \group
 - \origin
-- \show
-    
+- \show    
 
 
 # The 'set' command
@@ -210,8 +207,7 @@ if an equal-sign is used.
 
     \set linesize = 1
 
-The expression following the equal sign is the same as that
-of the \var command. In the following example the "linecolor" 
+In the following example the "linecolor" 
 config param is set to "fill3".
 
     \set linecolor = @"fill" 3
@@ -426,14 +422,14 @@ constructing a path "b".
 Following example shows how to access the second point of an array named "a" in a scalar
 expression. 
 
-    \var a[] = 1 2 3 4
-    \var b = a_1
+    \set a[] = 1 2 3 4
+    \set b = a_1
 
 Following example shows how to access the entire content of the array "a" when building
 another array named "b".
 
-    \var a[] = 1 2 3 4
-    \var b[] = [@a]
+    \set a[] = 1 2 3 4
+    \set b[] = [@a]
 
 
 
@@ -496,42 +492,6 @@ two vector path becomes individual path points that are grouped into an array
 called a coords array.
 
 
-## Coords array and coords points
-
-A coords array is an array, and each element is called a coords point.  
-In following example there are 2 coords points for path "a", and four coords
-points for path "b".
-
-    \path a = (0,0)--(1,1) 
-    \path b = (0,0)--(3,4) (2,2)--(5,6)
-
-A vector path inside a coords array is considered to always started from a M
-point, progressing through other points until a z point or another M point is
-enountered, at which it ends. A 'z' point becomes the last part of that vector
-path, and a 'M' point would become the first point of a subsequent vector path.
-The coords points after a 'z' point and before a 'M' point is not considered
-part of a vector path. They will be ignored by commands such as 'draw',
-'stroke', 'fill', 'arrow', 'revarrow', and 'dblarrow', each of which works with
-a vector path.
-
-Many commands do not work with vector paths, they work with coords points. For
-instance, 'drawdot' works with coords points so that for each coords point with
-a positional information, a dot will be placed at that location. All coords
-points have positional information except for 'z' points.
-
-Some commands would also work with text strings found in a path expression. For
-instance, 'drawtext' would draw each text strings of a path expression at a
-location identified by a coords point in the same order as they appear in the
-command line. The 'drawanglearc' would treat each text strings as describing the
-angle and thus would draw them inside the angle if possible.
-
-The config options typically contains information such as line size, line color,
-font size, font color, fill color, shades, etc. These options serves to provide
-additional tuning for the ppearance of graphics exported by each command. Each
-of the option has a default value if it is specified.
-
-
-
 ## Absolute and relative points
 
 A coords point is considered an absolute point if they appear inside a pair of
@@ -548,7 +508,6 @@ it otherwise.
 A "join" is a piece of text that tells how a subsequent absolute point is to
 join the previous point to beome something that is not a 'M' point. They are to
 be identified by the appearance of "--" or "..".
-
 The appearance of "--" is called a "line-join". It turns the next absolute point
 into a 'L' point.  The ".." is a "hobby-join", and it turns the next absolute
 point into a 'C' point.
@@ -595,7 +554,8 @@ the 'lastpt' location.
     \path a = (0,0)|qbezier:4,-1|(5,5)
 
 The previous example would have joint two path points by a quardratic Bezier curve
-with control point at (4,-1).
+with control point at (4,-1). Note that the numbers placed after "qbezier:" are
+relative to the absolute point before it.
 
 
 ## The cbezier-join
@@ -834,20 +794,33 @@ should be at (7,6.5).
     \chart.1 {w:4,h:3,xaxis:10 20,yaxis:1 2} (5,5)
     \drawdot (#chart:1,15,1.5) 
 
+Each new absolute point and relative point is to update an internal
+'lastpt'. This point is used as a reference point when calculating
+the absolute point from a relative point. As soon as a new absolute point
+is obtained, or a relative point is obtained, the newly calculated absolute
+point becomes 'lastpt'. This point can be retrieved by an absolute
+point that is ``(*)``. In the following example a path is constructed
+that contains a line segment from (0,0) to (2,3), and a circle
+that is centered at (2,3) with a radius that is 3.
 
-## Coords point from another coords
+    \path a = (0,0) <l:2,3> &circle{(*),3}
 
-Note that a 'path' command allows a coords array to be saved under a given name.
-This also means that we can retrieve a point of a coords array that is currently
-saved and use it to build a new path. Following example would set it so that the
-second point of "b" is the same as the second point of "a".
+It is also possible to construct an absolute point that is some
+distance away from 'lastpt'. The following example would have
+placed the circle centered at (3,4).
 
+    \path a = (0,0) <l:2,3> &circle{(*:1,1),3}
+
+It is also possible to extract one of the path points from a named path.
+In the following example the path 'b' is constructed such that its
+second point point is (3,4).
+  
     \path a = (0,0)--(3,4)
     \path b = (1,1)--(&a_1)
 
 
 
-## Pasting path points
+## Joining two or more path
 
 Notice that there are two different ways of referencing an existing path or path
 points: the one with parentheses, and the one without. The second method allows
@@ -955,13 +928,6 @@ information of the second path point to a path named "c".
 
     \path a = (0,0) <l:3,4> ^pt:c <h:5>
 
-Having the notion of a 'lastpt' also allows us to terminate an existing path segment
-and start a new one from where it is left off. For instance, we want to construct
-a path with a two path segments: the first from (0,0) to (1,1), and the second one
-from (1,1) to (3,3), we can do it the following way:
-
-    \path a = (0,0)--(1,1) ()--(3,3)
-
 The set of open and close parentheses by itself with an asterisk in it signals to 
 add an absolute point that is exactly the same position as the current position
 of the 'lastpt'. The previous example may seems to be a trivial change and the
@@ -1008,8 +974,8 @@ An array argument is identified by the appearance of a set of brackets.
 
 Or 
     
-    \var xarr[] = [1,2,3]
-    \var yarr[] = [4,5,6]
+    \set xarr[] = [1,2,3]
+    \set yarr[] = [4,5,6]
     \path a = &points{[@xarr],[@yarr]}
 
 Internally, a scalar is considered the same type as that of an array and is
@@ -1060,10 +1026,9 @@ Following is a list of hints:
     this.hint_linesize2  = 1 << 1;
     this.hint_linesize4  = 1 << 2;
     this.hint_nostroke   = 1 << 3;
-    this.hint_nofill     = 1 << 4;
+    this.hint_fill       = 1 << 4;
     this.hint_lighter    = 1 << 5;
     this.hint_darker     = 1 << 6;
-    this.hint_shadow     = 1 << 7;
     this.hint_fill0      = 1 << 8;
     this.hint_fill1      = 1 << 9;
     this.hint_fill2      = 1 << 10;
@@ -1115,11 +1080,12 @@ relative to its current settings.
 - ^northeast
 - ^southwest
 - ^southeast
-- ^xmax
-- ^ymax
+- ^side
+- ^top
 - ^node:1
 - ^box:1
 - ^car:1
+- ^chart:1
 
 The "^x", "^y", "^X" and "^Y" directive would each set the x or y direction directly. 
 The lowercase x/y would start from the origin. The uppercase X/Y would start from the other side
@@ -1142,11 +1108,11 @@ The '^center', '^north', '^south', '^east', '^west', '^northwest',
 '^northeast', '^southwest', and '^southeast' directives would set the origin
 relative to the current size of the viewport.
 
-The '^xmax' sets the x of the current origin to a value that equals to the viewport width.
-The '^ymax' sets the y of the current origin to a value that equals to the viewport height.
+The '^side' sets the x of the current origin to a value that equals to the viewport width.
+The '^top' sets the y of the current origin to a value that equals to the viewport height.
 
-The '^node:1', '^box:1' and '^car:1' are each used to setup the offset so that
-it aligns with the location of a node, a box and/or a Cartesian plane. For the
+The '^node:1', '^box:1', '^car:1', and '^chart:1' are each used to setup the offset so that
+it aligns with the location of a node, a box, a Cartesian plane, or a chart. For the
 node and box, only the x/y locations are altered. However, for a Cartesian
 plane, both the x/y locations and x/y scalings are alterd.
 
@@ -1549,22 +1515,22 @@ that is follows:
 
 A "scalar expression" is an expression that evaluates to a number.  
 
-    \var a = (2+2)*(3+3)
-    \var a = cos(3+0.1415) + 12
-    \var a = 3 + pow(3,2)*3 + 2
-    \var a = 3 + E + 2
-    \var a = 3 + PI + 2
-    \var a = sign(-5)
-    \var a = 2*PI
-    \var a = 2*2e5
-    \var a = deg2rad(180)
-    \var a = 1/0
-    \var a = ln(0)
+    \set a = (2+2)*(3+3)
+    \set a = cos(3+0.1415) + 12
+    \set a = 3 + pow(3,2)*3 + 2
+    \set a = 3 + E + 2
+    \set a = 3 + PI + 2
+    \set a = sign(-5)
+    \set a = 2*PI
+    \set a = 2*2e5
+    \set a = deg2rad(180)
+    \set a = 1/0
+    \set a = ln(0)
 
 The scalar expression is expected by a command such as 'var'. It is also
 expected inside a dollar-expression such as 
 
-    \drawtext "${x*2}" (0,0)
+    \drawlabel "${x*2}" (0,0)
 
 The scalar expression has a syntax very much like those supported by the 'expr'
 command of a modern day Tcl interpreter. It recognizes the plus, minus,
@@ -1620,8 +1586,8 @@ components of the first two points in path variable 'pts', which will
 be "1 + 3 = 4".
 
     \path a = (1,2)--(3,4)
-    \var x = &a_0.x + &a_1.x
-    \var y = &a_0.y + &a_1.y
+    \set x = &a_0.x + &a_1.x
+    \set y = &a_0.y + &a_1.y
     \show ${x}
     \show ${y}
 
@@ -1629,7 +1595,7 @@ The dollor-expressin is designed to turn any expression into a string. For insta
 the expression of ``${x}`` would have replaced itself with the actual value of the
 variable ``x``. If ``x`` does not exist as a valid variable, "NaN" is returned. 
 
-    \var x = 1
+    \set x = 1
     \show ${x}
 
 This would have been equivalent to the following single command
@@ -1640,7 +1606,7 @@ This is because by default, the precision is set to 6, which means any numerical
 value will automatically be shown as a floating-point number with 6 digits of
 decimal places. This precision can be changed by setting the "precision" option.
 
-    \var x = 1
+    \set x = 1
     \show ${x}
 
 The previous commands would be equivalent to the following single command:
@@ -1651,7 +1617,7 @@ However, as a special exception, if the variable is by itself and it
 is recognized to be a string,
 then it is shown verbatim.
 
-    \var x = @"Hello world"
+    \set x = @"Hello world"
     \show ${@x}
 
 This would have been equivalent to the following command
@@ -1671,7 +1637,7 @@ holding a complex number.
 
 Following is an example that would draw a dot at the location of (1,2).
 
-    \var a = 1 + 2i
+    \set a = 1 + 2i
     \drawdot ($a.re,$a.im)
 
 
@@ -1684,7 +1650,7 @@ when the variable is preceeded by an at-sign, in which case the variable
 is expected as an array that is to hold a list of numbers instead
 of holding a single one.
 
-    \var a[] = 0 1 2 (1+2) 
+    \set a[] = 0 1 2 (1+2) 
 
 The same expression could be found elsewhere where a list of scalar is expected,
 such as a "for" loop command:
@@ -1723,11 +1689,11 @@ dynamically based on the distance of the first one and the second one. For
 instance, following example would have generated a list of numbers that are 1,
 2, 3, 4, 5, 6, 7, 8, 9, and 10.
 
-    \var a[] = [1:10]
+    \set a[] = [1:10]
 
 The following would have generated a list composed numbers that are 1, 4, 7, 10.
 
-    \var a[] = [1:4:10]
+    \set a[] = [1:4:10]
 
 Note that in the case of the having three columns the middle number serves as the 
 second number after the first one, and additional numbers are generated with the same
@@ -1742,21 +1708,21 @@ points, with the first point being 0, and the last point being 10, and
 additional 20 points generated between 0 and 10 such that the distance between
 any two neighboring points is the same.
 
-    \var a[] = [0:!20!:10]
+    \set a[] = [0:!20!:10]
 
 Another list-expression is to populate a list from an existing array, known as
 list-array-form. Following expression would pull the content of an existing aray
 named 'c' and a list is built off the content of this array, plus two additional
 items that is 4 and 5.
 
-    \var c[] = 1 2 3
-    \var a[] = [@c] 4 5
+    \set c[] = 1 2 3
+    \set a[] = [@c] 4 5
 
 If a list-expression does not fit the definitions of the previous three
 categories, then it would be treated as a list-comma-form. This form would look
 for comma separated items. Spaces between commas are optional.
 
-    \var a[] = [1, 2, 3, 4]
+    \set a[] = [1, 2, 3, 4]
 
 Note that the spaces after each comma is optional. 
 
@@ -1764,15 +1730,15 @@ It should be pointed out that all the previous list forms can be mixed in anothe
 order, and the result of which is simply the concatenation of all list items 
 from these individual lists.
 
-    \var c[] = 10 11 12
-    \var a[] = 1 2 3 [4:10]
-    \var a[] = [1:2] [3:4] 5 6 7 [8:10]
-    \var a[] = [1,2,3,4] [5,6,7,8] 9 10 [@c]
+    \set c[] = 10 11 12
+    \set a[] = 1 2 3 [4:10]
+    \set a[] = [1:2] [3:4] 5 6 7 [8:10]
+    \set a[] = [1,2,3,4] [5,6,7,8] 9 10 [@c]
 
 Note that a list is automatically recognized and populated in a 'for' command
 as well.
 
-    \var a[] = 1 2 3
+    \set a[] = 1 2 3
     \for i in [@a]; \do
       \show ${i}
     \done
@@ -1798,7 +1764,7 @@ Or,
 An entire array can be show by the dollar-expression as well. Ensure that the
 array variable is to appear by itself, and proceeded by '@'.
 
-    \var a[] = 1 2 3
+    \set a[] = 1 2 3
     \show ${@a}
 
 A directive is also to be recognized. A directive adds extra possibility to the
@@ -1806,7 +1772,7 @@ list of numbers. For the moment only the "fn" directive is supported. This
 directive allows for a function to be called such that the output of this
 function replaces the original scalar.
 
-    \var a[] = ^fn:sqrt 1 2 3 4 5 6
+    \set a[] = ^fn:sqrt 1 2 3 4 5 6
     \show ${@a}
 
 Following would be the output of these commands:
@@ -1820,7 +1786,7 @@ If two "fn" directives are encountered, the last "fn" is called first, and the o
 of which becomes the input to the first "fn". 
 
     \fn add2(x) = x+2
-    \var a[] = ^fn:add2 ^fn:sqrt 1 2 3
+    \set a[] = ^fn:add2 ^fn:sqrt 1 2 3
     \show ${@a}
 
 In the previous example each scalar is to go
@@ -1836,8 +1802,8 @@ through the "sqrt" function first before being sent to the "add2" function.
 It is also possible to refer to an array element. To do that simply use the variable
 followed by an underscore itself.
 
-    \var a[] = 1 2 3
-    \var b[] = a_1 a_2
+    \set a[] = 1 2 3
+    \set b[] = a_1 a_2
 
 Following would be the result of the translation.
 
@@ -1957,8 +1923,8 @@ Following are built-in functions provided by Diagram.
 
   ```
   \fn f(x) = if(x>10,1,0)
-  \var a = f(10)  
-  \var b = f(11)  
+  \set a = f(10)  
+  \set b = f(11)  
   ```
 
 + isfinite(x)
@@ -1978,8 +1944,8 @@ Following are built-in functions provided by Diagram.
 Following are built-in scalar constants, which can be used as if they
 are arguments. For instance, 
 
-    \var arc = 2*PI
-    \var mynum = 1 + 2*I
+    \set arc = 2*PI
+    \set mynum = 1 + 2*I
 
 This the 'arc' env-variable would have been assigned the value of 6.28.
 
@@ -2025,8 +1991,8 @@ drawing environment.
 - \origin ^southwest
 - \origin ^northeast
 - \origin ^southeast
-- \origin ^xmax
-- \origin ^ymax
+- \origin ^side
+- \origin ^top
 
 If it starts with "left:<x>", "right:<x>", "up:<y>", 
 "down:<y>", where the distance expresses the number of grid units
@@ -2073,27 +2039,10 @@ If it starts with 'center', 'north', 'south', 'northwest', 'northeast', 'southwe
 'southeast', 'east' and 'west', then it sets the origin to the center,  the four  
 corners of the viewport, or the middle of the four sides of it.
 
-If it starts with 'ymax' the origin is moved so that its y-position is at a
-position same as the viewport height. If it starts with 'xmax' the origin
+If it starts with 'top' the origin is moved so that its y-position is at a
+position same as the viewport height. If it starts with 'side' the origin
 is moved so that its x-position is at a position same as the viewport width.
-
-
-# The 'group' command
-
-The "group" operation is to create a new group that holds a collection
-of attribute values such that they will be applied to an element
-all at once. This allows, for instance, creating of many different
-boxes all of the same attributes. Changes made to a group affects all
-elements inheriting attributes from that group.
-
-    \group mygroup {linesize:1,w:3,h:2}
-    \box {group:mygroup} (0,0) (1,2) 
-    \box {group:mygroup,linesize:2} (0,0) (1,2) 
-
-In the previous example the first box will be created with "linesize:1", "w:3",
-and "h:2" attributes. The second box will have the same set of attributes as
-the first one except that it will have "linesize:2" instead of "linesize:1".
-
+For 'top' the x-origin is not changed. For 'side' the y-origin is not changed.
 
 
 
@@ -2223,17 +2172,18 @@ For MetaPost output, each path segment requires a separate "draw" command. For
 SVG, a single PATH elements is sufficient; the SVG is implemented such that a
 "M" operation can follow a "z". 
 
-By default, the 'draw' command would stroke the path. However, if a path
-segment is closed (when ended by a "cycle" keyword), then then it would also
-attempt to fill the area. However, the 'fill' command will attempt to fill the
-area regardless if it is closed or not. On the other hand, the 'stroke' command
-will stroke the path, such that if the path is closed, a line will appear
-between the last point and the first one.
+By default, the 'drawpath' command would stroke the path. However, if a path
+segment is closed and the "fillcolor" is set to anything that is not "none",
+then the area is also filled. The 'fillpath' command attempts to fill the
+area regardless if it is closed or not. The 'strokepath' command
+strokes the path and will not attempt to fill the area even if it is closed
+and the "fillcolor" style is set.
 
 For SVG, when a 'fill=' attribute is specified the rendering engine will
 attempt to fill the area, even when the area is not closed. For
 MetaPost/MetaFun the path will have to be closed before calling the 'fill'
-MetaPost, as otherwise the compilation will complain.
+command; attemptying to call "fill" command without
+propertly closing the path causes the compilation to fail.
 
 
 
@@ -2284,7 +2234,7 @@ of an arc. However, a square can be forced if ".sq" option is given.
     \drawanglearc.sq "1" "2" (2,0)--(0,0)--(0,2)
 
 
-# The 'drawcenteredtext' command
+# The 'drawcenteredlabel' command
 
 The 'drawcenteredtext' command is to draw a piece of text
 in the center of every line segment found in the path.
@@ -2293,7 +2243,7 @@ in the middle of three sides of the triangle shape.
 
     \path tri = &triangle{(0,0),(4,0),(2,2)}
     \strokepath &tri
-    \drawcenteredtext "1" "2" "3" &tri
+    \drawcenteredlabel "1" "2" "3" &tri
 
 Any connecting line segments are located, including those that are not
 necessarily straight lines, such as Bezier curves and arcs. For these,
@@ -2311,21 +2261,21 @@ text.
 
 
 
-# The 'drawslopedtext' command
+# The 'drawslopedlabel' command
 
 The 'drawslopedtext' command is to draw a sloped text centered along a line
 segment.  The command scans for the presence of all line
 segments in the coodinates provided, and for every line segment found,
 place a label that run along the slope of the line.
 
-    \drawslopedtext "Hello" "World" (0,0) <h:4> <v:4>
+    \drawslopedlabel "Hello" "World" (0,0) <h:4> <v:4>
 
 By default, the text will be placed at the center of the line, following the
 slope of the slide.  However, this position can be changed by adding the option
 to the end of the command.  For instance, the ".bot" option would have asked that
 the text be placed at the bottom of the line.
 
-    \drawslopedtext.bot "Hello" "World" (0,0) <h:4> <v:4>
+    \drawslopedlabel.bot "Hello" "World" (0,0) <h:4> <v:4>
 
 Note that the text will still be following the slope of the line. The same
 option can be replaced by others such as ".top", ".lft", ".rt", etc..
@@ -2338,7 +2288,7 @@ The pen-style would have asked that two vertical lines be added at the two end p
 of the line segment. Each vertical line is perpendicular to the slope of the line segment.
 The style option value expresses the lengh of line in each direction.
 
-    \drawslopedtext "\(\sqrt{2}\)" {mar:1,pen:0.25} (0,0)--(5,5)
+    \drawslopedlabel "\(\sqrt{2}\)" {mar:1,pen:0.25} (0,0)--(5,5)
 
 
 
@@ -2392,15 +2342,15 @@ the grid. Note that for 'vbar', it's lower end point aligns with the
 location, and for 'hbar', its left end aligns with the location.
 
 
-# The 'drawtext' command
+# The 'drawlabel' command
 
-The 'drawtext' command is designed to place a piece of text in one or more path
-points. For instance, each of the following 'drawtext' commands will place a piece
+The 'drawlabel' command is designed to place a piece of text in one or more path
+points. For instance, each of the following 'drawlabel' commands will place a piece
 of text at the given location.
 
-    \drawtext.rt "A" (1,1)
-    \drawtext.lft "B" (2,2)
-    \drawtext.top "C" (3,4)
+    \drawlabel.rt "A" (1,1)
+    \drawlabel.lft "B" (2,2)
+    \drawlabel.top "C" (3,4)
 
 The text must appear before any path points, and must enclosed within a set of
 quotation marks. 
@@ -2410,7 +2360,7 @@ be shown in the first path point encountered. However, if additional
 path points are specified, then the same text is to be repeated 
 across the other path points.
 
-    \drawtext "A" (1,1) (2,2) (3,4)
+    \drawlabel "A" (1,1) (2,2) (3,4)
 
 The option of this command specifies how the text is aligned relative
 to the path point. For instance, if the option is 'top' then the 
@@ -2418,15 +2368,15 @@ text will be aligned in such a way that it appear on top of the
 path point and centered horizontally. Without the option,
 it defaults to 'urt'.
 
--   \drawtext.top   -  top
--   \drawtext.bot   -  bottom
--   \drawtext.lft   -  left
--   \drawtext.rt    -  right
--   \drawtext.ulft  -  upper left
--   \drawtext.llft  -  lower left
--   \drawtext.urt   -  upper right
--   \drawtext.lrt   -  lower right
--   \drawtext.ctr   -  centering the text
+-   \drawlabel.top   -  top
+-   \drawlabel.bot   -  bottom
+-   \drawlabel.lft   -  left
+-   \drawlabel.rt    -  right
+-   \drawlabel.ulft  -  upper left
+-   \drawlabel.llft  -  lower left
+-   \drawlabel.urt   -  upper right
+-   \drawlabel.lrt   -  lower right
+-   \drawlabel.ctr   -  centering the text
 
 It is also possible to express the fact that each path point is to show a
 different piece of text, by placing double backslashes inside the text, such
@@ -2436,58 +2386,58 @@ and in the same order. For instance, the following command would have placed
 letter "A" with the first point, letter "B" with the second point, and letter "C"
 with the third point.
 
-    \drawtext "A" "B" "C" (1,1) (2,2) (3,4)
+    \drawlabel "A" "B" "C" (1,1) (2,2) (3,4)
 
 It is also possible to express that a math expression instead of plain text.
 by setting the "math" style flag to 1.
 In the following example the first and the last text labels are 
 treated as math text while the middle one is treated as plain text.
 
-    \drawtext {math:1} "A_0" "A_2" (1,1) (3.4)
+    \drawlabel {math:1} "A_0" "A_2" (1,1) (3.4)
 
 The text command also allows for each entry to be laid out such that it is
 multi-line paragraph. Note that this only works for plain text, and not
 for math.
 
-    \drawtext.ulft {fontsize:7} "degree\\3" (-3,2)
-    \drawtext.urt  {fontsize:7} "degree\\2" (3,2)
-    \drawtext.llft {fontsize:7} "degree\\2" (-3,-2)
-    \drawtext.lrt  {fontsize:7} "degree\\3" (3,-2)
+    \drawlabel.ulft {fontsize:7} "degree\\3" (-3,2)
+    \drawlabel.urt  {fontsize:7} "degree\\2" (3,2)
+    \drawlabel.llft {fontsize:7} "degree\\2" (-3,-2)
+    \drawlabel.lrt  {fontsize:7} "degree\\3" (3,-2)
 
-In addition, the 'drawtext' command has the capability to style the font using
+In addition, the 'drawlabel' command has the capability to style the font using
 the "fontfamily" and "fontstyle" style options. Note that this might not 
 always work for something. For instance, for LATEX and CONTEX it is not
 possible for specifying both a monospace and an italic.
 
-    \drawtext.ulft {fontfamily:monospace,fontstyle:italic,fontsize:7} \
+    \drawlabel.ulft {fontstyle:i,fontsize:7} \
           "degree\\3" (-3,2)
 
 
 
 # The 'drawlabel' command
 
-The 'drawlabel' command would have been the same as for the 'drawtext' except
+The 'drawlabel' command would have been the same as for the 'drawlabel' except
 that it does not support drawing multiple line text as that was the case for
-the 'drawtext' command. In addition, the technical approach might be different
-for that used by the 'drawtext' command, and the exact differences varies
+the 'drawlabel' command. In addition, the technical approach might be different
+for that used by the 'drawlabel' command, and the exact differences varies
 depending on the translation. Following discusses some of the differences
 observed in some translation:
 
 - For MF, when 'drawlabel' is called, it uses the 'label.urt' command to draw
-  the text, while when 'drawtext' is called, it first calls 'textext', which
+  the text, while when 'drawlabel' is called, it first calls 'textext', which
   will generate a picture, holding the entire drawing of the text, and then
   "paste" this picture onto the main picture relative to anchor point based on
-  the alignment. The problem of using 'drawtext' has been seen that there isn't
+  the alignment. The problem of using 'drawlabel' has been seen that there isn't
   any gaps between the anchor point and the start of text, while using
   'drawlabel' ensure a reasonable amount of gap to exist. There is also a
-  problem of using the 'drawtext' approach when drawing individual digits and
+  problem of using the 'drawlabel' approach when drawing individual digits and
   period, and the period has been seen to not align with the bottom of the digit
   vertically.
 
 - For TikZ there isn't any difference.
 
 - For SVG when 'drawlabel' is used an extra 2 pixel is added horizontally
-  between the anchor point and the start of the text. For 'drawtext' there isn't
+  between the anchor point and the start of the text. For 'drawlabel' there isn't
   this space, thus the text is right on top of the point.
 
 
@@ -2604,6 +2554,28 @@ Coordiante frame. For instance we can draw the previous two points using the
 following 'draw' command and the result will be exactly the same.
 
     \drawpath ^car:1 (4,3)--(5,10)
+
+
+# The \footer command
+
+The \footer command attempts to draw a text that is to appear at the lower porition
+of the diagram.
+
+    \footer "Area A"
+
+The option passed to \footer could be "l", "r", which is to place the text at the 
+left hand corner or right hand corner.
+
+
+# The \header command
+
+The \header command attempts to draw a text that is to appear at the header portion
+of the diagram.
+
+    \header "My Graph"
+
+The option passed to \header could be "l", "r", which is to place the text at the left hand corner
+or right hand corner.
 
 
 
@@ -2759,7 +2731,7 @@ is "1 + log2(4)". In the following example, variable 'a' is being
 assigned a value of 3 at the end of that command.
 
     \fn f(x) = 1 + log2(x)
-    \var a = f(4)
+    \set a = f(4)
 
 A function created by a "fn" command can be thought of as a user-defined
 function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
@@ -2767,7 +2739,7 @@ function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
 an array expression.
 
     \fn f(x) = 1 + log2(x)
-    \var v[] = ^fn:f 1 2 3 4 
+    \set v[] = ^fn:f 1 2 3 4 
 
 
 
@@ -2861,9 +2833,9 @@ the first one, and the second iteration the second one, and so on.
 
     \origin ^center
     \for theta in [0:60:359]; \do
-      \var r = 2
-      \var x = cos(deg2rad(theta)) * r
-      \var y = sin(deg2rad(theta)) * r
+      \set r = 2
+      \set x = cos(deg2rad(theta)) * r
+      \set y = sin(deg2rad(theta)) * r
       \node.@[1,2,3] {r:0.5} (x,y)
     \done
     \node.0.1.2 {fillcolor:red}
@@ -3180,20 +3152,20 @@ The 'var' command is to create an environment variable that
 is the result of an arithmetic expression, a text string,
 or an array.  Following is an example of a arithmetic expression.
 
-    \var a = pow(2,1/12)
+    \set a = pow(2,1/12)
     \drawpath (0,0)--(a,a)
 
 Following is a example of creating a variable that holds an array.
 
-    \var o[] = 1 2 3
+    \set o[] = 1 2 3
     \for i in [@o]; \do
       \drawdot (i,i)
     \done
 
 Following is a example of a text string composition.
 
-    \var s = @"%d-%d-%d" 301 444 5591
-    \drawtext "${@a}" (0,0)
+    \set s = @"%d-%d-%d" 301 444 5591
+    \drawlabel "${@a}" (0,0)
 
 The first example has created an environment variable named 'a', 
 that is assigned a numerical value that is equivalent to 
@@ -3206,13 +3178,13 @@ arithmetic expression such as the following example which 'a' is used
 to compute a value that is 2 multiples of 'a' and the value of which
 is assigned to variable 'b'.
 
-    \var b = a * 2;
+    \set b = a * 2;
 
 Note that the number is complex-number-ready, which means the number 
 is internally represented as a complex number. This allows the following
 expression to be constructed that would express a complex number that is "2+3i":
 
-    \var c = 2 + 3i
+    \set c = 2 + 3i
 
 Note that the spaces around the plus-sign is optional. In fact the entire
 expression is just treated as a regular math operation of addition, with 
@@ -3230,12 +3202,12 @@ and "PI" and "E" are fixed numbers only having a real component for itself.
 Thus, the following expression would have assigned the complex number "3i" 
 to variable 'd'.
 
-    \var d = 3 * I
+    \set d = 3 * I
 
 Note that it is illegal to use a "i" or "j" by itself, such as the following
 which is illegal.
 
-    \var d = 3 + i
+    \set d = 3 + i
 
 This is because a letter within an expression by itself is to be treated as a
 variable. Thus, the previous expression would have looked for a variable named
@@ -3251,7 +3223,7 @@ that it will be scanned for the appearances of "formattng groups", which is
 replaced by something that appears after it.  The following example would have
 created a variable named "s" that holds a string that is "301-444-5591".
 
-    \var s = @"%d-%d-%d" 301 444 5591
+    \set s = @"%d-%d-%d" 301 444 5591
 
 In the second situation is when the at-sign is followed by a variable, 
 in which case the value of that variable is pulled and its value is treated
@@ -3263,8 +3235,8 @@ we can create another variable 's1' that hold the same value of 's'
 This allows us to construct a string an later used inside a command that expects
 such.
 
-    \var s = @"%d-%d-%d" 301 444 5591
-    \drawtext "${@s}" (0,0)
+    \set s = @"%d-%d-%d" 301 444 5591
+    \drawlabel "${@s}" (0,0)
 
 The 'var' command is also able to create an "array" variable, in which
 case the variable is to hold a list of numbers, rather than a single number. 
@@ -3274,7 +3246,7 @@ has first created and assigned the variable 'a' an array that consists of
 three items, and then reference this array by the name of 'a' inside a 
 for-command.
 
-    \var a[] = 1 2 3
+    \set a[] = 1 2 3
     \for i in [@a]; \do
       \drawdot (i,i)
     \done
@@ -3288,7 +3260,7 @@ The following example has created an array of three numbers, and was later
 on used to generate text output on various locations, pulling the content of 
 each element of the array. 
 
-    \drawtext "${a_0}" "${a_1}" "${a_2}" (0,0) <h:1> <h:1>
+    \drawlabel "${a_0}" "${a_1}" "${a_2}" (0,0) <h:1> <h:1>
 
 Following are formatting groups that are recognized.
 
@@ -3298,8 +3270,8 @@ Following are formatting groups that are recognized.
   It does not consume any argument.
 
   ```
-  \var a = 1.23456789
-  \var s = @"%0.2f%%" a
+  \set a = 1.23456789
+  \set s = @"%0.2f%%" a
   % s => '1.23%'
   ```
 
@@ -3312,7 +3284,7 @@ Following are formatting groups that are recognized.
 
   ```
   \for i in [11,23,56]; \do
-    \var s = @"%_" 
+    \set s = @"%_" 
   \done
   % s => '0'
   % s => '1'
@@ -3326,8 +3298,8 @@ Following are formatting groups that are recognized.
   express the decimal places to be used for this number.
 
   ```
-  \var a = 1.23456789
-  \var s = @"%.2f" a
+  \set a = 1.23456789
+  \set s = @"%.2f" a
   % s => '1.23'
   ```
 
@@ -3336,8 +3308,8 @@ Following are formatting groups that are recognized.
   This formatting group would parse the argument as an integer.
 
   ```
-  \var a = 0x10
-  \var s = @"%d" a
+  \set a = 0x10
+  \set s = @"%d" a
   % s => "16"
   ```
 
@@ -3350,10 +3322,10 @@ Following are formatting groups that are recognized.
   number with all letters between A-Z in uppercases.
 
   ```
-  \var a = 15
-  \var s = @"%x" a
+  \set a = 15
+  \set s = @"%x" a
   % s => "f"
-  \var s = @"%X" a
+  \set s = @"%X" a
   % s => "F"
   ```
 
@@ -3366,8 +3338,8 @@ Following are formatting groups that are recognized.
   This formatting group is to output a binary number with one's and zero's.
 
   ```
-  \var a = 5
-  \var s = @"%b" 5
+  \set a = 5
+  \set s = @"%b" 5
   % s => "101"
   ```
 
@@ -3376,8 +3348,8 @@ Following are formatting groups that are recognized.
   This formatting group is to output an octal number.
 
   ```
-  \var a = 0xF0
-  \var s = @"%o" a
+  \set a = 0xF0
+  \set s = @"%o" a
   % a => "360"
   ```
 
@@ -3387,8 +3359,8 @@ Following are formatting groups that are recognized.
   with that given code point.
 
   ```
-  \var a = 65
-  \var s = @"%c" a
+  \set a = 65
+  \set s = @"%c" a
   % a => "A"
   ```
 
@@ -3397,8 +3369,8 @@ Following are formatting groups that are recognized.
   This formatting group is to treat the argument as a string.
 
   ```
-  \var a = 1.23
-  \var s = @"%s" 
+  \set a = 1.23
+  \set s = @"%s" 
   % s => "1.23"
   ```
 
@@ -3407,8 +3379,8 @@ then the result would be undefined if the string cannot be recognized as a legal
 For instance, in the following example variable 'c' is holding a string that is "Hello",
 and when later it is used to perform an addition, the result becomes NaN.
 
-    \var c = @"Hello"
-    \var d = c + 10
+    \set c = @"Hello"
+    \set d = c + 10
     % d = NaN
 
   
@@ -3461,8 +3433,9 @@ effect on this command.
 # The "\rectangle" command
 
 This command draws one or more rectangles between two neighboring points.
-The following example draws two recntangles: one between (0,0) and (3,4),
-and another one between (3,4) and (6,2).
+The following example draws two rectangles: one covering an area
+between two diagonal points (0,0) and (3,4),
+and another between (3,4) and (6,2).
 
     \rectangle (0,0) (3,4) (6,2)
 
@@ -3501,7 +3474,7 @@ or nothing else.
 Following example would have created a copy buffer named "a" and
 within it insert three lines.
 
-    %?a
+    %=a
     \drawpath (0,0)--(4,4)
     \drawpath (0,0)--(5,5)
     \drawpath (0,0)--(6,6)
@@ -3510,7 +3483,7 @@ within it insert three lines.
 Following is an example of inserting these three lines at the beginning,
 such that the diagram will have four "draw" commands total.
 
-    %=a
+    %?a
     draw (0,0)--(7,7)
 
 Following is an example of repeating the same block of commands inside
@@ -3522,19 +3495,19 @@ the same thing except for asking for a different buffer to be
 retrieved.
 
     ```diagram
-    %?a
+    %=a
     \trump.diamond.J {scaleX:0.5,scaleY:0.5} 2  1
     \trump.heart.Q   {scaleX:0.5,scaleY:0.5} 7  1
     \trump.spade.K   {scaleX:0.5,scaleY:0.5} 12 1
     \trump.club.A    {scaleX:0.5,scaleY:0.5} 17 1
     %
-    %?b
+    %=b
     \trump.diamond.10 {scaleX:0.5,scaleY:0.5} 2  5
     \trump.heart.9    {scaleX:0.5,scaleY:0.5} 7  5
     \trump.spade.8    {scaleX:0.5,scaleY:0.5} 12 5
     \trump.club.7     {scaleX:0.5,scaleY:0.5} 17 5
     %
-    %?c
+    %=c
     \trump.diamond.6  {scaleX:0.5,scaleY:0.5} 2  9
     \trump.heart.5    {scaleX:0.5,scaleY:0.5} 6  9
     \trump.spade.4    {scaleX:0.5,scaleY:0.5} 10 9
@@ -3544,15 +3517,15 @@ retrieved.
     ```
 
     ```diagram
-    %=a
+    %?a
     ```
 
     ```diagram
-    %=b
+    %?b
     ```
 
     ```diagram
-    %=c
+    %?c
     ```
 
 Note that it is specifically designed such that the copied lines will NOT
@@ -3560,9 +3533,9 @@ include any line that is a "paste" command.  In the following example only the
 first "draw" command is copied to buffer "a".  The presence of the paste
 of "b" buffer interrupted the copy buffer.
 
-    %?a
+    %=a
     \drawpath (0,0)--(4,4)
-    %=b
+    %?b
     \drawpath (0,0)--(5,5)
     \drawpath (0,0)--(6,6)
     %
@@ -3570,9 +3543,9 @@ of "b" buffer interrupted the copy buffer.
 In the example below the first "draw" command is copied to 
 the "a" buffer and the last two "draw" commands to the "b" buffer.
 
-    %?a
+    %=a
     \drawpath (0,0)--(4,4)
-    %?b
+    %=b
     \drawpath (0,0)--(5,5)
     \drawpath (0,0)--(6,6)
     %
@@ -3602,7 +3575,7 @@ is drawn it would have seen the math text associated with the ID of
 each of the four hrule, and will then pull the math text from the style
 and the use it to place it on the top of the hrule.
     
-    ```diagram{width:100%,save:ex3,viewport:22 12}
+    ```diagram{width:100%,save,viewport:22 12}
     \origin ^northwest
     \drawpath (0,0) -- <v:-14>
     \drawpath (3,0) -- <v:-14>
@@ -3613,22 +3586,22 @@ and the use it to place it on the top of the hrule.
     -- table
     \origin ^down:1
     \origin ^x:1.5
-    \drawtext.ctr "x"  "y"  ^down:0  (0,0) <h:3> 
-    \drawtext.ctr "1"  "2"  ^down:2  (0,0) <h:3> 
-    \drawtext.ctr "2"  "3"  ^down:4  (0,0) <h:3>
-    \drawtext.ctr "3"  "4"  ^down:6  (0,0) <h:3>
-    \drawtext.ctr "4"  "5"  ^down:8  (0,0) <h:3>
-    \drawtext.ctr "10" "11" ^down:10 (0,0) <h:3>
+    \drawlabel.ctr "x"  "y"  ^down:0  (0,0) <h:3> 
+    \drawlabel.ctr "1"  "2"  ^down:2  (0,0) <h:3> 
+    \drawlabel.ctr "2"  "3"  ^down:4  (0,0) <h:3>
+    \drawlabel.ctr "3"  "4"  ^down:6  (0,0) <h:3>
+    \drawlabel.ctr "4"  "5"  ^down:8  (0,0) <h:3>
+    \drawlabel.ctr "10" "11" ^down:10 (0,0) <h:3>
     \origin ^x:3.5
-    \drawtext.rt "{{f(x,y)=x^2+y+1}}"       ^down:0  (3,0)
-    \drawtext.rt "{{f(1,2)=4}}"             ^down:2  (3,0)
-    \drawtext.rt "{{f(2,3)=\hrule[A]{5}}}"     ^down:4  (3,0) 
-    \drawtext.rt "{{f(3,4)=\hrule[B]{5}}}"     ^down:6  (3,0) 
-    \drawtext.rt "{{f(4,5)=\hrule[C]{5}}}"     ^down:8  (3,0) 
-    \drawtext.rt "{{f(10,11)=\hrule[D]{5}}}"   ^down:10 (3,0) 
+    \drawlabel.rt "{{f(x,y)=x^2+y+1}}"       ^down:0  (3,0)
+    \drawlabel.rt "{{f(1,2)=4}}"             ^down:2  (3,0)
+    \drawlabel.rt "{{f(2,3)=\hrule[A]{5}}}"     ^down:4  (3,0) 
+    \drawlabel.rt "{{f(3,4)=\hrule[B]{5}}}"     ^down:6  (3,0) 
+    \drawlabel.rt "{{f(4,5)=\hrule[C]{5}}}"     ^down:8  (3,0) 
+    \drawlabel.rt "{{f(10,11)=\hrule[D]{5}}}"   ^down:10 (3,0) 
     ```
 
-    ```diagram{width:100%,A:8,B:14,C:22,D:112,load:ex3}
+    ```diagram{width:100%,A:8,B:14,C:22,D:112,restore}
     ```
 
 
