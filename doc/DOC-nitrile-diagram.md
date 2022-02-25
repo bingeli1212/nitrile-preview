@@ -2524,6 +2524,20 @@ in the unit of "pt".
 
     \drawdot {dotsize:3} ^chart:1 (0,0) (5,4) (3,4) (7,8) (9,10)
 
+The same "\chart" command can also be used to construct a tabular. To do that,
+set the "xcol" and "yrow" style attributes. The "xcol" should be set to a list
+each of which a column width of the column. The "yrow" should be set to an integer
+expressing the row height for each row. These numbers should be in grid units.
+The text fields are to express the contents of the columns. In the following
+example there are two columns, and the column content for the first column
+is "inches", "67", "72", "77", "74", and "69". The "w" and "h" style attributes
+should be set and they are the width and height of the table.
+
+    \origin ^x:6 ^y:2
+    \chart.1 {w:12,h:12,xcol:6 6,yrow:2} (0,0) \
+       "inches\\67\\72\\77\\74\\69" \
+       "pounds\\155\\220\\240\\195\\175"
+
 
 # The 'car' command
 
