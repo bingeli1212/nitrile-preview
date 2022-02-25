@@ -360,3 +360,18 @@ without need for any setup.
 
     
 
+# The inline math
+
+Any inline math is identified by the presence of double-backquote
+quotations such as 
+
+    The Pythagoream equation is defined as: ``a^2 + b^2 = c^2``.
+
+The reason math expression is to be expressed this way is that
+any underscores that are likely to appear as part of a math
+expression will not be mistakely interpreted as expressing strong or 
+emphasized text by a MD document editor.
+
+
+
+
