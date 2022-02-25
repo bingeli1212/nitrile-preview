@@ -132,8 +132,8 @@ Following is an example of a diagram block.
     \path a = (1,1) -- (5,5) -- (5,1) -- (1,1) 
     \path b = (1,1) .. (5,5) .. (5,1) .. (1,1) 
     % draw
-    \draw  &a
-    \draw  &b
+    \drawpath  &a
+    \drawpath  &b
 
 
 # Viewport
@@ -252,7 +252,7 @@ with a url, such as 'fill=url(#myid)', assuming that 'myid' is the
 id of the 'linearGradient' or 'radialGradient' element.
 
 For TikZ, it is to use the '\shade' command, rather than the
-'\fill' command. Within this command, there are several option
+'\fillpath' command. Within this command, there are several option
 we need to set. First of all, the 'shading=' option. This option
 is to be set with a string that is either 'axis', or 'radial'. 
 It can also be set to 'ball', which acts like a 'radial' but will
@@ -484,7 +484,7 @@ A path expression in Diagram also include other information such as config
 options and text strings. In the following example a path expression has
 included two config options and two text strings.
 
-    \draw (0,0)--(3,4) (2,2)--(5,6) {linesize:2,linecolor:red} "Hello" "World"
+    \drawpath (0,0)--(3,4) (2,2)--(5,6) {linesize:2,linecolor:red} "Hello" "World"
 
 Config options are recognized by a set of braces, and within it could be one or
 more options each of which a value for that option. Text string are instead
@@ -538,25 +538,24 @@ A coords point is considered an absolute point if they appear inside a pair of
 parentheses, or a relative point if they appear inside a pair of brackets.
 
     \path a = (0,3)--(10,3)
-    \path b = (0,3) [h:7]
+    \path b = (0,3) <h:7>
 
-In the previous example, (0,3), (10,3) are absolute points, and [h:7] is a
+In the previous example, (0,3), (10,3) are absolute points, and <h:7> is a
 relative point. A absolute point only provides location information. By default
 each one of them is to become a 'M' point, unless there is a "join" that tells
 it otherwise.
 
 A "join" is a piece of text that tells how a subsequent absolute point is to
 join the previous point to beome something that is not a 'M' point. They are to
-be identified by the appearance of "--", "~~", or ".." inside a path expression.
+be identified by the appearance of "--" or "..".
 
 The appearance of "--" is called a "line-join". It turns the next absolute point
-into a 'L' point. The "~~" is a "abr-join", and it turns the next absolute point
-into a 'Q' point. The ".." is a "hobby-join", and it turns the next absolute
+into a 'L' point.  The ".." is a "hobby-join", and it turns the next absolute
 point into a 'C' point.
 
-A relative point such as [h:7] contains both positional information as well as
+A relative point such as <h:7> contains both positional information as well as
 instructions as how this point is to be joint by the one before it. For
-instance, [h:7] would ask that the current point be turned into a 'L' point that
+instance, <h:7> would ask that the current point be turned into a 'L' point that
 is located 7 grid distances to the right. As a general pattern, all relative
 points start with an instruction, such as "h" in this case, followed by a colon,
 and then additional numbers each of which separated by a comma. In addition, all
@@ -640,15 +639,15 @@ negative number would have meant for either one of them to do the other way.
 
 Following are descriptions of other relative points.
 
-- [l:dx,dy] 
-- [h:dx]
-- [v:dy] 
+- <l:dx,dy> 
+- <h:dx>
+- <v:dy> 
 
 These three relative points would each create a L path point, where the position
 of the new point is relative to the previous point by a horizontal distance of
 'dx' and a vertical distance 'dy'.
 
-- [a:rx,ry,angle,bigarcflag,sweepflag,dx,dy] 
+- <a:rx,ry,angle,bigarcflag,sweepflag,dx,dy> 
 
 This is to create a A point that is dx/dy away from the current point. The arc
 is assumed to trace alone an elliptical arc with x-axis and y-axis each of which
@@ -663,13 +662,13 @@ rotation. Thus, to draw an arc from the last point to a new point that is on its
 right hand side of the last point, and if the sweepflag is set to 0, then the
 arc will always appear below both points.
 
-- [c:dx1,dy1,dx2,dy2,dx,dy] 
+- <c:dx1,dy1,dx2,dy2,dx,dy> 
 
 This is to create a C point from the current point to the new point that is
 dx/dy away. The (dx1,dy1), and (dx2,dy2) are two control points, and its value
 are relative distances from the previous point.  
 
-- [s:dx2,dy2,dx,dy] 
+- <s:dx2,dy2,dx,dy> 
 
 This is to create a Q point that is dx/dy away from the previous point. Only the
 second point of the current Bezier curve needs to be provided. The first control
@@ -680,13 +679,13 @@ quadratic curve is used to deduce the first control point of the current
 operation. If it is neither a cubic nor a quadrilatic, then the last point is
 assumed.
 
-- [q:dx1,dy1,dx,dy] 
+- <q:dx1,dy1,dx,dy> 
 	
 This is to draw a Q point that is dx/dy away from the previous point. The
 (dx1/dy1) is the only control point, the values of which are relative distances
 from the previous point.
 
-- [t:dx,dy] 
+- <t:dx,dy> 
 
 This is to create a Q point that is dx/dy away from the previous point. No
 control points for this point is necessary. It will be deduced from a previous
@@ -694,29 +693,29 @@ Bezier curve operation. If a previous operation is not a Bezier curve operation,
 then the last point is assumed to be control point, in which case the drawn
 curve will be straight line.
 
-- [angledist:30,1] 
-- [angledist:30,1,2,2] 
+- <angledist:30,1> 
+- <angledist:30,1,2,2> 
 
-This is to create a new L point. The [angledist:30,1] directive is to construct
+This is to create a new L point. The <angledist:30,1> directive is to construct
 a new line segment from the current point to a new location that is 1 unit
 distance away and 30 degrees counter-clockwise rotation from due east.
 
-The [angledist:30,1,1,1] directive is similar to the one before except for the
+The <angledist:30,1,1,1> directive is similar to the one before except for the
 fact that the 30 degree rotation is now to start from a non-zero degree angle
 that is formed between the reference point (1,1) and the current point: if the
 current point is (0,0) then the reference angle is 45 degrees, such that the
 constructed line segment is to land at a point that is 75 degrees rotation from
 due east.
 
-- [turn:30,1] 
+- <turn:30,1> 
 
 This is to create a new L point that is equivalent to making a left hand turn of
 30 degrees from the direction you have arrived at the current point, and then
 travel for one more unit length. If it is to make a right hand turn, then set
 the angle to a negative number.
 
-- [clock:30,1]
-- [clock:30,1,4,0]
+- <clock:30,1>
+- <clock:30,1,4,0>
 
 This is to create a new L point that is away from the current point in a
 direciton described by the angle, where angle 0 is straight north, and 90 degree
@@ -730,7 +729,7 @@ base angle is the angle formed between the due north line and the line between
 the current point and the new point. The clock angle is then being added on top
 of the base angle before used to figure out the new location.
 
-- [flip:1,3] 
+- <flip:1,3> 
 
 This is to construct a new L point that is the mirror image of the given point
 that is 1 grid distance to the right and 3 grid distance upwards from the
@@ -741,7 +740,7 @@ paper along the line of the mirror with a point on one side of the line, and see
 where that point will land on the other side of the line after folding. The new
 point would be added as a "L" point.
 
-- [sweep:cx,cy,angd] 
+- <sweep:cx,cy,angd> 
 
 This is to construct a new A point of a given radius. The center of the arc is
 cx/cy away from the current point. The radius of the arc is automatically
@@ -750,7 +749,7 @@ calculated to be the distance between the current point and the arc center. The
 expresses that the sweep should happen in a counter-clockwise direction, and a
 negative value expresses a clockwise sweep.
 
-- [protrude:dist] 
+- <protrude:dist> 
 
 This is to create a new L point. This new point is located at a distance that is
 'dist' away from the current point. The direcion of the new point follows the
@@ -758,7 +757,7 @@ same direction going from the second last point to the last point. Thus, it is
 important that there are at least two path points prior to creating this path
 point.
 
-- [ellipse:dx,dy,sweepflag] 
+- <ellipse:dx,dy,sweepflag> 
 
 This is to create a new C point. This new point is located at a distance that
 is 'dx/dy' away from the current point. The cubic Bezier simulates a quarter of
@@ -767,12 +766,12 @@ the new point as a sweep that is counter-clockwise. The "sweepflag" is to
 express the direction of the sweep. It should be set to 0 when a anti-clockwise
 sweep is desired.  If a clockwise sweep is desired, set the "sweepflag" to 1.
 
-- [m:dx,dy]
+- <m:dx,dy>
 
 This is to create a new 'M' point or update an existing 'M' point. The new 'M"
 point will be moved dx/dy away from the current point. If the last point is not
 a M point, a new M point will be created. Otherwise, the last M point is updated
-and its new position is dx/dy away from its current position.
+and its new position is dx/dy away from its original position.
 
 
 
@@ -810,12 +809,12 @@ For a box, the anchor points are the following: "n", "w", "e", "w", "nw", "ne",
 "sw" and "se". Thus, to draw a line between the two northen tips of the boxes we
 would do the following:
 
-    \draw (#box:1:n)--(#box:2:n)
+    \drawpath (#box:1:n)--(#box:2:n)
 
 If addition numbers are to be placed after, they will be interpreted as the
 "offset" from that anchor point.
 
-    \draw (#box:1:n)--(#box:1:n,2,3)
+    \drawpath (#box:1:n)--(#box:1:n,2,3)
 
 The previous example would draw line that starts out from the north tip of the
 box, to another point that is 2 grid unit to the right and 3 grid units upwards.
@@ -826,8 +825,14 @@ line connecting two points of a Cartesian plane of Id "1" that is (3,4) and
 (4,5).
 
     \car.1 (5,5)
-    \draw (#car:1,3,4)--(#car:1,4,5)
+    \drawpath (#car:1,3,4)--(#car:1,4,5)
 
+For a chart, a point can be specified for expressing a point within that chart.
+Following example draws a dot at the center of the chart; this point 
+should be at (7,6.5).
+
+    \chart.1 {w:4,h:3,xaxis:10 20,yaxis:1 2} (5,5)
+    \drawdot (#chart:1,15,1.5) 
 
 
 ## Coords point from another coords
@@ -849,8 +854,8 @@ points: the one with parentheses, and the one without. The second method allows
 an existing path or path points to be copied and pasted into a new path without
 modification.
 
-    \path a = (0,0)[l:3,4] 
-    \path b = (2,2)[l:3,4]
+    \path a = (0,0)<l:3,4> 
+    \path b = (2,2)<l:3,4>
     \path c = &a &b
 
 In the previous example, the path "a" and "b" would each have described a single
@@ -891,24 +896,24 @@ first point. This would give the illusion of having a "closed" area that is
 "inside" the path, giving rise to the possibility of filling this area with a
 color and/or a gradient.
 
-The syntax for expressing a "closed" vector path is to add ``[z]`` after the
+The syntax for expressing a "closed" vector path is to add ``<z>`` after the
 last point of a vector path.  This would translate to adding an internal "z"
 point.  For example below, there are three internal path points for path "a":
 M, L and z.
 
-    \path a = (0,0)--(3,4)[z]
+    \path a = (0,0)--(3,4)<z>
 
 Care should be taken when pasting from a path with a "z" point, as this "z"
 point will be pasted without modification as well.
 For the following example, path "c" would have had a single z path point.
 
-    \path a = (0,0)--(3,4)[z]
+    \path a = (0,0)--(3,4)<z>
     \path c = &a_2
 
 In the example below path "c" would be empty. This is because the position
 information of a "z" point does not exist, and thus nothing is added to "c".
 
-    \path a = (0,0)--(3,4)[z]
+    \path a = (0,0)--(3,4)<z>
     \path c = (&a_2)
 
 
@@ -919,7 +924,7 @@ The last position of an absolute point or a relative is always remembered, and
 it is known as the 'lastpt'. The position information of the 'lastpt' is
 critical when figuring out the absolute position of a relative point.
 
-    \path a = (0,1)[h:3][v:4]
+    \path a = (0,1)<h:3><v:4>
 
 Note that the 'lastpt' only contains the location information. It does not
 include information such as control points of a Bezier curve.
@@ -929,8 +934,8 @@ constructions, even aross different commands. For instance, when building a path
 for 'b', the first point of 'b' is a L point with a position at (4,5) because
 the 'lastpt' at the time is remembered to be at (3,4).
 
-    \path a = (0,0)[h:3][v:4]
-    \path b = [l:1,1]
+    \path a = (0,0)<h:3><v:4>
+    \path b = <l:1,1>
 
 It is worth pointing out that the 'lastpt' is updated when an absolute
 point or a relative point is encountered. It is not updated when an path point
@@ -941,14 +946,14 @@ of path "a" at the start of the path construction for path "c" the 'lastpt'
 isn't updated, and remains set at (3,4).
 
     \path a = (0,0)--(1,1)--(3,4)
-    \path c = &a_1 [l:1,1]
+    \path c = &a_1 <l:1,1>
 
 It is possible to save the current location of the 'lastpt' to a path variable
 during a path construction so that it can be retrieved laster. This is done via
 invoking the "^pt" directive. The following example would save the positional
 information of the second path point to a path named "c".
 
-    \path a = (0,0) [l:3,4] ^pt:c [h:5]
+    \path a = (0,0) <l:3,4> ^pt:c <h:5>
 
 Having the notion of a 'lastpt' also allows us to terminate an existing path segment
 and start a new one from where it is left off. For instance, we want to construct
@@ -1036,7 +1041,7 @@ Each of these strings is translated into a bit field that is then OR'ed
 together. For instance, if we were to construct a path to express the fact that
 the line should be drawn at size 2, we could do the following.
 
-    \draw ^hint:linesize2 (0,0)--(0,2) 
+    \drawpath ^hint:linesize2 (0,0)--(0,2) 
 
 Note that the idea behind using a hint is to allow for a path to be constructed
 to have multiple independent vector paths and each individual vector could have
@@ -1045,9 +1050,9 @@ only valid for a vector path that immediately succeeds it, and will be cleared
 as soon as this path is terminated. For intance, in the following example the
 second and third vector path will not have the same hint as the first.
 
-    \draw ^hint:linesize2 (0,0)--(0,2) \
-         (0,2)[l:-0.5,-0.5] \
-         (0,2)[l:0.5,-0.5]
+    \drawpath ^hint:linesize2 (0,0)--(0,2) \
+         (0,2)<l:-0.5,-0.5> \
+         (0,2)<l:0.5,-0.5>
 
 Following is a list of hints:
 
@@ -1084,8 +1089,8 @@ future points of this path will be subject to having this offset be added to
 its x and/or y coordinate.  This design allows for the same path to appear
 in different locations.
 
-    \draw           (0,0)[h:2][v:2]
-    \draw ^x:2 ^y:3 (0,0)[h:2][v:2]
+    \drawpath           (0,0)<h:2><v:2>
+    \drawpath ^x:2 ^y:3 (0,0)<h:2><v:2>
 
 The 'offset' can be set using quite a number of directive. Some of the
 direction would set the offset directly, while others allow it to "change"
@@ -1497,9 +1502,9 @@ Following are built-in path that are readily available.
 If a coordinates is to be used directly then there are three commands that will
 draw a arrow, reverse arrow, and double arrow for each path segments.
 
-    \arrow     (0,0)--(3,4)  (2,2)[h:4]
-    \revarrow  (0,0)--(3,4)  (2,2)[h:4]
-    \dblarrow  (0,0)--(3,4)  (2,2)[h:4]
+    \arrow     (0,0)--(3,4)  (2,2)<h:4>
+    \revarrow  (0,0)--(3,4)  (2,2)<h:4>
+    \dblarrow  (0,0)--(3,4)  (2,2)<h:4>
 
 However, for other operations such as 'drawanglearc', then
 the 'arrowhead' should be set for the style, which is an integer
@@ -2169,9 +2174,9 @@ the list runs out, then no symbol name is assumed.
 
 Following commands treats the input argument as path.
 
-- \draw
-- \fill
-- \stroke
+- \drawpath
+- \fillpath
+- \strokepath
 - \arrow
 - \revarrow
 - \dblarrow
@@ -2181,7 +2186,7 @@ Typically it is straight lines, but Bezier curves are also supported.
 This includes quadratic and cubic curves. The SVG arc is also
 supported.
 
-    \draw (0,0)--(1,1)--(2,2)
+    \drawpath (0,0)--(1,1)--(2,2)
 
 The 'fill' command is similar to 'draw', except that it fills the path
 with the default filled color, without drawing the the outline of the
@@ -2192,10 +2197,10 @@ a straight line between two points. However, it is assumed if two
 points are detected without a connecting double-hyphen between, such
 as the case of the second and third point above. The points are
 typically expressed as absolute points, but relative points can also
-be expressed. They are all in the form of [...] where a set of
+be expressed. They are all in the form of <...> where a set of
 brackets are present.
 
-    \draw (0,0) [l:1,1] [l:1,1]
+    \drawpath (0,0) <l:1,1> <l:1,1>
 
 Here the second and third points are each expressed as a distance away from its
 previous point, which is to move right for one grid unit and then up for one
@@ -2207,12 +2212,12 @@ contains multiple disjoint segments. For example, we can express to draw two
 disjoint line in a single 'draw' command such that the first line segment goes
 from (0,0) to (2,3) and the second line segment goes from (4,5) to (6,7). 
 
-    \draw (0,0)--(2,3) (4,5)--(6,7)
+    \drawpath (0,0)--(2,3) (4,5)--(6,7)
 
 For example, for the following 'draw' command, where
 there is a closed triangle and a line. 
 
-    \draw (0,0)--(2,0)--(2,2)[z] (4,0)--(6,2)
+    \drawpath (0,0)--(2,0)--(2,2)<z> (4,0)--(6,2)
 
 For MetaPost output, each path segment requires a separate "draw" command. For
 SVG, a single PATH elements is sufficient; the SVG is implemented such that a
@@ -2243,7 +2248,7 @@ style) in the middle of the line. In the following example a short
 bar is to be drawn in the middle of the horizontal line and in the middle
 of the vertical line.
 
-    \drawcongbar (0,0) [h:4] [v:4]
+    \drawcongbar (0,0) <h:4> <v:4>
 
 The length of the short bar is determined by the barlength-option,
 The bartype-option will also be checked
@@ -2287,7 +2292,7 @@ In the following example the text "1", "2" and "3" are placed
 in the middle of three sides of the triangle shape.
 
     \path tri = &triangle{(0,0),(4,0),(2,2)}
-    \stroke &tri
+    \strokepath &tri
     \drawcenteredtext "1" "2" "3" &tri
 
 Any connecting line segments are located, including those that are not
@@ -2313,14 +2318,14 @@ segment.  The command scans for the presence of all line
 segments in the coodinates provided, and for every line segment found,
 place a label that run along the slope of the line.
 
-    \drawslopedtext "Hello" "World" (0,0) [h:4] [v:4]
+    \drawslopedtext "Hello" "World" (0,0) <h:4> <v:4>
 
 By default, the text will be placed at the center of the line, following the
 slope of the slide.  However, this position can be changed by adding the option
 to the end of the command.  For instance, the ".bot" option would have asked that
 the text be placed at the bottom of the line.
 
-    \drawslopedtext.bot "Hello" "World" (0,0) [h:4] [v:4]
+    \drawslopedtext.bot "Hello" "World" (0,0) <h:4> <v:4>
 
 Note that the text will still be following the slope of the line. The same
 option can be replaced by others such as ".top", ".lft", ".rt", etc..
@@ -2344,33 +2349,33 @@ the primitive command, a single dot is to be repeated for all points
 on the given path. Thus, following command will draw three dots each
 at three different locations of the input path.
 
-    \drawdot (1,1) (3,4) [l:2,1]
+    \drawdot (1,1) (3,4) <l:2,1>
 
 The 'drawdot' command provide several subcommands that allows for a
 different shape to be drawn instead of a circular dot.
 
-    \drawdot.hbar (1,1) (3,4) [l:2,1]
-    \drawdot.vbar (1,1) (3,4) [l:2,1]
+    \drawdot.hbar (1,1) (3,4) <l:2,1>
+    \drawdot.vbar (1,1) (3,4) <l:2,1>
 
 For 'drawdot' command, the color can be specified using the 'dotcolor'.
 
-    \drawdot {dotcolor:orange} (1,1) (3,4) [l:2,1]
+    \drawdot {dotcolor:orange} (1,1) (3,4) <l:2,1>
 
 For 'hbar' and 'vbar' subcommands the 'linecolor' attribute would have
 expressed the color of the lines.
 
-    \drawdot.hbar {linecolor:orange} (1,1) (3,4) [l:2,1]
-    \drawdot.vbar {linecolor:orange} (1,1) (3,4) [l:2,1]
+    \drawdot.hbar {linecolor:orange} (1,1) (3,4) <l:2,1>
+    \drawdot.vbar {linecolor:orange} (1,1) (3,4) <l:2,1>
 
 The diameter of the dot can be set using the 'dotsize' attribute.
 
-    \drawdot {dotcolor:orange, dotsize:10} (1,1) (3,4) [l:2,1]
+    \drawdot {dotcolor:orange, dotsize:10} (1,1) (3,4) <l:2,1>
 
 For 'hbar' and 'vbar' subcommands the 'linesize' attribute would hve
 expressed the width of the line.
 
-    \drawdot.hbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
-    \drawdot.vbar {barcolor:orange, linesize:2} (1,1) (3,4) [l:2,1]
+    \drawdot.hbar {barcolor:orange, linesize:2} (1,1) (3,4) <l:2,1>
+    \drawdot.vbar {barcolor:orange, linesize:2} (1,1) (3,4) <l:2,1>
 
 The 'dotsize' and 'linesize' are both expressed in terms of 'pt'. For
 'hbar' and 'vbar' commands, the length of the bar can be specified via
@@ -2379,8 +2384,8 @@ length in grid unit. If not specified, the default value is 0.25,
 which is one-quarter the length of a grid, and it can be changed to a
 different value by the 'set barlength' command.
 
-    \drawdot.hbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
-    \drawdot.vbar {linecolor:orange, barlength:0.5} (1,1) (3,4) [l:2,1]
+    \drawdot.hbar {linecolor:orange, barlength:0.5} (1,1) (3,4) <l:2,1>
+    \drawdot.vbar {linecolor:orange, barlength:0.5} (1,1) (3,4) <l:2,1>
 
 Here, the length of each bar is going to be about half the length of
 the grid. Note that for 'vbar', it's lower end point aligns with the
@@ -2590,7 +2595,7 @@ frame.
 Similarly, we can draw line segment can be drawn between Cartesian point (4,3) and (5,10)
 using the following command.
 
-    \draw (#car:1,4.3)--(#car:1,5,10)
+    \drawpath (#car:1,4.3)--(#car:1,5,10)
 
 In addition, there is a "^car" path directive such that when set, would have
 setup for the future path points to be constructed relative to this new origin
@@ -2598,7 +2603,7 @@ and with scaling factors congruent to each of the scaling factors of the
 Coordiante frame. For instance we can draw the previous two points using the
 following 'draw' command and the result will be exactly the same.
 
-    \draw ^car:1 (4,3)--(5,10)
+    \drawpath ^car:1 (4,3)--(5,10)
 
 
 
@@ -2669,21 +2674,21 @@ can be repetitively executed, and each iteration these commands would
 have been run under a different set of arguments. The basic syntax is
 
     \for a in 1 2 3; \do
-      \draw (a,a)--(0,0)
+      \drawpath (a,a)--(0,0)
     \done
 
 Following would have produced the same result as the one above.
 
     \for a in [1,2,3]; \do
-      \draw (a,a)--(0,0)
+      \drawpath (a,a)--(0,0)
     \done
 
 In eacho of the previous two examples, the 'draw' command would all have been
 executed three times, and can be considered equivalent to the following:     
 
-    \draw (1,1)--(0,0)
-    \draw (2,2)--(0,0)
-    \draw (3,3)--(0,0)
+    \drawpath (1,1)--(0,0)
+    \drawpath (2,2)--(0,0)
+    \drawpath (3,3)--(0,0)
 
 The 'for' command starts with the keyword 'for', followed by a one or more
 pairing of a "loop variable" to a range of floats.  Each pairing must be
@@ -2702,14 +2707,14 @@ which case each of them should have retained its last value.
 Following is an example of iterating over two loop variables: 'a' and 'b'.
 
     \for a in [1,3,5]; b in [2,4]; \do
-      \draw (${a},${a})--(${b},${b})
+      \drawpath (${a},${a})--(${b},${b})
     \done
 
 This should have been equilvalent to the following:
 
-    \draw (1,1)--(2,2)
-    \draw (3,3)--(4,4)
-    \draw (5,5)--(4,4)
+    \drawpath (1,1)--(2,2)
+    \drawpath (3,3)--(4,4)
+    \drawpath (5,5)--(4,4)
 
 Each loop variable is to become an environment variable, which can be accessed
 via a dollar-expression, or be used in other places where an environment
@@ -2912,7 +2917,7 @@ possible to draw a line from (0,0) to the "o9" anchor point of node 1
 as is shown by the following example.
 
     \node.1 (5,5)
-    \draw (0,0) -- (#node:1:o9)
+    \drawpath (0,0) -- (#node:1:o9)
 
 
 
@@ -2976,7 +2981,7 @@ the object-expression such as the following.
 
     \box.1 "Hello\\World" (0,0)
     \box.2 "Goodbye" (5,5)
-    \draw (#box:1:e)--(#box:2:w)
+    \drawpath (#box:1:e)--(#box:2:w)
 
 This would have drawn a straight line from the "e" anchor point of box 1
 to the "w" anchor point of box 2. The anchor points of a box is follows:
@@ -3004,7 +3009,7 @@ to a slightly different location other than the default one provided.
 
     \box.1 "Hello\\World" (0,0)
     \box.2 "Goodbye" (5,5)
-    \draw (#box:1:e,0,0.1)--(#box:2:w,0,-0.1)
+    \drawpath (#box:1:e,0,0.1)--(#box:2:w,0,-0.1)
 
 In the previous example, the "e" anchor point of box 1 will be moved up
 for 0.1 grid unit, and the "w" anchor point of box 2 will be moved down
@@ -3013,7 +3018,7 @@ the following, then the lower-left point of the box is assumed.
 
     \box.1 "Hello\\World" (0,0)
     \box.2 "Goodbye" (5,5)
-    \draw (#box:1,0,0.1)--(#box:2,0,-0.1)
+    \drawpath (#box:1,0,0.1)--(#box:2,0,-0.1)
 
 
 # The 'prodofprimesws' command
@@ -3176,7 +3181,7 @@ is the result of an arithmetic expression, a text string,
 or an array.  Following is an example of a arithmetic expression.
 
     \var a = pow(2,1/12)
-    \draw (0,0)--(a,a)
+    \drawpath (0,0)--(a,a)
 
 Following is a example of creating a variable that holds an array.
 
@@ -3283,7 +3288,7 @@ The following example has created an array of three numbers, and was later
 on used to generate text output on various locations, pulling the content of 
 each element of the array. 
 
-    \drawtext "${a_0}" "${a_1}" "${a_2}" (0,0) [h:1] [h:1]
+    \drawtext "${a_0}" "${a_1}" "${a_2}" (0,0) <h:1> <h:1>
 
 Following are formatting groups that are recognized.
 
@@ -3453,6 +3458,16 @@ effect on this command.
 
 
 
+# The "\rectangle" command
+
+This command draws one or more rectangles between two neighboring points.
+The following example draws two recntangles: one between (0,0) and (3,4),
+and another one between (3,4) and (6,2).
+
+    \rectangle (0,0) (3,4) (6,2)
+
+
+
 # Copy-and-paste Buffers
 
 Copy-and-paste Buffers are internal buffers to Diagram. It saves
@@ -3487,9 +3502,9 @@ Following example would have created a copy buffer named "a" and
 within it insert three lines.
 
     %?a
-    \draw (0,0)--(4,4)
-    \draw (0,0)--(5,5)
-    \draw (0,0)--(6,6)
+    \drawpath (0,0)--(4,4)
+    \drawpath (0,0)--(5,5)
+    \drawpath (0,0)--(6,6)
     %
 
 Following is an example of inserting these three lines at the beginning,
@@ -3546,20 +3561,20 @@ first "draw" command is copied to buffer "a".  The presence of the paste
 of "b" buffer interrupted the copy buffer.
 
     %?a
-    \draw (0,0)--(4,4)
+    \drawpath (0,0)--(4,4)
     %=b
-    \draw (0,0)--(5,5)
-    \draw (0,0)--(6,6)
+    \drawpath (0,0)--(5,5)
+    \drawpath (0,0)--(6,6)
     %
 
 In the example below the first "draw" command is copied to 
 the "a" buffer and the last two "draw" commands to the "b" buffer.
 
     %?a
-    \draw (0,0)--(4,4)
+    \drawpath (0,0)--(4,4)
     %?b
-    \draw (0,0)--(5,5)
-    \draw (0,0)--(6,6)
+    \drawpath (0,0)--(5,5)
+    \drawpath (0,0)--(6,6)
     %
 
 
@@ -3589,21 +3604,21 @@ and the use it to place it on the top of the hrule.
     
     ```diagram{width:100%,save:ex3,viewport:22 12}
     \origin ^northwest
-    \draw (0,0) -- [v:-14]
-    \draw (3,0) -- [v:-14]
-    \draw (6,0) -- [v:-14]
+    \drawpath (0,0) -- <v:-14>
+    \drawpath (3,0) -- <v:-14>
+    \drawpath (6,0) -- <v:-14>
     \for y=[0:2:12]; \do
-      \draw (0,-y) [h:22]
+      \drawpath (0,-y) <h:22>
     \done
     -- table
     \origin ^down:1
     \origin ^x:1.5
-    \drawtext.ctr "x"  "y"  ^down:0  (0,0) [h:3] 
-    \drawtext.ctr "1"  "2"  ^down:2  (0,0) [h:3] 
-    \drawtext.ctr "2"  "3"  ^down:4  (0,0) [h:3]
-    \drawtext.ctr "3"  "4"  ^down:6  (0,0) [h:3]
-    \drawtext.ctr "4"  "5"  ^down:8  (0,0) [h:3]
-    \drawtext.ctr "10" "11" ^down:10 (0,0) [h:3]
+    \drawtext.ctr "x"  "y"  ^down:0  (0,0) <h:3> 
+    \drawtext.ctr "1"  "2"  ^down:2  (0,0) <h:3> 
+    \drawtext.ctr "2"  "3"  ^down:4  (0,0) <h:3>
+    \drawtext.ctr "3"  "4"  ^down:6  (0,0) <h:3>
+    \drawtext.ctr "4"  "5"  ^down:8  (0,0) <h:3>
+    \drawtext.ctr "10" "11" ^down:10 (0,0) <h:3>
     \origin ^x:3.5
     \drawtext.rt "{{f(x,y)=x^2+y+1}}"       ^down:0  (3,0)
     \drawtext.rt "{{f(1,2)=4}}"             ^down:2  (3,0)
