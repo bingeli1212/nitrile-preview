@@ -1,17 +1,64 @@
 ---
 title: CJK
-latex: xelatex
+latex: lualatex
 fonts: cn,"arplsungtilgb",contex
        tw,"arplmingti2lbig5",contex
        jp,"ipaexmincho",contex
        kr,"baekmukbatang",contex
+       Fa,"Unifont",0x2700,contex    
        cn,"STSong",xelatex
        tw,"Songti TC",xelatex
        jp,"Hiragino Mincho ProN",xelatex
        kr,"AppleGothic",xelatex
+       Fa,"Unifont",0x2700,xelatex   
+       cn,"arplsungtilgb",lualatex
+       tw,"arplmingti2lbig5",lualatex
+       jp,"ipaexmincho",lualatex
+       kr,"baekmukbatang",lualatex
+       Fa,"Unifont",0x2700,lualatex
+bodyfont: office
 ---
 
 
+# DingBats
+
+✈✉✌✍✎✏✐✑✒✓
+
+# English text and math
+
+The &b{mean-product formula} allows us to 
+directly compute the value of
+two numbers if we know the mean 
+and product of these two numbers. Specifically,
+the two numbers are:
+
+> \( M - \sqrt{M^2 - P} \) and
+> \( M + \sqrt{M^2 - P} \)
+> \( m + \sqrt{x^2 - y} \)
+
+where \(M\) is their mean and \(P\) is their product.
+
+
+# Bold font
+
+```par{fontstyle:b}
+Hello world, 日本では母親がよく家族のために弁当を作っている。
+```
+
+```par{fontstyle:b}
+Hello world, 冰岛由于实行高福利政策， 所以很多人并没有存钱防老的习惯。
+```
+
+```par{fontstyle:b}
+Hello world, 冰島由於實行高福利政策，所以很多人並沒有存錢防老的習慣。
+```
+
+
+
+# Sample
+
+    In Japan a mother usually prepares Bento for 
+    family members.
 
 # Japanese
 
@@ -20,8 +67,6 @@ fonts: cn,"arplsungtilgb",contex
 自分でお昼を持っていかなければならず、
 私の母が弁当を作ってくれていた。
 
-    In Japan a mother usually prepares Bento for 
-    family members.
 
 # Simplified Chinese
  
@@ -57,4 +102,24 @@ fonts: cn,"arplsungtilgb",contex
 전체 문서에 대한 기본 정보를 소개 단락.
 
 # 冰岛由于实行高福利政策
+
+冰岛由于实行高福利政策，
+所以很多人并没有存钱防老的习惯，
+银行存款占个人全部资产的比例并不多；
+此外，冰岛人投在股票、期货等金融市场上的钱也多是闲钱
+，损失虽然令人心痛，
+但还不至于严重到影响生活的程度，
+所以看不出来生活水平有显著下降，
+反而是因为冰岛克朗贬值的缘故，
+到冰岛购物的外国人增多，
+还相应促进了当地的旅游业和商业发展。
+而且，货比贬值带来奢饰品大幅降价，
+除了外国人跑来扫货，冰岛人自己也在购物狂欢中玩得不亦乐乎。
+另外加上没有塞浦路斯那种专为人民添堵的政府，
+危机中的冰岛人也过得还算不错。
+
+[ 冰岛 ]
+See below.
+
+A wonderful island.
 
