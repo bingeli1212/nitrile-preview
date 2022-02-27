@@ -117,7 +117,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/creamer.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nicreamer.js",
       "args": [
         "test.md"
       ]
