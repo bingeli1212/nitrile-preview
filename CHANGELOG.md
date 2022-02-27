@@ -493,16 +493,17 @@ Nitrile
 - [x] Figure out a way of putting allowing for specifying other fonts for certain unicode blocks for XELATEX/CONTEX: font1/unifont/0x7100
 - [x] Add a new style feature to specify the font style for each tabular column, such as \tt, \it
 - [x] Add a new fence called 'img' to allow for HTML translation to present a Canvas such that it can show predefined raster images as well as hand draw it
-- [x] In diagram.js, remove "group", and move all g_to_xxx() function to base.js, also, ensure that fontsize:small is taken cared of inside diagram.js
+- [x] In diagram.js, remove "group", and move all `g_to_xxx()` function to base.js, also, ensure that fontsize:small is taken cared of inside diagram.js
 - [x] Added \set command to superceed \config
 - [x] Change it so that for \Lscr the protrude field is consulted and extra 3pt is allocated after the char, this has been extended to add a new "protrude" object to this.pjson to hold all protrude information for characters including \Lscr and \pmathit and \qmathit
 - [x] Deprecate 'shadow' style 
-- [x] The /post submit does not work when niserver starts at tcl_notes directory, solved by doing new URL(imgsrc,document.baseURI).pathname which would construct a new URL taking consideration base URI and returning a new path pointing to the corrected image file path.
+- [x] The /post submit does not work when niserver starts at `tcl_notes` directory, solved by doing new URL(imgsrc,document.baseURI).pathname which would construct a new URL taking consideration base URI and returning a new path pointing to the corrected image file path.
 - [ ] The minus sign follows too closely to the fraction 57 
 - [ ] Rename \draw to \drawpath, \stroke to \strokepath, and \fill to \fillpath
 - [ ] Allow jp/cn/tw/kr fonts to be switched to a different one, for CONTEX it needs to change the definefontfamily
 - [ ] Work on samp.hew for HTML.js and LATEX.js
 - [ ] Change HTML.js and LATEX.js to the latest 'sand' type
 - [ ] Renamed "column" float to "multicols" float
-- 
+- [ ] Introduce SAMP, SAND, COVE, CAVE, BODY paragraph types 
+- [ ]
 
