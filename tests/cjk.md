@@ -1,6 +1,10 @@
 ---
 title: CJK
 latex: xelatex
+fonts: cn,"arplsungtilgb",contex
+       tw,"arplmingti2lbig5",contex
+       jp,"ipaexmincho",contex
+       kr,"baekmukbatang",contex
 ---
 
 
