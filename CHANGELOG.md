@@ -364,20 +364,20 @@ Nitrile
 - [x] [FR] Change the syntax of a 'let-command' to 'let x := 1+2*2+1'
 - [ ] [FR] Change it so that for 'flow' command the anchor point should be named 'north', 'south', 'west', 'east', rather than 'n', 's', 'w', and 'e'
 - [ ] [FR] Add 'fontweight' attribute
-- [ ] [FR] Currently to_outer_svg() is harded coded again using pt. Need to allow HTML to change it to using EM
+- [ ] [FR] Currently `to_outer_svg()` is harded coded again using pt. Need to allow HTML to change it to using EM
 - [ ] [FR] Need to come up with the new symbol of SUM and INT for display sized summation and integration symbol.
 - [ ] [FR] Need to change the translator such that when untext it always needed to look for triple and double fence first
 - [ ] [FR] Expand the list of 'mathOperators" section inside math.json to include ALL recognized math operators like \times, \div, \equiv, etc. 
 - [ ] [BUG] After the recent changes to &diagram{...} and &tabular{...} using curly braces it need to be made aware that the style options should've become the second argument
 - [ ] [FR] Change all \sqrt[3]{a} to \root{a}{3} inside a math
-- [x] [BUG] Change all ~~~list to ```list
-- [x] [FR] Change the replacement in a string in Diagram to look like a ${str} rather than \str, this would have prevented some texts in a math string such as label "\text{...}" where \text could be mistakenly treated as a candidate and replaced if "text" is an environment variable
-- [ ] [FR] Change the HTML.js, LATEX.js, and CONTEX.js so that the do_phrase() is to be replaced by other calls of do_phrase_XXX().
-- [ ] [FR] Rename all calls of fence_to_XXX() to do_fence_XXX(),
-- [ ] [FR] Rename all calls of float_to_XXX() to do_float_XXX().
-- [x] [FR] Rename all calls of do_HDGS(), do_PLST, do_PRIM, do_PARA, and others to do_block_HDGS(), do_block_PLST, do_block_PARA(), and do_block_PARA(), 
+- [x] [BUG] Change all triple-tilde list to triple-backquote list
+- [x] [FR] Change the replacement in a string in Diagram to look like a `${str}` rather than \str, this would have prevented some texts in a math string such as label "\text{...}" where \text could be mistakenly treated as a candidate and replaced if "text" is an environment variable
+- [ ] [FR] Change the HTML.js, LATEX.js, and CONTEX.js so that the `do_phrase()` is to be replaced by other calls of `do_phrase_XXX()`.
+- [ ] [FR] Rename all calls of `fence_to_XXX()` to `do_fence_XXX()`,
+- [ ] [FR] Rename all calls of `float_to_XXX()` to `do_float_XXX()`.
+- [x] [FR] Rename all calls of `do_HDGS()`, `do_PLST`, `do_PRIM`, `do_PARA`, and others to `do_block_HDGS()`, `do_block_PLST`, `do_block_PARA()`, and `do_block_PARA()`, 
 - [x] [FR] Need to add the new built-in function if(x>10,1,0)
-- [x] [FR] Change all directives to the form of '<map:f>' or '<keep:f>'
+- [x] [FR] Change all directives to the form of `<map:f>` or `<keep:f>`
 - [x] [FR] Ensure that more than one directives can be specified and applied in the reverse order in which they appear
 - [x] [FR] Change the form of a environment variable inside the command line to be '${a}' or '${b}'
 - [x] [FR] Change all appearances of array to '@a', '@b', etc
@@ -387,16 +387,16 @@ Nitrile
 - [x] [FR] Figure out how to draw a text oriented in any direction
 - [x] [FR] Set up clip for a diagram in CONTEX
 - [x] [FR] Need to change the way the env variables are being replaced inside a Diagram, such that in the new way each occurrences of ${a} would have to be scoped up and replaced, even when it might not have been an environment variable, in which case it will be replaced with "0"
-- [x] [BUG] For do_node and do_edge, it seems to break down when origin s:2 is set
+- [x] [BUG] For `do_node` and `do_edge`, it seems to break down when origin s:2 is set
 - [x] [BUG] The 'fontfamily' and 'fontstyle' in diagrammf.js isn't being implemented
 - [x] [BUG] The shade for "ball" isn't consistent for some ping-pong balls. See test-pingpongball.md
 - [ ] [BUG] Need to take care of all the 'img', 'diagram', and 'framed' phrases in 'figure
 - [ ] [FR] Create a niarticle, nireport, and nimemoir binaries
 - [x] [FR] Need to add a column in math.json to specify the font that has this glyph
 - [x] [FR] Figure out a way to allow a label to a colon, thus making a label not part of a style but rather a part of the text itself, or for a @float, a part of the header
-- [x] [FR] Add the capability to detect whether a list is packed or not in the parser, and set it to be fence_to_list() if it is packed; need to change all placed where the 'label' is accessed as 'style.label' and change it so that it is accessed as block.label
-- [x] [FR] Change the this.conf() method to something like this.conf_to_string(), which will always only return the first line if there are multiple lines, whilst this.conf_to_list() returns a list; this allows the subdocuments to have its @label being placed directly as the second line of the heading
-- [x] [FR] Add hdgs_to_XXX methods so that all subclass can implement
+- [x] [FR] Add the capability to detect whether a list is packed or not in the parser, and set it to be `fence_to_list()` if it is packed; need to change all placed where the 'label' is accessed as 'style.label' and change it so that it is accessed as block.label
+- [x] [FR] Change the this.conf() method to something like `this.conf_to_string()`, which will always only return the first line if there are multiple lines, whilst `this.conf_to_list()` returns a list; this allows the subdocuments to have its @label being placed directly as the second line of the heading
+- [x] [FR] Add `hdgs_to_XXX` methods so that all subclass can implement
 - [x] [BUG] Ensure fontcolor works for cairo
 - [x] [FR] Allow an img, a tabular, a diagram, or a framed to have a subtitle as well that go underneath, and when so the width can be known, and for img the size is to be assume some default - this is not done because they can become a subfigure of a figure or table and thus automatically entitled a subcaption 
 - [ ] [FR] See if a tabular can be made into a picture 
@@ -421,10 +421,10 @@ Nitrile
 - [ ] Add \drawpolyline command
 - [x] Change the \drawrect command to allow for a rounded rectangle
 - [x] Add p_sector, p_segment to diagram subclass so that they can be overridden in subclasses to provide specialized drawing such as diagramcanvas.js
-- [x] Make it so that for these shape routines such as p_circle if fillcolor is set it will also be used to fill the area in addition to stroking
+- [x] Make it so that for these shape routines such as `p_circle. if fillcolor is set it will also be used to fill the area in addition to stroking
 - [x] Merging master document's switches with those of subdocments
 - [x] Switch to use "transform=" attribute for the entire SVG for origin changes, same for TIKZ, and MF
-- [x] For \image in Diagram, the default behavior has been changed to "fill" where a new style.fit property has been setup to control it, p_image() method has been added a 'g' argument, Diagramsvg.js has been changed to watch out for this property; but Diagramtikz.js and diagrammf.js has not yet been done;
+- [x] For \image in Diagram, the default behavior has been changed to "fill" where a new style.fit property has been setup to control it, `p_image()` method has been added a 'g' argument, Diagramsvg.js has been changed to watch out for this property; but Diagramtikz.js and diagrammf.js has not yet been done;
 - [x] For niepub, when an image file is not located it does not generate an error, it should generate an error when it is so
 - [ ] Add another type of bundle that is called "output"
 - [x] CSS name should changed from 'DIAGRAM' to 'dia'
@@ -436,18 +436,18 @@ Nitrile
 - [x] Change the tabular direction:column or direction:row format to using '&' instead of '-'
 - [x] Merge all PARAGRAPH blocks into one
 - [x] Consider asking that the fenced-bundle be in its own paragraph, 
-- [x] Need to call float_to_paragraph() at the translator level and figure out what to do then call the subtranslator's routine.
+- [x] Need to call `float_to_paragraph()` at the translator level and figure out what to do then call the subtranslator's routine.
 - [x] Need to add 'PARAGRAPH SAMP' and 'PARAGRAPH VERB'
 - [ ] For 'folio.js', implement the page &ref{} for figure, listing, longtabu, and equation.
-- [x] Ensure that <table> is parallel to <p> and is not compatible to be inside <p>, thus making all bundle be its own <table> and its own paragraph
+- [x] Ensure that `<table>` is parallel to `<p>` and is not compatible to be inside <p>, thus making all bundle be its own `<table>` and its own paragraph
 - [x] Change is so that for frame for contex use the starttable or starttabulate instead of \framed
 - [x] Modify all MD documents to change "style.small" to "style.fontsize:small"
 - [x] When generating numberings for figure, table, equation and longtabu, add a chapter number in front of it.
-- [x] Added a to_capation_nonumber() method that returns true for slide.js, powerpot.js, creamer.js, 
+- [x] Added a `to_capation_nonumber()` method that returns true for slide.js, powerpot.js, creamer.js, 
 - [x] Removed the ability to copy buffers from inside a 'dia' script; copying must be done at the beginning of the current file
 - [x] The hilite for 'dia' in line math-class-0610.md:127 does not work
 - [x]  Math-class-1052 the drawcairo command is putting too big a gap between inter-lines
-- [x] Change all fence_to_XXX() function such that the 'img' return one without the <caption> element and also no PARAGRAPH class
+- [x] Change all `fence_to_XXX()` function such that the 'img' return one without the `<caption>` element and also no PARAGRAPH class
 - [x] Make parbox pay attention to line breaks
 - [x] Stretch can be set to a number less than 1 such as 0.8 to mean 0.8\textwidth
 - [x] Deprecate all flushleft, flushright, center, verse, and quote bundles
@@ -460,7 +460,7 @@ Nitrile
 - [x] Add to contex.js such that if fontsize:small is set then the subcaption for each figure is also changed to smaller font size in addition to its caption text font size
 - [x] Since the figure caption alignment is usually configured at the beginning and used throughout the document, it makes sense to deprecate 'salign" style and instead create a configuration param for contex.js, latex,js and html.js to set it as a global param that is used for ALL figures
 - [x] Find all %?= in .MD file and ensure that they are in the FRONTMATTER section
-- [ ] Change all presence of <tag> into "tag"
+- [ ] Change all presence of `<tag>` into "tag"
 - [x] For niepub.js and nifolio.js and nipage.js, add a function that would "assign" figure numbering to each one of them as a preprocess before starting the translate_block()
 - [x] Remove all reference to 'to_caption_number()' call, because if 'idnum' member of the block isn't there then the idnum isn't to be shown.
 - [x] Rename all ```displaymath to ```math
@@ -505,5 +505,6 @@ Nitrile
 - [ ] Change HTML.js and LATEX.js to the latest 'sand' type
 - [ ] Renamed "column" float to "multicols" float
 - [ ] Introduce SAMP, SAND, COVE, CAVE, BODY paragraph types 
+- [x] It is now possible to change the fonts for jp, cn, tw, and kr, as well as adding other fonts for a specific Unicode block that are Fa, Fb, Fc, Fd, Fe, Ff, Fg, Fh, Fi, and Fj.
+- [ ] Added a new `bodyfont` front matter configuration parameter to select the main font. The values is a word that might work differently for different translations. 
 - [ ]
-
