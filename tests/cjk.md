@@ -5,6 +5,10 @@ fonts: cn,"arplsungtilgb",contex
        tw,"arplmingti2lbig5",contex
        jp,"ipaexmincho",contex
        kr,"baekmukbatang",contex
+       cn,"STSong",xelatex
+       tw,"Songti TC",xelatex
+       jp,"Hiragino Mincho ProN",xelatex
+       kr,"AppleGothic",xelatex
 ---
 
 
