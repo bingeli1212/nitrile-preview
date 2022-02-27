@@ -407,6 +407,61 @@ but can cause LaTeX to change the output around it. See \strut for examples.
 
 
 
+# CJK & other font supports
+
+It is possible to specify CJK fonts and other fonts such as Unifont for
+providing glyphs that are not provided by the main font. These features 
+are only available the "latex" front matter configuration parameters 
+is set to either "xelatex" or "lualatex". Fontifications are not enabled
+for "pdflatex".
+
+    ---
+    title: CJK
+    latex: xelatex
+    fonts: cn,"arplsungtilgb",contex
+           tw,"arplmingti2lbig5",contex
+           jp,"ipaexmincho",contex
+           kr,"baekmukbatang",contex
+           Fa,"Unifont",0x2700,contex
+           cn,"STSong",xelatex
+           tw,"Songti TC",xelatex
+           jp,"Hiragino Mincho ProN",xelatex
+           kr,"AppleGothic",xelatex
+           Fa,"Unifont",0x2700,xelatex
+    ---
+
+Note that LuaLaTeX and ConTeXt are very simular when it comes to assigning 
+a name to a font---this is probably due to the fact that they both share
+the same LuaTeX engine.
+
+However, for XeLaTeX, which uses XeTeX, the font name are different than those
+of the LuaTeX and ConTeXt.
+
+For each line of "fonts" configuration parameter, it is expected to have
+a 'fid', a 'fontname', a 'fontfamily', and optionally a 'start'.
+A 'fid' is a recognized if the list item is one of the followings: jp, tw, cn, kr, 
+Fa, Fb, Fc, Fd, Fe, Ff, Fg, Fh, Fi, and Fj. 
+
+A 'fontname' is recognzed if it surrounded by a pair of quotations marks.
+
+A 'start' is recognized if it starts with "0x", such as 0x2700. It must be representing
+a hex number that is the start of a Unicode block, such as 0x2700-0x27EF, otherwise known
+as DingBats. 
+
+A 'fontfamily' is one of the following: contex, xelatex, lualatex, serif, sans, mono, or math.
+
+A 'fontfamily' that is set to contex, serif, sans, mono, or math is to be used for setting up a font
+for CONTEX translation. A 'fontfamily' that is set to 'xelatex' is to be used to setting up a font
+for XELATEX translation. A 'fontfamily' that is set to 'lualatex' is to be used to setting up a font
+for LUALATEX translation.
+
+Note that for LUALATEX translation the "luatexja-fontspec" package is loaded
+instead of "fontspec" package---this package fixes the problem of "fontspec"
+package such that none of the CJK characters are to be wrapped properly if they
+are placed next to each other without spaces between them. 
+
+
+
 # Problems
 
 * The INK bundle do not currently clip contents if the list is too long or too
