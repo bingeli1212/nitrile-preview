@@ -507,4 +507,5 @@ Nitrile
 - [ ] Introduce SAMP, SAND, COVE, CAVE, BODY paragraph types 
 - [x] It is now possible to change the fonts for jp, cn, tw, and kr, as well as adding other fonts for a specific Unicode block that are Fa, Fb, Fc, Fd, Fe, Ff, Fg, Fh, Fi, and Fj.
 - [ ] Added a new `bodyfont` front matter configuration parameter to select the main font. The values is a word that might work differently for different translations. 
+- [x] Added so that each sub-figure can have a subcaption
 - [ ]
