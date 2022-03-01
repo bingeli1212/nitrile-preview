@@ -512,5 +512,6 @@ Nitrile
 - [x][BUG] "\mu" is not showing at all when compiled by CONTEX.
 - [x][BUG] `\hat{\mu}` is showing that the hat is too low and is overlapping with `\mu`.
 - [ ][FR] Add a new block type that is ITEM that would typeset an itemized item with sub-paragraphs.
+- [ ][FR] Change it so that for \left\right fences it is drawn using path rather than existing characters
+- [ ][BUG] When \sum is at a fraction and is display mode the subsup are top and bottom, which should be moved to right
 - [ ]
--  
