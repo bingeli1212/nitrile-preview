@@ -509,5 +509,7 @@ Nitrile
 - [ ] Added a new `bodyfont` front matter configuration parameter to select the main font. The values is a word that might work differently for different translations. 
 - [x] Added so that each sub-figure can have a subcaption, either by (a), (b), or ()
 - [ ] Added a new `\chart` command for DIA
-- [ ][BUG] In cmath.js "\mu" is being converted to Unicode MU by 
+- [x][BUG] "\mu" is not showing at all when compiled by CONTEX.
+- [x][BUG] `\hat{\mu}` is showing that the hat is too low and is overlapping with `\mu`.
+
 -  
