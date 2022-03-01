@@ -511,5 +511,6 @@ Nitrile
 - [ ] Added a new `\chart` command for DIA
 - [x][BUG] "\mu" is not showing at all when compiled by CONTEX.
 - [x][BUG] `\hat{\mu}` is showing that the hat is too low and is overlapping with `\mu`.
-
+- [ ][FR] Add a new block type that is ITEM that would typeset an itemized item with sub-paragraphs.
+- [ ]
 -  
