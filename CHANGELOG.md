@@ -302,7 +302,7 @@ Nitrile
 - [x] [FR] For a bull-paragraph allow a HTML checkbox to be created
 - [x] [FR] enhance 'set refxy' to so that each additional arguments also aggregate
 - [x] [FR] Implement \i and \j for LATEX/HTML translation in math expression (already done)
-- [ ] Redesign the import using following forms: - [part]("Part 1 - Introduction") - [chapter](file://chap1.md) - [chapter](file://chap2.md) - [part]("Part 2 - Next Step")
+- [ ] Redesign the import using following forms:- [part]("Part 1 - Introduction")- [chapter](file://chap1.md)- [chapter](file://chap2.md)- [part]("Part 2 - Next Step")
 - [ ] [BUG] Need to add sectioning heading to HTML generation, currently the sectional heading is disabled because there is no numbering of section headings, this makes it impossible to have &ref{} be able to reference any sections, need to figure out a way to do that; another option would be to simply use the name of the section instead of the number, thus it becomes "See section <<Introduction to Programming>> for more information" 
 - [x] [BUG] Need to modify paper.js and presentation.js to change it so that the check for 'hdgn=part' should be done with 'name=part', 
 - [x] Change the syntax of &uri{} so that it expects a "mode" string
@@ -480,7 +480,7 @@ Nitrile
 - [x] For folio.js, a Part should be in its own page
 - [x] Add a nigrep.js
 - [x] Add a nisubs.js
-- [x] Change it so that it uses <p> again for HTML
+- [x] Change it so that it uses `<p>` again for HTML
 - [x] The niepub.js for html.md is currently broken
 - [ ] The latex.js the tikzpicture inside a tabular had its top part trimmed too much
 - [ ] For nimake, it should have aborted the future process if one process returns with an error, but it kept on going
@@ -502,10 +502,12 @@ Nitrile
 - [ ] Rename \draw to \drawpath, \stroke to \strokepath, and \fill to \fillpath
 - [ ] Allow jp/cn/tw/kr fonts to be switched to a different one, for CONTEX it needs to change the definefontfamily
 - [ ] Work on samp.hew for HTML.js and LATEX.js
-- [ ] Change HTML.js and LATEX.js to the latest 'sand' type
-- [ ] Renamed "column" float to "multicols" float
+- [x] Change HTML.js and LATEX.js to the latest 'sand' type
+- [x] Renamed "column" float to "multicols" float
 - [ ] Introduce SAMP, SAND, COVE, CAVE, BODY paragraph types 
-- [x] It is now possible to change the fonts for jp, cn, tw, and kr, as well as adding other fonts for a specific Unicode block that are Fa, Fb, Fc, Fd, Fe, Ff, Fg, Fh, Fi, and Fj.
+- [x] It is now possible to change the fonts for languages that are jp, cn, tw, and kr, as well as allowing other fonts to be defined and applied to Uncode characters of certain Unicode blocks.
 - [ ] Added a new `bodyfont` front matter configuration parameter to select the main font. The values is a word that might work differently for different translations. 
-- [x] Added so that each sub-figure can have a subcaption
-- [ ]
+- [x] Added so that each sub-figure can have a subcaption, either by (a), (b), or ()
+- [ ] Added a new `\chart` command for DIA
+- [ ][BUG] In cmath.js "\mu" is being converted to Unicode MU by 
+-  
