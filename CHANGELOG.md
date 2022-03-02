@@ -458,11 +458,10 @@ Nitrile
 - [x] Added the CENTERING block for $
 - [x] Increase the font size for sub/superscript as currently it is modeled after LATEX and is too small comparing it to CONTEX, see if we can increase it
 - [x] Add to contex.js such that if fontsize:small is set then the subcaption for each figure is also changed to smaller font size in addition to its caption text font size
-- [x] Since the figure caption alignment is usually configured at the beginning and used throughout the document, it makes sense to deprecate 'salign" style and instead create a configuration param for contex.js, latex,js and html.js to set it as a global param that is used for ALL figures
-- [x] Find all %?= in .MD file and ensure that they are in the FRONTMATTER section
-- [ ] Change all presence of `<tag>` into "tag"
-- [x] For niepub.js and nifolio.js and nipage.js, add a function that would "assign" figure numbering to each one of them as a preprocess before starting the translate_block()
-- [x] Remove all reference to 'to_caption_number()' call, because if 'idnum' member of the block isn't there then the idnum isn't to be shown.
+- [x][FR] Since the figure caption alignment is usually configured at the beginning and used throughout the document, it makes sense to deprecate 'salign" style and instead create a configuration param for contex.js, latex,js and html.js to set it as a global param that is used for ALL figures
+- [x][FR] The COPY redirective `%=` can only appear within FM section
+- [x][FR] For niepub.js and nifolio.js and nipage.js, add a function that would "assign" figure numbering to each one of them as a preprocess before starting the `translate_block()`
+- [x] Remove all reference to `to_caption_number()` call, because if 'idnum' member of the block isn't there then the idnum isn't to be shown.
 - [x] Rename all ```displaymath to ```math
 - [ ] Work on dia language structure to see if extra indenting is still needed for a 'for' loop and/or 'if' loop
 - [x] Deprecated the p.key, its value can be checked by looking at style.float 
@@ -472,7 +471,6 @@ Nitrile
 - [x] Ensure that phrase-dia does not respond to style-frame.
 - [x] Ensure that 'vborder' and 'hborder' style works consistantly across all translations
 - [ ] Explore the possibility of adding an option to a phrase such as &hbox[d]{5}, and at the same time requires that there is no curly braces inside a phrase.
-- [ ] (X) Explore the possibility of not parsing the content of a .figure block by parser.js but rather by a translator function (this is a bad idea because the parser.js would establish a 'label' and 'title' and set them as the properties of a 'block'; this allows for translator to extract that information to establish cross references of label-to-idnum.)
 - [ ] The CONTEX-MF does not display hyphen in monospace correctly
 - [x] Separate the fence and paragraph in html.js
 - [x] Deprecate style-stretch for all 'dia' bundle translations.
@@ -480,11 +478,11 @@ Nitrile
 - [x] For folio.js, a Part should be in its own page
 - [x] Add a nigrep.js
 - [x] Add a nisubs.js
-- [x] Change it so that it uses `<p>` again for HTML
+- [x] Change it to use the P element for paragraphs rather than DIV
 - [x] The niepub.js for html.md is currently broken
-- [ ] The latex.js the tikzpicture inside a tabular had its top part trimmed too much
-- [ ] For nimake, it should have aborted the future process if one process returns with an error, but it kept on going
-- [ ] for lamper.js see if equation number, listing number, and longtabu numbering can be done locally by idnum
+- [ ][BUG] The latex.js the tikzpicture inside a tabular had its top part trimmed too much
+- [ ][BUG] For nimake, it should have aborted the future process if one process returns with an error, but it kept on going
+- [x][FR] Set the equation number, listing number, and longtabu numbering can be set to a customized one determined by 'idnum'
 - [x] Add XeLaTeX support to latex.js
 - [ ] Need to work on splitting a longtabu into multiple tables each in a different page
 - [x] Rename style.align to style.textalign
@@ -492,26 +490,29 @@ Nitrile
 - [ ] Add a feature to DIA to allow for defining a symbol with path and drawing styles
 - [x] Figure out a way of putting allowing for specifying other fonts for certain unicode blocks for XELATEX/CONTEX: font1/unifont/0x7100
 - [x] Add a new style feature to specify the font style for each tabular column, such as \tt, \it
-- [x] Add a new fence called 'img' to allow for HTML translation to present a Canvas such that it can show predefined raster images as well as hand draw it
-- [x] In diagram.js, remove "group", and move all `g_to_xxx()` function to base.js, also, ensure that fontsize:small is taken cared of inside diagram.js
-- [x] Added \set command to superceed \config
-- [x] Change it so that for \Lscr the protrude field is consulted and extra 3pt is allocated after the char, this has been extended to add a new "protrude" object to this.pjson to hold all protrude information for characters including \Lscr and \pmathit and \qmathit
-- [x] Deprecate 'shadow' style 
-- [x] The /post submit does not work when niserver starts at `tcl_notes` directory, solved by doing new URL(imgsrc,document.baseURI).pathname which would construct a new URL taking consideration base URI and returning a new path pointing to the corrected image file path.
-- [ ] The minus sign follows too closely to the fraction 57 
-- [ ] Rename \draw to \drawpath, \stroke to \strokepath, and \fill to \fillpath
-- [ ] Allow jp/cn/tw/kr fonts to be switched to a different one, for CONTEX it needs to change the definefontfamily
-- [ ] Work on samp.hew for HTML.js and LATEX.js
-- [x] Change HTML.js and LATEX.js to the latest 'sand' type
-- [x] Renamed "column" float to "multicols" float
-- [ ] Introduce SAMP, SAND, COVE, CAVE, BODY paragraph types 
-- [x] It is now possible to change the fonts for languages that are jp, cn, tw, and kr, as well as allowing other fonts to be defined and applied to Uncode characters of certain Unicode blocks.
-- [ ] Added a new `bodyfont` front matter configuration parameter to select the main font. The values is a word that might work differently for different translations. 
-- [x] Added so that each sub-figure can have a subcaption, either by (a), (b), or ()
-- [ ] Added a new `\chart` command for DIA
+- [x][FR] Add a new bundle called 'img' to allow for HTML translation to present a Canvas such that it can show predefined raster images as well as hand draw it
+- [x][FR] In diagram.js, remove "group", and move all `g_to_xxx()` function to base.js, also, ensure that fontsize:small is taken cared of inside diagram.js
+- [x][FR] Deprecated `\var` and `\config` and merge them both into `\set`
+- [x][BUG] Change it so that for \Lscr the protrude field is consulted and extra 3pt is allocated after the char, this has been extended to add a new "protrude" object to this.pjson to hold all protrude information for characters including \Lscr and \pmathit and \qmathit
+- [x][FR] Deprecate 'shadow' style 
+- [x][BUG] The /post submit does not work when niserver starts at `tcl_notes` directory, solved by doing new URL(imgsrc,document.baseURI).pathname which would construct a new URL taking consideration base URI and returning a new path pointing to the corrected image file path.
+- [x][BUG] Fixed the issue where the minus sign preceeding a fraction stays too closely to the fraction 
+- [x][FR] Rename \draw to \drawpath, \stroke to \strokepath, and \fill to \fillpath
+- [x][FR] Allow jp/cn/tw/kr fonts to be customized; for CONTEX it needs to change the definefontfamily
+- [x][FR] Let TAB bundle process for "hew"            
+- [x][FR] Let SAMP block process for "hew"            
+- [x][FR] Renamed "column" float to "multicols" float
+- [x][FR] Introduce SAMP, SAND, COVE, CAVE, BODY paragraph types 
+- [x][FR] It is now possible to change the fonts for languages that are jp, cn, tw, and kr, as well as allowing other fonts to be defined and applied to Uncode characters of certain Unicode blocks.
+- [ ][FR] Add `bodyfont` FM parameter to select the main font, which is a list of comma separated words such as linux, ss, office, 10pt, etc.
+- [x][FR] Allow sub-figure subcaption to be specified from within caption, either by (a), (b), or ()
+- [x][FR] Add a new `\chart` command for DIA
 - [x][BUG] "\mu" is not showing at all when compiled by CONTEX.
 - [x][BUG] `\hat{\mu}` is showing that the hat is too low and is overlapping with `\mu`.
-- [ ][FR] Add a new block type that is ITEM that would typeset an itemized item with sub-paragraphs.
+- [x][FR] Add a new block type that is ITEM that would typeset an itemized item with sub-paragraphs.
 - [ ][FR] Change it so that for \left\right fences it is drawn using path rather than existing characters
 - [ ][BUG] When \sum is at a fraction and is display mode the subsup are top and bottom, which should be moved to right
+- [x][FR] Reduce the vspaces added between rows of a matrix
+- [x][FR] Add `\vl` to math to insert a vertical bar covering the entire font height
+- [ ][BUG] The equation number cannot be set to cutomized one for CONTEX when chapter is used
 - [ ]
