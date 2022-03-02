@@ -118,9 +118,8 @@
     { "kbd": "\\rbrackexten"   ,    "unicode": "&#x23A5;"       ,  "id": "myRBRACKEXTEN", "dx":"0"                      ,"op": 3    ,"width": 5    },
     { "kbd": "\\rbracklower"   ,    "unicode": "&#x23A6;"       ,  "id": "myRBRACKLOWER", "dx":"0"                      ,"op": 3    ,"width": 5    },
    
-
-    { "kbd": "\\lbrackextenh"  ,    "unicode": "&#x23A2;"       ,  "id": "myLBRACKEXTENH","dx":"0"                      ,"op": 3    ,"width": 2.5    },
-    { "kbd": "\\rbrackextenh"  ,    "unicode": "&#x23A5;"       ,  "id": "myRBRACKEXTENH","dx":"0"                      ,"op": 3    ,"width": 2.5    },
+    { "kbd": "\\lvert"  ,           "unicode": "&#x23B8;"       ,  "id": "myLVERT",       "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\rvert"  ,           "unicode": "&#x23B9;"       ,  "id": "myRVERT",       "dx":"0"                      ,"op": 3    ,"width": 5    },
     
     { "kbd": "\\lbrace"        ,    "unicode": "&#x007B;"       ,  "id": "myLB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "\\rbrace"        ,    "unicode": "&#x007D;"       ,  "id": "myRB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
