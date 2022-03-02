@@ -121,6 +121,16 @@
     { "kbd": "\\lvert"  ,           "unicode": "&#x23B8;"       ,  "id": "myLVERT",       "dx":"0"                      ,"op": 3    ,"width": 5    },
     { "kbd": "\\rvert"  ,           "unicode": "&#x23B9;"       ,  "id": "myRVERT",       "dx":"0"                      ,"op": 3    ,"width": 5    },
     
+    { "kbd": "\\lbraceupper"  ,     "unicode": "&#x23A7;"       ,  "id": "myLBRACEUPPER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\lbracemidle"  ,     "unicode": "&#x23A8;"       ,  "id": "myLBRACEMIDLE", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\lbracelower"  ,     "unicode": "&#x23A9;"       ,  "id": "myLBRACELOWER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\lbraceexten"  ,     "unicode": "&#x23AA;"       ,  "id": "myLBRACEEXTEN", "dx":"0"                      ,"op": 3    ,"width": 5    },
+
+    { "kbd": "\\rbraceupper"  ,     "unicode": "&#x23AB;"       ,  "id": "myRBRACEUPPER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\rbracemidle"  ,     "unicode": "&#x23AC;"       ,  "id": "myRBRACEMIDLE", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\rbracelower"  ,     "unicode": "&#x23AD;"       ,  "id": "myRBRACELOWER", "dx":"0"                      ,"op": 3    ,"width": 5    },
+    { "kbd": "\\rbraceexten"  ,     "unicode": "&#x23AE;"       ,  "id": "myRBRACEEXTEN", "dx":"0"                      ,"op": 3    ,"width": 5    },
+
     { "kbd": "\\lbrace"        ,    "unicode": "&#x007B;"       ,  "id": "myLB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "\\rbrace"        ,    "unicode": "&#x007D;"       ,  "id": "myRB",          "dx":"0"                      ,"op": 0    ,"width": 5    },
     { "kbd": "\\lbrack"        ,    "unicode": "&#x005B;"       ,  "id": "myLBR",         "dx":"0"                      ,"op": 0    ,"width": 5    },
