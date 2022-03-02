@@ -3,183 +3,6 @@ title: Translation
 camer.setupbodyfont: linux,11pt
 ---
 
-# Issues
-
-- Advantages of using CONTEX: (1) able to switch the main font to any font
-  installed by the system; (2) allow for temporarily switching to another 
-  for some part of the text, such as CJK; (3) consistant vertical spacing
-  between paragraphs; for an itemized list the bullets are flushed with
-  the left margin rather than having a visible left margin like that
-  of the LATEX; 
-  
-- Symbols in math mode are supported by typing their placing the Unicode
-  character directly in the document and with "\math{}" command. The "\math{}"
-  command can be nested, which works similarly to the "\ensuremath" command in
-  LATEX; 
-
-- For "\startitemize" command, if the option is not "packed", then there are
-  visible vertical white spaces between items. Unfortunately the amount of this
-  vertical space is not consistant with the inter-paragraph
-  vertical space which is set by the "\setupwhitespace" command.
-  Especially when the whitespace is set to "small", vertical spaces between
-  items are larger than "small".
-
-  The latest discovery have uncovered a way to fix this issue.  In particular,
-  the option named "inbetween=" should be set to an empty string such as the
-  following:
-
-  ```verbatim
-  \startitemize[][inbetween={},before={},after={}]
-  ...
-  \stopitemize
-  ```
-
-  In addition, the "before=" and "after=" should also be set to an empty string,
-  thus suppressing any extra vertical spaces before and after the entire list to
-  appear. It has been observed that the normal white spaces set by the "\setupwhitespace"
-  command would still be placed between this list and the surrounding paragraphs before
-  and after the list. Thus, the "before=" and "after=" option only seems to add extra
-  vertical spaces.
-
-  ```verbatim
-  \startitemize[packed,joinedup][inbetween={},before={},after={}]
-  ...
-  \stopitemize
-  ```
-
-- The "\setupalign" command controls the entire article how texts are to be typeset.
-  Especially things such as hyphenation, justification, hanging. etc.
-
-  ```verbatim
-  \setupalign[nothyphenated,justified,hanging]
-  \setupalign[hyphenated,morehyphenation,flushleft]
-  ```
-
-- The "\startalignment" command is designed to locally change the alignment for 
-  one particular paragraph. It must be ended with "\stopalignment"
-
-  ```verbatim
-  \startalignment[center]
-  \startalignment[flushright]
-  ```
-
-- The "\setupwhitespace" controls inter-paragraph spacing. This is important especiall
-  when text indentation of each paragraph is turned off.
-
-  ```verbatim
-  \setupwhitespace[small]
-  \setupwhitespace[medium]
-  \setupwhitespace[line]
-  \setupwhitespace[5pt]
-  ```
-
-- Indentation is managed different than LATEX. See the section "Paragraph
-  Indentations" below for more information.
-
-- The "\type{}" command requires a balanced left-right-braces. Even when one of them
-  is being escaped.
-
-- Current version of CONTEX Y2020 seems to be broken for the "ruby" module.
-  The `\ruby` command simply does not work and generate an compilation error.
-
-- For \startcolumns command, it has been observed such that if the two column 
-  is near the bottom of a page, and the image is in the second column, and then 
-  image is too large to fit in the current page such that it is pushed down to
-  the following page, then it overlaps with the text which is to follow
-  the \endcolumns command.
-
-- The \starttabulate does not have the capability to be placed side-by-side with
-  another \startabulate. The documentation seems to suggest that this command is
-  designed to typeset a tabulate that follows with the normal text, rather than
-  act as a "float". The "indent=" attribution of this command can be set to "yes"
-  such that it will have an indentation the same as the surrounding text, but
-  it has not yet been verified.
-
-- The \starttable is able to be placed side by side, but it will need to be 
-  first placed inside a \hbox command, and then proceeded by a \dontleavehmode
-  command. Note that the \dontleavehmode command will cause an extra blank vertical
-  space if placed in front of some commands, thus its use has to be judicious.
-
-- Current the "linuxlibertine" does not yet support circled digit U+2460.
-  The "linuxlibertine" font seems to have missing glyphs for ``Ascr`` to
-  ``Zscr`` and other math variant glyphs. When using the default font these
-  glyphs showed up.
-
-- It has been noticed that when four Diagrams are being placed side by side and each
-  diagram is 4cm wide, inside a Gleamer frame, then the first three Diagrams would
-  have been placed at the first row and the last one wrapped, where LATEX and SVG
-  would each have wrapped the third one down to the next row.
-
-- DO NOT KNOW how to change the entire font for the "startable" block such that
-  the table will be less taller than before. It is been seen that if a font
-  switch such as "\bfxsm" is placed before "\starttable", then it the fonts are
-  shrinked but the table does not gets shorter and is still the same height.
-
-- The current setup for typesetting a HL list works beautifully in CONTEX.
-
-- The ``\placefigure`` command could fail and cause a compile error if it is to
-  generate a "Figure" caption (where "none" isn't provided inside the first
-  option argument of this command). This has been observed inside Gleamer. For
-  this reason, the "float_to_figure()" function inside the contex.js has been
-  changed such that if the title is empty, then a "none" is placed inside the
-  first optional argument, thus effectively disabling the generating of the
-  "Figure" line, solving the problem and allowing the compile to continue
-  inside Gleamer.
-
-- When placing inline images using the combination of ``\hbox`` and
-  ``\externalfigure``, the images could still appear being placed to far to the
-  right such that it cuts into the spaces of the right margin, where it
-  should've been wrapped to the next line. So far, if placed inside a figure,
-  where each figure is wrapped by a "startcombination" and "stopcombination" commands,
-  it seems to have worked fine. But it still needs to be verified.
-
-- For a figure, if there are multiple lines for a sub-caption,
-  the lines appear to be too far separated vertically from each other
-
-- For TexLive2021, the command "\softhyphen" does not work and would
-  cause a compile error, for downloaded context it does not have this
-  problem.
-
-- The "\startpart" and "\stoppart" command would not generate an output
-  even when the "title=" field of this command is set to a non-empty string.
-  The CONTEX documentation says that users are responsible for generating the
-  actual contents, for instance, by placing a bTABLE in here with titles,
-  subtitles, authors, and other texts. Another possibility is to use the
-  "\startalignment[middle]" and "\blank[0.2cm]" commands to group a list of
-  entries centered horizontally on the page, and use "\blank[2cm]" to move
-  down vertically by adding extra vertical spaces between paragraph.
-
-- The symbol names, defined in "char-def.lua", such as "onethird" does not 
-  word reliably. It seems to work in one release but would stop to work
-  in the subsequent release.
-
-- A CONTEX version of a LATEX "\parbox" command can be done as follows:
-
-  \parbox{30mm}{Hello World} 
-
-  \framed[frame=off,width=30mm,align=flushleft]{Hello World}
-
-  It is also possible to place font switch commands before it:
-
-  {\switchtobodyfont[9pt]\framed[frame=off,width=30mm,align=flushleft]{Hello World}}
-
-- It has been observed that for "starttabulate", when the column is set to "p",
-  and the row contains a mix of normal text, math text, and display math, the
-  row height is not big enough to hold the math text; the visual effect of this
-  is that the top part of the math text of the lower row touches the bottom
-  part of the text of the upper row. If it is set to 'l" then this problem goes away.
-  
-- The 'start-stop-formula" command pair is not a complete replacement of a "displaymath"
-  of LATEX, because it places visible whitespaces before and after the formula. It does
-  howver, stop placing a indent before the next paragraph after the formula.
-
-- The 'startlines' command would fail to produce a line-by-line paragraph when it appears
-  inside a 'startsection' command.
-
-- The manual equation number which was working previously stopped working, need to find
-  out why.
-  
-
 # The CJK font problem
 
 The CJK refers to a set of characters, symbols, and punctuations that are
@@ -3996,6 +3819,191 @@ The optional value expresses the number of 1em.
     \hr[5]
 
 
+# Issues
+
+- Advantages of using CONTEX: (1) able to switch the main font to any font
+  installed by the system; (2) allow for temporarily switching to another 
+  for some part of the text, such as CJK; (3) consistant vertical spacing
+  between paragraphs; for an itemized list the bullets are flushed with
+  the left margin rather than having a visible left margin like that
+  of the LATEX; 
+  
+- Symbols in math mode are supported by typing their placing the Unicode
+  character directly in the document and with "\math{}" command. The "\math{}"
+  command can be nested, which works similarly to the "\ensuremath" command in
+  LATEX; 
+
+- For "\startitemize" command, if the option is not "packed", then there are
+  visible vertical white spaces between items. Unfortunately the amount of this
+  vertical space is not consistant with the inter-paragraph
+  vertical space which is set by the "\setupwhitespace" command.
+  Especially when the whitespace is set to "small", vertical spaces between
+  items are larger than "small".
+
+  The latest discovery have uncovered a way to fix this issue.  In particular,
+  the option named "inbetween=" should be set to an empty string such as the
+  following:
+
+  ```verbatim
+  \startitemize[][inbetween={},before={},after={}]
+  ...
+  \stopitemize
+  ```
+
+  In addition, the "before=" and "after=" should also be set to an empty string,
+  thus suppressing any extra vertical spaces before and after the entire list to
+  appear. It has been observed that the normal white spaces set by the "\setupwhitespace"
+  command would still be placed between this list and the surrounding paragraphs before
+  and after the list. Thus, the "before=" and "after=" option only seems to add extra
+  vertical spaces.
+
+  ```verbatim
+  \startitemize[packed,joinedup][inbetween={},before={},after={}]
+  ...
+  \stopitemize
+  ```
+
+- The "\setupalign" command controls the entire article how texts are to be typeset.
+  Especially things such as hyphenation, justification, hanging. etc.
+
+  ```verbatim
+  \setupalign[nothyphenated,justified,hanging]
+  \setupalign[hyphenated,morehyphenation,flushleft]
+  ```
+
+- The "\startalignment" command is designed to locally change the alignment for 
+  one particular paragraph. It must be ended with "\stopalignment"
+
+  ```verbatim
+  \startalignment[center]
+  \startalignment[flushright]
+  ```
+
+- The "\setupwhitespace" controls inter-paragraph spacing. This is important especiall
+  when text indentation of each paragraph is turned off.
+
+  ```verbatim
+  \setupwhitespace[small]
+  \setupwhitespace[medium]
+  \setupwhitespace[line]
+  \setupwhitespace[5pt]
+  ```
+
+- Indentation is managed different than LATEX. See the section "Paragraph
+  Indentations" below for more information.
+
+- The "\type{}" command requires a balanced left-right-braces. Even when one of them
+  is being escaped.
+
+- Current version of CONTEX Y2020 seems to be broken for the "ruby" module.
+  The `\ruby` command simply does not work and generate an compilation error.
+
+- For \startcolumns command, it has been observed such that if the two column 
+  is near the bottom of a page, and the image is in the second column, and then 
+  image is too large to fit in the current page such that it is pushed down to
+  the following page, then it overlaps with the text which is to follow
+  the \endcolumns command.
+
+- The \starttabulate does not have the capability to be placed side-by-side with
+  another \startabulate. The documentation seems to suggest that this command is
+  designed to typeset a tabulate that follows with the normal text, rather than
+  act as a "float". The "indent=" attribution of this command can be set to "yes"
+  such that it will have an indentation the same as the surrounding text, but
+  it has not yet been verified.
+
+- The \starttable is able to be placed side by side, but it will need to be 
+  first placed inside a \hbox command, and then proceeded by a \dontleavehmode
+  command. Note that the \dontleavehmode command will cause an extra blank vertical
+  space if placed in front of some commands, thus its use has to be judicious.
+
+- Current the "linuxlibertine" does not yet support circled digit U+2460.
+  The "linuxlibertine" font seems to have missing glyphs for ``Ascr`` to
+  ``Zscr`` and other math variant glyphs. When using the default font these
+  glyphs showed up.
+
+- It has been noticed that when four Diagrams are being placed side by side and each
+  diagram is 4cm wide, inside a Gleamer frame, then the first three Diagrams would
+  have been placed at the first row and the last one wrapped, where LATEX and SVG
+  would each have wrapped the third one down to the next row.
+
+- DO NOT KNOW how to change the entire font for the "startable" block such that
+  the table will be less taller than before. It is been seen that if a font
+  switch such as "\bfxsm" is placed before "\starttable", then it the fonts are
+  shrinked but the table does not gets shorter and is still the same height.
+
+- The current setup for typesetting a HL list works beautifully in CONTEX.
+
+- The ``\placefigure`` command could fail and cause a compile error if it is to
+  generate a "Figure" caption (where "none" isn't provided inside the first
+  option argument of this command). This has been observed inside Gleamer. For
+  this reason, the "float_to_figure()" function inside the contex.js has been
+  changed such that if the title is empty, then a "none" is placed inside the
+  first optional argument, thus effectively disabling the generating of the
+  "Figure" line, solving the problem and allowing the compile to continue
+  inside Gleamer.
+
+- When placing inline images using the combination of ``\hbox`` and
+  ``\externalfigure``, the images could still appear being placed to far to the
+  right such that it cuts into the spaces of the right margin, where it
+  should've been wrapped to the next line. So far, if placed inside a figure,
+  where each figure is wrapped by a "startcombination" and "stopcombination" commands,
+  it seems to have worked fine. But it still needs to be verified.
+
+- For a figure, if there are multiple lines for a sub-caption,
+  the lines appear to be too far separated vertically from each other
+
+- For TexLive2021, the command "\softhyphen" does not work and would
+  cause a compile error, for downloaded context it does not have this
+  problem.
+
+- The "\startpart" and "\stoppart" command would not generate an output
+  even when the "title=" field of this command is set to a non-empty string.
+  The CONTEX documentation says that users are responsible for generating the
+  actual contents, for instance, by placing a bTABLE in here with titles,
+  subtitles, authors, and other texts. Another possibility is to use the
+  "\startalignment[middle]" and "\blank[0.2cm]" commands to group a list of
+  entries centered horizontally on the page, and use "\blank[2cm]" to move
+  down vertically by adding extra vertical spaces between paragraph.
+
+- The symbol names, defined in "char-def.lua", such as "onethird" does not 
+  word reliably. It seems to work in one release but would stop to work
+  in the subsequent release.
+
+- A CONTEX version of a LATEX "\parbox" command can be done as follows:
+
+  \parbox{30mm}{Hello World} 
+
+  \framed[frame=off,width=30mm,align=flushleft]{Hello World}
+
+  It is also possible to place font switch commands before it:
+
+  {\switchtobodyfont[9pt]\framed[frame=off,width=30mm,align=flushleft]{Hello World}}
+
+- It has been observed that for "starttabulate", when the column is set to "p",
+  and the row contains a mix of normal text, math text, and display math, the
+  row height is not big enough to hold the math text; the visual effect of this
+  is that the top part of the math text of the lower row touches the bottom
+  part of the text of the upper row. If it is set to 'l" then this problem goes away.
+  
+- The 'start-stop-formula" command pair is not a complete replacement of a "displaymath"
+  of LATEX, because it places visible whitespaces before and after the formula. It does
+  howver, stop placing a indent before the next paragraph after the formula.
+
+- The 'startlines' command would fail to produce a line-by-line paragraph when it appears
+  inside a 'startsection' command.
+
+- The manual equation number which was working previously stopped working, need to find
+  out why.
+  
+
+# Shortcomings
+
+* THERE is current no way to assign customized equation numbers to equations
+  when there is chapter. The current solution to assign customized number works
+  when there isn't any chapter.
+
+* IT is impossible to do `\drawlabel` inside a DIA bundle when the text is a 
+  math string and it is a matrix---it just does not compile with CONTEXT
 
 
 
