@@ -2411,32 +2411,21 @@ possible for specifying both a monospace and an italic.
           "degree\\3" (-3,2)
 
 
+The "tx" and "tx" style attributes are checked and if they are set
+to something other than zero then they are treated as expressing numbers
+that are added to the original position of the label. 
+In the following example the label is drawn at the position that is
+(2,0).
 
-# The 'drawlabel' command
+    \drawlabel {tx:1,ty:-1} "hello" (1,1)
 
-The 'drawlabel' command would have been the same as for the 'drawlabel' except
-that it does not support drawing multiple line text as that was the case for
-the 'drawlabel' command. In addition, the technical approach might be different
-for that used by the 'drawlabel' command, and the exact differences varies
-depending on the translation. Following discusses some of the differences
-observed in some translation:
+The "tx" and "ty" settings would be applied to ALL labels. 
+In addition, each label can also contain individual settings that
+are similar to "tx" and "ty" and they will be applied only to that
+label. In the following example the first label will be 
+draw at position (2,0) and the second one at (3,1).
 
-- For MF, when 'drawlabel' is called, it uses the 'label.urt' command to draw
-  the text, while when 'drawlabel' is called, it first calls 'textext', which
-  will generate a picture, holding the entire drawing of the text, and then
-  "paste" this picture onto the main picture relative to anchor point based on
-  the alignment. The problem of using 'drawlabel' has been seen that there isn't
-  any gaps between the anchor point and the start of text, while using
-  'drawlabel' ensure a reasonable amount of gap to exist. There is also a
-  problem of using the 'drawlabel' approach when drawing individual digits and
-  period, and the period has been seen to not align with the bottom of the digit
-  vertically.
-
-- For TikZ there isn't any difference.
-
-- For SVG when 'drawlabel' is used an extra 2 pixel is added horizontally
-  between the anchor point and the start of the text. For 'drawlabel' there isn't
-  this space, thus the text is right on top of the point.
+    \drawlabel {tx:1,ty:-1} "hello" (1,1) +1+1"world" (1,1)
 
 
 
