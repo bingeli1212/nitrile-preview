@@ -1704,13 +1704,13 @@
     "Ux27BF"                 : { "html": "&#x27BF;"       ,"ptex":""                          ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":0     ,"fonts":""                        ,"group":"Dingbats U+2700 - U+27BF"},
 
 
-    "Ux2660"                 : { "html": "&#x2660;"       ,"ptex":"\\ding{171}"               ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
+    "Ux2660"                 : { "html": "&#x2660;"       ,"ptex":"\\ding{171}"               ,"pmath":""                          ,"utex":""                          ,"umath":"\\spadesuit"           ,"ctex":""                       ,"cmath":"\\spadesuit"        ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
     "Ux2661"                 : { "html": "&#x2661;"       ,"ptex":""                          ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
     "Ux2662"                 : { "html": "&#x2662;"       ,"ptex":""                          ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
-    "Ux2663"                 : { "html": "&#x2663;"       ,"ptex":"\\ding{168}"               ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
+    "Ux2663"                 : { "html": "&#x2663;"       ,"ptex":"\\ding{168}"               ,"pmath":""                          ,"utex":""                          ,"umath":"\\clubsuit"            ,"ctex":""                       ,"cmath":"\\clubsuit"         ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
     "Ux2664"                 : { "html": "&#x2664;"       ,"ptex":""                          ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
-    "Ux2665"                 : { "html": "&#x2665;"       ,"ptex":"\\ding{170}"               ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
-    "Ux2666"                 : { "html": "&#x2666;"       ,"ptex":"\\ding{169}"               ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
+    "Ux2665"                 : { "html": "&#x2665;"       ,"ptex":"\\ding{170}"               ,"pmath":""                          ,"utex":""                          ,"umath":"\\heartsuit"           ,"ctex":""                       ,"cmath":"\\heartsuit"        ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
+    "Ux2666"                 : { "html": "&#x2666;"       ,"ptex":"\\ding{169}"               ,"pmath":""                          ,"utex":""                          ,"umath":"\\diamondsuit"         ,"ctex":""                       ,"cmath":"\\diamondsuit"      ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
     "Ux2667"                 : { "html": "&#x2667;"       ,"ptex":""                          ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
     "Ux260E"                 : { "html": "&#x260E;"       ,"ptex":"\\ding{37}"                ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
     "Ux261B"                 : { "html": "&#x261B;"       ,"ptex":"\\ding{42}"                ,"pmath":""                          ,"utex":""                          ,"umath":""                      ,"ctex":""                       ,"cmath":""                   ,"width":7     ,"fonts":""                        ,"group":"Miscellaneous Symbols U+2600 - U+26FF"},
@@ -1792,7 +1792,6 @@
     
   },
   "alt_symbol": {
-    "nbsp"     : "nonbreakingspace",
     "times"    : "multiply",
     "div"      : "divide",
     "pm"       : "plusminus",
@@ -1848,8 +1847,12 @@
     "digit7cf" : "Ux2790",      
     "digit8cf" : "Ux2791",      
     "digit9cf" : "Ux2792",      
-    "digit10cf": "Ux2793"       
-
+    "digit10cf": "Ux2793",
+    "spadesuit": "Ux2660",
+    "clubsuit" : "Ux2663",
+    "heartsuit": "Ux2665",
+    "diamondsuit":"Ux2666",
+    "nbsp"     : "nonbreakingspace" 
   },
   "protrude": {
     "Ascr":1,
