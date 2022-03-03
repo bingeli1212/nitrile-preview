@@ -515,4 +515,4 @@ Nitrile
 - [x][FR] Reduce the vspaces added between rows of a matrix
 - [x][FR] Add `\vl` to math to insert a vertical bar covering the entire font height
 - [ ][BUG] The equation number cannot be set to cutomized one for CONTEX when chapter is used
-- [ ]
+- [ ][FR] Add "text"+4.5-3.2

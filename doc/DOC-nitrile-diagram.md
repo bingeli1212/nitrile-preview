@@ -1063,8 +1063,6 @@ relative to its current settings.
 
 - ^x:2
 - ^y:2
-- ^X:2
-- ^Y:2
 - ^left:2
 - ^right:2
 - ^up:2
