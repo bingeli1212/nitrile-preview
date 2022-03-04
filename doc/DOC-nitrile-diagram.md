@@ -2250,10 +2250,7 @@ the middle of that line segment. If the path is closed, then there would
 be assumed a line segment between the last point and the first point.
 
 If without option, it is assumed that the text will be drawn centered
-in the middle of that line segment. However, the command option such as
-"lft", "rt", "urt", "ulft", "llft", "lrt", "top" and "bot" can also
-be specified so that the text is shifted. 
-
+in the middle of that line segment. 
 
 
 # The 'drawslopedlabel' command
@@ -2265,15 +2262,8 @@ place a label that run along the slope of the line.
 
     \drawslopedlabel "Hello" "World" (0,0) <h:4> <v:4>
 
-By default, the text will be placed at the center of the line, following the
-slope of the slide.  However, this position can be changed by adding the option
-to the end of the command.  For instance, the ".bot" option would have asked that
-the text be placed at the bottom of the line.
-
-    \drawslopedlabel.bot "Hello" "World" (0,0) <h:4> <v:4>
-
 Note that the text will still be following the slope of the line. The same
-option can be replaced by others such as ".top", ".lft", ".rt", etc..
+option can be replaced by others such as ".u", ".l", ".r", etc..
 
 The mar-style if specified would ask that two arrows be added at either end of
 the text to connect to the two end points of the line segment.  The style
@@ -2305,11 +2295,11 @@ The coord-points are for expressing the starting point of each column in the
 tabular, with the "shift" style expressing the offset added to each additional
 row of a column, with the text at the first row starting exactly at the given
 coord-point. The text alignment can be specified by the option such as 
-'ctr', 'lft', 'rt', etc., one for each column.
+'c', 'l', 'r', etc., one for each column.
 In the following example the first column is centered aligned and the second column
 left aligned.
 
-    \drawtabulatedlabel.ctr.rt {shift:-1.5} (0,0) <h:6> \
+    \drawtabulatedlabel.c.r {shift:-1.5} (0,0) <h:6> \
       "inches\\67\\72\\77\\74\\69" \
       "pounds\\155\\220\\240\\195\\175"
 
@@ -2370,9 +2360,9 @@ The 'drawlabel' command is designed to place a piece of text in one or more path
 points. For instance, each of the following 'drawlabel' commands will place a piece
 of text at the given location.
 
-    \drawlabel.rt "A" (1,1)
-    \drawlabel.lft "B" (2,2)
-    \drawlabel.top "C" (3,4)
+    \drawlabel.r "A" (1,1)
+    \drawlabel.l "B" (2,2)
+    \drawlabel.u "C" (3,4)
 
 The text must appear before any path points, and must enclosed within a set of
 quotation marks. 
@@ -2390,15 +2380,15 @@ text will be aligned in such a way that it appear on top of the
 path point and centered horizontally. Without the option,
 it defaults to 'urt'.
 
--   \drawlabel.top   -  top
--   \drawlabel.bot   -  bottom
--   \drawlabel.lft   -  left
--   \drawlabel.rt    -  right
--   \drawlabel.ulft  -  upper left
--   \drawlabel.llft  -  lower left
--   \drawlabel.urt   -  upper right
--   \drawlabel.lrt   -  lower right
--   \drawlabel.ctr   -  centering the text
+-   \drawlabel.u   -  top
+-   \drawlabel.b   -  bottom
+-   \drawlabel.c   -  centering the text
+-   \drawlabel.l   -  left
+-   \drawlabel.r   -  right
+-   \drawlabel.ul  -  upper left
+-   \drawlabel.bl  -  lower left
+-   \drawlabel.ur   -  upper right
+-   \drawlabel.br   -  lower right
 
 It is also possible to express the fact that each path point is to show a
 different piece of text, by placing double backslashes inside the text, such
@@ -2421,17 +2411,17 @@ The text command also allows for each entry to be laid out such that it is
 multi-line paragraph. Note that this only works for plain text, and not
 for math.
 
-    \drawlabel.ulft {fontsize:7} "degree\\3" (-3,2)
-    \drawlabel.urt  {fontsize:7} "degree\\2" (3,2)
-    \drawlabel.llft {fontsize:7} "degree\\2" (-3,-2)
-    \drawlabel.lrt  {fontsize:7} "degree\\3" (3,-2)
+    \drawlabel.ul {fontsize:7} "degree\\3" (-3,2)
+    \drawlabel.ur {fontsize:7} "degree\\2" (3,2)
+    \drawlabel.bl {fontsize:7} "degree\\2" (-3,-2)
+    \drawlabel.br {fontsize:7} "degree\\3" (3,-2)
 
 In addition, the 'drawlabel' command has the capability to style the font using
 the "fontfamily" and "fontstyle" style options. Note that this might not 
 always work for something. For instance, for LATEX and CONTEX it is not
 possible for specifying both a monospace and an italic.
 
-    \drawlabel.ulft {fontstyle:i,fontsize:7} \
+    \drawlabel.ul {fontstyle:i,fontsize:7} \
           "degree\\3" (-3,2)
 
 The "tx" and "tx" can be expressed to fine turn the position of the label
@@ -3581,19 +3571,19 @@ and the use it to place it on the top of the hrule.
     -- table
     \origin ^down:1
     \origin ^x:1.5
-    \drawlabel.ctr "x"  "y"  ^down:0  (0,0) <h:3> 
-    \drawlabel.ctr "1"  "2"  ^down:2  (0,0) <h:3> 
-    \drawlabel.ctr "2"  "3"  ^down:4  (0,0) <h:3>
-    \drawlabel.ctr "3"  "4"  ^down:6  (0,0) <h:3>
-    \drawlabel.ctr "4"  "5"  ^down:8  (0,0) <h:3>
-    \drawlabel.ctr "10" "11" ^down:10 (0,0) <h:3>
+    \drawlabel.c "x"  "y"  ^down:0  (0,0) <h:3> 
+    \drawlabel.c "1"  "2"  ^down:2  (0,0) <h:3> 
+    \drawlabel.c "2"  "3"  ^down:4  (0,0) <h:3>
+    \drawlabel.c "3"  "4"  ^down:6  (0,0) <h:3>
+    \drawlabel.c "4"  "5"  ^down:8  (0,0) <h:3>
+    \drawlabel.c "10" "11" ^down:10 (0,0) <h:3>
     \origin ^x:3.5
-    \drawlabel.rt "{{f(x,y)=x^2+y+1}}"       ^down:0  (3,0)
-    \drawlabel.rt "{{f(1,2)=4}}"             ^down:2  (3,0)
-    \drawlabel.rt "{{f(2,3)=\hrule[A]{5}}}"     ^down:4  (3,0) 
-    \drawlabel.rt "{{f(3,4)=\hrule[B]{5}}}"     ^down:6  (3,0) 
-    \drawlabel.rt "{{f(4,5)=\hrule[C]{5}}}"     ^down:8  (3,0) 
-    \drawlabel.rt "{{f(10,11)=\hrule[D]{5}}}"   ^down:10 (3,0) 
+    \drawlabel.r "{{f(x,y)=x^2+y+1}}"       ^down:0  (3,0)
+    \drawlabel.r "{{f(1,2)=4}}"             ^down:2  (3,0)
+    \drawlabel.r "{{f(2,3)=\hrule[A]{5}}}"     ^down:4  (3,0) 
+    \drawlabel.r "{{f(3,4)=\hrule[B]{5}}}"     ^down:6  (3,0) 
+    \drawlabel.r "{{f(4,5)=\hrule[C]{5}}}"     ^down:8  (3,0) 
+    \drawlabel.r "{{f(10,11)=\hrule[D]{5}}}"   ^down:10 (3,0) 
     ```
 
     ```diagram{width:100%,A:8,B:14,C:22,D:112,restore}
