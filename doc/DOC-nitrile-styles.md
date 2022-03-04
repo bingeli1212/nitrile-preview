@@ -526,12 +526,12 @@ Following are styles recognized by NITRILE:
   expresses the lower bound and upper bound for the axis to be drawn, and last
   number expresses how an arrowhead is to appear on either side of the axis.
 
-+ xgrid:<float> <float> ...
++ xtick:<float> <float> ...
 
   This option specifies a list of floats that serves as the location where a
   tick for a x-axis is to be drawn.
 
-+ ygrid:<float> <float> ...
++ ytick:<float> <float> ...
 
   This option specifies a list of floats that serves as the location where a
   tick for a y-axis is to be drawn.
