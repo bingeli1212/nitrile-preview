@@ -2290,6 +2290,33 @@ The style option value expresses the lengh of line in each direction.
 
 
 
+# The 'drawtabulatedlabel' command
+
+The "drawtabulatedlabel" command draws labels arranged in tabular forms.  In
+the following example the drawn tabulated labels are to be arranged in two
+columns: the first column containing texts that are: "inches", "67", "72",
+"77", "74", and "69", and the second column containing texts that are:
+"pounds", "155", "220", "240", "195", and "175". The first column starts at
+(0,0) and the second column starts at (6,0), with each row of the column
+shifted -1.5 in vertical direction.
+
+    \drawtabulatedlabel {shift:-1.5} (0,0) <h:6> \
+      "inches\\67\\72\\77\\74\\69" \
+      "pounds\\155\\220\\240\\195\\175"
+
+The coord-points are for expressing the starting point of each column in the
+tabular, with the "shift" style expressing the offset added to each additional
+row of a column, with the text at the first row starting exactly at the given
+coord-point. The text alignment can be specified by the option such as 
+'ctr', 'lft', 'rt', etc., one for each column.
+In the following example the first column is centered aligned and the second column
+left aligned.
+
+    \drawtabulatedlabel.ctr.rt {shift:-1.5} (0,0) <h:6> \
+      "inches\\67\\72\\77\\74\\69" \
+      "pounds\\155\\220\\240\\195\\175"
+
+
 # The 'drawdot' command
 
 The 'drawdot' command is to draw a dot to mark the location. Similar to
@@ -2430,9 +2457,9 @@ draw at position (2,0) and the second one at (3,1).
 
 
 
-# The '\chart' command
+# The 'chart' command
 
-The '\chart' command is designed to show a scatterplot chart. It 
+The 'chart' command is designed to show a scatterplot chart. It 
 draws a rectangle around a chart. The width and height of the chart
 are set by the presence of the "w" and "h" style attributes.  The lower-left
 corner of the chart is located at the coordinates given.
@@ -2466,19 +2493,6 @@ in the unit of "pt".
 
     \drawdot {dotsize:3} ^chart:1 (0,0) (5,4) (3,4) (7,8) (9,10)
 
-The same "\chart" command can also be used to construct a tabular. To do that,
-set the "xcol" and "yrow" style attributes. The "xcol" should be set to a list
-each of which a column width of the column. The "yrow" should be set to an integer
-expressing the row height for each row. These numbers should be in grid units.
-The text fields are to express the contents of the columns. In the following
-example there are two columns, and the column content for the first column
-is "inches", "67", "72", "77", "74", and "69". The "w" and "h" style attributes
-should be set and they are the width and height of the table.
-
-    \origin ^x:6 ^y:2
-    \chart.1 {w:12,h:12,xcol:6 6,yrow:2} (0,0) \
-       "inches\\67\\72\\77\\74\\69" \
-       "pounds\\155\\220\\240\\195\\175"
 
 
 # The 'car' command
