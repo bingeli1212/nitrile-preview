@@ -2252,10 +2252,7 @@ be assumed a line segment between the last point and the first point.
 If without option, it is assumed that the text will be drawn centered
 in the middle of that line segment. However, the command option such as
 "lft", "rt", "urt", "ulft", "llft", "lrt", "top" and "bot" can also
-be specified so that the text is shifted. In addition, the tx-style
-and ty-style can also be used to specify additional adjustment of text, 
-as well as the shift-style would also influence the position of the 
-text.
+be specified so that the text is shifted. 
 
 
 
@@ -2437,22 +2434,19 @@ possible for specifying both a monospace and an italic.
     \drawlabel.ulft {fontstyle:i,fontsize:7} \
           "degree\\3" (-3,2)
 
+The "tx" and "tx" can be expressed to fine turn the position of the label
+that is the offset from the coord-point. It is detected by the appearance
+of "+1-1" or friends.  
 
-The "tx" and "tx" style attributes are checked and if they are set
-to something other than zero then they are treated as expressing numbers
-that are added to the original position of the label. 
-In the following example the label is drawn at the position that is
-(2,0).
+    \drawlabel +1-1 "hello" (1,1)
+    \drawlabel -1+1 "hello" (1,1)
+    \drawlabel +.5+.5 "hello" (1,1)
+    \drawlabel +0+.5 "hello" (1,1)
+    \drawlabel +0-.5 "hello" (1,1)
 
-    \drawlabel {tx:1,ty:-1} "hello" (1,1)
+The "tx" and "ty" settings would be applied to ALL future labels of the current
+command unless it is reset to zero by "+0+0".
 
-The "tx" and "ty" settings would be applied to ALL labels. 
-In addition, each label can also contain individual settings that
-are similar to "tx" and "ty" and they will be applied only to that
-label. In the following example the first label will be 
-draw at position (2,0) and the second one at (3,1).
-
-    \drawlabel {tx:1,ty:-1} "hello" (1,1) +1+1"world" (1,1)
 
 
 

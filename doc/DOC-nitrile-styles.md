@@ -314,16 +314,6 @@ Following are styles recognized by NITRILE:
   right-hand side of the direction of the line, and a negative number would
   have shifted the text to the left relative to the direction of the line.
 
-+ tx:<length>
-
-  The tx-option and ty-option would have worked together to fine tune the position
-  of placing a text inside another object such as box and node, where the placement
-  of the text position cannot be directly controled.
-
-+ ty:<length>
-
-  See tx.
-
 + scaleX:0.5
 
   The scalex-option, scaley-option and rotate-option would work
