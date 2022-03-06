@@ -1,6 +1,7 @@
 ---
 title: Symbols
 program: lualatex
+bodyfontsuit: linux 
 ---
 
 
