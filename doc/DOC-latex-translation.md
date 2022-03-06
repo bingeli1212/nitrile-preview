@@ -465,5 +465,26 @@ are placed next to each other without spaces between them.
 # Problems
 
 * The INK bundle do not currently clip contents if the list is too long or too
-   wide, although the bounding box is the right size.
-* 
+   wide---this is because it uses "picture" environment which does not clip
+   its cntents. 
+
+* The "multicols" environment adds top/bottom margins, and thus is not a suitable
+  choice for producing side-by-side subfigures inside a figure. The solution is to
+  use "threeparttable" such that they are joint by "~%" to leave a non-breakable
+  space.
+
+* The "trimclip" package provides a `\clipbox` command that can be called to
+  trim the content of "picture" environment to the given size. For instance,
+  `\clipbox{0mm 0mm 100mm 100mm}{tex}` would trim the content "tex" such that
+  anything outside of 100mm-by-100mm will be removed. Per documentation,
+  this command merely asks that the backend translation such as pdftex/luatex
+  to add an instruction to the PDF document to "hide" the content.
+
+* For drawing a raster image inside a "tikzpicture" environment it is important
+  to position the raster image such that it is "centered" at the target area
+  rather than position it such its lower-left corner aligns with the lower-left
+  corner of the target area.
+
+
+
+

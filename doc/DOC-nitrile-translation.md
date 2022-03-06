@@ -3,33 +3,74 @@ title: NITRILE Translation
 ---
 
 
-# The .page directive
+# Numbered section headings
 
-This directive is intended to provide a way for a translation
-backend to insert a page brreak. It should not need to be followed
-by anything.
+The number headings are detected by the presence of hash-marks 
+at the first of the line of a paragraph.
+
+    # Introduction
+    ## Introduction
+    ### Introduction
+
+Only the previous three different kind of sections are supported.
+When being translated, each of them corresponds to a section, subsection,
+or subsubsection.
+
+
+# Un-numbered section headings
+
+Un-numbered section headings are recognized by the presence of a pair of
+matching square brackets. 
+
+    [ Regex. ]
+    The `Regex` class is for expressing a regular expression.
+
+    [ Math. ]
+    The `Math` class is for grouping a collection of 
+    math functions and constants.
+
+Each un-numbered section heading is also capable of holding extra body texts.
+Previous ones are level-1 un-numbered section headings.  They are similar to
+`\paragraph`. Following are level-2 un-numbered headings, and they are similar
+to `\subparagraph` commands in LATEX.
+
+    [[ Regex. ]]
+    The `Regex` class is for expressing a regular expression.
+
+    [[ Math. ]]
+    The `Math` class is for grouping a collection of 
+    math functions and constants.
+
+
+# Compositive blocks
+
+- "page"
+- "figure"
+- "multicols"
+- "equation"
+- "vspace"
+- "alignment"
+
+The "page" composite block is intended to provide a way for a translation
+backend to insert a page brreak. It should always to appear by itself. 
 
     .page
 
-
-# The .figure directive
-
-This directive is intended to provide a way for a translation
+The "figure" directive is intended to provide a way for a translation
 backend to insert a figure.
 
+    .figure
+    \\
+    ```dia{width:50}
+    \image "imgs/frog.png"
+    ```
+    ```dia{width:50}
+    \image "imgs/clock.png"
+    ```
 
-# The .longtabu directive
+The "multicols" composite block is for constructing a multi-column paragraph.
 
-This directive is intended to provide a way for a translation
-backend to insert a long table.
-
-
-# The "column" directive
-
-This directive is intended to provide a way for a
-translation backend to insert a multiple column paragraph.
-
-    .column
+    .multicols
     \\
     ```par{width:50}
     A frog is any member of a diverse and largely 
@@ -41,14 +82,11 @@ translation backend to insert a multiple column paragraph.
     \image "frog.img"
     ```
 
+The "equation" composite block is intended to provide a way for a translation
+backend to insert an equation section which may include one or more equations
+each with a unique equation number.
 
-# The "equation" directive
-
-This directive is intended to provide a way for a translation
-backend to insert an equation section which may include one or more
-equations each with a unique equation number.
-
-    .equation{n:2}
+    .equation
     &label{a b}
     \\
     ```
@@ -58,31 +96,17 @@ equations each with a unique equation number.
     a^2 + b^2 = c^c
     ```
 
-Typically each bundle in the equation is assumed to hold an equation
-and will be assigned a number. However, if there are multiple equations
-the "n" style must be set to point a number that equals to the number
-of equations; and the "label" phrase should contain a list of labels
-matching that number.
-
-
-
-# The "vspace" directive
-
-This directive is intended to add a vertical space between
-paragraphs.  By default the vertical space is equal to 
-1em. However the "vspace" style can be set to a number to 
-express a different value. Following example adds a vertical
-space equal to "10em".
+The "vspace" composite block is for inserting vertical spaces. By default
+it inserts a vertical space equivalent to 1em. However, the "vspace" style
+option can be specified which holds a number expressing multiple "em".
+Following example inserts a vertical space equal to "10em".
 
     .vspace{vspace:10}
 
-# The "alignment" directive
-
-The "alignment" directive is to present a paragraph with special
-alignment needs. This paragraph is to have a visible top and bottom
-margin, and will be set up so that it has the desired alignment
-set by the "textalign" style. The "fontsize", "fontstyle" can also
-be setup to fine tune its appearance.
+The "alignment" composite presents a paragraph with special alignment needs.
+This paragraph is to have a visible top and bottom margin, and will be set up
+so that it has the desired alignment set by the "textalign" style. The
+"fontsize", "fontstyle" can also be setup to fine tune its appearance.
 
     .alignment{textalign:r,fontsize:small,fontstyle:i}
     \\
@@ -93,11 +117,22 @@ be setup to fine tune its appearance.
     (literally without tail in Ancient Greek). 
     ```
 
-    
 
-# The "img" bundle
+# Bundles
 
-The "img" bundle allows for an raster image to be shown. 
+Bundles are those paragraphs fenced by triple backquotes.
+Following are the signature IDs for the bundles.
+
+- img
+- dia
+- ink
+- fml
+- tab
+- par
+- vtm
+
+[ The "img" bundle. ]
+This bundle allows for an raster image to be shown. 
 In addition, for HTML translation it is also possible to allow
 for a Canvas element to be created such that the image
 can be edited manually.
@@ -122,14 +157,19 @@ Note that the edited image can be sent to the server to be saved.  So far the
 that is sent after user has "submitted" the edited image.
 
 
-# The "par" bundle
+[ The "dia" bundle. ]
+This bundle builds a vector image such as SVG, Tikz, and or MetaFun.
 
+    ```dia{viewport:10 10,width:30}
+    \drawline (0,0) (10,10)
+    \drawline (0,10) (10,0)
+    ```
+
+
+[ The "par" bundle. ]
 This bundle is designed to create a text box that contains a single
 paragraph. It allows for the possibility such that this paragraph
 is able to have its own text alignment, font size, and font style.
-
-The paragraph is going to have visible top and bottom margins.
-
 Usually, when "width" is not present, texts are arranged in lines
 separated by the presence of double-backslashes. 
 
@@ -150,14 +190,126 @@ to form a single continuous paragraph.
     ```
 
 
-# The phrases
+# Un-fenced paragraphs
 
-- fbox{100} : creating a frame box of width equal to 100mm.
-- hrule{5} : creating a hrule of width equial to 5em.
-- colorbutton{red} : creating a color button colored by color "red".
+Un-fenced paragraphs are those that are not fenced by
+triple-backquotes. Following are the signatures IDs
+for these blocks.  
+
+- samp
+- sand
+- cove
+- cave
+- step
+- plst
+- body
 
 
-# CJK and other fonts
+
+# Phrases
+
+Phrases are inline markups that allow contents to be styled or turned into a
+differen entity. For instance, a pair of double-backquote are to turn a piece
+of text into math.
+
+    The theorem is: ``a^2 + b^2 = c^2``.
+
+A pair of single-backquote are to mark a piece of text as verbatim.
+
+    The key combination is: `CTRL-K`.
+
+The double-asterisk are to set up strong texts.
+Note that for this phrase no spaces are allowed inside.
+
+    The **text** is marked as strong.
+
+The single-asterisk is to set up emphasized text.
+Note that for this phrase no spaces are allowed inside.
+
+    The *text* is emphasized
+
+A pair of double-braces allows for one or more words of text
+to be marked as emphasized tet.
+
+    The saying goes like this: {{a fox jumps over a lazy dog.}}
+
+A text can also appear inside a form such as `&key{...}`. These
+phrases are called entity phrases.  Following are recognized entity phrases.
+
+- em
+- b
+- i
+- u
+- s
+- tt
+- q
+- g
+- high
+- low
+- br
+- ref
+- url
+- link
+- utfchar
+- utfdata
+- colorbutton
+- fbox
+- hrule
+- dia
+- label
+
+The "hrule" entity phrase is to tyepset a horizontal rule of a given size
+and with optional contents. Following typesets a horizontal rule 
+of length equal to 10em.
+
+    Please enter your name: &hrule{10}
+
+Following allows for the contents to be provided that will appear on top of the
+rule of length 10em. Contents recognized by a white space within the phrase.
+
+    Please enter your name: &hrule{10 Mark Dove}
+
+The "dia" phrase can be used to insert an inline diagram that is similar to the
+content of a DIA bundle. The content of the diagram are to come from a "paste
+buffer". In the following example there is a paste buffer named "mydia"
+containing the content of a DIA.
+
+    ---
+    title: My Doc
+    ---
+    %=mydia{viewport:5 5}
+    \drawline (0,0)(5,5)
+    \drawline (5,0)(0,5)
+    %
+    \\
+    The diagram is: &dia{mydia}
+
+
+The "colorbutton"
+Create a square with given color.
+For instance,
+
+    The button is &colorbutton{red}.
+
+The "ref" entity phrase inserts an ID representing a reference to an existing
+label.  For instance, the phrase `&ref{sect1}` would likely have inserted a
+number that is "1" should label "sect1" be associated with the first section of
+an article.
+
+    Please see section &ref{sect1}.
+
+The "label" phrase
+Create a label that is associated with a particular section or other composite
+block.     For instance, following example associated label "sect1` with a
+section titled "Introduction". If this section is later on referenced by `&ref{sect1}`,
+then an integer 1 could be inserted if this section is the first section.
+
+    # Introduction
+    &label{sect1}
+
+
+
+# CJK and custom fonts
 
 The document may contain Unicode characters that are greater
 than 0x7F. Depending on the main font, these characters may
@@ -312,9 +464,6 @@ These package defines the following commands.
 
     \begin{CJK}{UTF8}{mj}....\end{CJK}  % For KR
 
-
-# Specify addition fonts
-
 For CONTEX/XELATEX translation there could be many Unicode charactesr
 to be included with a document that do not necessarily have a corresponding
 glyphs in the main font. Thus, these character needs to be specially
@@ -323,54 +472,198 @@ the glyph.
 
 For CONTEX it is 
 
-    \switchtobodyfont[unifont]{...}
+    \switchtobodyfont[jp]{...}
 
 For XELATEX it is
 
-    {\fontspec{unifont}...}
+    {\fontspec{jp}...}
 
-And "unifont" is assumed to be the name of the font.
+And "jp" is assumed to be the name of the font,
+that must have been configured.
 
-The configuration for a MD document is the following.
+
+# Specify addition fonts
+
+The four CJK fonts are "jp", "cn", "tw" and "kr".
+There are also additional ten fonts that can be configured. Each one
+can be configured to style a text that belongs to one of the existing 
+Unicode blocks. For instance, it is pssible to set up so that font "A"
+is to be applied to all texts that belong to Unicode block starting at 0x2700,
+or Dingbats. Following example sets up so that the "jp" font would load
+"ipaexmincho" for CONTEX, "Hiragino Mincho ProN" for XELATEX, and "ipaexmincho"
+for LUALATEX translation, and in addition, the "Unifont" for all the previous
+three translations for all texts of Unicode block 0x2700.
 
     ---
     title: My Doc
-    fonts: font0/unifont/0x2700
-           font1/unifont/0x25A0
+    fonts: jp{contex:ipaexmincho,xelatex:Hiragino Mincho ProN",lualatex:ipaexmincho}
+           A{contex:Unifont,xelatex:Unifont,lualatex:Unifont,start:0x2700}
     ---
-
-Previous syntax allows for two Unicode blocks to be configured
-so that all characters within that block are to be shown
-with the glyph provided by font "unifont".  The first element
-is a keyword that should be one of the following between
-font0-font9. The second one is the font name to be set for all
-the text of it. The third one is the start range of the unicode block.
 
 Thus, the text that is the following
 
-    日本語Hello: ✍✎□▢
+    日本語Hello: ✍✎
 
 Would have been translated into CONTEX as
 
-    {\switchtobodyfont[jp]日本語}Hello: {\switchtobodyfont[unifont]✍✎}{\switchtobodyfont[unifont]□▢}
+    {\switchtobodyfont[jp]日本語}Hello: {\switchtobodyfont[A]✍✎}{\switchtobodyfont[A]□▢}
 
-Note that CJK characters are automatically recognized for their fonts
-without need for any setup.
+And to XELATEX and LUALATEX as
 
+    {\jp{}日本語}Hello:{\A{}✍✎}
+
+Note that "jp", "cn", "tw" and "kr" are font ID that are automatically applied
+to texts of CJK characters without any setup from the user side. However, each
+of these font ID must be linked to an installed system font in order for it to
+work. By configuring the "fonts" front matter key it allows for an installed
+system font to be linked to a font ID, such that the translation would create
+necessary commands to link this font ID with the installed system font.
+For CONTEX it is \definefontfamily, and for LUALATEX/XELATEX it is \newfontfamily
+and/or \newjfontfamily.
+
+For texts of a particular Unicode block to be applied a specific font the font
+ID "A", "B", "C", "D", "C", "D", "E", "F", "G", or "H" must be used. Each of
+these font ID must be linked with an installed system font in order for this
+font ID to work.
 
     
+# Frontmatter configuration parameters
 
-# The inline math
+Following are keys that can appear as part of the configurations
 
-Any inline math is identified by the presence of double-backquote
-quotations such as 
+- title
+- program
+- peek
+- fonts
+- bodyfontsuit
+- bodyfontsize
+- bodyfontvariant
 
-    The Pythagoream equation is defined as: ``a^2 + b^2 = c^2``.
+[ program. ]
+The "program" key is to hold a string that is to be interpreted
+as the program to run to compile the translated document. It is currently
+utilized to provide variations of the same LATEX translation. For instance,
+it can be set to 'pdflatex', 'xelatex', and 'lualatex' such that the translated
+TEX document should be tailored to this variable.
 
-The reason math expression is to be expressed this way is that
-any underscores that are likely to appear as part of a math
-expression will not be mistakely interpreted as expressing strong or 
-emphasized text by a MD document editor.
+[ fonts. ]
+For CJK/Unicode fonts.
+
+[ bodyfontsuit. ]
+This should be set to one of the following: "linux", "dejavu", and "office".
+The first one would instruct that the translation should be switched to using
+Libertina font; the "dejavu" should instruct the translation to use the
+Dejavu font; and the "office" should instruct that "Times New Roman" should be
+used instead.
+
+[ bodyfontvariant. ]
+This should be set to "ss" if the main font should be a Sans Serif
+instead of the normal Serif. 
+
+[ bodyfontsize. ]
+This should be set to an integer such as "11" for expressing
+the size of the main font in "pt".
+
+[ peek. ]
+This should be set to a translation backend name such as "folio" to express
+the fact that if this MD document is to be served over the HTTP then
+that translation should be used to convert it to HTML/XHTML document.
+Other available HTML/XHTML translation backends are: "slide", and "page".
+
+[ title. ]
+This should be set to a string holding the title of the document. This string
+would serve a variety of purposes, one of which would be to set the "title"
+tag of the generated HTML/XHTML document. 
+
+
+
+# Auxiliary information sections
+
+Auxilary information sections provide auxiliary information to all
+blocks/bundles of the current document. They can be categorized into
+following four different types.
+
+- imports
+- ruby annotations
+- defaut styles
+- named storage
+
+The "import" sections are for providing external documents that are to be
+imported as chapters, or to create one or more "part" section placed between
+chapters.
+
+The "ruby annotation" sections are to provide ruby annotation for certain
+Japanese/Chinese characters.
+
+The "default style" sections are to add default style configurations to be
+present for all blocks/bundles of a particular ID.
+
+The "named storage" sections establishes named storages and suppy its contents;
+these storage buffers can later on by referenced and its contents retrieved.
+
+[ Import. ]
+
+    %^import [part]"Introduction"
+    %^import [chapter](./chap1.md)
+    %^import [chapter](./chap2.md)
+    %^import [chapter](./chap3.md)
+    %^import [part]"Introduction"
+    %^import [chapter](./chap4.md)
+    %^import [chapter](./chap5.md)
+    %^import [chapter](./chap6.md)
+
+[ Ruby annotation. ]
+
+    %!異臭・いしゅう
+    %!匂い・におい
+    %!危ない・あぶない
+    %!蓋/ふた
+    %!埃/ほこり
+    %!覆われた・おおわれた
+    %!汚れた・よごれた
+    %!真っ黒/まっくろ
+
+[ Default style. ]
+
+    %~samp{fontsize:small}
+    %~ink{frame,viewport:20 20,width:40}
+    %~dia{frame,viewport:20 20,width:40}
+
+[ Named storage. ]
+Name storages pairs contents (lines) with a name. The contents
+are stored internally  and associated with the given name. 
+The contents can later on be inserted into a DIA bundle, and/or
+retrieved by a "dia" phrase.
+
+    %=spider{viewport:10 10,fontsize:10}
+    \drawpath {fillcolor:white} &ellipse{(0,1.4),0.65,1.0}
+    \drawpath {fillcolor:white} &ellipse{(0,0.3),0.4,0.3}
+    \fillpath {fillcolor:black} &circle{(-0.2,0.25),0.1}
+    \fillpath {fillcolor:black} &circle{(+0.2,0.25),0.1}
+    \drawpath (+0.3,0.45) <clock:+35,1> <clock:+35,0.4> &circle{(*),0.1}
+    \drawpath (+0.3,0.45) <clock:+55,1> <clock:+35,0.4> &circle{(*),0.1}
+    \drawpath (+0.3,0.45) <clock:+75,1> <clock:+35,0.4> &circle{(*),0.1}
+    \drawpath (+0.3,0.45) <clock:+95,1> <clock:+35,0.4> &circle{(*),0.1}
+    \drawpath (-0.3,0.45) <clock:-35,1> <clock:-35,0.4> &circle{(*),0.1}
+    \drawpath (-0.3,0.45) <clock:-55,1> <clock:-35,0.4> &circle{(*),0.1}
+    \drawpath (-0.3,0.45) <clock:-75,1> <clock:-35,0.4> &circle{(*),0.1}
+    \drawpath (-0.3,0.45) <clock:-95,1> <clock:-35,0.4> &circle{(*),0.1}
+    %
+    %=ant{viewport:10 10,fontsize:10}
+    \drawpath (-0.8,1)   <clock:-150,0.7> &circle{(*),0.1}
+    \drawpath (-0.6,0.8) <clock:-160,0.7> &circle{(*),0.1}
+    \drawpath (-0.3,1)   <clock:-170,0.7> &circle{(*),0.1}
+    \drawpath (-0.1,0.8) <clock:-175,0.7> &circle{(*),0.1}
+    \drawpath (+0.3,1)   <clock:-190,0.7> &circle{(*),0.1}
+    \drawpath (+0.6,0.8) <clock:-199,0.7> &circle{(*),0.1}
+    \drawpath {fillcolor:white} &ellipse{(0.9,1.20),0.65,0.40,15}
+    \drawpath {fillcolor:white} &ellipse{(+0.2,1.1),0.4,0.3}
+    \drawpath {fillcolor:white} &ellipse{(-0.4,1.1),0.4,0.3}
+    \drawpath {fillcolor:white} &ellipse{(-1.1,1.4),0.5,0.5}
+    \fillpath {fillcolor:black} &circle{(-1.3,1.4),0.1}
+    \drawpath (-1,1.7) <q:0.5,0.5,-0.3,0.8>
+    \drawpath (-1.2,1.7) <q:0.5,0.5,-0.4,0.8>
+    %
 
 
 

@@ -471,25 +471,21 @@ Nitrile
 - [x] Ensure that phrase-dia does not respond to style-frame.
 - [x] Ensure that 'vborder' and 'hborder' style works consistantly across all translations
 - [ ] Explore the possibility of adding an option to a phrase such as &hbox[d]{5}, and at the same time requires that there is no curly braces inside a phrase.
-- [ ] The CONTEX-MF does not display hyphen in monospace correctly
-- [x] Separate the fence and paragraph in html.js
-- [x] Deprecate style-stretch for all 'dia' bundle translations.
-- [x] Rename 'wraparound' to 'wrap'
-- [x] For folio.js, a Part should be in its own page
-- [x] Add a nigrep.js
-- [x] Add a nisubs.js
-- [x] Change it to use the P element for paragraphs rather than DIV
-- [x] The niepub.js for html.md is currently broken
-- [ ][BUG] The latex.js the tikzpicture inside a tabular had its top part trimmed too much
-- [ ][BUG] For nimake, it should have aborted the future process if one process returns with an error, but it kept on going
+- [x][FR] Separate the fence and paragraph in html.js
+- [x][FR] Deprecate style-stretch for all 'dia' bundle translations.
+- [x][FR] Rename 'wraparound' to 'wrap'
+- [x][FR] For folio.js, a Part should be in its own page
+- [x][FR] Add a nigrep.js
+- [x][FR] Add a nisubs.js
+- [x][FR] Change it to use the P element for paragraphs rather than DIV
+- [x][BUG] The niepub.js for html.md is currently broken
 - [x][FR] Set the equation number, listing number, and longtabu numbering can be set to a customized one determined by 'idnum'
-- [x] Add XeLaTeX support to latex.js
-- [ ] Need to work on splitting a longtabu into multiple tables each in a different page
-- [x] Rename style.align to style.textalign
-- [x] A a vspace{} like command to add visible vertical spaces.
-- [ ] Add a feature to DIA to allow for defining a symbol with path and drawing styles
-- [x] Figure out a way of putting allowing for specifying other fonts for certain unicode blocks for XELATEX/CONTEX: font1/unifont/0x7100
-- [x] Add a new style feature to specify the font style for each tabular column, such as \tt, \it
+- [x][FR] Add XeLaTeX support to latex.js
+- [x][FR] Rename style.align to style.textalign
+- [x][FR] A a vspace{} like command to add visible vertical spaces.
+- [-][FR] Add a feature to DIA to allow for defining a symbol with path and drawing styles
+- [x][FR] Figure out a way of putting allowing for specifying other fonts for certain unicode blocks for XELATEX/CONTEX: font1/unifont/0x7100
+- [x][FR] The "fontstyle" for TAB is to hold a list of styles one for each column 
 - [x][FR] Add a new bundle called 'img' to allow for HTML translation to present a Canvas such that it can show predefined raster images as well as hand draw it
 - [x][FR] In diagram.js, remove "group", and move all `g_to_xxx()` function to base.js, also, ensure that fontsize:small is taken cared of inside diagram.js
 - [x][FR] Deprecated `\var` and `\config` and merge them both into `\set`
@@ -504,15 +500,34 @@ Nitrile
 - [x][FR] Renamed "column" float to "multicols" float
 - [x][FR] Introduce SAMP, SAND, COVE, CAVE, BODY paragraph types 
 - [x][FR] It is now possible to change the fonts for languages that are jp, cn, tw, and kr, as well as allowing other fonts to be defined and applied to Uncode characters of certain Unicode blocks.
-- [ ][FR] Add `bodyfont` FM parameter to select the main font, which is a list of comma separated words such as linux, ss, office, 10pt, etc.
+- [x][FR] Add `bodyfontsuit`, `bodyfontsize`, and `bodyfontvariant` FM parameters that applies to ALL translations             
 - [x][FR] Allow sub-figure subcaption to be specified from within caption, either by (a), (b), or ()
 - [x][FR] Add a new `\chart` command for DIA
 - [x][BUG] "\mu" is not showing at all when compiled by CONTEX.
 - [x][BUG] `\hat{\mu}` is showing that the hat is too low and is overlapping with `\mu`.
 - [x][FR] Add a new block type that is ITEM that would typeset an itemized item with sub-paragraphs.
-- [ ][FR] Change it so that for \left\right fences it is drawn using path rather than existing characters
-- [ ][BUG] When \sum is at a fraction and is display mode the subsup are top and bottom, which should be moved to right
+- [-][FR] Change it so that for \left\right fences it is drawn using path rather than existing characters
+- [x][BUG] When \sum is at a fraction and is display mode the subsup are top and bottom, which should be moved to right
 - [x][FR] Reduce the vspaces added between rows of a matrix
 - [x][FR] Add `\vl` to math to insert a vertical bar covering the entire font height
-- [ ][BUG] The equation number cannot be set to cutomized one for CONTEX when chapter is used
-- [ ][FR] Add "text"+4.5-3.2
+- [-][BUG] CONTEX doesnt allow for cutomized equation number when "chapter" is present.
+- [x][FR] Add `\drawtabulatedtext` command to draw tabulated data.                
+- [x][FR] The "tx" and "ty" are no longer part of a style but rather command line switches such as +dx+dy
+- [x][FR] The &em{} and &b{} works only when the contents do not have white spaces.
+- [x][FR] Added a new double-braces span that would typeset inline text to any style. 
+- [x][FR] Renamed label anchor to 'l','r','c','u',and 'b'.
+- [ ][FR] The &dia{} would only accept buffer names  
+- [ ][FR] Each buffer is to be accompanied by a style that will be used by &dia{}
+- [ ][BUG] Currently LONGTABU and LISTING cannot be split into multple pages for FolioJs.
+- [ ][BUG] The latex.js the tikzpicture inside a tabular had its top part trimmed too much
+- [ ][BUG] For nimake, it should have aborted the future process if one process returns with an error, but it kept on going
+- [ ][BUG] The CONTEX-MF does not display hyphen in monospace correctly
+- [ ][BUG] Change it so that switches, vmap, and buffers cannot be overridden accidently.
+- [ ][BUG] Fixes so that all TAB, PAR, LISTING, VERB are by default not a font size smaller
+- [ ][FR] Add switches for VERB, COVE, CAVE, SAMP, SAND, STEP, PLST, and BODY and ensure that they get from the defaut settings
+- [ ]
+
+
+
+
+

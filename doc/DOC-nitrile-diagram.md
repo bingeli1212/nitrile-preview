@@ -728,10 +728,9 @@ sweep is desired.  If a clockwise sweep is desired, set the "sweepflag" to 1.
 
 - <m:dx,dy>
 
-This is to create a new 'M' point or update an existing 'M' point. The new 'M"
-point will be moved dx/dy away from the current point. If the last point is not
-a M point, a new M point will be created. Otherwise, the last M point is updated
-and its new position is dx/dy away from its original position.
+This is to update a previous 'M' point so that its location is moved dx/dy away
+from its origional position.  If the last point is not a M point, no action is
+taken.
 
 
 
@@ -1126,7 +1125,7 @@ rectangle with a given width/height located at certain point.
 Note that for a path function all its arguments must be either a path variable,
 an absolute point, or a scalar.
 
-- midpoint 
++ midpoint 
 
 The ``midpoint`` function returns the mid point of the first two
 points in a path expression if a single argument is given. Following
@@ -1153,7 +1152,7 @@ following example will return the same result as the one before.
 \path b = &midpoint{(1,1),(2,3),0.5}
 ```
 
-- scatterpoints 
++ scatterpoints 
 
 The ``scatterpoints`` function is to create new path with the
 points distributed evenly beteen the two end points. The 
@@ -1170,7 +1169,7 @@ such that the path contains four points.
 \path a = &scatterpoints{(1,0),(10,0),2}
 ```
 
-- linelineintersect 
++ linelineintersect 
 
 The ``linelineintersect`` Returns new a path that contains a
 single point which is the point at which the two lines intersect.
@@ -1185,7 +1184,7 @@ are ignored.
 ```
 
 
-- linecircleintersect 
++ linecircleintersect 
 
 The ``linecircleintersect`` function returns new a path that
 contains two points for the line and circle intersection. In the
@@ -1199,7 +1198,7 @@ and (4,2).
 Note that the returned point is always arranged such that the first
 point is on the left hand side of the second point.
 
-- circlecircleintersect 
++ circlecircleintersect 
 
 This method returns one or two points where two circles intersect.
 
@@ -1207,7 +1206,7 @@ This method returns one or two points where two circles intersect.
 \path b = &circlecircleintersect{(0,0),10,(5,0),10}
 ```
 
-- circlepoints 
++ circlepoints 
 
 The general syntax is: &circlepoints(center,r,a1,a2,a3...), where
 the 'center' denotes a path with a point expressing the circle
@@ -1220,7 +1219,7 @@ angles.
 \path b = &circlepoints{(0,0),2,30,60,90}
 ```
 
-- pie
++ pie
 
 Returns a closed path expressing a pie. 
 
@@ -1228,7 +1227,7 @@ Returns a closed path expressing a pie.
 \path b = &pie(center,radius,angle,span)
 ```
 
-- circle 
++ circle 
 
 Returns a path expressing the circle. It has a syntax of:
 &circle(center,radius), where 'center' is a path with at least one
@@ -1238,7 +1237,7 @@ point, and 'radius' a scalar.
 \path b = &circle(center,radius)
 ```
 
-- ellipse 
++ ellipse 
 
 This return a path expressing an ellipse. The syntax is following.
 The fourth argument is the rotation in degrees, in counterclockwise
@@ -1249,7 +1248,7 @@ rotation.
 \path b = &ellipse(&center,xradius,yradius,rotation)
 ```
 
-- rectangle 
++ rectangle 
 
 This returns a path expressing a rectangle between to points. There
 are three ways construct the triangle, that is shown below. The
@@ -1264,7 +1263,7 @@ just the width and height, assuming the anchor point to be at (0,0)
 \path b = &rectangle{width,height}
 ```
 
-- triangle 
++ triangle 
 
 This returns a path expressing a triangle of three points. The syntax is: 
 
@@ -1272,17 +1271,17 @@ This returns a path expressing a triangle of three points. The syntax is:
 \path b = &triangle(&point1,&point2,&point3)
 ```
 
-- equilateraltriangle{(0,0),3}
++ equilateraltriangle{(0,0),3}
 
 This returns a equilateral-triangle centered at (0,0) and with a side
 measurement equal to 3 grid length.
 
-- regularpentagon{(0,0),3}
++ regularpentagon{(0,0),3}
 
 This returns a regular pentagon centered at (0,0) and with a side measurement
 equal to 3 grid length.
 
-- asatriangle{&Left,B,a,C}
++ asatriangle{&Left,B,a,C}
 
 This returns a triangle ABC when two angles and the side between the two
 angles are known.  The triangle is oriented such that the known side is layed
@@ -1292,7 +1291,7 @@ the left end point of the side, and the forth argument expresses the angle at
 the endpoint on the right hand side.  The third argument is the length of the
 side between the two angles.
 
-- polyline 
++ polyline 
 
 This returns a path expressing a polyline. The syntax is:
 
@@ -1300,7 +1299,7 @@ This returns a path expressing a polyline. The syntax is:
 \path b = &polyline{&point1,&point2,&point3,...}
 ```
 
-- polygon  
++ polygon  
 
 This returns a path expressing a polygon. The syntax is:
 
@@ -1308,16 +1307,16 @@ This returns a path expressing a polygon. The syntax is:
 \path b = &polygon{&point1,&point2,&point3,...}
 ```
 
-- cylinder 
++ cylinder 
 
 This expresses a upright cylinder drawn with an ellipse at the
 bottom, with xradius/yradius, and a given height. The syntax is:
 
 ```
-\path b = &cylinder{&center,xradius,yradius,height}
+\drawpath &cylinder{&center,xradius,yradius,height}
 ```
 
-- ymirror 
++ ymirror 
 
 This returns a new path that is a mirror image of a given path. The
 first argument is the old path, and the second argument is a scalar
@@ -1325,11 +1324,11 @@ that is a value on X-axis. The following example returns a new path
 that is a mirrored image of 'a' off the x-axis.
 
 ```
-\path a = ...
-\path b = &ymirror{&a,0}
+\path a = (0,0)--(1,1)--(2,3)
+\drawpath &ymirror{&a,0}
 ```
 
-- mirror 
++ mirror 
 
 This returns a new path that holds a single point that is the mirror
 image of the given point along a given line. In the following example
@@ -1339,27 +1338,27 @@ the returned point 'a1' would have been set to (-5,0)
 \path a = (5,0)
 \path b = (0,0)
 \path c = (0,10)
-\path a1 = &mirror{&a,&b,&c}
+\drawpath &mirror{&a,&b,&c}
 ```
 
-- bbox 
++ bbox 
 
 This returns a new path that represents the rectangle of the
 viewport.
 
-- grid
++ grid
 
 This returns a new path that represents a grid. It expects four 
 arguments, the first two of which is the width and height of the grid,
 and the last two represents the steps in the x-direction and y-direction.
-The following example would have drawn a grid of 10-by-10, with grid
-line separation of 1 in both directions.
+The following example would have drawn a grid located at (1,2) covering
+an area of 10-by-10. Each grid cell is always 1-by-1.
 
 ```
-\path a = &grid{10,10,1,1}
+\drawpath &grid{(1,2),10,10}
 ```
 
-- rotatepoint
++ rotatepoint
 
 This function would first rotate the point around a given point and then adjust
 the new point alone the line between itself and the center such that its
@@ -1369,43 +1368,53 @@ counter-clockwise angle and the finally adjust itself such that its
 distance from the center is exactly 2.
 
 ```
-\path a = &droppoint{(0,0),(1,0),90,2}
+\drawpath &droppoint{(0,0),(1,0),90,2}
 ```
 
-- droppoint
++ droppoint
 
 The second form would have had three points, and the returned value
 is a point on the line segment that is the first two points. The following
 example is to return the point that is (0.5,0)
 
 ```
-\path a = &perpoint{(0,0),(2,0),(0.5,1)}
+\drawpath &perpoint{(0,0),(2,0),(0.5,1)}
 ```
 
-- rotate{&A,90}
++ rotate{&A,90}
 
 This rotates a given path by a certain angle in an anti-clockwise rotation.
 
-- translate{&A,10,20}
++ translate{&A,10,20}
 
 This translates a given path by a given distance in X and Y direction.
 
-- bisect{&A,&B,&C,r}
++ bisect{&A,&B,&C,r}
 
 This will compute a new point that lines on the line that is the result 
 of bisecting the angle ABC, and with a distance of 'r' away
 from vertex 'B'.
 
-- points{[@a],[@b]}
++ points{[@a],[@b]}
 
 This will return a new coords array where each coords point is a 'M' point
 composed of corresponding points in array 'a' and 'b'. 
 
-- lines{[@a],[@b]}
++ lines{[@a],[@b]}
 
 This will return a new coords array in the same manner as that of the 'points'
 function, except that each coords point is a 'L' point except for the first one
 which is a 'M' point.
+
++ hboxplot{Q0,Q1,Q2,Q3,Q4,y}
+
+This will return a path describing a horizontal oriented boxplot at y-coordinate with five quartiles.
+The height of the box is always 1.
+
++ vboxplot{x,Q0,Q1,Q2,Q3,Q4}
+
+This will return a path describing a vertially oriented boxplot at x-coordinate with five quartiles.
+The width of the box is always 1.
 
 
 
@@ -1414,47 +1423,38 @@ which is a 'M' point.
 Following are built-in path that are readily available.
 
 + north
-
   This would have returned a point that coincides with the top side of the
   viewport and which centers horizontally.
 
 + south
-
   This would have returned a point that coincides with the bottom side of the
   viewport and which centers horizontally.
 
 + east
-
   This would have returned a point that coincides with the right hand side of the
   viewport and which centers vertically.
 
 + west
-
   This would have returned a point that coincides with the left hand side of the
   viewport and which centers vertically.
 
 + northwest
-
   This would have returned a point that coincides with the top left hand corner
   of the viewport.
 
 + northeast
-
   This would have returned a point that coincides with the top right hand corner
   of the viewport.
 
 + southwest
-
   This would have returned a point that coincides with the bottom left hand corner
   of the viewport.
 
 + southeast
-
   This would have returned a point that coincides with the bottom right hand corner
   of the viewport.
 
 + center
-
   This would have returned a point that coincides with the center of the
   viewport.
 
@@ -2476,6 +2476,9 @@ attribute. Note that this style attribute corresponds to the diameter of the dot
 in the unit of "pt".
 
     \drawdot {dotsize:3} ^chart:1 (0,0) (5,4) (3,4) (7,8) (9,10)
+
+If "showgrid" style parameter is set, then grid lines corresponding to each xtick
+and ytick will be draw as well.
 
 
 
