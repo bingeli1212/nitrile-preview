@@ -518,14 +518,17 @@ Nitrile
 - [x][FR] Renamed label anchor to 'l','r','c','u',and 'b'.
 - [ ][FR] The &dia{} would only accept buffer names  
 - [ ][FR] Each buffer is to be accompanied by a style that will be used by &dia{}
-- [ ][BUG] Currently LONGTABU and LISTING cannot be split into multple pages for FolioJs.
-- [ ][BUG] The latex.js the tikzpicture inside a tabular had its top part trimmed too much
+- [x][BUG] The latex.js the tikzpicture inside a tabular had its top part trimmed too much
 - [ ][BUG] For nimake, it should have aborted the future process if one process returns with an error, but it kept on going
 - [ ][BUG] The CONTEX-MF does not display hyphen in monospace correctly
-- [ ][BUG] Change it so that switches, vmap, and buffers cannot be overridden accidently.
-- [ ][BUG] Fixes so that all TAB, PAR, LISTING, VERB are by default not a font size smaller
-- [ ][FR] Add switches for VERB, COVE, CAVE, SAMP, SAND, STEP, PLST, and BODY and ensure that they get from the defaut settings
-- [ ]
+- [x][BUG] Change it so that switches, vmap, and buffers cannot be overridden accidently.
+- [x][BUG] Fixes so that all "tab", "par", "vtm" are no longer font size smaller by default
+- [x][FR] Add block signatures for "verb", "cove", "cave", "samp", "sand", "step", "plst", and "body" 
+- [ ][BUG] Allow longtabu and listing be split into multple pages for FolioJs.
+- [ ][BUG] The "listing" float needs to be able to specify alternative starting line number
+- [_][FR] Donot use "n" style for Equation, but rather (a), (b), (c),,,
+- [_][FR], split tables and listings will have (a), (b), (c),,,
+- [ ][FR]
 
 
 
