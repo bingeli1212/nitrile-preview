@@ -666,5 +666,111 @@ retrieved by a "dia" phrase.
     %
 
 
+# Splitting "listing" block
+
+A "listing" block could be split into multiple blocks and with
+a "page" block inserted between two splitted ones. It can
+be done so by placing "split" style options.
+In the following example three blocks will be created
+that are: "listing", "page" and "listing".
+The first "listing" block holds the first five lines
+and the second "listing" block holds the last two lines
+of the listing.
+
+    .listing{split:5 10}
+    &label{mylisting}
+    My JavaScript program.
+    \\
+    ```
+    var a = 1;
+    var b = 1;
+    var c = 2;
+    var d = Math.abs(12);
+    var e = a + b + c;
+    var f = [1,2,3,4,5];
+    var g = [5,6,6,7,7,];
+    ```
+
+This would be equivalent to having the following three
+blocks.
+
+    .listing
+    &label{mylisting}
+    My JavaScript program.
+    \\
+    ```
+    var a = 1;
+    var b = 1;
+    var c = 2;
+    var d = Math.abs(12);
+    var e = a + b + c;
+    ```
+
+    .page
+
+    .listing
+    &label{mylisting}
+    My JavaScript program.
+    \\
+    ```
+    var f = [1,2,3,4,5];
+    var g = [5,6,6,7,7,];
+    ```
+
+
+
+# Splitting "table" block
+
+A "table" block could be split into multiple blocks and with
+a "page" block inserted between two splitted ones. It can
+be done so by placing "split" style options similar to 
+that of a "listing" block. 
+However the "head" style option should also be specified to hold
+the number lines that are to be repeated for all splitted blocks.
+
+    .table{split:5 10,head:1}
+    &label{mytable}
+    My table.               
+    \\
+    ```
+    Name \\ Addr.
+    John \\ 301 Sun Dr.
+    James \\ 401 Sun Dr.
+    Jane \\ 501 Sun Dr.
+    Mary \\ 601 Sun Dr.
+    Martin \\ 701 Sun Dr.
+    Mandy \\ 801 Sun Dr.
+    Zar \\ 901 Sun Dr.
+    Zor \\ 1001 Sun Dr.
+    ```
+
+This would be equivalent to the following.
+
+    .table
+    &label{mytable}
+    My table.               
+    \\
+    ```tab{head}
+    Name \\ Addr.
+    John \\ 301 Sun Dr.
+    James \\ 401 Sun Dr.
+    Jane \\ 501 Sun Dr.
+    Mary \\ 601 Sun Dr.
+    Martin \\ 701 Sun Dr.
+    ```
+
+    .page
+
+    .table
+    &label{mytable}
+    My table.               
+    \\
+    ```tab{head}
+    Name \\ Addr.
+    Mandy \\ 801 Sun Dr.
+    Zar \\ 901 Sun Dr.
+    Zor \\ 1001 Sun Dr.
+    ```
+
 
 
