@@ -133,28 +133,23 @@ Following are the signature IDs for the bundles.
 
 [ The "img" bundle. ]
 This bundle allows for an raster image to be shown. 
-In addition, for HTML translation it is also possible to allow
-for a Canvas element to be created such that the image
-can be edited manually.
+For certain HTML translation such as NislideJs it would also 
+setup a Canvas to allow this raster image to be edited and saved
+back to the server.
 
     ```img{viewport:10 10,width:30}
-    \image "flog.png"
-    \edit
-    \color #476fc7
-    \color #ae241c
+    \image "flog.png" "flog.eps"
+    \color "#476fc7" "#ae241c"
     ```
 
-The \edit command allows for the image to be edited when translation
-backend is HTML. This would have created an Canvas element such that
-it is used to show the raster image and allow for user to draw lines
-and apply eraser to it--sort like a whiteboard.
+The \image command expresses a list of image files to be loaded.
+All the image files are to express the same image except in different
+formats: this allows for the translation backend to choose the 
+appropriate format as it might not have support for all image formats. 
 
 The \color command expresses a list of predefined colors to be accompanying
-an INPUT element that is to show a color-chooser dialog.  
-
-Note that the edited image can be sent to the server to be saved.  So far the
-"niserver" has to be running as the HTTP server. It processes the "/post" URL
-that is sent after user has "submitted" the edited image.
+an INPUT element that is to show a color-chooser dialog.  The color
+must be in HEX forms with a leading hash mark.
 
 
 [ The "dia" bundle. ]
