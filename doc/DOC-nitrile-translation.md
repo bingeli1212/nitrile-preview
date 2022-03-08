@@ -200,6 +200,58 @@ for these blocks.
 - body
 
 
+[ plst. ]
+The 'plst' un-fenced paragraph is recognized by the presence 
+of a hyphen-minus, a plus-sign, or a asterisk. It models after
+a nested list.
+
+    - Fruits
+      - Apple
+      - Pear
+    - Dairy
+      - Cheese
+      - Milk
+    - Bread
+    - Nuts 
+
+The asterisks are for designating ordered list items.
+
+    * First step, ...
+    * Next step, ...
+    * Final step, ...
+    
+The plus-signs are for designating description lists. 
+
+    + Apple
+      A wonderful fruit.
+    + Pear
+      Another wonderful fruit.
+
+However, if only one line is detected, and the starting
+item is in the following forms, then it becomes a unordered list.
+
+    + `ltr`       The text direction is left-to-right.
+    + `rtl`       The text direction is right-to-left.
+    + `inherit`   The text direction is inherited from the Canvas element or others.
+
+Following are additional three forms.
+
+    + *ltr*       The text direction is left-to-right.
+    + *rtl*       The text direction is right-to-left.
+    + *inherit*   The text direction is inherited from the Canvas element or others.
+
+    + "ltr"       The text direction is left-to-right.
+    + "rtl"       The text direction is right-to-left.
+    + "inherit"   The text direction is inherited from the Canvas element or others.
+
+    + 'ltr'       The text direction is left-to-right.
+    + 'rtl'       The text direction is right-to-left.
+    + 'inherit'   The text direction is inherited from the Canvas element or others.
+
+The first form would typeset the leading terms in monospaced fonts; the second
+form in italic, the third one with quotation marks, and the third one in plaintext.
+
+
 
 # Phrases
 
@@ -209,19 +261,23 @@ of text into math.
 
     The theorem is: ``a^2 + b^2 = c^2``.
 
-A pair of single-backquote are to mark a piece of text as verbatim.
+A pair of single-backquote is to mark a piece of text as verbatim.
 
     The key combination is: `CTRL-K`.
 
-The double-asterisk are to set up strong texts.
+A pair of double-asterisk is to mark a piece of text that is strong in emphasis.
 Note that for this phrase no spaces are allowed inside.
 
     The **text** is marked as strong.
 
-The single-asterisk is to set up emphasized text.
+A pair of single-asterisk is to mark a piece of text that is italic in emphasis.
 Note that for this phrase no spaces are allowed inside.
 
     The *text* is emphasized
+
+The single-quotation is to mark a piece of text that is quoted.
+
+    He sayd "good morning" to me.
 
 A pair of double-braces allows for one or more words of text
 to be marked as emphasized tet.

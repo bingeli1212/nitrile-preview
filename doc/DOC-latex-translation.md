@@ -462,11 +462,31 @@ are placed next to each other without spaces between them.
 
 
 
+# Double-hyphen ligature
+
+The double-hyphen ligature in LATEX should be disabled when prsenting certain contents,
+such as literal-to-quotation and literal-to-verb. To disable it, following command
+can be created and inserted before the content.
+
+    \newcommand{\activatehyphen}{%
+      \begingroup\lccode`~=`-
+      \lowercase{\endgroup\def~}{\char`\-\kern0pt }%
+      \catcode`\-=\active
+    }
+
+This command should be placed inside the preamble section of the document, and can
+be later on inserted as part of the content as follows, such that the double-hyphen
+below will not be combined into forming a ligature as it normally does.
+
+    {\activatehyphen{}--mycolor}
+
+
+
 # Problems
 
 * The INK bundle do not currently clip contents if the list is too long or too
    wide---this is because it uses "picture" environment which does not clip
-   its cntents. 
+   its cntents. (Solved)
 
 * The "multicols" environment adds top/bottom margins, and thus is not a suitable
   choice for producing side-by-side subfigures inside a figure. The solution is to
