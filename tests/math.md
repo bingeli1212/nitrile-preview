@@ -1,7 +1,7 @@
 ---
 title: math.md
 peek: folio
-program: lualatex
+program: pdflatex
 ---
 
 
@@ -305,15 +305,23 @@ symbol \\ name \\ Uncode
 
 ```tab{frame,rules:all}
 ``a \Ascr b``                        \\ `a \Ascr b`                        
+``a \Bscr b``                        \\ `a \Bscr b`                        
 ``a \Cscr b``                        \\ `a \Cscr b`                        
 ``a \Dscr b``                        \\ `a \Dscr b`                        
+``a \Escr b``                        \\ `a \Escr b`                        
+``a \Fscr b``                        \\ `a \Fscr b`                        
 ``a \Gscr b``                        \\ `a \Gscr b`                        
+``a \Hscr b``                        \\ `a \Hscr b`                        
+``a \Iscr b``                        \\ `a \Iscr b`                        
 ``a \Jscr b``                        \\ `a \Jscr b`                        
 ``a \Kscr b``                        \\ `a \Kscr b`                        
+``a \Lscr b``                        \\ `a \Lscr b`                        
+``a \Mscr b``                        \\ `a \Mscr b`                        
 ``a \Nscr b``                        \\ `a \Nscr b`                        
 ``a \Oscr b``                        \\ `a \Oscr b`                        
 ``a \Pscr b``                        \\ `a \Pscr b`                        
 ``a \Qscr b``                        \\ `a \Qscr b`                        
+``a \Rscr b``                        \\ `a \Rscr b`                        
 ``a \Sscr b``                        \\ `a \Sscr b`                        
 ``a \Tscr b``                        \\ `a \Tscr b`                        
 ``a \Uscr b``                        \\ `a \Uscr b`                        
