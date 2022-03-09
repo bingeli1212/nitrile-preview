@@ -11,11 +11,11 @@ pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum.
 
 .figure                      
-
-  ```ink{stretch:1}
-  This is a tale for a night of snow.
-  It was lived in the north land long ago.
-  And old man, nearing the end of life,
-  Took to his arms a fair young wife.
-  ```
+\\
+```ink
+This is a tale for a night of snow.
+It was lived in the north land long ago.
+And old man, nearing the end of life,
+Took to his arms a fair young wife.
+```
 
