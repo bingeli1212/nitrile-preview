@@ -336,24 +336,22 @@ containing the content of a DIA.
     The diagram is: &dia{mydia}
 
 
-The "colorbutton"
-Create a square with given color.
-For instance,
+The "colorbutton" phrase Create a square that looks like a button
+showing given color.  For instance,
 
     The button is &colorbutton{red}.
 
-The "ref" entity phrase inserts an ID representing a reference to an existing
-label.  For instance, the phrase `&ref{sect1}` would likely have inserted a
-number that is "1" should label "sect1" be associated with the first section of
-an article.
+The "ref" phrase inserts an integer expressing a reference to an existing label.
+For instance, the phrase `&ref{sect1}` would likely have inserted a number that
+is "1" should label "sect1" be associated with the first section of an article.
 
     Please see section &ref{sect1}.
 
-The "label" phrase
-Create a label that is associated with a particular section or other composite
-block.     For instance, following example associated label "sect1` with a
-section titled "Introduction". If this section is later on referenced by `&ref{sect1}`,
-then an integer 1 could be inserted if this section is the first section.
+The "label" phrase Create a label that is associated with a particular section
+or other composite block.     For instance, following example associated label
+"sect1` with a section titled "Introduction". If this section is later on
+referenced by `&ref{sect1}`, then an integer 1 could be inserted if this
+section is the first section.
 
     # Introduction
     &label{sect1}
