@@ -1068,6 +1068,8 @@ Watch the prefix spec. Wolfgang Schusters simplefonts module nowadays uses
 this method to define sets of fonts based on a name only specification. Of
 course that works best if a fontset has well defined properties.
 
+    luaotfload-tool --list=*
+
 
 # Creating New Font Names
 
