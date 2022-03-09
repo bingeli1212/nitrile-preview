@@ -1,49 +1,48 @@
-% !TEX nitrile.haschapter = 1
+---
+title: test-chapconfig.md
+---
 
-# Hello
+@part Introduction
 
-## My first chapter
+@chapter Browser
 
-figure:: My first figure
+Browser is a program to render HTML.    
 
-```imgs
-```
+@chapter Elements
 
-equation:: My first equation
+Elements are components of HTML.
 
-```math
-a = b
-```
+@chapter URL     
 
-## My second chapter
+URL represents a resource on the network.
 
-figure:: My second figure
+@part Advanced     
 
-```imgs
-a = b
-```
+@chapter CSS     
 
-equation:: My second equation
+CSS are languages to style an HTML element.
 
-```math
-a = b
-```
+@chapter SVG     
 
-### A section
+SVG are replacements for raster images.     
 
-figure:: My third figure
-(#fig:james)
+@chapter Canvas  
 
-```imgs
-```
+Canvas are to create artifical raster images.  
 
-equation:: My third equation
+@part Related Technologies
 
-```math
-a = b
-```
+@chapter XSLT    
 
-Please see figure ([[#fig:james]])
+XSLT allows HTML to be created out of a XML.   
+
+@chapter XPATH   
+
+XPATH defines language to refer to a particular element or a group of elements in a XML.
+
+@chapter XQuery  
+
+XQuery defines languages for perform query.
 
 
 
