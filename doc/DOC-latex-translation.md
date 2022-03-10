@@ -3,11 +3,11 @@ title: LATEX Translation
 ---
 
 
-# The begin-description envelop
+# The description environment
 
-The LATEX begin-description envelop is designed to typeset a list of 
-key/value pairs, where each key is flushed against the left margin
-and each value is indented by a fixed space. 
+The LATEX "description" environment is designed to typeset a list of key/value
+pairs, where each key is flushed against the left margin and each value is
+indented by a fixed space. 
 
 Each key is placed inside a \item, such as
 
@@ -31,13 +31,10 @@ the closing brackets of the key. Following is the fix.
 
 # Add "chapters" and "parts"
 
-Typically a single MD document would have only produced "sections",
-"subsections", and "subsubsections", where a single number-sign would produc a
-section, a double number-sign a subsection, and a triple number-sign a
-subsubsection. 
-
-It is also possible to manually inject a "chapter" or "part" to a 
-TEX document. This is done by using the at-sign section.
+Typically a single MD document would have only to become a "chapter" by itself,
+and seconds within become "sections" of that chapter.  Howver, it is also
+possible to manually break a single MD document so that it can produce one or
+more "parts" and one or more "chapters".       
 
     @part Introduction
 
@@ -86,53 +83,9 @@ shows.
     %^import [chapter](./lesson4.md)
 
 
-# The "level" attribute of the block
-
-The "level" attribute of the block is constructed by the parser, that is assigned
-to each HDGS block such that it reflects the current hierarchies of the sections 
-within the chapter. For instance, the first chapter will have its "level" attribute
-set to "1". The first subsection of that section is "1.1". The first subsubsection
-of the first subsection of the first section is "1.1.1", etc.
 
 
-# The proble of "drawslopedtext"
-
-Currently there are some issues when using "drawslopedtext", which is implemented
-in LATEX using TikZ. The position of the text is expressed using "above" as part
-of the option. However, this has been observed to have caused some problems when the 
-drawing of the lines goes from right to left, where the "above" should have translated
-into the text appearing below the line, but was not observed as so. Instead, the text
-appears at the top of the line.
-
-
-# The "verbatim" bundle
-
-The verbatim bundle is implemented using a "tabular", which by nature
-does not break across page boundaries. 
-
-# To add a frame around the entire content of a figure
-
-    \documentclass{article}
-    \usepackage{graphicx}
-    \usepackage{caption}
-    %
-    \graphicspath{ {./images/} }
-    %
-    \begin{document}
-    %
-    \fbox{
-    \parbox[c]{\textwidth}{
-    \centering
-    \includegraphics{example-image-duck}
-    \captionof{figure}{foo}
-    \label{fig:cow1}
-    %
-    \includegraphics{example-image-duck}
-    \captionof{figure}{bar}
-    \label{fig:cow2}
-    }}
-    %
-    \end{document}
+# Adding a frame to the entire figure/table
 
 Following is for adding a frame to a figure/table float.
 
@@ -246,11 +199,16 @@ The \boldmath declaration causes everything (including symbols) in a formula to
 be in a bold font. Note that this differs somewhat from the same declaration in
 2.09 which did not affect some symbols.
 
+For XELATEX/LUALATEX, following two packages must be included:
 
-# The "Figure" 
+    \usepackage{eufrak}
+    \usepackage{bbold}
 
-The "Figure" caption does not seem to be able to be shifted to a Left or Right
-position other than the Center position. 
+
+# The figure caption
+
+The caption text of a figure float does not seem to be able to be styleda as
+flushleft or flushright other than being center aligned
 
 
 # The Tikzpicture
@@ -263,7 +221,7 @@ if it has a significant height. To solve this problem is to wrap the Tikzpicture
 an inner "tabular". 
 
 
-# The courier font package
+# The courier font package for pdflatex
 
 The package "courier" would change all fixed-width font to "courier"
 
@@ -275,8 +233,8 @@ package. But they are intended to change the proportional font.
 
 # Assign equation number manually
 
-Following is an example of assigning equation number manually, using \tag,
-to assign the equation to a number that is "5.23".
+Following is an example of assigning equation number manually to a number that
+is "5.23" using the \tag command.
 
     \documentclass{article}
     \usepackage{amsmath}      % for \tag and \eqref macros
@@ -297,7 +255,7 @@ option.
     \documentclass{article}
     \documentclass{listings}
     \begin{document}
-    \begin{lstlisting}[title=My Code]
+    \begin{lstlisting}[title={Listing 1.23 : The main function.}]
     #include<stdio>
     int main(){
       printf("hello world!\n");
@@ -323,7 +281,7 @@ Following is the way for styling an underline text.
     \underline{Hello World}
 
 
-# The baselineskip and baselinestretch
+# The baselineskip, baselinestretch, and linespread
 
 \baselineskip is a length command which specifies the minimum space between the
 botton of two successive lines in a paragraph. Its value may be automatically
@@ -337,6 +295,10 @@ for local variations in the text, but it is always scaled by the former. In
 principle, "double spacing" can be obtained by
 
     \renewcommand{\baselinestretch}{2}.
+
+The \linespread command is preferred over changing \baselinestretch directly.
+
+    \linespread{0.5} 
     
 
 # Multi-line in display math expression
@@ -374,7 +336,7 @@ It is also possible for assigning a label for multi-line equation.
 
 
 
-# Producing line
+# Producing horizontal rule
 
 Synopsis, one of:
 
@@ -409,64 +371,144 @@ but can cause LaTeX to change the output around it. See \strut for examples.
 
 # CJK & other font supports
 
-It is possible to specify CJK fonts and other fonts such as Unifont for
-providing glyphs that are not provided by the main font. These features 
-are only available the "latex" front matter configuration parameters 
-is set to either "xelatex" or "lualatex". Fontifications are not enabled
-for "pdflatex".
+It is possible to specify a different font file for a CJK glyph that comes from
+each of the four languages: jp, tw, cn, and kr. For historic reason, these four
+languages each uses a subset of CJK characters, and the CJK charactesrs they use
+have all be placed inside a single Unicode block called "CJK Unified
+Ideographs". Font files that are designed for a specific languages only serves
+to implement a subset of glyphs within this Unicode block.
+
+In order to correctly identify the language for a particular CJK character,
+NITRILE has established a built-in lookup table.  If two or more languages are
+identified for a single CJK, the language chose is to come from this order: jp,
+tw, cn, and kr.  NITRILE will also to attempt to identify a continuous block of
+CJK characters and chooses the top language that covers all of them.
+
+Once identified, the font switch is added the translation. For CONTEX it is
+`\switchtobodyfont[jp]`, for XELATEX and LUALATEX it is `\jp` if
+"jp" is the language chosen.   Other font swtiches are similarly named
+after the language.
+
+However, one of the font switches comes with a preconfigured font file
+association, thus the compilation is likely to fail. In order to make these
+font switches meaningful, a font file will need to be specified in the font
+matter that is associated to a particular font switch, such that the
+translation backend will generate appropriate translation that map these font
+files to the right font switch.
+
+On top of that, NITRILE has ten additional font switches that
+are capital letter A-J, each of which can be setup to mark a range of text
+that belongs to a specific Unicode code block.
+In the following example the font switch "A" has been setup to cover
+the Unicode code block that starts at 0x2700, or Dingbats, in addition
+to the font file configuration for each of the four CJK languages.
 
     ---
     title: CJK
-    latex: xelatex
-    fonts: cn,"arplsungtilgb",contex
-           tw,"arplmingti2lbig5",contex
-           jp,"ipaexmincho",contex
-           kr,"baekmukbatang",contex
-           Fa,"Unifont",0x2700,contex
-           cn,"STSong",xelatex
-           tw,"Songti TC",xelatex
-           jp,"Hiragino Mincho ProN",xelatex
-           kr,"AppleGothic",xelatex
-           Fa,"Unifont",0x2700,xelatex
+    fonts: cn{contex:arplsungtilgb,xelatex:STSong,lualatex:arplsungtilgb}
+           jp{contex:ipaexmincho,xelatex:Hiragino Mincho ProN,lualatex:ipaexmincho}
+           tw{contex:arplmingti2lbig5,xelatex:Songti TC,lualatex:arplminti2lbig5}
+           kr{contex:baekmukbatang,xelatex:AppleGothic,lualatex:baekmukbatang}
+           A{contex:Unifont,xelatex:Unifont,lualatex:Unifont,start:0x2700}
+    program: xelatex
     ---
 
-Note that LuaLaTeX and ConTeXt are very simular when it comes to assigning 
-a name to a font---this is probably due to the fact that they both share
-the same LuaTeX engine.
+Thus, in order to map each glyph to a specific font file, the "fonts"
+frontmatter key is to provide for this clarification. The "program" key is used to
+hold a specific LATEX engine for the target translation. The "fonts" key are
+currently utilized only when "program" is set to "contex", "xelatex" or
+"lualatex".
 
-However, for XeLaTeX, which uses XeTeX, the font name are different than those
-of the LuaTeX and ConTeXt.
-
-For each line of "fonts" configuration parameter, it is expected to have
-a 'fid', a 'fontname', a 'fontfamily', and optionally a 'start'.
-A 'fid' is a recognized if the list item is one of the followings: jp, tw, cn, kr, 
-Fa, Fb, Fc, Fd, Fe, Ff, Fg, Fh, Fi, and Fj. 
-
-A 'fontname' is recognzed if it surrounded by a pair of quotations marks.
-
-A 'start' is recognized if it starts with "0x", such as 0x2700. It must be representing
-a hex number that is the start of a Unicode block, such as 0x2700-0x27EF, otherwise known
-as DingBats. 
-
-A 'fontfamily' is one of the following: contex, xelatex, lualatex, serif, sans, mono, or math.
-
-A 'fontfamily' that is set to contex, serif, sans, mono, or math is to be used for setting up a font
-for CONTEX translation. A 'fontfamily' that is set to 'xelatex' is to be used to setting up a font
-for XELATEX translation. A 'fontfamily' that is set to 'lualatex' is to be used to setting up a font
-for LUALATEX translation.
+For LUALATEX translation following commands are to be inserted
+to define the font swtich `\cn`, `\jp`, `\tw`, and `\kr`.
 
 Note that for LUALATEX translation the "luatexja-fontspec" package is loaded
-instead of "fontspec" package---this package fixes the problem of "fontspec"
-package such that none of the CJK characters are to be wrapped properly if they
-are placed next to each other without spaces between them. 
+instead of "fontspec" package---this package fixes the problem of the original
+"fontspec" package which is that this package does not wrap CJK characters
+properly for those CJK characters that do not have spaces inserted between
+them. A result the \newjfontfamily command is used instead of \newfontfamily.
+
+    \newjfontfamily{\cn}{arplsungtilgb}
+    \newjfontfamily{\jp}{ipaexmincho}
+    \newjfontfamily{\tw}{arplmingti2lbig5}
+    \newjfontfamily{\kr}{baekmukbatang}
+    \newjfontfamily{\A}{Unifont}
+
+For XELATEX translation the translation would like to insert following commands
+instead.
+
+    \newfontfamily{\cn}{arplsungtilgb}
+    \newfontfamily{\jp}{ipaexmincho}
+    \newfontfamily{\tw}{arplmingti2lbig5}
+    \newfontfamily{\kr}{baekmukbatang}
+    \newfontfamily{\A}{Unifont}
+
+For each entry of "fonts" key, it starts with the name of a font switch. This
+font switch must come from this list: cn, jp, tw, kr, A, B, C, D, E, F, G, H,
+I, and J.  
+
+After the font switch, it is list of key/value pair, where the keys must be one
+of the following: contex, xelatex, lualatex, and start. The first three
+describes an installed font file name, and the last one describes the starting
+code point of a Unicode block, such as "0x2700".
+
+It isn't clear if fontspec package has
+capabilities to specify font files depending on the Unicode block ranges.
 
 
 
-# Double-hyphen ligature
+# Main body fonts
 
-The double-hyphen ligature in LATEX should be disabled when prsenting certain contents,
-such as literal-to-quotation and literal-to-verb. To disable it, following command
-can be created and inserted before the content.
+LATEX comes with predefined main body font, which is the font used for
+all texts that are not specifically marked by a font switches. For PDFLATEX
+there isn't a possibility to use font switch, font switches are only made
+possible by the use of XELATEX and LUALATEX. 
+
+For XELATEX and LUALATEX, it is also possible to set the main font which 
+isn't possible for PDFLATEX. Thus, following discussion are only limited 
+to XELATEX and LUALATEX translation only.
+
+The main font consists of three different categories: serif, sans, and mono.
+Typically main fonts are serif fonts, where sans fonts are used for titles and
+headings, and mono fonts for verbatim text. The fontspec package, which is
+responsible for setting up fonts, has created following commands:
+
+    \setmainfont[Ligatures=TeX]{Times New Roman}
+    \setsansfont[Ligatures=TeX]{Arial}           
+    \setmonofont[Ligatures=TeX]{Courier New}     
+
+Each command changes the main font for each of the three categories. This allows
+for automatic switch to one of these fonts based on the latex command such as
+`\ssfamily`, and `\ttfamily``. 
+
+The "bodyfontsuit" frontmatter key can be used to insert these commands that
+allows for the main font to be changed to a different font suit. The previous
+example is the result of setting this key to "office". Following are likely
+the output when this key is set to "linux".
+
+    \setmainfont[Ligatures=TeX]{Libertinus Serif}
+    \setsansfont[Ligatures=TeX]{Libertinus Sans Mono}
+    \setmonofont[Ligatures=TeX]{Libertinus Mono} 
+
+Following are likely the output when this key is set to "dejavu".
+
+    \defaultfontfeatures[DejaVu Serif]{Scale=0.89}
+    \defaultfontfeatures[DejaVu Sans]{Scale=0.89}
+    \defaultfontfeatures[DejaVu Sans Mono]{Scale=0.89}
+    \setmainfont[Ligatures=TeX]{DejaVu Serif}     
+    \setsansfont[Ligatures=TeX]{DejaVu Sans Mono}     
+    \setmonofont[Ligatures=TeX]{DejaVu Mono}     
+
+The \defaultfontfeatures command allows for some features regarding this
+font to be turned on/off, or to be set to a different value.
+
+
+
+
+# Disabling double-hyphen ligature
+
+To disable produce a en-dash or em-dash in LATEX, add the following command definition
+to the preamble, and then specify this command inside a block.
 
     \newcommand{\activatehyphen}{%
       \begingroup\lccode`~=`-
@@ -474,36 +516,85 @@ can be created and inserted before the content.
       \catcode`\-=\active
     }
 
-This command should be placed inside the preamble section of the document, and can
-be later on inserted as part of the content as follows, such that the double-hyphen
-below will not be combined into forming a ligature as it normally does.
+This command should be placed inside the preamble section of the document, and
+can be later on inserted as part of the content as follows, such that the
+double-hyphen below will not be combined into forming a ligature as it normally
+does.
 
     {\activatehyphen{}--mycolor}
 
 
 
-# Problems
+# Trim contents outside of boundingbox for "picture" environment
 
-* The INK bundle do not currently clip contents if the list is too long or too
-   wide---this is because it uses "picture" environment which does not clip
-   its cntents. (Solved)
+The LATEX "picture" environment allows for lines, curves, and text to be drawn
+by using a set of higher-level commands. However, one of the drawback is that
+it does not clip the content which causes the problem such that the contents
+drawing outside the boundary of a "picture" environment will be seen to have
+overlapped with the contents that are outside of the picture environment. 
 
-* The "multicols" environment adds top/bottom margins, and thus is not a suitable
-  choice for producing side-by-side subfigures inside a figure. The solution is to
-  use "threeparttable" such that they are joint by "~%" to leave a non-breakable
-  space.
+To solve this problem the \clipbox command from "trimclip" package can be used.
+Following example shows how to clip the output of a "picture" environment so
+that contents outside of 100mm-by-100mm box are removed.
 
-* The "trimclip" package provides a `\clipbox` command that can be called to
-  trim the content of "picture" environment to the given size. For instance,
-  `\clipbox{0mm 0mm 100mm 100mm}{tex}` would trim the content "tex" such that
-  anything outside of 100mm-by-100mm will be removed. Per documentation,
-  this command merely asks that the backend translation such as pdftex/luatex
-  to add an instruction to the PDF document to "hide" the content.
+    \clipbox*{0mm 0mm 100mm 100mm}{\setlength{\unitlength}{1mm}
+    \begin{picture}(100,100)
+    \put(0,30.5549999972){\ttfamily\fontsize{10pt}{10pt}\selectfont{}This~is~a~tale~for~a~night~of~snow.}
+    \put(0,27.0272222172){\ttfamily\fontsize{10pt}{10pt}\selectfont{}It~was~lived~in~the~north~land~long~ago.}
+    \put(0,23.499444437199998){\ttfamily\fontsize{10pt}{10pt}\selectfont{}And~old~man,~nearing~the~end~of~life,}
+    \put(0,19.9716666572){\ttfamily\fontsize{10pt}{10pt}\selectfont{}Took~to~his~arms~a~fair~young~wife.}
+    \end{picture}}
 
-* For drawing a raster image inside a "tikzpicture" environment it is important
-  to position the raster image such that it is "centered" at the target area
-  rather than position it such its lower-left corner aligns with the lower-left
-  corner of the target area.
+Note that the "\clipbox" command defined by this package only serves to add
+instructions to the generated PDF to clip away the contents; it does not
+actually remove the contents in the generated PDF.  Fortunately, most PDF
+viewers seem to have paid attention to this instruction and the contents are
+indeed not visible.
+
+
+
+# The {hew:2} style
+
+The {hew:2} style has been added lately to allow for lines in SAMP and SAND
+blocks to be evenly distributed among two columns.
+
+For LATEX translation this effect is produced by using a "multicols" envionment
+such that contents are evenly distributed between the two columns. 
+Note that the same {hew:3} and {hew:4} and other styles are equally possible.
+
+
+
+# Drawing raster image inside "tikzpicture"
+
+The "tikzpicture" environment allows for an external raster image file to be
+loaded and drawn inside this environment. The tikz command to do so is a
+`\draw` command that makes use of a "node". However, it has been noted that in
+order for the entire raster image to cover the entire tikzpicture viewport, it
+is important to position the "node" at the center of the viewport and the
+"anchor" option of the `\draw` command left unspecified; this will result in
+this node being "centered" at the viewport. This allows for the entire raster
+image to be drawn in exactly the size of the viewport. If however, the node is
+positioned at (0,0) the "anchor=south west" would have to be specified for the
+`\draw` command; this has been noticed to have a problem such that the picture
+is slightly shifted to the right and up such that part of the image are
+trimmed.
+
+
+
+# The nibeamer.js translation. 
+
+The nibeamer.js translation of a MD file is to produce a TEX file that is 
+based on "beamer" documentclass.
+
+
+
+# The nilamper.js translation. 
+
+The nilamper.js translation of a MD file is to produce a TEX file that is 
+based on "memoir" documentclass.
+
+
+
 
 
 

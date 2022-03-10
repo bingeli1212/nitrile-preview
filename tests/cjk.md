@@ -1,22 +1,12 @@
 ---
 title: CJK
 latex: lualatex
-fonts: cn,"arplsungtilgb",contex
-       tw,"arplmingti2lbig5",contex
-       jp,"ipaexmincho",contex
-       kr,"baekmukbatang",contex
-       Fa,"Unifont",0x2700,contex    
-       cn,"STSong",xelatex
-       tw,"Songti TC",xelatex
-       jp,"Hiragino Mincho ProN",xelatex
-       kr,"AppleGothic",xelatex
-       Fa,"Unifont",0x2700,xelatex   
-       cn,"arplsungtilgb",lualatex
-       tw,"arplmingti2lbig5",lualatex
-       jp,"ipaexmincho",lualatex
-       kr,"baekmukbatang",lualatex
-       Fa,"Unifont",0x2700,lualatex
-bodyfont: office
+fonts: cn{contex:arplsungtilgb,xelatex:STSong,lualatex:arplsungtilgb}
+       tw{contex:arplmingti2lbig5,xelatex:Songti TC,lualatex:arplmingti2lbig5}
+       jp{contex:ipaexmincho,xelatex:Hiragino Mincho ProN,lualatex:ipaexmincho}
+       kr{contex:baekmukbatang,xelatex:AppleGothic,lualatex:baekmukbatang}
+       A{contex:Unifont,xelatex:Unifont,lualatex:Unifont,start:0x2700}
+bodyfontsuit: office
 ---
 
 
@@ -45,11 +35,11 @@ where \(M\) is their mean and \(P\) is their product.
 Hello world, 日本では母親がよく家族のために弁当を作っている。
 ```
 
-```par{fontstyle:b}
+```par{fontstyle:b,width:40}
 Hello world, 冰岛由于实行高福利政策， 所以很多人并没有存钱防老的习惯。
 ```
 
-```par{fontstyle:b}
+```par{fontstyle:b,width:40}
 Hello world, 冰島由於實行高福利政策，所以很多人並沒有存錢防老的習慣。
 ```
 

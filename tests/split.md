@@ -16,6 +16,12 @@ bodyfontsuit: office
 %
 
 
+
+# Introduction
+
+See listing &ref{james}.
+
+
 # Slide 1
 
 .listing{split:3 3 4}
@@ -41,7 +47,6 @@ var fA = 1;
 # Slide 2
 
 .table{split:4,head}
-&label{james}
 \\
 ```tab{frame,rules:all,head}
 Type  \\ Unit        \\ Symbol  \\ Equivalents
@@ -62,7 +67,6 @@ USCS  \\ Inch        \\ (in)    \\ 1 inch = 1/12 foot = 0.0254 meters
 # Slide 3
 
 .table
-&label{james}
 \\
 ```{head,frame,rules:all}
 Type  \\ Unit        \\ Symbol  \\ Equivalents
