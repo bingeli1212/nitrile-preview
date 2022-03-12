@@ -1184,4 +1184,26 @@ In a font definition you can specify more than one set:
 
 
 
+# Metafun
+
+
+
+    \documentclass{article}
+    \usepackage{luamplib}
+    \begin{document}
+    %
+    \begin{mplibcode}
+    beginfig(1);
+    drawarrow (0,0)--(10,10);
+    endfig;
+    \end{mplibcode}
+    %
+    \mplibsetformat{metafun}
+    \begin{mplibcode}
+    beginfig(1);
+    drawarrow (0,0)--(10,10);
+    endfig;
+    \end{mplibcode}
+    %
+    \end{document}
 
