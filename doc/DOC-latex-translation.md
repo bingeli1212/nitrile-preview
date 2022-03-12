@@ -586,6 +586,13 @@ trimmed.
 The nibeamer.js translation of a MD file is to produce a TEX file that is 
 based on "beamer" documentclass.
 
+- Currently "t" option is specified for each frame to force the content to be 
+  flushed towards the top of each slide
+- The beamer has a "fragile" option placed for each frame; however, if this
+  option is set then "wrapfigure" will stop working   
+- However, if "fragile" is not set then "lstlisting" will not be able to work
+  inside a frame.
+
 
 
 # The nilamper.js translation. 
