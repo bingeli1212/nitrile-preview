@@ -587,6 +587,10 @@ Following are keys that can appear as part of the configurations
 - bodyfontsuit
 - bodyfontsize
 - bodyfontvariant
+- titlepage
+- tocpage
+- name
+- chapnum
 
 [ program. ]
 The "program" key is to hold a string that is to be interpreted
