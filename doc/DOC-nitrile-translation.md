@@ -42,12 +42,14 @@ to `\subparagraph` commands in LATEX.
     math functions and constants.
 
 
-# Compositive blocks
+# Composite blocks
 
-- "page"
-- "figure"
-- "multicols"
 - "equation"
+- "figure"
+- "table"
+- "listing"
+- "multicols"
+- "page"
 - "vspace"
 - "alignment"
 
@@ -117,6 +119,46 @@ so that it has the desired alignment set by the "textalign" style. The
     (literally without tail in Ancient Greek). 
     ```
 
+The "figure" block is to create a figure with one or more subfigures.
+
+    .figure
+    &label{myfigure}
+    These are the pictures of golden ratio.
+    \\
+    ```dia
+    \image "goldenratio1.png"
+    ```
+    ```dia
+    \image "goldenratio1.png"
+    ```
+
+The "table" block is to create a numbered table.
+
+    .figure
+    &label{mytable}
+    \\
+    ```tab
+    Name \\ Addr.
+    James \\ 301 Day Drive.
+    John \\ 401 Evening Way. 
+    ```
+
+Only a single bundle is supported, and it will always be treated
+as a "tab" bundle.
+
+The "listing" block is to create a listing block.
+
+    .listing
+    &label{mylisting}
+    \\
+    ```vtm
+    #include<stdio>
+    int main(){
+      return 0;
+    }
+    ```
+
+
 
 # Bundles
 
@@ -130,27 +172,6 @@ Following are the signature IDs for the bundles.
 - tab
 - par
 - vtm
-
-[ The "img" bundle. ]
-This bundle allows for an raster image to be shown. 
-For certain HTML translation such as NislideJs it would also 
-setup a Canvas to allow this raster image to be edited and saved
-back to the server.
-
-    ```img{viewport:10 10,width:30}
-    \image "flog.png" "flog.eps"
-    \color "#476fc7" "#ae241c"
-    ```
-
-The \image command expresses a list of image files to be loaded.
-All the image files are to express the same image except in different
-formats: this allows for the translation backend to choose the 
-appropriate format as it might not have support for all image formats. 
-
-The \color command expresses a list of predefined colors to be accompanying
-an INPUT element that is to show a color-chooser dialog.  The color
-must be in HEX forms with a leading hash mark.
-
 
 [ The "dia" bundle. ]
 This bundle builds a vector image such as SVG, Tikz, and or MetaFun.
@@ -184,26 +205,65 @@ to form a single continuous paragraph.
     Hello people!
     ```
 
+[ The "img" bundle. ]
+The "img" bundle is used to typeset an image. The "viewport" style is used to defined
+the viewport size, which is by default 60mm-by-35mm in size, and the picture
+will be resize to this size always regardless of its native size. 
+However, this property can always be changed to a different size. The \image
+command presents a list of image source files one of which will be chosen for
+the target translation. For instance, HTML would choose the PNG and LATEX
+would have chosen the EPS file.
 
-# Un-fenced paragraphs
+    ```img{viewport:10 10 5}
+    \image "frog.png" "frog.eps"
+    ```
 
-Un-fenced paragraphs are those that are not fenced by
+This bundle contains a list of commands to allow for this bundle to server a slighly
+different purpose. For example, if \type command is setup to point to "canvas", it 
+will setup a Canvas for HTML translation that would allow for user to use a Canvas
+HTML element o modify the image. The \color command presents a list of customized
+colors which will be used to setup the "color" input button for choosing color.
+
+    ```img{viewport:10 10,width:30}
+    \image "flog.png" "flog.eps"
+    \type "canvas"
+    \color "#476fc7" "#ae241c"
+    ```
+
+[ The "ink" bundle. ]
+This bundle is designed to crreate a picture for holding textual contents. 
+The bundle is very much like a "vtm" bundle except the result is a picture, not text,
+which allows for it to be resized to a smaller or bigger one.
+
+    ```ink{viewport:10 10 5,width:30}
+    #include<stdio>
+    int main(){
+      return 0;
+    }
+    ```
+
+
+
+
+# Un-fenced blocks     
+
+Un-fenced blocks are those that are not fenced by
 triple-backquotes. Following are the signatures IDs
 for these blocks.  
 
-- samp
-- sand
+- plst
 - cove
 - cave
+- samp
+- sand
 - step
-- plst
 - body
 
 
-[ plst. ]
-The 'plst' un-fenced paragraph is recognized by the presence 
-of a hyphen-minus, a plus-sign, or a asterisk. It models after
-a nested list.
+[ The plst block. ]
+The 'plst' un-fenced block is recognized by the presence of a hyphen-minus, a
+plus-sign, or a asterisk in the first line. This block is designed to model
+a list of multiple items which might include nested lists.
 
     - Fruits
       - Apple
@@ -252,12 +312,69 @@ The first form would typeset the leading terms in monospaced fonts; the second
 form in italic, the third one with quotation marks, and the third one in plaintext.
 
 
+[ The cove block. ] 
+This block is recognized by the presence of greater-than-sign followed by at least one space
+at the first line. Each additional line will be checked for the presence of the greater-than-sign
+and space, and if it detected it becomes a line by itself; otherwise it is considered
+the continuation of the previous line. When being typeset, the output is an indented block
+with a small right-pointing triangle/arrow at the left-hand side of the first line.
+
+    > All human are mortal.
+    > Socrates is a human.
+    > Socrates is mortal.
+
+
+[ The cave block. ] 
+This block is recognized by the presence of dollar-sign followed by at least one space
+at the first line. Each additional line will be checked for the presence of the dollar-sign
+and space, and if it is detected it becomes a line by itself; otherwise it is considered
+the continuation of the previous line. When being typeset, the output is an a block where
+all lines are centered .
+
+    > Hello!          
+    > Good morning!       
+    > Good evening!       
+
+
+[ The samp block. ]
+This block is recognized if the first line is lead with four white spaces. Each
+line of the following line is to be assume to have a leading quadruple spaces where
+they will be removed.  The output of this block is a verbatim block where each line
+is to be shown in monospace characters where white spaces are preserved.
+
+[ The sand block. ]
+This block is recognized if the first lie is lead with two white spaces. Each
+line of the following line is to be assumed to have a leading double spaces
+where they will be removed. The output of this block is a block where each line
+is to be shown by itself similar to a "verse" block. Multiple white spaces will
+be collapsed into a single one.
+
+[ The step block. ]
+This block is recognized if the first line is lead by a number followed by a right parenthesis. 
+This block is assumed to represent a single ordered list item with possible follow-on paragraphs.
+The paragraphs, if there is any, is recognized by the presence of double-backslash in a line
+by itself.
+
+    1) Step 1, check the temparature:
+    \\
+    If the temperature is greater than 10, add this ingredient.
+    \\
+    Otherwise, add this ingredient.
+
+    2) Step 2, bring it to a boil, and taste it see if additional 
+    salt is needed.      
+
+[ The body block. ]
+This block represents a normal paragraph.
+
+
+
 
 # Phrases
 
-Phrases are inline markups that allow contents to be styled or turned into a
-differen entity. For instance, a pair of double-backquote are to turn a piece
-of text into math.
+Phrases are inline text with marks. The result of a phrase is either a style
+change, or a complete makeover depending on the type of the markup.  For
+instance, a pair of double-backquote are to turn a piece of text into math.
 
     The theorem is: ``a^2 + b^2 = c^2``.
 
@@ -332,9 +449,11 @@ containing the content of a DIA.
     \drawline (0,0)(5,5)
     \drawline (5,0)(0,5)
     %
-    \\
-    The diagram is: &dia{mydia}
 
+Later on a paraph can be constructed as follows in which case 
+an inline image will be created that holds the figure.
+
+    The diagram is: &dia{mydia}
 
 The "colorbutton" phrase Create a square that looks like a button
 showing given color.  For instance,
