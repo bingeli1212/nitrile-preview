@@ -4005,6 +4005,10 @@ The optional value expresses the number of 1em.
 * IT is impossible to do `\drawlabel` inside a DIA bundle when the text is a 
   math string and it is a matrix---it just does not compile with CONTEXT
 
+* Currently there is no way to turn off en-dash and em-dash ligature; this
+  makes it impossible to show individual dashes in verbatim.
+
+
 
 
 
