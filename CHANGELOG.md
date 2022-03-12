@@ -470,7 +470,7 @@ Nitrile
 - [x] The style-fontsize is no longer being watched by bundles, and by default the bundle-parbox, bundle-verbatim, and bundle-tabular are by default using a smaller font, and this is consistent across all translations. 
 - [x] Ensure that phrase-dia does not respond to style-frame.
 - [x] Ensure that 'vborder' and 'hborder' style works consistantly across all translations
-- [ ] Explore the possibility of adding an option to a phrase such as &hbox[d]{5}, and at the same time requires that there is no curly braces inside a phrase.
+- [-] Explore the possibility of adding an option to a phrase such as &hbox[d]{5}, and at the same time requires that there is no curly braces inside a phrase.
 - [x][FR] Separate the fence and paragraph in html.js
 - [x][FR] Deprecate style-stretch for all 'dia' bundle translations.
 - [x][FR] Rename 'wraparound' to 'wrap'
@@ -516,19 +516,24 @@ Nitrile
 - [x][FR] The &em{} and &b{} works only when the contents do not have white spaces.
 - [x][FR] Added a new double-braces span that would typeset inline text to any style. 
 - [x][FR] Renamed label anchor to 'l','r','c','u',and 'b'.
-- [ ][FR] The &dia{} would only accept buffer names  
-- [ ][FR] Each buffer is to be accompanied by a style that will be used by &dia{}
+- [x][FR] The &dia{} would only accept buffer names  
+- [x][FR] Each buffer is to be accompanied by a style that will be used by &dia{}
 - [x][BUG] The latex.js the tikzpicture inside a tabular had its top part trimmed too much
 - [ ][BUG] For nimake, it should have aborted the future process if one process returns with an error, but it kept on going
 - [ ][BUG] The CONTEX-MF does not display hyphen in monospace correctly
 - [x][BUG] Change it so that switches, vmap, and buffers cannot be overridden accidently.
 - [x][BUG] Fixes so that all "tab", "par", "vtm" are no longer font size smaller by default
 - [x][FR] Add block signatures for "verb", "cove", "cave", "samp", "sand", "step", "plst", and "body" 
-- [ ][BUG] Allow longtabu and listing be split into multple pages for FolioJs.
-- [ ][BUG] The "listing" float needs to be able to specify alternative starting line number
-- [_][FR] Donot use "n" style for Equation, but rather (a), (b), (c),,,
-- [_][FR], split tables and listings will have (a), (b), (c),,,
-- [ ][FR]
+- [x][BUG] Allow longtabu and listing be split into multple pages for FolioJs.
+- [x][BUG] The "listing" float needs to be able to specify alternative starting line number
+- [x][FR] Donot use "n" style for Equation, but rather (a), (b), (c),,,
+- [x][FR], split tables and listings will have (a), (b), (c),,,
+- [ ][BUG], work on "img" bundle such that the \type command should be set to "canvas" or "ball", etc., which will be watched by HTML translation to create different interactions  
+- [ ][ ] 
+
+
+
+
 
 
 
