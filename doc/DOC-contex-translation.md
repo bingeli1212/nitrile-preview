@@ -4005,7 +4005,7 @@ The optional value expresses the number of 1em.
 * IT is impossible to do `\drawlabel` inside a DIA bundle when the text is a 
   math string and it is a matrix---it just does not compile with CONTEXT
 
-
+* The \ruby seems to always generate a compile error.
 
 
 
