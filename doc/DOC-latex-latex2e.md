@@ -2394,6 +2394,23 @@ label lines up with the left edge of the item text. See \usecounter.
 
 
 
+# Font styles
+
+Following are commands for font styles.
+
+    \textnormal{...}    document font family
+    \emph{...}          emphasis
+    \textrm{...}        serif font family
+    \textsf{...}        sans serif font family
+    \texttt{...}        typewriter font family
+    \textup{...}        upright shape
+    \textit{...}        italic shape
+    \textsl{...}        slanted shape
+    \textsc{...}        small cap shape
+    \textbf{...}        bold shape
+    \textmd{...}        normal weight and width
+
+
 # Math symbols
 
 LaTeX provides almost any mathematical or technical symbol that anyone uses.
@@ -3080,6 +3097,31 @@ The following symbols are most often used in plain text but LaTeX provides versi
 + \mathunderscore
   Underscore in math mode: _.
 
+
+# Producing letters
+
+A formal letter can be typeset by utilizing the "letter" document class.
+
+    \documentclass{letter}
+    \begin{document}
+    \address{1234 Avenue of the Armadillos \\
+    Gnu York, G.Y. 56789}
+    \signature{R. (Ma) Dillo \\ Director of Cuisine}
+    \begin{letter}{G. Natheniel Picking \\
+    Acme Exterminators \\
+    Illinois}
+    \opening{Dear Nat,}
+    I’m afraid that the armadillo problem is still with us.
+    I did everything ...
+    \\
+    ... and I hope that you can get rid of the nasty
+    \\
+    beasts this time.
+    \\
+    \closing{Best Regards,}
+    \cc{Jimmy Carter\\Richard M. Nixon}
+    \end{letter}
+    \end{document}
 
 
 
