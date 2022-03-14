@@ -527,9 +527,10 @@ Nitrile
 - [x][BUG] Allow longtabu and listing be split into multple pages for FolioJs.
 - [x][BUG] The "listing" float needs to be able to specify alternative starting line number
 - [x][FR] Donot use "n" style for Equation, but rather (a), (b), (c),,,
-- [x][FR], split tables and listings will have (a), (b), (c),,,
-- [ ][BUG], work on "img" bundle such that the \type command should be set to "canvas" or "ball", etc., which will be watched by HTML translation to create different interactions  
-- [ ][FR] Make sure that "\header" and "\footer" commands work for "img" bundles
+- [x][FR] split tables and listings will have (a), (b), (c),,,
+- [x][FR] Added a new "type" style that can be set to "canvas" or "ball" to allow for an interaction by HTML translation  
+- [x][FR] Added a new way for DIA to create a new env variable based on an element of an array 
+- [x][FR] Added a \subtitle command to DIA to override the subtitle 
 - [ ][ ]
 
 
