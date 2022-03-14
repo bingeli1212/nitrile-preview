@@ -3996,16 +3996,19 @@ The optional value expresses the number of 1em.
   out why.
   
 
-# Shortcomings
+# Known Issues    
 
-* THERE is current no way to assign customized equation numbers to equations
+- THERE is current no way to assign customized equation numbers to equations
   when there is chapter. The current solution to assign customized number works
   when there isn't any chapter.
-
-* IT is impossible to do `\drawlabel` inside a DIA bundle when the text is a 
+- IT is impossible to do `\drawlabel` inside a DIA bundle when the text is a 
   math string and it is a matrix---it just does not compile with CONTEXT
+- The \ruby seems to always generate a compile error.
+- The "mvs" symbol must always be loaded at all times as the 
+  COVE block uses one of the symbols.
 
-* The \ruby seems to always generate a compile error.
+
+# The nicreamer.js translation
 
 
 

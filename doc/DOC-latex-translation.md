@@ -590,8 +590,29 @@ based on "beamer" documentclass.
   flushed towards the top of each slide
 - The beamer has a "fragile" option placed for each frame; however, if this
   option is set then "wrapfigure" will stop working   
-- However, if "fragile" is not set then "lstlisting" will not be able to work
-  inside a frame.
+- However, if "fragile" is not set then "begin/end/lstlisting" and "begin/end/verbatim" 
+  and "begin/end/Verbatim" will not compile.         
+
+Following is the "columns" environment in Beamer that should be used instead.
+
+    \documentclass[demo]{beamer}
+    \begin{document}
+      \begin{frame}
+    \frametitle{explanation}
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+       some text here some text here some text here some text here some text here
+    \end{column}
+    \begin{column}{0.5\textwidth}  
+        \begin{center}
+         %%%%% this is a minipage, so \textwidth is already adjusted to the size of the column
+         \includegraphics[width=\textwidth]{image1.jpg}
+         \end{center}
+    \end{column}
+    \end{columns}
+    \end{frame}
+    \end{document}
+
 
 
 
@@ -602,6 +623,15 @@ based on "memoir" documentclass.
 
 
 
+# Known Problems in latex.js translation
+
+- Current the "sand" block with "hew:2" or more will insert a begin/end/multicols 
+  and a begin/end/minipage environment is placed inside
+  each individual column. The begin/end/minipage is preferred over begin/end/flushleft
+  as the later creates too much vertical spaces. However, none of the "minipage" or "flushleft"
+  handles the "~" well at the beginning of a line as the first one do not work for all lines
+  except for the first line, and the second one only works for the first line.
+- The \underline command leaves too much vertical space between the text and the line
 
 
 

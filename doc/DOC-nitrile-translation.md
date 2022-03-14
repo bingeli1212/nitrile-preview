@@ -423,6 +423,7 @@ phrases are called entity phrases.  Following are recognized entity phrases.
 - colorbutton
 - fbox
 - hrule
+- img
 - dia
 - label
 
