@@ -1811,6 +1811,19 @@ Following would be the result of the translation.
     % <-- *** env @b = 2 3 -->
 
 
+
+# Reading a single value from an array
+
+It is possible to read a single value from a given array.
+
+    \set i = 0
+    \set ax[i] = [1,2,3,4,5]
+    % ax == 1
+    \set i = 1
+    \set ax[i] = [1,2,3,4,5]
+    % ax == 2
+
+
 # Built-in scalar functions
 
 Following are built-in functions provided by Diagram.
