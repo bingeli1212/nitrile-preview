@@ -529,7 +529,8 @@ Nitrile
 - [x][FR] Donot use "n" style for Equation, but rather (a), (b), (c),,,
 - [x][FR], split tables and listings will have (a), (b), (c),,,
 - [ ][BUG], work on "img" bundle such that the \type command should be set to "canvas" or "ball", etc., which will be watched by HTML translation to create different interactions  
-- [ ][ ] 
+- [ ][FR] Make sure that "\header" and "\footer" commands work for "img" bundles
+- [ ][ ]
 
 
 
