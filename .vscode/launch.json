@@ -156,7 +156,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/beamer.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nibeamer.js",
       "args": [
         "test.md"
       ]
