@@ -364,3 +364,35 @@ to another part of the same document. However, it seems that it does not generat
 PDF bookmarks. 
 
 
+# The "type:ball" for interactive SVG
+
+When the "type:ball" is set for a DIA bundle, the HTML translation would
+translate into a OBJECT element holding a SVG which contains a ECMAScript
+written to interact with the SVG elements inside it. The interaction
+is designed to translate/rotate elements by mouse click/move/drag with
+CTRL/ALT meta-keys.
+
+To better work with this setup, each SVG elements such as a "rect" or "polygon"
+must provide through its "data-centerx" and "data-centery" attributes two 
+numbers one for each coordinate of the center of the mass which is used
+when rotating this element. For instance.
+
+    data-centerx="150"
+    data-centery="150"
+
+In addition, each shape element must set a unique CSS ID. For instance.
+
+    id="my1"
+
+In addition, each shape element must set following two event
+handlers.
+
+    onclick="click(this)" 
+    onmousedown="mousedown(this)"
+
+In addition, the toplevel SVG element must set the following attributes:
+  
+    onmousemove="mousemove(this)"
+    onmouseup="mouseup(this)"
+    preserveAspectRatio="none"
+
