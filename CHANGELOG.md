@@ -520,7 +520,7 @@ Nitrile
 - [x][FR] Each buffer is to be accompanied by a style that will be used by &dia{}
 - [x][BUG] The latex.js the tikzpicture inside a tabular had its top part trimmed too much
 - [ ][BUG] For nimake, it should have aborted the future process if one process returns with an error, but it kept on going
-- [ ][BUG] The CONTEX-MF does not display hyphen in monospace correctly
+- [x][BUG] The CONTEX-MF does not display hyphen in monospace correctly
 - [x][BUG] Change it so that switches, vmap, and buffers cannot be overridden accidently.
 - [x][BUG] Fixes so that all "tab", "par", "vtm" are no longer font size smaller by default
 - [x][FR] Add block signatures for "verb", "cove", "cave", "samp", "sand", "step", "plst", and "body" 
