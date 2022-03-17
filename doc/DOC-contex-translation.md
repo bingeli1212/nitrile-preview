@@ -4021,14 +4021,44 @@ of CONTEX. It worked before.
 
 
 
-# The "mvs" symbol 
-
-The "mvs" symbol must always be loaded at all times as the COVE block uses one
-of the symbols which is always available regardless of the choice of the body
-font choice.
-
 
 # The nicreamer.js translation
+
+The nicreamer.js translation creates SLIDES similar to nibeamer.js and slide.js.
+
+The "mvs" symbol must always be loaded as this translation generates symbols for
+dagger, hallow checkbox and filled checkbox.
+
+    \usesymbols[mvs]
+
+Each first-level section (one hashmark) is to create a single frame, with
+additional second-level section (two hashmark) each to create a single frame
+as well. Additional sections levels are ignored.
+
+The PRIMARY block is used to mark a "solution". It recognizes special syntax 
+such as multiple choices shown below. In the example below
+there are four possible choices each marked with a letter from A-D, 
+in which case D is the correct answer.
+
+    [ Answer:D ]
+    A. `` \forall x \; [ \GREEN(x) \rarr  \FROG(x) ] ``
+    B. `` \forall x \; [ \GREEN(x) \wedge \FROG(x) ] ``
+    C. `` \forall x \; [ \GREEN(x) \vee   \FROG(x) ] ``
+    D. `` \forall x \; [ \GREEN(x) \harr  \FROG(x) ] ``
+
+nicreamer.js will generate a multiple-choice-like block with hollow 
+boxes placed in front of each letter, and then a solution frame
+with similar contents except the hollow box is replaced with a checked box
+for the choice that is the correct answer.
+
+It is possible to include more than one correct answers and each one must be
+separated from the one before by a slash.
+
+    [ Answer:A/C/D ]
+    A. `` \forall x \; [ \GREEN(x) \rarr  \FROG(x) ] ``
+    B. `` \forall x \; [ \GREEN(x) \wedge \FROG(x) ] ``
+    C. `` \forall x \; [ \GREEN(x) \vee   \FROG(x) ] ``
+    D. `` \forall x \; [ \GREEN(x) \harr  \FROG(x) ] ``
 
 
 
