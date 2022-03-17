@@ -3936,7 +3936,7 @@ The optional value expresses the number of 1em.
 - The ``\placefigure`` command could fail and cause a compile error if it is to
   generate a "Figure" caption (where "none" isn't provided inside the first
   option argument of this command). This has been observed inside Gleamer. For
-  this reason, the "float_to_figure()" function inside the contex.js has been
+  this reason, the `float_to_figure()` function inside the contex.js has been
   changed such that if the title is empty, then a "none" is placed inside the
   first optional argument, thus effectively disabling the generating of the
   "Figure" line, solving the problem and allowing the compile to continue
@@ -3996,19 +3996,70 @@ The optional value expresses the number of 1em.
   out why.
   
 
-# Known Issues    
 
-- THERE is current no way to assign customized equation numbers to equations
-  when there is chapter. The current solution to assign customized number works
-  when there isn't any chapter.
-- IT is impossible to do `\drawlabel` inside a DIA bundle when the text is a 
-  math string and it is a matrix---it just does not compile with CONTEXT
-- The \ruby seems to always generate a compile error.
-- The "mvs" symbol must always be loaded at all times as the 
-  COVE block uses one of the symbols.
+# Equation number 
+
+CONTEX `\placeformula` command has not provided an alternative way to assign
+customized equation number to an equaiton. 
+The current solution is to use \starttabulate to create an alignment environment
+for multi-lined formular and use \hfill to create rubber space between formula
+and equation number.
+
+
+
+# \drawlabel for matrix
+
+IT is impossible to do `\drawlabel` inside a DIA bundle when the text is a 
+math string and it is a matrix---it just does not compile with CONTEXT
+
+
+
+# Ruby annotation compile errors
+
+The `\ruby` seems to always generate a compile error for recent versions
+of CONTEX. It worked before.
+
+
+
+# The "mvs" symbol 
+
+The "mvs" symbol must always be loaded at all times as the COVE block uses one
+of the symbols which is always available regardless of the choice of the body
+font choice.
 
 
 # The nicreamer.js translation
+
+
+
+# Double-hyphen ligagure
+
+To break the double-hyphen ligature one must write it as `-\/-`.
+
+
+
+# Control the size of the integral, sum and product symbols
+
+To control the size of the symbol, one writes before the command generating the symbol
+the `\displaystyle` or `\textstyle`. This works for both LATEX and CONTEX.
+
+- `\textstyle` for small symbols;
+- `\displaystyle` for large symbols; .
+- the declarations `\textstyle` and `\displaystyle` may also affect the behavior 
+  of subsequent commands in the current math-mode 
+  environment, as observed by @HaraldHancheOlsen.
+
+
+
+# Control the placement of the limits of integration, summation and multiplication
+
+To control the placement of the limits, one writes after 
+the command generating the symbol either `\nolimits` or `\limits`. 
+These are commands on the LATEX sides and not sure if it works on the CONTEX side.
+
+- \nolimits for side-set limits;
+- \limits for limits set above and below.
+
 
 
 

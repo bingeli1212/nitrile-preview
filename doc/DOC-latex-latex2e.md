@@ -3125,4 +3125,26 @@ A formal letter can be typeset by utilizing the "letter" document class.
 
 
 
+# Control the size of the integral, sum and product symbols
+
+To control the size of the symbol, one writes before the command generating the symbol
+
+- `\textstyle` for small symbols;
+- `\displaystyle` for large symbols; .
+- the declarations `\textstyle` and `\displaystyle` may also affect the behavior 
+  of subsequent commands in the current math-mode 
+  environment, as observed by @HaraldHancheOlsen.
+
+
+
+# Control the placement of the limits of integration, summation and multiplication
+
+To control the placement of the limits, one writes after 
+the command generating the symbol
+
+- \nolimits for side-set limits;
+- \limits for limits set above and below.
+
+  These possibilities are illustrated in the table below:
+
 
