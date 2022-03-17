@@ -254,6 +254,7 @@ for these blocks.
 - plst
 - cove
 - cave
+- lave
 - samp
 - sand
 - step
@@ -331,9 +332,21 @@ and space, and if it is detected it becomes a line by itself; otherwise it is co
 the continuation of the previous line. When being typeset, the output is an a block where
 all lines are centered .
 
-    > Hello!          
-    > Good morning!       
-    > Good evening!       
+    $ Hello!          
+    $ Good morning!       
+    $ Good evening!       
+
+
+[ The cave block. ] 
+This block is recognized by the presence of less-than-sign followed by at least one space
+at the first line. Each additional line will be checked for the presence of the dollar-sign
+and space, and if it is detected it becomes a line by itself; otherwise it is considered
+the continuation of the previous line. When being typeset, the output is an a block where
+all lines are centered .
+
+    < Hello!          
+    < Good morning!       
+    < Good evening!       
 
 
 [ The samp block. ]
