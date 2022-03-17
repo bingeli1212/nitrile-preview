@@ -91,7 +91,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/camper.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nicamper.js",
       "args": [
         "test.md"
       ]
