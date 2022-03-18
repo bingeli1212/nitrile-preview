@@ -4091,6 +4091,19 @@ These are commands on the LATEX sides and not sure if it works on the CONTEX sid
 - \limits for limits set above and below.
 
 
+# Predefined Symbol Sets
+
+(Try \showsymbolset[some set]!)
+
+- eur : Adobe Euro (Serif|Sans|Mono), defines \texteuro (no sets)
+- jmn : Janusz M. Nowacki's navigational symbols (sets navigation 1-4)
+- mis : common bullets (no sets, but default definition for enumerations)
+- mvs : Martin Vogel's Symbols (sets astronomic, zodiac, europe, martinvogel 1-3; replaces LaTeX's marvosym)
+- nav : Hans Hagen's navigational symbols (sets navigation 1-3)
+- uni : Unicode symbols (including Zapf Dingbats, lots of sets...)
+- was: Roland Waldi's symbols (sets wasy general, music, astronomy, astrology, geometry, physics, apl; replaces LaTeX's wasysym)
+- handy utf-8 list>
+
 
 
 
