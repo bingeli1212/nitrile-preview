@@ -387,6 +387,10 @@ In the following example there is no follow-on child paragraphs.
     2) Step 2, bring it to a boil, and taste it see if additional 
     salt is needed.      
 
+Note that all child paragraphs are treated as normal paragraphs with
+no particular layout assumptions.
+
+
 [ The BODY block. ]
 This block represents a normal paragraph.  For some translations the first line
 of this paragraph is likely to have some visible indentation except for the situation
