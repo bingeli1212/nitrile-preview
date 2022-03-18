@@ -251,17 +251,17 @@ Un-fenced blocks are those that are not fenced by
 triple-backquotes. Following are the signatures IDs
 for these blocks.  
 
-- plst
-- cove
-- cave
-- lave
-- samp
-- sand
-- step
-- body
+- PLST
+- COVE
+- CAVE
+- LAVE
+- SAMP
+- SAND
+- STEP
+- BODY
 
 
-[ The plst block. ]
+[ The PLST block. ]
 The 'plst' un-fenced block is recognized by the presence of a hyphen-minus, a
 plus-sign, or a asterisk in the first line. This block is designed to model
 a list of multiple items which might include nested lists.
@@ -313,60 +313,68 @@ The first form would typeset the leading terms in monospaced fonts; the second
 form in italic, the third one with quotation marks, and the third one in plaintext.
 
 
-[ The cove block. ] 
-This block is recognized by the presence of greater-than-sign followed by at least one space
-at the first line. Each additional line will be checked for the presence of the greater-than-sign
-and space, and if it detected it becomes a line by itself; otherwise it is considered
-the continuation of the previous line. When being typeset, the output is an indented block
-with a small right-pointing triangle/arrow at the left-hand side of the first line.
+[ The COVE block. ] 
+This block is recognized by the presence of greater-than-sign followed by at
+least one space at the first line. Each additional line will be checked for the
+presence of the same sign and the follow-on space, and if detected it becomes a
+new line by itself; otherwise it is considered the continuation of the previous
+line. The output is that all lines are left aligned and the entire block has a
+non-zero left padding, and there is a black right-pointing triangle in front of
+the first line of the block and inside the left padding area.
 
     > All human are mortal.
     > Socrates is a human.
     > Socrates is mortal.
 
 
-[ The cave block. ] 
-This block is recognized by the presence of dollar-sign followed by at least one space
-at the first line. Each additional line will be checked for the presence of the dollar-sign
-and space, and if it is detected it becomes a line by itself; otherwise it is considered
-the continuation of the previous line. When being typeset, the output is an a block where
-all lines are centered .
+[ The CAVE block. ] 
+This block is recognized by the presence of dollar-sign followed by at least
+one space at the first line. Each additional line will be checked for the
+presence of the same sign and follow-on space, and if detected it becomes a new
+line by itself; otherwise it is considered the continuation of the previous
+line.  When being typeset, the output is so that all lines are center aligned.
 
     $ Hello!          
     $ Good morning!       
     $ Good evening!       
 
 
-[ The cave block. ] 
-This block is recognized by the presence of less-than-sign followed by at least one space
-at the first line. Each additional line will be checked for the presence of the dollar-sign
-and space, and if it is detected it becomes a line by itself; otherwise it is considered
-the continuation of the previous line. When being typeset, the output is an a block where
-all lines are centered .
+[ The LAVE block. ] 
+This block is recognized by the presence of less-than-sign followed by at least
+one space at the first line. Each additional line will be checked for the
+presence of the same sign   and follow-on space, and if detected it becomes a
+new line by itself; otherwise it is considered the continuation of the previous
+line. When being typeset, the output is so that all lines are left flushed.
 
     < Hello!          
     < Good morning!       
     < Good evening!       
 
 
-[ The samp block. ]
-This block is recognized if the first line is lead with four white spaces. Each
-line of the following line is to be assume to have a leading quadruple spaces where
-they will be removed.  The output of this block is a verbatim block where each line
-is to be shown in monospace characters where white spaces are preserved.
+[ The SAMP block. ]
+This block is recognized if the first line is lead with a quadruple white
+space. Each of the following line is to be assume to have a leading quadruple
+space and    it will be removed.  The output of this block is a verbatim block
+where each line is to be shown in monospace font style where white spaces are
+preserved.
 
-[ The sand block. ]
-This block is recognized if the first lie is lead with two white spaces. Each
-line of the following line is to be assumed to have a leading double spaces
-where they will be removed. The output of this block is a block where each line
-is to be shown by itself similar to a "verse" block. Multiple white spaces will
-be collapsed into a single one.
+[ The SAND block. ]
+This block is recognized if the first line is lead with a double white space.
+Each of the following line is to be assumed to have a leading double space and
+it will be removed. The output is a block where each line is to be shown by
+itself similar to a SAMP block and each white spaces are translated into a
+non-breakable white space, except for the fact that the proportional font
+styles are applied instead of monospace.
 
-[ The step block. ]
-This block is recognized if the first line is lead by a number followed by a right parenthesis. 
-This block is assumed to represent a single ordered list item with possible follow-on paragraphs.
-The paragraphs, if there is any, is recognized by the presence of double-backslash in a line
-by itself.
+[ The STEP block. ]
+This block is recognized if the first line is lead by a numeric number followed
+by a right parenthesis and then additional spaces.  This block is assumed to
+represent a single ordered list item with the given leader.  This block is to
+be scanned for the presence of any follow-on child paragraphs, and if detected
+each one of them will be shown as an independent paragraph that is to have the
+same left padding as the list item itself.  Each follow-on child paragraph is
+to be detected if the preceding line is a double-backslash by itself.  In the
+following example the STEP block contains two follow-on child paragraphs.
 
     1) Step 1, check the temparature:
     \\
@@ -374,48 +382,58 @@ by itself.
     \\
     Otherwise, add this ingredient.
 
+In the following example there is no follow-on child paragraphs.
+
     2) Step 2, bring it to a boil, and taste it see if additional 
     salt is needed.      
 
-[ The body block. ]
-This block represents a normal paragraph.
+[ The BODY block. ]
+This block represents a normal paragraph.  For some translations the first line
+of this paragraph is likely to have some visible indentation except for the situation
+where this line is the first line after a sectional heading.
 
 
 
+# Literals
 
-# Phrases
-
-Phrases are inline text with marks. The result of a phrase is either a style
-change, or a complete makeover depending on the type of the markup.  For
-instance, a pair of double-backquote are to turn a piece of text into math.
+Literals are text marked with some punctuations.  For instance, a pair of
+double-backquote are to turn a piece of text into math literal.
 
     The theorem is: ``a^2 + b^2 = c^2``.
 
-A pair of single-backquote is to mark a piece of text as verbatim.
+A pair of single-backquote is to mark a piece of text as verbatim literal.
 
     The key combination is: `CTRL-K`.
 
-A pair of double-asterisk is to mark a piece of text that is strong in emphasis.
-Note that for this phrase no spaces are allowed inside.
-
-    The **text** is marked as strong.
-
-A pair of single-asterisk is to mark a piece of text that is italic in emphasis.
-Note that for this phrase no spaces are allowed inside.
-
-    The *text* is emphasized
-
-The single-quotation is to mark a piece of text that is quoted.
+A pair of quotation marks is to mark a piece of text as quotation literal.  The
+output varies based on the target translation. For LATEX the \textquote command
+from "csquotes" package is used. For CONTEX the \quotation command is used.
+For HTML the Q-tagname is used.
 
     He sayd "good morning" to me.
 
-A pair of double-braces allows for one or more words of text
-to be marked as emphasized tet.
+A pair of double-braces is to mark a piece of text as emphasis literal.
 
     The saying goes like this: {{a fox jumps over a lazy dog.}}
 
-A text can also appear inside a form such as `&key{...}`. These
-phrases are called entity phrases.  Following are recognized entity phrases.
+A pair of double-asterisk is to mark a piece of text as strong literal.
+Note that spaces are not allowed inside this literal.
+
+    The **text** is shown in more weight than normal.
+
+A pair of single-asterisk is to mark a piece of text as slanted literal.
+Note that spaces are not allowed inside this literal.
+
+    The *text* is shown in slanted comparing to normal.  
+
+Note that strong and slanted literal can appear inside quotation literal and emphasis
+literal.
+
+
+# Entity phrases
+
+A text can also appear inside a form such as `&key{...}`, to become a entity phrase.
+Following are recognized entity phrases.
 
 - em
 - b
