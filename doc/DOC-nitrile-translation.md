@@ -344,7 +344,8 @@ This block is recognized by the presence of less-than-sign followed by at least
 one space at the first line. Each additional line will be checked for the
 presence of the same sign   and follow-on space, and if detected it becomes a
 new line by itself; otherwise it is considered the continuation of the previous
-line. When being typeset, the output is so that all lines are left flushed.
+line. When being typeset, the output is so that all lines are left flushed
+and with none-zero left padding for the entire block.
 
     < Hello!          
     < Good morning!       
