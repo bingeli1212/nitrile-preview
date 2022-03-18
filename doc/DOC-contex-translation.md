@@ -4105,5 +4105,83 @@ These are commands on the LATEX sides and not sure if it works on the CONTEX sid
 - handy utf-8 list>
 
 
+# Use symbols for the itemized list items
+
+Following example configures the itemized list such that 
+the top-level items all have a lead bullet of pointing hand
+and the second-level items have a lead bullet of checked box.
+
+    \usesymbols[mvs]
+    \definesymbol[1][{\symbol[martinvogel 2][PointingHand]}]
+    \definesymbol[2][{\symbol[martinvogel 2][CheckedBox]}]
+    \startitemize[packed]
+    \item item \item item
+     \startitemize[packed]
+     \item item \item item
+     \stopitemize
+    \item item
+    \stopitemize
+
+The previous configuration would have changed all future itemized list, because
+internally the toplevel list is to be set with a symbol named "1", and the
+second-level with a symbol named "2", etc., and CONTEX has an internal list of
+these symbols assigned to each of the name that is between "1"-"9".  To change
+just a single itemized list, add the "symbol=" option. See the following.
+
+    \usesymbols[mvs]
+    \definesymbol[my1][{\symbol[martinvogel 2][PointingHand]}]
+    \definesymbol[my2][{\symbol[martinvogel 2][CheckedBox]}]
+    \startitemize[packed][symbol=my1]
+    \item item 
+    \item item
+     \startitemize[packed][symbol=my2]
+     \item item 
+     \item item
+     \stopitemize
+    \item item
+    \stopitemize
+
+
+# Adjusting the margins of an itemized list
+
+The "leftmargin=" option expresses the leading space from the left margin
+of the paragraph to the bullet. The "width=" option expresses the total width
+reserved for placing the bullet. The "distance=" option expresses the distance
+between the end of the previous "width" to the starting of the text.
+The "itemalign=" option expresses the alignment of the bullet within the "width".
+
+    \startitemize[n,packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+    \sym {1.} Predicates with one free variable
+    \stopitemize
+
+Following is a similar setting where the bullet is to start 20pt from the left
+margin of the paragraph.
+
+    \startitemize[leftmargin=20pt,width=10pt,distance=0pt,itemalign=flushleft]
+    \sym {\small\triangleright} \math{\mathop{\mfunction{WEALTHY}} ( x )}\crlf
+    \quotation{\math{x} is wealthy.}
+    \stopitemize
+
+
+# Define description list
+
+Following configuration sets up a new command that is `\DLpacked`
+or `\startDLpacked` and `\stopDLpacked` environment allowing a description list
+item to be established.
+
+    \definedescription[DLpacked][
+      headstyle=normal, style=normal, align=flushleft,
+      alternative=hanging, width=broad, margin=20pt, before=, after=,]
+
+The `headstyle=` defines the font style for the data term, and `style=`
+defines the font style for the data description. The `align=flushleft`
+defines the alignment of the data term. The `alternative=hanging` expresses
+that the description text should be an shifted to the right and the `margin=20pt`
+defines the distance to be shifted. The `width=broad` defines data term should
+be given for as much space as needed; whilst `width=30pt` would only limit the data
+term to have a max width of 30pt, forcing lines to be wrapped if necessary.
+
+
+
 
 
