@@ -625,13 +625,18 @@ based on "memoir" documentclass.
 
 # Known Problems in latex.js translation
 
-- Current the "sand" block with "hew:2" or more will insert a begin/end/multicols 
-  and a begin/end/minipage environment is placed inside
-  each individual column. The begin/end/minipage is preferred over begin/end/flushleft
-  as the later creates too much vertical spaces. However, none of the "minipage" or "flushleft"
-  handles the "~" well at the beginning of a line as the first one do not work for all lines
-  except for the first line, and the second one only works for the first line.
-- The \underline command leaves too much vertical space between the text and the line
+- Current the "sand" block with "hew:2" or more will insert a 
+  begin/end/multicols and a begin/end/minipage environment 
+  is placed inside each individual column. 
+  The begin/end/minipage is preferred over begin/end/flushleft
+  as the later creates too much vertical spaces. However, 
+  none of the "minipage" or "flushleft"
+  handles the "~" well at the beginning of a line as the first 
+  one do not work for all lines
+  except for the first line, and the second one only works for 
+  the first line.
+- The \underline command leaves too much vertical space between 
+  the text and the line
 
 
 

@@ -1219,6 +1219,15 @@ angles.
 \path b = &circlepoints{(0,0),2,30,60,90}
 ```
 
++ ellipsepoints(center,rx,ry,a1,a2,a3...)
+
+Returns a list of points where it is a situated around a ellipse
+with angles a1, a2, and a3.
+
+```
+\path b = &ellipsepoints{(0,0),4,3,30,60,90}
+```
+
 + pie
 
 Returns a closed path expressing a pie. 
@@ -2501,10 +2510,10 @@ The car-command would setup and draw a Cartesian coordinate frame, with optional
 axes, grid lines/numbers, and others.
 Following are like cases where this command is involed,
 
-- car.1 (5,5)
-- car.1 {xgrid:0.5, ygrid:2}
-- car.1 {xgrid:0.5, ygrid:2, xaxis:-5 5 1, yaxis:-5 5 1}
-- car.1 {xgrid:0.5, ygrid:2, xaxis:-5 5 1, yaxis:-5 5 1, xtick:-4 -3 -2 -1 1 2 3, ytick:-4 -3 -2 -1 0 1 2 3 4}
+- \car.1 (5,5)
+- \car.1 {xgrid:0.5, ygrid:2}
+- \car.1 {xgrid:0.5, ygrid:2, xaxis:-5 5 1, yaxis:-5 5 1}
+- \car.1 {xgrid:0.5, ygrid:2, xaxis:-5 5 1, yaxis:-5 5 1, xtick:-4 -3 -2 -1 1 2 3, ytick:-4 -3 -2 -1 0 1 2 3 4}
 
 This command is typically be supplied by a command option, which expresses the
 ID(s) of the Cartesian coordinate system. Each path point of the command line
@@ -2555,6 +2564,12 @@ Coordiante frame. For instance we can draw the previous two points using the
 following 'draw' command and the result will be exactly the same.
 
     \drawpath ^car:1 (4,3)--(5,10)
+
+The "showgrid" option can be used to allow for gridlines to be draw. The 
+color of the grid lines are configured by setting the "gridcolor" option
+to a color.
+
+
 
 
 # The \footer command
