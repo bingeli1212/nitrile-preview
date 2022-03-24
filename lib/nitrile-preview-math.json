@@ -80,11 +80,12 @@
     { "kbd": "'''"             ,    "unicode": "&#x2034;"       ,  "id": "myPRIME3",      "dx":"0"                      ,"op": 0    ,"width": 4    },
 
     { "kbd": "+"               ,    "unicode": "+"              ,  "id": "myPLUS",        "dx":"0"                      ,"op": 1    ,"width": 0     },
-    { "kbd": "="               ,    "unicode": "="              ,  "id": "myEQ",          "dx":"0"                      ,"op": 1    ,"width": 0     },
     { "kbd": "-"               ,    "unicode": "&#8722;"        ,  "id": "myMI",          "dx":"0"                      ,"op": 1    ,"width": 0     },
     { "kbd": "?"               ,    "unicode": "?"              ,  "id": "myQU",          "dx":"0"                      ,"op": 0    ,"width": 0     },
     { "kbd": ">"               ,    "unicode": "&#62;"          ,  "id": "myGT",          "dx":"0"                      ,"op": 1    ,"width": 0     },
     { "kbd": "<"               ,    "unicode": "&#60;"          ,  "id": "myLE",          "dx":"0"                      ,"op": 1    ,"width": 0     },
+
+    { "kbd": "="               ,    "unicode": "="              ,  "id": "myEQ",          "dx":"0"                      ,"op": 1    ,"width": 9     },
 
     { "kbd": "\\sqrt"          ,    "unicode": "&#x221A;"       ,  "id": "mySQRT",        "dx":"0"                      ,"op": 0    ,"width": 8    },
     { "kbd": "\\cbrt"          ,    "unicode": "&#x221B;"       ,  "id": "myCBRT",        "dx":"0"                      ,"op": 0    ,"width": 8    },
