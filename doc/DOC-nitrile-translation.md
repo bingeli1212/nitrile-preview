@@ -165,13 +165,48 @@ The "listing" block is to create a listing block.
 Bundles are those paragraphs fenced by triple backquotes.
 Following are the signature IDs for the bundles.
 
-- img
-- dia
-- ink
 - fml
+- ink
+- dia
 - tab
 - par
 - vtm
+
+[ The "fml" bundle. ]
+This bundle is to typeset a multiline formula, with possibly 
+alignment at the place of an equal-sign or other places.
+Note that it is not required that the formula be center-aligned.
+Current HTML/LATEX/CONTEX have been implemented such that it is
+left-aligned.
+
+[ The "ink" bundle. ]
+This bundle is to crreate a picture holding only textual contents. 
+The bundle is very much like a "vtm" bundle except the result is a picture, 
+which makes it ideal for it to hold text with longer lines and still be 
+able to be scaled to a given width/height.
+
+    ```ink{viewport:10 10 5,width:30}
+    #include<stdio>
+    int main(){
+      return 0;
+    }
+    ```
+
+The "viewport" attribute determines the viewport size, and the resulting
+is a picture of this size. The first two item is the width/height, and the
+third one is the size unit. The last one by default a 5mm, thus, a 
+"viewport" of "10 10 5" would result in a picture of 50mm-by-50mm in size.
+
+The text is always set in 10pt and in monospace style fonts. 
+Thus, a larger viewport size holds more text.
+
+The "width" and "height" attributes can be used to scale
+up/down the image that has been set to the size of the viewport.
+These attributes are pure number always assumed in the unit of mm.
+When width/height are not present the size will be resized as such,
+or when only width or height is present then the other is automatically
+set to the one that matches to the viewport aspect ratio. If they
+are not present the size is the same as the viewport.
 
 [ The "dia" bundle. ]
 This bundle builds a vector image such as SVG, Tikz, and or MetaFun.
@@ -181,13 +216,142 @@ This bundle builds a vector image such as SVG, Tikz, and or MetaFun.
     \drawline (0,10) (10,0)
     ```
 
+The "viewport", "width", and "height" attributes work in the same manner
+as those of the "ink" bundle. The "dia" bundle accept inside a list of 
+commands. These commands are documented by "DOC-nitrile-diagram.md" file.
+
+[ The "tab" bundle. ]
+This bundle is designed to typeset a tabular. 
+
+    ```tab{head}
+    Name \\ Addr.
+    John \\ 301 Sun Dr.
+    James \\ 401 Sun Dr.
+    Jane \\ 501 Sun Dr.
+    Mary \\ 601 Sun Dr.
+    Martin \\ 701 Sun Dr.
+
+The "head" attribute above expresses that the first row is header,
+which will likely be set to bold and treated differently than other
+rows in many other situations. Another similar attribute is "side",
+which states that the first column is to be treated as containing
+the header information for that row. 
+
+Having a "head" attribute can make a difference in the presence of a "hew"
+attribute. The "hew" attribute is designed to split a long table into two or more
+parallel sections so that the table will become shorter and fatter.
+
+    ```tab{head,hew:2}
+    Name \\ Addr.
+    John \\ 301 Sun Dr.
+    James \\ 401 Sun Dr.
+    Jane \\ 501 Sun Dr.
+    Mary \\ 601 Sun Dr.
+    Martin \\ 701 Sun Dr.
+
+In the previous example the first three lines will be placed at the left-hand
+side and the last two lines at the right-hand side, while the header is to
+appear on top of both: the resulting tabular looks like it has four columns
+and four rows.
+
+There are also additional attributes: for instance, the "frame" attribute is
+used to set if the tabular is to have a border placed around it. When set to
+"1" or "box", the border is to be had on all four side, whilst if set to
+"hsides" then only the top/bottom sides are to have the border. 
+
+The "rules" attribute determines if vertical/horizontal rules are to appear
+between rows/columns.  When set to "all", all rules are to appear between
+rows/columns.  If set to "rows", only the rules between rows are to appear. If
+set to "cols", only rules between columns are to appear. If set to "groups",
+only the rules betweem the header and the first line of body row is to appear,
+given the fact that the "head" attribute is set, or the vertical rules between
+the first column and the second column is to appear if the "side" attribute is
+set, or both if both attributes are set.
+
+The "textalign" is to be expected a list of alignment options, such as "l r l",
+which states that the first/third column is to be aligned left, and second
+column aligned right. The "p25", "p30", etc, can also be one of the options
+which states that a column is to have a paragraph with lines wrapped around.
+The number after the letter "p" expresses the width of the column in mm.
+
+The "fontsize" is to be set to a string expressing the size of the font.
+Currently only the value "small" is accepted, and all other value will be
+ignored. In the case of "small", all texts will be shown by a "smaller" version
+of the body font.
+
+The "fontstyle" is to be expected a list each of which expressing a font style
+for the corresponding column. For instance, "fontstyle:t t r" is to set it so that the
+first two columns are to be set in the style of monospaced text, and last one
+the roman(default) text. The letters are: t(monospaced), i(italic), b(bold), 
+s(slanted), and r(default) fonts.
+
+The "vrules" and "hrules" attributes are designed to manually insert
+vertical/horizontal rules between rows and columns. Note these two attribuets
+are only to take affect when the "rules" attribute is not set, otherwise they
+will be ignored. Each of these two attributes is to be expected a list of
+integers, where an integer of "1" expressing the appearance of a
+vertical/horizontal rule between the first and second column/row, and "2" for
+the rule between the second/third column/row. Thus, "vrules:2 4" is to insert a
+vertical rule between second/third columns, and another one between the
+fourth/fifth columns.
+
+The "direction" attribute influences how the input contents are to be
+interpreted.  By default input contents are interpreted such a way that each
+line contains the entire row of the tabular, 
+and tabular data are to be found at the beginning, end, or between two double-backslash.
+However, if "direction:row" is set, then the input contents are to be expected
+to be arranged in such a way that, a double-backslash by itself starts a new row,
+and each table data is to be started in its own line starting by a ampersand.
+Following is an example that replicated the same table as the one before.
+
+    ```tab{direction:row,head}
+    \\
+    & Name 
+    & Addr.
+    \\
+    & John 
+    & 301 Sun Dr.
+    \\
+    & James 
+    & 401 Sun Dr.
+    \\
+    & Jane 
+    & 501 Sun Dr.
+    \\
+    & Mary 
+    & 601 Sun Dr.
+    \\
+    & Martin 
+    & 701 Sun Dr.
+    ```
+
+If "direction:column" is set, then the table is to be built in similar way as
+that of "direction:row", except for the fact that instead of filling out rows
+one-by-one, it is to fill out columns one-by-one.
+
+    ```tab{direction:column,head}
+    \\
+    & Name 
+    & John 
+    & James 
+    & Jane 
+    & Mary 
+    & Martin 
+    \\
+    & Addr.
+    & 301 Sun Dr.
+    & 401 Sun Dr.
+    & 501 Sun Dr.
+    & 601 Sun Dr.
+    & 701 Sun Dr.
+    ```
 
 [ The "par" bundle. ]
-This bundle is designed to create a text box that contains a single
-paragraph. It allows for the possibility such that this paragraph
+This bundle is designed to create a text box with text inside it.   
+It allows for the possibility such that this paragraph
 is able to have its own text alignment, font size, and font style.
-Usually, when "width" is not present, texts are arranged in lines
-separated by the presence of double-backslashes. 
+The "width" attribute can also be used to manually set it to a given
+width, otherwise it is assumed to be as wide as the paragraph.
 
     ```par
     Hello world!\\
@@ -195,52 +359,10 @@ separated by the presence of double-backslashes.
     Hello people!
     ```
 
-If "width" style is provided,
-double-backslashes are ignored and all texts are 
-to form a single continuous paragraph.
+The end-of-line-double-backslash is used to manually break the line
+into multiple-lines.
 
-    ```par{width:50}
-    Hello world!
-    Hello universe!
-    Hello people!
-    ```
 
-[ The "img" bundle. ]
-The "img" bundle is used to typeset an image. The "viewport" style is used to defined
-the viewport size, which is by default 60mm-by-35mm in size, and the picture
-will be resize to this size always regardless of its native size. 
-However, this property can always be changed to a different size. The \image
-command presents a list of image source files one of which will be chosen for
-the target translation. For instance, HTML would choose the PNG and LATEX
-would have chosen the EPS file.
-
-    ```img{viewport:10 10 5}
-    \image "frog.png" "frog.eps"
-    ```
-
-This bundle contains a list of commands to allow for this bundle to server a slighly
-different purpose. For example, if \type command is setup to point to "canvas", it 
-will setup a Canvas for HTML translation that would allow for user to use a Canvas
-HTML element o modify the image. The \color command presents a list of customized
-colors which will be used to setup the "color" input button for choosing color.
-
-    ```img{viewport:10 10,width:30}
-    \image "flog.png" "flog.eps"
-    \type "canvas"
-    \color "#476fc7" "#ae241c"
-    ```
-
-[ The "ink" bundle. ]
-This bundle is designed to crreate a picture for holding textual contents. 
-The bundle is very much like a "vtm" bundle except the result is a picture, not text,
-which allows for it to be resized to a smaller or bigger one.
-
-    ```ink{viewport:10 10 5,width:30}
-    #include<stdio>
-    int main(){
-      return 0;
-    }
-    ```
 
 
 
@@ -980,6 +1102,42 @@ This would be equivalent to the following.
     Zar \\ 901 Sun Dr.
     Zor \\ 1001 Sun Dr.
     ```
+
+The "table" block only always works with the first bundle, and
+this bundle is always treated as if it is a "tab" bundle, and thus
+the "tab" keyword can be omited and it still works.
+
+    .table
+    &label{mytable}
+    \\
+    ```{head}
+    Name \\ Addr.
+    Mandy \\ 801 Sun Dr.
+    Zar \\ 901 Sun Dr.
+    Zor \\ 1001 Sun Dr.
+    ```
+    
+Subcaptions if detected will become the footnote of the table that are
+to appear at the bottom of the table. 
+
+    .table
+    &label{mytable}
+    ---
+    (i) My note 1.
+    (ii) My note 2.
+    ---
+    \\
+    ```{head}
+    Name \\ Addr.
+    Mandy \\ 801 Sun Dr.
+    Zar \\ 901 Sun Dr.
+    Zor \\ 1001 Sun Dr.
+    ```
+
+
+
+
+
 
 
 
