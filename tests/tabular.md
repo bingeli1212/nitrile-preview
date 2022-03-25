@@ -6,7 +6,7 @@ title: tabular.md
 
 .figure
 \\
-```tabular{align:p5p10p10,frame,rules:groups,head,side,hew:3}
+```tab{textalign:p10p10p10,frame,rules:groups,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
@@ -24,7 +24,7 @@ id \\    Name.        \\ Age.
 
 .figure
 \\
-```tabular{align:p5p10p10,frame,rules:all,head,side,hew:3}
+```tab{textalign:p10p10p10,frame,rules:all,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
@@ -43,7 +43,7 @@ id \\    Name.        \\ Age.
 
 .figure
 \\
-```tabular{align:p5p10p10,frame,rules:cols,head,side,hew:3}
+```tab{textalign:p10p10p10,frame,rules:cols,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
@@ -62,7 +62,7 @@ id \\    Name.        \\ Age.
 
 .figure
 \\
-```tabular{align:p5p10p10,frame,rules:rows,head,side,hew:3}
+```tab{textalign:p10p10p10,frame,rules:rows,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
@@ -81,7 +81,7 @@ id \\    Name.        \\ Age.
 
 .figure
 \\
-```tabular{align:p5p10p10,frame,rules:none,head,side,hew:3}
+```tab{textalign:p10p10p10,frame,rules:none,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
@@ -101,7 +101,7 @@ id \\    Name.        \\ Age.
 
 .figure
 \\
-```tabular{align:p5p10p10,frame:0,rules:groups,head,side,hew:3}
+```tab{textalign:p10p10p10,frame:0,rules:groups,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
@@ -119,7 +119,7 @@ id \\    Name.        \\ Age.
 
 .figure
 \\
-```tabular{align:p5p10p10,frame:0,rules:all,head,side,hew:3}
+```tab{textalign:p10p10p10,frame:0,rules:all,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
@@ -138,7 +138,7 @@ id \\    Name.        \\ Age.
 
 .figure
 \\
-```tabular{align:p5p10p10,frame:0,rules:cols,head,side,hew:3}
+```tab{textalign:p10p10p10,frame:0,rules:cols,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
@@ -157,7 +157,7 @@ id \\    Name.        \\ Age.
 
 .figure
 \\
-```tabular{align:p5p10p10,frame:0,rules:rows,head,side,hew:3}
+```tab{textalign:p10p10p10,frame:0,rules:rows,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
@@ -176,7 +176,7 @@ id \\    Name.        \\ Age.
 
 .figure
 \\
-```tabular{align:p5p10p10,frame:0,rules:none,head,side,hew:3}
+```tab{textalign:p10p10p10,frame:0,rules:none,head,side,hew:3}
 id \\    Name.        \\ Age.        
 01 \\    Jim          \\ 29       
 02 \\    Jane         \\ 34
