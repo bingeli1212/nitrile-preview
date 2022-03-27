@@ -13,7 +13,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/page.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nipage.js",
       "args":[
         "a.md"
       ]
@@ -26,7 +26,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/flowerpot.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-niflowerpot.js",
       "args": [
         "a.md"
       ]
@@ -52,7 +52,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/folio.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nifolio.js",
       "args": [
         "test.md"
       ]
@@ -78,7 +78,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/epub.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-niepub.js",
       "args":[
         "a.md"
       ]
@@ -130,7 +130,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/article.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-niarticle.js",
       "args": [
         "a.md"
       ]
@@ -143,7 +143,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/report.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nireport.js",
       "args": [
         "a.md"
       ]
@@ -169,7 +169,7 @@
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/tests/memoir.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nimemoir.js",
       "args": [
         "a.md"
       ]
