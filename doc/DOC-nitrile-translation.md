@@ -42,144 +42,26 @@ to `\subparagraph` commands in LATEX.
     math functions and constants.
 
 
-# Composite blocks
-
-- "equation"
-- "figure"
-- "table"
-- "listing"
-- "multicols"
-- "page"
-- "vspace"
-- "alignment"
-
-The "page" composite block is intended to provide a way for a translation
-backend to insert a page brreak. It should always to appear by itself. 
-
-    .page
-
-The "figure" directive is intended to provide a way for a translation
-backend to insert a figure.
-
-    .figure
-    \\
-    ```dia{width:50}
-    \image "imgs/frog.png"
-    ```
-    ```dia{width:50}
-    \image "imgs/clock.png"
-    ```
-
-The "multicols" composite block is for constructing a multi-column paragraph.
-
-    .multicols
-    \\
-    ```par{width:50}
-    A frog is any member of a diverse and largely 
-    carnivorous group of short-bodied, tailless 
-    amphibians composing the order Anura 
-    (literally without tail in Ancient Greek). 
-    ```
-    ```dia{width:50}
-    \image "frog.img"
-    ```
-
-The "equation" composite block is intended to provide a way for a translation
-backend to insert an equation section which may include one or more equations
-each with a unique equation number.
-
-    .equation
-    &label{a b}
-    \\
-    ```
-    a + b = c
-    ```
-    ```
-    a^2 + b^2 = c^c
-    ```
-
-The "vspace" composite block is for inserting vertical spaces. By default
-it inserts a vertical space equivalent to 1em. However, the "vspace" style
-option can be specified which holds a number expressing multiple "em".
-Following example inserts a vertical space equal to "10em".
-
-    .vspace{vspace:10}
-
-The "alignment" composite presents a paragraph with special alignment needs.
-This paragraph is to have a visible top and bottom margin, and will be set up
-so that it has the desired alignment set by the "textalign" style. The
-"fontsize", "fontstyle" can also be setup to fine tune its appearance.
-
-    .alignment{textalign:r,fontsize:small,fontstyle:i}
-    \\
-    ```
-    A frog is any member of a diverse and largely 
-    carnivorous group of short-bodied, tailless 
-    amphibians composing the order Anura 
-    (literally without tail in Ancient Greek). 
-    ```
-
-The "figure" block is to create a figure with one or more subfigures.
-
-    .figure
-    &label{myfigure}
-    These are the pictures of golden ratio.
-    \\
-    ```dia
-    \image "goldenratio1.png"
-    ```
-    ```dia
-    \image "goldenratio1.png"
-    ```
-
-The "table" block is to create a numbered table.
-
-    .figure
-    &label{mytable}
-    \\
-    ```tab
-    Name \\ Addr.
-    James \\ 301 Day Drive.
-    John \\ 401 Evening Way. 
-    ```
-
-Only a single bundle is supported, and it will always be treated
-as a "tab" bundle.
-
-The "listing" block is to create a listing block.
-
-    .listing
-    &label{mylisting}
-    \\
-    ```vtm
-    #include<stdio>
-    int main(){
-      return 0;
-    }
-    ```
-
-
-
 # Bundles
 
 Bundles are those paragraphs fenced by triple backquotes.
 Following are the signature IDs for the bundles.
 
-- fml
-- ink
-- dia
-- tab
-- par
-- vtm
+- FML
+- INK
+- DIA
+- TAB
+- PAR
+- VTM
 
-[ The "fml" bundle. ]
+[ The FML bundle. ]
 This bundle is to typeset a multiline formula, with possibly 
 alignment at the place of an equal-sign or other places.
 Note that it is not required that the formula be center-aligned.
 Current HTML/LATEX/CONTEX have been implemented such that it is
 left-aligned.
 
-[ The "ink" bundle. ]
+[ The INK bundle. ]
 This bundle is to crreate a picture holding only textual contents. 
 The bundle is very much like a "vtm" bundle except the result is a picture, 
 which makes it ideal for it to hold text with longer lines and still be 
@@ -202,11 +84,13 @@ Thus, a larger viewport size holds more text.
 
 The "width" and "height" attributes can be used to scale
 up/down the image that has been set to the size of the viewport.
-These attributes are pure number always assumed in the unit of mm.
-When width/height are not present the size will be resized as such,
+These attributes are pure number always assumed in the unit of mm.  When width/height are not present the size will be resized as such,
 or when only width or height is present then the other is automatically
 set to the one that matches to the viewport aspect ratio. If they
 are not present the size is the same as the viewport.
+
+The "frame" attribute allows it to have a border.
+
 
 [ The "dia" bundle. ]
 This bundle builds a vector image such as SVG, Tikz, and or MetaFun.
@@ -220,8 +104,11 @@ The "viewport", "width", and "height" attributes work in the same manner
 as those of the "ink" bundle. The "dia" bundle accept inside a list of 
 commands. These commands are documented by "DOC-nitrile-diagram.md" file.
 
-[ The "tab" bundle. ]
-This bundle is designed to typeset a tabular. 
+The "frame" attribute allows it to have a border.
+
+
+[ The TAB bundle. ]
+This bundle is to typeset a tabular. 
 
     ```tab{head}
     Name \\ Addr.
@@ -346,8 +233,8 @@ one-by-one, it is to fill out columns one-by-one.
     & 701 Sun Dr.
     ```
 
-[ The "par" bundle. ]
-This bundle is designed to create a text box with text inside it.   
+[ The PAR bundle. ]
+This bundle is designed to typeset a text box.   
 It allows for the possibility such that this paragraph
 is able to have its own text alignment, font size, and font style.
 The "width" attribute can also be used to manually set it to a given
@@ -363,7 +250,8 @@ The end-of-line-double-backslash is used to manually break the line
 into multiple-lines.
 
 
-
+[ The VTM bundle. ]
+The VTM bundle typesets a verbatim box.
 
 
 
@@ -384,9 +272,9 @@ for these blocks.
 
 
 [ The PLST block. ]
-The 'plst' un-fenced block is recognized by the presence of a hyphen-minus, a
-plus-sign, or a asterisk in the first line. This block is designed to model
-a list of multiple items which might include nested lists.
+The PLST un-fenced block is recognized by the presence of a hyphen/plus/asterisk
+character at the start of the first line. This block models
+lists and nested lists. Hyphens are for expresssing unordered list items.
 
     - Fruits
       - Apple
@@ -397,27 +285,31 @@ a list of multiple items which might include nested lists.
     - Bread
     - Nuts 
 
-The asterisks are for designating ordered list items.
+The asterisks are for ordered list items.
 
     * First step, ...
     * Next step, ...
     * Final step, ...
     
-The plus-signs are for designating description lists. 
+The plus-signs are for expressing description list items, such
+that everything after the plus-sign is the data term, and the 
+lines that follow(s) are descriptions.
 
     + Apple
       A wonderful fruit.
     + Pear
       Another wonderful fruit.
 
-However, if only one line is detected, and the starting
+However, in the case where there is any description lines detected, and the
+lines after the plus-sign follows one of the following patterns, then 
+it becomes an unordered list with a non-breakable space separating
+the data term and data description.
 item is in the following forms, then it becomes a unordered list.
+Following are all the patterns.    
 
     + `ltr`       The text direction is left-to-right.
     + `rtl`       The text direction is right-to-left.
     + `inherit`   The text direction is inherited from the Canvas element or others.
-
-Following are additional three forms.
 
     + *ltr*       The text direction is left-to-right.
     + *rtl*       The text direction is right-to-left.
@@ -431,18 +323,17 @@ Following are additional three forms.
     + 'rtl'       The text direction is right-to-left.
     + 'inherit'   The text direction is inherited from the Canvas element or others.
 
-The first form would typeset the leading terms in monospaced fonts; the second
+The first pattern would typeset the data terms in monospaced fonts; the second
 form in italic, the third one with quotation marks, and the third one in plaintext.
+All of them will also be shown in bold fontface.             
 
 
 [ The COVE block. ] 
-This block is recognized by the presence of greater-than-sign followed by at
-least one space at the first line. Each additional line will be checked for the
-presence of the same sign and the follow-on space, and if detected it becomes a
-new line by itself; otherwise it is considered the continuation of the previous
-line. The output is that all lines are left aligned and the entire block has a
-non-zero left padding, and there is a black right-pointing triangle in front of
-the first line of the block and inside the left padding area.
+This block is recognized by the presence of greater-than-sign at the start of
+the first line.  Each additional line will be scanned for this pattern, and will
+start a new line if detected; otherwise it is the continuation of the previous line.
+The output is so that all lines are left aligned with a visible left margin,
+with the first line having a right-pointing triangle placed in front of it.
 
     > All human are mortal.
     > Socrates is a human.
@@ -452,9 +343,9 @@ the first line of the block and inside the left padding area.
 [ The CAVE block. ] 
 This block is recognized by the presence of dollar-sign followed by at least
 one space at the first line. Each additional line will be checked for the
-presence of the same sign and follow-on space, and if detected it becomes a new
-line by itself; otherwise it is considered the continuation of the previous
-line.  When being typeset, the output is so that all lines are center aligned.
+presence of the same pattern, and if detected is to start a new line, otherwise
+it is the continuation of the previous line. 
+The output is so that all lines are center aligned.
 
     $ Hello!          
     $ Good morning!       
@@ -463,11 +354,9 @@ line.  When being typeset, the output is so that all lines are center aligned.
 
 [ The LAVE block. ] 
 This block is recognized by the presence of less-than-sign followed by at least
-one space at the first line. Each additional line will be checked for the
-presence of the same sign   and follow-on space, and if detected it becomes a
-new line by itself; otherwise it is considered the continuation of the previous
-line. When being typeset, the output is so that all lines are left flushed
-and with none-zero left padding for the entire block.
+one space at the first line. All lines with the similar pattern will be considered
+to start a new line, and others are the continuation of the previous line.
+The output is so that all lines are left aligned with a visible left margin.
 
     < Hello!          
     < Good morning!       
@@ -475,29 +364,29 @@ and with none-zero left padding for the entire block.
 
 
 [ The SAMP block. ]
-This block is recognized if the first line is lead with a quadruple white
-space. Each of the following line is to be assume to have a leading quadruple
-space and    it will be removed.  The output of this block is a verbatim block
-where each line is to be shown in monospace font style where white spaces are
-preserved.
+This block is recognized if the first line is to start with four spaces.
+Each of the following line is assumed to have also a leading four spaces and
+they will be removed from the input.  The output of this block is a verbatim
+text where each line starts on its own with white spaces preserved.               
+
 
 [ The SAND block. ]
-This block is recognized if the first line is lead with a double white space.
-Each of the following line is to be assumed to have a leading double space and
-it will be removed. The output is a block where each line is to be shown by
-itself similar to a SAMP block and each white spaces are translated into a
-non-breakable white space, except for the fact that the proportional font
-styles are applied instead of monospace.
+This block is recognized if the first line is to start with two white spaces. 
+Each of the following line is assumed to have had the same pattern regardless
+and the first two characters of each lines are always removed.
+The output is a block similar to SAMP except that the proportional fontface
+is used instead of monospace fontface. Continuous whitespaces are to be preserved.
+
 
 [ The STEP block. ]
-This block is recognized if the first line is lead by a numeric number followed
-by a right parenthesis and then additional spaces.  This block is assumed to
-represent a single ordered list item with the given leader.  This block is to
-be scanned for the presence of any follow-on child paragraphs, and if detected
-each one of them will be shown as an independent paragraph that is to have the
-same left padding as the list item itself.  Each follow-on child paragraph is
-to be detected if the preceding line is a double-backslash by itself.  In the
-following example the STEP block contains two follow-on child paragraphs.
+This block is recognized if the first line is to start with a number followed
+immediately by a right parenthesis.  This block is assumed to represent a
+single ordered list item where the number represents the bullet. In addition,
+this block is assumed to have child paragraphs where each child paragraph
+is a paragraph of this item, such that there will be visible vertical spaces
+inserted between them. The child paragraphs are detected whenever a double-backslash
+is detected in a line by itself.   In the following example there are
+two child paragraphs for the "Step 1", and no child paragraphs for "Step 2".        
 
     1) Step 1, check the temparature:
     \\
@@ -505,13 +394,11 @@ following example the STEP block contains two follow-on child paragraphs.
     \\
     Otherwise, add this ingredient.
 
-In the following example there is no follow-on child paragraphs.
-
     2) Step 2, bring it to a boil, and taste it see if additional 
     salt is needed.      
 
 Note that all child paragraphs are treated as normal paragraphs with
-no particular layout assumptions.
+no particular layout assumptions. 
 
 
 [ The BODY block. ]
@@ -521,7 +408,7 @@ where this line is the first line after a sectional heading.
 
 
 
-# Literals
+# Inline Literals
 
 Literals are text marked with some punctuations.  For instance, a pair of
 double-backquote are to turn a piece of text into math literal.
@@ -557,7 +444,7 @@ Note that strong and slanted literal can appear inside quotation literal and emp
 literal.
 
 
-# Entity phrases
+# Inline phrases
 
 A text can also appear inside a form such as `&key{...}`, to become a entity phrase.
 Following are recognized entity phrases.
@@ -997,16 +884,140 @@ retrieved by a "dia" phrase.
     %
 
 
-# Splitting "listing" block
+# Composite blocks
 
-A "listing" block could be split into multiple blocks and with
-a "page" block inserted between two splitted ones. It can
-be done so by placing "split" style options.
-In the following example three blocks will be created
-that are: "listing", "page" and "listing".
-The first "listing" block holds the first five lines
-and the second "listing" block holds the last two lines
-of the listing.
+- "equation"
+- "figure"
+- "table"
+- "listing"
+- "multicols"
+- "page"
+- "vspace"
+
+The "page" composite block is intended to provide a way for a translation
+backend to insert a page brreak. It should always to appear by itself. 
+
+    .page
+
+The "figure" directive is intended to provide a way for a translation
+backend to insert a figure.
+
+    .figure
+    \\
+    ```dia{width:50}
+    \image "imgs/frog.png"
+    ```
+    ```dia{width:50}
+    \image "imgs/clock.png"
+    ```
+
+The "multicols" composite block is for constructing a multi-column paragraph.
+
+    .multicols
+    \\
+    ```par{width:50}
+    A frog is any member of a diverse and largely 
+    carnivorous group of short-bodied, tailless 
+    amphibians composing the order Anura 
+    (literally without tail in Ancient Greek). 
+    ```
+    ```dia{width:50}
+    \image "frog.img"
+    ```
+
+The "equation" composite block is intended to provide a way for a translation
+backend to insert an equation section which may include one or more equations
+each with a unique equation number.
+
+    .equation
+    &label{a b}
+    \\
+    ```
+    a + b = c
+    ```
+    ```
+    a^2 + b^2 = c^c
+    ```
+
+The "vspace" composite block is for inserting vertical spaces. By default
+it inserts a vertical space equivalent to 1em. However, the "vspace" style
+option can be specified which holds a number expressing multiple "em".
+Following example inserts a vertical space equal to "10em".
+
+    .vspace{vspace:10}
+
+The "figure" block is to create a figure with one or more subfigures.
+
+    .figure
+    &label{myfigure}
+    These are the pictures of golden ratio.
+    \\
+    ```dia
+    \image "goldenratio1.png"
+    ```
+    ```dia
+    \image "goldenratio1.png"
+    ```
+
+The "table" block is to create a numbered table.
+
+    .figure
+    &label{mytable}
+    \\
+    ```tab
+    Name \\ Addr.
+    James \\ 301 Day Drive.
+    John \\ 401 Evening Way. 
+    ```
+
+Only a single bundle is supported, and it will always be treated as a "tab"
+bundle.  In addition, any subcaptions detected inside the caption will become
+the footnote of the table.
+
+    .table
+    &label{mytable}
+    ---
+    (i) My note 1.
+    (ii) My note 2.
+    ---
+    \\
+    ```{head}
+    Name \\ Addr.
+    Mandy \\ 801 Sun Dr.
+    Zar \\ 901 Sun Dr.
+    Zor \\ 1001 Sun Dr.
+    ```
+
+The "listing" block is to create a listing block.
+Only the first bundle is utilized and it is always
+treated as a VTM block regardless.
+
+    .listing
+    &label{mylisting}
+    \\
+    ```vtm
+    #include<stdio>
+    int main(){
+      return 0;
+    }
+    ```
+
+
+
+# Splitting "listing" composite block
+
+A "listing" block could be split such that a long listing is to be replaced by
+two or more shorter listings. Each additional sub-listing is expected to start
+a new page.
+
+This is to be achieved by inserting a "split" style attribute.  This attribute
+is to be expected a list of numbers where each number represents the total
+number of input lines that are to go to each sub-listing.  If the list is shorter
+than the total number of bundles needed the last number is repeated.
+
+In the following example the listing is to be split into two sub-listing where
+the first sub-listing containing the first five input lines of the original bundle,
+and the second sub-listing the last two lines.
 
     .listing{split:5 10}
     &label{mylisting}
@@ -1022,42 +1033,25 @@ of the listing.
     var g = [5,6,6,7,7,];
     ```
 
-This would be equivalent to having the following three
-blocks.
-
-    .listing
-    &label{mylisting}
-    My JavaScript program.
-    \\
-    ```
-    var a = 1;
-    var b = 1;
-    var c = 2;
-    var d = Math.abs(12);
-    var e = a + b + c;
-    ```
-
-    .page
-
-    .listing
-    &label{mylisting}
-    My JavaScript program.
-    \\
-    ```
-    var f = [1,2,3,4,5];
-    var g = [5,6,6,7,7,];
-    ```
+The caption of each sub-listing is to be made such that the first sub-listing
+might read "Listing 1a", and the second sub-listing "Listing 1b".
 
 
 
-# Splitting "table" block
+# Splitting "table" composite block
 
-A "table" block could be split into multiple blocks and with
-a "page" block inserted between two splitted ones. It can
-be done so by placing "split" style options similar to 
-that of a "listing" block. 
-However the "head" style option should also be specified to hold
-the number lines that are to be repeated for all splitted blocks.
+A "table" composite block can also undergo the process of being split into
+multiple sub-tables by including a "split" attribute which expects a list of
+integers.  In addition, if the original table container a header row then the
+"head" attribute should be set to a number expressing the total number of input
+lines that should go to the header row. Lines belonging to the header row are
+not counted towards input lines to split. Captions of splitted sub-tables are
+likely to become "Table 1a", "Table 1b" etc.
+
+In the following example there will be two sub-tables. The first sub-table
+contains entries for John, James, Jane, Mary and Martin, and the second
+sub-table contains entries for Zar and Zor. Each sub-table will be furnished
+with a header row that is Name and Addr.
 
     .table{split:5 10,head:1}
     &label{mytable}
@@ -1070,65 +1064,6 @@ the number lines that are to be repeated for all splitted blocks.
     Jane \\ 501 Sun Dr.
     Mary \\ 601 Sun Dr.
     Martin \\ 701 Sun Dr.
-    Mandy \\ 801 Sun Dr.
-    Zar \\ 901 Sun Dr.
-    Zor \\ 1001 Sun Dr.
-    ```
-
-This would be equivalent to the following.
-
-    .table
-    &label{mytable}
-    My table.               
-    \\
-    ```tab{head}
-    Name \\ Addr.
-    John \\ 301 Sun Dr.
-    James \\ 401 Sun Dr.
-    Jane \\ 501 Sun Dr.
-    Mary \\ 601 Sun Dr.
-    Martin \\ 701 Sun Dr.
-    ```
-
-    .page
-
-    .table
-    &label{mytable}
-    My table.               
-    \\
-    ```tab{head}
-    Name \\ Addr.
-    Mandy \\ 801 Sun Dr.
-    Zar \\ 901 Sun Dr.
-    Zor \\ 1001 Sun Dr.
-    ```
-
-The "table" block only always works with the first bundle, and
-this bundle is always treated as if it is a "tab" bundle, and thus
-the "tab" keyword can be omited and it still works.
-
-    .table
-    &label{mytable}
-    \\
-    ```{head}
-    Name \\ Addr.
-    Mandy \\ 801 Sun Dr.
-    Zar \\ 901 Sun Dr.
-    Zor \\ 1001 Sun Dr.
-    ```
-    
-Subcaptions if detected will become the footnote of the table that are
-to appear at the bottom of the table. 
-
-    .table
-    &label{mytable}
-    ---
-    (i) My note 1.
-    (ii) My note 2.
-    ---
-    \\
-    ```{head}
-    Name \\ Addr.
     Mandy \\ 801 Sun Dr.
     Zar \\ 901 Sun Dr.
     Zor \\ 1001 Sun Dr.
