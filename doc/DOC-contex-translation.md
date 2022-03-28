@@ -4190,6 +4190,31 @@ be given for as much space as needed; whilst `width=30pt` would only limit the d
 term to have a max width of 30pt, forcing lines to be wrapped if necessary.
 
 
+# Built-in TOC commands
 
+Following built-in commands for outputing
+TOC for CONTEX.
+
+THe first is the \completecontext command.
+
+    tocpagelines.push(`\\setupcombinedlist[content][list={part,chapter,section}]`);
+    tocpagelines.push(`\\completecontent[criterium=all]`);
+    tocpagelines.push('');
+
+The second is the \placecontent command.
+
+    tocpagelines.push(`\\setupcombinedlist[content][list={part,section,subsection}]`);
+    tocpagelines.push(`\\placecontent`);
+    tocpagelines.push('');
+
+
+
+# Known problems
+
+- \ruby does not work in recent releases
+- Sometimes parentheses are seem going on top of the characters before it
+- Creamer.js cannot center contents vertically like that of Beamer.js
+- The "tabulate" environement seems to have extra vertical spaces between rows   
+- Contex.js Cannot color background of row/column of a tabular like that of Latex.js
 
 

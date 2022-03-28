@@ -117,7 +117,8 @@ This bundle is to typeset a tabular.
     Jane \\ 501 Sun Dr.
     Mary \\ 601 Sun Dr.
     Martin \\ 701 Sun Dr.
-
+    ```
+    
 The "head" attribute above expresses that the first row is header,
 which will likely be set to bold and treated differently than other
 rows in many other situations. Another similar attribute is "side",
@@ -135,6 +136,7 @@ parallel sections so that the table will become shorter and fatter.
     Jane \\ 501 Sun Dr.
     Mary \\ 601 Sun Dr.
     Martin \\ 701 Sun Dr.
+    ```
 
 In the previous example the first three lines will be placed at the left-hand
 side and the last two lines at the right-hand side, while the header is to

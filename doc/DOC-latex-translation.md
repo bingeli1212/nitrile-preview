@@ -625,19 +625,17 @@ based on "memoir" documentclass.
 
 # Known Problems in latex.js translation
 
-- Current the "sand" block with "hew:2" or more will insert a 
-  begin/end/multicols and a begin/end/minipage environment 
-  is placed inside each individual column. 
-  The begin/end/minipage is preferred over begin/end/flushleft
-  as the later creates too much vertical spaces. However, 
-  none of the "minipage" or "flushleft"
-  handles the "~" well at the beginning of a line as the first 
-  one do not work for all lines
-  except for the first line, and the second one only works for 
-  the first line.
 - The \underline command leaves too much vertical space between 
   the text and the line
-
+- For TIKZ when text anchor is not centered it leaves too much gap
+  between the text and the anchor
+- The sub-caption of figure/table are current made by "threeparttable"
+  and there seems to be no way of making them to be in a font size
+  that is \small
+- The caption make by \begin\end\center are not able to be influenced
+  by \small or \footnotesize or others.
+- The -{}- method works for disabling en-dash ligature, but this method
+  does not work for LuaLaTeX; use the -\kern0pt- method instead.
 
 
 
