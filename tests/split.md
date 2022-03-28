@@ -1,7 +1,8 @@
 ---
 title: 0160 - Modular Arithmetic
 subtitle: Number Theory
-peek: slide
+peek: folio
+program: pdflatex
 ---
 
 # split listing                    
@@ -77,6 +78,8 @@ pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum.
 
 
+.page
+
 # Split table        
 
 .table{frame,rules:all,head:1,split:10 30}
@@ -127,6 +130,8 @@ Jane\\Fonda
 Jane\\Fonda
 ```
 
+.page
+
 # Single listing
 
 .listing
@@ -150,6 +155,8 @@ int main() {
 ```
 
 
+.page
+
 # Single table
 
 .table{frame,rules:all}
@@ -161,6 +168,66 @@ Jane\\Fonda
 Jane\\Fonda
 Jane\\Fonda
 Jane\\Fonda
+```
+
+
+.page
+
+# Split itemize
+
+.itemize{split:5 20}                
+\\
+```
+- First Last
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+```
+
+
+
+
+
+.page
+
+# Single itemize
+
+.itemize{}                
+\\
+```
+- First Last
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
+- Jane  Fonda
 ```
 
 
