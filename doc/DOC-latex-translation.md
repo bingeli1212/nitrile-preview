@@ -622,6 +622,39 @@ The nilamper.js translation of a MD file is to produce a TEX file that is
 based on "memoir" documentclass.
 
 
+# Include MetaFun graphics
+
+Following is an example of setting a graphic
+for the title page.
+
+    \documentclass[a4paper,10pt]{article}
+    \usepackage{eso-pic}
+    \usepackage{luamplib}
+    \mplibsetformat{metafun}
+    \usepackage{xcolor}
+    \definecolor{maincolor}{rgb}{.4,0,0}
+    \usepackage{fontspec}
+    \newfontfamily\TitlePageFont{lmmonolt10-bold.otf}
+    \begin{document}
+    \AddToShipoutPictureFG*{%
+      \begin{mplibcode}
+        beginfig(0) ;
+        path Page ; Page := unitsquare xscaled (\mpdim{\paperwidth}) yscaled (\mpdim{\paperheight}) ;
+        numeric w ; w := bbwidth(Page) ;
+        numeric h ; h := bbheight(Page) ;
+        fill Page withcolor \mpcolor{maincolor} ;
+        draw textext.urt("\TitlePageFont Q")       xysized (1.1   w,0.9 h) shifted (-.05w,.05h) withcolor .20white ;
+        draw textext.top("\TitlePageFont SQL")     xysized (0.4725w,0.13h) shifted (.675w,.24w) withcolor .60white ;
+        draw textext.top("\TitlePageFont CONTEXT") xsized  (0.6   w)       shifted (.675w,.10w) withcolor .60white ;
+        setbounds currentpicture to Page ;
+        endfig ;
+      \end{mplibcode}%
+    }
+    % Generate a page
+    \leavevmode
+    \thispagestyle{empty}
+    \end{document}
+
 
 # Known Problems in latex.js translation
 
