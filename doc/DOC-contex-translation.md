@@ -4208,6 +4208,12 @@ The second is the \placecontent command.
     tocpagelines.push('');
 
 
+# The \vfill
+
+The \vfill can be placed around a block of paragraph to add rubber
+space before and after the paragraphs. It is currently used by
+NitrilePreviewCreamer class to center contents inside a slide.
+
 
 # Known problems
 
