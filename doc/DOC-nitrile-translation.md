@@ -265,7 +265,7 @@ for these blocks.
 
 - "itemize"
 - "example"
-- "sample"
+- "verbatim"
 - "record"
 - "primary"
 - "secondary"
@@ -338,17 +338,18 @@ All of them will also be shown in bold fontface.
 
 
 [ The "lines" block. ] 
-This block is recognized by the presence of less-than-sign at the start of
+This block is recognized by the presence of vertical-bar and a follow-on 
+space at the start of
 the first line.  Each additional line will be scanned for this pattern, and will
 start a new line if detected; otherwise it is the continuation of the previous line.
-The output is so that all lines are left aligned with a visible left margin,
-with the first line having a right-pointing triangle placed in front of it.
+If there are additional leading spaces following the vertical-bar and the space immediately
+after it, these spaces are preserved. Spaces between characters are collapsed.
 
-    < All human are mortal.
-    < Socrates is a human.
-    < Socrates is mortal.
+    | All human are mortal.
+    | Socrates is a human.
+    | Socrates is mortal.
 
-However, if the first character is a dollar-sign followed by at least
+In addition, if the first character is a dollar-sign followed by at least
 one space at the first line. Each additional line will be checked for the
 presence of the same pattern, and if detected is to start a new line, otherwise
 it is the continuation of the previous line. 
@@ -370,11 +371,16 @@ The output is so that all lines are left aligned with a visible left margin.
     > Good evening!       
 
 
-[ The "sample" block. ]
-This block is recognized if the first line is to start with four spaces.
-Each of the following line is assumed to have also a leading four spaces and
-they will be removed from the input.  The output of this block is a verbatim
-text where each line starts on its own with white spaces preserved.               
+[ The "verbatim" block. ]
+This block is recognized when the first line is to start with four spaces.
+The output of this block is a verbatim
+text where each line starts on its own and white spaces preserved. Text will
+be shown using fixed-width fonts. The four spaces of each line are to be
+removed from the output regardless.
+
+Alternatively, lines starting with '~ ' at the first line will be recognized
+as also starting a "verbatim" block where the first two characters of each
+linea are to be removed from the output regardless.
 
 
 [ The "record" block. ]

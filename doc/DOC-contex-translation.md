@@ -4231,5 +4231,5 @@ columns are top-aligned.
 - Creamer.js cannot center contents vertically like that of Beamer.js
 - The "tabulate" environement seems to have extra vertical spaces between rows   
 - Contex.js Cannot color background of row/column of a tabular like that of Latex.js
-
+- For RECORD block type, the leading solidified blank spaces are not currently possible
 
