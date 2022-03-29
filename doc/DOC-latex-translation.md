@@ -636,6 +636,10 @@ based on "memoir" documentclass.
   by \small or \footnotesize or others.
 - The -{}- method works for disabling en-dash ligature, but this method
   does not work for LuaLaTeX; use the -\kern0pt- method instead.
+- begin/end/verbatim or begin/end/Verbatim cannot be used inside "beamer"
+  without making the slide "fragile"
+- begin/end/lstlisting cannot be used inside "beamer"
+  without making the slide "fragile"
 
 
 

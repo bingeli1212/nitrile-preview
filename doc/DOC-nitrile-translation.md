@@ -263,17 +263,24 @@ Un-fenced blocks are those that are not fenced by
 triple-backquotes. Following are the signatures IDs
 for these blocks.  
 
-- PLST
-- COVE
-- CAVE
-- LAVE
-- SAMP
-- SAND
-- STEP
-- BODY
+- "itemize"
+- "example"
+- "sample"
+- "record"
+- "primary"
+- "secondary"
+- "lines"
+- "figure"
+- "table"
+- "columns"
+- "listing"
+- "equation"
+- "body"
+- "page"
+- "vspace"
 
 
-[ The PLST block. ]
+[ The "itemize" block. ]
 The PLST un-fenced block is recognized by the presence of a hyphen/plus/asterisk
 character at the start of the first line. This block models
 lists and nested lists. Hyphens are for expresssing unordered list items.
@@ -330,20 +337,18 @@ form in italic, the third one with quotation marks, and the third one in plainte
 All of them will also be shown in bold fontface.             
 
 
-[ The COVE block. ] 
-This block is recognized by the presence of greater-than-sign at the start of
+[ The "lines" block. ] 
+This block is recognized by the presence of less-than-sign at the start of
 the first line.  Each additional line will be scanned for this pattern, and will
 start a new line if detected; otherwise it is the continuation of the previous line.
 The output is so that all lines are left aligned with a visible left margin,
 with the first line having a right-pointing triangle placed in front of it.
 
-    > All human are mortal.
-    > Socrates is a human.
-    > Socrates is mortal.
+    < All human are mortal.
+    < Socrates is a human.
+    < Socrates is mortal.
 
-
-[ The CAVE block. ] 
-This block is recognized by the presence of dollar-sign followed by at least
+However, if the first character is a dollar-sign followed by at least
 one space at the first line. Each additional line will be checked for the
 presence of the same pattern, and if detected is to start a new line, otherwise
 it is the continuation of the previous line. 
@@ -354,33 +359,25 @@ The output is so that all lines are center aligned.
     $ Good evening!       
 
 
-[ The LAVE block. ] 
+[ The "example" block. ] 
 This block is recognized by the presence of less-than-sign followed by at least
 one space at the first line. All lines with the similar pattern will be considered
 to start a new line, and others are the continuation of the previous line.
 The output is so that all lines are left aligned with a visible left margin.
 
-    < Hello!          
-    < Good morning!       
-    < Good evening!       
+    > Hello!          
+    > Good morning!       
+    > Good evening!       
 
 
-[ The SAMP block. ]
+[ The "sample" block. ]
 This block is recognized if the first line is to start with four spaces.
 Each of the following line is assumed to have also a leading four spaces and
 they will be removed from the input.  The output of this block is a verbatim
 text where each line starts on its own with white spaces preserved.               
 
 
-[ The SAND block. ]
-This block is recognized if the first line is to start with two white spaces. 
-Each of the following line is assumed to have had the same pattern regardless
-and the first two characters of each lines are always removed.
-The output is a block similar to SAMP except that the proportional fontface
-is used instead of monospace fontface. Continuous whitespaces are to be preserved.
-
-
-[ The STEP block. ]
+[ The "record" block. ]
 This block is recognized if the first line is to start with a number followed
 immediately by a right parenthesis.  This block is assumed to represent a
 single ordered list item where the number represents the bullet. In addition,
@@ -403,7 +400,37 @@ Note that all child paragraphs are treated as normal paragraphs with
 no particular layout assumptions. 
 
 
-[ The BODY block. ]
+[ The "primary" block. ]
+This block is recognized by the presence of a matching pair of square brackets
+at the first line.
+
+[ The "secondary" block. ]
+This block is recognized by the presence of two matching pair of square brackets
+at the first line.
+
+
+[ The "figure" block. ]
+This block is recognized by the presence of ".figure" at the first line.         
+
+[ The "table" block. ]
+This block is recognized by the presence of ".table" at the first line.         
+
+[ The "columns" block. ]
+This block is recognized by the presence of ".columns" at the first line.         
+
+[ The "equation" block. ]
+This block is recognized by the presence of ".equation" at the first line.         
+
+[ The "listing" block. ]
+This block is recognized by the presence of ".listing" at the first line.         
+
+[ The "page" block. ]
+This block is recognized by the presence of ".page" at the first line.         
+
+[ The "vspace" block. ]
+This block is recognized by the presence of ".vspace" at the first line.         
+
+[ The "body" block. ]
 This block represents a normal paragraph.  For some translations the first line
 of this paragraph is likely to have some visible indentation except for the situation
 where this line is the first line after a sectional heading.
@@ -892,7 +919,7 @@ retrieved by a "dia" phrase.
 - "figure"
 - "table"
 - "listing"
-- "multicols"
+- "columns"  
 - "page"
 - "vspace"
 
