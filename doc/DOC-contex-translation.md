@@ -4214,6 +4214,15 @@ The \vfill can be placed around a block of paragraph to add rubber
 space before and after the paragraphs. It is currently used by
 NitrilePreviewCreamer class to center contents inside a slide.
 
+However, this method does not seems to work when the content
+contains following commands which are designed to
+create a two-column layout; in this case all contents in both
+columns are top-aligned.
+
+    \startcolumns[n=2]
+    \column
+    \stopcolumns
+
 
 # Known problems
 
