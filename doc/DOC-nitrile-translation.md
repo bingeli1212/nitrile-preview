@@ -276,6 +276,8 @@ for these blocks.
 - "listing"
 - "equation"
 - "body"
+- "flushleft"
+- "center"
 - "page"
 - "vspace"
 
