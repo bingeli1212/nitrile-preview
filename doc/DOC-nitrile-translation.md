@@ -1041,7 +1041,7 @@ treated as a VTM block regardless.
 
 
 
-# Splitting "listing" composite block
+# Splitting "listing" block
 
 A "listing" block could be split such that a long listing is to be replaced by
 two or more shorter listings. Each additional sub-listing is expected to start
@@ -1054,9 +1054,9 @@ than the total number of bundles needed the last number is repeated.
 
 In the following example the listing is to be split into two sub-listing where
 the first sub-listing containing the first five input lines of the original bundle,
-and the second sub-listing the last two lines.
+and the second sub-listing holds all the remaining lines.   
 
-    .listing{split:5 10}
+    .listing{split,splitrows:5}
     &label{mylisting}
     My JavaScript program.
     \\
@@ -1075,7 +1075,7 @@ might read "Listing 1a", and the second sub-listing "Listing 1b".
 
 
 
-# Splitting "table" composite block
+# Splitting "table" block
 
 A "table" composite block can also undergo the process of being split into
 multiple sub-tables by including a "split" attribute which expects a list of
@@ -1090,7 +1090,7 @@ contains entries for John, James, Jane, Mary and Martin, and the second
 sub-table contains entries for Zar and Zor. Each sub-table will be furnished
 with a header row that is Name and Addr.
 
-    .table{split:5 10,head:1}
+    .table{split,splitrows:5,head:1}
     &label{mytable}
     My table.               
     \\
@@ -1107,7 +1107,26 @@ with a header row that is Name and Addr.
     ```
 
 
+# Splitting a "itemize" block
 
+A long list of itemized list can be split into two or more groups such that
+each list is to appear in a different page.  The settings are similar to
+splitting the listing and/or table.
+
+.itemize{split,splitrows:5}
+\\
+```
+- Hello
+- Hello
+- Hello
+- Hello
+- Hello
+- World
+- World
+```
+
+In addition, the list can be separated into different bundles
+where each bundle represent a specific 
 
 
 

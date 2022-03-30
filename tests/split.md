@@ -2,12 +2,12 @@
 title: 0160 - Modular Arithmetic
 subtitle: Number Theory
 peek: folio
-program: pdflatex
+prog: pdflatex
 ---
 
 # split listing                    
 
-.listing{split:40}
+.listing{autosplit:40}
 \\
 ```
 #include <stdio.h>
