@@ -529,9 +529,10 @@ Nitrile
 - [x][FR] Donot use "n" style for Equation, but rather (a), (b), (c),,,
 - [x][FR] split tables and listings will have (a), (b), (c),,,
 - [x][FR] Added a new "type" style that can be set to "canvas" or "ball" to allow for an interaction by HTML translation  
-- [x][FR] Added a new way for DIA to create a new env variable based on an element of an array 
-- [x][FR] Added a \subtitle command to DIA to override the subtitle 
-- [ ][ ]
+- [x][FR] Add a new way for DIA to create a new env variable based on an element of an array 
+- [x][FR] Add a \subtitle command to DIA to override the subtitle 
+- [x][FR] Add "type:canvas" and "type:ball" to the DIA bundle
+- [ ][FR] Add "type:argand" to DIA bundle
 
 
 
