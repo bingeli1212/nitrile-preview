@@ -1047,16 +1047,17 @@ A "listing" block could be split such that a long listing is to be replaced by
 two or more shorter listings. Each additional sub-listing is expected to start
 a new page.
 
-This is to be achieved by inserting a "split" style attribute.  This attribute
+This is to be achieved by inserting a "autosplit" style attribute.  This attribute
 is to be expected a list of numbers where each number represents the total
 number of input lines that are to go to each sub-listing.  If the list is shorter
-than the total number of bundles needed the last number is repeated.
+than the total number of bundles needed than an additional bundle is created
+that holds all the remaining lines.
 
 In the following example the listing is to be split into two sub-listing where
 the first sub-listing containing the first five input lines of the original bundle,
 and the second sub-listing holds all the remaining lines.   
 
-    .listing{split,splitrows:5}
+    .listing{autosplit:5}
     &label{mylisting}
     My JavaScript program.
     \\
@@ -1078,11 +1079,13 @@ might read "Listing 1a", and the second sub-listing "Listing 1b".
 # Splitting "table" block
 
 A "table" composite block can also undergo the process of being split into
-multiple sub-tables by including a "split" attribute which expects a list of
-integers.  In addition, if the original table container a header row then the
-"head" attribute should be set to a number expressing the total number of input
-lines that should go to the header row. Lines belonging to the header row are
-not counted towards input lines to split. Captions of splitted sub-tables are
+multiple sub-tables including utilizing the "autosplit" attribute which would
+split the input lines into multiple bundles in the same way the "listing" does.
+
+In addition, if the original table container a header row then the "head"
+attribute should be set to a number expressing the total number of input lines
+that should go to the header row. Lines belonging to the header row are not
+counted towards input lines to split. Captions of splitted sub-tables are
 likely to become "Table 1a", "Table 1b" etc.
 
 In the following example there will be two sub-tables. The first sub-table
@@ -1090,7 +1093,7 @@ contains entries for John, James, Jane, Mary and Martin, and the second
 sub-table contains entries for Zar and Zor. Each sub-table will be furnished
 with a header row that is Name and Addr.
 
-    .table{split,splitrows:5,head:1}
+    .table{autosplit:5,head:1}
     &label{mytable}
     My table.               
     \\
@@ -1106,6 +1109,35 @@ with a header row that is Name and Addr.
     Zor \\ 1001 Sun Dr.
     ```
 
+An alternative way is to manually break a long table bundle into smaller
+bundles, and add the "splitids" attribute to the style of the "table".  This
+setup is the same as the previous one, except in this case the table header has
+to be manually repeated in each smaller bundle.  It is also important to set
+the "splitids" attribute to hold a list of integers that is the same length as
+that of the total number of bundles, and start the first number with 1, 
+followed by 2, 3, etc.
+
+    .table{splitids:1 2}
+    &label{mytable}
+    My table.               
+    \\
+    ```
+    Name \\ Addr.
+    John \\ 301 Sun Dr.
+    James \\ 401 Sun Dr.
+    Jane \\ 501 Sun Dr.
+    Mary \\ 601 Sun Dr.
+    Martin \\ 701 Sun Dr.
+    ```
+    ```
+    Name \\ Addr.
+    Mandy \\ 801 Sun Dr.
+    Zar \\ 901 Sun Dr.
+    Zor \\ 1001 Sun Dr.
+    ```
+
+
+
 
 # Splitting a "itemize" block
 
@@ -1113,7 +1145,7 @@ A long list of itemized list can be split into two or more groups such that
 each list is to appear in a different page.  The settings are similar to
 splitting the listing and/or table.
 
-.itemize{split,splitrows:5}
+.itemize{autosplit:5}
 \\
 ```
 - Hello
@@ -1124,10 +1156,6 @@ splitting the listing and/or table.
 - World
 - World
 ```
-
-In addition, the list can be separated into different bundles
-where each bundle represent a specific 
-
 
 
 

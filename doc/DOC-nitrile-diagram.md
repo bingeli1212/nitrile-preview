@@ -208,9 +208,16 @@ if an equal-sign is used.
     \set linesize = 1
 
 In the following example the "linecolor" 
-config param is set to "fill3".
+variable is set to a string that is "fill3".
 
     \set linecolor = @"fill" 3
+
+It is also possible to destructure a path point.
+In the following example 'cx' is set to 2 and 'cy' to 3.
+
+    \set (cx,cy) = (2,3)
+
+
 
 
 # Specifying colors
@@ -3669,27 +3676,99 @@ at that moment.
 
 Following are specialized draw commands that would draw shapes.
 
-- \drawline = this would draw a single line between any two neighboring
-  coordinate points, it takes the first two coordinate points to draw the single
-  line, the next two points to draw the second line, and so on.
-- \drawpolygon = this would draw a closed polygon with all the of the
-  coordinates.
-- \drawrect = this would draw a single rectangle for each coordinate points, the
-  width and height of each rectangle is to come from the "w" and "h" property of
-  the style.
-- \drawcircle = this will draw a circle for each coordinate points, the radius
-  of each circle is to come from the "r" style property
-- \drawpie = this will draw a circular pie for each coordinate points, the
-  radius comes from the "r" style, the start angle comes from "start", the span
-  comes from "span".
-- \drawsector = this will draw a circular sector for each coordinate points, the
-  inner radius comes from the "inner" style, the outer radius comes from "outer"
-  style, the start angle comes from "start", the span comes from "span".
-- \drawellipse = this will draw an ellipse for each coordinate points, which is
-  to be the center of the ellipse, the "rx" and "ry" are going to come from the
-  style attributes.
+- \drawline = this draws a line segment between two points.
+- \drawpolyline = this would draw connected line segments.
+- \drawpolygon = this would draw a closed polygon.
+- \drawcircle = this will draw a circle.
+- \drawellipse = this will draw an ellipse.
+- \drawrect = this would draw a rectangle.
+- \drawarc = this would draw a arc.
+- \drawsector = this will draw a circular sector.
 - \drawqbezier = draw quadratic bezier curve, it requires at least three points
 - \drawbezier = draw cubic bezier curve, it requires at least four points
+
+These specialized commands are able to gleam variables that represents
+positions if no coords are given in the command line. For \drawcircle,
+it is 'cx' and 'cy' and 'r'.
+
+    \set cx = 1
+    \set cy = 2
+    \set r = 1
+    \drawcircle
+
+For \drawellipse it is 'cx', 'cy', 'rx' and 'ry'.
+
+    \set cx = 1
+    \set cy = 2
+    \set rx = 4
+    \set ry = 3
+    \drawellipse
+
+For \drawrect it is 'x', 'y', 'w', and 'h'.
+
+    \set x = 1
+    \set y = 2
+    \set w = 4
+    \set h = 3
+    \drawrect
+
+For \drawpolyline and \drawpolygon it is 'points'.
+
+    \set points[] = 1 1 2 3 5 5
+    \drawpolyline
+    \drawpolygon
+
+For \drawline it is 'x1', 'y1', 'x2', 'y2'.
+
+    \set x1 = 1
+    \set y1 = 1
+    \set x2 = 2
+    \set y2 = 3
+    \drawline
+
+For \drawarc the variables will be 'cx', 'cy', 'r', 'start', and 'span'.
+
+    \set cx = 1
+    \set cy = 1
+    \set r = 2
+    \set start = 0
+    \set span = 90
+    \drawarc
+
+For \drawsector the variables will be 'cx', 'cy', 'r', 'ri', 'start', and 'span'.
+The 'r' is for outer radius and 'ri' for inner radius. When 'ri' is set to 0
+the effect is the equivalent of a circular pie. If 'ri' is larger than the outer
+radius then it is set to be the same as the outer radius.
+
+    \set cx = 1
+    \set cy = 1
+    \set r = 2
+    \set ri = 1
+    \set start = 0
+    \set span = 90
+    \drawsector
+
+For \drawqbezier the variables are 'x0','y0','x1','y1','x2', and 'y2'.
+
+    \set x0 = 0
+    \set y0 = 0
+    \set x1 = 0
+    \set y1 = 4
+    \set x2 = 4
+    \set y2 = 4
+    \drawqbezier
+
+For \drawbezier the variables are 'x0','y0','x1','y1','x2','y2','x3',and 'y3'.
+
+    \set x0 = 0
+    \set y0 = 0
+    \set x1 = 0
+    \set y1 = 4
+    \set x2 = 4
+    \set y2 = 4
+    \set x3 = 8
+    \set y3 = 0
+    \drawbezier
 
 
 
