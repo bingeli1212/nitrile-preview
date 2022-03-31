@@ -132,21 +132,26 @@
     min-height:210mm;
     max-height:210mm;
     font-size: 10pt;
-    line-height: 1.05;
+    line-height: 1.00;
     box-sizing: border-box;
     overflow: hidden;
     padding:8mm 10mm 0mm 15mm;
     outline:1px solid;
     * {
-      line-height: 1.05;
+      line-height: 1.00;
     }
-    .PARAGRAPH.BODY{
-      text-indent: 12pt;
-      margin-top: 0pt;
-      margin-bottom: 0pt;
+    .CODE{
+      font-size: 92%;
     }
-    .SECTION + .PARAGRAPH.BODY{
-      text-indent:0pt;
+    .TH, .TD{
+      padding: 0.115em 0.4252em;
+    }
+    .DMATH{
+      margin-top: 6pt;
+      margin-bottom: 6pt;
+    }
+    .SECTION + .BODY{
+      text-indent: 0;
     }
     .SECTION{
       margin-top: 13pt;
@@ -160,86 +165,54 @@
       margin-top: 8pt;
       margin-bottom: 8pt;
     }
-    .PRIMARY{
-      margin-top: 11pt;
-      margin-bottom: 0pt;
+    .BODY{
+      margin: 0pt 0pt 0pt 0pt;
+      text-indent: 1.5em;
     }
-    .PARAGRAPH{
-      margin-top: 6pt;
-      margin-bottom: 6pt;
+    .PRIMARY{
+      margin: 13pt 0pt 0pt 0pt;
+    }
+    .SECONDARY{
+      margin: 6pt 0pt 0pt 0pt;
+    }
+    .EXAMPLE{
+      margin: 6pt 0pt 6pt 0pt;
+    }
+    .VERBATIM{
+      margin: 6pt 0pt 6pt 0pt;
+    }
+    .RECORD{
+      margin: 6pt 0pt 6pt 0pt;
+    }
+    .FLUSHLEFT{
+      margin: 6pt 0pt 6pt 0pt;
+    }
+    .CENTER{
+      margin: 6pt 0pt 6pt 0pt;
+    }
+    .COLUMNS{
+      margin: 6pt 0pt 6pt 0pt;
+    }
+    .LINES{
+      margin: 6pt 0pt 6pt 0pt;
+    }
+    .ITEMIZE{
+      margin: 6pt 0pt 6pt 0pt;
     }
     .EQUATION{
-      margin-top: 6pt;
-      margin-bottom: 6pt;
+      margin: 6pt 0pt 6pt 0pt;
     }
     .FIGURE{
-      margin-top: 10pt;
-      margin-bottom: 6pt;
+      margin: 10pt 0pt 6pt 0pt;
     }
     .LISTING{
-      margin-top: 10pt;
-      margin-bottom: 6pt;
+      margin: 10pt 0pt 6pt 0pt;
     }
-    .LONGTABU{
-      margin-top: 10pt;
-      margin-bottom: 6pt;
-    }
-    .COLUMN{
-      margin-top: 6pt;
-      margin-bottom: 6pt;
+    .TABLE{
+      margin: 10pt 0pt 6pt 0pt;
     }
     .FIGCAPTION {
-      margin-bottom: 5pt;
-    }
-    .EQUATION, .FIGURE, .LISTING, .LONGTABU, .COLUMN {
-      margin-left: 0pt;
-      margin-right: 0pt;
-    }
-    .FRONTMATTERTITLE{
-      margin-left: 6.5mm;
-      margin-right: 6.5mm;
-      margin-top: 2.5cm;
-      margin-bottom: 0;
-      font-size: 1.8em;
-      color: var(--titlecolor);
-      text-align: center;
-      align-self: center;
-    }
-    .FRONTMATTERSUBTITLE{
-      margin-left: 6.5mm;
-      margin-right: 6.5mm;
-      margin-top: 0.8cm;
-      margin-bottom: 0;
-      font-size: 1.1em;
-      text-align: center;
-      align-self: center;
-    }
-    .FRONTMATTERINSTITUTE{
-      margin-left: 6.5mm;
-      margin-right: 6.5mm;
-      margin-top: 0.2cm;
-      margin-bottom: 0;
-      font-size: 1.1em;
-      text-align: center;
-      align-self: center;
-    }
-    .FRONTMATTERAUTHOR{
-      margin-left: 6.5mm;
-      margin-right: 6.5mm;
-      margin-top: 0.2cm;
-      margin-bottom: 0;
-      font-size: 1.1em;
-      text-align: center;
-      align-self: center;
-    }
-    .FRONTMATTERDATE{
-      margin-left: 6.5mm;
-      margin-right: 6.5mm;
-      margin-top: 0.2cm;
-      margin-bottom: 0;
-      font-size: 1.1em;
-      text-align: center;
-      align-self: center;
+      margin-bottom: 0.2em;
     }
   }
 
