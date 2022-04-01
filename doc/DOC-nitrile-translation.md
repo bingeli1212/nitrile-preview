@@ -266,7 +266,7 @@ for these blocks.
 - "itemize"
 - "example"
 - "verbatim"
-- "record"
+- "details"
 - "primary"
 - "secondary"
 - "lines"
@@ -359,7 +359,7 @@ the first two characters of each line will be removed from the output regardless
     ~   return 0;
     ~ }     
 
-[ The "record" block. ]
+[ The "details" block. ]
 This block is recognized if the first line is to start with a number followed
 immediately by a right parenthesis.  This block is assumed to represent a
 single ordered list item where the number represents the bullet. In addition,
