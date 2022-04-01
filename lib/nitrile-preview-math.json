@@ -95,6 +95,11 @@
     { "kbd": "\\sum"           ,    "unicode": "&#x2211;"       ,  "id": "mySUM",         "dx":"0"                      ,"op": 4    ,"width": 8    },
     { "kbd": "\\lim"           ,    "unicode": "lim"            ,  "id": "myLIM" ,        "dx":"0"                      ,"op": 4    ,"width": 14   },
     { "kbd": "\\prod"          ,    "unicode": "&#x220F;"       ,  "id": "myPROD",        "dx":"0"                      ,"op": 4    ,"width": 8    },
+    
+    { "kbd": "\\dint"          ,    "unicode": "&#x222B;"       ,  "id": "myDINT",       "dx":"0"                      ,"op": 4    ,"width": 6    },
+    { "kbd": "\\dsum"          ,    "unicode": "&#x2211;"       ,  "id": "myDSUM",       "dx":"0"                      ,"op": 4    ,"width": 8    },
+    { "kbd": "\\dlim"          ,    "unicode": "lim"            ,  "id": "myDLIM" ,      "dx":"0"                      ,"op": 4    ,"width": 14   },
+    { "kbd": "\\dprod"         ,    "unicode": "&#x220F;"       ,  "id": "myDPROD",      "dx":"0"                      ,"op": 4    ,"width": 8    },
 
     { "kbd": "\\inttop"        ,    "unicode": "&#x2320;"       ,  "id": "myINTTOP",      "dx":"0"                      ,"op": 3    ,"width": 5    },
     { "kbd": "\\intbot"        ,    "unicode": "&#x2321;"       ,  "id": "myINTBOT",      "dx":"0"                      ,"op": 3    ,"width": 5    },
