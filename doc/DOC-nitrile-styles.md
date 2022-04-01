@@ -103,12 +103,11 @@ Following are styles recognized by NITRILE:
   - Arrow head at both start and end: 0x1 + 0x2 = 0x3
   ```
 
-+ gridalpha:0.2
-+ gridalpha:0.5
++ backgroundalpha:0.2
++ backgroundalpha:0.5
 
   This value is to hold a float between 0-1 to express the opacity 
-  for drawing grid lines. By default grid lines are drawn at an opacity
-  of (0.2).
+  for drawing background in a DIA picture.
 
 + barlength:<length>
 
