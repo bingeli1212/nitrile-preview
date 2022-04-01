@@ -533,7 +533,8 @@ Nitrile
 - [x][FR] Add a \subtitle command to DIA to override the subtitle 
 - [x][FR] Add "type:canvas" and "type:ball" to the DIA bundle
 - [ ][FR] Add "type:argand" to DIA bundle
-
+- [ ][FR] Add &kbd{} entity typeset `<kbd>` element
+- [ ][ ]
 
 
 
