@@ -266,20 +266,12 @@ for these blocks.
 - "itemize"
 - "example"
 - "verbatim"
-- "record"
+- "details"
 - "primary"
 - "secondary"
 - "lines"
-- "figure"
-- "table"
-- "columns"
-- "listing"
-- "equation"
 - "body"
-- "flushleft"
-- "center"
-- "page"
-- "vspace"
+
 
 
 [ The "itemize" block. ]
@@ -339,29 +331,6 @@ form in italic, the third one with quotation marks, and the third one in plainte
 All of them will also be shown in bold fontface.             
 
 
-[ The "lines" block. ] 
-This block is recognized by the presence of vertical-bar and a follow-on 
-space at the start of
-the first line.  Each additional line will be scanned for this pattern, and will
-start a new line if detected; otherwise it is the continuation of the previous line.
-If there are additional leading spaces following the vertical-bar and the space immediately
-after it, these spaces are preserved. Spaces between characters are collapsed.
-
-    | All human are mortal.
-    | Socrates is a human.
-    | Socrates is mortal.
-
-In addition, if the first character is a dollar-sign followed by at least
-one space at the first line. Each additional line will be checked for the
-presence of the same pattern, and if detected is to start a new line, otherwise
-it is the continuation of the previous line. 
-The output is so that all lines are center aligned.
-
-    $ Hello!          
-    $ Good morning!       
-    $ Good evening!       
-
-
 [ The "example" block. ] 
 This block is recognized by the presence of less-than-sign followed by at least
 one space at the first line. All lines with the similar pattern will be considered
@@ -380,12 +349,17 @@ text where each line starts on its own and white spaces preserved. Text will
 be shown using fixed-width fonts. The four spaces of each line are to be
 removed from the output regardless.
 
-Alternatively, lines starting with '~ ' at the first line will be recognized
-as also starting a "verbatim" block where the first two characters of each
-linea are to be removed from the output regardless.
+Alternatively, lines starting with '~ ' and a space at the first line will be
+recognized also as starting a "verbatim" block. In this case
+the first two characters of each line will be removed from the output regardless.
 
+    ~ #include<stdio>          
+    ~ int main(int argc, char** argv){
+    ~   printf("Hello world!\n");
+    ~   return 0;
+    ~ }     
 
-[ The "record" block. ]
+[ The "details" block. ]
 This block is recognized if the first line is to start with a number followed
 immediately by a right parenthesis.  This block is assumed to represent a
 single ordered list item where the number represents the bullet. In addition,
@@ -416,6 +390,39 @@ at the first line.
 This block is recognized by the presence of two matching pair of square brackets
 at the first line.
 
+[ The "lines" block. ] This block is recognized by the presence of vertical-bar
+and a follow-on space at the start of the first line. Each additional line will
+be scanned for this pattern, and will start a new line if detected; otherwise it
+is the continuation of the previous line. If there are additional leading spaces
+following the vertical-bar and the space immediately after it, these spaces are
+preserved. Spaces between characters are collapsed.
+
+    | All human are mortal.
+    | Socrates is a human.
+    | Socrates is mortal.
+
+In addition, if the first character is a dollar-sign followed by at least
+one space at the first line. Each additional line will be checked for the
+presence of the same pattern, and if detected is to start a new line, otherwise
+it is the continuation of the previous line. 
+The output is so that all lines are center aligned.
+
+    $ Hello!          
+    $ Good morning!       
+    $ Good evening!       
+
+[ The "body" block. ]
+This block represents a normal paragraph.  For some translations the first line
+of this paragraph is likely to have some visible indentation except for the situation
+where this line is the first line after a sectional heading.
+
+
+
+# Following are composite blocks
+
+Composite blocks are blocks each of which is made up of
+one or more fenced blocks.
+
 
 [ The "figure" block. ]
 This block is recognized by the presence of ".figure" at the first line.         
@@ -432,16 +439,18 @@ This block is recognized by the presence of ".equation" at the first line.
 [ The "listing" block. ]
 This block is recognized by the presence of ".listing" at the first line.         
 
+[ The "flushleft" block. ]
+This block arranges such that each bundle is shown left aligned. This 
+is the block to used when a fence is to appear by itself.
+
+[ The "center" block. ] 
+This block arranges such that each bundle is to appear center aligned.
+
 [ The "page" block. ]
-This block is recognized by the presence of ".page" at the first line.         
+This block is to insert a manual page break.         
 
 [ The "vspace" block. ]
-This block is recognized by the presence of ".vspace" at the first line.         
-
-[ The "body" block. ]
-This block represents a normal paragraph.  For some translations the first line
-of this paragraph is likely to have some visible indentation except for the situation
-where this line is the first line after a sectional heading.
+This block is to insert a manual vertical space.         
 
 
 

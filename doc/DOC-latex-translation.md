@@ -673,6 +673,7 @@ for the title page.
   without making the slide "fragile"
 - begin/end/lstlisting cannot be used inside "beamer"
   without making the slide "fragile"
-
+- For PDFLATEX translation the \begin{CJK} command cannot appear as part
+  of the document title \title{...}, for LUALATEX this is okay.
 
 
