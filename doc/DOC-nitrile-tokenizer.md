@@ -592,6 +592,24 @@ the math expression.
     \(a &gt; b\)
 
 
+# Display style operators 
+
+Following are math operators that would show itself in a form similar
+to how they are show in a "display math" style on LATEX. 
+
+    \dfrac
+    \dbinom
+    \dint
+    \dsum
+    \dprod
+    \dlim
+
+Due to the presence of these operator, there is no need to specify
+a "displaymath" mode where the same `\frac` operator will show differently,
+as now the difference has been moved to the choice of individual operators,
+allowing the same operator to be shown in a consistant way regardless where
+it is used.
+
 
 # Issues and remarks            
 
