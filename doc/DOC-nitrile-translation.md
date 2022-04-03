@@ -423,6 +423,9 @@ where this line is the first line after a sectional heading.
 Composite blocks are blocks each of which is made up of
 one or more fenced blocks.
 
+[ The "wrapfig" block. ]
+This block implements a wrapfig that is to align an image either 
+to the right or left of a paragraph.
 
 [ The "figure" block. ]
 This block is recognized by the presence of ".figure" at the first line.         
