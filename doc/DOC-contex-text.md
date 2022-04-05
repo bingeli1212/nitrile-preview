@@ -241,6 +241,16 @@ word "blanks" and run to the end of the current line, and then
 cover the entire next line with this rule.
 
 
+# LMTX Context
+
+The following link can be used to download a binary
+that is suitable for certain platform.
+
+    https://www.pragma-ade.nl/install.htm
+
+
+
+
 
 
 
