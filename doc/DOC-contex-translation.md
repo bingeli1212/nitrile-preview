@@ -4224,6 +4224,71 @@ columns are top-aligned.
     \stopcolumns
 
 
+
+# LMTX Context
+
+The following link can be used to download a binary
+that is suitable for certain platform.
+
+    https://www.pragma-ade.nl/install.htm
+
+For OSX the file is context-osx-64.zip.
+For WIN the file is context-win-64.zip.
+
+After unzip the file, all contents should be in a subdirectory
+such as the following on mac.
+
+    /context-osx-64 
+
+Or following on windows.
+
+    C:\context-win-64
+
+Locat a file inside this directory name setup.sh or setup.bat.
+Run it. This fill is going to perform network install by fetching
+and downloading all needed file from the "www.pragma-ade.nl"
+location, unpack and install it. Once it is finished, the installation
+is considered to have finished. All installed files are only
+within this subdirectory. No files are installed outside of it.
+
+When you decide to do a new installation, you can just download the
+installation zip, unzip it, remove the texmf and texmf-context paths but keep
+texmf-project and texmf-font as that is where you put your personal files.
+
+The path to be added on osx are the following:
+
+    /context-osx-64/tex/texmf-osx-64/bin
+
+The path to be added on win are the following:
+
+    /context-win-64/tex/texmf-win-64/bin
+
+The default installation of LMTX does not come with CJK fonts. It has been
+observed that placing user-installed font files such as notocjkjp.otf inside
+texmf-font does not trigger the context into finding it. However, placing the
+user-installed font files into the system font directory such as
+C:\windows\fonts does cause the context to find it.
+And this seems to be the case for both windows and mac.
+
+For OSX the fonts can be installed by going to FootBook, 
+and select File menu, then "Install Fonts..". Nagivate
+to the location where the font files are located, and select
+open. 
+
+For WIN the fonts must be installed for "All Users". Fonts
+installed for the current user cannot be found by LMTX.
+To install fonts for "All Users", right-click on the font file
+and select "Install for All Users".
+
+
+
+
+
+
+
+
+
+
 # Known problems
 
 - \ruby does not work in recent releases
