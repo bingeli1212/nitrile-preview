@@ -4281,9 +4281,14 @@ To install fonts for "All Users", right-click on the font file
 and select "Install for All Users".
 
 
+# The \startstandardmakeup 
 
-
-
+The \startstandardmakeup and \stopstandardmakeup is to typeset
+a page such as title page that that does not participate in the
+normal page-counting pages. Thus it is commonly used to typeset
+a title page. In addition, anything placed inside the env
+is to be vertically centered. The page number is not to appear
+inside even though page number would for a normal page.
 
 
 

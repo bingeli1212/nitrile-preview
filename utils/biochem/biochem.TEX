@@ -49,12 +49,22 @@
 %: Chapters and sections. Don't remember what this was for:
 \definepagebreak[chapter][yes,footer,right]
 %: Bookchapters. Red chapter number, set off from title text by a vertical bar
-\def\BookchapterCommand#1#2{\framed[frame=off,rightframe=on]{#1\space}\framed[frame=off]{\space#2}}
+\define[2]\BookchapterCommand{\framed[frame=off,rightframe=on]{#1\space}\framed[frame=off]{\space#2}}
 \setuphead[chapter][command=\BookchapterCommand,page=chapter,numbercolor=red,alternative=inmargin]
 %: Section title. Red numbers and black title on top of a gray background.
-\setuphead[section][numbercolor=red]
+\define[2]\SectionCommand%
+  {\framed
+     [frame=off,
+      width=\textwidth,
+      align={right},
+      background=color,
+      backgroundcolor=lightgray]
+     {\hbox to.011\textwidth{}\hbox to.05\textwidth{\strut#1}\quad
+      \vtop{\hsize\dimexpr\hsize-.061\textwidth-1em\relax\begstrut#2
+\endstrut}}}
+\setuphead[section][command=\SectionCommand,numbercolor=red]
 %: Subsections. "sans serif" on a gray background, but no numbering. 
-\def\SubsectionCommand#1#2%
+\define[2]\SubsectionCommand%
   {\framed
      [frame=off,
       width=\textwidth,
@@ -103,6 +113,7 @@ Hello world!
 \input chapter_1.TEX
 \input chapter_2.TEX
 \input chapter_3.TEX
+\input chapter_4.TEX
 % ... etc.
 \stopbodymatter
 \startappendices
