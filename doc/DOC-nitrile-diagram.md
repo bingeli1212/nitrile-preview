@@ -721,7 +721,7 @@ calculated to be the distance between the current point and the arc center. The
 expresses that the sweep should happen in a counter-clockwise direction, and a
 negative value expresses a clockwise sweep.
 
-- <protrude:dist> 
+- <extrude:dist> 
 
 This is to create a new L point. This new point is located at a distance that is
 'dist' away from the current point. The direcion of the new point follows the
@@ -1436,6 +1436,11 @@ The height of the box is always 1.
 
 This will return a path describing a vertially oriented boxplot at x-coordinate with five quartiles.
 The width of the box is always 1.
+
++ extrude{x,y,dist}
+
+This will compute a new distance that is located 'dist' away on an imaginary line
+that extends beyond the line segment going from 'x' to 'y'.
 
 
 
