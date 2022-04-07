@@ -190,7 +190,8 @@ update variables, function, and path, etc. Following are Non-action commands:
 - \set
 - \exit
 - \origin
-- \show    
+- \show
+- \format    
 
 
 # The 'set' command
@@ -207,10 +208,7 @@ if an equal-sign is used.
 
     \set linesize = 1
 
-In the following example the "linecolor" 
-variable is set to a string that is "fill3".
 
-    \set linecolor = @"fill" 3
 
 It is also possible to destructure a path point.
 In the following example 'cx' is set to 2 and 'cy' to 3.
@@ -218,6 +216,13 @@ In the following example 'cx' is set to 2 and 'cy' to 3.
     \set (cx,cy) = (2,3)
 
 
+# The 'format' command
+
+The "format" command is to create a variable that is string based.
+In the following example the "linecolor" 
+variable is set to a string that is "fill3".
+
+    \format linecolor = @"fill" 3
 
 
 # Specifying colors
