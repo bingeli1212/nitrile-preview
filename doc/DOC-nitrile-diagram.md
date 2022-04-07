@@ -3088,14 +3088,14 @@ of a long division between two integers, with quotient and remainders.
 In the following example a long division workflow is to be shown 
 starting at the coordinate (2,1).
 
-    \longdivws "11 4" {answer} (2,1)
+    \longdivws "11 4" {showanswer} (2,1)
 
 By default the "answer" is not set, in which case only the
 the dividend and divisor is to be shown. The "answercolor" can
 also be set which will be used to drawn everything that is 
 related to the answer, including lines and text.
 
-    \longdivws "11 4" {answer,answercolor:orange} (2,1)
+    \longdivws "11 4" {showanswer,answercolor:orange} (2,1)
 
 Unlike the "multiws" operation, the "longdivws" operation does
 not scan the input for any appearances of decimal points---thus if
