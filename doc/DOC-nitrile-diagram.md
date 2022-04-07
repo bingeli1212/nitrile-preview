@@ -1085,10 +1085,8 @@ relative to its current settings.
 
 - ^x:2
 - ^y:2
-- ^left:2
-- ^right:2
-- ^up:2
-- ^down:2
+- ^h:9
+- ^v:9
 - ^pt:a
 - ^at:a
 - ^center
@@ -1107,16 +1105,18 @@ relative to its current settings.
 - ^car:1
 - ^chart:1
 
-The "^x", "^y", "^X" and "^Y" directive would each set the x or y direction directly. 
-The lowercase x/y would start from the origin. The uppercase X/Y would start from the other side
-of the viewport.
+The "^x", "^y" directive would each set the x or y direction directly. 
+The lowercase x/y would start from the origin. 
 
-The '^left', '^right', '^up', and '^down' directives is each to shift the offset
-in the direction as instructed for a given number of grid distances.  The
-value after the colon is expected to be a number that expresses the number of
-grid units.  Note also that these operations are accumulative such that
-incurring two "up:1" equals a single "up:2". Using of negative numbers is 
-also allowed.
+The '^side' sets the x of the current origin to a value that equals to the viewport width.
+The '^top' sets the y of the current origin to a value that equals to the viewport height.
+
+The '^h' moves the current offset in the horizontal direction
+in the given number of distance. Positive numbers will move the offset
+towards right, and negative numbers towards the left.
+The '^v' moves the current offset in the vertical direction
+in the given number of distance. Positive numbers are for moving 
+and negative numbers are for moving down.
 
 The '^pt:a' directive is to save the current offset to a path named 'a'.
 The '^at:a' directive is to set the current offset so that it coincides with the first
@@ -1127,9 +1127,6 @@ path 'a'.
 The '^center', '^north', '^south', '^east', '^west', '^northwest',
 '^northeast', '^southwest', and '^southeast' directives would set the origin
 relative to the current size of the viewport.
-
-The '^side' sets the x of the current origin to a value that equals to the viewport width.
-The '^top' sets the y of the current origin to a value that equals to the viewport height.
 
 The '^node:1', '^box:1', '^car:1', and '^chart:1' are each used to setup the offset so that
 it aligns with the location of a node, a box, a Cartesian plane, or a chart. For the
