@@ -829,6 +829,17 @@ second point point is (3,4).
     \path a = (0,0)--(3,4)
     \path b = (1,1)--(&a_1)
 
+It is now possible to specify an absolute point based on the offset
+to an existing path point such as '&a'.
+
+    \path a = (1,1)
+    \path b = (2,3)
+    \path c = (&a:1,1)--(&b:3,3)
+
+The previous example the path 'c' would have a line segment
+of two points: (2,2) and (5,6).
+
+
 
 
 ## Joining two or more path
