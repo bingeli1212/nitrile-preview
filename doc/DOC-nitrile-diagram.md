@@ -3090,12 +3090,24 @@ starting at the coordinate (2,1).
 
     \longdivws "11 4" {showanswer} (2,1)
 
-By default the "answer" is not set, in which case only the
-the dividend and divisor is to be shown. The "answercolor" can
+By default the "showanswer" is not set, in which case only the
+the dividend and divisor is to be shown. However,
+setting it to "1" will also show all the steps
+to achieve the answer. The "answercolor" can
 also be set which will be used to drawn everything that is 
 related to the answer, including lines and text.
 
     \longdivws "11 4" {showanswer,answercolor:orange} (2,1)
+
+In the case where a step-by-step guide is designed, the "showsteps"
+can be set to an integer that is one or greater. By default it is 
+set to 0 which shows all the steps. HOwever, if it is set to 1
+then it only shows the first step. The following example shows the 
+first and second step in getting the answer. The total number 
+of the steps for a complete answer
+depends on the nature of the division.
+
+    \longdivws "11 4" {showanswer,answercolor:orange,showsteps:2} (2,1)
 
 Unlike the "multiws" operation, the "longdivws" operation does
 not scan the input for any appearances of decimal points---thus if
