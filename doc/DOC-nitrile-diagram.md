@@ -187,42 +187,67 @@ update variables, function, and path, etc. Following are Non-action commands:
 - \if
 - \path
 - \fn
-- \set
 - \exit
 - \origin
-- \show
+- \log
 - \format    
+- \set
+- \var
 
 
 # The 'set' command
 
-The set command can be used to control the configuration parameters
-for the entire Diagram. The change becomes new default
-for all future commands.
-
-    \set linesize : 1
-    \set linecolor : red
-
-In addition, it can be set to an integer or float 
-if an equal-sign is used.
+The 'set' command is typically used to set the default
+configuration parameters that would be used as default
 
     \set linesize = 1
+    \set linecolor = red
 
 
+# The 'var' command
 
-It is also possible to destructure a path point.
-In the following example 'cx' is set to 2 and 'cy' to 3.
+The 'var' commands is similar to 'set' except it treats
+the input as numbers rather than strings.
 
-    \set (cx,cy) = (2,3)
+    \var linesize = 1
+    \var linesize = 1+2
+  
+Note that variables created/modified by the 'var' command
+are not treated different than those of the 'set' command.
+The 'linesize' variable created is the same configuration parameter
+created by a previous 
+'set' command.
+
+In addition, 
+the 'var' command is also the command that allows an array of numbers to be
+assigned to a parameter. 
+
+    \var nums[] = 1 2 3 4 5 6 7 8 9 10
+    \var nums[] = [1:10]
+
+In addition, the 'var' command is also able to destructure an array point
+such that each of two coordinates is assigned to one of the variables.
+
+    \var (cx,cy) = (2,3)
+
+Another difference between a 'set' command and a 'var' command is that
+'set' command always assigns a string to a variable, where a 'var' command
+assigns a number (an instance of Complex), or JS Array instance
 
 
 # The 'format' command
 
 The "format" command is to create a variable that is string based.
+It expects as input the format string such as follows.
 In the following example the "linecolor" 
 variable is set to a string that is "fill3".
 
     \format linecolor = @"fill" 3
+
+Following is a example of drawing a text that is "301-555-5591".
+
+    \format s = @"%d-%d-%d" 301 555 5591
+    \drawlabel "${s}" (0,0)
 
 
 # Specifying colors
@@ -429,19 +454,19 @@ Following example shows how to access the second path point of a path named "a" 
 constructing a path "b".
 
     \path a = (1,2)--(3,4)
-    \path b = (&a_1)
+    \path b = (&a[1])
 
 Following example shows how to access the second point of an array named "a" in a scalar
 expression. 
 
-    \set a[] = 1 2 3 4
-    \set b = a_1
+    \var a[] = 1 2 3 4
+    \var b = a[1]
 
 Following example shows how to access the entire content of the array "a" when building
 another array named "b".
 
-    \set a[] = 1 2 3 4
-    \set b[] = [@a]
+    \var a[] = 1 2 3 4
+    \var b[] = [a]
 
 
 
@@ -827,7 +852,7 @@ In the following example the path 'b' is constructed such that its
 second point point is (3,4).
   
     \path a = (0,0)--(3,4)
-    \path b = (1,1)--(&a_1)
+    \path b = (1,1)--(&a[1])
 
 It is now possible to specify an absolute point based on the offset
 to an existing path point such as '&a'.
@@ -868,7 +893,7 @@ instance, in the following example the second path point of "a" would become the
 first path point of "c" without modification.
 
     \path a = (0,0)--(3,4)--(4,5)
-    \path c = &a_1 &a_2
+    \path c = &a[1] &a_2
 
 This would become a problem because the second point of path "a" is a 'L' point,
 and it retains this type after being "pasted" to "c", making the first point of
@@ -879,7 +904,7 @@ However, had we constructed path "c" the following way the second point of "a"
 would have would have become a 'M' point in path "c".
 
     \path a = (0,0)--(3,4)--(4,5) 
-    \path c = (&a_1)--(&a_2)
+    \path c = (&a[1])--(&a_2)
 
 
 
@@ -941,7 +966,7 @@ of path "a" at the start of the path construction for path "c" the 'lastpt'
 isn't updated, and remains set at (3,4).
 
     \path a = (0,0)--(1,1)--(3,4)
-    \path c = &a_1 <l:1,1>
+    \path c = &a[1] <l:1,1>
 
 It is possible to save the current location of the 'lastpt' to a path variable
 during a path construction so that it can be retrieved laster. This is done via
@@ -996,9 +1021,9 @@ An array argument is identified by the appearance of a set of brackets.
 
 Or 
     
-    \set xarr[] = [1,2,3]
-    \set yarr[] = [4,5,6]
-    \path a = &points{[@xarr],[@yarr]}
+    \var xarr[] = [1,2,3]
+    \var yarr[] = [4,5,6]
+    \path a = &points{[xarr],[yarr]}
 
 Internally, a scalar is considered the same type as that of an array and is
 stored as an array of a single value.
@@ -1113,7 +1138,7 @@ and negative numbers are for moving down.
 The '^pt:a' directive is to save the current offset to a path named 'a'.
 The '^at:a' directive is to set the current offset so that it coincides with the first
 point of a path named "a". The value after the colon is expected to be the name
-of an existing path, such as 'a', or 'a_1' for expressing the second point of
+of an existing path, such as 'a', or 'a[1]' for expressing the second point of
 path 'a'. 
 
 The '^center' directive moves the offset point to the center of the viewport.
@@ -1537,17 +1562,17 @@ that is follows:
 
 A "scalar expression" is an expression that evaluates to a number.  
 
-    \set a = (2+2)*(3+3)
-    \set a = cos(3+0.1415) + 12
-    \set a = 3 + pow(3,2)*3 + 2
-    \set a = 3 + E + 2
-    \set a = 3 + PI + 2
-    \set a = sign(-5)
-    \set a = 2*PI
-    \set a = 2*2e5
-    \set a = deg2rad(180)
-    \set a = 1/0
-    \set a = ln(0)
+    \var a = (2+2)*(3+3)
+    \var a = cos(3+0.1415) + 12
+    \var a = 3 + pow(3,2)*3 + 2
+    \var a = 3 + E + 2
+    \var a = 3 + PI + 2
+    \var a = sign(-5)
+    \var a = 2*PI
+    \var a = 2*2e5
+    \var a = deg2rad(180)
+    \var a = 1/0
+    \var a = ln(0)
 
 The scalar expression is expected by a command such as 'var'. It is also
 expected inside a dollar-expression such as 
@@ -1594,9 +1619,6 @@ Following is likely what to be observed in the outputs of a translation.
     % <-- *** env a = Infinity -->
     % <-- var a = ln(0) -->
     % <-- *** env a = Infinity -->
-    % <-- show ${a} -->
-    % <-- show Infinity -->
-    % <-- *** show Infinity -->
 
 Note that if a scalar expression returns something that cannot be interpreted
 as a valid number, "Infinity" or "NaN" might be observed.
@@ -1608,43 +1630,41 @@ components of the first two points in path variable 'pts', which will
 be "1 + 3 = 4".
 
     \path a = (1,2)--(3,4)
-    \set x = &a_0.x + &a_1.x
-    \set y = &a_0.y + &a_1.y
-    \show ${x}
-    \show ${y}
+    \var x = &a[0].x + &a[1].x
+    \var y = &a[0].y + &a[1].y
+    \log ${x}
+    \log ${y}
 
 The dollor-expressin is designed to turn any expression into a string. For instance
 the expression of ``${x}`` would have replaced itself with the actual value of the
-variable ``x``. If ``x`` does not exist as a valid variable, "NaN" is returned. 
+variable ``x``. 
 
-    \set x = 1
-    \show ${x}
+    \var x = 1
+    \log ${x}
 
-This would have been equivalent to the following single command
-  
-    \show 1
+The variable could be a number as well as a string.
 
-This is because by default, the precision is set to 6, which means any numerical
-value will automatically be shown as a floating-point number with 6 digits of
-decimal places. This precision can be changed by setting the "precision" option.
-
-    \set x = 1
-    \show ${x}
-
-The previous commands would be equivalent to the following single command:
-
-    \show 1
-
-However, as a special exception, if the variable is by itself and it
-is recognized to be a string,
-then it is shown verbatim.
-
-    \set x = @"Hello world"
-    \show ${@x}
+    \format x = @"Hello world"
+    \log ${x}
 
 This would have been equivalent to the following command
 
-    \show Hello world
+    \log Hello world
+
+This would have been equivalent to the following single command
+  
+    \log 1
+
+The dollar-expression can also perform math such as the following.
+
+    \var x = 1
+    \var y = 2
+    \log ${x+y} 
+
+The previous commands would be equivalent to the following single command:
+
+    \log 3
+
 
 
 
@@ -1659,7 +1679,7 @@ holding a complex number.
 
 Following is an example that would draw a dot at the location of (1,2).
 
-    \set a = 1 + 2i
+    \var a = 1 + 2i
     \drawdot ($a.re,$a.im)
 
 
@@ -1672,7 +1692,7 @@ when the variable is preceeded by an at-sign, in which case the variable
 is expected as an array that is to hold a list of numbers instead
 of holding a single one.
 
-    \set a[] = 0 1 2 (1+2) 
+    \var a[] = 0 1 2 (1+2) 
 
 The same expression could be found elsewhere where a list of scalar is expected,
 such as a "for" loop command:
@@ -1711,11 +1731,11 @@ dynamically based on the distance of the first one and the second one. For
 instance, following example would have generated a list of numbers that are 1,
 2, 3, 4, 5, 6, 7, 8, 9, and 10.
 
-    \set a[] = [1:10]
+    \var a[] = [1:10]
 
 The following would have generated a list composed numbers that are 1, 4, 7, 10.
 
-    \set a[] = [1:4:10]
+    \var a[] = [1:4:10]
 
 Note that in the case of the having three columns the middle number serves as the 
 second number after the first one, and additional numbers are generated with the same
@@ -1730,21 +1750,21 @@ points, with the first point being 0, and the last point being 10, and
 additional 20 points generated between 0 and 10 such that the distance between
 any two neighboring points is the same.
 
-    \set a[] = [0:!20!:10]
+    \var a[] = [0:!20!:10]
 
 Another list-expression is to populate a list from an existing array, known as
 list-array-form. Following expression would pull the content of an existing aray
 named 'c' and a list is built off the content of this array, plus two additional
 items that is 4 and 5.
 
-    \set c[] = 1 2 3
-    \set a[] = [@c] 4 5
+    \var c[] = 1 2 3
+    \var a[] = [c] 4 5  //> 1,2,3,4,5
 
 If a list-expression does not fit the definitions of the previous three
 categories, then it would be treated as a list-comma-form. This form would look
 for comma separated items. Spaces between commas are optional.
 
-    \set a[] = [1, 2, 3, 4]
+    \var a[] = [1, 2, 3, 4]
 
 Note that the spaces after each comma is optional. 
 
@@ -1752,29 +1772,29 @@ It should be pointed out that all the previous list forms can be mixed in anothe
 order, and the result of which is simply the concatenation of all list items 
 from these individual lists.
 
-    \set c[] = 10 11 12
-    \set a[] = 1 2 3 [4:10]
-    \set a[] = [1:2] [3:4] 5 6 7 [8:10]
-    \set a[] = [1,2,3,4] [5,6,7,8] 9 10 [@c]
+    \var c[] = 10 11 12
+    \var a[] = 1 2 3 [4:10]
+    \var a[] = [1:2] [3:4] 5 6 7 [8:10]
+    \var a[] = [1,2,3,4] [5,6,7,8] 9 10 [c]
 
 Note that a list is automatically recognized and populated in a 'for' command
 as well.
 
-    \set a[] = 1 2 3
-    \for i in [@a]; \do
-      \show ${i}
+    \var a[] = 1 2 3
+    \for i in [a]; \do
+      \log ${i}
     \done
 
 Following is another way of iterating the same list.
 
     \for i in 1 2 3; \do
-      \show ${i}
+      \log ${i}
     \done
 
 Or,
 
     \for i in [1,2,3]; \do
-      \show ${i}
+      \log ${i}
     \done
 
 Or,
@@ -1786,53 +1806,43 @@ Or,
 An entire array can be show by the dollar-expression as well. Ensure that the
 array variable is to appear by itself, and proceeded by '@'.
 
-    \set a[] = 1 2 3
-    \show ${@a}
+    \var a[] = 1 2 3
+    \log ${a}
 
 A directive is also to be recognized. A directive adds extra possibility to the
 list of numbers. For the moment only the "fn" directive is supported. This
 directive allows for a function to be called such that the output of this
 function replaces the original scalar.
 
-    \set a[] = ^fn:sqrt 1 2 3 4 5 6
-    \show ${@a}
+    \var a[] = ^fn:sqrt 1 2 3 4 5 6
+    \log ${a}
 
-Following would be the output of these commands:
+Following would be observed at the console output:
 
-    % <-- var a[] = ^fn:sqrt 1 2 3 -->
-    % <-- *** env @a = 1 1.4142135623730951 1.7320508075688772 -->
-    % <-- show ${@a} -->
-    % <-- *** show 1 1.4142135623730951 1.7320508075688772 -->
+    *** [log] 1,1.4142135623730951,1.7320508075688772,2,2.23606797749979,2.449489742783178
 
 If two "fn" directives are encountered, the last "fn" is called first, and the output 
 of which becomes the input to the first "fn". 
 
     \fn add2(x) = x+2
-    \set a[] = ^fn:add2 ^fn:sqrt 1 2 3
-    \show ${@a}
+    \var a[] = ^fn:add2 ^fn:sqrt 1 2 3
+    \log ${a}
 
 In the previous example each scalar is to go
 through the "sqrt" function first before being sent to the "add2" function.
 
-    % <-- fn add2(x) = x+2 -->
-    % <-- *** fn add2(x) = x+2 -->
-    % <-- var a[] = ^fn:add2 ^fn:sqrt 1 2 3 -->
-    % <-- *** env @a = 3 3.414213562373095 3.732050807568877 -->
-    % <-- show ${@a} -->
-    % <-- *** show 3 3.414213562373095 3.732050807568877 -->
+    *** [log] 3,3.414213562373095,3.732050807568877
 
 It is also possible to refer to an array element. To do that simply use the variable
 followed by an underscore itself.
 
-    \set a[] = 1 2 3
-    \set b[] = a_1 a_2
+    \var a[] = 1 2 3
+    \var b[] = a[1] a[2]
+    \log ${b}
 
 Following would be the result of the translation.
 
-    % <-- var a[] = 1 2 3 -->
-    % <-- *** env @a = 1 2 3 -->
-    % <-- var b[] = a_1 a_2 -->
-    % <-- *** env @b = 2 3 -->
+    *** [log] 2,3  
 
 
 
@@ -1840,11 +1850,11 @@ Following would be the result of the translation.
 
 It is possible to read a single value from a given array.
 
-    \set i = 0
-    \set ax[i] = [1,2,3,4,5]
+    \var i = 0
+    \var ax[i] = [1,2,3,4,5]
     % ax == 1
-    \set i = 1
-    \set ax[i] = [1,2,3,4,5]
+    \var i = 1
+    \var ax[i] = [1,2,3,4,5]
     % ax == 2
 
 
@@ -1958,8 +1968,8 @@ Following are built-in functions provided by Diagram.
 
   ```
   \fn f(x) = if(x>10,1,0)
-  \set a = f(10)  
-  \set b = f(11)  
+  \var a = f(10)  
+  \var b = f(11)  
   ```
 
 + isfinite(x)
@@ -1979,8 +1989,8 @@ Following are built-in functions provided by Diagram.
 Following are built-in scalar constants, which can be used as if they
 are arguments. For instance, 
 
-    \set arc = 2*PI
-    \set mynum = 1 + 2*I
+    \var arc = 2*PI
+    \var mynum = 1 + 2*I
 
 This the 'arc' env-variable would have been assigned the value of 6.28.
 
@@ -2019,10 +2029,6 @@ drawing environment.
 - \origin ^side
 - \origin ^top
 
-If it starts with "left:<x>", "right:<x>", "up:<y>", 
-"down:<y>", where the distance expresses the number of grid units
-to move in that direction. 
-
 The "^h:9" directive moves the origin 9 units horizontally from the current position. Positive
 number moves it to the right and negative number moves it to the left.
 
@@ -2050,7 +2056,7 @@ point of that path.
 If it is "at:a_0" then the 'origin' will be set to a point coincides with the first
 point of that path.
 
-If it is "at:a_1" then the 'origin' will be set to a point coincides with the second
+If it is "at:a[1]" then the 'origin' will be set to a point coincides with the second
 point of that path.
 
 If it is "at:a_2" then the 'origin' will be set to a point coincides with the third
@@ -2756,7 +2762,7 @@ is "1 + log2(4)". In the following example, variable 'a' is being
 assigned a value of 3 at the end of that command.
 
     \fn f(x) = 1 + log2(x)
-    \set a = f(4)
+    \var a = f(4)
 
 A function created by a "fn" command can be thought of as a user-defined
 function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
@@ -2764,7 +2770,7 @@ function, as opposed to other built-in function such as 'sqrt', 'sign', 'sin',
 an array expression.
 
     \fn f(x) = 1 + log2(x)
-    \set v[] = ^fn:f 1 2 3 4 
+    \var v[] = ^fn:f 1 2 3 4 
 
 
 
@@ -2858,9 +2864,9 @@ the first one, and the second iteration the second one, and so on.
 
     \origin ^center
     \for theta in [0:60:359]; \do
-      \set r = 2
-      \set x = cos(deg2rad(theta)) * r
-      \set y = sin(deg2rad(theta)) * r
+      \var r = 2
+      \var x = cos(deg2rad(theta)) * r
+      \var y = sin(deg2rad(theta)) * r
       \node.@[1,2,3] {r:0.5} (x,y)
     \done
     \node.0.1.2 {fillcolor:red}
@@ -3103,9 +3109,9 @@ The lego-operation allows for drawing of placing Lego-like
 objects on top of each other in a three-dimensional space.
 
     ```diagram{viewport:8 8}
-    \set fillcolor : white
-    \set linesize : 1.5
-    \set linejoin : round
+    \set fillcolor = white
+    \set linesize = 1.5
+    \set linejoin = round
     \lego.size.4.4.4
     \lego.add.z.0 
     \lego.add.z.1
@@ -3186,23 +3192,18 @@ end points of the Bezier curves as square dots.
 # The 'var' command
 
 The 'var' command is to create an environment variable that
-is the result of an arithmetic expression, a text string,
-or an array.  Following is an example of a arithmetic expression.
+is the result of an arithmetic expression.
+Following is an example of a arithmetic expression.
 
-    \set a = pow(2,1/12)
+    \var a = pow(2,1/12)
     \drawpath (0,0)--(a,a)
 
 Following is a example of creating a variable that holds an array.
 
-    \set o[] = 1 2 3
-    \for i in [@o]; \do
+    \var o[] = 1 2 3
+    \for i in [o]; \do
       \drawdot (i,i)
     \done
-
-Following is a example of a text string composition.
-
-    \set s = @"%d-%d-%d" 301 444 5591
-    \drawlabel "${@a}" (0,0)
 
 The first example has created an environment variable named 'a', 
 that is assigned a numerical value that is equivalent to 
@@ -3215,13 +3216,13 @@ arithmetic expression such as the following example which 'a' is used
 to compute a value that is 2 multiples of 'a' and the value of which
 is assigned to variable 'b'.
 
-    \set b = a * 2;
+    \var b = a * 2;
 
 Note that the number is complex-number-ready, which means the number 
 is internally represented as a complex number. This allows the following
 expression to be constructed that would express a complex number that is "2+3i":
 
-    \set c = 2 + 3i
+    \var c = 2 + 3i
 
 Note that the spaces around the plus-sign is optional. In fact the entire
 expression is just treated as a regular math operation of addition, with 
@@ -3239,41 +3240,17 @@ and "PI" and "E" are fixed numbers only having a real component for itself.
 Thus, the following expression would have assigned the complex number "3i" 
 to variable 'd'.
 
-    \set d = 3 * I
+    \var d = 3 * I
 
 Note that it is illegal to use a "i" or "j" by itself, such as the following
 which is illegal.
 
-    \set d = 3 + i
+    \var d = 3 + i
 
 This is because a letter within an expression by itself is to be treated as a
 variable. Thus, the previous expression would have looked for a variable named
 "i", and by failing to find it, would have caused the entire expression to
 become NaN.
-
-When the expression after the equal sign starts with a at-sign, or '@', then
-the expression is assumed to return a string rather than a number.  There are
-two different situation in which a string can be formed. The first is that the
-at-sign is followed by a set of quotation marks, such as the following, in
-which case anything within the quation string is treated as a "template", such
-that it will be scanned for the appearances of "formattng groups", which is
-replaced by something that appears after it.  The following example would have
-created a variable named "s" that holds a string that is "301-444-5591".
-
-    \set s = @"%d-%d-%d" 301 444 5591
-
-In the second situation is when the at-sign is followed by a variable, 
-in which case the value of that variable is pulled and its value is treated
-as a string. For instance, after the previous example has created the variable named 's',
-we can create another variable 's1' that hold the same value of 's'
-
-    var s = @s
-
-This allows us to construct a string an later used inside a command that expects
-such.
-
-    \set s = @"%d-%d-%d" 301 444 5591
-    \drawlabel "${@s}" (0,0)
 
 The 'var' command is also able to create an "array" variable, in which
 case the variable is to hold a list of numbers, rather than a single number. 
@@ -3283,8 +3260,8 @@ has first created and assigned the variable 'a' an array that consists of
 three items, and then reference this array by the name of 'a' inside a 
 for-command.
 
-    \set a[] = 1 2 3
-    \for i in [@a]; \do
+    \var a[] = 1 2 3
+    \for i in [a]; \do
       \drawdot (i,i)
     \done
 
@@ -3292,12 +3269,12 @@ An array variable can also be referenced by its individual elements. The syntax
 is to start with the variable, followed by a underscore, and then one or more digits
 to express the position within the variable. For instance, "a_0" would have been
 recognized as a variable that references the first element of an array named "a",
-and "a_1" would have referenced the second element of array named "a".
+and "a[1]" would have referenced the second element of array named "a".
 The following example has created an array of three numbers, and was later
 on used to generate text output on various locations, pulling the content of 
 each element of the array. 
 
-    \drawlabel "${a_0}" "${a_1}" "${a_2}" (0,0) <h:1> <h:1>
+    \drawlabel "${a[0]}" "${a[1]}" "${a[2]}" (0,0) <h:1> <h:1>
 
 Following are formatting groups that are recognized.
 
@@ -3307,9 +3284,8 @@ Following are formatting groups that are recognized.
   It does not consume any argument.
 
   ```
-  \set a = 1.23456789
-  \set s = @"%0.2f%%" a
-  % s => '1.23%'
+  \var a = 1.23456789
+  \format s = @"%0.2f%%" a  //> '1.23%'
   ```
 
 + %_
@@ -3321,7 +3297,7 @@ Following are formatting groups that are recognized.
 
   ```
   \for i in [11,23,56]; \do
-    \set s = @"%_" 
+    \var s = @"%_" 
   \done
   % s => '0'
   % s => '1'
@@ -3335,9 +3311,8 @@ Following are formatting groups that are recognized.
   express the decimal places to be used for this number.
 
   ```
-  \set a = 1.23456789
-  \set s = @"%.2f" a
-  % s => '1.23'
+  \var a = 1.23456789
+  \format s = @"%.2f" a  //> '1.23'
   ```
 
 + %d 
@@ -3345,9 +3320,8 @@ Following are formatting groups that are recognized.
   This formatting group would parse the argument as an integer.
 
   ```
-  \set a = 0x10
-  \set s = @"%d" a
-  % s => "16"
+  \var a = 0x10
+  \format s = @"%d" a  //> '16'
   ```
 
 + %x 
@@ -3359,10 +3333,10 @@ Following are formatting groups that are recognized.
   number with all letters between A-Z in uppercases.
 
   ```
-  \set a = 15
-  \set s = @"%x" a
+  \var a = 15
+  \format s = @"%x" a
   % s => "f"
-  \set s = @"%X" a
+  \format s = @"%X" a
   % s => "F"
   ```
 
@@ -3375,8 +3349,8 @@ Following are formatting groups that are recognized.
   This formatting group is to output a binary number with one's and zero's.
 
   ```
-  \set a = 5
-  \set s = @"%b" 5
+  \var a = 5
+  \format s = @"%b" 5
   % s => "101"
   ```
 
@@ -3385,8 +3359,8 @@ Following are formatting groups that are recognized.
   This formatting group is to output an octal number.
 
   ```
-  \set a = 0xF0
-  \set s = @"%o" a
+  \var a = 0xF0
+  \format s = @"%o" a
   % a => "360"
   ```
 
@@ -3396,8 +3370,8 @@ Following are formatting groups that are recognized.
   with that given code point.
 
   ```
-  \set a = 65
-  \set s = @"%c" a
+  \var a = 65
+  \format s = @"%c" a
   % a => "A"
   ```
 
@@ -3406,8 +3380,8 @@ Following are formatting groups that are recognized.
   This formatting group is to treat the argument as a string.
 
   ```
-  \set a = 1.23
-  \set s = @"%s" 
+  \var a = 1.23
+  \format s = @"%s" 
   % s => "1.23"
   ```
 
@@ -3416,8 +3390,8 @@ then the result would be undefined if the string cannot be recognized as a legal
 For instance, in the following example variable 'c' is holding a string that is "Hello",
 and when later it is used to perform an addition, the result becomes NaN.
 
-    \set c = @"Hello"
-    \set d = c + 10
+    \format c = @"Hello"
+    \var d = c + 10
     % d = NaN
 
   
@@ -3705,48 +3679,48 @@ These specialized commands are able to gleam variables that represents
 positions if no coords are given in the command line. For \drawcircle,
 it is 'cx' and 'cy' and 'r'.
 
-    \set cx = 1
-    \set cy = 2
-    \set r = 1
+    \var cx = 1
+    \var cy = 2
+    \var r = 1
     \drawcircle
 
 For \drawellipse it is 'cx', 'cy', 'rx' and 'ry'.
 
-    \set cx = 1
-    \set cy = 2
-    \set rx = 4
-    \set ry = 3
+    \var cx = 1
+    \var cy = 2
+    \var rx = 4
+    \var ry = 3
     \drawellipse
 
 For \drawrect it is 'x', 'y', 'w', and 'h'.
 
-    \set x = 1
-    \set y = 2
-    \set w = 4
-    \set h = 3
+    \var x = 1
+    \var y = 2
+    \var w = 4
+    \var h = 3
     \drawrect
 
 For \drawpolyline and \drawpolygon it is 'points'.
 
-    \set points[] = 1 1 2 3 5 5
+    \var points[] = 1 1 2 3 5 5
     \drawpolyline
     \drawpolygon
 
 For \drawline it is 'x1', 'y1', 'x2', 'y2'.
 
-    \set x1 = 1
-    \set y1 = 1
-    \set x2 = 2
-    \set y2 = 3
+    \var x1 = 1
+    \var y1 = 1
+    \var x2 = 2
+    \var y2 = 3
     \drawline
 
 For \drawarc the variables will be 'cx', 'cy', 'r', 'start', and 'span'.
 
-    \set cx = 1
-    \set cy = 1
-    \set r = 2
-    \set start = 0
-    \set span = 90
+    \var cx = 1
+    \var cy = 1
+    \var r = 2
+    \var start = 0
+    \var span = 90
     \drawarc
 
 For \drawsector the variables will be 'cx', 'cy', 'r', 'ri', 'start', and 'span'.
@@ -3754,34 +3728,34 @@ The 'r' is for outer radius and 'ri' for inner radius. When 'ri' is set to 0
 the effect is the equivalent of a circular pie. If 'ri' is larger than the outer
 radius then it is set to be the same as the outer radius.
 
-    \set cx = 1
-    \set cy = 1
-    \set r = 2
-    \set ri = 1
-    \set start = 0
-    \set span = 90
+    \var cx = 1
+    \var cy = 1
+    \var r = 2
+    \var ri = 1
+    \var start = 0
+    \var span = 90
     \drawsector
 
 For \drawqbezier the variables are 'x0','y0','x1','y1','x2', and 'y2'.
 
-    \set x0 = 0
-    \set y0 = 0
-    \set x1 = 0
-    \set y1 = 4
-    \set x2 = 4
-    \set y2 = 4
+    \var x0 = 0
+    \var y0 = 0
+    \var x1 = 0
+    \var y1 = 4
+    \var x2 = 4
+    \var y2 = 4
     \drawqbezier
 
 For \drawbezier the variables are 'x0','y0','x1','y1','x2','y2','x3',and 'y3'.
 
-    \set x0 = 0
-    \set y0 = 0
-    \set x1 = 0
-    \set y1 = 4
-    \set x2 = 4
-    \set y2 = 4
-    \set x3 = 8
-    \set y3 = 0
+    \var x0 = 0
+    \var y0 = 0
+    \var x1 = 0
+    \var y1 = 4
+    \var x2 = 4
+    \var y2 = 4
+    \var x3 = 8
+    \var y3 = 0
     \drawbezier
 
 
