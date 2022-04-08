@@ -1090,14 +1090,6 @@ relative to its current settings.
 - ^pt:a
 - ^at:a
 - ^center
-- ^north
-- ^south
-- ^east
-- ^west
-- ^northwest
-- ^northeast
-- ^southwest
-- ^southeast
 - ^side
 - ^top
 - ^node:1
@@ -1124,9 +1116,7 @@ point of a path named "a". The value after the colon is expected to be the name
 of an existing path, such as 'a', or 'a_1' for expressing the second point of
 path 'a'. 
 
-The '^center', '^north', '^south', '^east', '^west', '^northwest',
-'^northeast', '^southwest', and '^southeast' directives would set the origin
-relative to the current size of the viewport.
+The '^center' directive moves the offset point to the center of the viewport.
 
 The '^node:1', '^box:1', '^car:1', and '^chart:1' are each used to setup the offset so that
 it aligns with the location of a node, a box, a Cartesian plane, or a chart. For the
@@ -2015,10 +2005,8 @@ This the 'arc' env-variable would have been assigned the value of 6.28.
 The 'origin' command sets the following parameters for the current
 drawing environment.
 
-- \origin ^up:2
-- \origin ^down:2
-- \origin ^left:2
-- \origin ^right:2
+- \origin ^h:9
+- \origin ^v:9
 - \origin ^x:2
 - \origin ^y:2
 - \origin ^sx:2.5
@@ -2028,20 +2016,18 @@ drawing environment.
 - \origin ^pt:a
 - \origin ^reset
 - \origin ^center
-- \origin ^north
-- \origin ^south
-- \origin ^east
-- \origin ^west
-- \origin ^northwest
-- \origin ^southwest
-- \origin ^northeast
-- \origin ^southeast
 - \origin ^side
 - \origin ^top
 
 If it starts with "left:<x>", "right:<x>", "up:<y>", 
 "down:<y>", where the distance expresses the number of grid units
 to move in that direction. 
+
+The "^h:9" directive moves the origin 9 units horizontally from the current position. Positive
+number moves it to the right and negative number moves it to the left.
+
+The "^v:9" directive moves the origin 9 units vertically from the current position.
+Positive numbers move up and negative numbers move down.
 
 If it starts with "x:", then it expresses the distance from the left hand side
 of the viewport. 
@@ -2080,9 +2066,7 @@ new origin.  If this path variable already exists it will be overwritten.
 If it starts with "reset" then the current origin will be set to (0,0) and the 
 scaling factors will be reset to 1 in both horizontal and vertical directions.
 
-If it starts with 'center', 'north', 'south', 'northwest', 'northeast', 'southwest', 
-'southeast', 'east' and 'west', then it sets the origin to the center,  the four  
-corners of the viewport, or the middle of the four sides of it.
+If it starts with 'center', then it sets the origin to the center.
 
 If it starts with 'top' the origin is moved so that its y-position is at a
 position same as the viewport height. If it starts with 'side' the origin
@@ -3057,7 +3041,7 @@ to be shown on the canvas. In the following example the workflow
 of a multiplication worksheet of 24 multiplied by 3 is to be
 shown at location (2,1).
 
-    \multiws "24 3" {answer} (2,1) 
+    \multiws "24 3" {showanswer} (2,1) 
 
 By default "answer" is not set, in which case only
 the multiplier and the multiplicant are shown. However, when
@@ -3066,15 +3050,15 @@ leads to the solution is to be shown inside the canvas.
 The "answercolor" can be set which will be used to draw all lines, 
 dots, and texts with that color.
 
-    \multiws "24 3" {answer,answercolor:orange} (2,1) 
+    \multiws "24 3" {showanswer,answercolor:orange} (2,1) 
 
 It is also possible to include a decimal number with one of the numbers
 or both numbers. If this the case, the correct decimal place
 will be shown both at multiplier and multiplicant
 and as well as at the product.
 
-    \multiws {answer,answercolor:orange} "2.1 4" (0,0)
-    \multiws {answer,answercolor:orange} "2.1 1.4" (0,0)
+    \multiws {showanswer,answercolor:orange} "2.1 4" (0,0)
+    \multiws {showanswer,answercolor:orange} "2.1 1.4" (0,0)
 
 
 
@@ -3629,7 +3613,7 @@ each of the four hrule, and will then pull the math text from the style
 and the use it to place it on the top of the hrule.
     
     ```diagram{width:100%,save,viewport:22 12}
-    \origin ^northwest
+    \origin ^x:0 ^top
     \drawpath (0,0) -- <v:-14>
     \drawpath (3,0) -- <v:-14>
     \drawpath (6,0) -- <v:-14>
