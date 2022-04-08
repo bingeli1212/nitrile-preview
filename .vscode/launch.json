@@ -9,12 +9,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch nislide",
+      "name": "Launch nipeek",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program":  "${workspaceFolder}/lib/nitrile-preview-nislide.js",
+      "program":  "${workspaceFolder}/lib/nitrile-preview-nipeek.js",
       "args": [
         "test.md"
       ]
