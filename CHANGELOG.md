@@ -534,7 +534,7 @@ Nitrile
 - [x][FR] Add "type:canvas" and "type:ball" to the DIA bundle
 - [ ][FR] Add "type:argand" to DIA bundle
 - [ ][FR] Add &kbd{} entity typeset `<kbd>` element
-- [ ][ ]
+- [ ][FR] Added so that ":=" is recognized as a math symbol in math mode, and re
 
 
 
