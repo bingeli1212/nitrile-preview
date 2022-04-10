@@ -22,7 +22,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch folio",
+      "name": "Launch nifolio",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -35,7 +35,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch tex",
+      "name": "Launch nitex",
       "skipFiles": [
         "<node_internals>/**"
       ],
