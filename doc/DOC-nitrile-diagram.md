@@ -754,7 +754,7 @@ same direction going from the second last point to the last point. Thus, it is
 important that there are at least two path points prior to creating this path
 point.
 
-- <ellipse:dx,dy,sweepflag> 
+- <bend:dx,dy,sweepflag> 
 
 This is to create a new C point. This new point is located at a distance that
 is 'dx/dy' away from the current point. The cubic Bezier simulates a quarter of
