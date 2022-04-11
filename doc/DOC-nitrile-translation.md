@@ -47,52 +47,21 @@ to `\subparagraph` commands in LATEX.
 Bundles are those paragraphs fenced by triple backquotes.
 Following are the signature IDs for the bundles.
 
-- FML
-- INK
-- DIA
-- TAB
-- PAR
-- VTM
+- "fml"
+- "img"
+- "tab"
+- "par"
+- "vtm"
 
-[ The FML bundle. ]
+[ The "fml" bundle. ]
 This bundle is to typeset a multiline formula, with possibly 
 alignment at the place of an equal-sign or other places.
 Note that it is not required that the formula be center-aligned.
 Current HTML/LATEX/CONTEX have been implemented such that it is
 left-aligned.
 
-[ The INK bundle. ]
-This bundle is to crreate a picture holding only textual contents. 
-The bundle is very much like a "vtm" bundle except the result is a picture, 
-which makes it ideal for it to hold text with longer lines and still be 
-able to be scaled to a given width/height.
 
-    ```ink{viewport:10 10 5,width:30}
-    #include<stdio>
-    int main(){
-      return 0;
-    }
-    ```
-
-The "viewport" attribute determines the viewport size, and the resulting
-is a picture of this size. The first two item is the width/height, and the
-third one is the size unit. The last one by default a 5mm, thus, a 
-"viewport" of "10 10 5" would result in a picture of 50mm-by-50mm in size.
-
-The text is always set in 10pt and in monospace style fonts. 
-Thus, a larger viewport size holds more text.
-
-The "width" and "height" attributes can be used to scale
-up/down the image that has been set to the size of the viewport.
-These attributes are pure number always assumed in the unit of mm.  When width/height are not present the size will be resized as such,
-or when only width or height is present then the other is automatically
-set to the one that matches to the viewport aspect ratio. If they
-are not present the size is the same as the viewport.
-
-The "frame" attribute allows it to have a border.
-
-
-[ The "dia" bundle. ]
+[ The "img" bundle. ]
 This bundle builds a vector image such as SVG, Tikz, and or MetaFun.
 
     ```dia{viewport:10 10,width:30}
@@ -106,8 +75,28 @@ commands. These commands are documented by "DOC-nitrile-diagram.md" file.
 
 The "frame" attribute allows it to have a border.
 
+When "type" attribute value is not set, it is either a raster image
+or a vector image. If \image command is detected, then it presents
+an external PNG/JPEG file which will make this bundle a raster image.
+Otherwise it is a vector image that will be a SVG, TikZ, or MPGraphics.
 
-[ The TAB bundle. ]
+However, there could be aother possibilities. For intance, if "type:ink" 
+is present, then it generates a vector image showing lines of text
+as monospaced text.
+
+    ```ink{viewport:10 10 5,width:30}
+    #include<stdio>
+    int main(){
+      return 0;
+    }
+    ```
+
+For HTML translation, the "type:canvas" and "type:ball" can also be used 
+to present a Canvas object or an interactive SVG that response to mouse
+events.
+
+
+[ The "tab" bundle. ]
 This bundle is to typeset a tabular. 
 
     ```tab{head}
@@ -235,7 +224,7 @@ one-by-one, it is to fill out columns one-by-one.
     & 701 Sun Dr.
     ```
 
-[ The PAR bundle. ]
+[ The "par" bundle. ]
 This bundle is designed to typeset a text box.   
 It allows for the possibility such that this paragraph
 is able to have its own text alignment, font size, and font style.
@@ -252,7 +241,7 @@ The end-of-line-double-backslash is used to manually break the line
 into multiple-lines.
 
 
-[ The VTM bundle. ]
+[ The "vtm" bundle. ]
 The VTM bundle typesets a verbatim box.
 
 
