@@ -246,12 +246,14 @@ The VTM bundle typesets a verbatim box.
 
 
 
-# Un-fenced blocks     
+# toplevel blocks     
 
 Un-fenced blocks are those that are not fenced by
 triple-backquotes. Following are the signatures IDs
 for these blocks.  
 
+- "flushleft"
+- "center"
 - "itemize"
 - "example"
 - "verbatim"
@@ -260,6 +262,15 @@ for these blocks.
 - "secondary"
 - "lines"
 - "body"
+- "figure"
+- "table"
+- "listing"
+- "equation"
+- "columns"
+- "wrapfig"
+- "wraptab"
+- "page"
+- "vspace"
 
 
 
@@ -319,7 +330,6 @@ The first pattern would typeset the data terms in monospaced fonts; the second
 form in italic, the third one with quotation marks, and the third one in plaintext.
 All of them will also be shown in bold fontface.             
 
-
 [ The "example" block. ] 
 This block is recognized by the presence of less-than-sign followed by at least
 one space at the first line. All lines with the similar pattern will be considered
@@ -329,7 +339,6 @@ The output is so that all lines are left aligned with a visible left margin.
     > Hello!          
     > Good morning!       
     > Good evening!       
-
 
 [ The "verbatim" block. ]
 This block is recognized when the first line is to start with four spaces.
@@ -370,7 +379,6 @@ two child paragraphs for the "Step 1", and no child paragraphs for "Step 2".
 Note that all child paragraphs are treated as normal paragraphs with
 no particular layout assumptions. 
 
-
 [ The "primary" block. ]
 This block is recognized by the presence of a matching pair of square brackets
 at the first line.
@@ -405,38 +413,55 @@ This block represents a normal paragraph.  For some translations the first line
 of this paragraph is likely to have some visible indentation except for the situation
 where this line is the first line after a sectional heading.
 
-
-
-# Following are composite blocks
-
 Composite blocks are blocks each of which is made up of
 one or more fenced blocks.
 
 [ The "wrapfig" block. ]
 This block implements a wrapfig that is to align an image either 
-to the right or left of a paragraph.
+to the right or left of a paragraph. I treats the entire content
+as a single bundle that is "img". By default the imnage is aligned
+on the right hand side of the page, unless the "align:left" is specified,
+in which case the image is aligned to the left hand side of the page. 
+The subtitle of the image is not shown.
+
+[ The "wraptab" block. ]
+This block implements a "wrap table" for the content. It treates the entire
+content as a single bundle that is "tab". By default the table is aligned
+on the right hand side of the page, unless the "align:left" is specified.
+The subtitle of the table is not shown.
 
 [ The "figure" block. ]
-This block is recognized by the presence of ".figure" at the first line.         
+This block implements a "figure" with multiple sub-figures. Each sub-figure
+is a bundle that is always assumed to be a "img" bundle. The double-backslashes
+can be placed in between bundles to force the start of a new figure line, otherwise
+all figures are placed at a single line. The entire block is to have a caption
+that is numbered. Subtitles of each image is shown if any.
 
 [ The "table" block. ]
-This block is recognized by the presence of ".table" at the first line.         
+This block implements a table that is not to be split between pages, althrough
+there are provisons to allow for a long table to be split into multiple "table"
+blocks. All contents will be treated as a single bundle and it is assumed
+to be "tab". The entire block is to have a caption that is numbered.
+Subtitles of the table can be shown.
 
 [ The "columns" block. ]
-This block is recognized by the presence of ".columns" at the first line.         
+This block places arranges to place all bundles on a single row so that they
+are side-by-side. The content of the bundle is not hardcoded and is determined
+by the signature key of the bundle itself. Each bundle is given equal amount of 
+space when placed side by side. Subtitles are not shown.
 
 [ The "equation" block. ]
-This block is recognized by the presence of ".equation" at the first line.         
+This block implements a numbered equation. Each bundle is assumed to be 
+"fml" that represents a single equation. 
+If a single equation is found it is assigned an integer equation number.
+Otherwise the equation number is the integer followed by letter such as 
+1a, 1b, 1c, etc. 
 
 [ The "listing" block. ]
-This block is recognized by the presence of ".listing" at the first line.         
-
-[ The "flushleft" block. ]
-This block arranges such that each bundle is shown left aligned. This 
-is the block to used when a fence is to appear by itself.
-
-[ The "center" block. ] 
-This block arranges such that each bundle is to appear center aligned.
+This block treates the content as a single bundle, such that all lines of the
+bundle represents soft code listings. The result is a soft code listing
+with line number indicators placed on the left hand side of each line.         
+The entire block is to have a caption that is numbered.
 
 [ The "page" block. ]
 This block is to insert a manual page break.         
