@@ -20,7 +20,9 @@ or subsubsection.
 # Un-numbered section headings
 
 Un-numbered section headings are recognized by the presence of a pair of
-matching square brackets. 
+matching square brackets at the beginning of a paragraph. The paragraph
+text itself will be the normal text that follows the heading which 
+is typically shown as boldface typeface font. 
 
     [ Regex. ]
     The `Regex` class is for expressing a regular expression.
@@ -29,29 +31,27 @@ matching square brackets.
     The `Math` class is for grouping a collection of 
     math functions and constants.
 
-Each un-numbered section heading is also capable of holding extra body texts.
-Previous ones are level-1 un-numbered section headings.  They are similar to
-`\paragraph`. Following are level-2 un-numbered headings, and they are similar
-to `\subparagraph` commands in LATEX.
+A single pair of square brackets is to set up the "primary" type,
+and the double-pair of square brackets is to set up the "secondary" 
+type. 
 
-    [[ Regex. ]]
-    The `Regex` class is for expressing a regular expression.
-
-    [[ Math. ]]
-    The `Math` class is for grouping a collection of 
-    math functions and constants.
-
+The "primary" block type is to model after the LATEX `\paragraph` command,
+and the "second" block type is to model after the LATEX `\subparagraph` command.
 
 # Bundles
 
-Bundles are those paragraphs fenced by triple backquotes.
-Following are the signature IDs for the bundles.
+Bundles are those paragraphs fenced by triple backquotes. Each bundle
+is to come with a ID that identifies this bundle. Following
+are supported bundles.
 
 - "fml"
 - "img"
 - "tab"
 - "par"
 - "vtm"
+
+Each bundle is designed to represent something that is to be considered 
+as a single character. For instance, an image, a table, a text box etc.
 
 [ The "fml" bundle. ]
 This bundle is to typeset a multiline formula, with possibly 
@@ -60,41 +60,52 @@ Note that it is not required that the formula be center-aligned.
 Current HTML/LATEX/CONTEX have been implemented such that it is
 left-aligned.
 
-
 [ The "img" bundle. ]
-This bundle builds a vector image such as SVG, Tikz, and or MetaFun.
+This bundle is to model a vector image such as SVG, Tikz, and or MetaFun,
+or a raster image such as IMG element in HTML, and/or `\includegraphics` command
+in LATEX and `\externalfigure` command in CONTEXT.
 
     ```dia{viewport:10 10,width:30}
     \drawline (0,0) (10,10)
     \drawline (0,10) (10,0)
     ```
 
-The "viewport", "width", and "height" attributes work in the same manner
-as those of the "ink" bundle. The "dia" bundle accept inside a list of 
-commands. These commands are documented by "DOC-nitrile-diagram.md" file.
+The "viewport" attribute sets up the viewport size for the image. 
+For Vector image type this sets the canvas, equivalent to the view box
+of the SVG, and/or the native size of the TikZ and MetaFun. 
 
-The "frame" attribute allows it to have a border.
+The "width" and "height" attribute sets the final image size, which
+is equivalent to the "width" and "height" attribute of a SVG element,
+and the `\resize` command for the LATEX and `\scale` command of the
+CONTEXT. 
 
-When "type" attribute value is not set, it is either a raster image
-or a vector image. If \image command is detected, then it presents
-an external PNG/JPEG file which will make this bundle a raster image.
-Otherwise it is a vector image that will be a SVG, TikZ, or MPGraphics.
+The "frame" attribute allows it to have a border, which is added on top
+of the raster image or vector image after it has been constructed, and whose
+line width should not be affected by the scaling of the image by the "width"/"height"
+attributes.
 
-However, there could be aother possibilities. For intance, if "type:ink" 
-is present, then it generates a vector image showing lines of text
-as monospaced text.
+Typically if an "\image" command within the bundle is detected it is a raster
+image that holds the external image. Otherwise it is a vector image that is built
+in accordance of the commands found within the bundle. 
 
-    ```ink{viewport:10 10 5,width:30}
+However, if the "type" attribute is set to "ink", then the result is a vector image
+showing raw text inside this vector image verbatim. This can be comparied to a 
+\begin\end\verbatim environment of a LATEX document.
+
+    ```img{type:ink,viewport:10 10 5,width:30}
     #include<stdio>
     int main(){
       return 0;
     }
     ```
 
+Note that the "viewport" attribute is still used to set the native size
+of the vector image and "width"/"height" the final size of the image
+when shown. 
+
 For HTML translation, the "type:canvas" and "type:ball" can also be used 
 to present a Canvas object or an interactive SVG that response to mouse
 events.
-
 
 [ The "tab" bundle. ]
 This bundle is to typeset a tabular. 
@@ -228,8 +239,7 @@ one-by-one, it is to fill out columns one-by-one.
 This bundle is designed to typeset a text box.   
 It allows for the possibility such that this paragraph
 is able to have its own text alignment, font size, and font style.
-The "width" attribute can also be used to manually set it to a given
-width, otherwise it is assumed to be as wide as the paragraph.
+The text box is always set as wide as the paragraph.
 
     ```par
     Hello world!\\
@@ -240,9 +250,10 @@ width, otherwise it is assumed to be as wide as the paragraph.
 The end-of-line-double-backslash is used to manually break the line
 into multiple-lines.
 
-
 [ The "vtm" bundle. ]
-The VTM bundle typesets a verbatim box.
+The VTM bundle typesets a verbatim box. The text is typically shown
+in monospace typeface, but its size can be changed by the "fontsize" 
+attributes. In either case, the whitespaces and line breaks are preserved.
 
 
 
