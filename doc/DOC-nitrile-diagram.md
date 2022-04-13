@@ -235,21 +235,6 @@ Another difference between a 'set' command and a 'var' command is that
 assigns a number (an instance of Complex), or JS Array instance
 
 
-# The 'format' command
-
-The "format" command is to create a variable that is string based.
-It expects as input the format string such as follows.
-In the following example the "linecolor" 
-variable is set to a string that is "fill3".
-
-    \format linecolor = @"fill" 3
-
-Following is a example of drawing a text that is "301-555-5591".
-
-    \format s = @"%d-%d-%d" 301 555 5591
-    \drawlabel "${s}" (0,0)
-
-
 # Specifying colors
 
 The colors in the DIAGRAM can be specified in several ways. The easiest is to
@@ -3275,6 +3260,22 @@ on used to generate text output on various locations, pulling the content of
 each element of the array. 
 
     \drawlabel "${a[0]}" "${a[1]}" "${a[2]}" (0,0) <h:1> <h:1>
+
+
+
+# The 'format' command
+
+The "format" command is to create a variable that is string based.
+It expects as input the format string such as follows.
+In the following example the "linecolor" 
+variable is set to a string that is "fill3".
+
+    \format linecolor = @"fill" 3
+
+Following is a example of drawing a text that is "301-555-5591".
+
+    \format s = @"%d-%d-%d" 301 555 5591
+    \drawlabel "${s}" (0,0)
 
 Following are formatting groups that are recognized.
 
