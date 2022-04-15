@@ -314,32 +314,20 @@ lines that follow(s) are descriptions.
     + Pear
       Another wonderful fruit.
 
-However, in the case where there is any description lines detected, and the
-lines after the plus-sign follows one of the following patterns, then 
-it becomes an unordered list with a non-breakable space separating
-the data term and data description.
-item is in the following forms, then it becomes a unordered list.
-Following are all the patterns.    
+Typically the data terms after a description list is to be treated
+as might have also contained formatting elements such as a matching pair
+of double-backquotes for denoting a math expression etc. 
 
-    + `ltr`       The text direction is left-to-right.
-    + `rtl`       The text direction is right-to-left.
-    + `inherit`   The text direction is inherited from the Canvas element or others.
+    + ``\vec{x}``   A vector denoted by variable \(x\)
+    + ``\sqrt(x)``  The square root of variable \(x\)
 
-    + *ltr*       The text direction is left-to-right.
-    + *rtl*       The text direction is right-to-left.
-    + *inherit*   The text direction is inherited from the Canvas element or others.
+If the data term should be interpreted literally, the a double-plus-sign
+should be used instead.
 
-    + "ltr"       The text direction is left-to-right.
-    + "rtl"       The text direction is right-to-left.
-    + "inherit"   The text direction is inherited from the Canvas element or others.
+    ++ &em{x}   Denoting the text that is emphasized
+    ++ *x*      Denoting a variable that is \(x\)
 
-    + 'ltr'       The text direction is left-to-right.
-    + 'rtl'       The text direction is right-to-left.
-    + 'inherit'   The text direction is inherited from the Canvas element or others.
 
-The first pattern would typeset the data terms in monospaced fonts; the second
-form in italic, the third one with quotation marks, and the third one in plaintext.
-All of them will also be shown in bold fontface.             
 
 [ The "example" block. ] 
 This block is recognized by the presence of less-than-sign followed by at least
