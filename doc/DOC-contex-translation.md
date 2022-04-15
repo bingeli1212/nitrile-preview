@@ -4301,7 +4301,9 @@ inside even though page number would for a normal page.
 - Creamer.js cannot center contents vertically like that of Beamer.js
 - The "tabulate" environement seems to have extra vertical spaces between rows   
 - Contex.js Cannot color background of row/column of a tabular like that of Latex.js
-- For RECORD block type, the leading solidified blank spaces are not currently possible
+- For "details" block type, the leading solidified blank spaces are not currently possible
 - For nislide.js, the for wrapfig sometimes the text on the left 
   will show on top of the figure
+- There is currently no way of placing subtitles underneath a table generated 
+  by a "tab" bundle. 
 
