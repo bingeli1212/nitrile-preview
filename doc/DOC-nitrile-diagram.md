@@ -750,9 +750,11 @@ sweep is desired.  If a clockwise sweep is desired, set the "sweepflag" to 1.
 
 - <m:dx,dy>
 
-This is to update a previous 'M' point so that its location is moved dx/dy away
-from its origional position.  If the last point is not a M point, no action is
-taken.
+This serves to purposes. First, if the previous point is a 
+M point, then this updates its location such that it is moved by dx/dy away
+from its current position.  Second, if the previous point is not a 
+M point, then a new M point is added which is dx/dy away from the previous
+point.
 
 
 
