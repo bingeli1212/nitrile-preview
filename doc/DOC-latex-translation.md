@@ -675,5 +675,9 @@ for the title page.
   without making the slide "fragile"
 - For PDFLATEX translation the \begin{CJK} command cannot appear as part
   of the document title \title{...}, for LUALATEX this is okay.
+- When style.stretch is present the "tabularx" environment is used, which
+  is provided by "memoir" class directly, and must be included as a separate
+  package if "slide" is the "peek" type. It also requires that "pdflatex" to
+  run twice in order to get the effect.
 
 
