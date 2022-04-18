@@ -70,27 +70,26 @@ in LATEX and `\externalfigure` command in CONTEXT.
     \drawline (0,10) (10,0)
     ```
 
-The "viewport" attribute sets up the viewport size for the image. 
-For Vector image type this sets the canvas, equivalent to the view box
-of the SVG, and/or the native size of the TikZ and MetaFun. 
+The "viewport" attribute sets up the viewport size for the image.  For Vector
+image type this sets the canvas, equivalent to the view box of the SVG, and/or
+the native size of the TikZ and MetaFun. 
 
-The "width" and "height" attribute sets the final image size, which
-is equivalent to the "width" and "height" attribute of a SVG element,
-and the `\resize` command for the LATEX and `\scale` command of the
-CONTEXT. 
+The "width" and "height" attribute sets the final image size, which is
+equivalent to the "width" and "height" attribute of a SVG element, and the
+`\resize` command for the LATEX and `\scale` command of the CONTEXT. 
 
-The "frame" attribute allows it to have a border, which is added on top
-of the raster image or vector image after it has been constructed, and whose
-line width should not be affected by the scaling of the image by the "width"/"height"
-attributes.
+The "frame" attribute allows it to have a border, which is added on top of the
+raster image or vector image after it has been constructed, and whose line
+width should not be affected by the scaling of the image by the
+"width"/"height" attributes.
 
 Typically if an "\image" command within the bundle is detected it is a raster
-image that holds the external image. Otherwise it is a vector image that is built
-in accordance of the commands found within the bundle. 
+image that holds the external image. Otherwise it is a vector image that is
+built in accordance of the commands found within the bundle. 
 
-However, if the "type" attribute is set to "ink", then the result is a vector image
-showing raw text inside this vector image verbatim. This can be comparied to a 
-\begin\end\verbatim environment of a LATEX document.
+However, if the "type" attribute is set to "ink", then the result is a vector
+image showing raw text inside this vector image verbatim. This can be comparied
+to a \begin\end\verbatim environment of a LATEX document.
 
     ```img{type:ink,viewport:10 10 5,width:30}
     #include<stdio>
@@ -169,10 +168,10 @@ ignored. In the case of "small", all texts will be shown by a "smaller" version
 of the body font.
 
 The "fontstyle" is to be expected a list each of which expressing a font style
-for the corresponding column. For instance, "fontstyle:t t r" is to set it so that the
-first two columns are to be set in the style of monospaced text, and last one
-the roman(default) text. The letters are: t(monospaced), i(italic), b(bold), 
-s(slanted), and r(default) fonts.
+for the corresponding column. For instance, "fontstyle:t t r" is to set it so
+that the first two columns are to be set in the style of monospaced text, and
+last one the roman(default) text. The letters are: t(monospaced), i(italic),
+b(bold), s(slanted), and r(default) fonts.
 
 The "vrules" and "hrules" attributes are designed to manually insert
 vertical/horizontal rules between rows and columns. Note these two attribuets
@@ -259,9 +258,7 @@ attributes. In either case, the whitespaces and line breaks are preserved.
 
 # toplevel blocks     
 
-Un-fenced blocks are those that are not fenced by
-triple-backquotes. Following are the signatures IDs
-for these blocks.  
+Following are all the toplevel blocks recognized by NITRILE.
 
 - "flushleft"
 - "center"
@@ -299,11 +296,16 @@ lists and nested lists. Hyphens are for expresssing unordered list items.
     - Bread
     - Nuts 
 
-The asterisks are for ordered list items.
+The asterisks are for numbered description list where 
+the terms are the content after the asterisk and description
+text the subsequent lines. 
 
-    * First step, ...
-    * Next step, ...
-    * Final step, ...
+    * First step
+      Prepare a paper. 
+    * Next step  
+      Prepare a pencil.
+    * Final step  
+      ...
     
 The plus-signs are for expressing description list items, such
 that everything after the plus-sign is the data term, and the 
@@ -314,20 +316,22 @@ lines that follow(s) are descriptions.
     + Pear
       Another wonderful fruit.
 
-Typically the data terms after a description list is to be treated
-as might have also contained formatting elements such as a matching pair
-of double-backquotes for denoting a math expression etc. 
+Typically the terms will be scanned for any appearances of formatting
+markups; this allows for items such as math expression to appear
+as data terms.
 
-    + ``\vec{x}``   A vector denoted by variable \(x\)
-    + ``\sqrt(x)``  The square root of variable \(x\)
+    + ``\vec{x}``   
+      A vector denoted by variable \(x\)
+    + ``\sqrt(x)``  
+      The square root of variable \(x\)
 
-If the data term should be interpreted literally, the a double-plus-sign
-should be used instead.
+In the situation where the data terms should be interpreted literally,
+ then a double-plus-sign should be used.
 
-    ++ &em{x}   Denoting the text that is emphasized
-    ++ *x*      Denoting a variable that is \(x\)
-
-
+    ++ ``\vec{x}``   
+      A vector denoted by variable \(x\)
+    ++ ``\sqrt(x)``  
+      The square root of variable \(x\)
 
 [ The "example" block. ] 
 This block is recognized by the presence of less-than-sign followed by at least
@@ -340,15 +344,11 @@ The output is so that all lines are left aligned with a visible left margin.
     > Good evening!       
 
 [ The "verbatim" block. ]
-This block is recognized when the first line is to start with four spaces.
-The output of this block is a verbatim
-text where each line starts on its own and white spaces preserved. Text will
-be shown using fixed-width fonts. The four spaces of each line are to be
-removed from the output regardless.
-
-Alternatively, lines starting with '~ ' and a space at the first line will be
-recognized also as starting a "verbatim" block. In this case
-the first two characters of each line will be removed from the output regardless.
+This block is recognized when the first line is to start with four spaces.  The
+output of this block is always a text with monospace typeface font and
+non-collapsed line breaks and intercharacter spaces.  In addition, a "verbatim"
+block can also be designated by the leading '~' followed by a space at each
+line of the block.
 
     ~ #include<stdio>          
     ~ int main(int argc, char** argv){
@@ -409,11 +409,8 @@ The output is so that all lines are center aligned.
 
 [ The "body" block. ]
 This block represents a normal paragraph.  For some translations the first line
-of this paragraph is likely to have some visible indentation except for the situation
-where this line is the first line after a sectional heading.
-
-Composite blocks are blocks each of which is made up of
-one or more fenced blocks.
+of this paragraph is likely to have some visible indentation except for the
+situation where this line is the first line after a sectional heading.
 
 [ The "wrapfig" block. ]
 This block implements a wrapfig that is to align an image either 
@@ -430,37 +427,92 @@ on the right hand side of the page, unless the "align:left" is specified.
 The subtitle of the table is not shown.
 
 [ The "figure" block. ]
-This block implements a "figure" with multiple sub-figures. Each sub-figure
-is a bundle that is always assumed to be a "img" bundle. The double-backslashes
-can be placed in between bundles to force the start of a new figure line, otherwise
+This block implements a "figure" with multiple sub-figures. Each sub-figure is
+a bundle that is always treated as a "img" bundle. The double-backslashes can
+be placed in between bundles to force the start of a new figure line, otherwise
 all figures are placed at a single line. The entire block is to have a caption
 that is numbered. Subtitles of each image is shown if any.
 
+    .figure
+    \\
+    ```dia{width:50}
+    \image "imgs/frog.png"
+    ```
+    ```dia{width:50}
+    \image "imgs/clock.png"
+    ```
+
 [ The "table" block. ]
-This block implements a table that is not to be split between pages, althrough
-there are provisons to allow for a long table to be split into multiple "table"
-blocks. All contents will be treated as a single bundle and it is assumed
-to be "tab". The entire block is to have a caption that is numbered.
-Subtitles of the table can be shown.
+This block implements a table that can be split between pages.  All contents
+are treated as a single bundle that is always assumed as "tab". The entire
+block is to have a caption that is numbered.  Subtitles of the table can be
+shown.
+
+    .table
+    &label{mytable}
+    ---
+    (i) My note 1.
+    (ii) My note 2.
+    ---
+    \\
+    ```{head}
+    Name \\ Addr.
+    Mandy \\ 801 Sun Dr.
+    Zar \\ 901 Sun Dr.
+    Zor \\ 1001 Sun Dr.
+    ```
 
 [ The "columns" block. ]
-This block places arranges to place all bundles on a single row so that they
-are side-by-side. The content of the bundle is not hardcoded and is determined
-by the signature key of the bundle itself. Each bundle is given equal amount of 
-space when placed side by side. Subtitles are not shown.
+This block arranges to show all bundles side-by-side. The entire width of this
+block is the same as the page and each bundle is given the same fractional
+width which could be small or big depending on the actual number of bundles
+detected. Unlike "figure" and/or "table", this block respects the key provided by
+each bundle.  Subtitles are not shown.
+
+    .columns
+    \\
+    ```par
+    A frog is any member of a diverse and largely 
+    carnivorous group of short-bodied, tailless 
+    amphibians composing the order Anura 
+    (literally without tail in Ancient Greek). 
+    ```
+    ```dia{width:50}
+    \image "frog.img"
+    ```
 
 [ The "equation" block. ]
-This block implements a numbered equation. Each bundle is assumed to be 
-"fml" that represents a single equation. 
-If a single equation is found it is assigned an integer equation number.
-Otherwise the equation number is the integer followed by letter such as 
-1a, 1b, 1c, etc. 
+This block implements a numbered equation. Each bundle is assumed to be "fml"
+that represents a single equation.  If a single equation is found it is
+assigned an integer equation number.  Otherwise the equation number is the
+integer followed by letter such as "a" and "b" to represent a sub-equation 
+number.
+
+    .equation
+    &label{myeq}
+    \\
+    ```
+    a + b = c
+    ```
+    ```
+    a^2 + b^2 = c^c
+    ```
+
 
 [ The "listing" block. ]
-This block treates the content as a single bundle, such that all lines of the
-bundle represents soft code listings. The result is a soft code listing
-with line number indicators placed on the left hand side of each line.         
-The entire block is to have a caption that is numbered.
+This block treates the entire content as a single bundle, such that each line 
+represents a single source code line that is to be numbered when shown.
+Lines can be split into multiple pages.
+
+    .listing
+    &label{mylisting}
+    \\
+    ```    
+    #include<stdio>
+    int main(){
+      return 0;
+    }
+    ```
 
 [ The "page" block. ]
 This block is to insert a manual page break.         
@@ -468,6 +520,15 @@ This block is to insert a manual page break.
 [ The "vspace" block. ]
 This block is to insert a manual vertical space.         
 
+[ The "flushleft" block. ]
+This block watches for the presence of one or more
+bundles and will show each bundle in its own line
+and left aligned.
+
+[ The "center" block. ]
+This block watches for the presence of one or more
+bundles and will show each bundle in its own line
+and center aligned.
 
 
 # Inline Literals
@@ -808,7 +869,7 @@ font ID to work.
 Following are keys that can appear as part of the configurations
 
 - title
-- program
+- tex   
 - peek
 - fonts
 - bodyfontsuit
@@ -819,12 +880,10 @@ Following are keys that can appear as part of the configurations
 - name
 - chapnum
 
-[ program. ]
-The "program" key is to hold a string that is to be interpreted
-as the program to run to compile the translated document. It is currently
-utilized to provide variations of the same LATEX translation. For instance,
-it can be set to 'pdflatex', 'xelatex', and 'lualatex' such that the translated
-TEX document should be tailored to this variable.
+[ tex. ]
+The "tex" key is to hold a string that identifies which specific TEX
+program used for the "peek" type. Valid entries are: "pdflatex", "xelatex",
+"lualatex" and "context".
 
 [ fonts. ]
 For CJK/Unicode fonts.
@@ -883,39 +942,36 @@ these storage buffers can later on by referenced and its contents retrieved.
 
 [ Import. ]
 
-    %^import [part]"Introduction"
-    %^import [chapter](./chap1.md)
-    %^import [chapter](./chap2.md)
-    %^import [chapter](./chap3.md)
-    %^import [part]"Introduction"
-    %^import [chapter](./chap4.md)
-    %^import [chapter](./chap5.md)
-    %^import [chapter](./chap6.md)
+    @import [part]"Introduction"
+    @import [chapter](./chap1.md)
+    @import [chapter](./chap2.md)
+    @import [chapter](./chap3.md)
+    @import [part]"Introduction"
+    @import [chapter](./chap4.md)
+    @import [chapter](./chap5.md)
+    @import [chapter](./chap6.md)
 
 [ Ruby annotation. ]
 
-    %!異臭・いしゅう
-    %!匂い・におい
-    %!危ない・あぶない
-    %!蓋/ふた
-    %!埃/ほこり
-    %!覆われた・おおわれた
-    %!汚れた・よごれた
-    %!真っ黒/まっくろ
+    !異臭・いしゅう
+    !匂い・におい
+    !危ない・あぶない
+    !蓋/ふた
+    !埃/ほこり
+    !覆われた・おおわれた
+    !汚れた・よごれた
+    !真っ黒/まっくろ
 
 [ Default style. ]
 
-    %~samp{fontsize:small}
-    %~ink{frame,viewport:20 20,width:40}
-    %~dia{frame,viewport:20 20,width:40}
+    ~verbatim{fontsize:small}
+    ~img{frame,viewport:20 20,width:40}
 
-[ Named storage. ]
-Name storages pairs contents (lines) with a name. The contents
-are stored internally  and associated with the given name. 
-The contents can later on be inserted into a DIA bundle, and/or
-retrieved by a "dia" phrase.
+[ Named bundle storages. ]
+Name bundle storages provide storage for individual bundles such that      
+they can be recalled through their "restore" attribute.
 
-    %=spider{viewport:10 10,fontsize:10}
+    ```img{id:spider,viewport:10 10,fontsize:10}
     \drawpath {fillcolor:white} &ellipse{(0,1.4),0.65,1.0}
     \drawpath {fillcolor:white} &ellipse{(0,0.3),0.4,0.3}
     \fillpath {fillcolor:black} &circle{(-0.2,0.25),0.1}
@@ -928,8 +984,12 @@ retrieved by a "dia" phrase.
     \drawpath (-0.3,0.45) <clock:-55,1> <clock:-35,0.4> &circle{(*),0.1}
     \drawpath (-0.3,0.45) <clock:-75,1> <clock:-35,0.4> &circle{(*),0.1}
     \drawpath (-0.3,0.45) <clock:-95,1> <clock:-35,0.4> &circle{(*),0.1}
-    %
-    %=ant{viewport:10 10,fontsize:10}
+    ```
+
+Both keys and styles can be omitted. However, If an ID attribute is not found
+then this bundle is not stashed.
+
+    ```{id:ant}
     \drawpath (-0.8,1)   <clock:-150,0.7> &circle{(*),0.1}
     \drawpath (-0.6,0.8) <clock:-160,0.7> &circle{(*),0.1}
     \drawpath (-0.3,1)   <clock:-170,0.7> &circle{(*),0.1}
@@ -943,125 +1003,6 @@ retrieved by a "dia" phrase.
     \fillpath {fillcolor:black} &circle{(-1.3,1.4),0.1}
     \drawpath (-1,1.7) <q:0.5,0.5,-0.3,0.8>
     \drawpath (-1.2,1.7) <q:0.5,0.5,-0.4,0.8>
-    %
-
-
-# Composite blocks
-
-- "equation"
-- "figure"
-- "table"
-- "listing"
-- "columns"  
-- "page"
-- "vspace"
-
-The "page" composite block is intended to provide a way for a translation
-backend to insert a page brreak. It should always to appear by itself. 
-
-    .page
-
-The "figure" directive is intended to provide a way for a translation
-backend to insert a figure.
-
-    .figure
-    \\
-    ```dia{width:50}
-    \image "imgs/frog.png"
-    ```
-    ```dia{width:50}
-    \image "imgs/clock.png"
-    ```
-
-The "multicols" composite block is for constructing a multi-column paragraph.
-
-    .multicols
-    \\
-    ```par{width:50}
-    A frog is any member of a diverse and largely 
-    carnivorous group of short-bodied, tailless 
-    amphibians composing the order Anura 
-    (literally without tail in Ancient Greek). 
-    ```
-    ```dia{width:50}
-    \image "frog.img"
-    ```
-
-The "equation" composite block is intended to provide a way for a translation
-backend to insert an equation section which may include one or more equations
-each with a unique equation number.
-
-    .equation
-    &label{a b}
-    \\
-    ```
-    a + b = c
-    ```
-    ```
-    a^2 + b^2 = c^c
-    ```
-
-The "vspace" composite block is for inserting vertical spaces. By default
-it inserts a vertical space equivalent to 1em. However, the "vspace" style
-option can be specified which holds a number expressing multiple "em".
-Following example inserts a vertical space equal to "10em".
-
-    .vspace{vspace:10}
-
-The "figure" block is to create a figure with one or more subfigures.
-
-    .figure
-    &label{myfigure}
-    These are the pictures of golden ratio.
-    \\
-    ```dia
-    \image "goldenratio1.png"
-    ```
-    ```dia
-    \image "goldenratio1.png"
-    ```
-
-The "table" block is to create a numbered table.
-
-    .figure
-    &label{mytable}
-    \\
-    ```tab
-    Name \\ Addr.
-    James \\ 301 Day Drive.
-    John \\ 401 Evening Way. 
-    ```
-
-Only a single bundle is supported, and it will always be treated as a "tab"
-bundle.  In addition, any subcaptions detected inside the caption will become
-the footnote of the table.
-
-    .table
-    &label{mytable}
-    ---
-    (i) My note 1.
-    (ii) My note 2.
-    ---
-    \\
-    ```{head}
-    Name \\ Addr.
-    Mandy \\ 801 Sun Dr.
-    Zar \\ 901 Sun Dr.
-    Zor \\ 1001 Sun Dr.
-    ```
-
-The "listing" block is to create a listing block.
-Only the first bundle is utilized and it is always
-treated as a VTM block regardless.
-
-    .listing
-    &label{mylisting}
-    \\
-    ```vtm
-    #include<stdio>
-    int main(){
-      return 0;
-    }
     ```
 
 

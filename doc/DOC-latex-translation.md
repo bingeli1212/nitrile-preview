@@ -671,13 +671,12 @@ for the title page.
   does not work for LuaLaTeX; use the -\kern0pt- method instead.
 - begin/end/verbatim or begin/end/Verbatim cannot be used inside "beamer"
   without making the slide "fragile"
-- begin/end/lstlisting cannot be used inside "beamer"
+- begin/end/lstlisting cannot be used inside a "beamer" document
   without making the slide "fragile"
 - For PDFLATEX translation the \begin{CJK} command cannot appear as part
   of the document title \title{...}, for LUALATEX this is okay.
-- When style.stretch is present the "tabularx" environment is used, which
-  is provided by "memoir" class directly, and must be included as a separate
-  package if "slide" is the "peek" type. It also requires that "pdflatex" to
-  run twice in order to get the effect.
+- When style.stretch is present the "tabularx" environment is used. 
+  This env is supplied by "memoir" document class, and must include 
+  an external package name "tabularx" otherwise.              
 
 
