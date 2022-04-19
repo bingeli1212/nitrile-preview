@@ -1,6 +1,7 @@
 ---
 title: CJK
-latex: lualatex
+peek: slide
+tex: uplatex
 fonts: cn{contex:arplsungtilgb,xelatex:STSong,lualatex:arplsungtilgb}
        tw{contex:arplmingti2lbig5,xelatex:Songti TC,lualatex:arplmingti2lbig5}
        jp{contex:ipaexmincho,xelatex:Hiragino Mincho ProN,lualatex:ipaexmincho}
@@ -43,12 +44,6 @@ Hello world, 冰岛由于实行高福利政策， 所以很多人并没有存钱
 Hello world, 冰島由於實行高福利政策，所以很多人並沒有存錢防老的習慣。
 ```
 
-
-
-# Sample
-
-    In Japan a mother usually prepares Bento for 
-    family members.
 
 # Japanese
 
