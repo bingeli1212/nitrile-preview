@@ -656,6 +656,17 @@ for the title page.
     \end{document}
 
 
+# Use microtype package
+
+I just say 
+
+    \usepackage[kerning,spacing]{microtype} 
+
+which enables glyph scaling and margin kerning. You can browse the other
+options, but this is basically all you need. – 
+
+
+
 # Known Problems in latex.js translation
 
 - The \underline command leaves too much vertical space between 
