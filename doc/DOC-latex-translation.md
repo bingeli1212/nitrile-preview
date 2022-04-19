@@ -689,5 +689,13 @@ options, but this is basically all you need. –
 - When style.stretch is present the "tabularx" environment is used. 
   This env is supplied by "memoir" document class, and must include 
   an external package name "tabularx" otherwise.              
-
-
+- The "columns" toplevel block is implemented using begin/end/multicols
+  env; using "minipage" seems to have problem if the left hand side
+  is a "par" bundle and the right hand side is a "img" bundle where the
+  text is placed lower than expected. Due to the limitation of this env,
+  where setting "1" as the number of columns is to cause an warning,
+  the number is set to "2" if it is "1" or less.
+- For "tab" bundle, it only generates "tabularx", and the "threeparttable"
+  is set only inside a "table" float. This arrangement is to avoid having
+  "threeparttable" inside a "columns" float.
+  
