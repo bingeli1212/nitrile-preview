@@ -667,6 +667,23 @@ options, but this is basically all you need. –
 
 
 
+# Overlaying two graphics
+
+This section describes how to overlay two graphics. Note that there is no guarantee 
+that the top graphic is transparent; it may have been created with an opaque
+background that hides the bottom graphic.
+For example18, the files left.eps and right.eps contain the graphics shown in
+
+    \makebox[0pt][l]{\includegraphics{left.eps}}%
+    \includegraphics{right.eps}
+
+Another method for overlaying graphics is the overpic package, which defines a 
+picture environment which is the size of the included graphic. See the overpic package
+documentation for details.
+
+
+
+
 # Known Problems in latex.js translation
 
 - The \underline command leaves too much vertical space between 
