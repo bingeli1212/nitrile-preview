@@ -119,4 +119,40 @@ Following is how to compile a TEX file.
 
 
 
+# Change fonts for Korean language
+
+Pxbabel does nothing about "physical" font settings. So, you have to 
+tell dvipdfmx which font you are going to use by modifying the
+"fontmap" file that comes with TexLive. For TexLive2021 this file
+is
+
+    /usr/local/texlive/2021/texmf-var/fonts/map/dvipdfmx/updmap/kanjix.map
+
+The easiest way to do that may be:
+
+    \documentclass[a4paper,uplatex]{jsarticle}
+    \usepackage[english]{babel}
+    \usepackage[main=japanese]{pxbabel}
+    \AtBeginDvi{\special{pdf:mapline uphysmjm-h UniKS-UTF16-H UnBatang.ttf}}
+    \AtBeginDvi{\special{pdf:mapline uphysmjm-v UniKS-UTF16-V UnBatang.ttf}}
+    \AtBeginDvi{\special{pdf:mapline uphygt-h UniKS-UTF16-H UnDotum.ttf}}
+    \AtBeginDvi{\special{pdf:mapline uphygt-v UniKS-UTF16-V UnDotum.ttf}}
+    \begin{document}
+    \foreignlanguage{korean}{내가득합니다}%
+    \foreignlanguage{korean}{\textgt{내가득합니다}}
+    \end{document}
+
+Of course, first you have to install these fonts (.ttf) into your $TEXMFLOCAL 
+(e.g. /usr/local/texlive/texmf-local/fonts/truetype/unfonts), and run sudo mktexlsr.
+
+
+
+# Known issues
+
+- TexLive2021 installation for OSX has a font problem such that \language[schinese] and \language[tchinese] and
+  \language[korean] does not present the correct font for the text and thus none of the above texts
+  are shown correctly. TexLive2022 seems to have fixed the problem. On the other hand, TexLive2021 for WIN
+  does not exhibit this problem.
+
+  
 
