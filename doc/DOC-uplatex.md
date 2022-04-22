@@ -1,8 +1,39 @@
 ---
-title: The "dvipdfmx" program
+title: The "uplatex" translation
 ---
 
-# Configuration files
+
+# The "uplatex" translation
+
+The "uplatex" translation is done by setting the "tex" front matter key to "uplatex".
+The generated TEX file is to be compiled by running the "uplatex" program. The output
+of this program is a DVI file. This file can be converted to a PDF file by running
+the "dvipdfmx" program.
+
+    $ uplatex mytex
+    $ dvipdfmx mytex
+
+# The "ptex/uptex" engine
+
+The "ptex" engine is designed and developed by people in Japan to process input
+files with 2-byte Japanese language encoding. The "uptex" is an upgrade of this 
+same engine but that is designed to read UTF-8 encoded input.
+
+
+# The "pxbabel" package
+
+The generated TEX file contains a \usepackage command that includes the "pxbabel" package.
+This package is designed to be used with "uplatex" program. It serves the purpose
+of provide a way to designate part of the text as with a different East Asian language, namely:
+japanese, schinese, tchinese, and korean. 
+
+    \usepackage[japanese,schinese,tchinese,korean,english]{pxbabel}
+    \begin{document}
+    \foreignlanguage{japanese}{日本語}
+    \end{document}
+
+
+# DVIPDFMx Configuration files
 
 DVIPDFMx no longer use dvipdfm as its application name. It means that DVIPDFMx
 finds its configuration file at $TEXMF/dvipdfmx/dvipdfmx.cfg. Moreover, fontmap
