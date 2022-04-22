@@ -133,7 +133,6 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/lib/nitrile-preview-nimake.js",
       "args": [
-        "a.pdf"
       ]
     },
     {
