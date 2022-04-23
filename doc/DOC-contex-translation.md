@@ -4291,7 +4291,39 @@ is to be vertically centered. The page number is not to appear
 inside even though page number would for a normal page.
 
 
+# The math alignment
 
+The \eqalign seems to be not working. Use \startmathalignment instead.
+
+    \placeformula
+    \startformula
+        \startmathalignment
+            \NC a + 1 \EQ b + 2 \NR
+            \intertext{\midaligned{and}}
+            \NC b \EQ c \NR
+        \stopmathalignment
+    \stopformula
+
+
+# Use sub-formula number
+
+Examples:
+
+    \startsubformulas[eq:1]
+    \placeformula[eq:first]
+    \startformula
+      c^2 = a^2 + b^2
+    \stopformula
+    \placeformula[eq:second]
+    \startformula
+    c^2 = a^2 + b^2
+    \stopformula
+    \stopsubformulas
+
+    Formula (\in[eq:1]) states 
+    the Pythagora's Theorem twice,
+    once in (\in[eq:first]) and 
+    again in (\in[eq:second]).
 
 
 # Known problems
