@@ -4326,6 +4326,18 @@ Examples:
     again in (\in[eq:second]).
 
 
+
+# Landscape Floats in a Portrait Document
+
+Wide tables, for example, can be turned and most likely will need to be put on a separate page.
+
+    \startplacetable [location={page,90},title=Table caption]
+      \bTABLE [textwidth=\textheight]
+        put a wide table here...
+      \eTABLE
+    \stopplacetable
+
+
 # Known problems
 
 - \ruby does not work in recent releases
