@@ -48,14 +48,13 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch nitex --context",
+      "name": "Launch nicamper",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/lib/nitrile-preview-nitex.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nicamper.js",
       "args": [
-        "--context",
         "test.md"
       ]
     },
