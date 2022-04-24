@@ -251,6 +251,7 @@ Following are all the toplevel blocks recognized by NITRILE.
 - "primary"
 - "secondary"
 - "lines"
+- "tabbing"
 - "body"
 - "figure"
 - "table"
@@ -389,14 +390,12 @@ The output is so that all lines are center aligned.
     $ Good morning!       
     $ Good evening!       
 
-[ The "tabular" block. ] This block is recognized by the presence of ampersand
+[ The "tabbing" block. ] This block is recognized by the presence of ampersand
 and a follow-on space at the start of the first line. Each additional line will
 be assumed to have started at this pattern, the first two characters of each
 line will be removed before starting the scan for the rest of the characters
-of the line. The line is assumed to contain tabular data that expresses a single
-tabular row, where each cell is separated from the neighboring cells by three
-or more spaces. The total number of cells per tabular row is determined
-by the presence of cells at the last line.
+of the line. Each line is assumed to contain tabulated data that are separated
+by triple-or-more-spaces．
 
     & Df   0.10     0.05    0.025   0.01      0.001
     & 1    2.706    3.841   5.024   6.635    10.828
@@ -404,6 +403,21 @@ by the presence of cells at the last line.
     & 3    6.251    7.815   9.348   11.345   16.266
     & 4    7.780    9.490   -       -        -
     & 5    9.240   11.070   -       -        -
+
+The position of each tabbing stop is by default to assume to be 10ex with a padding
+of approximately 1ex before and after. However, this can be changed by setting
+the first line such that it consists of only equal signs, separated by three-or-more-spaces.
+Each equal sign is to expressing a width of 1ex.
+
+    & =====     ======     =======      ======     ======     ========
+    & Df        0.10         0.05        0.025      0.01        0.001
+    & 1         2.706        3.841       5.024      6.635      10.828
+    & 2         4.605        5.991       7.378      9.210      13.816
+    & 3         6.251        7.815       9.348      11.345     16.266
+    & 4         7.780        9.490       -          -          -
+    & 5         9.240       11.070       -          -          -
+
+
 
 [ The "body" block. ]
 This block represents a normal paragraph.  For some translations the first line
