@@ -1108,10 +1108,12 @@ relative to its current settings.
 - ^box:1
 - ^car:1
 - ^chart:1
+- ^*:a
 
 The "^x", "^y" directive would each set the x or y direction directly. 
 The lowercase x/y would start from the origin. 
 
+The '^center' directive moves the offset point to the center of the viewport.
 The '^side' sets the x of the current origin to a value that equals to the viewport width.
 The '^top' sets the y of the current origin to a value that equals to the viewport height.
 
@@ -1124,16 +1126,16 @@ and negative numbers are for moving down.
 
 The '^pt:a' directive is to save the current offset to a path named 'a'.
 The '^at:a' directive is to set the current offset so that it coincides with the first
-point of a path named "a". The value after the colon is expected to be the name
-of an existing path, such as 'a', or 'a[1]' for expressing the second point of
-path 'a'. 
-
-The '^center' directive moves the offset point to the center of the viewport.
+point of a path named "a". 
 
 The '^node:1', '^box:1', '^car:1', and '^chart:1' are each used to setup the offset so that
 it aligns with the location of a node, a box, a Cartesian plane, or a chart. For the
 node and box, only the x/y locations are altered. However, for a Cartesian
 plane, both the x/y locations and x/y scalings are alterd.
+
+The '^*:a' directive is to save the current point to path 'a'. Note that the current point is the 
+coordinates expressing the last absolute or relative point encountered on the path expression.
+These coordinates are those that are not yet being applied the offset.
 
 
 
