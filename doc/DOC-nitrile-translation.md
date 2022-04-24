@@ -110,12 +110,25 @@ events.
 This bundle is to typeset a tabular. 
 
     ```tab{head}
-    Name \\ Addr.
-    John \\ 301 Sun Dr.
-    James \\ 401 Sun Dr.
-    Jane \\ 501 Sun Dr.
-    Mary \\ 601 Sun Dr.
-    Martin \\ 701 Sun Dr.
+    & Name \\ Addr.
+    & John \\ 301 Sun Dr.
+    & James \\ 401 Sun Dr.
+    & Jane \\ 501 Sun Dr.
+    & Mary \\ 601 Sun Dr.
+    & Martin \\ 701 Sun Dr.
+    ```
+
+If the double-backslash is to appear in the line, it is used 
+as the tabular data separator. Otherwise, data are to be
+recognized by the presence of triple-or-more-spaces.
+
+    ```tab{head}
+    & Name      Addr.
+    & John      301 Sun Dr.
+    & James     401 Sun Dr.
+    & Jane      501 Sun Dr.
+    & Mary      601 Sun Dr.
+    & Martin    701 Sun Dr.
     ```
     
 The "head" attribute above expresses that the first row is header,
@@ -129,12 +142,12 @@ attribute. The "hew" attribute is designed to split a long table into two or mor
 parallel sections so that the table will become shorter and fatter.
 
     ```tab{head,hew:2}
-    Name \\ Addr.
-    John \\ 301 Sun Dr.
-    James \\ 401 Sun Dr.
-    Jane \\ 501 Sun Dr.
-    Mary \\ 601 Sun Dr.
-    Martin \\ 701 Sun Dr.
+    & Name \\ Addr.
+    & John \\ 301 Sun Dr.
+    & James \\ 401 Sun Dr.
+    & Jane \\ 501 Sun Dr.
+    & Mary \\ 601 Sun Dr.
+    & Martin \\ 701 Sun Dr.
     ```
 
 In the previous example the first three lines will be placed at the left-hand
@@ -156,7 +169,7 @@ given the fact that the "head" attribute is set, or the vertical rules between
 the first column and the second column is to appear if the "side" attribute is
 set, or both if both attributes are set.
 
-The "textalign" is to be expected a list of alignment options, such as "l r l",
+The "template" is to be expected a list of alignment options, such as "l r l",
 which states that the first/third column is to be aligned left, and second
 column aligned right. The "p25", "p30", etc, can also be one of the options
 which states that a column is to have a paragraph with lines wrapped around.
@@ -183,56 +196,25 @@ the rule between the second/third column/row. Thus, "vrules:2 4" is to insert a
 vertical rule between second/third columns, and another one between the
 fourth/fifth columns.
 
-The "direction" attribute influences how the input contents are to be
-interpreted.  By default input contents are interpreted such a way that each
-line contains the entire row of the tabular, 
-and tabular data are to be found at the beginning, end, or between two double-backslash.
-However, if "direction:row" is set, then the input contents are to be expected
-to be arranged in such a way that, a double-backslash by itself starts a new row,
-and each table data is to be started in its own line starting by a ampersand.
-Following is an example that replicated the same table as the one before.
+It is possible to add additional tabular data to the last row by simply
+not starting the line with '& '.
 
-    ```tab{direction:row,head}
-    \\
+    ```tab{head}
     & Name 
-    & Addr.
-    \\
+      Addr.
     & John 
-    & 301 Sun Dr.
-    \\
+      301 Sun Dr.
     & James 
-    & 401 Sun Dr.
-    \\
+      401 Sun Dr.
     & Jane 
-    & 501 Sun Dr.
-    \\
+      501 Sun Dr.
     & Mary 
-    & 601 Sun Dr.
-    \\
+      601 Sun Dr.
     & Martin 
-    & 701 Sun Dr.
+      701 Sun Dr.
     ```
 
-If "direction:column" is set, then the table is to be built in similar way as
-that of "direction:row", except for the fact that instead of filling out rows
-one-by-one, it is to fill out columns one-by-one.
 
-    ```tab{direction:column,head}
-    \\
-    & Name 
-    & John 
-    & James 
-    & Jane 
-    & Mary 
-    & Martin 
-    \\
-    & Addr.
-    & 301 Sun Dr.
-    & 401 Sun Dr.
-    & 501 Sun Dr.
-    & 601 Sun Dr.
-    & 701 Sun Dr.
-    ```
 
 [ The "par" bundle. ]
 This bundle is designed to typeset a text box.   
