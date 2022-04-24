@@ -6,14 +6,12 @@ title: Styles
 
 Following are styles recognized by NITRILE:
 
-+ textalign:p10 c c c c
-+ textalign:l l c r r
-+ textalign:p10cccc
-+ textalign:llcrr
++ textalign:l
++ textalign:c
++ textalign:r
 
-  The "align" is designed to express alignment options for table columns,
-  which is a list of letter l/r/c, or a string such as "p(1cm)" for paragraph
-  with a fixed width.
+  The "textalign" is designed to express alignment options for certain 
+  bundles such as 'par'.
 
 + frame:1
 
@@ -541,11 +539,10 @@ Following are styles recognized by NITRILE:
 
   This option specifies the height in units of 'mm'.
 
-+ direction:row    
-+ direction:column
++ template:        
 
-  This flag is currently used by 'tabular' bundle to allow user to build
-  the table either row-by-row or column-by-column.
+  The 'template' attribute is used to set the templated column 
+  for 'tab' bundle.                                        .
 
 + hrules:1 2 3
 
@@ -585,12 +582,11 @@ Following are styles recognized by NITRILE:
   If it is set to 'grid' then a grid equivalent to one used by dia-bundle
   is to be placed underneath the image.
   
-+ wrapfig:left
-+ wrapfig:right
++ align:left
++ align:right
 
-  It is currently used by FIGURE to decide
-  if this is a "wrapfig" that is pushed to the "left" or "right".
-
+  It is currently used by 'wrapfig' and/or 'wraptab' flaot to decide
+  which side it is to push the figure or table to the "left" or "right".
 
 
 
