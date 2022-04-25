@@ -588,5 +588,10 @@ Following are styles recognized by NITRILE:
   It is currently used by 'wrapfig' and/or 'wraptab' flaot to decide
   which side it is to push the figure or table to the "left" or "right".
 
++ format:%s%.2f
 
+  It is currently used by "tab" bundle for formatting each column except
+  for the "head" row.
+
+  
 
