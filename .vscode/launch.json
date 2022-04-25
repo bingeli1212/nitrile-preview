@@ -61,6 +61,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch nilamper",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nilamper.js",
+      "args": [
+        "test.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch pango",
       "skipFiles": [
         "<node_internals>/**"
