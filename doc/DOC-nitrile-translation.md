@@ -234,13 +234,47 @@ not starting the line with '& '.
       701 Sun Dr.
     ```
 
-It is possible for a cell to have its content come from its neighboring cells of the same
-row. To do that set the entire cell to be `${...}`. The `...` part denotes an arithmetic 
-expression such as "1+2". The result is always a number, which can then be formatted to 
-the designed format by the "format" options. In particular, the variable "A", "B", and "C"
-are used to express the neighboring cells of the same row at column number 1, 2, and 3.
-Currently, only the first 26 columns are supported, expressing by letter A-Z. 
+The ": " lines are designed to build tabulation column-by-column. 
+In particular, each ": " line starts a new column,
+and each "  " line following the ": " adds an additional row at the end of that column. Note that the total
+number of columns to be inserted cannot exceed that specified by "template". In addition, new rows
+are only inserted when building up the first column; each additional column 
+only serves to fill out the blanks left inside each row created by the first column.
 
+    ```tab{head}
+    & Name \\ Addr.
+    : James
+      Jane
+      Mary
+      Martin
+    : 401 Sun Dr.
+      501 Sun Dr.
+      601 Sun Dr.
+      701 Sun Dr.
+    ```
+
+It is possible for a cell to have its content come from its neighboring cells of the same
+row. To do that set the entire cell `${...}`, where the `...` part denotes an arithmetic 
+expression such as "1+2". The result is always a number, which can then be formatted 
+by one of the "format" option groups. In particular, variables "A", "B", and "C" encountered
+inside the expression denotes the content of the neighboring cells of the same row. 
+For instance, variable "A" denotes the content of the first column of that row, and "B"
+the second column, etc.
+Only letter A-Z are supported
+The example creates a tabulate of two columns where the second column holds the square root
+of the first column.
+
+    ```tab{head}
+    & Number \\ Square Root
+    : 1
+      2
+      3
+      4
+    : ${sqrt(A)}
+      ${sqrt(A)}
+      ${sqrt(A)}
+      ${sqrt(A)}
+    ```
 
 
 [ The "par" bundle. ]
