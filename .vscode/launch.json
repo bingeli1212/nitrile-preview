@@ -35,6 +35,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch nislide",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nislide.js",
+      "args": [
+        "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch nibeamer",
       "skipFiles": [
         "<node_internals>/**"
