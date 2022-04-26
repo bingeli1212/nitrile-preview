@@ -169,11 +169,26 @@ given the fact that the "head" attribute is set, or the vertical rules between
 the first column and the second column is to appear if the "side" attribute is
 set, or both if both attributes are set.
 
-The "template" is to be expected a list of alignment options, such as "l r l",
-which states that the first/third column is to be aligned left, and second
-column aligned right. The "p25", "p30", etc, can also be one of the options
-which states that a column is to have a paragraph with lines wrapped around.
-The number after the letter "p" expresses the width of the column in mm.
+The "template" is to be expected a list of alignment options, such as "l r c",
+which states that the first/third column is to be left, right, center aligned.
+It can also be followed a number that expreses the relative width of this column,
+such as "l25", "r30", etc.
+
+Note that the "tab" bundle is designed such that it's width is a fraction
+of the entire page. It is not possible to set it to an absolute width
+such as 100mm like that of an "img" bundle. All numbers presented in a template
+are used to express the relative width of this column with respect to the entire
+tabulation. If a column is not presented with
+a number such as the case of "pp20", the first column is assumed
+to be a width of "10", in which case the first column is going to be
+half the width of the second.
+
+It is possible to set the entire tabulation to a width less than 
+that of the page width by setting the "stretch" option. This is
+a floating point number between 0 and 1.
+By default it is assumed to be 1. However, it can be set to
+a number less than 1 to express a fraction of the page width, such as "0.5" for
+half the page width. Setting it to 0 could cause an undesirable effect.
 
 The "fontsize" is to be set to a string expressing the size of the font.
 Currently only the value "small" is accepted, and all other value will be
@@ -185,6 +200,11 @@ for the corresponding column. For instance, "fontstyle:t t r" is to set it so
 that the first two columns are to be set in the style of monospaced text, and
 last one the roman(default) text. The letters are: t(monospaced), i(italic),
 b(bold), s(slanted), and r(default) fonts.
+
+The "format" is to be expected a list of formatting group specifications. 
+For instance, "%s%.3f" is to express that the first column is to be maintained
+as is, and the second one formatted to be a floating point number with
+3 decimal places.
 
 The "vrules" and "hrules" attributes are designed to manually insert
 vertical/horizontal rules between rows and columns. Note these two attribuets
@@ -213,6 +233,13 @@ not starting the line with '& '.
     & Martin 
       701 Sun Dr.
     ```
+
+It is possible for a cell to have its content come from its neighboring cells of the same
+row. To do that set the entire cell to be `${...}`. The `...` part denotes an arithmetic 
+expression such as "1+2". The result is always a number, which can then be formatted to 
+the designed format by the "format" options. In particular, the variable "A", "B", and "C"
+are used to express the neighboring cells of the same row at column number 1, 2, and 3.
+Currently, only the first 26 columns are supported, expressing by letter A-Z. 
 
 
 

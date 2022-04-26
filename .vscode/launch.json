@@ -16,7 +16,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program":  "${workspaceFolder}/lib/nitrile-preview-nipeek.js",
       "args": [
-        "test.md"
+        "a.md"
       ]
     },
     {
@@ -29,20 +29,33 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/lib/nitrile-preview-nifolio.js",
       "args": [
-        "test.md"
+        "a.md"
       ]
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch nitex",
+      "name": "Launch nibeamer",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/lib/nitrile-preview-nitex.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nibeamer.js",
       "args": [
-        "test.md"
+        "a.md"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch nicreamer",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nicreamer.js",
+      "args": [
+        "a.md"
       ]
     },
     {
@@ -55,7 +68,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/lib/nitrile-preview-nicamper.js",
       "args": [
-        "test.md"
+        "a.md"
       ]
     },
     {
@@ -68,7 +81,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/lib/nitrile-preview-nilamper.js",
       "args": [
-        "test.md"
+        "a.md"
       ]
     },
     {
