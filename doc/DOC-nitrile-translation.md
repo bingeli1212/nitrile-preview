@@ -3,7 +3,7 @@ title: NITRILE Translation
 ---
 
 
-# Numbered section headings
+# Heading sectionsss
 
 The number headings are detected by the presence of hash-marks 
 at the first of the line of a paragraph.
@@ -16,27 +16,6 @@ Only the previous three different kind of sections are supported.
 When being translated, each of them corresponds to a section, subsection,
 or subsubsection.
 
-
-# Un-numbered section headings
-
-Un-numbered section headings are recognized by the presence of a pair of
-matching square brackets at the beginning of a paragraph. The paragraph
-text itself will be the normal text that follows the heading which 
-is typically shown as boldface typeface font. 
-
-    [ Regex. ]
-    The `Regex` class is for expressing a regular expression.
-
-    [ Math. ]
-    The `Math` class is for grouping a collection of 
-    math functions and constants.
-
-A single pair of square brackets is to set up the "primary" type,
-and the double-pair of square brackets is to set up the "secondary" 
-type. 
-
-The "primary" block type is to model after the LATEX `\paragraph` command,
-and the "second" block type is to model after the LATEX `\subparagraph` command.
 
 # Bundles
 
@@ -299,9 +278,74 @@ attributes. In either case, the whitespaces and line breaks are preserved.
 
 
 
-# toplevel blocks     
+# Save/Restore 
 
-Following are all the toplevel blocks recognized by NITRILE.
+The two options of the bundle known as save/restore are recognized by NITRILE
+to be special. They are to express the fact that the content of the bundle is to be
+saved to an external buffer and/or restored from it. In particular, the "save" 
+option expresses the fact that the content of the bundle is to be saved to 
+a buffer, and the "restore" implies that part of the content is to come from
+a previous saved buffer.
+
+    ```img{save,viewport:12 7}
+    \draw (0,0)--(10,10)
+    ```
+    ```img{restore,viewport:14,8}
+    ```
+
+In the previous example the first bundle is to express the fact that the content
+is to be saved to an annonymous buffer, and the second one restored from that anonymous buffer,
+such that the second "img" bundle is to have the same "\draw" command as that of the first "img".
+
+Note that typically all bundles are to be processed in the order in which it appears in the 
+source MD file, and thus it is guarenteed that the later buffer will be given the opportunity
+to load from a buffer that has already been saved by a bundle that is processed before it if
+it were to save it. 
+
+Typically the bundle is saved anonymously, and by the time it is restored 
+the same anonymous buffer is accessed. However, the anonymous buffer can become a named buffer
+if the "id" option were to be present with the bundle. In this case the buffer is no longer anonymous,
+but rather named. The name assigned to the buffer is that of the "id" option.  In order to 
+restore from this buffer, the other bundle is also to have provided the same ID.
+In the following example there are two named buffers, and each one is then accessed by one of the
+follow-on two buffers.
+
+    ```img{save,viewport:12 7,id:a}
+    \draw (0,0)--(10,10)
+    ```
+    ```img{save,viewport:12 7,id:b}
+    \draw (0,0)--(20,20)
+    ```
+    ```img{restore,viewport:14,8,id:a}
+    ```
+    ```img{restore,viewport:14,8,id:b}
+    ```
+
+
+# Copy/Paste
+
+For "img" buffer it is also possible to paste from multiple named buffers at different location.
+The paste point is recognized as "%?a" which asks to paste the content from buffer "a" and insert 
+it into that location. In the following the third image would have getton the two "\draw" commands
+from each one of the previous two named buffers.
+
+    ```img{save,viewport:12 7,id:a}
+    \draw (0,0)--(10,10)
+    ```
+    ```img{save,viewport:12 7,id:b}
+    \draw (0,0)--(20,20)
+    ```
+    ```img
+    %?a
+    %?b
+    ```
+
+
+
+
+# Blocks     
+
+Following are all blocks recognized by NITRILE.
 
 - "flushleft"
 - "center"
@@ -387,6 +431,9 @@ The output is so that all lines are left aligned with a visible left margin.
     > Good morning!       
     > Good evening!       
 
+It is also recognized when the first line is recognized to have started with 
+two spaces.
+
 [ The "verbatim" block. ]
 This block is recognized when the first line is to start with four spaces.  The
 output of this block is always a text with monospace typeface font and
@@ -452,32 +499,22 @@ The output is so that all lines are center aligned.
     $ Good evening!       
 
 [ The "tabbing" block. ] This block is recognized by the presence of ampersand
-and a follow-on space at the start of the first line. Each additional line will
-be assumed to have started at this pattern, the first two characters of each
-line will be removed before starting the scan for the rest of the characters
-of the line. Each line is assumed to contain tabulated data that are separated
-by triple-or-more-spaces．
+followinged by a single space.
+The rest of the line is assumed to contain characters for setting tab stop positions.
+In particular, a cluster of non-space characters expressing the distance to move
+to the next tab stop, and each characters is assume to express a distance of 1ex.
 
-    & Df   0.10     0.05    0.025   0.01      0.001
-    & 1    2.706    3.841   5.024   6.635    10.828
-    & 2    4.605    5.991   7.378   9.210    13.816
-    & 3    6.251    7.815   9.348   11.345   16.266
-    & 4    7.780    9.490   -       -        -
-    & 5    9.240   11.070   -       -        -
-
-The position of each tabbing stop is by default to assume to be 10ex with a padding
-of approximately 1ex before and after. However, this can be changed by setting
-the first line such that it consists of only equal signs, separated by three-or-more-spaces.
-Each equal sign is to expressing a width of 1ex.
-
-    & =====     ======     =======      ======     ======     ========
-    & Df        0.10         0.05        0.025      0.01        0.001
+    & =====    ======      =======      ======    =======    ======== 
+    & Df        0.100        0.050       0.025      0.010       0.001
     & 1         2.706        3.841       5.024      6.635      10.828
     & 2         4.605        5.991       7.378      9.210      13.816
-    & 3         6.251        7.815       9.348      11.345     16.266
-    & 4         7.780        9.490       -          -          -
-    & 5         9.240       11.070       -          -          -
+    & 3         6.251        7.815       9.348     11.345      16.266
+    & 4         7.780        9.490                              
+    & 5         9.240       11.070                              
 
+The lines following the first line are scanned in such a way that the start position
+of each tabbed text is the same as the starting position of the corresponding
+cluster of the first line.                           
 
 
 [ The "body" block. ]
