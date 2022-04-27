@@ -232,29 +232,6 @@ only serves to fill out the blanks left inside each row created by the first col
       701 Sun Dr.
     ```
 
-It is possible for a cell to have its content come from its neighboring cells of the same
-row. To do that set the entire cell `${...}`, where the `...` part denotes an arithmetic 
-expression such as "1+2". The result is always a number, which can then be formatted 
-by one of the "format" option groups. In particular, variables "A", "B", and "C" encountered
-inside the expression denotes the content of the neighboring cells of the same row. 
-For instance, variable "A" denotes the content of the first column of that row, and "B"
-the second column, etc.
-Only letter A-Z are supported
-The example creates a tabulate of two columns where the second column holds the square root
-of the first column.
-
-    ```tab{head}
-    & Number \\ Square Root
-    : 1
-      2
-      3
-      4
-    : ${sqrt(A)}
-      ${sqrt(A)}
-      ${sqrt(A)}
-      ${sqrt(A)}
-    ```
-
 
 [ The "par" bundle. ]
 This bundle is designed to typeset a text box.   
@@ -530,13 +507,6 @@ and then format the data using specified precision.
       4     3
       5     5
       6     8
-      7     13
-      8     21
-      9     34
-      10    55
-      11    89
-      12    144
-      13    233
 
 The output would have looked like the following
 
@@ -547,13 +517,37 @@ The output would have looked like the following
     4	  3	   003.130
     5	  5	   004.919
     6	  8	   008.050
-    7	  13	 012.969
-    8	  21	 021.019
-    9	  34	 033.988
-    10	55	 055.007
-    11	89	 088.996
-    12	144	 144.003
-    13	233	 232.998
+
+The content of the tabbing is taken literally. It is not 
+to be scanned for any formatting phrases. In addition, it is also
+possible to add a head row. To do that use the "hd" directive.
+The text could include formatting phrases such as `\(a\)`.
+
+    & ===== ===== ===== 
+      ^$3:fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+      ^$3:fm = %07.3f
+      ^$1:hd = \(a\)
+      ^$2:hd = \(b\)
+      ^$3:hd = \(c\)
+      0     0
+      1     1
+      2     1
+      3     2
+      4     3
+      5     5
+      6     8
+
+The output would have looked like the following. 
+
+    a   b    c
+    0	  0	   000.894
+    1	  1	   000.447
+    2	  1	   001.342
+    3	  2	   001.789
+    4	  3	   003.130
+    5	  5	   004.919
+    6	  8	   008.050
+
 
 [ The "body" block. ]
 This block represents a normal paragraph.  For some translations the first line
