@@ -1,24 +1,23 @@
-a.md
+---
+title: a.md
+---
+\var x = 10
+\arr xs = [1:10]
+\arr ys = {sqrt(x)} [1:10]
 
 # Slice
 
-& ===== ===== ===== 
-  ^$3 fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
-  ^$3 fm = %07.3f
-  ^$1 hd = A
-  ^$2 hd = \(F_n\)
-  ^$3 hd = \(F(n)\)
-  0     0
-  1     1
-  2     1
-  3     2
-  4     3
-  5     5
-  6     8
-  7     13
-  8     21
-  9     34
-  10    55
-  11    89
-  12    144
-  13    233
+```img
+\arr a = [1,2,3]
+\fn f(x) = sqrt(x)
+\arr b = ^fn:f [a]
+\var c = b[1]
+\log ${a}
+\log ${b}
+\log ${c}
+\log ${x}
+\log xs = ${xs}
+\log ys = ${ys}
+```
+
+
