@@ -494,12 +494,12 @@ of each tabbed text is the same as the starting position of the corresponding
 cluster of the first line.   
 
 Following is how to automatically fill the third column
-to be the output of a function that take in data from the first column
-and then format the data using specified precision.
+to be the output of a function that takes in data from the first column
+and then formats the calculated number to the specified precision.
 
     & ===== ===== ===== 
-      ^$3:fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
-      ^$3:fm = %07.3f
+      ^$3 fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+      ^$3 fm = %07.3f
       0     0
       1     1
       2     1
@@ -508,7 +508,7 @@ and then format the data using specified precision.
       5     5
       6     8
 
-The output would have looked like the following
+The output would have looked like the following.
 
     0	  0	   000.894
     1	  1	   000.447
@@ -518,17 +518,40 @@ The output would have looked like the following
     5	  5	   004.919
     6	  8	   008.050
 
-The content of the tabbing is taken literally. It is not 
-to be scanned for any formatting phrases. In addition, it is also
-possible to add a head row. To do that use the "hd" directive.
-The text could include formatting phrases such as `\(a\)`.
+In particular, if the line is to appear to have started with
+a caret, followed by a dollar-sign and then a number, followed by
+a space, a word, an equal sign and additional contents, then
+this line is assumed to have contained a directive for expressing
+additional processing information for a column. The exact column
+depends on the integer following the dollar-sign, where '1' expressing
+the first column, '2' for the second column, etc.
+Only the following keys are recognized: 'fn', 'fm', and 'hd'.
+
+The 'fn' key expresses the content of a function that is to be applied
+to produce the content of that column. All existing contents for that
+column is to be replaced by the output of that function. Within that function,
+'$1' is to be interpreted as expressing the existing content at column 1,
+'$1' for that of column 2, etc. The 'n' variable holds an integer
+expressing the row number of the current row,
+such that '1' is for the first row, '2' for the second row. etc.
+
+The content of all tabbing lines and the output produced
+by "fn" are to be taken literally. It is not 
+to be scanned for any presence of formatting phrases. 
+The "fm" holds the formatting group specification. 
+
+In addition, it is also
+possible to add an additional head row that is to appear before
+all data rows. To do that add the "hd" directive one for each
+column. The content following the equal-sign could contain formatting
+phrasese.
 
     & ===== ===== ===== 
-      ^$3:fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
-      ^$3:fm = %07.3f
-      ^$1:hd = \(a\)
-      ^$2:hd = \(b\)
-      ^$3:hd = \(c\)
+      ^$3 fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+      ^$3 fm = %07.3f
+      ^$1 hd = \(a\)
+      ^$2 hd = \(b\)
+      ^$3 hd = \(c\)
       0     0
       1     1
       2     1
