@@ -505,17 +505,55 @@ In particular, a cluster of non-space characters expressing the distance to move
 to the next tab stop, and each characters is assume to express a distance of 1ex.
 
     & =====    ======      =======      ======    =======    ======== 
-    & Df        0.100        0.050       0.025      0.010       0.001
-    & 1         2.706        3.841       5.024      6.635      10.828
-    & 2         4.605        5.991       7.378      9.210      13.816
-    & 3         6.251        7.815       9.348     11.345      16.266
-    & 4         7.780        9.490                              
-    & 5         9.240       11.070                              
+      Df        0.100        0.050       0.025      0.010       0.001
+      1         2.706        3.841       5.024      6.635      10.828
+      2         4.605        5.991       7.378      9.210      13.816
+      3         6.251        7.815       9.348     11.345      16.266
+      4         7.780        9.490                              
+      5         9.240       11.070                              
 
 The lines following the first line are scanned in such a way that the start position
 of each tabbed text is the same as the starting position of the corresponding
-cluster of the first line.                           
+cluster of the first line.   
 
+Following is how to automatically fill the third column
+to be the output of a function that take in data from the first column
+and then format the data using specified precision.
+
+    & ===== ===== ===== 
+      ^$3:fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+      ^$3:fm = %07.3f
+      0     0
+      1     1
+      2     1
+      3     2
+      4     3
+      5     5
+      6     8
+      7     13
+      8     21
+      9     34
+      10    55
+      11    89
+      12    144
+      13    233
+
+The output would have looked like the following
+
+    0	  0	   000.894
+    1	  1	   000.447
+    2	  1	   001.342
+    3	  2	   001.789
+    4	  3	   003.130
+    5	  5	   004.919
+    6	  8	   008.050
+    7	  13	 012.969
+    8	  21	 021.019
+    9	  34	 033.988
+    10	55	 055.007
+    11	89	 088.996
+    12	144	 144.003
+    13	233	 232.998
 
 [ The "body" block. ]
 This block represents a normal paragraph.  For some translations the first line
