@@ -8,8 +8,10 @@ title: a.md
 # Slice
 
 ```img
+\path O = ^center ^v:-0.5 (0,0)
+\path tri = &equilateraltriangle{&O,5.5}
 \var i = 2
-\arr a = [10:1] [2:20]
+\arr a = [1+I,2,3,4,5]   
 \fn f(x) = sqrt(x)
 \arr b = {sqrt(x)} [a]
 \var c = b[i]
