@@ -22,6 +22,14 @@ title: a.md
 \for i in [0,1,2,3,4,5]; \do
   \log a[${i}]=${a[i]}
 \done
+\let (cx,cy) = (1,2)
+\log cx=${cx}
+\log cy=${cy}
+\let x:y = 12-I
+\log x=${x}
+\log y=${y}
+\var g = x+y
+\log g=${g}
 ```
 
 

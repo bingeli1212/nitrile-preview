@@ -1,8 +1,5 @@
 ---
 title: The Diagram
-translator: camper
-program: camper
-dest: .
 ---
 
 A diagram block is to generate a diagram with vector based figures,
@@ -190,9 +187,11 @@ update variables, function, and path, etc. Following are Non-action commands:
 - \exit
 - \origin
 - \log
-- \format    
+- \format
+- \arr    
 - \set
 - \var
+- \let
 
 
 # The 'set' command
@@ -218,21 +217,32 @@ The 'linesize' variable created is the same configuration parameter
 created by a previous 
 'set' command.
 
-In addition, 
-the 'var' command is also the command that allows an array of numbers to be
+
+# The 'arr' command
+
+The 'arr' command is designed to create an array of numbers to be
 assigned to a parameter. 
 
-    \var nums[] = 1 2 3 4 5 6 7 8 9 10
-    \var nums[] = [1:10]
+    \arr numbers = 1 2 3 4 5 6 7 8 9 10
+    \arr numbers = [1,2,3,4,5,6,7,8,9,10]
+    \arr numbers = [1:10]    => 1,2,3,4,5,6,7,8,9,10
+    \arr numbers = [1:4:10]  => 1,4,7,10
+    \arr numbers = [1:2;3]   => 1.00,1.25,1.50,1.75,2.00
 
-In addition, the 'var' command is also able to destructure an array point
-such that each of two coordinates is assigned to one of the variables.
 
-    \var (cx,cy) = (2,3)
 
-Another difference between a 'set' command and a 'var' command is that
-'set' command always assigns a string to a variable, where a 'var' command
-assigns a number (an instance of Complex), or JS Array instance
+# The "let" command
+
+The 'let' command is designed to get individual components of a path point or
+real/imaginary component of a complex number.
+The following example get the x/y coordinate of a path point.
+
+    \let (cx,cy) = (2,3)
+
+The following example gets the real/imaginary component of a complex number.
+
+    \let Re:Im = 2+3*I
+
 
 
 # Specifying colors
