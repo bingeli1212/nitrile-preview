@@ -2,8 +2,8 @@
 title: a.md
 ---
 \var x = 10
-\arr xs = [1:10]
-\arr ys = {sqrt(x)} [1:10]
+\arr xs = [1:10]          
+\arr ys = {sqrt(x)} [xs]
 
 # Slice
 
