@@ -9,7 +9,7 @@ title: a.md
 
 ```img
 \var i = 2
-\arr a = [10:1] 
+\arr a = [10:1] [2:20]
 \fn f(x) = sqrt(x)
 \arr b = {sqrt(x)} [a]
 \var c = b[i]

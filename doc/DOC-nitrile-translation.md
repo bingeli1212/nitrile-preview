@@ -1091,6 +1091,8 @@ following four different types.
 - ruby annotations
 - defaut styles
 - named storage
+- variables
+- arrays
 
 The "import" sections are for providing external documents that are to be
 imported as chapters, or to create one or more "part" section placed between
@@ -1105,7 +1107,7 @@ present for all blocks/bundles of a particular ID.
 The "named storage" sections establishes named storages and suppy its contents;
 these storage buffers can later on by referenced and its contents retrieved.
 
-[ Import. ]
+To add additional chapters and parts, use the '@import" statement.
 
     @import [part]"Introduction"
     @import [chapter](./chap1.md)
@@ -1116,7 +1118,8 @@ these storage buffers can later on by referenced and its contents retrieved.
     @import [chapter](./chap5.md)
     @import [chapter](./chap6.md)
 
-[ Ruby annotation. ]
+Ruby annotations can be specified which is automatically attached to matching
+words in the document
 
     !異臭・いしゅう
     !匂い・におい
@@ -1127,12 +1130,11 @@ these storage buffers can later on by referenced and its contents retrieved.
     !汚れた・よごれた
     !真っ黒/まっくろ
 
-[ Default style. ]
+Default styles can be specifieid which will be applied to all matching blocks.
 
     ~verbatim{fontsize:small}
     ~img{frame,viewport:20 20,width:40}
 
-[ Named bundle storages. ]
 Name bundle storages provide storage for individual bundles such that      
 they can be recalled through their "restore" attribute.
 
@@ -1169,6 +1171,16 @@ then this bundle is not stashed.
     \drawpath (-1,1.7) <q:0.5,0.5,-0.3,0.8>
     \drawpath (-1.2,1.7) <q:0.5,0.5,-0.4,0.8>
     ```
+
+Variables and arrays can be specified by using the "\var" and/or "\arr"
+commands. These commands creates new variables and array which will be inserted
+and becomes part of the style for all blocks.
+
+    \var a = 12+1
+    \arr as = [1-10] [2-20]
+    
+
+
 
 
 
