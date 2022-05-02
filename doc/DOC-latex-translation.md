@@ -715,4 +715,5 @@ documentation for details.
 - For "tab" bundle, it only generates "tabularx", and the "threeparttable"
   is set only inside a "table" float. This arrangement is to avoid having
   "threeparttable" inside a "columns" float.
+- \url{} command cannot appear inside a \caption{} command                  
   
