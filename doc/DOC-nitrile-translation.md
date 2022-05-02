@@ -180,11 +180,6 @@ that the first two columns are to be set in the style of monospaced text, and
 last one the roman(default) text. The letters are: t(monospaced), i(italic),
 b(bold), s(slanted), and r(default) fonts.
 
-The "format" is to be expected a list of formatting group specifications. 
-For instance, "%s%.3f" is to express that the first column is to be maintained
-as is, and the second one formatted to be a floating point number with
-3 decimal places.
-
 The "vrules" and "hrules" attributes are designed to manually insert
 vertical/horizontal rules between rows and columns. Note these two attribuets
 are only to take affect when the "rules" attribute is not set, otherwise they
@@ -213,12 +208,13 @@ not starting the line with '& '.
       701 Sun Dr.
     ```
 
-The ": " lines are designed to build tabulation column-by-column. 
-In particular, each ": " line starts a new column,
-and each "  " line following the ": " adds an additional row at the end of that column. Note that the total
-number of columns to be inserted cannot exceed that specified by "template". In addition, new rows
-are only inserted when building up the first column; each additional column 
-only serves to fill out the blanks left inside each row created by the first column.
+The ": " lines are designed to build tabulation column-by-column.  In
+particular, each ": " line starts a new column, and each "  " line following
+the ": " adds an additional row at the end of that column. Note that the total
+number of columns to be inserted cannot exceed that specified by "template". In
+addition, new rows are only inserted when building up the first column; each
+additional column only serves to fill out the blanks left inside each row
+created by the first column.
 
     ```tab{head}
     & Name \\ Addr.
@@ -232,6 +228,38 @@ only serves to fill out the blanks left inside each row created by the first col
       701 Sun Dr.
     ```
 
+The "^ " lines are similar to ": " except that what's after it is treated
+as an arithmetic expression that is to be evaluted as is, and the result
+of which be used to fill the content of that column.
+
+    ```tab{head}
+    & a \\ pow(a,2)
+    : 1    
+      2   
+      3    
+    ^ pow($1,2)  
+      pow($1,2)  
+      pow($1,2)  
+    ```
+
+For "^ " columns, the formatter can be placed before the expression 
+to force the result to be re-formatted to fit certain forms.           
+
+    ```tab{head}
+    & a \\ pow(a,2)
+    : 1    
+      2   
+      3    
+    ^ {%.5f} pow($1,2)  
+      {%.5f} pow($1,2)  
+      {%.5f} pow($1,2)      
+    ```
+
+With the expression, the '$1' variable expresses the content of the first column. 
+Similarly, '$2' expresses the content of the second column. Note that since each column
+is built in the order from left to right, the content of the current column and the column
+after it are not available. In addition, variable 'n' expresses the row number, where
+the first row is at 0, regardless if it is a header row or not.
 
 [ The "par" bundle. ]
 This bundle is designed to typeset a text box.   
@@ -493,13 +521,17 @@ The lines following the first line are scanned in such a way that the start posi
 of each tabbed text is the same as the starting position of the corresponding
 cluster of the first line.   
 
+The total number of rows are determined by the rows after the first line. However,
+the contents of certain column can be filled as the result of an arithmetic expression,
+or the combination of neighboring columns.
 Following is how to automatically fill the third column
 to be the output of a function that takes in data from the first column
 and then formats the calculated number to the specified precision.
 
     & ===== ===== ===== 
-      ^$3 fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
-      ^$3 fm = %07.3f
+    ^1 = "a"    
+    ^2 = "b"       
+    ^3 = "c" {%.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
       0     0
       1     1
       2     1
@@ -510,58 +542,6 @@ and then formats the calculated number to the specified precision.
 
 The output would have looked like the following.
 
-    0	  0	   000.894
-    1	  1	   000.447
-    2	  1	   001.342
-    3	  2	   001.789
-    4	  3	   003.130
-    5	  5	   004.919
-    6	  8	   008.050
-
-In particular, if the line is to appear to have started with
-a caret, followed by a dollar-sign and then a number, followed by
-a space, a word, an equal sign and additional contents, then
-this line is assumed to have contained a directive for expressing
-additional processing information for a column. The exact column
-depends on the integer following the dollar-sign, where '1' expressing
-the first column, '2' for the second column, etc.
-Only the following keys are recognized: 'fn', 'fm', and 'hd'.
-
-The 'fn' key expresses the content of a function that is to be applied
-to produce the content of that column. All existing contents for that
-column is to be replaced by the output of that function. Within that function,
-'$1' is to be interpreted as expressing the existing content at column 1,
-'$1' for that of column 2, etc. The 'n' variable holds an integer
-expressing the row number of the current row,
-such that '1' is for the first row, '2' for the second row. etc.
-
-The content of all tabbing lines and the output produced
-by "fn" are to be taken literally. It is not 
-to be scanned for any presence of formatting phrases. 
-The "fm" holds the formatting group specification. 
-
-In addition, it is also
-possible to add an additional head row that is to appear before
-all data rows. To do that add the "hd" directive one for each
-column. The content following the equal-sign could contain formatting
-phrasese.
-
-    & ===== ===== ===== 
-      ^$3 fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
-      ^$3 fm = %07.3f
-      ^$1 hd = \(a\)
-      ^$2 hd = \(b\)
-      ^$3 hd = \(c\)
-      0     0
-      1     1
-      2     1
-      3     2
-      4     3
-      5     5
-      6     8
-
-The output would have looked like the following. 
-
     a   b    c
     0	  0	   000.894
     1	  1	   000.447
@@ -570,6 +550,13 @@ The output would have looked like the following.
     4	  3	   003.130
     5	  5	   004.919
     6	  8	   008.050
+
+The lines 2-4 must start within any empty spaces. The contents after
+the equal sign must be arranged such that contents appears in this order:
+header, formatting instruction, and/or arithmetic expression. Within the 
+expressin, '$1', '$2' are to express the content of neighboring columns,
+and 'n' expressing the row number. The first row is always 1, as row 0 
+is the header row.
 
 
 [ The "body" block. ]
