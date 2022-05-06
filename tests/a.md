@@ -10,9 +10,9 @@ title: a.md
 .figure{width:25}
 \\
 ```img{frame,background:grid}
-%\box.1 {w:2,h:2} (3,1)
-%\box.2 {w:2,h:2} (3,4)
-\arrow (#box:1:e)|veer:45|(#box:2:e)
-\arrow (5,2)<q:1.5,1.5,0,3>
+\origin ^s:10
+%\arrow (#box:1:e)|veer:45|(#box:2:e)
+%\arrow (5,2)<q:1.5,1.5,0,3>
+\drawlabel "a" (0,0)
 ```
 
