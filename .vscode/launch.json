@@ -55,7 +55,7 @@
       "cwd": "${workspaceRoot}/tests",
       "program": "${workspaceFolder}/lib/nitrile-preview-nibeamer.js",
       "args": [
-        "/Users/james/Documents/github/tcl-notes/mathclass/math-class-0231.md"
+        "a.md"
       ]
     },
     {
