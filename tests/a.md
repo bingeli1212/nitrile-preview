@@ -7,8 +7,6 @@ peek: slide
 
 # Hello      
 
-If we have: \[x=1\]
-
-If we have: \[y=1\]
+If we have: \[x=1\] then we will have: \[y=1\]
 
 
