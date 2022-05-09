@@ -3651,24 +3651,35 @@ a PDF file would be preferred over a PNG or SVG.
 
 
 
-# Generate multiple frames
+# The \shape and \drawshape command
 
-It is possible to generate multiple frames from with a single DIA block. To 
-for force an output immediately, use the \output command:
+These two commands work together to create a shape and
+then draw it all at once and possibly at different location
+and with different scaling factors. 
 
-    \output
+The \shape command is used to create/update a shape. The symbol 
+is to hold the name of the shape and it must conform to the 
+naming convension of a valid symbol. Whatever after the equal
+sign will be saved to this shape and will be later on used
+as arguments to the \drawpath command.
 
-This command would have generated an output with the contents of all
-previously executed commands. The \clear command can be used optionally
-to purge all internally generated commands such that the next \output 
-would have only contained outputs from recent action commands.
+    \path cube = (0,0) <h:2> <v:2> <h:-2> <z>
+    \path topcube =  ^v:2  (0,0) <l:0.5,0.3> <h:2> <l:-0.5,-0.3> <z>
+    \path ritcube = ^h:2 (0,0) <l:0.5,0.3> <v:2> <l:-0.5,-0.3> <z>
+    \shape cube = {shade:linear,shadecolor:lightgray lightgray gray,angle:80} &cube
+    \shape cube = {fillcolor:gray} &topcube
+    \shape cube = {fillcolor:gray} &ritcube
+    \for dx in [+0.5,0]; dy in [+0.3,0]; \do
+      \drawshape.cube ^h:${dx} ^v:${dy} ^v:0 (2,1)<h:2>
+      \drawshape.cube ^h:${dx} ^v:${dy} ^v:2 (2,1)<h:2>
+    \done
 
-    \clear
+If a shape has not yet been created it will be created. Otherwise it is
+updated with a new set of arguments that includes the styles and coordinates.
 
-By default, if at the end of a DIA bundle there is no output frame being generated,
-then at least one frame will be generated that would have contained all outputs
-at that moment.
-
+The \drawshape is to draw the shape at the new location. The {scaleX} and {scaleY}
+and {rotation} can be passed to the \drawshape command so that each shape can be
+scaled and/or rotated.
 
 
 
