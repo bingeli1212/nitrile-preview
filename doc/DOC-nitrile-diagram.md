@@ -3683,6 +3683,44 @@ scaled and/or rotated.
 
 
 
+# The \proc and \endproc and \call
+
+These commands work together to create and apply a subroutine
+with actual arguments. In particular, the \proc and \endproc command 
+defines subroutine body and the \call command applies a previous
+defined subroutine.
+
+    \proc drawLINE(a,b)
+      \drawline (a,a) (b,b)
+    \endproc
+    \call drawLINE(0,10)
+
+The provious example defines a subroutine called 'drawLINE' and later
+invoke this subroutine such that the '\drawline (0,0) (10,10)' command
+is issued.
+
+Each argument is to be initialized in the same manner as that of a \var
+command. Thus, in the previous example it is the following two commands
+that gets executed. 
+
+    \var a = 0
+    \var b = 10
+
+The arguments and any variables created inside a subroutine is not going to
+affect the global environment. In addition, it is also allowed for a 
+subroutine to call itself.
+
+    \proc drawLINE(a,b)
+      \drawline (a,a) (b,b)
+      \call drawLINE (a+1,b+1)
+    \endproc
+
+However, the internal stack limit for subroutine calls are hardcoded to 10. 
+This is the deepest nested levels of any nested subroutine calls. Any subroutine
+calls beyond this limit are silently ignored
+
+
+
 # Specialized draw command
 
 Following are specialized draw commands that would draw shapes.
