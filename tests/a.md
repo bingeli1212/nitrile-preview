@@ -9,4 +9,7 @@ peek: slide
 
 If we have: \[x=1\] then we will have: \[y=1\]
 
-
+```img
+\image "image-clock.png"
+\drawgrid {density:2} (0,0)
+```
