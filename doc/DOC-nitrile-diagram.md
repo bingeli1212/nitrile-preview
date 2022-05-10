@@ -188,7 +188,6 @@ update variables, function, and path, etc. Following are Non-action commands:
 - \origin
 - \log
 - \format
-- \arr    
 - \set
 - \var
 - \let
@@ -203,31 +202,162 @@ configuration parameters that would be used as default
     \set linecolor = red
 
 
+
 # The 'var' command
 
-The 'var' commands is similar to 'set' except it treats
-the input as numbers rather than strings.
+The 'var' command is to create an environment variable that
+is the result of an arithmetic expression.
+Following is an example of a arithmetic expression.
 
-    \var linesize = 1
-    \var linesize = 1+2
-  
-Note that variables created/modified by the 'var' command
-are not treated different than those of the 'set' command.
-The 'linesize' variable created is the same configuration parameter
-created by a previous 
-'set' command.
+    \var a = 1
+    \var a = 1+2
+    \var a = pow(2,1/12)
+
+The variable will be stored with the environment the same 
+manner as one is set at the bundle. following draws a
+line between (0,0) and (1,1)
+
+    \var a = 1
+    \drawpath (0,0)--(a,a)
+
+Following is a example of creating a variable that holds an array.
+
+The first example has created an environment variable named 'a', 
+that is assigned a numerical value that is equivalent to 
+evaluating the arithmetic function "pow(2,1/12)".  The result of
+an arithmetic expression is always a number, thus a number is stored
+internally with the symbol 'a'.
+
+The same symbol, once defined and assigned a number, can later be used in other
+arithmetic expression such as the following example which 'a' is used
+to compute a value that is 2 multiples of 'a' and the value of which
+is assigned to variable 'b'.
+
+    \var b = a * 2;
+
+Note that the number is complex-number-ready, which means the number 
+is internally represented as a complex number. This allows the following
+expression to be constructed that would express a complex number that is "2+3i":
+
+    \var c = 2 + 3i
+
+Note that the spaces around the plus-sign is optional. In fact the entire
+expression is just treated as a regular math operation of addition, with 
+the first number "2" treated as a number for a real component, and the 
+second number treated as a number for the imaginary component. It does it
+by noticing the 'i' or 'j' after a normal number, such as "2", "3", "2.123", etc.
+If it has found that a 'i' or 'j' is following such a number, then it treates
+the entire number as expressing the imaginary component and performs the math
+accordingly. 
+
+In addition to using 'i' or 'j', the math constant "I" can also be used.
+This is the same constant as other constants such as "PI" and "E", where the
+only difference is that "I" represents the unit of the imaginary component,
+and "PI" and "E" are fixed numbers only having a real component for itself.
+Thus, the following expression would have assigned the complex number "3i" 
+to variable 'd'.
+
+    \var d = 3 * I
+
+Note that it is illegal to use a "i" or "j" by itself, such as the following
+which is illegal.
+
+    \var d = 3 + i
+
+This is because a letter within an expression by itself is to be treated as a
+variable. Thus, the previous expression would have looked for a variable named
+"i", and by failing to find it, would have caused the entire expression to
+become NaN.
+
+The 'var' command is also able to create an "array" variable, in which
+case the variable is to hold a list of numbers, rather than a single number. 
+To reference this variable as an array, it must appear inside set of square
+brackets and prefixed by an at-sign. For instance, the following example
+has first created and assigned the variable 'a' an array that consists of 
+three items, and then reference this array by the name of 'a' inside a 
+for-command.
+
+    \var a[] = 1 2 3
+    \for i in [a]; \do
+      \drawdot (i,i)
+    \done
+
+An array variable can also be referenced by its individual elements. The syntax
+is to start with the variable, followed by a underscore, and then one or more digits
+to express the position within the variable. For instance, "a_0" would have been
+recognized as a variable that references the first element of an array named "a",
+and "a[1]" would have referenced the second element of array named "a".
+The following example has created an array of three numbers, and was later
+on used to generate text output on various locations, pulling the content of 
+each element of the array. 
+
+    \drawlabel "${a[0]}" "${a[1]}" "${a[2]}" (0,0) <h:1> <h:1>
 
 
-# The 'arr' command
 
-The 'arr' command is designed to create an array of numbers to be
-assigned to a parameter. 
 
-    \arr numbers = 1 2 3 4 5 6 7 8 9 10
-    \arr numbers = [1,2,3,4,5,6,7,8,9,10]
-    \arr numbers = [1:10]    => 1,2,3,4,5,6,7,8,9,10
-    \arr numbers = [1:4:10]  => 1,4,7,10
-    \arr numbers = [1:2;3]   => 1.00,1.25,1.50,1.75,2.00
+
+# Creating an array
+
+The 'var' command can also be used to create an array of numbers instead of a single
+number. To do that, place '[]' after the variable.
+Following are different ways of creating an array of 10 numbers from 1-10.
+
+    \var numbers[] = '1' '2' '3' '4' '5' '6' '7' '8' '9' '10'
+    \var numbers[] = [1,2,3,4] [5,6,7] [8,9,10]
+    \var numbers[] = [1,2,3,4,5,6,7,8,9,10]
+    \var numbers[] = [1:10]    
+
+The apostrophe placed between a string is to instruct that the entire
+string is to be treated as a formular that is to produce a single element
+for the array. Otherwise, the set of brackets expresses various ways of adding  
+one or more numbers. For instance, [1,2,3] is to add three numbers, and [1:10]
+is to add 10 numbers from 1-10.
+
+For the following form the second number expresses the next number
+and the last number expresses the stop number that the array element
+is never to go over.
+
+    \var numbers[] = [1:4:10] 
+    //> 1,4,7,10
+
+In the following form an array where its first number is 1 and second number
+is 2 and three 3 additional numbers inserted between the two, such that all
+five numbers are spread out evenly.
+
+    \var numbers[] = [1:2;3]   
+    //> 1.00,1.25,1.50,1.75,2.00
+
+The '@xarr' and '@yarr' are each referring to a previously declared array variable.
+And the elements inside them can be used to initialize a new array variable. 
+
+    \var xarr[]    = [1,2,3]
+    \var yarr[]    = [10,20,30]
+    \var numbers[] = @xarr @yarr
+
+Note that all array variables and regular variables share the same name space,
+which means a regular variable 'x' and an array variable 'x' will clash in names.
+Whatever is created later is going to replace the one created earlier.
+
+It is alright if an non-array variable is accessed as an array variable, such as '@xarr'
+if 'xarr' had been previously defined as a normal variable, in which case an empty
+array is returned. However, if an array variable is accessed as a normal variable,          
+NaN is returned.
+
+    \var xarr[] = [1,2,3]
+    \var b = xarr           
+    //> 'b' will be NaN
+
+An array variable can be used as part of a \for command.
+
+    \var xarr[] = [1,2,3]
+    \var xarr[] = [10,20,30]
+    \for i in @xarr; j in @yarr; \do
+      \drawdot (i,i) (j,j)  
+      //> same as \drawdot (1,1) (10,10) for 1st iteration
+      //>         \drawdot (2,2) (20,20) for 1st iteration
+      //>         \drawdot (3,3) (30,30) for 1st iteration
+    \done
 
 
 
@@ -988,7 +1118,7 @@ dynamically generated based on its "arguments". For instance, in the following
 example the path function "circle" returns a coords array that describes a
 full circle centered at location (2,3) and with a radius of 4.
 
-    \path a = &circle{(2,3),4}
+    \path a = &circle{(2,3)|4}
 
 The returned coords array might be "closed" depending on the situation. For instance
 the previous "circle" path function would always return a "closed" path, whilst
@@ -1004,20 +1134,20 @@ notation, such as (2,3), or named path notation, such as ``&o``. For instance,
 the same circle path function could be invoked as follows.
 
     \path o = (2,3)
-    \path a = &circle{&o,4}
-    \path a = &circle{(2,3),4}
+    \path a = &circle{&o|4}
+    \path a = &circle{(2,3)|4}
 
 It is also possible to pass an "array" as an argument.
 Some path functions such as 'points' would work with array arguments.
 An array argument is identified by the appearance of a set of brackets.
 
-    \path a = &points{[1,2,3],[4,5,6]}
+    \path a = &points{[1,2,3]|[4,5,6]}
 
 Or 
     
     \var xarr[] = [1,2,3]
     \var yarr[] = [4,5,6]
-    \path a = &points{[xarr],[yarr]}
+    \path a = &points{@xarr|@yarr}
 
 Internally, a scalar is considered the same type as that of an array and is
 stored as an array of a single value.
@@ -3182,95 +3312,6 @@ This command would look for for presence of 'C' and 'Q' Bezier curves in the
 path, and then draw the control points as well as the two end points of this
 curve on the chart. The control points will be drawn using round dots, and
 end points of the Bezier curves as square dots.
-
-
-
-# The 'var' command
-
-The 'var' command is to create an environment variable that
-is the result of an arithmetic expression.
-Following is an example of a arithmetic expression.
-
-    \var a = pow(2,1/12)
-    \drawpath (0,0)--(a,a)
-
-Following is a example of creating a variable that holds an array.
-
-    \var o[] = 1 2 3
-    \for i in [o]; \do
-      \drawdot (i,i)
-    \done
-
-The first example has created an environment variable named 'a', 
-that is assigned a numerical value that is equivalent to 
-evaluating the arithmetic function "pow(2,1/12)".  The result of
-an arithmetic expression is always a number, thus a number is stored
-internally with the symbol 'a'.
-
-The same symbol, once defined and assigned a number, can later be used in other
-arithmetic expression such as the following example which 'a' is used
-to compute a value that is 2 multiples of 'a' and the value of which
-is assigned to variable 'b'.
-
-    \var b = a * 2;
-
-Note that the number is complex-number-ready, which means the number 
-is internally represented as a complex number. This allows the following
-expression to be constructed that would express a complex number that is "2+3i":
-
-    \var c = 2 + 3i
-
-Note that the spaces around the plus-sign is optional. In fact the entire
-expression is just treated as a regular math operation of addition, with 
-the first number "2" treated as a number for a real component, and the 
-second number treated as a number for the imaginary component. It does it
-by noticing the 'i' or 'j' after a normal number, such as "2", "3", "2.123", etc.
-If it has found that a 'i' or 'j' is following such a number, then it treates
-the entire number as expressing the imaginary component and performs the math
-accordingly. 
-
-In addition to using 'i' or 'j', the math constant "I" can also be used.
-This is the same constant as other constants such as "PI" and "E", where the
-only difference is that "I" represents the unit of the imaginary component,
-and "PI" and "E" are fixed numbers only having a real component for itself.
-Thus, the following expression would have assigned the complex number "3i" 
-to variable 'd'.
-
-    \var d = 3 * I
-
-Note that it is illegal to use a "i" or "j" by itself, such as the following
-which is illegal.
-
-    \var d = 3 + i
-
-This is because a letter within an expression by itself is to be treated as a
-variable. Thus, the previous expression would have looked for a variable named
-"i", and by failing to find it, would have caused the entire expression to
-become NaN.
-
-The 'var' command is also able to create an "array" variable, in which
-case the variable is to hold a list of numbers, rather than a single number. 
-To reference this variable as an array, it must appear inside set of square
-brackets and prefixed by an at-sign. For instance, the following example
-has first created and assigned the variable 'a' an array that consists of 
-three items, and then reference this array by the name of 'a' inside a 
-for-command.
-
-    \var a[] = 1 2 3
-    \for i in [a]; \do
-      \drawdot (i,i)
-    \done
-
-An array variable can also be referenced by its individual elements. The syntax
-is to start with the variable, followed by a underscore, and then one or more digits
-to express the position within the variable. For instance, "a_0" would have been
-recognized as a variable that references the first element of an array named "a",
-and "a[1]" would have referenced the second element of array named "a".
-The following example has created an array of three numbers, and was later
-on used to generate text output on various locations, pulling the content of 
-each element of the array. 
-
-    \drawlabel "${a[0]}" "${a[1]}" "${a[2]}" (0,0) <h:1> <h:1>
 
 
 
