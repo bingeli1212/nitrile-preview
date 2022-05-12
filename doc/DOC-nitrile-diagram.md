@@ -271,37 +271,17 @@ become NaN.
 
 The 'var' command is also able to create an "array" variable, in which
 case the variable is to hold a list of numbers, rather than a single number. 
-To reference this variable as an array, it must appear inside set of square
-brackets and prefixed by an at-sign. For instance, the following example
-has first created and assigned the variable 'a' an array that consists of 
-three items, and then reference this array by the name of 'a' inside a 
-for-command.
 
-    \var a[] = 1 2 3
-    \for i in [a]; \do
-      \drawdot (i,i)
-    \done
+    \var a[] = [1,2,3]
 
 An array variable can also be referenced by its individual elements. The syntax
-is to start with the variable, followed by a underscore, and then one or more digits
-to express the position within the variable. For instance, "a_0" would have been
-recognized as a variable that references the first element of an array named "a",
-and "a[1]" would have referenced the second element of array named "a".
-The following example has created an array of three numbers, and was later
-on used to generate text output on various locations, pulling the content of 
-each element of the array. 
+is to start with the variable, followed a pair of brackets with a number in it.
 
-    \drawlabel "${a[0]}" "${a[1]}" "${a[2]}" (0,0) <h:1> <h:1>
+    \var a[] = [1,2,3]
+    \var b = a[1]
+    //> b would have been assigned the number that is '2'
 
-
-
-
-
-# Creating an array
-
-The 'var' command can also be used to create an array of numbers instead of a single
-number. To do that, place '[]' after the variable.
-Following are different ways of creating an array of 10 numbers from 1-10.
+Following are additional examples of creating an array variable.
 
     \var numbers[] = '1' '2' '3' '4' '5' '6' '7' '8' '9' '10'
     \var numbers[] = [1,2,3,4] [5,6,7] [8,9,10]
@@ -312,7 +292,7 @@ The apostrophe placed between a string is to instruct that the entire
 string is to be treated as a formular that is to produce a single element
 for the array. Otherwise, the set of brackets expresses various ways of adding  
 one or more numbers. For instance, [1,2,3] is to add three numbers, and [1:10]
-is to add 10 numbers from 1-10.
+is to add 10 numbers from 1-10, and [1:4:10] is to add three numbers that is 1, 4, 7, and 10.
 
 For the following form the second number expresses the next number
 and the last number expresses the stop number that the array element
@@ -328,12 +308,14 @@ five numbers are spread out evenly.
     \var numbers[] = [1:2;3]   
     //> 1.00,1.25,1.50,1.75,2.00
 
-The '@xarr' and '@yarr' are each referring to a previously declared array variable.
-And the elements inside them can be used to initialize a new array variable. 
+To an array-variable as an array, the variable must appear after an at-sign such as `@a`.
+For instance, the following example uses `@xarr` and `@yarr` to refer to a previously declared array variable.
+And the elements inside them are then used to initialize a new array variable that is 'numbers'. 
 
     \var xarr[]    = [1,2,3]
     \var yarr[]    = [10,20,30]
     \var numbers[] = @xarr @yarr
+    //> numbers now has 1,2,3,10,20,30
 
 Note that all array variables and regular variables share the same name space,
 which means a regular variable 'x' and an array variable 'x' will clash in names.
