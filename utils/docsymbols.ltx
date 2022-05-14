@@ -1,0 +1,2326 @@
+% !TEX program = PdfLatex 
+\documentclass[a5paper,9pt]{memoir}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\newcommand{\activatehyphen}{\begingroup\lccode`~=`- \lowercase{\endgroup\def~}{\char`\-\kern0pt }\catcode`\-=\active}
+\usepackage[overlap,CJK]{ruby}
+\renewcommand\rubysep{0.0ex}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage{pifont}
+\usepackage{bbold}
+\usepackage{xfrac}
+\usepackage{textcomp}
+\usepackage{commath}
+\usepackage{trimclip}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arsech}{arsech}
+\DeclareMathOperator{\arcsch}{arcsch}
+\DeclareMathOperator{\arcoth}{arcoth}
+\DeclareMathOperator{\median}{median}
+\DeclareMathSymbol{\Alpha}{\mathalpha}{operators}{"41}
+\DeclareMathSymbol{\Beta}{\mathalpha}{operators}{"42}
+\DeclareMathSymbol{\Epsilon}{\mathalpha}{operators}{"45}
+\DeclareMathSymbol{\Zeta}{\mathalpha}{operators}{"5A}
+\DeclareMathSymbol{\Eta}{\mathalpha}{operators}{"48}
+\DeclareMathSymbol{\Iota}{\mathalpha}{operators}{"49}
+\DeclareMathSymbol{\Kappa}{\mathalpha}{operators}{"4B}
+\DeclareMathSymbol{\Mu}{\mathalpha}{operators}{"4D}
+\DeclareMathSymbol{\Nu}{\mathalpha}{operators}{"4E}
+\DeclareMathSymbol{\Omicron}{\mathalpha}{operators}{"4F}
+\DeclareMathSymbol{\Rho}{\mathalpha}{operators}{"50}
+\DeclareMathSymbol{\Tau}{\mathalpha}{operators}{"54}
+\DeclareMathSymbol{\Chi}{\mathalpha}{operators}{"58}
+\DeclareMathSymbol{\omicron}{\mathord}{letters}{"6F}
+\usepackage{hang}
+\usepackage{listings}
+\usepackage{anyfontsize}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{pict2e}
+\usepackage{graphpap}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage{threeparttable}
+\usepackage{fancyvrb}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newsavebox\ltmcbox
+\newenvironment{fakelongtable} {\setbox\ltmcbox\vbox\bgroup \csname
+@twocolumnfalse\endcsname \csname col@number\endcsname\csname
+@ne\endcsname} {\unskip\unpenalty\unpenalty\egroup\unvbox\ltmcbox}
+\newcommand{\textzerosubscript}{\raisebox{-0.4ex}{\scriptsize 0}}
+\newcommand{\textonesubscript}{\raisebox{-0.4ex}{\scriptsize 1}}
+\newcommand{\texttwosubscript}{\raisebox{-0.4ex}{\scriptsize 2}}
+\newcommand{\textthreesubscript}{\raisebox{-0.4ex}{\scriptsize 3}}
+\newcommand{\textfoursubscript}{\raisebox{-0.4ex}{\scriptsize 4}}
+\newcommand{\textfivesubscript}{\raisebox{-0.4ex}{\scriptsize 5}}
+\newcommand{\textsixsubscript}{\raisebox{-0.4ex}{\scriptsize 6}}
+\newcommand{\textsevensubscript}{\raisebox{-0.4ex}{\scriptsize 7}}
+\newcommand{\texteightsubscript}{\raisebox{-0.4ex}{\scriptsize 8}}
+\newcommand{\textninesubscript}{\raisebox{-0.4ex}{\scriptsize 9}}
+\newenvironment{packed_enumerate}{
+  \begin{enumerate}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+  }{\end{enumerate}}
+\newenvironment{packed_itemize}{
+  \begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+  }{\end{itemize}}
+\newenvironment{packed_description}{
+  \begin{description}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+  }{\end{description}}
+\newenvironment{packed_hanginglist}{
+  \begin{hanginglist}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+  }{\end{hanginglist}}
+\definecolor{AliceBlue}{rgb}{0.9411764705882353,0.9725490196078431,1}
+\definecolor{AntiqueWhite}{rgb}{0.9803921568627451,0.9215686274509803,0.8431372549019608}
+\definecolor{Aqua}{rgb}{0,1,1}
+\definecolor{Aquamarine}{rgb}{0.4980392156862745,1,0.8313725490196079}
+\definecolor{Azure}{rgb}{0.9411764705882353,1,1}
+\definecolor{Beige}{rgb}{0.9607843137254902,0.9607843137254902,0.8627450980392157}
+\definecolor{Bisque}{rgb}{1,0.8941176470588236,0.7686274509803922}
+\definecolor{Black}{rgb}{0,0,0}
+\definecolor{BlanchedAlmond}{rgb}{1,0.9215686274509803,0.803921568627451}
+\definecolor{Blue}{rgb}{0,0,1}
+\definecolor{BlueViolet}{rgb}{0.5411764705882353,0.16862745098039217,0.8862745098039215}
+\definecolor{Brown}{rgb}{0.6470588235294118,0.16470588235294117,0.16470588235294117}
+\definecolor{BurlyWood}{rgb}{0.8705882352941177,0.7215686274509804,0.5294117647058824}
+\definecolor{CadetBlue}{rgb}{0.37254901960784315,0.6196078431372549,0.6274509803921569}
+\definecolor{Chartreuse}{rgb}{0.4980392156862745,1,0}
+\definecolor{Chocolate}{rgb}{0.8235294117647058,0.4117647058823529,0.11764705882352941}
+\definecolor{Coral}{rgb}{1,0.4980392156862745,0.3137254901960784}
+\definecolor{CornflowerBlue}{rgb}{0.39215686274509803,0.5843137254901961,0.9294117647058824}
+\definecolor{Cornsilk}{rgb}{1,0.9725490196078431,0.8627450980392157}
+\definecolor{Crimson}{rgb}{0.8627450980392157,0.0784313725490196,0.23529411764705882}
+\definecolor{Cyan}{rgb}{0,1,1}
+\definecolor{DarkBlue}{rgb}{0,0,0.5450980392156862}
+\definecolor{DarkCyan}{rgb}{0,0.5450980392156862,0.5450980392156862}
+\definecolor{DarkGoldenRod}{rgb}{0.7215686274509804,0.5254901960784314,0.043137254901960784}
+\definecolor{DarkGray}{rgb}{0.6627450980392157,0.6627450980392157,0.6627450980392157}
+\definecolor{DarkGrey}{rgb}{0.6627450980392157,0.6627450980392157,0.6627450980392157}
+\definecolor{DarkGreen}{rgb}{0,0.39215686274509803,0}
+\definecolor{DarkKhaki}{rgb}{0.7411764705882353,0.7176470588235294,0.4196078431372549}
+\definecolor{DarkMagenta}{rgb}{0.5450980392156862,0,0.5450980392156862}
+\definecolor{DarkOliveGreen}{rgb}{0.3333333333333333,0.4196078431372549,0.1843137254901961}
+\definecolor{DarkOrange}{rgb}{1,0.5490196078431373,0}
+\definecolor{DarkOrchid}{rgb}{0.6,0.19607843137254902,0.8}
+\definecolor{DarkRed}{rgb}{0.5450980392156862,0,0}
+\definecolor{DarkSalmon}{rgb}{0.9137254901960784,0.5882352941176471,0.47843137254901963}
+\definecolor{DarkSeaGreen}{rgb}{0.5607843137254902,0.7372549019607844,0.5607843137254902}
+\definecolor{DarkSlateBlue}{rgb}{0.2823529411764706,0.23921568627450981,0.5450980392156862}
+\definecolor{DarkSlateGray}{rgb}{0.1843137254901961,0.30980392156862746,0.30980392156862746}
+\definecolor{DarkSlateGrey}{rgb}{0.1843137254901961,0.30980392156862746,0.30980392156862746}
+\definecolor{DarkTurquoise}{rgb}{0,0.807843137254902,0.8196078431372549}
+\definecolor{DarkViolet}{rgb}{0.5803921568627451,0,0.8274509803921568}
+\definecolor{DeepPink}{rgb}{1,0.0784313725490196,0.5764705882352941}
+\definecolor{DeepSkyBlue}{rgb}{0,0.7490196078431373,1}
+\definecolor{DimGray}{rgb}{0.4117647058823529,0.4117647058823529,0.4117647058823529}
+\definecolor{DimGrey}{rgb}{0.4117647058823529,0.4117647058823529,0.4117647058823529}
+\definecolor{DodgerBlue}{rgb}{0.11764705882352941,0.5647058823529412,1}
+\definecolor{FireBrick}{rgb}{0.6980392156862745,0.13333333333333333,0.13333333333333333}
+\definecolor{FloralWhite}{rgb}{1,0.9803921568627451,0.9411764705882353}
+\definecolor{ForestGreen}{rgb}{0.13333333333333333,0.5450980392156862,0.13333333333333333}
+\definecolor{Fuchsia}{rgb}{1,0,1}
+\definecolor{Gainsboro}{rgb}{0.8627450980392157,0.8627450980392157,0.8627450980392157}
+\definecolor{GhostWhite}{rgb}{0.9725490196078431,0.9725490196078431,1}
+\definecolor{Gold}{rgb}{1,0.8431372549019608,0}
+\definecolor{GoldenRod}{rgb}{0.8549019607843137,0.6470588235294118,0.12549019607843137}
+\definecolor{Gray}{rgb}{0.5019607843137255,0.5019607843137255,0.5019607843137255}
+\definecolor{Grey}{rgb}{0.5019607843137255,0.5019607843137255,0.5019607843137255}
+\definecolor{Green}{rgb}{0,0.5019607843137255,0}
+\definecolor{GreenYellow}{rgb}{0.6784313725490196,1,0.1843137254901961}
+\definecolor{HoneyDew}{rgb}{0.9411764705882353,1,0.9411764705882353}
+\definecolor{HotPink}{rgb}{1,0.4117647058823529,0.7058823529411765}
+\definecolor{IndianRed}{rgb}{0.803921568627451,0.3607843137254902,0.3607843137254902}
+\definecolor{Indigo}{rgb}{0.29411764705882354,0,0.5098039215686274}
+\definecolor{Ivory}{rgb}{1,1,0.9411764705882353}
+\definecolor{Khaki}{rgb}{0.9411764705882353,0.9019607843137255,0.5490196078431373}
+\definecolor{Lavender}{rgb}{0.9019607843137255,0.9019607843137255,0.9803921568627451}
+\definecolor{LavenderBlush}{rgb}{1,0.9411764705882353,0.9607843137254902}
+\definecolor{LawnGreen}{rgb}{0.48627450980392156,0.9882352941176471,0}
+\definecolor{LemonChiffon}{rgb}{1,0.9803921568627451,0.803921568627451}
+\definecolor{LightBlue}{rgb}{0.6784313725490196,0.8470588235294118,0.9019607843137255}
+\definecolor{LightCoral}{rgb}{0.9411764705882353,0.5019607843137255,0.5019607843137255}
+\definecolor{LightCyan}{rgb}{0.8784313725490196,1,1}
+\definecolor{LightGoldenRodYellow}{rgb}{0.9803921568627451,0.9803921568627451,0.8235294117647058}
+\definecolor{LightGray}{rgb}{0.8274509803921568,0.8274509803921568,0.8274509803921568}
+\definecolor{LightGrey}{rgb}{0.8274509803921568,0.8274509803921568,0.8274509803921568}
+\definecolor{LightGreen}{rgb}{0.5647058823529412,0.9333333333333333,0.5647058823529412}
+\definecolor{LightPink}{rgb}{1,0.7137254901960784,0.7568627450980392}
+\definecolor{LightSalmon}{rgb}{1,0.6274509803921569,0.47843137254901963}
+\definecolor{LightSeaGreen}{rgb}{0.12549019607843137,0.6980392156862745,0.6666666666666666}
+\definecolor{LightSkyBlue}{rgb}{0.5294117647058824,0.807843137254902,0.9803921568627451}
+\definecolor{LightSlateGray}{rgb}{0.4666666666666667,0.5333333333333333,0.6}
+\definecolor{LightSlateGrey}{rgb}{0.4666666666666667,0.5333333333333333,0.6}
+\definecolor{LightSteelBlue}{rgb}{0.6901960784313725,0.7686274509803922,0.8705882352941177}
+\definecolor{LightYellow}{rgb}{1,1,0.8784313725490196}
+\definecolor{Lime}{rgb}{0,1,0}
+\definecolor{LimeGreen}{rgb}{0.19607843137254902,0.803921568627451,0.19607843137254902}
+\definecolor{Linen}{rgb}{0.9803921568627451,0.9411764705882353,0.9019607843137255}
+\definecolor{Magenta}{rgb}{1,0,1}
+\definecolor{Maroon}{rgb}{0.5019607843137255,0,0}
+\definecolor{MediumAquaMarine}{rgb}{0.4,0.803921568627451,0.6666666666666666}
+\definecolor{MediumBlue}{rgb}{0,0,0.803921568627451}
+\definecolor{MediumOrchid}{rgb}{0.7294117647058823,0.3333333333333333,0.8274509803921568}
+\definecolor{MediumPurple}{rgb}{0.5764705882352941,0.4392156862745098,0.8588235294117647}
+\definecolor{MediumSeaGreen}{rgb}{0.23529411764705882,0.7019607843137254,0.44313725490196076}
+\definecolor{MediumSlateBlue}{rgb}{0.4823529411764706,0.40784313725490196,0.9333333333333333}
+\definecolor{MediumSpringGreen}{rgb}{0,0.9803921568627451,0.6039215686274509}
+\definecolor{MediumTurquoise}{rgb}{0.2823529411764706,0.8196078431372549,0.8}
+\definecolor{MediumVioletRed}{rgb}{0.7803921568627451,0.08235294117647059,0.5215686274509804}
+\definecolor{MidnightBlue}{rgb}{0.09803921568627451,0.09803921568627451,0.4392156862745098}
+\definecolor{MintCream}{rgb}{0.9607843137254902,1,0.9803921568627451}
+\definecolor{MistyRose}{rgb}{1,0.8941176470588236,0.8823529411764706}
+\definecolor{Moccasin}{rgb}{1,0.8941176470588236,0.7098039215686275}
+\definecolor{NavajoWhite}{rgb}{1,0.8705882352941177,0.6784313725490196}
+\definecolor{Navy}{rgb}{0,0,0.5019607843137255}
+\definecolor{OldLace}{rgb}{0.9921568627450981,0.9607843137254902,0.9019607843137255}
+\definecolor{Olive}{rgb}{0.5019607843137255,0.5019607843137255,0}
+\definecolor{OliveDrab}{rgb}{0.4196078431372549,0.5568627450980392,0.13725490196078433}
+\definecolor{Orange}{rgb}{1,0.6470588235294118,0}
+\definecolor{OrangeRed}{rgb}{1,0.27058823529411763,0}
+\definecolor{Orchid}{rgb}{0.8549019607843137,0.4392156862745098,0.8392156862745098}
+\definecolor{PaleGoldenRod}{rgb}{0.9333333333333333,0.9098039215686274,0.6666666666666666}
+\definecolor{PaleGreen}{rgb}{0.596078431372549,0.984313725490196,0.596078431372549}
+\definecolor{PaleTurquoise}{rgb}{0.6862745098039216,0.9333333333333333,0.9333333333333333}
+\definecolor{PaleVioletRed}{rgb}{0.8588235294117647,0.4392156862745098,0.5764705882352941}
+\definecolor{PapayaWhip}{rgb}{1,0.9372549019607843,0.8352941176470589}
+\definecolor{PeachPuff}{rgb}{1,0.8549019607843137,0.7254901960784313}
+\definecolor{Peru}{rgb}{0.803921568627451,0.5215686274509804,0.24705882352941178}
+\definecolor{Pink}{rgb}{1,0.7529411764705882,0.796078431372549}
+\definecolor{Plum}{rgb}{0.8666666666666667,0.6274509803921569,0.8666666666666667}
+\definecolor{PowderBlue}{rgb}{0.6901960784313725,0.8784313725490196,0.9019607843137255}
+\definecolor{Purple}{rgb}{0.5019607843137255,0,0.5019607843137255}
+\definecolor{RebeccaPurple}{rgb}{0.4,0.2,0.6}
+\definecolor{Red}{rgb}{1,0,0}
+\definecolor{RosyBrown}{rgb}{0.7372549019607844,0.5607843137254902,0.5607843137254902}
+\definecolor{RoyalBlue}{rgb}{0.2549019607843137,0.4117647058823529,0.8823529411764706}
+\definecolor{SaddleBrown}{rgb}{0.5450980392156862,0.27058823529411763,0.07450980392156863}
+\definecolor{Salmon}{rgb}{0.9803921568627451,0.5019607843137255,0.4470588235294118}
+\definecolor{SandyBrown}{rgb}{0.9568627450980393,0.6431372549019608,0.3764705882352941}
+\definecolor{SeaGreen}{rgb}{0.1803921568627451,0.5450980392156862,0.3411764705882353}
+\definecolor{SeaShell}{rgb}{1,0.9607843137254902,0.9333333333333333}
+\definecolor{Sienna}{rgb}{0.6274509803921569,0.3215686274509804,0.17647058823529413}
+\definecolor{Silver}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\definecolor{SkyBlue}{rgb}{0.5294117647058824,0.807843137254902,0.9215686274509803}
+\definecolor{SlateBlue}{rgb}{0.41568627450980394,0.35294117647058826,0.803921568627451}
+\definecolor{SlateGray}{rgb}{0.4392156862745098,0.5019607843137255,0.5647058823529412}
+\definecolor{SlateGrey}{rgb}{0.4392156862745098,0.5019607843137255,0.5647058823529412}
+\definecolor{Snow}{rgb}{1,0.9803921568627451,0.9803921568627451}
+\definecolor{SpringGreen}{rgb}{0,1,0.4980392156862745}
+\definecolor{SteelBlue}{rgb}{0.27450980392156865,0.5098039215686274,0.7058823529411765}
+\definecolor{Tan}{rgb}{0.8235294117647058,0.7058823529411765,0.5490196078431373}
+\definecolor{Teal}{rgb}{0,0.5019607843137255,0.5019607843137255}
+\definecolor{Thistle}{rgb}{0.8470588235294118,0.7490196078431373,0.8470588235294118}
+\definecolor{Tomato}{rgb}{1,0.38823529411764707,0.2784313725490196}
+\definecolor{Turquoise}{rgb}{0.25098039215686274,0.8784313725490196,0.8156862745098039}
+\definecolor{Violet}{rgb}{0.9333333333333333,0.5098039215686274,0.9333333333333333}
+\definecolor{Wheat}{rgb}{0.9607843137254902,0.8705882352941177,0.7019607843137254}
+\definecolor{White}{rgb}{1,1,1}
+\definecolor{WhiteSmoke}{rgb}{0.9607843137254902,0.9607843137254902,0.9607843137254902}
+\definecolor{Yellow}{rgb}{1,1,0}
+\definecolor{YellowGreen}{rgb}{0.6039215686274509,0.803921568627451,0.19607843137254902}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\geometry{ a5paper, left=15mm, top=20mm, bottom=20mm, }
+\usepackage[kerning,spacing]{microtype}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Math symbols}
+\author{}
+\date{5/13/2022}
+\begin{document}
+
+
+\setcounter{page}{1}
+\pagenumbering*{arabic}
+
+\section*{1 ASCII U+0000 - U-007F}
+
+\begin{packed_itemize}
+
+\item " | quotedbl
+
+\item {\#} | numbersign
+
+\item {\textdollar} | dollar
+
+\item {\%} | percent
+
+\item {\&} | ampersand
+
+\item ' | quotesingle
+
+\item {\char42} | asterisk
+
+\item , | comma
+
+\item - | hyphen
+
+\item . | period
+
+\item / | slash
+
+\item {\textless} | less
+
+\item {\textgreater} | greater
+
+\item @ | at |
+
+\item {\char91} | bracketleft
+
+\item {\textbackslash} | backslash
+
+\item {\char93} | bracketright
+
+\item {\textasciicircum} | asciicircm
+
+\item {\_} | underscore
+
+\item ` | grave
+
+\item {\{} | braceleft
+
+\item | | verticalbar
+
+\item {\}} | braceright
+
+\item {\textasciitilde} | asciitilde
+
+\end{packed_itemize}
+
+\section*{2 Latin-1 Supplement U+0080 - U+00FF}
+
+\begin{packed_itemize}
+
+\item ~ | nonbreakingspace |   |
+
+\item {\textexclamdown} | exclamdown | ¡ |
+
+\item {\textcent} | cent | ¢ |
+
+\item {\pounds} | sterling | £ |
+
+\item {\textcurrency} | currency | ¤ |
+
+\item {\textyen} | yen | ¥ |
+
+\item {\textbrokenbar} | brokenbar | ¦ |
+
+\item {\S} | section | § |
+
+\item {\textasciidieresis} | dieresis | ¨ |
+
+\item {\textcopyright} | copyright | © |
+
+\item {\textordfeminine} | ordfeminine | ª |
+
+\item {\guillemetleft} | guillemotleft | « |
+
+\item {\textlnot} | logicalnot | ¬ |
+
+\item {\textregistered} | registered | ® |
+
+\item {\textasciimacron} | macron | ¯ |
+
+\item {\textdegree} | degree | ° |
+
+\item {\textpm} | plusminus | ± |
+
+\item {\texttwosuperior} | twosuperior | ² |
+
+\item {\textthreesuperior} | threesuperior | ³ |
+
+\item {\textasciiacute} | acute | ´ |
+
+\item {\textmu} | mu1 | µ |
+
+\item {\P} | paragraph | ¶ |
+
+\item {\textperiodcentered} | periodcentered | · |
+
+\item {\c{}} | cedilla | ¸ |
+
+\item {\textonesuperior} | onesuperior | ¹ |
+
+\item {\textordmasculine} | ordmasculine | º |
+
+\item {\guillemetright} | guillemotright | » |
+
+\item {\textonequarter} | onequarter | ¼ |
+
+\item {\textonehalf} | onehalf | ½ |
+
+\item {\textthreequarters} | threequarters | ¾ |
+
+\item {\textquestiondown} | questiondown | ¿ |
+
+\item {\`{A}} | Agrave | À |
+
+\item {\'{A}} | Aacute | Á |
+
+\item {\^{A}} | Acircumflex | Â |
+
+\item {\~{A}} | Atilde | Ã |
+
+\item {\"{A}} | Adieresis | Ä |
+
+\item {\AA} | Aring | Å |
+
+\item {\AE} | AE | Æ |
+
+\item {\c{C}} | Ccedilla | Ç |
+
+\item {\`{E}} | Egrave | È |
+
+\item {\'{E}} | Eacute | É |
+
+\item {\^{E}} | Ecircumflex | Ê |
+
+\item {\"{E}} | Edieresis | Ë |
+
+\item {\`{I}} | Igrave | Ì |
+
+\item {\'{I}} | Iacute | Í |
+
+\item {\^{I}} | Icircumflex | Î |
+
+\item {\"{I}} | Idieresis | Ï |
+
+\item {\DH} | Eth | Ð |
+
+\item {\`{N}} | Ntilde | Ñ |
+
+\item {\`{O}} | Ograve | Ò |
+
+\item {\'{O}} | Oacute | Ó |
+
+\item {\^{O}} | Ocircumflex | Ô |
+
+\item {\~{O}} | Otilde | Õ |
+
+\item {\"{O}} | Odieresis | Ö |
+
+\item {\texttimes} | multiply | × |
+
+\item {\O} | Oslash | Ø |
+
+\item {\`{U}} | Ugrave | Ù |
+
+\item {\'{U}} | Uacute | Ú |
+
+\item {\^{U}} | Ucircumflex | Û |
+
+\item {\"{U}} | Udieresis | Ü |
+
+\item {\'{Y}} | Yacute | Ý |
+
+\item {\TH} | Thorn | Þ |
+
+\item {\ss} | germandbls | ß |
+
+\item {\`{a}} | agrave | à |
+
+\item {\'{a}} | aacute | á |
+
+\item {\^{a}} | acircumflex | â |
+
+\item {\~{a}} | atilde | ã |
+
+\item {\"{a}} | adieresis | ä |
+
+\item {\aa} | aring | å |
+
+\item {\ae} | ae | æ |
+
+\item {\c{c}} | ccedilla | ç |
+
+\item {\`{e}} | egrave | è |
+
+\item {\'{e}} | eacute | é |
+
+\item {\^{e}} | ecircumflex | ê |
+
+\item {\"{e}} | edieresis | ë |
+
+\item {\`{i}} | igrave | ì |
+
+\item {\'{i}} | iacute | í |
+
+\item {\^{i}} | icircumflex | î |
+
+\item {\"{i}} | idieresis | ï |
+
+\item {\dh} | eth | ð |
+
+\item {\~{n}} | ntilde | ñ |
+
+\item {\`{o}} | ograve | ò |
+
+\item {\'{o}} | oacute | ó |
+
+\item {\^{o}} | ocircumflex | ô |
+
+\item {\~{o}} | otilde | õ |
+
+\item {\"{o}} | odieresis | ö |
+
+\item {\textdiv} | divide | ÷ |
+
+\item {\o} | oslash | ø |
+
+\item {\`{u}} | ugrave | ù |
+
+\item {\'{u}} | uacute | ú |
+
+\item {\^{u}} | ucircumflex | û |
+
+\item {\"{u}} | udieresis | ü |
+
+\item {\'{y}} | yacute | ý |
+
+\item {\th} | thorn | þ |
+
+\item {\"{y}} | ydieresis | ÿ |
+
+\end{packed_itemize}
+
+\section*{3 Greek and Coptic U+0370 - U+03FF}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\Alpha} | Alpha | Α |
+
+\item \ensuremath{\Beta} | Beta | Β |
+
+\item \ensuremath{\Gamma} | Gamma | Γ |
+
+\item \ensuremath{\Delta} | Delta | Δ |
+
+\item \ensuremath{\Epsilon} | Epsilon | Ε |
+
+\item \ensuremath{\Zeta} | Zeta | Ζ |
+
+\item \ensuremath{\Eta} | Eta | Η |
+
+\item \ensuremath{\Theta} | Theta | Θ |
+
+\item \ensuremath{\Iota} | Iota | Ι |
+
+\item \ensuremath{\Kappa} | Kappa | Κ |
+
+\item \ensuremath{\Lambda} | Lambda | Λ |
+
+\item \ensuremath{\Mu} | Mu | Μ |
+
+\item \ensuremath{\Nu} | Nu | Ν |
+
+\item \ensuremath{\Xi} | Xi | Ξ |
+
+\item \ensuremath{\Omicron} | Omicron | Ο |
+
+\item \ensuremath{\Pi} | Pi | Π |
+
+\item \ensuremath{\Rho} | Rho | Ρ |
+
+\item \ensuremath{\Sigma} | Sigma | Σ |
+
+\item \ensuremath{\Tau} | Tau | Τ |
+
+\item \ensuremath{\Upsilon} | Upsilon | Υ |
+
+\item \ensuremath{\Phi} | Phi | Φ |
+
+\item \ensuremath{\Chi} | Chi | Χ |
+
+\item \ensuremath{\Psi} | Psi | Ψ |
+
+\item \ensuremath{\Omega} | Omega | Ω |
+
+\item \ensuremath{\alpha} | alpha | α |
+
+\item \ensuremath{\beta} | beta | β |
+
+\item \ensuremath{\gamma} | gamma | γ |
+
+\item \ensuremath{\delta} | delta | δ |
+
+\item \ensuremath{\epsilon} | epsilon | ε |
+
+\item \ensuremath{\zeta} | zeta | ζ |
+
+\item \ensuremath{\eta} | eta | η |
+
+\item \ensuremath{\theta} | theta | θ |
+
+\item \ensuremath{\vartheta} | vartheta | ϑ |
+
+\item \ensuremath{\iota} | iota | ι |
+
+\item \ensuremath{\kappa} | kappa | κ |
+
+\item \ensuremath{\varkappa} | varkappa | ϰ |
+
+\item \ensuremath{\lambda} | lambda | λ |
+
+\item \ensuremath{\mu} | mu | μ |
+
+\item \ensuremath{\nu} | nu | ν |
+
+\item \ensuremath{\xi} | xi | ξ |
+
+\item \ensuremath{\omicron} | omicron | ο |
+
+\item \ensuremath{\pi} | pi | π |
+
+\item \ensuremath{\varpi} | varpi | ϖ |
+
+\item \ensuremath{\rho} | rho | ρ |
+
+\item \ensuremath{\varrho} | varrho | ϱ |
+
+\item \ensuremath{\varsigma} | varsigma | ς |
+
+\item \ensuremath{\sigma} | sigma | σ |
+
+\item \ensuremath{\tau} | tau | τ |
+
+\item \ensuremath{\upsilon} | upsilon | υ |
+
+\item \ensuremath{\phi} | phi | ϕ |
+
+\item \ensuremath{\varphi} | varphi | φ |
+
+\item \ensuremath{\chi} | chi | χ |
+
+\item \ensuremath{\psi} | psi | ψ |
+
+\item \ensuremath{\omega} | omega | ω |
+
+\item \ensuremath{\varepsilon} | varepsilon | ϵ |
+
+\item ? | Digamma | Ϝ |
+
+\item \ensuremath{\digamma} | digamma | ϝ |
+
+\end{packed_itemize}
+
+\section*{4 Mathematical Operators U+2200 - U+22FF}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\nless} | nless | ≮ |
+
+\item \ensuremath{\leq} | leq | ≤ |
+
+\item \ensuremath{\nleq} | nleq | ≰ |
+
+\item \ensuremath{\nleqslant} | nleqslant | ≰ |
+
+\item \ensuremath{\prec} | prec | ≺ |
+
+\item \ensuremath{\nprec} | nprec | ⊀ |
+
+\item \ensuremath{\preceq} | preceq | ≼ |
+
+\item \ensuremath{\npreceq} | npreceq | ⋠ |
+
+\item \ensuremath{\ll} | ll | ≪ |
+
+\item \ensuremath{\lll} | lll | ⋘ |
+
+\item \ensuremath{\ngtr} | ngtr | ≯ |
+
+\item \ensuremath{\geq} | geq | ≥ |
+
+\item \ensuremath{\ngeq} | ngeq | ≱ |
+
+\item \ensuremath{\ngeqslant} | ngeqslant | ≱ |
+
+\item \ensuremath{\succ} | succ | ≻ |
+
+\item \ensuremath{\nsucc} | nsucc | ⊁ |
+
+\item \ensuremath{\succeq} | succeq | ≽ |
+
+\item \ensuremath{\nsucceq} | nsucceq | ⋡ |
+
+\item \ensuremath{\gg} | gg | ≫ |
+
+\item \ensuremath{\ggg} | ggg | ⋙ |
+
+\item \ensuremath{\precsim} | precsim | ≾ |
+
+\item \ensuremath{\succsim} | succsim | ≿ |
+
+\item \ensuremath{\doteq} | doteq | ≐ |
+
+\item \ensuremath{\equiv} | equiv | ≡ |
+
+\item \ensuremath{\nequiv} | nequiv | ≢ |
+
+\item \ensuremath{\cong} | cong | ≅ |
+
+\item \ensuremath{\approx} | approx | ≈ |
+
+\item asymp | asymp | ≈ |
+
+\item \ensuremath{\simeq} | simeq | ≃ |
+
+\item \ensuremath{\sim} | sim | ∼ |
+
+\item \ensuremath{\propto} | propto | ∝ |
+
+\item \ensuremath{\neq} | ne | ≠ |
+
+\item \ensuremath{\mid} | mid | ∣ |
+
+\item \ensuremath{\nmid} | nmid | ∤ |
+
+\item \ensuremath{\mp} | minusplus | ∓ |
+
+\item \ensuremath{-} | minus | − |
+
+\item \ensuremath{\ast} | ast | ∗ |
+
+\item \ensuremath{\star} | sstarf | ⋆ |
+
+\item \ensuremath{\boxtimes} | boxtimes | ⊠ |
+
+\item \ensuremath{\surd} | Sqrt | √ |
+
+\item \ensuremath{\asymp} | asympeq | ≍ |
+
+\item \ensuremath{\vdash} | vdash | ⊢ |
+
+\item \ensuremath{\models} | models | ⊧ |
+
+\item \ensuremath{\bowtie} | bowtie | ⋈ |
+
+\item \ensuremath{\dashv} | dashv | ⊣ |
+
+\item \ensuremath{\uplus} | uplus | ⊎ |
+
+\item \ensuremath{\sqcap} | sqcap | ⊓ |
+
+\item \ensuremath{\sqcup} | sqcup | ⊔ |
+
+\item \ensuremath{\vee} | vee | ∨ |
+
+\item \ensuremath{\wedge} | wedge | ∧ |
+
+\item \ensuremath{\cdot} | sdot | ⋅ |
+
+\item \ensuremath{\vdots} | vellip | ⋮ |
+
+\item \ensuremath{\dots} | ctdot | ⋯ |
+
+\item \ensuremath{\ddots} | dtdot | ⋱ |
+
+\item \ensuremath{\diamond} | diamond | ⋄ |
+
+\item \ensuremath{\vartriangleleft} | vltri | ⊲ |
+
+\item \ensuremath{\vartriangleright} | vrtri | ⊳ |
+
+\item \ensuremath{\trianglelefteq} | vltrie | ⊴ |
+
+\item \ensuremath{\trianglerighteq} | vrtrie | ⊵ |
+
+\item \ensuremath{\not\triangleleft} | nltri | ⋪ |
+
+\item \ensuremath{\not\triangleright} | nrtri | ⋫ |
+
+\item \ensuremath{\wr} | wreath | ≀ |
+
+\item \ensuremath{\oplus} | oplus | ⊕ |
+
+\item \ensuremath{\ominus} | ominus | ⊖ |
+
+\item \ensuremath{\otimes} | otimes | ⊗ |
+
+\item \ensuremath{\circledast} | circledast | ⊛ |
+
+\item \ensuremath{\oslash} | osol | ⊘ |
+
+\item \ensuremath{\odot} | CircleDot | ⊙ |
+
+\item \ensuremath{\circ} | SmallCircle | ∘ |
+
+\item \ensuremath{\prod} | prod | ∏ |
+
+\item \ensuremath{\amalg} | coprod | ∐ |
+
+\item \ensuremath{\sum} | sum | ∑ |
+
+\item \ensuremath{\infty} | infty | ∞ |
+
+\item \ensuremath{\angle} | ang | ∠ |
+
+\item \ensuremath{\measuredangle} | angmsd | ∡ |
+
+\item \ensuremath{\sphericalangle} | angsph | ∢ |
+
+\item \ensuremath{\in} | in | ∈ |
+
+\item \ensuremath{\notin} | notin | ∉ |
+
+\item \ensuremath{\ni} | ReverseElement | ∋ |
+
+\item \ensuremath{\notni} | NotReverseElement | ∌ |
+
+\item \ensuremath{\subset} | subset | ⊂ |
+
+\item \ensuremath{\not\subset} | nsubset | ⊄ |
+
+\item \ensuremath{\subseteq} | subseteq | ⊆ |
+
+\item \ensuremath{\nsubseteq} | nsubseteq | ⊈ |
+
+\item \ensuremath{\sqsubset} | sqsubset | ⊏ |
+
+\item \ensuremath{\sqsubseteq} | sqsubseteq | ⊑ |
+
+\item \ensuremath{\supset} | supset | ⊃ |
+
+\item \ensuremath{\not\supset} | nsupset | ⊅ |
+
+\item \ensuremath{\supseteq} | supseteq | ⊇ |
+
+\item \ensuremath{\nsupseteq} | nsupseteq | ⊉ |
+
+\item \ensuremath{\sqsupset} | sqsupset | ⊐ |
+
+\item \ensuremath{\sqsupseteq} | sqsupseteq | ⊒ |
+
+\item \ensuremath{\land} | xwedge | ⋀ |
+
+\item \ensuremath{\lor} | xvee | ⋁ |
+
+\item \ensuremath{\cap} | cap | ⋂ |
+
+\item \ensuremath{\cup} | cup | ⋃ |
+
+\item \ensuremath{\smallsetminus} | setminus | ∖ |
+
+\item \ensuremath{\top} | top | ⊤ |
+
+\item \ensuremath{\bot} | bot | ⊥ |
+
+\item \ensuremath{\parallel} | parallel | ∥ |
+
+\item \ensuremath{\nparallel} | nparallel | ∦ |
+
+\item \ensuremath{\forall} | forall | ∀ |
+
+\item \ensuremath{\complement} | complement | ∁ |
+
+\item \ensuremath{\partial} | partial | ∂ |
+
+\item \ensuremath{\exists} | exist | ∃ |
+
+\item \ensuremath{\nexists} | nexist | ∄ |
+
+\item \ensuremath{\emptyset} | emptyset | ∅ |
+
+\item \ensuremath{\triangle} | increment | ∆ |
+
+\item \ensuremath{\nabla} | nabla | ∇ |
+
+\item \ensuremath{\therefore} | therefore | ∴ |
+
+\item \ensuremath{\because} | because | ∵ |
+
+\item \ensuremath{\coloneqq} | coloneq | ≔ |
+
+\item \ensuremath{\eqqcolon} | eqcolon | ≕ |
+
+\end{packed_itemize}
+
+\section*{5 Supplemental Mathematical Operators U+2A00 - U+2AFF}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\leqslant} | leqslant | ⩽ |
+
+\item \ensuremath{\geqslant} | geqslant | ⩾ |
+
+\item \ensuremath{\times} | Cross | ⨯ | Vector or Cross Product
+
+\end{packed_itemize}
+
+\section*{6 Miscellaneous Technical U+2300 - U+23FF}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\lceil} | lceil | ⌈ |
+
+\item \ensuremath{\rceil} | rceil | ⌉ |
+
+\item \ensuremath{\lfloor} | lfloor | ⌊ |
+
+\item \ensuremath{\rfloor} | rfloor | ⌋ |
+
+\item \ensuremath{\smile} | smile | ⌣ |
+
+\item \ensuremath{\frown} | frown | ⌢ |
+
+\item {\textvisiblespace} | blank | ⎵ | Bottom Square Bracket
+
+\end{packed_itemize}
+
+\section*{7 Supplemental Punctuation U+2E00 - U+2E7F}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\ulcorner} | ulcorner | ⸢ |
+
+\item \ensuremath{\urcorner} | urcorner | ⸣ |
+
+\item \ensuremath{\llcorner} | llcorner | ⸤ |
+
+\item \ensuremath{\lrcorner} | lrcorner | ⸥ |
+
+\end{packed_itemize}
+
+\section*{8 Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\surd} | Longdiv | ⟌ |
+
+\item \ensuremath{\perp} | perp | ⟂ |
+
+\item \ensuremath{\langle} | lang | ⟨ |
+
+\item \ensuremath{\rangle} | rang | ⟩ |
+
+\item \ensuremath{\llbracket} | lobrk | ⟦ |
+
+\item \ensuremath{\rrbracket} | robrk | ⟧ |
+
+\end{packed_itemize}
+
+\section*{9 Supplemental Arrows-A U+27F0 - U+27FF}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\longleftarrow} | xlarr | ⟵ |
+
+\item \ensuremath{\longrightarrow} | xrarr | ⟶ |
+
+\item \ensuremath{\longleftrightarrow} | xharr | ⟷ |
+
+\item \ensuremath{\Longleftarrow} | xlArr | ⟸ |
+
+\item \ensuremath{\Longrightarrow} | xrArr | ⟹ |
+
+\item \ensuremath{\Longleftrightarrow} | xhArr | ⟺ |
+
+\item \ensuremath{\longmapsto} | xmapsto | ⟼ |
+
+\end{packed_itemize}
+
+\section*{10 Thai U+0E00 - U+0E7F}
+
+\begin{packed_itemize}
+
+\item {\textbaht} | baht | ฿ | U+0E3F THAI CURRENCY SYMBOL BAHT
+
+\end{packed_itemize}
+
+{\%} Currency Symbols U+20A0 - U+20CF
+
+\begin{packed_itemize}
+
+\item {\textdong} | dong | ₫ | U+20AB DONG SIGN
+
+\item {\texteuro} | euro | € | U+20AC EURO SIGN
+
+\item {\textguarani} | guarani | ₲ | U+20B2 GUARANI SIGN
+
+\item {\textlira} | lira | ₺ | U+20BA TURKISH LIRA SIGN
+
+\item {\textnaira} | naira | ₦ | U+20A6 NAIRA SIGN
+
+\item {\textpeso} | peso | ₱ | U+20B1 PESO SIGN
+
+\item {\textwon} | won | ₩ | U+20A9 WON SIGN
+
+\end{packed_itemize}
+
+\section*{11 Latin Extended-A U+0100 - U+017F}
+
+\begin{packed_itemize}
+
+\item {\DJ} | Dstrok | Đ | U+0110 LATIN CAPITAL LETTER D WITH STROKE
+
+\item {\dj} | dstrok | đ | U+0111 LATIN SMALL LETTER D WITH STROKE
+
+\item {\IJ} | IJlig | Ĳ | U+0132 LATIN CAPITAL LIGATURE IJ
+
+\item {\ij} | ijlig | ĳ | U+0133 LATIN SMALL LIGATURE IJ
+
+\item {\L} | Lstrok | Ł | U+0141 LATIN CAPITAL LETTER L WITH STROKE
+
+\item {\l} | lstrok | ł | U+0142 LATIN SMALL LETTER L WITH STROKE
+
+\item {\NG} | ENG | Ŋ | U+014A LATIN CAPITAL LETTER ENG
+
+\item {\ng} | eng | ŋ | U+014B LATIN SMALL LETTER ENG
+
+\item {\OE} | OElig | Œ | U+0152 LATIN CAPITAL LIGATURE OE
+
+\item {\oe} | oelig | œ | U+0153 LATIN SMALL LIGATURE OE
+
+\item \ensuremath{\hslash} | hstrok | ħ | U+0127 LATIN SMALL LETTER H WITH STROKE
+
+\end{packed_itemize}
+
+\section*{12 Latin Extended-B U+0180 - U+024F}
+
+\begin{packed_itemize}
+
+\item {\textflorin} | florin | ƒ | U+0192 LATIN SMALL LETTER F WITH HOOK
+
+\item \ensuremath{\Omega} | mho | Ω |
+
+\end{packed_itemize}
+
+\section*{13 General Punctuation U+2000 - U+206F}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\,} | ThinSpace |   |
+
+\item {\textendash} | ndash | – | U+2013 EN DASH
+
+\item {\textemdash} | mdash | — | U+2014 EM DASH
+
+\item \ensuremath{\Vert} | Vert | ‖ |
+
+\item {\textquoteleft} | lsquo | ‘ | U+2018 LEFT SINGLE QUOTATION MARK
+
+\item {\textquoteright} | rsquo | ’ | U+2019 RIGHT SINGLE QUOTATION MARK
+
+\item {\textquotedblleft} | ldquo | “ | U+201C LEFT DOUBLE QUOTATION MARK
+
+\item {\textquotedblright} | rdquo | ” | U+201D RIGHT DOUBLE QUOTATION MARK
+
+\item {\dag} | dagger | † | U+2020 DAGGER
+
+\item {\ddag} | Dagger | ‡ | U+2021 DOULBE DAGGER
+
+\item \ensuremath{\bullet} | bullet | • |
+
+\item \ensuremath{\hdots} | hellip | … |
+
+\item ' | prime | ′ | U+2032 PRIME '' | Prime | ″ | U+2033 DOUBLE PRIME
+
+\end{packed_itemize}
+
+\section*{14 Superscripts and Subscripts U+2070 - U+209F}
+
+\begin{packed_itemize}
+
+\item {\textzerosubscript} | zerosubscript | ₀ | U+2080 SUBSCRIPT ZERO
+
+\item {\textonesubscript} | onesubscript | ₁ | U+2081 SUBSCRIPT ONE
+
+\item {\texttwosubscript} | twosubscript | ₂ | U+2081 SUBSCRIPT TWO
+
+\item {\textthreesubscript} | threesubscript | ₃ | U+2081 SUBSCRIPT THREE
+
+\item {\textfoursubscript} | foursubscript | ₄ | U+2081 SUBSCRIPT FOUR
+
+\item {\textfivesubscript} | fivesubscript | ₅ | U+2081 SUBSCRIPT FIVE
+
+\item {\textsixsubscript} | sixsubscript | ₆ | U+2081 SUBSCRIPT SIX
+
+\item {\textsevensubscript} | sevensubscript | ₇ | U+2081 SUBSCRIPT SEVEN
+
+\item {\texteightsubscript} | eightsubscript | ₈ | U+2081 SUBSCRIPT EIGHT
+
+\item {\textninesubscript} | ninesubscript | ₉ | U+2081 SUBSCRIPT NINE
+
+\end{packed_itemize}
+
+\section*{15 Number Forms U+2150 - U+218F}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\sfrac{1}{3}} | onethird | ⅓ | U+2153 VULGAR FRACTION ONE THIRD
+
+\item \ensuremath{\sfrac{2}{3}} | twothirds | ⅔ | U+2154 VULGAR FRACTION TWO THIRDS
+
+\item \ensuremath{\sfrac{1}{5}} | onefifth | ⅕ | U+2155 VULGAR FRACTION ONE FIFTH
+
+\item \ensuremath{\sfrac{2}{5}} | twofifths | ⅖ | U+2156 VULGAR FRACTION TWO FIFTHS
+
+\item \ensuremath{\sfrac{3}{5}} | threefifths | ⅗ | U+2157 VULGAR FRACTION THREE FIFTHS
+
+\item \ensuremath{\sfrac{4}{5}} | fourfifths | ⅘ | U+2158 VULGAR FRACTION FOUR FIFTHS
+
+\item \ensuremath{\sfrac{1}{6}} | onesixth | ⅙ | U+2159 VULGAR FRACTION ONE SIXTH
+
+\item \ensuremath{\sfrac{5}{6}} | fivesixths | ⅚ | U+215A VULGAR FRACTION FIVE SIXTHS
+
+\item \ensuremath{\sfrac{1}{7}} | oneseventh | ⅐ | U+2150 VULGAR FRACTION ONE SEVENTH
+
+\item \ensuremath{\sfrac{1}{8}} | oneeighth | ⅛ | U+215B VULGAR FRACTION ONE EIGHTHS
+
+\item \ensuremath{\sfrac{3}{8}} | threeeighths | ⅜ | U+215C VULGAR FRACTION THREE EIGHTHS
+
+\item \ensuremath{\sfrac{5}{8}} | fiveeighths | ⅝ | U+215D VULGAR FRACTION FIVE EIGHTHS
+
+\item \ensuremath{\sfrac{7}{8}} | seveneighths | ⅞ | U+215E VULGAR FRACTION SEVEN EIGHTHS
+
+\item \ensuremath{\sfrac{1}{9}} | oneninth | ⅑ | U+2151 VULGAR FRACTION ONE NINTH
+
+\item \ensuremath{\sfrac{1}{10}} | onetenth | ⅒ | U+2152 VULGAR FRACTION ONE TENTH
+
+\item \ensuremath{\sfrac{0}{3}} | zerothird | ↉ | U+2189 VULGAR FRACTION ZERO THIRDS
+
+\end{packed_itemize}
+
+\section*{16 Mathematical Alphanumeric Symbols U+1D400 - U+1D7FF}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\mathcal{A}} | Ascr | 𝒜 |
+
+\item \ensuremath{\mathcal{C}} | Cscr | 𝒞 |
+
+\item \ensuremath{\mathcal{D}} | Dscr | 𝒟 |
+
+\item \ensuremath{\mathcal{G}} | Gscr | 𝒢 |
+
+\item \ensuremath{\mathcal{J}} | Jscr | 𝒥 |
+
+\item \ensuremath{\mathcal{K}} | Kscr | 𝒦 |
+
+\item \ensuremath{\mathcal{N}} | Nscr | 𝒩 |
+
+\item \ensuremath{\mathcal{O}} | Oscr | 𝒪 |
+
+\item \ensuremath{\mathcal{P}} | Pscr | 𝒫 |
+
+\item \ensuremath{\mathcal{Q}} | Qscr | 𝒬 |
+
+\item \ensuremath{\mathcal{S}} | Sscr | 𝒮 |
+
+\item \ensuremath{\mathcal{T}} | Tscr | 𝒯 |
+
+\item \ensuremath{\mathcal{U}} | Uscr | 𝒰 |
+
+\item \ensuremath{\mathcal{V}} | Vscr | 𝒱 |
+
+\item \ensuremath{\mathcal{W}} | Wscr | 𝒲 |
+
+\item \ensuremath{\mathcal{X}} | Xscr | 𝒳 |
+
+\item \ensuremath{\mathcal{Y}} | Yscr | 𝒴 |
+
+\item \ensuremath{\mathcal{Z}} | Zscr | 𝒵 |
+
+\item \ensuremath{\mathcal{a}} | ascr | 𝒶 |
+
+\item \ensuremath{\mathcal{b}} | bscr | 𝒷 |
+
+\item \ensuremath{\mathcal{c}} | cscr | 𝒸 |
+
+\item \ensuremath{\mathcal{d}} | dscr | 𝒹 |
+
+\item \ensuremath{\mathcal{f}} | fscr | 𝒻 |
+
+\item \ensuremath{\mathcal{h}} | hscr | 𝒽 |
+
+\item \ensuremath{\mathcal{i}} | iscr | 𝒾 |
+
+\item \ensuremath{\mathcal{j}} | jscr | 𝒿 |
+
+\item \ensuremath{\mathcal{k}} | kscr | 𝓀 |
+
+\item \ensuremath{\mathcal{l}} | lscr | 𝓁 |
+
+\item \ensuremath{\mathcal{m}} | mscr | 𝓂 |
+
+\item \ensuremath{\mathcal{n}} | nscr | 𝓃 |
+
+\item \ensuremath{\mathcal{p}} | pscr | 𝓅 |
+
+\item \ensuremath{\mathcal{q}} | qscr | 𝓆 |
+
+\item \ensuremath{\mathcal{r}} | rscr | 𝓇 |
+
+\item \ensuremath{\mathcal{s}} | sscr | 𝓈 |
+
+\item \ensuremath{\mathcal{t}} | tscr | 𝓉 |
+
+\item \ensuremath{\mathcal{u}} | uscr | 𝓊 |
+
+\item \ensuremath{\mathcal{v}} | vscr | 𝓋 |
+
+\item \ensuremath{\mathcal{w}} | wscr | 𝓌 |
+
+\item \ensuremath{\mathcal{x}} | xscr | 𝓍 |
+
+\item \ensuremath{\mathcal{y}} | yscr | 𝓎 |
+
+\item \ensuremath{\mathcal{z}} | zscr | 𝓏 |
+
+\item \ensuremath{\mathbf{A}} | Abf | 𝐀 |
+
+\item \ensuremath{\mathbf{B}} | Bbf | 𝐁 |
+
+\item \ensuremath{\mathbf{C}} | Cbf | 𝐂 |
+
+\item \ensuremath{\mathbf{D}} | Dbf | 𝐃 |
+
+\item \ensuremath{\mathbf{E}} | Ebf | 𝐄 |
+
+\item \ensuremath{\mathbf{F}} | Fbf | 𝐅 |
+
+\item \ensuremath{\mathbf{G}} | Gbf | 𝐆 |
+
+\item \ensuremath{\mathbf{H}} | Hbf | 𝐇 |
+
+\item \ensuremath{\mathbf{I}} | Ibf | 𝐈 |
+
+\item \ensuremath{\mathbf{J}} | Jbf | 𝐉 |
+
+\item \ensuremath{\mathbf{K}} | Kbf | 𝐊 |
+
+\item \ensuremath{\mathbf{L}} | Lbf | 𝐋 |
+
+\item \ensuremath{\mathbf{M}} | Mbf | 𝐌 |
+
+\item \ensuremath{\mathbf{N}} | Nbf | 𝐍 |
+
+\item \ensuremath{\mathbf{O}} | Obf | 𝐎 |
+
+\item \ensuremath{\mathbf{P}} | Pbf | 𝐏 |
+
+\item \ensuremath{\mathbf{Q}} | Qbf | 𝐐 |
+
+\item \ensuremath{\mathbf{R}} | Rbf | 𝐑 |
+
+\item \ensuremath{\mathbf{S}} | Sbf | 𝐒 |
+
+\item \ensuremath{\mathbf{T}} | Tbf | 𝐓 |
+
+\item \ensuremath{\mathbf{U}} | Ubf | 𝐔 |
+
+\item \ensuremath{\mathbf{V}} | Vbf | 𝐕 |
+
+\item \ensuremath{\mathbf{W}} | Wbf | 𝐖 |
+
+\item \ensuremath{\mathbf{X}} | Xbf | 𝐗 |
+
+\item \ensuremath{\mathbf{Y}} | Ybf | 𝐘 |
+
+\item \ensuremath{\mathbf{Z}} | Zbf | 𝐙 |
+
+\item \ensuremath{\mathbf{a}} | abf | 𝐚 |
+
+\item \ensuremath{\mathbf{b}} | bbf | 𝐛 |
+
+\item \ensuremath{\mathbf{c}} | cbf | 𝐜 |
+
+\item \ensuremath{\mathbf{d}} | dbf | 𝐝 |
+
+\item \ensuremath{\mathbf{e}} | ebf | 𝐞 |
+
+\item \ensuremath{\mathbf{f}} | fbf | 𝐟 |
+
+\item \ensuremath{\mathbf{g}} | gbf | 𝐠 |
+
+\item \ensuremath{\mathbf{h}} | hbf | 𝐡 |
+
+\item \ensuremath{\mathbf{i}} | ibf | 𝐢 |
+
+\item \ensuremath{\mathbf{j}} | jbf | 𝐣 |
+
+\item \ensuremath{\mathbf{k}} | kbf | 𝐤 |
+
+\item \ensuremath{\mathbf{l}} | lbf | 𝐥 |
+
+\item \ensuremath{\mathbf{m}} | mbf | 𝐦 |
+
+\item \ensuremath{\mathbf{n}} | nbf | 𝐧 |
+
+\item \ensuremath{\mathbf{o}} | obf | 𝐨 |
+
+\item \ensuremath{\mathbf{p}} | pbf | 𝐩 |
+
+\item \ensuremath{\mathbf{q}} | qbf | 𝐪 |
+
+\item \ensuremath{\mathbf{r}} | rbf | 𝐫 |
+
+\item \ensuremath{\mathbf{s}} | sbf | 𝐬 |
+
+\item \ensuremath{\mathbf{t}} | tbf | 𝐭 |
+
+\item \ensuremath{\mathbf{u}} | ubf | 𝐮 |
+
+\item \ensuremath{\mathbf{v}} | vbf | 𝐯 |
+
+\item \ensuremath{\mathbf{w}} | wbf | 𝐰 |
+
+\item \ensuremath{\mathbf{x}} | xbf | 𝐱 |
+
+\item \ensuremath{\mathbf{y}} | ybf | 𝐲 |
+
+\item \ensuremath{\mathbf{z}} | zbf | 𝐳 |
+
+\item \ensuremath{\mathbf{0}} | zerobf | 𝟎 |
+
+\item \ensuremath{\mathbf{1}} | onebf | 𝟏 |
+
+\item \ensuremath{\mathbf{2}} | twobf | 𝟐 |
+
+\item \ensuremath{\mathbf{3}} | threebf | 𝟑 |
+
+\item \ensuremath{\mathbf{4}} | fourbf | 𝟒 |
+
+\item \ensuremath{\mathbf{5}} | fivebf | 𝟓 |
+
+\item \ensuremath{\mathbf{6}} | sixbf | 𝟔 |
+
+\item \ensuremath{\mathbf{7}} | sevenbf | 𝟕 |
+
+\item \ensuremath{\mathbf{8}} | eightbf | 𝟖 |
+
+\item \ensuremath{\mathbf{9}} | ninebf | 𝟗 |
+
+\item \ensuremath{\mathfrak{A}} | Afr | 𝔄 |
+
+\item \ensuremath{\mathfrak{B}} | Bfr | 𝔅 |
+
+\item \ensuremath{\mathfrak{D}} | Dfr | 𝔇 |
+
+\item \ensuremath{\mathfrak{E}} | Efr | 𝔈 |
+
+\item \ensuremath{\mathfrak{F}} | Ffr | 𝔉 |
+
+\item \ensuremath{\mathfrak{G}} | Gfr | 𝔊 |
+
+\item \ensuremath{\mathfrak{J}} | Jfr | 𝔍 |
+
+\item \ensuremath{\mathfrak{K}} | Kfr | 𝔎 |
+
+\item \ensuremath{\mathfrak{L}} | Lfr | 𝔏 |
+
+\item \ensuremath{\mathfrak{M}} | Mfr | 𝔐 |
+
+\item \ensuremath{\mathfrak{N}} | Nfr | 𝔑 |
+
+\item \ensuremath{\mathfrak{O}} | Ofr | 𝔒 |
+
+\item \ensuremath{\mathfrak{P}} | Pfr | 𝔓 |
+
+\item \ensuremath{\mathfrak{Q}} | Qfr | 𝔔 |
+
+\item \ensuremath{\mathfrak{S}} | Sfr | 𝔖 |
+
+\item \ensuremath{\mathfrak{T}} | Tfr | 𝔗 |
+
+\item \ensuremath{\mathfrak{U}} | Ufr | 𝔘 |
+
+\item \ensuremath{\mathfrak{V}} | Vfr | 𝔙 |
+
+\item \ensuremath{\mathfrak{W}} | Wfr | 𝔚 |
+
+\item \ensuremath{\mathfrak{X}} | Xfr | 𝔛 |
+
+\item \ensuremath{\mathfrak{Y}} | Yfr | 𝔜 |
+
+\item \ensuremath{\mathfrak{a}} | afr | 𝔞 |
+
+\item \ensuremath{\mathfrak{b}} | bfr | 𝔟 |
+
+\item \ensuremath{\mathfrak{c}} | cfr | 𝔠 |
+
+\item \ensuremath{\mathfrak{d}} | dfr | 𝔡 |
+
+\item \ensuremath{\mathfrak{e}} | efr | 𝔢 |
+
+\item \ensuremath{\mathfrak{f}} | ffr | 𝔣 |
+
+\item \ensuremath{\mathfrak{g}} | gfr | 𝔤 |
+
+\item \ensuremath{\mathfrak{h}} | hfr | 𝔥 |
+
+\item \ensuremath{\mathfrak{i}} | ifr | 𝔦 |
+
+\item \ensuremath{\mathfrak{j}} | jfr | 𝔧 |
+
+\item \ensuremath{\mathfrak{k}} | kfr | 𝔨 |
+
+\item \ensuremath{\mathfrak{l}} | lfr | 𝔩 |
+
+\item \ensuremath{\mathfrak{m}} | mfr | 𝔪 |
+
+\item \ensuremath{\mathfrak{n}} | nfr | 𝔫 |
+
+\item \ensuremath{\mathfrak{o}} | ofr | 𝔬 |
+
+\item \ensuremath{\mathfrak{p}} | pfr | 𝔭 |
+
+\item \ensuremath{\mathfrak{q}} | qfr | 𝔮 |
+
+\item \ensuremath{\mathfrak{r}} | rfr | 𝔯 |
+
+\item \ensuremath{\mathfrak{s}} | sfr | 𝔰 |
+
+\item \ensuremath{\mathfrak{t}} | tfr | 𝔱 |
+
+\item \ensuremath{\mathfrak{u}} | ufr | 𝔲 |
+
+\item \ensuremath{\mathfrak{v}} | vfr | 𝔳 |
+
+\item \ensuremath{\mathfrak{w}} | wfr | 𝔴 |
+
+\item \ensuremath{\mathfrak{x}} | xfr | 𝔵 |
+
+\item \ensuremath{\mathfrak{y}} | yfr | 𝔶 |
+
+\item \ensuremath{\mathfrak{z}} | zfr | 𝔷 |
+
+\item \ensuremath{\mathbb{A}} | Aopf | 𝔸 |
+
+\item \ensuremath{\mathbb{B}} | Bopf | 𝔹 |
+
+\item \ensuremath{\mathbb{D}} | Dopf | 𝔻 |
+
+\item \ensuremath{\mathbb{E}} | Eopf | 𝔼 |
+
+\item \ensuremath{\mathbb{F}} | Fopf | 𝔽 |
+
+\item \ensuremath{\mathbb{G}} | Gopf | 𝔾 |
+
+\item \ensuremath{\mathbb{I}} | Iopf | 𝕀 |
+
+\item \ensuremath{\mathbb{J}} | Jopf | 𝕁 |
+
+\item \ensuremath{\mathbb{K}} | Kopf | 𝕂 |
+
+\item \ensuremath{\mathbb{L}} | Lopf | 𝕃 |
+
+\item \ensuremath{\mathbb{M}} | Mopf | 𝕄 |
+
+\item \ensuremath{\mathbb{O}} | Oopf | 𝕆 |
+
+\item \ensuremath{\mathbb{S}} | Sopf | 𝕊 |
+
+\item \ensuremath{\mathbb{T}} | Topf | 𝕋 |
+
+\item \ensuremath{\mathbb{U}} | Uopf | 𝕌 |
+
+\item \ensuremath{\mathbb{V}} | Vopf | 𝕍 |
+
+\item \ensuremath{\mathbb{W}} | Wopf | 𝕎 |
+
+\item \ensuremath{\mathbb{X}} | Xopf | 𝕏 |
+
+\item \ensuremath{\mathbb{Y}} | Yopf | 𝕐 |
+
+\item \ensuremath{\mathbb{a}} | aopf | 𝕒 |
+
+\item \ensuremath{\mathbb{b}} | bopf | 𝕓 |
+
+\item \ensuremath{\mathbb{c}} | copf | 𝕔 |
+
+\item \ensuremath{\mathbb{d}} | dopf | 𝕕 |
+
+\item \ensuremath{\mathbb{e}} | eopf | 𝕖 |
+
+\item \ensuremath{\mathbb{f}} | fopf | 𝕗 |
+
+\item \ensuremath{\mathbb{g}} | gopf | 𝕘 |
+
+\item \ensuremath{\mathbb{h}} | hopf | 𝕙 |
+
+\item \ensuremath{\mathbb{i}} | iopf | 𝕚 |
+
+\item \ensuremath{\mathbb{j}} | jopf | 𝕛 |
+
+\item \ensuremath{\mathbb{k}} | kopf | 𝕜 |
+
+\item \ensuremath{\mathbb{l}} | lopf | 𝕝 |
+
+\item \ensuremath{\mathbb{m}} | mopf | 𝕞 |
+
+\item \ensuremath{\mathbb{n}} | nopf | 𝕟 |
+
+\item \ensuremath{\mathbb{o}} | oopf | 𝕠 |
+
+\item \ensuremath{\mathbb{p}} | popf | 𝕡 |
+
+\item \ensuremath{\mathbb{q}} | qopf | 𝕢 |
+
+\item \ensuremath{\mathbb{r}} | ropf | 𝕣 |
+
+\item \ensuremath{\mathbb{s}} | sopf | 𝕤 |
+
+\item \ensuremath{\mathbb{t}} | topf | 𝕥 |
+
+\item \ensuremath{\mathbb{u}} | uopf | 𝕦 |
+
+\item \ensuremath{\mathbb{v}} | vopf | 𝕧 |
+
+\item \ensuremath{\mathbb{w}} | wopf | 𝕨 |
+
+\item \ensuremath{\mathbb{x}} | xopf | 𝕩 |
+
+\item \ensuremath{\mathbb{y}} | yopf | 𝕪 |
+
+\item \ensuremath{\mathbb{z}} | zopf | 𝕫 |
+
+\item \ensuremath{\mathit{A}} | Amathit | 𝐴 |
+
+\item \ensuremath{\mathit{B}} | Bmathit | 𝐵 |
+
+\item \ensuremath{\mathit{C}} | Cmathit | 𝐶 |
+
+\item \ensuremath{\mathit{D}} | Dmathit | 𝐷 |
+
+\item \ensuremath{\mathit{E}} | Emathit | 𝐸 |
+
+\item \ensuremath{\mathit{F}} | Fmathit | 𝐹 |
+
+\item \ensuremath{\mathit{G}} | Gmathit | 𝐺 |
+
+\item \ensuremath{\mathit{H}} | Hmathit | 𝐻 |
+
+\item \ensuremath{\mathit{I}} | Imathit | 𝐼 |
+
+\item \ensuremath{\mathit{J}} | Jmathit | 𝐽 |
+
+\item \ensuremath{\mathit{K}} | Kmathit | 𝐾 |
+
+\item \ensuremath{\mathit{L}} | Lmathit | 𝐿 |
+
+\item \ensuremath{\mathit{M}} | Mmathit | 𝑀 |
+
+\item \ensuremath{\mathit{N}} | Nmathit | 𝑁 |
+
+\item \ensuremath{\mathit{O}} | Omathit | 𝑂 |
+
+\item \ensuremath{\mathit{P}} | Pmathit | 𝑃 |
+
+\item \ensuremath{\mathit{Q}} | Qmathit | 𝑄 |
+
+\item \ensuremath{\mathit{R}} | Rmathit | 𝑅 |
+
+\item \ensuremath{\mathit{S}} | Smathit | 𝑆 |
+
+\item \ensuremath{\mathit{T}} | Tmathit | 𝑇 |
+
+\item \ensuremath{\mathit{U}} | Umathit | 𝑈 |
+
+\item \ensuremath{\mathit{V}} | Vmathit | 𝑉 |
+
+\item \ensuremath{\mathit{W}} | Wmathit | 𝑊 |
+
+\item \ensuremath{\mathit{X}} | Xmathit | 𝑋 |
+
+\item \ensuremath{\mathit{Y}} | Ymathit | 𝑌 |
+
+\item \ensuremath{\mathit{Z}} | Zmathit | 𝑍 |
+
+\item \ensuremath{\mathit{a}} | amathit | 𝑎 |
+
+\item \ensuremath{\mathit{b}} | bmathit | 𝑏 |
+
+\item \ensuremath{\mathit{c}} | cmathit | 𝑐 |
+
+\item \ensuremath{\mathit{d}} | dmathit | 𝑑 |
+
+\item \ensuremath{\mathit{e}} | emathit | 𝑒 |
+
+\item \ensuremath{\mathit{f}} | fmathit | 𝑓 |
+
+\item \ensuremath{\mathit{g}} | gmathit | 𝑔 |
+
+\item \ensuremath{\mathit{i}} | imathit | 𝑖 |
+
+\item \ensuremath{\mathit{j}} | jmathit | 𝑗 |
+
+\item \ensuremath{\mathit{k}} | kmathit | 𝑘 |
+
+\item \ensuremath{\mathit{l}} | lmathit | 𝑙 |
+
+\item \ensuremath{\mathit{m}} | mmathit | 𝑚 |
+
+\item \ensuremath{\mathit{n}} | nmathit | 𝑛 |
+
+\item \ensuremath{\mathit{o}} | omathit | 𝑜 |
+
+\item \ensuremath{\mathit{p}} | pmathit | 𝑝 |
+
+\item \ensuremath{\mathit{q}} | qmathit | 𝑞 |
+
+\item \ensuremath{\mathit{r}} | rmathit | 𝑟 |
+
+\item \ensuremath{\mathit{s}} | smathit | 𝑠 |
+
+\item \ensuremath{\mathit{t}} | tmathit | 𝑡 |
+
+\item \ensuremath{\mathit{u}} | umathit | 𝑢 |
+
+\item \ensuremath{\mathit{v}} | vmathit | 𝑣 |
+
+\item \ensuremath{\mathit{w}} | wmathit | 𝑤 |
+
+\item \ensuremath{\mathit{x}} | xmathit | 𝑥 |
+
+\item \ensuremath{\mathit{y}} | ymathit | 𝑦 |
+
+\item \ensuremath{\mathit{z}} | zmathit | 𝑧 |
+
+\item \ensuremath{\ell} | ell | 𝓁 |
+
+\item \ensuremath{\mathbb{A}} | algebraics | 𝔸 |
+
+\item \ensuremath{\mathbb{O}} | octonions | 𝕆 |
+
+\item \ensuremath{\mathbb{S}} | sedenions | 𝕊 |
+
+\item \ensuremath{\imath} | imath | 𝚤 |
+
+\item \ensuremath{\jmath} | jmath | 𝚥 |
+
+\end{packed_itemize}
+
+\begin{packed_itemize}
+
+\item Dingbats U+2700 - U+27BF
+
+\end{packed_itemize}
+
+\begin{packed_itemize}
+
+\item ? | Ux2700 | ✀ |
+
+\item {\ding{33}} | Ux2701 | ✁ |
+
+\item {\ding{34}} | Ux2702 | ✂ |
+
+\item {\ding{35}} | Ux2703 | ✃ |
+
+\item {\ding{36}} | Ux2704 | ✄ |
+
+\item ? | Ux2705 | ✅ |
+
+\item {\ding{38}} | Ux2706 | ✆ |
+
+\item {\ding{39}} | Ux2707 | ✇ |
+
+\item {\ding{40}} | Ux2708 | ✈ |
+
+\item {\ding{41}} | Ux2709 | ✉ |
+
+\item ? | Ux270A | ✊ |
+
+\item ? | Ux270B | ✋ |
+
+\item {\ding{44}} | Ux270C | ✌ |
+
+\item {\ding{45}} | Ux270D | ✍ |
+
+\item {\ding{46}} | Ux270E | ✎ |
+
+\item {\ding{47}} | Ux270F | ✏ |
+
+\item {\ding{48}} | Ux2710 | ✐ |
+
+\item {\ding{49}} | Ux2711 | ✑ |
+
+\item {\ding{50}} | Ux2712 | ✒ |
+
+\item {\ding{51}} | Ux2713 | ✓ |
+
+\item {\ding{52}} | Ux2714 | ✔ |
+
+\item {\ding{53}} | Ux2715 | ✕ |
+
+\item {\ding{54}} | Ux2716 | ✖ |
+
+\item {\ding{55}} | Ux2717 | ✗ |
+
+\item {\ding{56}} | Ux2718 | ✘ |
+
+\item {\ding{57}} | Ux2719 | ✙ |
+
+\item {\ding{58}} | Ux271A | ✚ |
+
+\item {\ding{59}} | Ux271B | ✛ |
+
+\item {\ding{60}} | Ux271C | ✜ |
+
+\item {\ding{61}} | Ux271D | ✝ |
+
+\item {\ding{62}} | Ux271E | ✞ |
+
+\item {\ding{63}} | Ux271F | ✟ |
+
+\item {\ding{64}} | Ux2720 | ✠ |
+
+\item {\ding{65}} | Ux2721 | ✡ |
+
+\item {\ding{66}} | Ux2722 | ✢ |
+
+\item {\ding{67}} | Ux2723 | ✣ |
+
+\item {\ding{68}} | Ux2724 | ✤ |
+
+\item {\ding{69}} | Ux2725 | ✥ |
+
+\item {\ding{70}} | Ux2726 | ✦ |
+
+\item {\ding{71}} | Ux2727 | ✧ |
+
+\item {\ding{72}} | Ux2728 | ✨ |
+
+\item {\ding{73}} | Ux2729 | ✩ |
+
+\item {\ding{74}} | Ux272A | ✪ |
+
+\item {\ding{75}} | Ux272B | ✫ |
+
+\item {\ding{76}} | Ux272C | ✬ |
+
+\item {\ding{77}} | Ux272D | ✭ |
+
+\item {\ding{78}} | Ux272E | ✮ |
+
+\item {\ding{79}} | Ux272F | ✯ |
+
+\item {\ding{80}} | Ux2730 | ✰ |
+
+\item {\ding{81}} | Ux2731 | ✱ |
+
+\item {\ding{82}} | Ux2732 | ✲ |
+
+\item {\ding{83}} | Ux2733 | ✳ |
+
+\item {\ding{84}} | Ux2734 | ✴ |
+
+\item {\ding{85}} | Ux2735 | ✵ |
+
+\item {\ding{86}} | Ux2736 | ✶ |
+
+\item {\ding{87}} | Ux2737 | ✷ |
+
+\item {\ding{88}} | Ux2738 | ✸ |
+
+\item {\ding{89}} | Ux2739 | ✹ |
+
+\item {\ding{90}} | Ux273A | ✺ |
+
+\item {\ding{91}} | Ux273B | ✻ |
+
+\item {\ding{92}} | Ux273C | ✼ |
+
+\item {\ding{93}} | Ux273D | ✽ |
+
+\item {\ding{94}} | Ux273E | ✾ |
+
+\item {\ding{95}} | Ux273F | ✿ |
+
+\item {\ding{96}} | Ux2740 | ❀ |
+
+\item {\ding{97}} | Ux2741 | ❁ |
+
+\item {\ding{98}} | Ux2742 | ❂ |
+
+\item {\ding{99}} | Ux2743 | ❃ |
+
+\item {\ding{100}} | Ux2744 | ❄ |
+
+\item {\ding{101}} | Ux2745 | ❅ |
+
+\item {\ding{102}} | Ux2746 | ❆ |
+
+\item {\ding{103}} | Ux2747 | ❇ |
+
+\item {\ding{104}} | Ux2748 | ❈ |
+
+\item {\ding{105}} | Ux2749 | ❉ |
+
+\item {\ding{106}} | Ux274A | ❊ |
+
+\item {\ding{107}} | Ux274B | ❋ |
+
+\item ? | Ux274C | ❌ |
+
+\item {\ding{109}} | Ux274D | ❍ |
+
+\item ? | Ux274E | ❎ |
+
+\item {\ding{111}} | Ux274F | ❏ |
+
+\item {\ding{112}} | Ux2750 | ❐ |
+
+\item {\ding{113}} | Ux2751 | ❑ |
+
+\item {\ding{114}} | Ux2752 | ❒ |
+
+\item ? | Ux2753 | ❓ |
+
+\item ? | Ux2754 | ❔ |
+
+\item ? | Ux2755 | ❕ |
+
+\item {\ding{118}} | Ux2756 | ❖ |
+
+\item ? | Ux2757 | ❗ |
+
+\item {\ding{120}} | Ux2758 | ❘ |
+
+\item {\ding{121}} | Ux2759 | ❙ |
+
+\item {\ding{122}} | Ux275A | ❚ |
+
+\item {\ding{123}} | Ux275B | ❛ |
+
+\item {\ding{124}} | Ux275C | ❜ |
+
+\item {\ding{125}} | Ux275D | ❝ |
+
+\item {\ding{126}} | Ux275E | ❞ |
+
+\item ? | Ux275F | ❟ |
+
+\item ? | Ux2760 | ❠ |
+
+\item {\ding{161}} | Ux2761 | ❡ |
+
+\item {\ding{162}} | Ux2762 | ❢ |
+
+\item {\ding{163}} | Ux2763 | ❣ |
+
+\item {\ding{164}} | Ux2764 | ❤ |
+
+\item {\ding{165}} | Ux2765 | ❥ |
+
+\item {\ding{166}} | Ux2766 | ❦ |
+
+\item {\ding{167}} | Ux2767 | ❧ |
+
+\item ? | Ux2768 | ❨ |
+
+\item ? | Ux2769 | ❩ |
+
+\item ? | Ux276A | ❪ |
+
+\item ? | Ux276B | ❫ |
+
+\item ? | Ux276C | ❬ |
+
+\item ? | Ux276D | ❭ |
+
+\item ? | Ux276E | ❮ |
+
+\item ? | Ux276F | ❯ |
+
+\item ? | Ux2770 | ❰ |
+
+\item ? | Ux2771 | ❱ |
+
+\item ? | Ux2772 | ❲ |
+
+\item ? | Ux2773 | ❳ |
+
+\item ? | Ux2774 | ❴ |
+
+\item ? | Ux2775 | ❵ |
+
+\item {\ding{182}} | Ux2776 | ❶ |
+
+\item {\ding{183}} | Ux2777 | ❷ |
+
+\item {\ding{184}} | Ux2778 | ❸ |
+
+\item {\ding{185}} | Ux2779 | ❹ |
+
+\item {\ding{186}} | Ux277A | ❺ |
+
+\item {\ding{187}} | Ux277B | ❻ |
+
+\item {\ding{188}} | Ux277C | ❼ |
+
+\item {\ding{189}} | Ux277D | ❽ |
+
+\item {\ding{190}} | Ux277E | ❾ |
+
+\item {\ding{191}} | Ux277F | ❿ |
+
+\item {\ding{192}} | Ux2780 | ➀ |
+
+\item {\ding{193}} | Ux2781 | ➁ |
+
+\item {\ding{194}} | Ux2782 | ➂ |
+
+\item {\ding{195}} | Ux2783 | ➃ |
+
+\item {\ding{196}} | Ux2784 | ➄ |
+
+\item {\ding{197}} | Ux2785 | ➅ |
+
+\item {\ding{198}} | Ux2786 | ➆ |
+
+\item {\ding{199}} | Ux2787 | ➇ |
+
+\item {\ding{200}} | Ux2788 | ➈ |
+
+\item {\ding{201}} | Ux2789 | ➉ |
+
+\item {\ding{202}} | Ux278A | ➊ |
+
+\item {\ding{203}} | Ux278B | ➋ |
+
+\item {\ding{204}} | Ux278C | ➌ |
+
+\item {\ding{205}} | Ux278D | ➍ |
+
+\item {\ding{206}} | Ux278E | ➎ |
+
+\item {\ding{207}} | Ux278F | ➏ |
+
+\item {\ding{208}} | Ux2790 | ➐ |
+
+\item {\ding{209}} | Ux2791 | ➑ |
+
+\item {\ding{210}} | Ux2792 | ➒ |
+
+\item {\ding{211}} | Ux2793 | ➓ |
+
+\item {\ding{212}} | Ux2794 | ➔ |
+
+\item ? | Ux2795 | ➕ |
+
+\item ? | Ux2796 | ➖ |
+
+\item ? | Ux2797 | ➗ |
+
+\item {\ding{216}} | Ux2798 | ➘ |
+
+\item {\ding{217}} | Ux2799 | ➙ |
+
+\item {\ding{218}} | Ux279A | ➚ |
+
+\item {\ding{219}} | Ux279B | ➛ |
+
+\item {\ding{220}} | Ux279C | ➜ |
+
+\item {\ding{221}} | Ux279D | ➝ |
+
+\item {\ding{222}} | Ux279E | ➞ |
+
+\item {\ding{223}} | Ux279F | ➟ |
+
+\item {\ding{224}} | Ux27A0 | ➠ |
+
+\item {\ding{225}} | Ux27A1 | ➡ |
+
+\item {\ding{226}} | Ux27A2 | ➢ |
+
+\item {\ding{227}} | Ux27A3 | ➣ |
+
+\item {\ding{228}} | Ux27A4 | ➤ |
+
+\item {\ding{229}} | Ux27A5 | ➥ |
+
+\item {\ding{230}} | Ux27A6 | ➦ |
+
+\item {\ding{231}} | Ux27A7 | ➧ |
+
+\item {\ding{232}} | Ux27A8 | ➨ |
+
+\item {\ding{233}} | Ux27A9 | ➩ |
+
+\item {\ding{234}} | Ux27AA | ➪ |
+
+\item {\ding{235}} | Ux27AB | ➫ |
+
+\item {\ding{236}} | Ux27AC | ➬ |
+
+\item {\ding{237}} | Ux27AD | ➭ |
+
+\item {\ding{238}} | Ux27AE | ➮ |
+
+\item {\ding{239}} | Ux27AF | ➯ |
+
+\item ? | Ux27B0 | ➰ |
+
+\item {\ding{241}} | Ux27B1 | ➱ |
+
+\item {\ding{242}} | Ux27B2 | ➲ |
+
+\item {\ding{243}} | Ux27B3 | ➳ |
+
+\item {\ding{244}} | Ux27B4 | ➴ |
+
+\item {\ding{245}} | Ux27B5 | ➵ |
+
+\item {\ding{246}} | Ux27B6 | ➶ |
+
+\item {\ding{247}} | Ux27B7 | ➷ |
+
+\item {\ding{248}} | Ux27B8 | ➸ |
+
+\item {\ding{249}} | Ux27B9 | ➹ |
+
+\item {\ding{250}} | Ux27BA | ➺ |
+
+\item {\ding{251}} | Ux27BB | ➻ |
+
+\item {\ding{252}} | Ux27BC | ➼ |
+
+\item {\ding{253}} | Ux27BD | ➽ |
+
+\item {\ding{254}} | Ux27BE | ➾ |
+
+\item ? | Ux27BF | ➿ |
+
+\end{packed_itemize}
+
+\begin{packed_itemize}
+
+\item ongtable
+
+\item iscellaneous Symbols U+2600 - U+26FF
+
+\end{packed_itemize}
+
+\begin{packed_itemize}
+
+\item symbol | name | html | comment
+
+\item -\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--\kern0pt--
+
+\item {\ding{171}} | Ux2660 | ♠ |
+
+\item ? | Ux2661 | ♡ |
+
+\item ? | Ux2662 | ♢ |
+
+\item {\ding{168}} | Ux2663 | ♣ |
+
+\item ? | Ux2664 | ♤ |
+
+\item {\ding{170}} | Ux2665 | ♥ |
+
+\item {\ding{169}} | Ux2666 | ♦ |
+
+\item ? | Ux2667 | ♧ |
+
+\item {\ding{37}} | Ux260E | ☎ |
+
+\item {\ding{42}} | Ux261B | ☛ |
+
+\item {\ding{43}} | Ux261E | ☞ |
+
+\end{packed_itemize}
+
+\section*{17 Geometric Shapes U+25A0 - U+25FF}
+
+\begin{packed_itemize}
+
+\item {\ding{110}} | Ux25A0 | ■ |
+
+\item \ensuremath{\square} | square | □ | U+25A1 WHITE SQUARE
+
+\item \ensuremath{\blacksquare} | blacksquare | ▪ | U+25AA BLACK SMALL SQUARE
+
+\item {\ding{115}} | Ux25B2 | ▲ |
+
+\item {\ding{116}} | Ux25BC | ▼ |
+
+\item {\ding{117}} | Ux25C6 | ◆ |
+
+\item \ensuremath{\circ} | cir | ○ | U+25CB WHITE CIRCLE
+
+\item {\ding{108}} | Ux25CF | ● |
+
+\item \ensuremath{\vartriangle} | utri | ▵ |
+
+\item \ensuremath{\triangledown} | dtri | ▿ |
+
+\item \ensuremath{\vartriangleright} | rtri | ▹ |
+
+\item \ensuremath{\vartriangleleft} | ltri | ◃ |
+
+\item \ensuremath{\bigcirc} | bigcirc | ◯ |
+
+\item \ensuremath{\bigtriangleup} | bigtriangleup | △ |
+
+\item \ensuremath{\bigtriangledown} | bigtriangledown | ▽ |
+
+\end{packed_itemize}
+
+\section*{18 Arrows U+2190 - U+21FF}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\leftarrow} | larr | ← |
+
+\item {\ding{213}} | rarr | → |
+
+\item \ensuremath{\Leftarrow} | lArr | ⇐ |
+
+\item \ensuremath{\Rightarrow} | rArr | ⇒ |
+
+\item {\ding{214}} | harr | ↔ |
+
+\item \ensuremath{\Leftrightarrow} | hArr | ⇔ |
+
+\item \ensuremath{\uparrow} | uarr | ↑ |
+
+\item \ensuremath{\Uparrow} | uArr | ⇑ |
+
+\item \ensuremath{\downarrow} | darr | ↓ |
+
+\item \ensuremath{\Downarrow} | dArr | ⇓ |
+
+\item {\ding{215}} | varr | ↕ |
+
+\item \ensuremath{\Updownarrow} | vArr | ⇕ |
+
+\item \ensuremath{\leftharpoonup} | lharu | ↼ |
+
+\item \ensuremath{\leftharpoondown} | lhard | ↽ |
+
+\item \ensuremath{\rightharpoonup} | rharu | ⇀ |
+
+\item \ensuremath{\rightharpoondown} | rhard | ⇁ |
+
+\item \ensuremath{\rightleftharpoons} | rlhar | ⇌ |
+
+\item \ensuremath{\nwarrow} | nwarr | ↖ |
+
+\item \ensuremath{\nearrow} | nearr | ↗ |
+
+\item \ensuremath{\searrow} | searr | ↘ |
+
+\item \ensuremath{\swarrow} | swarr | ↙ |
+
+\item \ensuremath{\mapsto} | mapsto | ↦ |
+
+\end{packed_itemize}
+
+\section*{19 Letter Like Symbol U+2100 - U+214F}
+
+\begin{packed_itemize}
+
+\item \ensuremath{\mathbb{C}} | complexes | ℂ |
+
+\item \ensuremath{\mathcal{g}} | gscr | ℊ |
+
+\item \ensuremath{\mathcal{H}} | Hscr | ℋ |
+
+\item \ensuremath{\mathbb{H}} | quaternions | ℍ |
+
+\item \ensuremath{\mathit{h}} | hmathit | ℎ |
+
+\item \ensuremath{\hbar} | hbar | ℏ |
+
+\item \ensuremath{\mathcal{I}} | Iscr | ℐ |
+
+\item \ensuremath{\Im} | Im | ℑ |
+
+\item \ensuremath{\mathcal{L}} | Lscr | ℒ |
+
+\item \ensuremath{\mathbb{N}} | naturals | ℕ |
+
+\item \ensuremath{\wp} | wp | ℘ |
+
+\item \ensuremath{\mathbb{P}} | primes | ℙ |
+
+\item \ensuremath{\mathbb{Q}} | rationals | ℚ |
+
+\item \ensuremath{\mathcal{R}} | Rscr | ℛ |
+
+\item \ensuremath{\Re} | Re | ℜ |
+
+\item \ensuremath{\mathbb{R}} | reals | ℝ |
+
+\item {\textservicemark} | SM | ℠ | U+2120 SERVICE MARK
+
+\item {\texttrademark} | trade | ™ | U+2122 TRADE MARK SIGN
+
+\item \ensuremath{\mathbb{Z}} | integers | ℤ |
+
+\item \ensuremath{\mathcal{B}} | Bscr | ℬ |
+
+\item \ensuremath{\mathcal{e}} | escr | ℯ |
+
+\item \ensuremath{\mathcal{E}} | Escr | ℰ |
+
+\item \ensuremath{\mathcal{F}} | Fscr | ℱ |
+
+\item \ensuremath{\mathcal{M}} | Mscr | ℳ |
+
+\item \ensuremath{\mathcal{o}} | oscr | ℴ |
+
+\item \ensuremath{\aleph} | aleph | ℵ | U+2135 ALEF SYMBOL
+
+\item \ensuremath{\beth} | beth | ℶ | U+2136 BET SYMBOL
+
+\item \ensuremath{\gimel} | gimel | ℷ | U+2137 GIMEL SYMBOL
+
+\item \ensuremath{\daleth} | daleth | ℸ | U+2138 DALET SYMBOL
+
+\end{packed_itemize}
+
+\section*{20 Alternative names}
+
+\begin{packed_itemize}
+
+\item ~ | nonbreakingspace |   |
+
+\item {\texttimes} | multiply | × |
+
+\item {\textdiv} | divide | ÷ |
+
+\item {\textpm} | plusminus | ± |
+
+\item {\textpm} | plusminus | ± |
+
+\item \ensuremath{\mp} | minusplus | ∓ |
+
+\item \ensuremath{\mp} | minusplus | ∓ |
+
+\item \ensuremath{\bigtriangleup} | bigtriangleup | △ |
+
+\item \ensuremath{\bigtriangledown} | bigtriangledown | ▽ |
+
+\item \ensuremath{\wedge} | wedge | ∧ |
+
+\item \ensuremath{\vee} | vee | ∨ |
+
+\item {\textlnot} | logicalnot | ¬ |
+
+\item {\guillemetleft} | guillemotleft | « |
+
+\item {\guillemetright} | guillemotright | » |
+
+\item {\pounds} | sterling | £ |
+
+\item {\textdegree} | degree | ° |
+
+\item {\textcopyright} | copyright | © |
+
+\item {\textregistered} | registered | ® |
+
+\item {\P} | paragraph | ¶ |
+
+\item {\textperiodcentered} | periodcentered | · |
+
+\item {\S} | section | § |
+
+\item {\&} | ampersand | & |
+
+\item " | quotedbl | " |
+
+\item ' | quotesingle | ' |
+
+\item {\textgreater} | greater | > |
+
+\item {\textless} | less | < |
+
+\item | | verticalbar | | |
+
+\item {\DH} | Eth | Ð |
+
+\item {\AE} | AE | Æ |
+
+\item {\ae} | ae | æ |
+
+\item {\TH} | Thorn | Þ |
+
+\item \ensuremath{\Omega} | Omega | Ω |
+
+\item {\ding{51}} | Ux2713 | ✓ |
+
+\item {\ding{64}} | Ux2720 | ✠ |
+
+\item {\ding{55}} | Ux2717 | ✗ |
+
+\item {\ding{73}} | Ux2729 | ✩ |
+
+\item {\ding{77}} | Ux272D | ✭ |
+
+\item {\ding{192}} | Ux2780 | ➀ |
+
+\item {\ding{193}} | Ux2781 | ➁ |
+
+\item {\ding{194}} | Ux2782 | ➂ |
+
+\item {\ding{195}} | Ux2783 | ➃ |
+
+\item {\ding{196}} | Ux2784 | ➄ |
+
+\item {\ding{197}} | Ux2785 | ➅ |
+
+\item {\ding{198}} | Ux2786 | ➆ |
+
+\item {\ding{199}} | Ux2787 | ➇ |
+
+\item {\ding{200}} | Ux2788 | ➈ |
+
+\item {\ding{201}} | Ux2789 | ➉ |
+
+\item {\ding{202}} | Ux278A | ➊ |
+
+\item {\ding{203}} | Ux278B | ➋ |
+
+\item {\ding{204}} | Ux278C | ➌ |
+
+\item {\ding{205}} | Ux278D | ➍ |
+
+\item {\ding{206}} | Ux278E | ➎ |
+
+\item {\ding{207}} | Ux278F | ➏ |
+
+\item {\ding{208}} | Ux2790 | ➐ |
+
+\item {\ding{209}} | Ux2791 | ➑ |
+
+\item {\ding{210}} | Ux2792 | ➒ |
+
+\item {\ding{211}} | Ux2793 | ➓ |
+
+\end{packed_itemize}
+\end{document}

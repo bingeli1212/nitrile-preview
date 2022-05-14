@@ -1,0 +1,1330 @@
+% !TEX program = context
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\enableregime[utf] % enable unicode fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefallbackfamily [dejavu] [serif] [Unifont] [range={miscellaneoussymbols,dingbats,cjkunifiedideographs,hiragana,katakana,cjksymbolsandpunctuation}]
+\definefallbackfamily [dejavu] [sans]  [Unifont] [range={miscellaneoussymbols,dingbats,cjkunifiedideographs,hiragana,katakana,cjksymbolsandpunctuation}]
+\definefallbackfamily [dejavu] [mono]  [Unifont] [range={miscellaneoussymbols,dingbats,cjkunifiedideographs,hiragana,katakana,cjksymbolsandpunctuation}]
+\definefallbackfamily [dejavu] [math]  [Unifont] [range={miscellaneoussymbols,dingbats,cjkunifiedideographs,hiragana,katakana,cjksymbolsandpunctuation}]
+\definefontfamily [dejavu] [serif] [dejavuserif]    [rscale=0.92]
+\definefontfamily [dejavu] [sans]  [dejavusans]     [rscale=0.92]
+\definefontfamily [dejavu] [mono]  [dejavusansmono] [rscale=0.90]
+\definefontfamily [dejavu] [math]  [dejavumath]     [rscale=0.92]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily [office] [serif] [Times New Roman]
+\definefontfamily [office] [sans]  [Arial] [rscale=0.9]
+\definefontfamily [office] [mono]  [Courier New]
+\definefontfamily [office] [math]  [TeX Gyre Termes Math]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definefontfamily [linux] [serif] [libertinusserif]
+\definefontfamily [linux] [sans]  [libertinussans]
+\definefontfamily [linux] [mono]  [libertinusmono] [rscale=0.83]
+\definefontfamily [linux] [math]  [libertinusmath]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definemathcommand [arccot] [nolop] {\mfunction{arccot}}
+\definemathcommand [arsinh] [nolop] {\mfunction{arsinh}}
+\definemathcommand [arcosh] [nolop] {\mfunction{arcosh}}
+\definemathcommand [artanh] [nolop] {\mfunction{artanh}}
+\definemathcommand [arcoth] [nolop] {\mfunction{arcoth}}
+\definemathcommand [sech]   [nolop] {\mfunction{sech}}
+\definemathcommand [csch]   [nolop] {\mfunction{csch}}
+\definemathcommand [arcsec] [nolop] {\mfunction{arcsec}}
+\definemathcommand [arccsc] [nolop] {\mfunction{arccsc}}
+\definemathcommand [arsech] [nolop] {\mfunction{arsech}}
+\definemathcommand [arcsch] [nolop] {\mfunction{arcsch}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor[cyan][r=0,g=1,b=1] % a RGB color
+\definecolor[magenta][r=1,g=0,b=1] % a RGB color
+\definecolor[darkgray][r=.35,g=.35,b=.35] % a RGB color
+\definecolor[gray][r=.5,g=.5,b=.5] % a RGB color
+\definecolor[lightgray][r=.75,g=.75,b=.75] % a RGB color
+\definecolor[brown][r=.72,g=.52,b=.04] % a RGB color
+\definecolor[lime][r=.67,g=1,b=.18] % a RGB color
+\definecolor[olive][r=.5,g=.5,b=0] % a RGB color
+\definecolor[orange][r=1,g=.5,b=0] % a RGB color
+\definecolor[pink][r=1,g=.75,b=.79] % a RGB color
+\definecolor[teal][r=0,g=.5,b=.5] % a RGB color
+\definecolor[purple][r=.8,g=.13,b=.13] % a RGB color
+\definecolor[violet][r=.5,g=0,b=.5] % a RGB color
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor[AliceBlue][h=f0f8ff]
+\definecolor[AntiqueWhite][h=faebd7]
+\definecolor[Aqua][h=00ffff]
+\definecolor[Aquamarine][h=7fffd4]
+\definecolor[Azure][h=f0ffff]
+\definecolor[Beige][h=f5f5dc]
+\definecolor[Bisque][h=ffe4c4]
+\definecolor[Black][h=000000]
+\definecolor[BlanchedAlmond][h=ffebcd]
+\definecolor[Blue][h=0000ff]
+\definecolor[BlueViolet][h=8a2be2]
+\definecolor[Brown][h=a52a2a]
+\definecolor[BurlyWood][h=deb887]
+\definecolor[CadetBlue][h=5f9ea0]
+\definecolor[Chartreuse][h=7fff00]
+\definecolor[Chocolate][h=d2691e]
+\definecolor[Coral][h=ff7f50]
+\definecolor[CornflowerBlue][h=6495ed]
+\definecolor[Cornsilk][h=fff8dc]
+\definecolor[Crimson][h=dc143c]
+\definecolor[Cyan][h=00ffff]
+\definecolor[DarkBlue][h=00008b]
+\definecolor[DarkCyan][h=008b8b]
+\definecolor[DarkGoldenRod][h=b8860b]
+\definecolor[DarkGray][h=a9a9a9]
+\definecolor[DarkGrey][h=a9a9a9]
+\definecolor[DarkGreen][h=006400]
+\definecolor[DarkKhaki][h=bdb76b]
+\definecolor[DarkMagenta][h=8b008b]
+\definecolor[DarkOliveGreen][h=556b2f]
+\definecolor[DarkOrange][h=ff8c00]
+\definecolor[DarkOrchid][h=9932cc]
+\definecolor[DarkRed][h=8b0000]
+\definecolor[DarkSalmon][h=e9967a]
+\definecolor[DarkSeaGreen][h=8fbc8f]
+\definecolor[DarkSlateBlue][h=483d8b]
+\definecolor[DarkSlateGray][h=2f4f4f]
+\definecolor[DarkSlateGrey][h=2f4f4f]
+\definecolor[DarkTurquoise][h=00ced1]
+\definecolor[DarkViolet][h=9400d3]
+\definecolor[DeepPink][h=ff1493]
+\definecolor[DeepSkyBlue][h=00bfff]
+\definecolor[DimGray][h=696969]
+\definecolor[DimGrey][h=696969]
+\definecolor[DodgerBlue][h=1e90ff]
+\definecolor[FireBrick][h=b22222]
+\definecolor[FloralWhite][h=fffaf0]
+\definecolor[ForestGreen][h=228b22]
+\definecolor[Fuchsia][h=ff00ff]
+\definecolor[Gainsboro][h=dcdcdc]
+\definecolor[GhostWhite][h=f8f8ff]
+\definecolor[Gold][h=ffd700]
+\definecolor[GoldenRod][h=daa520]
+\definecolor[Gray][h=808080]
+\definecolor[Grey][h=808080]
+\definecolor[Green][h=008000]
+\definecolor[GreenYellow][h=adff2f]
+\definecolor[HoneyDew][h=f0fff0]
+\definecolor[HotPink][h=ff69b4]
+\definecolor[IndianRed][h=cd5c5c]
+\definecolor[Indigo][h=4b0082]
+\definecolor[Ivory][h=fffff0]
+\definecolor[Khaki][h=f0e68c]
+\definecolor[Lavender][h=e6e6fa]
+\definecolor[LavenderBlush][h=fff0f5]
+\definecolor[LawnGreen][h=7cfc00]
+\definecolor[LemonChiffon][h=fffacd]
+\definecolor[LightBlue][h=add8e6]
+\definecolor[LightCoral][h=f08080]
+\definecolor[LightCyan][h=e0ffff]
+\definecolor[LightGoldenRodYellow][h=fafad2]
+\definecolor[LightGray][h=d3d3d3]
+\definecolor[LightGrey][h=d3d3d3]
+\definecolor[LightGreen][h=90ee90]
+\definecolor[LightPink][h=ffb6c1]
+\definecolor[LightSalmon][h=ffa07a]
+\definecolor[LightSeaGreen][h=20b2aa]
+\definecolor[LightSkyBlue][h=87cefa]
+\definecolor[LightSlateGray][h=778899]
+\definecolor[LightSlateGrey][h=778899]
+\definecolor[LightSteelBlue][h=b0c4de]
+\definecolor[LightYellow][h=ffffe0]
+\definecolor[Lime][h=00ff00]
+\definecolor[LimeGreen][h=32cd32]
+\definecolor[Linen][h=faf0e6]
+\definecolor[Magenta][h=ff00ff]
+\definecolor[Maroon][h=800000]
+\definecolor[MediumAquaMarine][h=66cdaa]
+\definecolor[MediumBlue][h=0000cd]
+\definecolor[MediumOrchid][h=ba55d3]
+\definecolor[MediumPurple][h=9370db]
+\definecolor[MediumSeaGreen][h=3cb371]
+\definecolor[MediumSlateBlue][h=7b68ee]
+\definecolor[MediumSpringGreen][h=00fa9a]
+\definecolor[MediumTurquoise][h=48d1cc]
+\definecolor[MediumVioletRed][h=c71585]
+\definecolor[MidnightBlue][h=191970]
+\definecolor[MintCream][h=f5fffa]
+\definecolor[MistyRose][h=ffe4e1]
+\definecolor[Moccasin][h=ffe4b5]
+\definecolor[NavajoWhite][h=ffdead]
+\definecolor[Navy][h=000080]
+\definecolor[OldLace][h=fdf5e6]
+\definecolor[Olive][h=808000]
+\definecolor[OliveDrab][h=6b8e23]
+\definecolor[Orange][h=ffa500]
+\definecolor[OrangeRed][h=ff4500]
+\definecolor[Orchid][h=da70d6]
+\definecolor[PaleGoldenRod][h=eee8aa]
+\definecolor[PaleGreen][h=98fb98]
+\definecolor[PaleTurquoise][h=afeeee]
+\definecolor[PaleVioletRed][h=db7093]
+\definecolor[PapayaWhip][h=ffefd5]
+\definecolor[PeachPuff][h=ffdab9]
+\definecolor[Peru][h=cd853f]
+\definecolor[Pink][h=ffc0cb]
+\definecolor[Plum][h=dda0dd]
+\definecolor[PowderBlue][h=b0e0e6]
+\definecolor[Purple][h=800080]
+\definecolor[RebeccaPurple][h=663399]
+\definecolor[Red][h=ff0000]
+\definecolor[RosyBrown][h=bc8f8f]
+\definecolor[RoyalBlue][h=4169e1]
+\definecolor[SaddleBrown][h=8b4513]
+\definecolor[Salmon][h=fa8072]
+\definecolor[SandyBrown][h=f4a460]
+\definecolor[SeaGreen][h=2e8b57]
+\definecolor[SeaShell][h=fff5ee]
+\definecolor[Sienna][h=a0522d]
+\definecolor[Silver][h=c0c0c0]
+\definecolor[SkyBlue][h=87ceeb]
+\definecolor[SlateBlue][h=6a5acd]
+\definecolor[SlateGray][h=708090]
+\definecolor[SlateGrey][h=708090]
+\definecolor[Snow][h=fffafa]
+\definecolor[SpringGreen][h=00ff7f]
+\definecolor[SteelBlue][h=4682b4]
+\definecolor[Tan][h=d2b48c]
+\definecolor[Teal][h=008080]
+\definecolor[Thistle][h=d8bfd8]
+\definecolor[Tomato][h=ff6347]
+\definecolor[Turquoise][h=40e0d0]
+\definecolor[Violet][h=ee82ee]
+\definecolor[Wheat][h=f5deb3]
+\definecolor[White][h=ffffff]
+\definecolor[WhiteSmoke][h=f5f5f5]
+\definecolor[Yellow][h=ffff00]
+\definecolor[YellowGreen][h=9acd32]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setscript[hanzi] % hyphenation
+\setupinteraction[state=start,color=,contrastcolor=]
+\placebookmarks[part,chapter]
+\setuphead[part][number=no]
+\setuphead[chapter][style=\tfd,number=no]
+\setuphead[section][style=\bfa,number=no]
+\setuphead[subsection][style=\bf,number=no]
+\setuphead[subsubsection][style=\bf,number=no]
+\setuphead[subsubsubsection][style=\bf,number=no]
+\definefloat[listing][listings]
+\definedescription[latexdesc][
+  headstyle=normal, style=normal, align=flushleft,
+  alternative=hanging, width=fit, before=, after=]
+\definedescription[DLpacked][
+  headstyle=bold, style=normal, align=flushleft,
+  alternative=hanging, width=broad, margin=20pt, before=, after=,]
+\definedescription[HLpacked][
+  headstyle=normal, style=normal, align=flushleft, margin=1em,
+  alternative=hanging, width=broad, before=, after=,]
+\definedescription[DL][
+  headstyle=bold, style=normal, align=flushleft,
+  alternative=hanging, width=broad, margin=20pt]
+\definedescription[HL][
+  headstyle=normal, style=normal, align=flushleft, margin=1em,
+  alternative=hanging, width=broad]
+\setupinterlinespace[line=10pt]
+\setupwhitespace[0pt]
+\setupindenting[yes,medium]
+\setuppapersize[A5]    
+\setupbodyfont[dejavu,10pt]      
+\setupcaptions[minwidth=\textwidth, align=middle, style=small, location=top, number=no]
+\setupcombination[distance=0.33em,style=small]                 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\enabletrackers[fonts.missing]
+\setuppagenumbering[location={header,right},style=]
+\setuplayout[topspace=10mm,
+  header=10mm,
+  footer=0mm,
+  height=190mm,
+  width=120mm,
+  backspace=15mm,
+  leftmarginwidth=0mm,
+  rightmarginwidth=0mm,
+  leftmargindistance=0mm,
+  rightmargindistance=0mm]
+%\setupcombination[style=small]
+\starttext
+
+
+\setupuserpagenumber[numberconversion=numbers]
+
+\startsection[title={1 ASCII U+0000 - U-007F},reference={chapter.0.1},bookmark={ASCII U+0000 - U-007F}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}{\quotedbl} {\textbar} quotedbl
+\item{}{\texthash} {\textbar} numbersign
+\item{}{\textdollar} {\textbar} dollar
+\item{}{\textpercent} {\textbar} percent
+\item{}{\textampersand} {\textbar} ampersand
+\item{}{\quotesingle} {\textbar} quotesingle
+\item{}{\char42} {\textbar} asterisk
+\item{}{\textcomma} {\textbar} comma
+\item{}- {\textbar} hyphen
+\item{}. {\textbar} period
+\item{}/ {\textbar} slash
+\item{}< {\textbar} less
+\item{}> {\textbar} greater
+\item{}{\textat} {\textbar} at {\textbar}
+\item{}[ {\textbar} bracketleft
+\item{}{\textbackslash} {\textbar} backslash
+\item{}] {\textbar} bracketright
+\item{}{\textasciicircum} {\textbar} asciicircm
+\item{}{\textunderscore} {\textbar} underscore
+\item{}{\textgrave} {\textbar} grave
+\item{}{\textbraceleft} {\textbar} braceleft
+\item{}{\textbar} {\textbar} verticalbar
+\item{}{\textbraceright} {\textbar} braceright
+\item{}{\textasciitilde} {\textbar} asciitilde
+\stopitemize
+
+\startsection[title={2 Latin-1 Supplement U+0080 - U+00FF},reference={chapter.0.2},bookmark={Latin-1 Supplement U+0080 - U+00FF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}{\nobreakspace} {\textbar} nonbreakingspace {\textbar}   {\textbar}
+\item{}{\exclamdown} {\textbar} exclamdown {\textbar} ¡ {\textbar}
+\item{}{\textcent} {\textbar} cent {\textbar} ¢ {\textbar}
+\item{}{\textsterling} {\textbar} sterling {\textbar} £ {\textbar}
+\item{}{\textcurrency} {\textbar} currency {\textbar} ¤ {\textbar}
+\item{}{\textyen} {\textbar} yen {\textbar} ¥ {\textbar}
+\item{}{\textbrokenbar} {\textbar} brokenbar {\textbar} ¦ {\textbar}
+\item{}{\sectionmark} {\textbar} section {\textbar} § {\textbar}
+\item{}{\textdiaeresis} {\textbar} dieresis {\textbar} ¨ {\textbar}
+\item{}{\copyright} {\textbar} copyright {\textbar} © {\textbar}
+\item{}{\ordfeminine} {\textbar} ordfeminine {\textbar} ª {\textbar}
+\item{}{\leftguillemot} {\textbar} guillemotleft {\textbar} « {\textbar}
+\item{}{\textlognot} {\textbar} logicalnot {\textbar} ¬ {\textbar}
+\item{}{\registered} {\textbar} registered {\textbar} ® {\textbar}
+\item{}{\textmacron} {\textbar} macron {\textbar} ¯ {\textbar}
+\item{}{\textdegree} {\textbar} degree {\textbar} ° {\textbar}
+\item{}{\textpm} {\textbar} plusminus {\textbar} ± {\textbar}
+\item{}{\twosuperior} {\textbar} twosuperior {\textbar} ² {\textbar}
+\item{}{\threesuperior} {\textbar} threesuperior {\textbar} ³ {\textbar}
+\item{}{\textacute} {\textbar} acute {\textbar} ´ {\textbar}
+\item{}{\textmu} {\textbar} mu1 {\textbar} µ {\textbar}
+\item{}{\paragraphmark} {\textbar} paragraph {\textbar} ¶ {\textbar}
+\item{}{\periodcentered} {\textbar} periodcentered {\textbar} · {\textbar}
+\item{}{\textcedilla} {\textbar} cedilla {\textbar} ¸ {\textbar}
+\item{}{\onesuperior} {\textbar} onesuperior {\textbar} ¹ {\textbar}
+\item{}{\ordmasculine} {\textbar} ordmasculine {\textbar} º {\textbar}
+\item{}{\rightguillemot} {\textbar} guillemotright {\textbar} » {\textbar}
+\item{}{\onequarter} {\textbar} onequarter {\textbar} ¼ {\textbar}
+\item{}{\onehalf} {\textbar} onehalf {\textbar} ½ {\textbar}
+\item{}{\threequarter} {\textbar} threequarters {\textbar} ¾ {\textbar}
+\item{}{\questiondown} {\textbar} questiondown {\textbar} ¿ {\textbar}
+\item{}{\Agrave} {\textbar} Agrave {\textbar} À {\textbar}
+\item{}{\Aacute} {\textbar} Aacute {\textbar} Á {\textbar}
+\item{}{\Acircumflex} {\textbar} Acircumflex {\textbar} Â {\textbar}
+\item{}{\Atilde} {\textbar} Atilde {\textbar} Ã {\textbar}
+\item{}{\Adiaeresis} {\textbar} Adieresis {\textbar} Ä {\textbar}
+\item{}{\Aring} {\textbar} Aring {\textbar} Å {\textbar}
+\item{}{\AEligature} {\textbar} AE {\textbar} Æ {\textbar}
+\item{}{\Ccedilla} {\textbar} Ccedilla {\textbar} Ç {\textbar}
+\item{}{\Egrave} {\textbar} Egrave {\textbar} È {\textbar}
+\item{}{\Eacute} {\textbar} Eacute {\textbar} É {\textbar}
+\item{}{\Ecircumflex} {\textbar} Ecircumflex {\textbar} Ê {\textbar}
+\item{}{\Ediaeresis} {\textbar} Edieresis {\textbar} Ë {\textbar}
+\item{}{\Igrave} {\textbar} Igrave {\textbar} Ì {\textbar}
+\item{}{\Iacute} {\textbar} Iacute {\textbar} Í {\textbar}
+\item{}{\Icircumflex} {\textbar} Icircumflex {\textbar} Î {\textbar}
+\item{}{\Idiaeresis} {\textbar} Idieresis {\textbar} Ï {\textbar}
+\item{}{\Eth} {\textbar} Eth {\textbar} Ð {\textbar}
+\item{}{\Ntilde} {\textbar} Ntilde {\textbar} Ñ {\textbar}
+\item{}{\Ograve} {\textbar} Ograve {\textbar} Ò {\textbar}
+\item{}{\Oacute} {\textbar} Oacute {\textbar} Ó {\textbar}
+\item{}{\Ocircumflex} {\textbar} Ocircumflex {\textbar} Ô {\textbar}
+\item{}{\Otilde} {\textbar} Otilde {\textbar} Õ {\textbar}
+\item{}{\Odiaeresis} {\textbar} Odieresis {\textbar} Ö {\textbar}
+\item{}{\textmultiply} {\textbar} multiply {\textbar} × {\textbar}
+\item{}{\Ostroke} {\textbar} Oslash {\textbar} Ø {\textbar}
+\item{}{\Ugrave} {\textbar} Ugrave {\textbar} Ù {\textbar}
+\item{}{\Uacute} {\textbar} Uacute {\textbar} Ú {\textbar}
+\item{}{\Ucircumflex} {\textbar} Ucircumflex {\textbar} Û {\textbar}
+\item{}{\Udiaeresis} {\textbar} Udieresis {\textbar} Ü {\textbar}
+\item{}{\Yacute} {\textbar} Yacute {\textbar} Ý {\textbar}
+\item{}{\Thorn} {\textbar} Thorn {\textbar} Þ {\textbar}
+\item{}{\ssharp} {\textbar} germandbls {\textbar} ß {\textbar}
+\item{}{\agrave} {\textbar} agrave {\textbar} à {\textbar}
+\item{}{\aacute} {\textbar} aacute {\textbar} á {\textbar}
+\item{}{\acircumflex} {\textbar} acircumflex {\textbar} â {\textbar}
+\item{}{\atilde} {\textbar} atilde {\textbar} ã {\textbar}
+\item{}{\adiaeresis} {\textbar} adieresis {\textbar} ä {\textbar}
+\item{}{\aring} {\textbar} aring {\textbar} å {\textbar}
+\item{}{\aeligature} {\textbar} ae {\textbar} æ {\textbar}
+\item{}{\ccedilla} {\textbar} ccedilla {\textbar} ç {\textbar}
+\item{}{\egrave} {\textbar} egrave {\textbar} è {\textbar}
+\item{}{\eacute} {\textbar} eacute {\textbar} é {\textbar}
+\item{}{\ecircumflex} {\textbar} ecircumflex {\textbar} ê {\textbar}
+\item{}{\ediaeresis} {\textbar} edieresis {\textbar} ë {\textbar}
+\item{}{\igrave} {\textbar} igrave {\textbar} ì {\textbar}
+\item{}{\iacute} {\textbar} iacute {\textbar} í {\textbar}
+\item{}{\icircumflex} {\textbar} icircumflex {\textbar} î {\textbar}
+\item{}{\idiaeresis} {\textbar} idieresis {\textbar} ï {\textbar}
+\item{}ð {\textbar} eth {\textbar} ð {\textbar}
+\item{}{\ntilde} {\textbar} ntilde {\textbar} ñ {\textbar}
+\item{}{\ograve} {\textbar} ograve {\textbar} ò {\textbar}
+\item{}{\oacute} {\textbar} oacute {\textbar} ó {\textbar}
+\item{}{\ocircumflex} {\textbar} ocircumflex {\textbar} ô {\textbar}
+\item{}{\otilde} {\textbar} otilde {\textbar} õ {\textbar}
+\item{}{\odiaeresis} {\textbar} odieresis {\textbar} ö {\textbar}
+\item{}{\textdiv} {\textbar} divide {\textbar} ÷ {\textbar}
+\item{}{\ostroke} {\textbar} oslash {\textbar} ø {\textbar}
+\item{}{\ugrave} {\textbar} ugrave {\textbar} ù {\textbar}
+\item{}{\uacute} {\textbar} uacute {\textbar} ú {\textbar}
+\item{}{\ucircumflex} {\textbar} ucircumflex {\textbar} û {\textbar}
+\item{}{\udiaeresis} {\textbar} udieresis {\textbar} ü {\textbar}
+\item{}{\yacute} {\textbar} yacute {\textbar} ý {\textbar}
+\item{}{\thorn} {\textbar} thorn {\textbar} þ {\textbar}
+\item{}{\ydiaeresis} {\textbar} ydieresis {\textbar} ÿ {\textbar}
+\stopitemize
+
+\startsection[title={3 Greek and Coptic U+0370 - U+03FF},reference={chapter.0.3},bookmark={Greek and Coptic U+0370 - U+03FF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}Α {\textbar} Alpha {\textbar} Α {\textbar}
+\item{}Β {\textbar} Beta {\textbar} Β {\textbar}
+\item{}Γ {\textbar} Gamma {\textbar} Γ {\textbar}
+\item{}Δ {\textbar} Delta {\textbar} Δ {\textbar}
+\item{}Ε {\textbar} Epsilon {\textbar} Ε {\textbar}
+\item{}Ζ {\textbar} Zeta {\textbar} Ζ {\textbar}
+\item{}Η {\textbar} Eta {\textbar} Η {\textbar}
+\item{}Θ {\textbar} Theta {\textbar} Θ {\textbar}
+\item{}Ι {\textbar} Iota {\textbar} Ι {\textbar}
+\item{}Κ {\textbar} Kappa {\textbar} Κ {\textbar}
+\item{}Λ {\textbar} Lambda {\textbar} Λ {\textbar}
+\item{}Μ {\textbar} Mu {\textbar} Μ {\textbar}
+\item{}Ν {\textbar} Nu {\textbar} Ν {\textbar}
+\item{}Ξ {\textbar} Xi {\textbar} Ξ {\textbar}
+\item{}Ο {\textbar} Omicron {\textbar} Ο {\textbar}
+\item{}Π {\textbar} Pi {\textbar} Π {\textbar}
+\item{}Ρ {\textbar} Rho {\textbar} Ρ {\textbar}
+\item{}Σ {\textbar} Sigma {\textbar} Σ {\textbar}
+\item{}Τ {\textbar} Tau {\textbar} Τ {\textbar}
+\item{}Υ {\textbar} Upsilon {\textbar} Υ {\textbar}
+\item{}Φ {\textbar} Phi {\textbar} Φ {\textbar}
+\item{}Χ {\textbar} Chi {\textbar} Χ {\textbar}
+\item{}Ψ {\textbar} Psi {\textbar} Ψ {\textbar}
+\item{}Ω {\textbar} Omega {\textbar} Ω {\textbar}
+\item{}\math{\alpha} {\textbar} alpha {\textbar} α {\textbar}
+\item{}\math{\beta} {\textbar} beta {\textbar} β {\textbar}
+\item{}\math{\gamma} {\textbar} gamma {\textbar} γ {\textbar}
+\item{}\math{\delta} {\textbar} delta {\textbar} δ {\textbar}
+\item{}\math{\epsilon} {\textbar} epsilon {\textbar} ε {\textbar}
+\item{}\math{\zeta} {\textbar} zeta {\textbar} ζ {\textbar}
+\item{}\math{\eta} {\textbar} eta {\textbar} η {\textbar}
+\item{}\math{\theta} {\textbar} theta {\textbar} θ {\textbar}
+\item{}\math{\vartheta} {\textbar} vartheta {\textbar} ϑ {\textbar}
+\item{}\math{\iota} {\textbar} iota {\textbar} ι {\textbar}
+\item{}\math{\kappa} {\textbar} kappa {\textbar} κ {\textbar}
+\item{}\math{\varkappa} {\textbar} varkappa {\textbar} ϰ {\textbar}
+\item{}\math{\lambda} {\textbar} lambda {\textbar} λ {\textbar}
+\item{}\math{\mu} {\textbar} mu {\textbar} μ {\textbar}
+\item{}\math{\nu} {\textbar} nu {\textbar} ν {\textbar}
+\item{}\math{\xi} {\textbar} xi {\textbar} ξ {\textbar}
+\item{}\math{\omicron} {\textbar} omicron {\textbar} ο {\textbar}
+\item{}\math{\pi} {\textbar} pi {\textbar} π {\textbar}
+\item{}\math{\varpi} {\textbar} varpi {\textbar} ϖ {\textbar}
+\item{}\math{\rho} {\textbar} rho {\textbar} ρ {\textbar}
+\item{}\math{\varrho} {\textbar} varrho {\textbar} ϱ {\textbar}
+\item{}\math{\varsigma} {\textbar} varsigma {\textbar} ς {\textbar}
+\item{}\math{\sigma} {\textbar} sigma {\textbar} σ {\textbar}
+\item{}\math{\tau} {\textbar} tau {\textbar} τ {\textbar}
+\item{}\math{\upsilon} {\textbar} upsilon {\textbar} υ {\textbar}
+\item{}\math{\phi} {\textbar} phi {\textbar} ϕ {\textbar}
+\item{}\math{\varphi} {\textbar} varphi {\textbar} φ {\textbar}
+\item{}\math{\chi} {\textbar} chi {\textbar} χ {\textbar}
+\item{}\math{\psi} {\textbar} psi {\textbar} ψ {\textbar}
+\item{}\math{\omega} {\textbar} omega {\textbar} ω {\textbar}
+\item{}\math{\varepsilon} {\textbar} varepsilon {\textbar} ϵ {\textbar}
+\item{}Ϝ {\textbar} Digamma {\textbar} Ϝ {\textbar}
+\item{}\math{\digamma} {\textbar} digamma {\textbar} ϝ {\textbar}
+\stopitemize
+
+\startsection[title={4 Mathematical Operators U+2200 - U+22FF},reference={chapter.0.4},bookmark={Mathematical Operators U+2200 - U+22FF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}\math{\nless} {\textbar} nless {\textbar} ≮ {\textbar}
+\item{}\math{\leq} {\textbar} leq {\textbar} ≤ {\textbar}
+\item{}\math{\nleq} {\textbar} nleq {\textbar} ≰ {\textbar}
+\item{}\math{\not\leqslant} {\textbar} nleqslant {\textbar} ≰ {\textbar}
+\item{}\math{\prec} {\textbar} prec {\textbar} ≺ {\textbar}
+\item{}\math{\nprec} {\textbar} nprec {\textbar} ⊀ {\textbar}
+\item{}\math{\preccurlyeq} {\textbar} preceq {\textbar} ≼ {\textbar}
+\item{}\math{\npreccurlyeq} {\textbar} npreceq {\textbar} ⋠ {\textbar}
+\item{}\math{\ll} {\textbar} ll {\textbar} ≪ {\textbar}
+\item{}\math{\lll} {\textbar} lll {\textbar} ⋘ {\textbar}
+\item{}\math{\ngtr} {\textbar} ngtr {\textbar} ≯ {\textbar}
+\item{}\math{\geq} {\textbar} geq {\textbar} ≥ {\textbar}
+\item{}\math{\ngeq} {\textbar} ngeq {\textbar} ≱ {\textbar}
+\item{}\math{\ngeq} {\textbar} ngeqslant {\textbar} ≱ {\textbar}
+\item{}\math{\succ} {\textbar} succ {\textbar} ≻ {\textbar}
+\item{}\math{\nsucc} {\textbar} nsucc {\textbar} ⊁ {\textbar}
+\item{}\math{\succeq} {\textbar} succeq {\textbar} ≽ {\textbar}
+\item{}\math{\nsucccurlyeq} {\textbar} nsucceq {\textbar} ⋡ {\textbar}
+\item{}\math{\gg} {\textbar} gg {\textbar} ≫ {\textbar}
+\item{}\math{\ggg} {\textbar} ggg {\textbar} ⋙ {\textbar}
+\item{}\math{\precsim} {\textbar} precsim {\textbar} ≾ {\textbar}
+\item{}\math{\succsim} {\textbar} succsim {\textbar} ≿ {\textbar}
+\item{}\math{\doteq} {\textbar} doteq {\textbar} ≐ {\textbar}
+\item{}\math{\equiv} {\textbar} equiv {\textbar} ≡ {\textbar}
+\item{}\math{\nequiv} {\textbar} nequiv {\textbar} ≢ {\textbar}
+\item{}\math{\cong} {\textbar} cong {\textbar} ≅ {\textbar}
+\item{}\math{\approx} {\textbar} approx {\textbar} ≈ {\textbar}
+\item{}asymp {\textbar} asymp {\textbar} ≈ {\textbar}
+\item{}\math{\simeq} {\textbar} simeq {\textbar} ≃ {\textbar}
+\item{}\math{\sim} {\textbar} sim {\textbar} ∼ {\textbar}
+\item{}\math{\propto} {\textbar} propto {\textbar} ∝ {\textbar}
+\item{}\math{\neq} {\textbar} ne {\textbar} ≠ {\textbar}
+\item{}\math{\mid} {\textbar} mid {\textbar} ∣ {\textbar}
+\item{}\math{\nmid} {\textbar} nmid {\textbar} ∤ {\textbar}
+\item{}\math{\mp} {\textbar} minusplus {\textbar} ∓ {\textbar}
+\item{}\math{-} {\textbar} minus {\textbar} − {\textbar}
+\item{}\math{\ast} {\textbar} ast {\textbar} ∗ {\textbar}
+\item{}\math{\star} {\textbar} sstarf {\textbar} ⋆ {\textbar}
+\item{}\math{\boxtimes} {\textbar} boxtimes {\textbar} ⊠ {\textbar}
+\item{}\math{\surd} {\textbar} Sqrt {\textbar} √ {\textbar}
+\item{}\math{\asymp} {\textbar} asympeq {\textbar} ≍ {\textbar}
+\item{}\math{\vdash} {\textbar} vdash {\textbar} ⊢ {\textbar}
+\item{}\math{\models} {\textbar} models {\textbar} ⊧ {\textbar}
+\item{}\math{\bowtie} {\textbar} bowtie {\textbar} ⋈ {\textbar}
+\item{}\math{\bowtie} {\textbar} dashv {\textbar} ⊣ {\textbar}
+\item{}\math{\dashv} {\textbar} uplus {\textbar} ⊎ {\textbar}
+\item{}\math{\uplus} {\textbar} sqcap {\textbar} ⊓ {\textbar}
+\item{}\math{\sqcap} {\textbar} sqcup {\textbar} ⊔ {\textbar}
+\item{}\math{\vee} {\textbar} vee {\textbar} ∨ {\textbar}
+\item{}\math{\wedge} {\textbar} wedge {\textbar} ∧ {\textbar}
+\item{}\math{\cdot} {\textbar} sdot {\textbar} ⋅ {\textbar}
+\item{}\math{\vdots} {\textbar} vellip {\textbar} ⋮ {\textbar}
+\item{}\math{\dots} {\textbar} ctdot {\textbar} ⋯ {\textbar}
+\item{}\math{\ddots} {\textbar} dtdot {\textbar} ⋱ {\textbar}
+\item{}\math{\diamond} {\textbar} diamond {\textbar} ⋄ {\textbar}
+\item{}\math{\triangleleft} {\textbar} vltri {\textbar} ⊲ {\textbar}
+\item{}\math{\triangleright} {\textbar} vrtri {\textbar} ⊳ {\textbar}
+\item{}\math{\triangleleft} {\textbar} vltrie {\textbar} ⊴ {\textbar}
+\item{}\math{\triangleleft} {\textbar} vrtrie {\textbar} ⊵ {\textbar}
+\item{}\math{\ntriangleright} {\textbar} nltri {\textbar} ⋪ {\textbar}
+\item{}\math{\ntriangleleft} {\textbar} nrtri {\textbar} ⋫ {\textbar}
+\item{}\math{\wr} {\textbar} wreath {\textbar} ≀ {\textbar}
+\item{}\math{\oplus} {\textbar} oplus {\textbar} ⊕ {\textbar}
+\item{}\math{\ominus} {\textbar} ominus {\textbar} ⊖ {\textbar}
+\item{}\math{\otimes} {\textbar} otimes {\textbar} ⊗ {\textbar}
+\item{}⊛ {\textbar} circledast {\textbar} ⊛ {\textbar}
+\item{}\math{\oslash} {\textbar} osol {\textbar} ⊘ {\textbar}
+\item{}\math{\odot} {\textbar} CircleDot {\textbar} ⊙ {\textbar}
+\item{}\math{\circ} {\textbar} SmallCircle {\textbar} ∘ {\textbar}
+\item{}\math{\prod} {\textbar} prod {\textbar} ∏ {\textbar}
+\item{}\math{\amalg} {\textbar} coprod {\textbar} ∐ {\textbar}
+\item{}\math{\sum} {\textbar} sum {\textbar} ∑ {\textbar}
+\item{}\math{\infty} {\textbar} infty {\textbar} ∞ {\textbar}
+\item{}\math{\angle} {\textbar} ang {\textbar} ∠ {\textbar}
+\item{}\math{\measuredangle} {\textbar} angmsd {\textbar} ∡ {\textbar}
+\item{}\math{\sphericalangle} {\textbar} angsph {\textbar} ∢ {\textbar}
+\item{}\math{\in} {\textbar} in {\textbar} ∈ {\textbar}
+\item{}\math{\notin} {\textbar} notin {\textbar} ∉ {\textbar}
+\item{}\math{\ni} {\textbar} ReverseElement {\textbar} ∋ {\textbar}
+\item{}∌ {\textbar} NotReverseElement {\textbar} ∌ {\textbar}
+\item{}\math{\subset} {\textbar} subset {\textbar} ⊂ {\textbar}
+\item{}\math{\nsubset} {\textbar} nsubset {\textbar} ⊄ {\textbar}
+\item{}\math{\subseteq} {\textbar} subseteq {\textbar} ⊆ {\textbar}
+\item{}\math{\nsubseteq} {\textbar} nsubseteq {\textbar} ⊈ {\textbar}
+\item{}\math{\sqsubset} {\textbar} sqsubset {\textbar} ⊏ {\textbar}
+\item{}\math{\sqsubseteq} {\textbar} sqsubseteq {\textbar} ⊑ {\textbar}
+\item{}⊃ {\textbar} supset {\textbar} ⊃ {\textbar}
+\item{}⊅ {\textbar} nsupset {\textbar} ⊅ {\textbar}
+\item{}\math{\supseteq} {\textbar} supseteq {\textbar} ⊇ {\textbar}
+\item{}\math{\nsupseteq} {\textbar} nsupseteq {\textbar} ⊉ {\textbar}
+\item{}\math{\sqsupset} {\textbar} sqsupset {\textbar} ⊐ {\textbar}
+\item{}\math{\sqsupseteq} {\textbar} sqsupseteq {\textbar} ⊒ {\textbar}
+\item{}\math{\bigwedge} {\textbar} xwedge {\textbar} ⋀ {\textbar}
+\item{}\math{\bigvee} {\textbar} xvee {\textbar} ⋁ {\textbar}
+\item{}\math{\cap} {\textbar} cap {\textbar} ⋂ {\textbar}
+\item{}\math{\cup} {\textbar} cup {\textbar} ⋃ {\textbar}
+\item{}\math{\setminus} {\textbar} setminus {\textbar} ∖ {\textbar}
+\item{}⊤ {\textbar} top {\textbar} ⊤ {\textbar}
+\item{}⊥ {\textbar} bot {\textbar} ⊥ {\textbar}
+\item{}∥ {\textbar} parallel {\textbar} ∥ {\textbar}
+\item{}∦ {\textbar} nparallel {\textbar} ∦ {\textbar}
+\item{}\math{\forall} {\textbar} forall {\textbar} ∀ {\textbar}
+\item{}\math{\complement} {\textbar} complement {\textbar} ∁ {\textbar}
+\item{}∂ {\textbar} partial {\textbar} ∂ {\textbar}
+\item{}\math{\exists} {\textbar} exist {\textbar} ∃ {\textbar}
+\item{}\math{\not\exists} {\textbar} nexist {\textbar} ∄ {\textbar}
+\item{}\math{\emptyset} {\textbar} emptyset {\textbar} ∅ {\textbar}
+\item{}∆ {\textbar} increment {\textbar} ∆ {\textbar}
+\item{}∇ {\textbar} nabla {\textbar} ∇ {\textbar}
+\item{}\math{\therefore} {\textbar} therefore {\textbar} ∴ {\textbar}
+\item{}\math{\because} {\textbar} because {\textbar} ∵ {\textbar}
+\item{}\math{:=} {\textbar} coloneq {\textbar} ≔ {\textbar}
+\item{}\math{=:} {\textbar} eqcolon {\textbar} ≕ {\textbar}
+\stopitemize
+
+\startsection[title={5 Supplemental Mathematical Operators U+2A00 - U+2AFF},reference={chapter.0.5},bookmark={Supplemental Mathematical Operators U+2A00 - U+2AFF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}\math{\leqslant} {\textbar} leqslant {\textbar} ⩽ {\textbar}
+\item{}\math{\geqslant} {\textbar} geqslant {\textbar} ⩾ {\textbar}
+\item{}⨯ {\textbar} Cross {\textbar} ⨯ {\textbar} Vector or Cross Product
+\stopitemize
+
+\startsection[title={6 Miscellaneous Technical U+2300 - U+23FF},reference={chapter.0.6},bookmark={Miscellaneous Technical U+2300 - U+23FF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}⌈ {\textbar} lceil {\textbar} ⌈ {\textbar}
+\item{}⌉ {\textbar} rceil {\textbar} ⌉ {\textbar}
+\item{}⌊ {\textbar} lfloor {\textbar} ⌊ {\textbar}
+\item{}⌋ {\textbar} rfloor {\textbar} ⌋ {\textbar}
+\item{}\math{\smile} {\textbar} smile {\textbar} ⌣ {\textbar}
+\item{}\math{\frown} {\textbar} frown {\textbar} ⌢ {\textbar}
+\item{}⎵ {\textbar} blank {\textbar} ⎵ {\textbar} Bottom Square Bracket
+\stopitemize
+
+\startsection[title={7 Supplemental Punctuation U+2E00 - U+2E7F},reference={chapter.0.7},bookmark={Supplemental Punctuation U+2E00 - U+2E7F}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}⸢ {\textbar} ulcorner {\textbar} ⸢ {\textbar}
+\item{}⸣ {\textbar} urcorner {\textbar} ⸣ {\textbar}
+\item{}⸤ {\textbar} llcorner {\textbar} ⸤ {\textbar}
+\item{}⸥ {\textbar} lrcorner {\textbar} ⸥ {\textbar}
+\stopitemize
+
+\startsection[title={8 Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF},reference={chapter.0.8},bookmark={Miscellaneous Mathematical Symbols-A U+27C0 - U+27EF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}⟌ {\textbar} Longdiv {\textbar} ⟌ {\textbar}
+\item{}\math{\perp} {\textbar} perp {\textbar} ⟂ {\textbar}
+\item{}⟨ {\textbar} lang {\textbar} ⟨ {\textbar}
+\item{}⟩ {\textbar} rang {\textbar} ⟩ {\textbar}
+\item{}\math{\llbracket} {\textbar} lobrk {\textbar} ⟦ {\textbar}
+\item{}\math{\rrbracket} {\textbar} robrk {\textbar} ⟧ {\textbar}
+\stopitemize
+
+\startsection[title={9 Supplemental Arrows-A U+27F0 - U+27FF},reference={chapter.0.9},bookmark={Supplemental Arrows-A U+27F0 - U+27FF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}⟵ {\textbar} xlarr {\textbar} ⟵ {\textbar}
+\item{}⟶ {\textbar} xrarr {\textbar} ⟶ {\textbar}
+\item{}⟷ {\textbar} xharr {\textbar} ⟷ {\textbar}
+\item{}⟸ {\textbar} xlArr {\textbar} ⟸ {\textbar}
+\item{}⟹ {\textbar} xrArr {\textbar} ⟹ {\textbar}
+\item{}⟺ {\textbar} xhArr {\textbar} ⟺ {\textbar}
+\item{}⟼ {\textbar} xmapsto {\textbar} ⟼ {\textbar}
+\stopitemize
+
+\startsection[title={10 Thai U+0E00 - U+0E7F},reference={chapter.0.10},bookmark={Thai U+0E00 - U+0E7F}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}฿ {\textbar} baht {\textbar} ฿ {\textbar} U+0E3F THAI CURRENCY SYMBOL BAHT
+\stopitemize
+
+{\textpercent} Currency Symbols U+20A0 - U+20CF
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}₫ {\textbar} dong {\textbar} ₫ {\textbar} U+20AB DONG SIGN
+\item{}€ {\textbar} euro {\textbar} € {\textbar} U+20AC EURO SIGN
+\item{}₲ {\textbar} guarani {\textbar} ₲ {\textbar} U+20B2 GUARANI SIGN
+\item{}₺ {\textbar} lira {\textbar} ₺ {\textbar} U+20BA TURKISH LIRA SIGN
+\item{}₦ {\textbar} naira {\textbar} ₦ {\textbar} U+20A6 NAIRA SIGN
+\item{}₱ {\textbar} peso {\textbar} ₱ {\textbar} U+20B1 PESO SIGN
+\item{}₩ {\textbar} won {\textbar} ₩ {\textbar} U+20A9 WON SIGN
+\stopitemize
+
+\startsection[title={11 Latin Extended-A U+0100 - U+017F},reference={chapter.0.11},bookmark={Latin Extended-A U+0100 - U+017F}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}Đ {\textbar} Dstrok {\textbar} Đ {\textbar} U+0110 LATIN CAPITAL LETTER D WITH STROKE
+\item{}đ {\textbar} dstrok {\textbar} đ {\textbar} U+0111 LATIN SMALL LETTER D WITH STROKE
+\item{}Ĳ {\textbar} IJlig {\textbar} Ĳ {\textbar} U+0132 LATIN CAPITAL LIGATURE IJ
+\item{}ĳ {\textbar} ijlig {\textbar} ĳ {\textbar} U+0133 LATIN SMALL LIGATURE IJ
+\item{}Ł {\textbar} Lstrok {\textbar} Ł {\textbar} U+0141 LATIN CAPITAL LETTER L WITH STROKE
+\item{}ł {\textbar} lstrok {\textbar} ł {\textbar} U+0142 LATIN SMALL LETTER L WITH STROKE
+\item{}Ŋ {\textbar} ENG {\textbar} Ŋ {\textbar} U+014A LATIN CAPITAL LETTER ENG
+\item{}ŋ {\textbar} eng {\textbar} ŋ {\textbar} U+014B LATIN SMALL LETTER ENG
+\item{}Œ {\textbar} OElig {\textbar} Œ {\textbar} U+0152 LATIN CAPITAL LIGATURE OE
+\item{}œ {\textbar} oelig {\textbar} œ {\textbar} U+0153 LATIN SMALL LIGATURE OE
+\item{}ħ {\textbar} hstrok {\textbar} ħ {\textbar} U+0127 LATIN SMALL LETTER H WITH STROKE
+\stopitemize
+
+\startsection[title={12 Latin Extended-B U+0180 - U+024F},reference={chapter.0.12},bookmark={Latin Extended-B U+0180 - U+024F}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}ƒ {\textbar} florin {\textbar} ƒ {\textbar} U+0192 LATIN SMALL LETTER F WITH HOOK
+\item{}Ω {\textbar} mho {\textbar} Ω {\textbar}
+\stopitemize
+
+\startsection[title={13 General Punctuation U+2000 - U+206F},reference={chapter.0.13},bookmark={General Punctuation U+2000 - U+206F}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}\math{\,} {\textbar} ThinSpace {\textbar}   {\textbar}
+\item{}{\endash} {\textbar} ndash {\textbar} – {\textbar} U+2013 EN DASH
+\item{}{\emdash} {\textbar} mdash {\textbar} — {\textbar} U+2014 EM DASH
+\item{}\math{\Vert} {\textbar} Vert {\textbar} ‖ {\textbar}
+\item{}‘ {\textbar} lsquo {\textbar} ‘ {\textbar} U+2018 LEFT SINGLE QUOTATION MARK
+\item{}’ {\textbar} rsquo {\textbar} ’ {\textbar} U+2019 RIGHT SINGLE QUOTATION MARK
+\item{}“ {\textbar} ldquo {\textbar} “ {\textbar} U+201C LEFT DOUBLE QUOTATION MARK
+\item{}” {\textbar} rdquo {\textbar} ” {\textbar} U+201D RIGHT DOUBLE QUOTATION MARK
+\item{}† {\textbar} dagger {\textbar} † {\textbar} U+2020 DAGGER
+\item{}‡ {\textbar} Dagger {\textbar} ‡ {\textbar} U+2021 DOULBE DAGGER
+\item{}• {\textbar} bullet {\textbar} • {\textbar}
+\item{}\math{\ldots} {\textbar} hellip {\textbar} … {\textbar}
+\item{}' {\textbar} prime {\textbar} ′ {\textbar} U+2032 PRIME '' {\textbar} Prime {\textbar} ″ {\textbar} U+2033 DOUBLE PRIME
+\stopitemize
+
+\startsection[title={14 Superscripts and Subscripts U+2070 - U+209F},reference={chapter.0.14},bookmark={Superscripts and Subscripts U+2070 - U+209F}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}₀ {\textbar} zerosubscript {\textbar} ₀ {\textbar} U+2080 SUBSCRIPT ZERO
+\item{}₁ {\textbar} onesubscript {\textbar} ₁ {\textbar} U+2081 SUBSCRIPT ONE
+\item{}₂ {\textbar} twosubscript {\textbar} ₂ {\textbar} U+2081 SUBSCRIPT TWO
+\item{}₃ {\textbar} threesubscript {\textbar} ₃ {\textbar} U+2081 SUBSCRIPT THREE
+\item{}₄ {\textbar} foursubscript {\textbar} ₄ {\textbar} U+2081 SUBSCRIPT FOUR
+\item{}₅ {\textbar} fivesubscript {\textbar} ₅ {\textbar} U+2081 SUBSCRIPT FIVE
+\item{}₆ {\textbar} sixsubscript {\textbar} ₆ {\textbar} U+2081 SUBSCRIPT SIX
+\item{}₇ {\textbar} sevensubscript {\textbar} ₇ {\textbar} U+2081 SUBSCRIPT SEVEN
+\item{}₈ {\textbar} eightsubscript {\textbar} ₈ {\textbar} U+2081 SUBSCRIPT EIGHT
+\item{}₉ {\textbar} ninesubscript {\textbar} ₉ {\textbar} U+2081 SUBSCRIPT NINE
+\stopitemize
+
+\startsection[title={15 Number Forms U+2150 - U+218F},reference={chapter.0.15},bookmark={Number Forms U+2150 - U+218F}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}\math{{{}^1\!/\!{}_3}} {\textbar} onethird {\textbar} ⅓ {\textbar} U+2153 VULGAR FRACTION ONE THIRD
+\item{}\math{{{}^2\!/\!{}_3}} {\textbar} twothirds {\textbar} ⅔ {\textbar} U+2154 VULGAR FRACTION TWO THIRDS
+\item{}\math{{{}^1\!/\!{}_5}} {\textbar} onefifth {\textbar} ⅕ {\textbar} U+2155 VULGAR FRACTION ONE FIFTH
+\item{}\math{{{}^2\!/\!{}_5}} {\textbar} twofifths {\textbar} ⅖ {\textbar} U+2156 VULGAR FRACTION TWO FIFTHS
+\item{}\math{{{}^3\!/\!{}_5}} {\textbar} threefifths {\textbar} ⅗ {\textbar} U+2157 VULGAR FRACTION THREE FIFTHS
+\item{}\math{{{}^4\!/\!{}_5}} {\textbar} fourfifths {\textbar} ⅘ {\textbar} U+2158 VULGAR FRACTION FOUR FIFTHS
+\item{}\math{{{}^1\!/\!{}_6}} {\textbar} onesixth {\textbar} ⅙ {\textbar} U+2159 VULGAR FRACTION ONE SIXTH
+\item{}\math{{{}^5\!/\!{}_6}} {\textbar} fivesixths {\textbar} ⅚ {\textbar} U+215A VULGAR FRACTION FIVE SIXTHS
+\item{}\math{{{}^1\!/\!{}_7}} {\textbar} oneseventh {\textbar} ⅐ {\textbar} U+2150 VULGAR FRACTION ONE SEVENTH
+\item{}\math{{{}^1\!/\!{}_8}} {\textbar} oneeighth {\textbar} ⅛ {\textbar} U+215B VULGAR FRACTION ONE EIGHTHS
+\item{}\math{{{}^3\!/\!{}_8}} {\textbar} threeeighths {\textbar} ⅜ {\textbar} U+215C VULGAR FRACTION THREE EIGHTHS
+\item{}\math{{{}^5\!/\!{}_8}} {\textbar} fiveeighths {\textbar} ⅝ {\textbar} U+215D VULGAR FRACTION FIVE EIGHTHS
+\item{}\math{{{}^7\!/\!{}_8}} {\textbar} seveneighths {\textbar} ⅞ {\textbar} U+215E VULGAR FRACTION SEVEN EIGHTHS
+\item{}\math{{{}^1\!/\!{}_9}} {\textbar} oneninth {\textbar} ⅑ {\textbar} U+2151 VULGAR FRACTION ONE NINTH
+\item{}\math{{{}^1\!/\!{}_{10}}} {\textbar} onetenth {\textbar} ⅒ {\textbar} U+2152 VULGAR FRACTION ONE TENTH
+\item{}\math{{{}^0\!/\!{}_3}} {\textbar} zerothird {\textbar} ↉ {\textbar} U+2189 VULGAR FRACTION ZERO THIRDS
+\stopitemize
+
+\startsection[title={16 Mathematical Alphanumeric Symbols U+1D400 - U+1D7FF},reference={chapter.0.16},bookmark={Mathematical Alphanumeric Symbols U+1D400 - U+1D7FF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}\math{\mathcal{A}} {\textbar} Ascr {\textbar} 𝒜 {\textbar}
+\item{}\math{\mathcal{C}} {\textbar} Cscr {\textbar} 𝒞 {\textbar}
+\item{}\math{\mathcal{D}} {\textbar} Dscr {\textbar} 𝒟 {\textbar}
+\item{}\math{\mathcal{G}} {\textbar} Gscr {\textbar} 𝒢 {\textbar}
+\item{}\math{\mathcal{J}} {\textbar} Jscr {\textbar} 𝒥 {\textbar}
+\item{}\math{\mathcal{K}} {\textbar} Kscr {\textbar} 𝒦 {\textbar}
+\item{}\math{\mathcal{N}} {\textbar} Nscr {\textbar} 𝒩 {\textbar}
+\item{}\math{\mathcal{O}} {\textbar} Oscr {\textbar} 𝒪 {\textbar}
+\item{}\math{\mathcal{P}} {\textbar} Pscr {\textbar} 𝒫 {\textbar}
+\item{}\math{\mathcal{Q}} {\textbar} Qscr {\textbar} 𝒬 {\textbar}
+\item{}\math{\mathcal{S}} {\textbar} Sscr {\textbar} 𝒮 {\textbar}
+\item{}\math{\mathcal{T}} {\textbar} Tscr {\textbar} 𝒯 {\textbar}
+\item{}\math{\mathcal{U}} {\textbar} Uscr {\textbar} 𝒰 {\textbar}
+\item{}\math{\mathcal{V}} {\textbar} Vscr {\textbar} 𝒱 {\textbar}
+\item{}\math{\mathcal{W}} {\textbar} Wscr {\textbar} 𝒲 {\textbar}
+\item{}\math{\mathcal{X}} {\textbar} Xscr {\textbar} 𝒳 {\textbar}
+\item{}\math{\mathcal{Y}} {\textbar} Yscr {\textbar} 𝒴 {\textbar}
+\item{}\math{\mathcal{Z}} {\textbar} Zscr {\textbar} 𝒵 {\textbar}
+\item{}\math{\mathcal{a}} {\textbar} ascr {\textbar} 𝒶 {\textbar}
+\item{}\math{\mathcal{b}} {\textbar} bscr {\textbar} 𝒷 {\textbar}
+\item{}\math{\mathcal{c}} {\textbar} cscr {\textbar} 𝒸 {\textbar}
+\item{}\math{\mathcal{d}} {\textbar} dscr {\textbar} 𝒹 {\textbar}
+\item{}\math{\mathcal{f}} {\textbar} fscr {\textbar} 𝒻 {\textbar}
+\item{}\math{\mathcal{h}} {\textbar} hscr {\textbar} 𝒽 {\textbar}
+\item{}\math{\mathcal{i}} {\textbar} iscr {\textbar} 𝒾 {\textbar}
+\item{}\math{\mathcal{j}} {\textbar} jscr {\textbar} 𝒿 {\textbar}
+\item{}\math{\mathcal{k}} {\textbar} kscr {\textbar} 𝓀 {\textbar}
+\item{}\math{\mathcal{l}} {\textbar} lscr {\textbar} 𝓁 {\textbar}
+\item{}\math{\mathcal{m}} {\textbar} mscr {\textbar} 𝓂 {\textbar}
+\item{}\math{\mathcal{n}} {\textbar} nscr {\textbar} 𝓃 {\textbar}
+\item{}\math{\mathcal{p}} {\textbar} pscr {\textbar} 𝓅 {\textbar}
+\item{}\math{\mathcal{q}} {\textbar} qscr {\textbar} 𝓆 {\textbar}
+\item{}\math{\mathcal{r}} {\textbar} rscr {\textbar} 𝓇 {\textbar}
+\item{}\math{\mathcal{s}} {\textbar} sscr {\textbar} 𝓈 {\textbar}
+\item{}\math{\mathcal{t}} {\textbar} tscr {\textbar} 𝓉 {\textbar}
+\item{}\math{\mathcal{u}} {\textbar} uscr {\textbar} 𝓊 {\textbar}
+\item{}\math{\mathcal{v}} {\textbar} vscr {\textbar} 𝓋 {\textbar}
+\item{}\math{\mathcal{w}} {\textbar} wscr {\textbar} 𝓌 {\textbar}
+\item{}\math{\mathcal{x}} {\textbar} xscr {\textbar} 𝓍 {\textbar}
+\item{}\math{\mathcal{y}} {\textbar} yscr {\textbar} 𝓎 {\textbar}
+\item{}\math{\mathcal{z}} {\textbar} zscr {\textbar} 𝓏 {\textbar}
+\item{}\math{\mathbf{A}} {\textbar} Abf {\textbar} 𝐀 {\textbar}
+\item{}\math{\mathbf{B}} {\textbar} Bbf {\textbar} 𝐁 {\textbar}
+\item{}\math{\mathbf{C}} {\textbar} Cbf {\textbar} 𝐂 {\textbar}
+\item{}\math{\mathbf{D}} {\textbar} Dbf {\textbar} 𝐃 {\textbar}
+\item{}\math{\mathbf{E}} {\textbar} Ebf {\textbar} 𝐄 {\textbar}
+\item{}\math{\mathbf{F}} {\textbar} Fbf {\textbar} 𝐅 {\textbar}
+\item{}\math{\mathbf{G}} {\textbar} Gbf {\textbar} 𝐆 {\textbar}
+\item{}\math{\mathbf{H}} {\textbar} Hbf {\textbar} 𝐇 {\textbar}
+\item{}\math{\mathbf{I}} {\textbar} Ibf {\textbar} 𝐈 {\textbar}
+\item{}\math{\mathbf{J}} {\textbar} Jbf {\textbar} 𝐉 {\textbar}
+\item{}\math{\mathbf{K}} {\textbar} Kbf {\textbar} 𝐊 {\textbar}
+\item{}\math{\mathbf{L}} {\textbar} Lbf {\textbar} 𝐋 {\textbar}
+\item{}\math{\mathbf{M}} {\textbar} Mbf {\textbar} 𝐌 {\textbar}
+\item{}\math{\mathbf{N}} {\textbar} Nbf {\textbar} 𝐍 {\textbar}
+\item{}\math{\mathbf{O}} {\textbar} Obf {\textbar} 𝐎 {\textbar}
+\item{}\math{\mathbf{P}} {\textbar} Pbf {\textbar} 𝐏 {\textbar}
+\item{}\math{\mathbf{Q}} {\textbar} Qbf {\textbar} 𝐐 {\textbar}
+\item{}\math{\mathbf{R}} {\textbar} Rbf {\textbar} 𝐑 {\textbar}
+\item{}\math{\mathbf{S}} {\textbar} Sbf {\textbar} 𝐒 {\textbar}
+\item{}\math{\mathbf{T}} {\textbar} Tbf {\textbar} 𝐓 {\textbar}
+\item{}\math{\mathbf{U}} {\textbar} Ubf {\textbar} 𝐔 {\textbar}
+\item{}\math{\mathbf{V}} {\textbar} Vbf {\textbar} 𝐕 {\textbar}
+\item{}\math{\mathbf{W}} {\textbar} Wbf {\textbar} 𝐖 {\textbar}
+\item{}\math{\mathbf{X}} {\textbar} Xbf {\textbar} 𝐗 {\textbar}
+\item{}\math{\mathbf{Y}} {\textbar} Ybf {\textbar} 𝐘 {\textbar}
+\item{}\math{\mathbf{Z}} {\textbar} Zbf {\textbar} 𝐙 {\textbar}
+\item{}\math{\mathbf{a}} {\textbar} abf {\textbar} 𝐚 {\textbar}
+\item{}\math{\mathbf{b}} {\textbar} bbf {\textbar} 𝐛 {\textbar}
+\item{}\math{\mathbf{c}} {\textbar} cbf {\textbar} 𝐜 {\textbar}
+\item{}\math{\mathbf{d}} {\textbar} dbf {\textbar} 𝐝 {\textbar}
+\item{}\math{\mathbf{e}} {\textbar} ebf {\textbar} 𝐞 {\textbar}
+\item{}\math{\mathbf{f}} {\textbar} fbf {\textbar} 𝐟 {\textbar}
+\item{}\math{\mathbf{g}} {\textbar} gbf {\textbar} 𝐠 {\textbar}
+\item{}\math{\mathbf{h}} {\textbar} hbf {\textbar} 𝐡 {\textbar}
+\item{}\math{\mathbf{i}} {\textbar} ibf {\textbar} 𝐢 {\textbar}
+\item{}\math{\mathbf{j}} {\textbar} jbf {\textbar} 𝐣 {\textbar}
+\item{}\math{\mathbf{k}} {\textbar} kbf {\textbar} 𝐤 {\textbar}
+\item{}\math{\mathbf{l}} {\textbar} lbf {\textbar} 𝐥 {\textbar}
+\item{}\math{\mathbf{m}} {\textbar} mbf {\textbar} 𝐦 {\textbar}
+\item{}\math{\mathbf{n}} {\textbar} nbf {\textbar} 𝐧 {\textbar}
+\item{}\math{\mathbf{o}} {\textbar} obf {\textbar} 𝐨 {\textbar}
+\item{}\math{\mathbf{p}} {\textbar} pbf {\textbar} 𝐩 {\textbar}
+\item{}\math{\mathbf{q}} {\textbar} qbf {\textbar} 𝐪 {\textbar}
+\item{}\math{\mathbf{r}} {\textbar} rbf {\textbar} 𝐫 {\textbar}
+\item{}\math{\mathbf{s}} {\textbar} sbf {\textbar} 𝐬 {\textbar}
+\item{}\math{\mathbf{t}} {\textbar} tbf {\textbar} 𝐭 {\textbar}
+\item{}\math{\mathbf{u}} {\textbar} ubf {\textbar} 𝐮 {\textbar}
+\item{}\math{\mathbf{v}} {\textbar} vbf {\textbar} 𝐯 {\textbar}
+\item{}\math{\mathbf{w}} {\textbar} wbf {\textbar} 𝐰 {\textbar}
+\item{}\math{\mathbf{x}} {\textbar} xbf {\textbar} 𝐱 {\textbar}
+\item{}\math{\mathbf{y}} {\textbar} ybf {\textbar} 𝐲 {\textbar}
+\item{}\math{\mathbf{z}} {\textbar} zbf {\textbar} 𝐳 {\textbar}
+\item{}\math{\mathbf{0}} {\textbar} zerobf {\textbar} 𝟎 {\textbar}
+\item{}\math{\mathbf{1}} {\textbar} onebf {\textbar} 𝟏 {\textbar}
+\item{}\math{\mathbf{2}} {\textbar} twobf {\textbar} 𝟐 {\textbar}
+\item{}\math{\mathbf{3}} {\textbar} threebf {\textbar} 𝟑 {\textbar}
+\item{}\math{\mathbf{4}} {\textbar} fourbf {\textbar} 𝟒 {\textbar}
+\item{}\math{\mathbf{5}} {\textbar} fivebf {\textbar} 𝟓 {\textbar}
+\item{}\math{\mathbf{6}} {\textbar} sixbf {\textbar} 𝟔 {\textbar}
+\item{}\math{\mathbf{7}} {\textbar} sevenbf {\textbar} 𝟕 {\textbar}
+\item{}\math{\mathbf{8}} {\textbar} eightbf {\textbar} 𝟖 {\textbar}
+\item{}\math{\mathbf{9}} {\textbar} ninebf {\textbar} 𝟗 {\textbar}
+\item{}\math{\mathfrak{A}} {\textbar} Afr {\textbar} 𝔄 {\textbar}
+\item{}\math{\mathfrak{B}} {\textbar} Bfr {\textbar} 𝔅 {\textbar}
+\item{}\math{\mathfrak{D}} {\textbar} Dfr {\textbar} 𝔇 {\textbar}
+\item{}\math{\mathfrak{E}} {\textbar} Efr {\textbar} 𝔈 {\textbar}
+\item{}\math{\mathfrak{F}} {\textbar} Ffr {\textbar} 𝔉 {\textbar}
+\item{}\math{\mathfrak{G}} {\textbar} Gfr {\textbar} 𝔊 {\textbar}
+\item{}\math{\mathfrak{J}} {\textbar} Jfr {\textbar} 𝔍 {\textbar}
+\item{}\math{\mathfrak{K}} {\textbar} Kfr {\textbar} 𝔎 {\textbar}
+\item{}\math{\mathfrak{L}} {\textbar} Lfr {\textbar} 𝔏 {\textbar}
+\item{}\math{\mathfrak{M}} {\textbar} Mfr {\textbar} 𝔐 {\textbar}
+\item{}\math{\mathfrak{N}} {\textbar} Nfr {\textbar} 𝔑 {\textbar}
+\item{}\math{\mathfrak{O}} {\textbar} Ofr {\textbar} 𝔒 {\textbar}
+\item{}\math{\mathfrak{P}} {\textbar} Pfr {\textbar} 𝔓 {\textbar}
+\item{}\math{\mathfrak{Q}} {\textbar} Qfr {\textbar} 𝔔 {\textbar}
+\item{}\math{\mathfrak{S}} {\textbar} Sfr {\textbar} 𝔖 {\textbar}
+\item{}\math{\mathfrak{T}} {\textbar} Tfr {\textbar} 𝔗 {\textbar}
+\item{}\math{\mathfrak{U}} {\textbar} Ufr {\textbar} 𝔘 {\textbar}
+\item{}\math{\mathfrak{V}} {\textbar} Vfr {\textbar} 𝔙 {\textbar}
+\item{}\math{\mathfrak{W}} {\textbar} Wfr {\textbar} 𝔚 {\textbar}
+\item{}\math{\mathfrak{X}} {\textbar} Xfr {\textbar} 𝔛 {\textbar}
+\item{}\math{\mathfrak{Y}} {\textbar} Yfr {\textbar} 𝔜 {\textbar}
+\item{}\math{\mathfrak{a}} {\textbar} afr {\textbar} 𝔞 {\textbar}
+\item{}\math{\mathfrak{b}} {\textbar} bfr {\textbar} 𝔟 {\textbar}
+\item{}\math{\mathfrak{c}} {\textbar} cfr {\textbar} 𝔠 {\textbar}
+\item{}\math{\mathfrak{d}} {\textbar} dfr {\textbar} 𝔡 {\textbar}
+\item{}\math{\mathfrak{e}} {\textbar} efr {\textbar} 𝔢 {\textbar}
+\item{}\math{\mathfrak{f}} {\textbar} ffr {\textbar} 𝔣 {\textbar}
+\item{}\math{\mathfrak{g}} {\textbar} gfr {\textbar} 𝔤 {\textbar}
+\item{}\math{\mathfrak{h}} {\textbar} hfr {\textbar} 𝔥 {\textbar}
+\item{}\math{\mathfrak{i}} {\textbar} ifr {\textbar} 𝔦 {\textbar}
+\item{}\math{\mathfrak{j}} {\textbar} jfr {\textbar} 𝔧 {\textbar}
+\item{}\math{\mathfrak{k}} {\textbar} kfr {\textbar} 𝔨 {\textbar}
+\item{}\math{\mathfrak{l}} {\textbar} lfr {\textbar} 𝔩 {\textbar}
+\item{}\math{\mathfrak{m}} {\textbar} mfr {\textbar} 𝔪 {\textbar}
+\item{}\math{\mathfrak{n}} {\textbar} nfr {\textbar} 𝔫 {\textbar}
+\item{}\math{\mathfrak{o}} {\textbar} ofr {\textbar} 𝔬 {\textbar}
+\item{}\math{\mathfrak{p}} {\textbar} pfr {\textbar} 𝔭 {\textbar}
+\item{}\math{\mathfrak{q}} {\textbar} qfr {\textbar} 𝔮 {\textbar}
+\item{}\math{\mathfrak{r}} {\textbar} rfr {\textbar} 𝔯 {\textbar}
+\item{}\math{\mathfrak{s}} {\textbar} sfr {\textbar} 𝔰 {\textbar}
+\item{}\math{\mathfrak{t}} {\textbar} tfr {\textbar} 𝔱 {\textbar}
+\item{}\math{\mathfrak{u}} {\textbar} ufr {\textbar} 𝔲 {\textbar}
+\item{}\math{\mathfrak{v}} {\textbar} vfr {\textbar} 𝔳 {\textbar}
+\item{}\math{\mathfrak{w}} {\textbar} wfr {\textbar} 𝔴 {\textbar}
+\item{}\math{\mathfrak{x}} {\textbar} xfr {\textbar} 𝔵 {\textbar}
+\item{}\math{\mathfrak{y}} {\textbar} yfr {\textbar} 𝔶 {\textbar}
+\item{}\math{\mathfrak{z}} {\textbar} zfr {\textbar} 𝔷 {\textbar}
+\item{}\math{\mathbb{A}} {\textbar} Aopf {\textbar} 𝔸 {\textbar}
+\item{}\math{\mathbb{B}} {\textbar} Bopf {\textbar} 𝔹 {\textbar}
+\item{}\math{\mathbb{D}} {\textbar} Dopf {\textbar} 𝔻 {\textbar}
+\item{}\math{\mathbb{E}} {\textbar} Eopf {\textbar} 𝔼 {\textbar}
+\item{}\math{\mathbb{F}} {\textbar} Fopf {\textbar} 𝔽 {\textbar}
+\item{}\math{\mathbb{G}} {\textbar} Gopf {\textbar} 𝔾 {\textbar}
+\item{}\math{\mathbb{I}} {\textbar} Iopf {\textbar} 𝕀 {\textbar}
+\item{}\math{\mathbb{J}} {\textbar} Jopf {\textbar} 𝕁 {\textbar}
+\item{}\math{\mathbb{K}} {\textbar} Kopf {\textbar} 𝕂 {\textbar}
+\item{}\math{\mathbb{L}} {\textbar} Lopf {\textbar} 𝕃 {\textbar}
+\item{}\math{\mathbb{M}} {\textbar} Mopf {\textbar} 𝕄 {\textbar}
+\item{}\math{\mathbb{O}} {\textbar} Oopf {\textbar} 𝕆 {\textbar}
+\item{}\math{\mathbb{S}} {\textbar} Sopf {\textbar} 𝕊 {\textbar}
+\item{}\math{\mathbb{T}} {\textbar} Topf {\textbar} 𝕋 {\textbar}
+\item{}\math{\mathbb{U}} {\textbar} Uopf {\textbar} 𝕌 {\textbar}
+\item{}\math{\mathbb{V}} {\textbar} Vopf {\textbar} 𝕍 {\textbar}
+\item{}\math{\mathbb{W}} {\textbar} Wopf {\textbar} 𝕎 {\textbar}
+\item{}\math{\mathbb{X}} {\textbar} Xopf {\textbar} 𝕏 {\textbar}
+\item{}\math{\mathbb{Y}} {\textbar} Yopf {\textbar} 𝕐 {\textbar}
+\item{}\math{\mathbb{a}} {\textbar} aopf {\textbar} 𝕒 {\textbar}
+\item{}\math{\mathbb{b}} {\textbar} bopf {\textbar} 𝕓 {\textbar}
+\item{}\math{\mathbb{c}} {\textbar} copf {\textbar} 𝕔 {\textbar}
+\item{}\math{\mathbb{d}} {\textbar} dopf {\textbar} 𝕕 {\textbar}
+\item{}\math{\mathbb{e}} {\textbar} eopf {\textbar} 𝕖 {\textbar}
+\item{}\math{\mathbb{f}} {\textbar} fopf {\textbar} 𝕗 {\textbar}
+\item{}\math{\mathbb{g}} {\textbar} gopf {\textbar} 𝕘 {\textbar}
+\item{}\math{\mathbb{h}} {\textbar} hopf {\textbar} 𝕙 {\textbar}
+\item{}\math{\mathbb{i}} {\textbar} iopf {\textbar} 𝕚 {\textbar}
+\item{}\math{\mathbb{j}} {\textbar} jopf {\textbar} 𝕛 {\textbar}
+\item{}\math{\mathbb{k}} {\textbar} kopf {\textbar} 𝕜 {\textbar}
+\item{}\math{\mathbb{l}} {\textbar} lopf {\textbar} 𝕝 {\textbar}
+\item{}\math{\mathbb{m}} {\textbar} mopf {\textbar} 𝕞 {\textbar}
+\item{}\math{\mathbb{n}} {\textbar} nopf {\textbar} 𝕟 {\textbar}
+\item{}\math{\mathbb{o}} {\textbar} oopf {\textbar} 𝕠 {\textbar}
+\item{}\math{\mathbb{p}} {\textbar} popf {\textbar} 𝕡 {\textbar}
+\item{}\math{\mathbb{q}} {\textbar} qopf {\textbar} 𝕢 {\textbar}
+\item{}\math{\mathbb{r}} {\textbar} ropf {\textbar} 𝕣 {\textbar}
+\item{}\math{\mathbb{s}} {\textbar} sopf {\textbar} 𝕤 {\textbar}
+\item{}\math{\mathbb{t}} {\textbar} topf {\textbar} 𝕥 {\textbar}
+\item{}\math{\mathbb{u}} {\textbar} uopf {\textbar} 𝕦 {\textbar}
+\item{}\math{\mathbb{v}} {\textbar} vopf {\textbar} 𝕧 {\textbar}
+\item{}\math{\mathbb{w}} {\textbar} wopf {\textbar} 𝕨 {\textbar}
+\item{}\math{\mathbb{x}} {\textbar} xopf {\textbar} 𝕩 {\textbar}
+\item{}\math{\mathbb{y}} {\textbar} yopf {\textbar} 𝕪 {\textbar}
+\item{}\math{\mathbb{z}} {\textbar} zopf {\textbar} 𝕫 {\textbar}
+\item{}\math{\mathit{A}} {\textbar} Amathit {\textbar} 𝐴 {\textbar}
+\item{}\math{\mathit{B}} {\textbar} Bmathit {\textbar} 𝐵 {\textbar}
+\item{}\math{\mathit{C}} {\textbar} Cmathit {\textbar} 𝐶 {\textbar}
+\item{}\math{\mathit{D}} {\textbar} Dmathit {\textbar} 𝐷 {\textbar}
+\item{}\math{\mathit{E}} {\textbar} Emathit {\textbar} 𝐸 {\textbar}
+\item{}\math{\mathit{F}} {\textbar} Fmathit {\textbar} 𝐹 {\textbar}
+\item{}\math{\mathit{G}} {\textbar} Gmathit {\textbar} 𝐺 {\textbar}
+\item{}\math{\mathit{H}} {\textbar} Hmathit {\textbar} 𝐻 {\textbar}
+\item{}\math{\mathit{I}} {\textbar} Imathit {\textbar} 𝐼 {\textbar}
+\item{}\math{\mathit{J}} {\textbar} Jmathit {\textbar} 𝐽 {\textbar}
+\item{}\math{\mathit{K}} {\textbar} Kmathit {\textbar} 𝐾 {\textbar}
+\item{}\math{\mathit{L}} {\textbar} Lmathit {\textbar} 𝐿 {\textbar}
+\item{}\math{\mathit{M}} {\textbar} Mmathit {\textbar} 𝑀 {\textbar}
+\item{}\math{\mathit{N}} {\textbar} Nmathit {\textbar} 𝑁 {\textbar}
+\item{}\math{\mathit{O}} {\textbar} Omathit {\textbar} 𝑂 {\textbar}
+\item{}\math{\mathit{P}} {\textbar} Pmathit {\textbar} 𝑃 {\textbar}
+\item{}\math{\mathit{Q}} {\textbar} Qmathit {\textbar} 𝑄 {\textbar}
+\item{}\math{\mathit{R}} {\textbar} Rmathit {\textbar} 𝑅 {\textbar}
+\item{}\math{\mathit{S}} {\textbar} Smathit {\textbar} 𝑆 {\textbar}
+\item{}\math{\mathit{T}} {\textbar} Tmathit {\textbar} 𝑇 {\textbar}
+\item{}\math{\mathit{U}} {\textbar} Umathit {\textbar} 𝑈 {\textbar}
+\item{}\math{\mathit{V}} {\textbar} Vmathit {\textbar} 𝑉 {\textbar}
+\item{}\math{\mathit{W}} {\textbar} Wmathit {\textbar} 𝑊 {\textbar}
+\item{}\math{\mathit{X}} {\textbar} Xmathit {\textbar} 𝑋 {\textbar}
+\item{}\math{\mathit{Y}} {\textbar} Ymathit {\textbar} 𝑌 {\textbar}
+\item{}\math{\mathit{Z}} {\textbar} Zmathit {\textbar} 𝑍 {\textbar}
+\item{}\math{\mathit{a}} {\textbar} amathit {\textbar} 𝑎 {\textbar}
+\item{}\math{\mathit{b}} {\textbar} bmathit {\textbar} 𝑏 {\textbar}
+\item{}\math{\mathit{c}} {\textbar} cmathit {\textbar} 𝑐 {\textbar}
+\item{}\math{\mathit{d}} {\textbar} dmathit {\textbar} 𝑑 {\textbar}
+\item{}\math{\mathit{e}} {\textbar} emathit {\textbar} 𝑒 {\textbar}
+\item{}\math{\mathit{f}} {\textbar} fmathit {\textbar} 𝑓 {\textbar}
+\item{}\math{\mathit{g}} {\textbar} gmathit {\textbar} 𝑔 {\textbar}
+\item{}\math{\mathit{i}} {\textbar} imathit {\textbar} 𝑖 {\textbar}
+\item{}\math{\mathit{j}} {\textbar} jmathit {\textbar} 𝑗 {\textbar}
+\item{}\math{\mathit{k}} {\textbar} kmathit {\textbar} 𝑘 {\textbar}
+\item{}\math{\mathit{l}} {\textbar} lmathit {\textbar} 𝑙 {\textbar}
+\item{}\math{\mathit{m}} {\textbar} mmathit {\textbar} 𝑚 {\textbar}
+\item{}\math{\mathit{n}} {\textbar} nmathit {\textbar} 𝑛 {\textbar}
+\item{}\math{\mathit{o}} {\textbar} omathit {\textbar} 𝑜 {\textbar}
+\item{}\math{\mathit{p}} {\textbar} pmathit {\textbar} 𝑝 {\textbar}
+\item{}\math{\mathit{q}} {\textbar} qmathit {\textbar} 𝑞 {\textbar}
+\item{}\math{\mathit{r}} {\textbar} rmathit {\textbar} 𝑟 {\textbar}
+\item{}\math{\mathit{s}} {\textbar} smathit {\textbar} 𝑠 {\textbar}
+\item{}\math{\mathit{t}} {\textbar} tmathit {\textbar} 𝑡 {\textbar}
+\item{}\math{\mathit{u}} {\textbar} umathit {\textbar} 𝑢 {\textbar}
+\item{}\math{\mathit{v}} {\textbar} vmathit {\textbar} 𝑣 {\textbar}
+\item{}\math{\mathit{w}} {\textbar} wmathit {\textbar} 𝑤 {\textbar}
+\item{}\math{\mathit{x}} {\textbar} xmathit {\textbar} 𝑥 {\textbar}
+\item{}\math{\mathit{y}} {\textbar} ymathit {\textbar} 𝑦 {\textbar}
+\item{}\math{\mathit{z}} {\textbar} zmathit {\textbar} 𝑧 {\textbar}
+\item{}\math{\ell} {\textbar} ell {\textbar} 𝓁 {\textbar}
+\item{}\math{\mathbb{A}} {\textbar} algebraics {\textbar} 𝔸 {\textbar}
+\item{}\math{\mathbb{O}} {\textbar} octonions {\textbar} 𝕆 {\textbar}
+\item{}\math{\mathbb{S}} {\textbar} sedenions {\textbar} 𝕊 {\textbar}
+\item{}\math{\imath} {\textbar} imath {\textbar} 𝚤 {\textbar}
+\item{}\math{\jmath} {\textbar} jmath {\textbar} 𝚥 {\textbar}
+\stopitemize
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}Dingbats U+2700 - U+27BF
+\stopitemize
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}✀ {\textbar} Ux2700 {\textbar} ✀ {\textbar}
+\item{}✁ {\textbar} Ux2701 {\textbar} ✁ {\textbar}
+\item{}✂ {\textbar} Ux2702 {\textbar} ✂ {\textbar}
+\item{}✃ {\textbar} Ux2703 {\textbar} ✃ {\textbar}
+\item{}✄ {\textbar} Ux2704 {\textbar} ✄ {\textbar}
+\item{}✅ {\textbar} Ux2705 {\textbar} ✅ {\textbar}
+\item{}✆ {\textbar} Ux2706 {\textbar} ✆ {\textbar}
+\item{}✇ {\textbar} Ux2707 {\textbar} ✇ {\textbar}
+\item{}✈ {\textbar} Ux2708 {\textbar} ✈ {\textbar}
+\item{}✉ {\textbar} Ux2709 {\textbar} ✉ {\textbar}
+\item{}✊ {\textbar} Ux270A {\textbar} ✊ {\textbar}
+\item{}✋ {\textbar} Ux270B {\textbar} ✋ {\textbar}
+\item{}✌ {\textbar} Ux270C {\textbar} ✌ {\textbar}
+\item{}✍ {\textbar} Ux270D {\textbar} ✍ {\textbar}
+\item{}✎ {\textbar} Ux270E {\textbar} ✎ {\textbar}
+\item{}✏ {\textbar} Ux270F {\textbar} ✏ {\textbar}
+\item{}✐ {\textbar} Ux2710 {\textbar} ✐ {\textbar}
+\item{}✑ {\textbar} Ux2711 {\textbar} ✑ {\textbar}
+\item{}✒ {\textbar} Ux2712 {\textbar} ✒ {\textbar}
+\item{}✓ {\textbar} Ux2713 {\textbar} ✓ {\textbar}
+\item{}✔ {\textbar} Ux2714 {\textbar} ✔ {\textbar}
+\item{}✕ {\textbar} Ux2715 {\textbar} ✕ {\textbar}
+\item{}✖ {\textbar} Ux2716 {\textbar} ✖ {\textbar}
+\item{}✗ {\textbar} Ux2717 {\textbar} ✗ {\textbar}
+\item{}✘ {\textbar} Ux2718 {\textbar} ✘ {\textbar}
+\item{}✙ {\textbar} Ux2719 {\textbar} ✙ {\textbar}
+\item{}✚ {\textbar} Ux271A {\textbar} ✚ {\textbar}
+\item{}✛ {\textbar} Ux271B {\textbar} ✛ {\textbar}
+\item{}✜ {\textbar} Ux271C {\textbar} ✜ {\textbar}
+\item{}✝ {\textbar} Ux271D {\textbar} ✝ {\textbar}
+\item{}✞ {\textbar} Ux271E {\textbar} ✞ {\textbar}
+\item{}✟ {\textbar} Ux271F {\textbar} ✟ {\textbar}
+\item{}✠ {\textbar} Ux2720 {\textbar} ✠ {\textbar}
+\item{}✡ {\textbar} Ux2721 {\textbar} ✡ {\textbar}
+\item{}✢ {\textbar} Ux2722 {\textbar} ✢ {\textbar}
+\item{}✣ {\textbar} Ux2723 {\textbar} ✣ {\textbar}
+\item{}✤ {\textbar} Ux2724 {\textbar} ✤ {\textbar}
+\item{}✥ {\textbar} Ux2725 {\textbar} ✥ {\textbar}
+\item{}✦ {\textbar} Ux2726 {\textbar} ✦ {\textbar}
+\item{}✧ {\textbar} Ux2727 {\textbar} ✧ {\textbar}
+\item{}✨ {\textbar} Ux2728 {\textbar} ✨ {\textbar}
+\item{}✩ {\textbar} Ux2729 {\textbar} ✩ {\textbar}
+\item{}✪ {\textbar} Ux272A {\textbar} ✪ {\textbar}
+\item{}✫ {\textbar} Ux272B {\textbar} ✫ {\textbar}
+\item{}✬ {\textbar} Ux272C {\textbar} ✬ {\textbar}
+\item{}✭ {\textbar} Ux272D {\textbar} ✭ {\textbar}
+\item{}✮ {\textbar} Ux272E {\textbar} ✮ {\textbar}
+\item{}✯ {\textbar} Ux272F {\textbar} ✯ {\textbar}
+\item{}✰ {\textbar} Ux2730 {\textbar} ✰ {\textbar}
+\item{}✱ {\textbar} Ux2731 {\textbar} ✱ {\textbar}
+\item{}✲ {\textbar} Ux2732 {\textbar} ✲ {\textbar}
+\item{}✳ {\textbar} Ux2733 {\textbar} ✳ {\textbar}
+\item{}✴ {\textbar} Ux2734 {\textbar} ✴ {\textbar}
+\item{}✵ {\textbar} Ux2735 {\textbar} ✵ {\textbar}
+\item{}✶ {\textbar} Ux2736 {\textbar} ✶ {\textbar}
+\item{}✷ {\textbar} Ux2737 {\textbar} ✷ {\textbar}
+\item{}✸ {\textbar} Ux2738 {\textbar} ✸ {\textbar}
+\item{}✹ {\textbar} Ux2739 {\textbar} ✹ {\textbar}
+\item{}✺ {\textbar} Ux273A {\textbar} ✺ {\textbar}
+\item{}✻ {\textbar} Ux273B {\textbar} ✻ {\textbar}
+\item{}✼ {\textbar} Ux273C {\textbar} ✼ {\textbar}
+\item{}✽ {\textbar} Ux273D {\textbar} ✽ {\textbar}
+\item{}✾ {\textbar} Ux273E {\textbar} ✾ {\textbar}
+\item{}✿ {\textbar} Ux273F {\textbar} ✿ {\textbar}
+\item{}❀ {\textbar} Ux2740 {\textbar} ❀ {\textbar}
+\item{}❁ {\textbar} Ux2741 {\textbar} ❁ {\textbar}
+\item{}❂ {\textbar} Ux2742 {\textbar} ❂ {\textbar}
+\item{}❃ {\textbar} Ux2743 {\textbar} ❃ {\textbar}
+\item{}❄ {\textbar} Ux2744 {\textbar} ❄ {\textbar}
+\item{}❅ {\textbar} Ux2745 {\textbar} ❅ {\textbar}
+\item{}❆ {\textbar} Ux2746 {\textbar} ❆ {\textbar}
+\item{}❇ {\textbar} Ux2747 {\textbar} ❇ {\textbar}
+\item{}❈ {\textbar} Ux2748 {\textbar} ❈ {\textbar}
+\item{}❉ {\textbar} Ux2749 {\textbar} ❉ {\textbar}
+\item{}❊ {\textbar} Ux274A {\textbar} ❊ {\textbar}
+\item{}❋ {\textbar} Ux274B {\textbar} ❋ {\textbar}
+\item{}❌ {\textbar} Ux274C {\textbar} ❌ {\textbar}
+\item{}❍ {\textbar} Ux274D {\textbar} ❍ {\textbar}
+\item{}❎ {\textbar} Ux274E {\textbar} ❎ {\textbar}
+\item{}❏ {\textbar} Ux274F {\textbar} ❏ {\textbar}
+\item{}❐ {\textbar} Ux2750 {\textbar} ❐ {\textbar}
+\item{}❑ {\textbar} Ux2751 {\textbar} ❑ {\textbar}
+\item{}❒ {\textbar} Ux2752 {\textbar} ❒ {\textbar}
+\item{}❓ {\textbar} Ux2753 {\textbar} ❓ {\textbar}
+\item{}❔ {\textbar} Ux2754 {\textbar} ❔ {\textbar}
+\item{}❕ {\textbar} Ux2755 {\textbar} ❕ {\textbar}
+\item{}❖ {\textbar} Ux2756 {\textbar} ❖ {\textbar}
+\item{}❗ {\textbar} Ux2757 {\textbar} ❗ {\textbar}
+\item{}❘ {\textbar} Ux2758 {\textbar} ❘ {\textbar}
+\item{}❙ {\textbar} Ux2759 {\textbar} ❙ {\textbar}
+\item{}❚ {\textbar} Ux275A {\textbar} ❚ {\textbar}
+\item{}❛ {\textbar} Ux275B {\textbar} ❛ {\textbar}
+\item{}❜ {\textbar} Ux275C {\textbar} ❜ {\textbar}
+\item{}❝ {\textbar} Ux275D {\textbar} ❝ {\textbar}
+\item{}❞ {\textbar} Ux275E {\textbar} ❞ {\textbar}
+\item{}❟ {\textbar} Ux275F {\textbar} ❟ {\textbar}
+\item{}❠ {\textbar} Ux2760 {\textbar} ❠ {\textbar}
+\item{}❡ {\textbar} Ux2761 {\textbar} ❡ {\textbar}
+\item{}❢ {\textbar} Ux2762 {\textbar} ❢ {\textbar}
+\item{}❣ {\textbar} Ux2763 {\textbar} ❣ {\textbar}
+\item{}❤ {\textbar} Ux2764 {\textbar} ❤ {\textbar}
+\item{}❥ {\textbar} Ux2765 {\textbar} ❥ {\textbar}
+\item{}❦ {\textbar} Ux2766 {\textbar} ❦ {\textbar}
+\item{}❧ {\textbar} Ux2767 {\textbar} ❧ {\textbar}
+\item{}❨ {\textbar} Ux2768 {\textbar} ❨ {\textbar}
+\item{}❩ {\textbar} Ux2769 {\textbar} ❩ {\textbar}
+\item{}❪ {\textbar} Ux276A {\textbar} ❪ {\textbar}
+\item{}❫ {\textbar} Ux276B {\textbar} ❫ {\textbar}
+\item{}❬ {\textbar} Ux276C {\textbar} ❬ {\textbar}
+\item{}❭ {\textbar} Ux276D {\textbar} ❭ {\textbar}
+\item{}❮ {\textbar} Ux276E {\textbar} ❮ {\textbar}
+\item{}❯ {\textbar} Ux276F {\textbar} ❯ {\textbar}
+\item{}❰ {\textbar} Ux2770 {\textbar} ❰ {\textbar}
+\item{}❱ {\textbar} Ux2771 {\textbar} ❱ {\textbar}
+\item{}❲ {\textbar} Ux2772 {\textbar} ❲ {\textbar}
+\item{}❳ {\textbar} Ux2773 {\textbar} ❳ {\textbar}
+\item{}❴ {\textbar} Ux2774 {\textbar} ❴ {\textbar}
+\item{}❵ {\textbar} Ux2775 {\textbar} ❵ {\textbar}
+\item{}❶ {\textbar} Ux2776 {\textbar} ❶ {\textbar}
+\item{}❷ {\textbar} Ux2777 {\textbar} ❷ {\textbar}
+\item{}❸ {\textbar} Ux2778 {\textbar} ❸ {\textbar}
+\item{}❹ {\textbar} Ux2779 {\textbar} ❹ {\textbar}
+\item{}❺ {\textbar} Ux277A {\textbar} ❺ {\textbar}
+\item{}❻ {\textbar} Ux277B {\textbar} ❻ {\textbar}
+\item{}❼ {\textbar} Ux277C {\textbar} ❼ {\textbar}
+\item{}❽ {\textbar} Ux277D {\textbar} ❽ {\textbar}
+\item{}❾ {\textbar} Ux277E {\textbar} ❾ {\textbar}
+\item{}❿ {\textbar} Ux277F {\textbar} ❿ {\textbar}
+\item{}➀ {\textbar} Ux2780 {\textbar} ➀ {\textbar}
+\item{}➁ {\textbar} Ux2781 {\textbar} ➁ {\textbar}
+\item{}➂ {\textbar} Ux2782 {\textbar} ➂ {\textbar}
+\item{}➃ {\textbar} Ux2783 {\textbar} ➃ {\textbar}
+\item{}➄ {\textbar} Ux2784 {\textbar} ➄ {\textbar}
+\item{}➅ {\textbar} Ux2785 {\textbar} ➅ {\textbar}
+\item{}➆ {\textbar} Ux2786 {\textbar} ➆ {\textbar}
+\item{}➇ {\textbar} Ux2787 {\textbar} ➇ {\textbar}
+\item{}➈ {\textbar} Ux2788 {\textbar} ➈ {\textbar}
+\item{}➉ {\textbar} Ux2789 {\textbar} ➉ {\textbar}
+\item{}➊ {\textbar} Ux278A {\textbar} ➊ {\textbar}
+\item{}➋ {\textbar} Ux278B {\textbar} ➋ {\textbar}
+\item{}➌ {\textbar} Ux278C {\textbar} ➌ {\textbar}
+\item{}➍ {\textbar} Ux278D {\textbar} ➍ {\textbar}
+\item{}➎ {\textbar} Ux278E {\textbar} ➎ {\textbar}
+\item{}➏ {\textbar} Ux278F {\textbar} ➏ {\textbar}
+\item{}➐ {\textbar} Ux2790 {\textbar} ➐ {\textbar}
+\item{}➑ {\textbar} Ux2791 {\textbar} ➑ {\textbar}
+\item{}➒ {\textbar} Ux2792 {\textbar} ➒ {\textbar}
+\item{}➓ {\textbar} Ux2793 {\textbar} ➓ {\textbar}
+\item{}➔ {\textbar} Ux2794 {\textbar} ➔ {\textbar}
+\item{}➕ {\textbar} Ux2795 {\textbar} ➕ {\textbar}
+\item{}➖ {\textbar} Ux2796 {\textbar} ➖ {\textbar}
+\item{}➗ {\textbar} Ux2797 {\textbar} ➗ {\textbar}
+\item{}➘ {\textbar} Ux2798 {\textbar} ➘ {\textbar}
+\item{}➙ {\textbar} Ux2799 {\textbar} ➙ {\textbar}
+\item{}➚ {\textbar} Ux279A {\textbar} ➚ {\textbar}
+\item{}➛ {\textbar} Ux279B {\textbar} ➛ {\textbar}
+\item{}➜ {\textbar} Ux279C {\textbar} ➜ {\textbar}
+\item{}➝ {\textbar} Ux279D {\textbar} ➝ {\textbar}
+\item{}➞ {\textbar} Ux279E {\textbar} ➞ {\textbar}
+\item{}➟ {\textbar} Ux279F {\textbar} ➟ {\textbar}
+\item{}➠ {\textbar} Ux27A0 {\textbar} ➠ {\textbar}
+\item{}➡ {\textbar} Ux27A1 {\textbar} ➡ {\textbar}
+\item{}➢ {\textbar} Ux27A2 {\textbar} ➢ {\textbar}
+\item{}➣ {\textbar} Ux27A3 {\textbar} ➣ {\textbar}
+\item{}➤ {\textbar} Ux27A4 {\textbar} ➤ {\textbar}
+\item{}➥ {\textbar} Ux27A5 {\textbar} ➥ {\textbar}
+\item{}➦ {\textbar} Ux27A6 {\textbar} ➦ {\textbar}
+\item{}➧ {\textbar} Ux27A7 {\textbar} ➧ {\textbar}
+\item{}➨ {\textbar} Ux27A8 {\textbar} ➨ {\textbar}
+\item{}➩ {\textbar} Ux27A9 {\textbar} ➩ {\textbar}
+\item{}➪ {\textbar} Ux27AA {\textbar} ➪ {\textbar}
+\item{}➫ {\textbar} Ux27AB {\textbar} ➫ {\textbar}
+\item{}➬ {\textbar} Ux27AC {\textbar} ➬ {\textbar}
+\item{}➭ {\textbar} Ux27AD {\textbar} ➭ {\textbar}
+\item{}➮ {\textbar} Ux27AE {\textbar} ➮ {\textbar}
+\item{}➯ {\textbar} Ux27AF {\textbar} ➯ {\textbar}
+\item{}➰ {\textbar} Ux27B0 {\textbar} ➰ {\textbar}
+\item{}➱ {\textbar} Ux27B1 {\textbar} ➱ {\textbar}
+\item{}➲ {\textbar} Ux27B2 {\textbar} ➲ {\textbar}
+\item{}➳ {\textbar} Ux27B3 {\textbar} ➳ {\textbar}
+\item{}➴ {\textbar} Ux27B4 {\textbar} ➴ {\textbar}
+\item{}➵ {\textbar} Ux27B5 {\textbar} ➵ {\textbar}
+\item{}➶ {\textbar} Ux27B6 {\textbar} ➶ {\textbar}
+\item{}➷ {\textbar} Ux27B7 {\textbar} ➷ {\textbar}
+\item{}➸ {\textbar} Ux27B8 {\textbar} ➸ {\textbar}
+\item{}➹ {\textbar} Ux27B9 {\textbar} ➹ {\textbar}
+\item{}➺ {\textbar} Ux27BA {\textbar} ➺ {\textbar}
+\item{}➻ {\textbar} Ux27BB {\textbar} ➻ {\textbar}
+\item{}➼ {\textbar} Ux27BC {\textbar} ➼ {\textbar}
+\item{}➽ {\textbar} Ux27BD {\textbar} ➽ {\textbar}
+\item{}➾ {\textbar} Ux27BE {\textbar} ➾ {\textbar}
+\item{}➿ {\textbar} Ux27BF {\textbar} ➿ {\textbar}
+\stopitemize
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}ongtable
+\item{}iscellaneous Symbols U+2600 - U+26FF
+\stopitemize
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}symbol {\textbar} name {\textbar} html {\textbar} comment
+\item{}-\/--\/--\/--\/--\/--\/--\/--\/--\/--\/--\/--\/--\/--\/--\/--\/--
+\item{}\math{\spadesuit} {\textbar} Ux2660 {\textbar} ♠ {\textbar}
+\item{}♡ {\textbar} Ux2661 {\textbar} ♡ {\textbar}
+\item{}♢ {\textbar} Ux2662 {\textbar} ♢ {\textbar}
+\item{}\math{\clubsuit} {\textbar} Ux2663 {\textbar} ♣ {\textbar}
+\item{}♤ {\textbar} Ux2664 {\textbar} ♤ {\textbar}
+\item{}\math{\heartsuit} {\textbar} Ux2665 {\textbar} ♥ {\textbar}
+\item{}\math{\diamondsuit} {\textbar} Ux2666 {\textbar} ♦ {\textbar}
+\item{}♧ {\textbar} Ux2667 {\textbar} ♧ {\textbar}
+\item{}☎ {\textbar} Ux260E {\textbar} ☎ {\textbar}
+\item{}☛ {\textbar} Ux261B {\textbar} ☛ {\textbar}
+\item{}☞ {\textbar} Ux261E {\textbar} ☞ {\textbar}
+\stopitemize
+
+\startsection[title={17 Geometric Shapes U+25A0 - U+25FF},reference={chapter.0.17},bookmark={Geometric Shapes U+25A0 - U+25FF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}■ {\textbar} Ux25A0 {\textbar} ■ {\textbar}
+\item{}□ {\textbar} square {\textbar} □ {\textbar} U+25A1 WHITE SQUARE
+\item{}▪ {\textbar} blacksquare {\textbar} ▪ {\textbar} U+25AA BLACK SMALL SQUARE
+\item{}▲ {\textbar} Ux25B2 {\textbar} ▲ {\textbar}
+\item{}▼ {\textbar} Ux25BC {\textbar} ▼ {\textbar}
+\item{}◆ {\textbar} Ux25C6 {\textbar} ◆ {\textbar}
+\item{}○ {\textbar} cir {\textbar} ○ {\textbar} U+25CB WHITE CIRCLE
+\item{}● {\textbar} Ux25CF {\textbar} ● {\textbar}
+\item{}▵ {\textbar} utri {\textbar} ▵ {\textbar}
+\item{}▿ {\textbar} dtri {\textbar} ▿ {\textbar}
+\item{}▹ {\textbar} rtri {\textbar} ▹ {\textbar}
+\item{}◃ {\textbar} ltri {\textbar} ◃ {\textbar}
+\item{}◯ {\textbar} bigcirc {\textbar} ◯ {\textbar}
+\item{}△ {\textbar} bigtriangleup {\textbar} △ {\textbar}
+\item{}▽ {\textbar} bigtriangledown {\textbar} ▽ {\textbar}
+\stopitemize
+
+\startsection[title={18 Arrows U+2190 - U+21FF},reference={chapter.0.18},bookmark={Arrows U+2190 - U+21FF}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}\math{\leftarrow} {\textbar} larr {\textbar} ← {\textbar}
+\item{}\math{\rightarrow} {\textbar} rarr {\textbar} → {\textbar}
+\item{}\math{\Leftarrow} {\textbar} lArr {\textbar} ⇐ {\textbar}
+\item{}\math{\Rightarrow} {\textbar} rArr {\textbar} ⇒ {\textbar}
+\item{}\math{\leftrightarrow} {\textbar} harr {\textbar} ↔ {\textbar}
+\item{}\math{\Leftrightarrow} {\textbar} hArr {\textbar} ⇔ {\textbar}
+\item{}\math{\uparrow} {\textbar} uarr {\textbar} ↑ {\textbar}
+\item{}\math{\Uparrow} {\textbar} uArr {\textbar} ⇑ {\textbar}
+\item{}\math{\downarrow} {\textbar} darr {\textbar} ↓ {\textbar}
+\item{}\math{\Downarrow} {\textbar} dArr {\textbar} ⇓ {\textbar}
+\item{}\math{\updownarrow} {\textbar} varr {\textbar} ↕ {\textbar}
+\item{}\math{\Updownarrow} {\textbar} vArr {\textbar} ⇕ {\textbar}
+\item{}\math{\leftharpoonup} {\textbar} lharu {\textbar} ↼ {\textbar}
+\item{}\math{\leftharpoondown} {\textbar} lhard {\textbar} ↽ {\textbar}
+\item{}\math{\rightharpoonup} {\textbar} rharu {\textbar} ⇀ {\textbar}
+\item{}\math{\rightharpoondown} {\textbar} rhard {\textbar} ⇁ {\textbar}
+\item{}\math{\rightleftharpoons} {\textbar} rlhar {\textbar} ⇌ {\textbar}
+\item{}\math{\nwarrow} {\textbar} nwarr {\textbar} ↖ {\textbar}
+\item{}\math{\nearrow} {\textbar} nearr {\textbar} ↗ {\textbar}
+\item{}\math{\searrow} {\textbar} searr {\textbar} ↘ {\textbar}
+\item{}\math{\swarrow} {\textbar} swarr {\textbar} ↙ {\textbar}
+\item{}\math{\mapsto} {\textbar} mapsto {\textbar} ↦ {\textbar}
+\stopitemize
+
+\startsection[title={19 Letter Like Symbol U+2100 - U+214F},reference={chapter.0.19},bookmark={Letter Like Symbol U+2100 - U+214F}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}\math{\mathbb{C}} {\textbar} complexes {\textbar} ℂ {\textbar}
+\item{}\math{\mathcal{g}} {\textbar} gscr {\textbar} ℊ {\textbar}
+\item{}\math{\mathcal{H}} {\textbar} Hscr {\textbar} ℋ {\textbar}
+\item{}\math{\mathbb{H}} {\textbar} quaternions {\textbar} ℍ {\textbar}
+\item{}\math{\mathit{h}} {\textbar} hmathit {\textbar} ℎ {\textbar}
+\item{}\math{\hbar} {\textbar} hbar {\textbar} ℏ {\textbar}
+\item{}\math{\mathcal{I}} {\textbar} Iscr {\textbar} ℐ {\textbar}
+\item{}\math{\Im} {\textbar} Im {\textbar} ℑ {\textbar}
+\item{}\math{\mathcal{L}} {\textbar} Lscr {\textbar} ℒ {\textbar}
+\item{}\math{\mathbb{N}} {\textbar} naturals {\textbar} ℕ {\textbar}
+\item{}\math{\wp} {\textbar} wp {\textbar} ℘ {\textbar}
+\item{}\math{\mathbb{P}} {\textbar} primes {\textbar} ℙ {\textbar}
+\item{}\math{\mathbb{Q}} {\textbar} rationals {\textbar} ℚ {\textbar}
+\item{}\math{\mathcal{R}} {\textbar} Rscr {\textbar} ℛ {\textbar}
+\item{}\math{\Re} {\textbar} Re {\textbar} ℜ {\textbar}
+\item{}\math{\mathbb{R}} {\textbar} reals {\textbar} ℝ {\textbar}
+\item{}℠ {\textbar} SM {\textbar} ℠ {\textbar} U+2120 SERVICE MARK
+\item{}™ {\textbar} trade {\textbar} ™ {\textbar} U+2122 TRADE MARK SIGN
+\item{}\math{\mathbb{Z}} {\textbar} integers {\textbar} ℤ {\textbar}
+\item{}\math{\mathcal{B}} {\textbar} Bscr {\textbar} ℬ {\textbar}
+\item{}\math{\mathcal{e}} {\textbar} escr {\textbar} ℯ {\textbar}
+\item{}\math{\mathcal{E}} {\textbar} Escr {\textbar} ℰ {\textbar}
+\item{}\math{\mathcal{F}} {\textbar} Fscr {\textbar} ℱ {\textbar}
+\item{}\math{\mathcal{M}} {\textbar} Mscr {\textbar} ℳ {\textbar}
+\item{}\math{\mathcal{o}} {\textbar} oscr {\textbar} ℴ {\textbar}
+\item{}\math{\aleph} {\textbar} aleph {\textbar} ℵ {\textbar} U+2135 ALEF SYMBOL
+\item{}\math{\beth} {\textbar} beth {\textbar} ℶ {\textbar} U+2136 BET SYMBOL
+\item{}\math{\gimel} {\textbar} gimel {\textbar} ℷ {\textbar} U+2137 GIMEL SYMBOL
+\item{}\math{\daleth} {\textbar} daleth {\textbar} ℸ {\textbar} U+2138 DALET SYMBOL
+\stopitemize
+
+\startsection[title={20 Alternative names},reference={chapter.0.20},bookmark={Alternative names}]
+
+\startitemize[packed][itemalign=flushright,leftmargin=0pt,width=15pt,distance=5pt]
+\item{}{\nobreakspace} {\textbar} nonbreakingspace {\textbar}   {\textbar}
+\item{}{\textmultiply} {\textbar} multiply {\textbar} × {\textbar}
+\item{}{\textdiv} {\textbar} divide {\textbar} ÷ {\textbar}
+\item{}{\textpm} {\textbar} plusminus {\textbar} ± {\textbar}
+\item{}{\textpm} {\textbar} plusminus {\textbar} ± {\textbar}
+\item{}\math{\mp} {\textbar} minusplus {\textbar} ∓ {\textbar}
+\item{}\math{\mp} {\textbar} minusplus {\textbar} ∓ {\textbar}
+\item{}△ {\textbar} bigtriangleup {\textbar} △ {\textbar}
+\item{}▽ {\textbar} bigtriangledown {\textbar} ▽ {\textbar}
+\item{}\math{\wedge} {\textbar} wedge {\textbar} ∧ {\textbar}
+\item{}\math{\vee} {\textbar} vee {\textbar} ∨ {\textbar}
+\item{}{\textlognot} {\textbar} logicalnot {\textbar} ¬ {\textbar}
+\item{}{\leftguillemot} {\textbar} guillemotleft {\textbar} « {\textbar}
+\item{}{\rightguillemot} {\textbar} guillemotright {\textbar} » {\textbar}
+\item{}{\textsterling} {\textbar} sterling {\textbar} £ {\textbar}
+\item{}{\textdegree} {\textbar} degree {\textbar} ° {\textbar}
+\item{}{\copyright} {\textbar} copyright {\textbar} © {\textbar}
+\item{}{\registered} {\textbar} registered {\textbar} ® {\textbar}
+\item{}{\paragraphmark} {\textbar} paragraph {\textbar} ¶ {\textbar}
+\item{}{\periodcentered} {\textbar} periodcentered {\textbar} · {\textbar}
+\item{}{\sectionmark} {\textbar} section {\textbar} § {\textbar}
+\item{}{\textampersand} {\textbar} ampersand {\textbar} & {\textbar}
+\item{}{\quotedbl} {\textbar} quotedbl {\textbar} " {\textbar}
+\item{}{\quotesingle} {\textbar} quotesingle {\textbar} ' {\textbar}
+\item{}> {\textbar} greater {\textbar} > {\textbar}
+\item{}< {\textbar} less {\textbar} < {\textbar}
+\item{}{\textbar} {\textbar} verticalbar {\textbar} | {\textbar}
+\item{}{\Eth} {\textbar} Eth {\textbar} Ð {\textbar}
+\item{}{\AEligature} {\textbar} AE {\textbar} Æ {\textbar}
+\item{}{\aeligature} {\textbar} ae {\textbar} æ {\textbar}
+\item{}{\Thorn} {\textbar} Thorn {\textbar} Þ {\textbar}
+\item{}Ω {\textbar} Omega {\textbar} Ω {\textbar}
+\item{}✓ {\textbar} Ux2713 {\textbar} ✓ {\textbar}
+\item{}✠ {\textbar} Ux2720 {\textbar} ✠ {\textbar}
+\item{}✗ {\textbar} Ux2717 {\textbar} ✗ {\textbar}
+\item{}✩ {\textbar} Ux2729 {\textbar} ✩ {\textbar}
+\item{}✭ {\textbar} Ux272D {\textbar} ✭ {\textbar}
+\item{}➀ {\textbar} Ux2780 {\textbar} ➀ {\textbar}
+\item{}➁ {\textbar} Ux2781 {\textbar} ➁ {\textbar}
+\item{}➂ {\textbar} Ux2782 {\textbar} ➂ {\textbar}
+\item{}➃ {\textbar} Ux2783 {\textbar} ➃ {\textbar}
+\item{}➄ {\textbar} Ux2784 {\textbar} ➄ {\textbar}
+\item{}➅ {\textbar} Ux2785 {\textbar} ➅ {\textbar}
+\item{}➆ {\textbar} Ux2786 {\textbar} ➆ {\textbar}
+\item{}➇ {\textbar} Ux2787 {\textbar} ➇ {\textbar}
+\item{}➈ {\textbar} Ux2788 {\textbar} ➈ {\textbar}
+\item{}➉ {\textbar} Ux2789 {\textbar} ➉ {\textbar}
+\item{}➊ {\textbar} Ux278A {\textbar} ➊ {\textbar}
+\item{}➋ {\textbar} Ux278B {\textbar} ➋ {\textbar}
+\item{}➌ {\textbar} Ux278C {\textbar} ➌ {\textbar}
+\item{}➍ {\textbar} Ux278D {\textbar} ➍ {\textbar}
+\item{}➎ {\textbar} Ux278E {\textbar} ➎ {\textbar}
+\item{}➏ {\textbar} Ux278F {\textbar} ➏ {\textbar}
+\item{}➐ {\textbar} Ux2790 {\textbar} ➐ {\textbar}
+\item{}➑ {\textbar} Ux2791 {\textbar} ➑ {\textbar}
+\item{}➒ {\textbar} Ux2792 {\textbar} ➒ {\textbar}
+\item{}➓ {\textbar} Ux2793 {\textbar} ➓ {\textbar}
+\stopitemize
+\stoptext
+    
