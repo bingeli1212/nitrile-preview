@@ -1682,10 +1682,7 @@ A "scalar expression" is an expression that evaluates to a number.
     \var a = 1/0
     \var a = ln(0)
 
-The scalar expression is expected by a command such as 'var'. It is also
-expected inside a dollar-expression such as 
-
-    \drawlabel "${x*2}" (0,0)
+The scalar expression is expected by a command such as 'var'. 
 
 The scalar expression has a syntax very much like those supported by the 'expr'
 command of a modern day Tcl interpreter. It recognizes the plus, minus,
@@ -1763,11 +1760,12 @@ This would have been equivalent to the following single command
   
     \log 1
 
-The dollar-expression can also perform math such as the following.
+The dollar-expression can be used to show the content of a variable.
 
     \var x = 1
     \var y = 2
-    \log ${x+y} 
+    \var z = x+y
+    \log z=${z} 
 
 The previous commands would be equivalent to the following single command:
 
@@ -1911,10 +1909,9 @@ Or,
       \show ${i}
     \done
 
-An entire array can be show by the dollar-expression as well. Ensure that the
-array variable is to appear by itself, and proceeded by '@'.
+An entire array can be show by the dollar-expression as well. 
 
-    \var a[] = 1 2 3
+    \var a[] = [1,2,3]
     \log ${a}
 
 A directive is also to be recognized. A directive adds extra possibility to the
@@ -1922,7 +1919,7 @@ list of numbers. For the moment only the "fn" directive is supported. This
 directive allows for a function to be called such that the output of this
 function replaces the original scalar.
 
-    \var a[] = ^fn:sqrt 1 2 3 4 5 6
+    \var a[] = ^fn:sqrt [1,2,3,4,5,6]
     \log ${a}
 
 Following would be observed at the console output:
@@ -1933,7 +1930,7 @@ If two "fn" directives are encountered, the last "fn" is called first, and the o
 of which becomes the input to the first "fn". 
 
     \fn add2(x) = x+2
-    \var a[] = ^fn:add2 ^fn:sqrt 1 2 3
+    \var a[] = ^fn:add2 ^fn:sqrt [1,2,3]
     \log ${a}
 
 In the previous example each scalar is to go
@@ -1944,13 +1941,13 @@ through the "sqrt" function first before being sent to the "add2" function.
 It is also possible to refer to an array element. To do that simply use the variable
 followed by an underscore itself.
 
-    \var a[] = 1 2 3
+    \var a[] = [1,2,3]
     \var b[] = a[1] a[2]
     \log ${b}
 
 Following would be the result of the translation.
 
-    *** [log] 2,3  
+    *** [log] '2' '3'
 
 
 
