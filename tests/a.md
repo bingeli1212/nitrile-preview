@@ -5,20 +5,13 @@ peek: slide
 ~img{fillalpha:0.5,linesize:1,fontsize:8}
 
 
-# Hello      
+# Slide      
 
-If we have: \[x=1\] then we will have: \[y=1\]
-
-.figure
-\\
-```img{viewport:10 12,frame:0}
-\fn f(x) = x
-\car.1 {showgrid,xaxis:-5 5, yaxis:-5 5, xtick:-5 -4 -3 -2 -1 1 2 3 4 5, ytick:-5 -4 -3 -2 -1 1 2 3 4 5} (5,5)
-\var xarr[] = '1+2' '2+3' '3+4'
-\var yarr[] = {sqrt(x)} @xarr
-\path a = &lines{@xarr|@yarr}
-\var zarr[] = @xarr @yarr
-\for i in @xarr; \do
-  \log ${i}
-\done
+```img{frame,id:b,viewport: 16 10,background:grid,gridcolor:lightgray,width:30}
+\car.1 {xgrid:1, ygrid:1, xaxis:-10 10, yaxis:-10 10, xtick: -8 -7 -6 -5 -4 -3 -2 -1 1 2 3 4 5 6 7 8, ytick: -2 -1 1 2 3 4 5 6 7 8} (8,5)
+\fn f(x) = x*x
+\var arr[] = [-10:10;40]
+\var yarr[] = {x*x} @arr
+\plot.car.1  {linecolor:brown,fn:f,xstep:0.1} 
+\subtitle "\(y=x^2\)" 
 ```
