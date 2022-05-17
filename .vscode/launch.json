@@ -165,12 +165,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch memoir",
+      "name": "Launch nireport",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "cwd": "${workspaceRoot}/tests",
-      "program": "${workspaceFolder}/lib/nitrile-preview-nimemoir.js",
+      "program": "${workspaceFolder}/lib/nitrile-preview-nireport.js",
       "args": [
         "a.md"
       ]
