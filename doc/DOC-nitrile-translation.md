@@ -372,6 +372,8 @@ Following are all blocks recognized by NITRILE.
 - "wraptab"
 - "page"
 - "vspace"
+- "blockquote"
+- "vocabulary"
 
 
 
