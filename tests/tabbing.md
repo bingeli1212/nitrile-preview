@@ -2,23 +2,47 @@ a.md
 
 # Slice
 
-& ===== ===== ===== 
-  ^$3 fn = (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
-  ^$3 fm = %07.3f
-  ^$1 hd = A
-  ^$2 hd = \(F_n\)
-  ^$3 hd = \(F(n)\)
-  0     0
-  1     1
-  2     1
-  3     2
-  4     3
-  5     5
-  6     8
-  7     13
-  8     21
-  9     34
-  10    55
-  11    89
-  12    144
-  13    233
+.tabbing{template:p10p10p10}
+\\
+: 0     
+  1     
+  2     
+  3     
+  4     
+  5     
+  6     
+  7     
+  8     
+  9     
+  10    
+  11    
+  12    
+  13    
+: 0
+  1
+  1
+  2
+  3
+  5
+  8
+  13
+  21
+  34
+  55
+  89
+  144
+  233
+^ {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
+  {%07.3f} (pow(PHI,$1)+pow(1-PHI,$1))/sqrt(5)
