@@ -367,7 +367,7 @@ Following are all blocks recognized by NITRILE.
 - "table"
 - "listing"
 - "equation"
-- "columns"
+- "multicol"
 - "wrapfig"
 - "wraptab"
 - "page"
