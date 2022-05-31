@@ -356,6 +356,7 @@ Following are all blocks recognized by NITRILE.
 - "center"
 - "itemize"
 - "description"
+- "enumeration"
 - "example"
 - "verbatim"
 - "details"
