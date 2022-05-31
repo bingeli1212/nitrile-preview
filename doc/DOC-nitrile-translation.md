@@ -355,6 +355,7 @@ Following are all blocks recognized by NITRILE.
 - "flushleft"
 - "center"
 - "itemize"
+- "description"
 - "example"
 - "verbatim"
 - "details"
