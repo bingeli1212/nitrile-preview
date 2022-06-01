@@ -27,7 +27,6 @@ are supported bundles.
 - "img"
 - "tab"
 - "par"
-- "vtm"
 
 Each bundle is designed to represent something that is to be considered 
 as a single character. For instance, an image, a table, a text box etc.
@@ -276,10 +275,6 @@ The text box is always set as wide as the paragraph.
 The end-of-line-double-backslash is used to manually break the line
 into multiple-lines.
 
-[ The "vtm" bundle. ]
-The VTM bundle typesets a verbatim box. The text is typically shown
-in monospace typeface, but its size can be changed by the "fontsize" 
-attributes. In either case, the whitespaces and line breaks are preserved.
 
 
 
@@ -358,7 +353,7 @@ Following are all blocks recognized by NITRILE.
 - "description"
 - "enumeration"
 - "example"
-- "verbatim"
+- "preformatted"
 - "details"
 - "primary"
 - "secondary"
@@ -443,10 +438,10 @@ The output is so that all lines are left aligned with a visible left margin.
 It is also recognized when the first line is recognized to have started with 
 two spaces.
 
-[ The "verbatim" block. ]
+[ The "preformatted" block. ]
 This block is recognized when the first line is to start with four spaces.  The
 output of this block is always a text with monospace typeface font and
-non-collapsed line breaks and intercharacter spaces.  In addition, a "verbatim"
+non-collapsed line breaks and intercharacter spaces.  In addition, a "preformatted"
 block can also be designated by the leading '~' followed by a space at each
 line of the block.
 
@@ -1123,7 +1118,7 @@ words in the document
 
 Default styles can be specifieid which will be applied to all matching blocks.
 
-    ~verbatim{fontsize:small}
+    ~preformatted{textsmaller}
     ~img{frame,viewport:20 20,width:40}
 
 Name bundle storages provide storage for individual bundles such that      
