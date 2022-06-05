@@ -743,7 +743,8 @@ Following are recognized entity phrases.
 - fbox
 - hrule
 - img
-- dia
+- wrapimgleft
+- wrapimgright
 - label
 
 The "hrule" entity phrase is to tyepset a horizontal rule of a given size
