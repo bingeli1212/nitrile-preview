@@ -178,6 +178,38 @@ Of course, first you have to install these fonts (.ttf) into your $TEXMFLOCAL
 
 
 
+# The pxrubrica or okumacro packages
+
+Both of the two packages mentioned above are supposed to provide
+the \ruby command that is considered to be a better version 
+of the one from the "ruby" package. 
+
+In fact, the "pxrubrica" package does not work work with "memoir" and "uplatex".
+It has a compiler error saying the count does not match.
+
+The "okumacro" package is a better choice as it does not reduce the font size 
+too much as opposed to "ruby" package, and on top of that the ruby annotation
+are spread out to cover the entire length of the base text as opposed to the 
+"ruby" package which serves to center all annotation text.
+
+
+
+# The CJK pakcage
+
+The CJK package is not supported by "platex" or "uplatex". 
+Following is a post by the maintainer of the "platex":
+
+  I'm a current maintainer of platex, and I tried to support CJK package but it
+  failed. Some people may think that it's possible, but pTeX engine tries to
+  translate “as much input characters as possible” into Japanese fonts; it means
+  that the result is almost always far from acceptable, because some Chinese
+  characters are printed in Japanese kanji variant, and vice versa. I mean, “CJK
+  package cannot be used with pLaTeX because of limitations in the implementation
+  of pTeX engine and some compatibility issue.” – Hironobu YAMASHITA
+
+
+
+
 # Known issues
 
 - TexLive2021 installation for OSX has a font problem such that \language[schinese] and \language[tchinese] and
