@@ -1954,13 +1954,20 @@ Following would be the result of the translation.
 # Reading a single value from an array
 
 It is possible to read a single value from a given array.
+In the following example variable 'a' is holding the value 
+that is 11.
 
     \var i = 0
-    \var ax[i] = [1,2,3,4,5]
-    % ax == 1
-    \var i = 1
-    \var ax[i] = [1,2,3,4,5]
-    % ax == 2
+    \var as[] = [10,11,12,13,14]
+    \var a = as[1]          
+
+In the ollowing example variable 'b' is holding
+the value that is 24.
+
+    \var i = 0
+    \var as[] = [10,11,12,13,14]
+    \var b = as[1] + as[3]
+
 
 
 # Built-in scalar functions
