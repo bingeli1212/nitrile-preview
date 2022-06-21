@@ -6,12 +6,16 @@ title: Styles
 
 Following are styles recognized by NITRILE:
 
-+ textalign:l
-+ textalign:c
-+ textalign:r
++ text:flushleft
++ text:flushright
++ text:center
++ text:smaller
++ text:oblique
++ text:flushright smaller oblique
 
-  The "textalign" is designed to express alignment options for certain 
-  bundles such as 'par'.
+  The "textalign" is designed to hold a list of options each of which
+  expressing an option for text. Note that some of them are mutually
+  exclusive.
 
 + frame:1
 
