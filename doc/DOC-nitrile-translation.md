@@ -613,14 +613,14 @@ shown.
     Zor \\ 1001 Sun Dr.
     ```
 
-[ The "columns" block. ]
+[ The "multicol" block. ]
 This block arranges to show all bundles side-by-side. The entire width of this
 block is the same as the page and each bundle is given the same fractional
 width which could be small or big depending on the actual number of bundles
 detected. Unlike "figure" and/or "table", this block respects the key provided by
 each bundle.  Subtitles are not shown.
 
-    .columns
+    .multicol
     \\
     ```par
     A frog is any member of a diverse and largely 
@@ -628,8 +628,12 @@ each bundle.  Subtitles are not shown.
     amphibians composing the order Anura 
     (literally without tail in Ancient Greek). 
     ```
-    ```dia{width:50}
+    \\
+    ```dia{width:25}
     \image "frog.img"
+    ```
+    ```dia{width:25}
+    \image "flower.img"
     ```
 
 [ The "equation" block. ]
@@ -673,13 +677,39 @@ This block is to insert a manual vertical space.
 
 [ The "flushleft" block. ]
 This block watches for the presence of one or more
-bundles and will show each bundle in its own line
-and left aligned.
+bundles and will arrange such that some bundles are placed
+on the same line and others on the following line.
+
+    .flushleft   
+    \\
+    ```dia{width:25}
+    \image "frog.img"
+    ```
+    ```dia{width:25}
+    \image "frog.img"
+    ```
+    \\
+    ```dia{width:50}
+    \image "flower.img"
+    ```
 
 [ The "center" block. ]
 This block watches for the presence of one or more
-bundles and will show each bundle in its own line
-and center aligned.
+bundles and will arrange such that some bundles are placed
+on the same line and others on the following line.
+
+    .center   
+    \\
+    ```dia{width:25}
+    \image "frog.img"
+    ```
+    ```dia{width:25}
+    \image "frog.img"
+    ```
+    \\
+    ```dia{width:50}
+    \image "flower.img"
+    ```
 
 
 # Inline Literals
