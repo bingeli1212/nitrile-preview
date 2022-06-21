@@ -469,11 +469,6 @@ Following are styles recognized by NITRILE:
   any subcaption text out of the main caption text by looking to see if any
   subcaption is specified for their own ID.
 
-+ partition:4
-
-  This option is used currently by FIGURE to partition subfigure so that it
-  can only take atmost 4 subfigures in a single row.
-
 + hew:2
 
   This option is used by 'tabular' bundle so that all its rows are split into equal
