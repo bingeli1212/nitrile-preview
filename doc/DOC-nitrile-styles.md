@@ -592,5 +592,16 @@ Following are styles recognized by NITRILE:
   It is currently used by "tab" bundle for formatting each column except
   for the "head" row.
 
-  
++ xstep:0.1
+
+  This is for express the increment used by \plot command.
+
++ xmin:-10
+
+  This is for express the starting value used by \plot command.
+
++ xmin:+10
+
+  This is for express the ending value used by \plot command.
+
 
