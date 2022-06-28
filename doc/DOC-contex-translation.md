@@ -2067,6 +2067,27 @@ experiments...
 
     \stoptext
 
+
+# bTABLE character alignment
+
+ConTeXt can align columns of numbers on a character (often a decimal point 
+to align accounting data) automatically, removing the need to add fixed 
+spaces into your document. For any such column you need to specify the 
+character on which to align. You use the aligncharacter=yes parameter to 
+set up character alignment, alignmentcharacter={.} to say what the 
+character should be (in this case a full stop) and align=middle to set 
+the overall alignment of the column.
+
+    \bTABLE
+    \setupTABLE[column][1][align=right]
+    \setupTABLE[column][2][alignmentcharacter={.},
+    aligncharacter=yes,align=middle]
+    \bTR \bTH Category \eTH \bTH Data entry \eTH \eTR
+    \bTR \bTD First \eTD \bTD 71.3 \eTD \eTR
+    \bTR \bTD Second \eTD \bTD 43.7 \eTD \eTR
+    \bTR \bTD Total \eTD \bTD 115 \eTD \eTR
+    \eTABLE
+
 # The "chapters" and "sections"
 
 ConTeXt creates chapters with the ``\chapter`` command. The text that is put
