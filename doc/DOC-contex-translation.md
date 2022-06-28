@@ -4338,6 +4338,18 @@ Wide tables, for example, can be turned and most likely will need to be put on a
     \stopplacetable
 
 
+# bTABLE cells expanding across multicol and multirow  
+
+    \setupTABLE[row][odd][background=color,backgroundcolor=red, width=.2\textwidth]
+    \bTABLE[split=yes] % allow splitting over page boundaries
+      \bTR \bTD[nr=3] 1 \eTD \bTD[nc=2] 2/3     \eTD \bTD[nr=3] 4 \eTD \eTR
+      \bTR                   \bTD 2 \eTD \bTD 3 \eTD                   \eTR
+      \bTR                   \bTD 2 \eTD \bTD 3 \eTD                   \eTR
+      \bTR \bTD[nc=3] 1/2/3                     \eTD \bTD 4 \eTD       \eTR
+      \bTR \bTD 1       \eTD \bTD 2 \eTD \bTD 3 \eTD \bTD 4 \eTD       \eTR
+    \eTABLE
+
+
 # Known problems
 
 - \ruby does not work in recent releases
