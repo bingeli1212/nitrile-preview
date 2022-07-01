@@ -535,7 +535,7 @@ Nitrile
 - [ ][FR] Add "type:argand" to DIA bundle
 - [ ][FR] Add &kbd{} entity typeset `<kbd>` element
 - [ ][FR] Added so that ":=" is recognized as a math symbol in math mode, and re
-
+- [ ][FR] Change float_to_details() to remove argument/function types and add tilde tpes
 
 
 
