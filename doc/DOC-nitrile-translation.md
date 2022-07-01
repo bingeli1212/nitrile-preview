@@ -776,6 +776,7 @@ Following are recognized entity phrases.
 - wrapimgleft
 - wrapimgright
 - label
+- calc  
 
 The "hrule" entity phrase is to tyepset a horizontal rule of a given size
 and with optional contents. Following typesets a horizontal rule 
@@ -826,6 +827,10 @@ section is the first section.
     # Introduction
     &label{sect1}
 
+The "calc" phrase returns a text that is formatted output of a calculation.
+Following example is to return a string that is "0.693".
+
+    &calc{%0.3f,log(2)}
 
 
 # CJK and custom fonts
