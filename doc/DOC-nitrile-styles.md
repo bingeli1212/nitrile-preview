@@ -6,14 +6,13 @@ title: Styles
 
 Following are styles recognized by NITRILE:
 
-+ text:flushleft
-+ text:flushright
-+ text:center
-+ text:smaller
-+ text:oblique
-+ text:flushright smaller oblique
++ text:s
++ text:i
++ text:b
++ text:t
++ text:s i b t
 
-  The "textalign" is designed to hold a list of options each of which
+  The "text" key is designed to hold a list of options each of which
   expressing an option for text. Note that some of them are mutually
   exclusive.
 
@@ -58,6 +57,11 @@ Following are styles recognized by NITRILE:
   with a different font size. The font size is either a number, such
   as 12, 11.5, 10, etc., or a string such as "footnotesize", "large",
   which must be a valid font size name.
+
++ textalign:l r l c
+
+  This option sets the text alignment for each column of the 'tab' bundle
+  as well as for the entire text block of the 'par' bundle.
 
 + head:1
 
@@ -538,9 +542,9 @@ Following are styles recognized by NITRILE:
 
   This option specifies the height in units of 'mm'.
 
-+ template:        
++ template:15 10 20
 
-  The 'template' attribute is used to set the templated column 
+  The 'template' attribute is used to set the width (in mm) of each template column 
   for 'tab' bundle.                                        .
 
 + hrules:1 2 3
