@@ -6,11 +6,11 @@ title: Styles
 
 Following are styles recognized by NITRILE:
 
-+ text:s
-+ text:i
-+ text:b
-+ text:t
-+ text:s i b t
++ mien:s
++ mien:i
++ mien:b
++ mien:t
++ mien:sibt
 
   The "text" key is designed to hold a list of options each of which
   expressing an option for text. Note that some of them are mutually
@@ -58,7 +58,10 @@ Following are styles recognized by NITRILE:
   as 12, 11.5, 10, etc., or a string such as "footnotesize", "large",
   which must be a valid font size name.
 
-+ textalign:l r l c
++ textalign:l
++ textalign:r
++ textalign:c
++ textalign:lrlc
 
   This option sets the text alignment for each column of the 'tab' bundle
   as well as for the entire text block of the 'par' bundle.
