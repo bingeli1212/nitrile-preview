@@ -2,24 +2,24 @@
 title: index.md
 peek: slide
 ---
+```img{frame,viewport:12 7,background:grid,id:a,width:30}
+\set linesize = 2
+\set fillalpha = 0.2
+\origin ^x:4
+\origin ^y:4
+\drawpath {fillcolor:fill1} &circle{(0,0)|2.3}
+```
 
 # example-1  
 
-< 0.9
-  0.99
-  0.999
-  0.9999
-  0.99999
-  0.999999
-  0.9999999
-  0.99999999
-  0.999999999
-< &calc{%.14f,($1*$1-1)/($1-1)}
-  &calc{%.14f,($1*$1-1)/($1-1)}
-  &calc{%.14f,($1*$1-1)/($1-1)}
-  &calc{%.14f,($1*$1-1)/($1-1)}
-  &calc{%.14f,($1*$1-1)/($1-1)}
-  &calc{%.14f,($1*$1-1)/($1-1)}
-  &calc{%.14f,($1*$1-1)/($1-1)}
-  &calc{%.14f,($1*$1-1)/($1-1)}
-  &calc{%.14f,($1*$1-1)/($1-1)}
+-) A &em{Venn diagram} is a diagram denoting sets and logical relations
+between them.
+Each set is represented by a circle.
+Overlap between two circles represents the presence of
+common elements in both sets.
+\\
+~ #include<stdio>
+~ main(){           
+~   printf("hello world!\n");
+~   return 0;
+~ }                 
