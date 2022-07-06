@@ -2574,14 +2574,14 @@ possible for specifying both a monospace and an italic.
           "degree\\3" (-3,2)
 
 The "tx" and "tx" can be expressed to fine turn the position of the label
-that is the offset from the coord-point. It is detected by the appearance
-of "+1-1" or friends.  
+that is the offset from the coord-point in one-tenth of the grid unit.
+It is detected by the appearance of "+dx+dy" or friends.  
 
-    \drawlabel +1-1 "hello" (1,1)
-    \drawlabel -1+1 "hello" (1,1)
-    \drawlabel +.5+.5 "hello" (1,1)
-    \drawlabel +0+.5 "hello" (1,1)
-    \drawlabel +0-.5 "hello" (1,1)
+    \drawlabel +5-5 "hello" (1,1)
+    \drawlabel -5+5 "hello" (1,1)
+    \drawlabel +5+5 "hello" (1,1)
+    \drawlabel +0+5 "hello" (1,1)
+    \drawlabel +0-5 "hello" (1,1)
 
 The "tx" and "ty" settings would be applied to ALL future labels of the current
 command unless it is reset to zero by "+0+0".

@@ -12,9 +12,10 @@ Following are styles recognized by NITRILE:
 + mien:t
 + mien:sibt
 
-  The "text" key is designed to hold a list of options each of which
-  expressing an option for text. Note that some of them are mutually
-  exclusive.
+  The "mien" key is designed to hold a list of options each of which
+  expressing an option for text. This option is used when drawing a 
+  text label that is not math.
+  Note that some of them are mutually exclusive.
 
 + frame:1
 
