@@ -471,7 +471,57 @@ two child paragraphs for the "Step 1", and no child paragraphs for "Step 2".
     salt is needed.      
 
 Note that all child paragraphs are treated as normal paragraphs with
-no particular layout assumptions. 
+no particular layout assumptions. Following forms are recognized
+within child paragraphs of a "details" block.
+
+    1) Following is a code snippet:   
+    \\
+    ~ #include<stdio>
+    ~ main(){
+    ~   printf("Hello World!\n");
+    ~   return 0;
+    ~ }
+
+    2) Following are examples of polynomials:
+    \\
+    > \(x^2 + x + 1\) 
+    > \(x^3 + x + 1\) 
+    > \(x^4 + x^2 + 1\) 
+
+    3) Following are items to bring to camping:
+    \\
+    - apple           
+    - chair            
+    - tent               
+
+    4) Following is a verse found on internet:  
+    \\
+    | I wish I could remember that first day,
+    | First hour, first moment of your meeting me,
+    | If bright or dim the season, it might be
+    | Summer or Winter for aught I can say;
+    | So unrecorded did it slip away,
+    | So blind was I to see and to foresee,
+    | So dull to mark the budding of my tree
+    | That would not blossom yet for many a May.
+
+    3) Following are pictures taken during the trip:
+    \\
+    ```img            
+    \image "pic1.png"  
+    ```
+    ```img            
+    \image "pic2.png"    
+    ```
+
+Besides the numbers, following symbols are also allowed: "asterisk",
+"hyphen-minus", and "plus-sign". The "asterisk" symbol would generate
+an ordered list such that the number is to start from 1 and continue
+up. It allows for items to be tracked without having to number them
+manually. The "hyphen-minus" allows for generating unordered list items.
+The "plus-sign" allows for generating a description list item such
+that the text after the "plus-sign" is the data term (DT) and the
+second line and after becomes the data description text (DD).
 
 [ The "primary" block. ]
 This block is recognized by the presence of a matching pair of square brackets
