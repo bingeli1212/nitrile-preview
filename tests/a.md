@@ -35,21 +35,5 @@ peek: slide
   polygon is \((n-2) &times; 180\), where \(n\) is the
   number of sides.
 \\
-```tab{rules:all,frame,head,template:15 10 10 10 10,textalign:lcccc,stretch:0.9,fontsize:smaller}
-&     Polygon 
-      &img{id:polygon1}
-      &img{id:polygon2}
-      &img{id:polygon3}
-      &img{id:polygon4}
-&     Sides
-      3
-      4
-      5
-      6
-&     Angle sum
-      180&deg;
-      360&deg;
-      540&deg;
-      720&deg;
-```
-
+> James
+> Yu
