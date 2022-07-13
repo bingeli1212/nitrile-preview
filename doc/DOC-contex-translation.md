@@ -4371,6 +4371,13 @@ Wide tables, for example, can be turned and most likely will need to be put on a
     \eTABLE
 
 
+# Calling "setupinterlinespace"
+
+The "\setupinterlinespace" command can be called by itself without
+any argument to readjust the inter line space after the font size has
+been changed if the current setting for it was such as: "\setupinterlinespace[line=2.2ex]"
+
+
 # Known problems
 
 - \ruby does not work in recent releases
