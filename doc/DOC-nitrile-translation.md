@@ -490,13 +490,19 @@ within child paragraphs of a "details" block.
     > \(x^3 + x + 1\) 
     > \(x^4 + x^2 + 1\) 
 
-    3) Following are items to bring to camping:
+    3) Following are things to be done in this order:
+    \\
+    * get out of bed  
+    * brush teeth      
+    * eat breakfast      
+
+    4) Following are items to bring to camping:
     \\
     - apple           
     - chair            
     - tent               
 
-    4) Following is a verse found on internet:  
+    5) Following is a verse found on internet:  
     \\
     | I wish I could remember that first day,
     | First hour, first moment of your meeting me,
@@ -507,7 +513,7 @@ within child paragraphs of a "details" block.
     | So dull to mark the budding of my tree
     | That would not blossom yet for many a May.
 
-    3) Following are pictures taken during the trip:
+    6) Following are pictures taken during the trip:
     \\
     ```img            
     \image "pic1.png"  
