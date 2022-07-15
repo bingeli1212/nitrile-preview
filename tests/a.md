@@ -5,6 +5,9 @@ peek: slide
 
 # Slide
 
-*) Hello
-
-*) World
+- Items
+  * Hello
+  * World
+- Items
+  * Hello
+  * World
