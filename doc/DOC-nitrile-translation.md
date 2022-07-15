@@ -351,7 +351,6 @@ Following are all blocks recognized by NITRILE.
 - "center"
 - "itemize"
 - "description"
-- "enumeration"
 - "example"
 - "preformatted"
 - "details"
@@ -400,7 +399,9 @@ text the subsequent lines.
       Prepare a pencil.
     * Final step  
       ...
-    
+
+
+[ The "description" block. ]
 The plus-signs are for expressing description list items, such
 that everything after the plus-sign is the data term, and the 
 lines that follow(s) are descriptions.
@@ -420,11 +421,11 @@ as data terms.
       The square root of variable \(x\)
 
 In the situation where the data terms should be interpreted literally,
- then a double-plus-sign should be used.
+ then a colon should be used.
 
-    ++ ``\vec{x}``   
+    : ``\vec{x}``   
       A vector denoted by variable \(x\)
-    ++ ``\sqrt(x)``  
+    : ``\sqrt(x)``  
       The square root of variable \(x\)
 
 [ The "example" block. ] 
