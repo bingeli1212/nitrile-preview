@@ -11,3 +11,5 @@ peek: slide
 - Items
   * Hello
   * World
+
+日本語
