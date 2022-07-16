@@ -5,11 +5,9 @@ peek: slide
 
 # Slide
 
-- Items
-  * Hello
-  * World
-- Items
-  * Hello
-  * World
-
-日本語
+&) Items
+\\
+```img{viewport:5 5}
+\drawline (0,0)(5,5)
+\drawline (0,5)(5,0)
+```
