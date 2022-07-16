@@ -367,7 +367,6 @@ Following are all blocks recognized by NITRILE.
 - "equation"
 - "multicol"
 - "wrapfig"
-- "wraptab"
 - "page"
 - "vspace"
 - "blockquote"
@@ -606,17 +605,16 @@ situation where this line is the first line after a sectional heading.
 
 [ The "wrapfig" block. ]
 This block implements a wrapfig that is to align an image either 
-to the right or left of a paragraph. I treats the entire content
-as a single bundle that is "img". By default the imnage is aligned
-on the right hand side of the page, unless the "align:left" is specified,
-in which case the image is aligned to the left hand side of the page. 
-The subtitle of the image is not shown.
+to the right or left of a paragraph. 
 
-[ The "wraptab" block. ]
-This block implements a "wrap table" for the content. It treates the entire
-content as a single bundle that is "tab". By default the table is aligned
-on the right hand side of the page, unless the "align:left" is specified.
-The subtitle of the table is not shown.
+    & Lorem Ipsum is simply dummy text of the printing and typesetting
+    industry.  Lorem Ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of type 
+    and scrambled it to make a type specimen book.  
+    \\ 
+    ```img{width:50} 
+    \image "imgs/clock.png" 
+    ```
 
 [ The "figure" block. ]
 This block implements a "figure" with multiple sub-figures. Each sub-figure is
