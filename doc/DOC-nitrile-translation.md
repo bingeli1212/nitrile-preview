@@ -866,10 +866,30 @@ section is the first section.
     # Introduction
     &label{sect1}
 
-The "calc" phrase returns a text that is formatted output of a calculation.
+The "calc" phrase returns a text that is formatted output of a numeric calculation.
 Following example is to return a string that is "0.693".
 
-    &calc{%0.3f,log(2)}
+    &calc{%.3f,log(2)}
+
+For "tab" fence and "tabbing" block, it can also fetch neighboring cells such 
+as the following:
+
+    : 1
+      2
+      3
+    : 10
+      20
+      30
+    : &calc{%.3f,$1+$2}
+      &calc{%.3f,$1+$2}
+      &calc{%.3f,$1+$2}
+
+In the previous example the resulting column in the 3rd place is to be
+constructed as "11.000", "22.000" and "33.000". The "$1" and "$2"
+are placeholders that refers to the neighboring cells (this only applies
+for "tab" fence and "tabbing" block", and will be empty for any other
+block or fence). Only the first nine-columns are to be recognized.
+
 
 
 # CJK and custom fonts
