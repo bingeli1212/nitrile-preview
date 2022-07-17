@@ -366,7 +366,7 @@ Following are all blocks recognized by NITRILE.
 - "listing"
 - "equation"
 - "multicol"
-- "wrapfig"
+- "stamp"
 - "page"
 - "vspace"
 - "blockquote"
@@ -603,11 +603,11 @@ This block represents a normal paragraph.  For some translations the first line
 of this paragraph is likely to have some visible indentation except for the
 situation where this line is the first line after a sectional heading.
 
-[ The "wrapfig" block. ]
-This block implements a wrapfig that is to align an image either 
-to the right or left of a paragraph. 
+[ The "stamp" block. ]
+This block inserts a image or a table that is to be wrapped by a paragraph.
+Currently the image is to always appear on the right-hand side.
 
-    & Lorem Ipsum is simply dummy text of the printing and typesetting
+    ^) Lorem Ipsum is simply dummy text of the printing and typesetting
     industry.  Lorem Ipsum has been the industry's standard dummy text
     ever since the 1500s, when an unknown printer took a galley of type 
     and scrambled it to make a type specimen book.  
@@ -812,8 +812,6 @@ Following are recognized entity phrases.
 - fbox
 - hrule
 - img
-- wrapimgleft
-- wrapimgright
 - label
 - calc  
 
