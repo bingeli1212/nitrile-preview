@@ -598,6 +598,47 @@ The total number of rows are determined by the maximum lines of each column.
        9.490                              
       11.070                              
 
+For "tabbing" block, it can also fetch neighboring cells and performing computations
+if the content of the column starts with an equal sign.
+The math expression must follow the equal sign, and a semicolon can be added
+which is to be followed by a formatting group for reformatting the output
+into a text.
+
+    < 1
+      2
+      3
+    < 10
+      20
+      30
+    < =$1+$2;%.3f
+      =$1+$2;%.3f
+      =$1+$2;%.3f
+
+In the previous example the third column is to be filled by the text
+that is the result of a math expression computation, followed by a
+formatted text output based on the formatting group notation.
+The "$1" and "$2" are placeholders that refers to the neighboring cells.
+Following are the actual output of the previous example.
+
+    1   10   11.000
+    2   20   22.000
+    3   30   33.000
+
+Note that each column is always arranged such that all columns are spread
+evenly across the entire width of the page, unless additional less-than
+signs are used. In the following example the middle column is twice the 
+width as the other two.
+
+    < 1
+      2
+      3
+    << 10
+       20
+       30
+    < =$1+$2;%.3f
+      =$1+$2;%.3f
+      =$1+$2;%.3f
+
 [ The "body" block. ]
 This block represents a normal paragraph.  For some translations the first line
 of this paragraph is likely to have some visible indentation except for the
@@ -813,7 +854,6 @@ Following are recognized entity phrases.
 - hrule
 - img
 - label
-- calc  
 
 The "hrule" entity phrase is to tyepset a horizontal rule of a given size
 and with optional contents. Following typesets a horizontal rule 
@@ -863,32 +903,6 @@ section is the first section.
 
     # Introduction
     &label{sect1}
-
-The "calc" phrase returns a text that is formatted output of a numeric calculation.
-Following example is to return a string that is "0.693".
-
-    &calc{%.3f,log(2)}
-
-For "tab" fence and "tabbing" block, it can also fetch neighboring cells such 
-as the following:
-
-    : 1
-      2
-      3
-    : 10
-      20
-      30
-    : &calc{%.3f,$1+$2}
-      &calc{%.3f,$1+$2}
-      &calc{%.3f,$1+$2}
-
-In the previous example the resulting column in the 3rd place is to be
-constructed as "11.000", "22.000" and "33.000". The "$1" and "$2"
-are placeholders that refers to the neighboring cells (this only applies
-for "tab" fence and "tabbing" block", and will be empty for any other
-block or fence). Only the first nine-columns are to be recognized.
-
-
 
 # CJK and custom fonts
 
