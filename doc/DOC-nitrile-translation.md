@@ -347,8 +347,7 @@ from each one of the previous two named buffers.
 
 Following are all blocks recognized by NITRILE.
 
-- "flushleft"
-- "center"
+- "alignment"
 - "itemize"
 - "description"
 - "example"
@@ -356,9 +355,7 @@ Following are all blocks recognized by NITRILE.
 - "details"
 - "primary"
 - "secondary"
-- "linesleft"
-- "linescenter"
-- "linesright"
+- "lines"
 - "tabbing"
 - "body"
 - "figure"
@@ -539,7 +536,7 @@ at the first line.
 This block is recognized by the presence of two matching pair of square brackets
 at the first line.
 
-[ The "linesleft" block. ] This block is recognized by the presence of vertical-bar
+[ The "lines" block. ] This block is recognized by the presence of vertical-bar
 and a follow-on space at the start of the first line. Each additional line will
 be scanned for this pattern, and will start a new line if detected; otherwise it
 is the continuation of the previous line. If there are additional leading spaces
@@ -550,7 +547,6 @@ preserved. Spaces between characters are collapsed.
     | Socrates is a human.
     | Socrates is mortal.
 
-[ The "linescenter" block. ]
 In addition, if the first character is a dollar-sign followed by at least
 one space at the first line. Each additional line will be checked for the
 presence of the same pattern, and if detected is to start a new line, otherwise
@@ -561,7 +557,6 @@ The output is so that all lines are center aligned.
     $ Good morning!       
     $ Good evening!       
 
-[ The "linesright" block. ]
 In addition, if the first character is a exclamation-sign followed by at least
 one space at the first line. Each additional line will be checked for the
 presence of the same pattern, and if detected is to start a new line, otherwise
@@ -755,12 +750,12 @@ This block is to insert a manual page break.
 [ The "vspace" block. ]
 This block is to insert a manual vertical space.         
 
-[ The "flushleft" block. ]
+[ The "alignment" block. ]
 This block watches for the presence of one or more
 bundles and will arrange such that some bundles are placed
 on the same line and others on the following line.
 
-    .flushleft   
+    .alignment   
     \\
     ```dia{width:25}
     \image "frog.img"
@@ -773,12 +768,24 @@ on the same line and others on the following line.
     \image "flower.img"
     ```
 
-[ The "center" block. ]
-This block watches for the presence of one or more
-bundles and will arrange such that some bundles are placed
-on the same line and others on the following line.
+In addition, the bundles can be centered aligned.
 
-    .center   
+    .alignment{textalign:c}
+    \\
+    ```dia{width:25}
+    \image "frog.img"
+    ```
+    ```dia{width:25}
+    \image "frog.img"
+    ```
+    \\
+    ```dia{width:50}
+    \image "flower.img"
+    ```
+
+In addition, the bundles can be right aligned.
+
+    .alignment{textalign:r}
     \\
     ```dia{width:25}
     \image "frog.img"
