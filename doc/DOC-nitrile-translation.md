@@ -593,6 +593,18 @@ The total number of rows are determined by the maximum lines of each column.
        9.490                              
       11.070                              
 
+Note that each column is always arranged such that all columns are spread
+evenly across the entire width of the page, unless additional less-than
+signs are used. In the following example the second column is twice the 
+width as the first one.
+
+    < 1
+      2
+      3
+    << 10
+       20
+       30
+
 For "tabbing" block, it can also fetch neighboring cells and performing computations
 if the content of the column starts with an equal sign.
 The math expression must follow the equal sign, and a semicolon can be added
@@ -605,34 +617,51 @@ into a text.
     < 10
       20
       30
-    < =$1+$2;%.3f
-      =$1+$2;%.3f
-      =$1+$2;%.3f
+    < =$a+$b;%.3f
+      =$a+$b;%.3f
+      =$a+$b;%.3f
 
 In the previous example the third column is to be filled by the text
 that is the result of a math expression computation, followed by a
 formatted text output based on the formatting group notation.
-The "$1" and "$2" are placeholders that refers to the neighboring cells.
-Following are the actual output of the previous example.
+The "$a" refers to the first column, and "$b" the second column. 
 
     1   10   11.000
     2   20   22.000
     3   30   33.000
 
-Note that each column is always arranged such that all columns are spread
-evenly across the entire width of the page, unless additional less-than
-signs are used. In the following example the middle column is twice the 
-width as the other two.
+It is also possible to refer to a specific row, rather than implicitly
+to the current row. To do that following the letter 'a' or 'b' in
+the previous example by an integer, such that '1' represents the first row,
+and '2' the second row. Thus, following is the equivalent of the previous
+example.
 
     < 1
       2
       3
-    << 10
-       20
-       30
-    < =$1+$2;%.3f
-      =$1+$2;%.3f
-      =$1+$2;%.3f
+    < 10
+      20
+      30
+    < =$a1+$b1;%.3f
+      =$a2+$b2;%.3f
+      =$a3+$b3;%.3f
+
+It is also possible to use '~' in place of the integer row number
+to refer to the row that is one above the current row.
+In the following example the second row is the result of computing
+the difference of number in the first column against the number 
+above it.
+
+    < 1
+      2
+      3
+    < =$a-$a~;%.3f
+      =$a-$a~;%.3f
+      =$a-$a~;%.3f
+
+Note that the computation are always performed in the order from 
+first row to the last, and while within the same row the computation
+is to start from first column and end with the last.
 
 [ The "body" block. ]
 This block represents a normal paragraph.  For some translations the first line
