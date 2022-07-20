@@ -1,23 +1,13 @@
----
-title: index.md
-peek: slide
----
-
-# Slide
-
--) Hello world
-
-.column
-Graphs
-\\
-```img{viewport:5 5}
-\drawline(0,0)(5,5)
-\drawline(0,5)(5,0)
-```
-```img{viewport:5 5}
-\drawline(0,0)(5,5)
-\drawline(0,5)(5,0)
-```
+% title = Number Progression
 
 
+# Quadractic 
 
+# Cubic Polynomial 
+
+Table for \(x \mapsto x^3\)
+
+< x
+  x*x
+< 4
+  &{($~*$~);%05.2f}

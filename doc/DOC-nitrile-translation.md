@@ -605,11 +605,11 @@ width as the first one.
        20
        30
 
-For "tabbing" block, it can also fetch neighboring cells and performing computations
-if the content of the column starts with an equal sign.
-The math expression must follow the equal sign, and a semicolon can be added
-which is to be followed by a formatting group for reformatting the output
-into a text.
+For "tabbing" block, it can also fetch neighboring cells and performing
+computations if the content of the column starts with an ampersand and the rest
+of the cell are surrounded by a pair of curly braces.  The content must be a
+valid arithmetic expression.  A semicolon can be added which is to be followed
+by a formatting group for reformatting the output into a text.
 
     < 1
       2
@@ -618,8 +618,8 @@ into a text.
       20
       30
     < &{$a+$b;%.3f}
-      ={$a+$b;%.3f}
-      ={$a+$b;%.3f}
+      &{$a+$b;%.3f}
+      &{$a+$b;%.3f}
 
 In the previous example the third column is to be filled by the text
 that is the result of a math expression computation, followed by a
@@ -630,11 +630,10 @@ The "$a" refers to the first column, and "$b" the second column.
     2   20   22.000
     3   30   33.000
 
-It is also possible to refer to a specific row, rather than implicitly
-to the current row. To do that following the letter 'a' or 'b' in
-the previous example by an integer, such that '1' represents the first row,
-and '2' the second row. Thus, following is the equivalent of the previous
-example.
+It is also possible to refer to a contents of specific rows. To do
+that following the letter 'a' or 'b' in the previous example by an integer,
+such that '1' represents the first row, and '2' the second row. Thus, following
+is the equivalent of the previous example.
 
     < 1
       2
@@ -647,7 +646,7 @@ example.
       &{$a3+$b3;%.3f}
 
 It is also possible to use '~' in place of the integer row number
-to refer to the row that is one above the current row.
+to refer to the row that is immediately above the current row.
 In the following example the second row is the result of computing
 the difference of number in the first column against the number 
 above it.
@@ -659,18 +658,22 @@ above it.
       &{$a-$a~;%.3f}
       &{$a-$a~;%.3f}
 
-Note that the computation are always performed in the order from 
-first row to the last, and while within the same row the computation
-is to start from first column and end with the last.
+On the other hand, '$a~~' would refer to the cell that is two above
+the current row which is at the first column.
 
-It is also possible to refer to the current cell, and the cell
-immediately above it. In the following example the second column
-is to have the content that is "10" and "100".
+Note that '$~' would refer to the cell that is immediately above the current
+column, and '$~~' would refer to the cell that is two above the current cell.
+In the following example the second column is to have the content that is "10"
+and "100".
 
     < x
       x*x
     < 10
       &{$~*$~}
+
+Note that the computation are always performed in the order from 
+first row to the last, and while within the same row the computation
+is to start from first column and end with the last.
 
 
 [ The "body" block. ]
