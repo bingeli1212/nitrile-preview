@@ -617,9 +617,9 @@ into a text.
     < 10
       20
       30
-    < =$a+$b;%.3f
-      =$a+$b;%.3f
-      =$a+$b;%.3f
+    < &{$a+$b;%.3f}
+      ={$a+$b;%.3f}
+      ={$a+$b;%.3f}
 
 In the previous example the third column is to be filled by the text
 that is the result of a math expression computation, followed by a
@@ -642,9 +642,9 @@ example.
     < 10
       20
       30
-    < =$a1+$b1;%.3f
-      =$a2+$b2;%.3f
-      =$a3+$b3;%.3f
+    < &{$a1+$b1;%.3f}
+      &{$a2+$b2;%.3f}
+      &{$a3+$b3;%.3f}
 
 It is also possible to use '~' in place of the integer row number
 to refer to the row that is one above the current row.
@@ -655,13 +655,23 @@ above it.
     < 1
       2
       3
-    < =$a-$a~;%.3f
-      =$a-$a~;%.3f
-      =$a-$a~;%.3f
+    < &{$a-$a~;%.3f}
+      &{$a-$a~;%.3f}
+      &{$a-$a~;%.3f}
 
 Note that the computation are always performed in the order from 
 first row to the last, and while within the same row the computation
 is to start from first column and end with the last.
+
+It is also possible to refer to the current cell, and the cell
+immediately above it. In the following example the second column
+is to have the content that is "10" and "100".
+
+    < x
+      x*x
+    < 10
+      &{$~*$~}
+
 
 [ The "body" block. ]
 This block represents a normal paragraph.  For some translations the first line
