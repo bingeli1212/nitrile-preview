@@ -363,7 +363,6 @@ Following are all blocks recognized by NITRILE.
 - "listing"
 - "equation"
 - "multicol"
-- "stamp"
 - "page"
 - "vspace"
 - "blockquote"
@@ -675,23 +674,39 @@ Note that the computation are always performed in the order from
 first row to the last, and while within the same row the computation
 is to start from first column and end with the last.
 
-
 [ The "body" block. ]
 This block represents a normal paragraph.  For some translations the first line
 of this paragraph is likely to have some visible indentation except for the
 situation where this line is the first line after a sectional heading.
 
-[ The "stamp" block. ]
-This block inserts a image or a table that is to be wrapped by a paragraph.
-Currently the image is to always appear on the right-hand side.
+    Lorem Ipsum is simply dummy text of the printing and typesetting
+    industry.  Lorem Ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of type 
+    and scrambled it to make a type specimen book.  
 
-    ^) Lorem Ipsum is simply dummy text of the printing and typesetting
+This block recognizes the following form for the presence of a 
+wrapped figure or wrapped table.
+
+    Lorem Ipsum is simply dummy text of the printing and typesetting
     industry.  Lorem Ipsum has been the industry's standard dummy text
     ever since the 1500s, when an unknown printer took a galley of type 
     and scrambled it to make a type specimen book.  
     \\ 
     ```img{width:50} 
     \image "imgs/clock.png" 
+    ```
+
+Or,
+
+    Lorem Ipsum is simply dummy text of the printing and typesetting
+    industry.  Lorem Ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of type 
+    and scrambled it to make a type specimen book.  
+    \\ 
+    ```tab{width:50,template:20 20} 
+    \\name \\description     
+    \\Apple \\Fruit           
+    \\Pear \\Fruit           
     ```
 
 [ The "figure" block. ]
