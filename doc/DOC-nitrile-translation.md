@@ -913,6 +913,7 @@ Following are recognized entity phrases.
 - link
 - utfchar
 - utfdata
+- checkbox
 - colorbutton
 - fbox
 - hrule
@@ -947,6 +948,15 @@ Later on a paraph can be constructed as follows in which case
 an inline image will be created that holds the figure.
 
     The diagram is: &dia{mydia}
+
+The "checkbox" phrase inserts a checkbox that should be made interactive 
+for HTML-related translation, such that it can be styled in a way to 
+turn on/off other elements. For LATEX/CONTEX translations a blacksquare 
+is shown.
+
+    - &checkbox{} Apple.
+    - &checkbox{} Pear.
+    - &checkbox{} Banana.
 
 The "colorbutton" phrase Create a square that looks like a button
 showing given color.  For instance,
