@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "fs": "*",
-    "jszip": "^3.2.1"
+    "jszip": "^3.8.0"
   }
 }
